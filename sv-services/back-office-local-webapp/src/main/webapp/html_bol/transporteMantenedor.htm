@@ -1,0 +1,234 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE" />
+<META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE" />
+<META HTTP-EQUIV="EXPIRES" CONTENT="Mon, 22 Jul 2002 11:12:01 GMT" />
+<title>Jumbo.cl Back Office Local</title>
+
+<script language="JavaScript" src="js/checkrut.js"></script>
+<script type="text/javascript" src="js/tabs/tabpane.js"></script>
+<script language="JavaScript" src="prototype.js"></script>
+<script language="JavaScript" src="js/window.js"></script>
+<script type="text/javascript" src="js/transporteMantenedor.js"></script>
+<script type="text/javascript" src="js/jquery-1.6.2.min.js"></script>
+<script type="text/javascript" src="js/aphanumeric.js"></script>
+<script type="text/javascript" src="js/codigosTelefonicos.js"></script>
+<script type="text/javascript" src="js/fastinit.js"></script>
+<script type="text/javascript" src="js/tablesort.js"></script>
+<script language="JavaScript" src="funciones.js"></script>
+
+<link id="luna-tab-style-sheet" type="text/css" rel="stylesheet" href="js/tabs/tabpane.css" />
+<link rel="stylesheet" type="text/css" href="js/themes/default.css" />
+<link href="estilos.css" rel="stylesheet" type="text/css" />
+<style type="text/css">
+<!--
+.style1 {color: #666666}
+-->
+</style>
+</head>
+
+<body>
+<link rel="stylesheet" href="menu/menu.css" type="text/css" />
+<script type="text/javascript" language="JavaScript" src="menu/menu.js"></script>
+<script type="text/javascript" language="JavaScript" src="menu/menu_tpl.js"></script>
+<script type="text/javascript" language="JavaScript" src="menu/menu_items.js"></script>
+<table width="780" border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td height="78" valign="top">
+			
+			<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#ffffff">
+				<tr>
+					<td width="275" height="59" align="left" class="user"><img src="img/header2.jpg" width="275" height="60" /></td>
+					<td width="505" align="left" valign="bottom" style="background: url(img/bg-1.jpg);" class="user">
+						<table width="90%" border="0" align="center" cellpadding="0" cellspacing="2">
+							<tr>
+								<td>&nbsp;</td>
+							</tr>
+							<tr>
+								<td><div align="right" class="infoBL">Usuario: {hdr_nombre}&nbsp;&nbsp;| {hdr_fecha}</div></td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+			</table>
+			
+		</td>
+	</tr>
+	<tr>
+		<td valign="top" bgcolor="#FFFFFF" height="400">
+			<table border="0" width="100%" class='ContentTitle'>
+				<tr>
+					<td width="53%" height="20" class='HeaderTitle'>Configuraci&oacute;n para Transportistas</td>
+					<td width="47%" class='HeaderTitle'><div align="right"><!--a href="javascript:window.history.back()"><img src="img/volver.gif" width="32" height="32" border="0"></a--></div></td>
+				</tr>
+			</table>
+			<br />
+			<center><font color=blue><b><span id="mensaje1">{msj}</span></b></font></center>
+
+	<table width="95%" align="center" border="0">
+		<tr>
+			<td>
+				<div class="tab-page" id="modules-cpanel">
+				<script type="text/javascript">
+				var tabPane1 = new WebFXTabPane( document.getElementById( "modules-cpanel" ), true )
+				</script>
+					
+					<div class="tab-page" id="modulo1">
+						
+                      <h2 class="tab" id="Choferes_001">Choferes</h2>
+				        <div align="left">
+							<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
+								<tr height="25" valign="middle">
+									<td align="left"><b>Choferes transportistas</b></td>
+									<td align="right"><a href="javascript:ventanaObjeto('Nuevo Chofer','','0','0','0','ModAddDelChoferTrans','','');">NUEVO</a></td>
+								</tr>
+							</table>
+							<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" class="tabla2 sortable">
+							  <tr> 
+								<th width="10%" align="center">ID</th>
+								<th width="25%" align="center">Nombre</th>
+								<th width="15%" align="center">Rut</th>
+								<th width="20%" align="center">Empresa</th>
+								<th width="15%" align="center">Activado</th>
+								<th width="15%" align="center">Acci&oacute;n</th>
+							  </tr>
+							  <!-- BEGIN DYNAMIC: LIST_CHOFERES -->
+							  <tbody id="chof_{id}">
+								<tr> 
+								  <td align="left">{id}&nbsp;</td>
+								  <td align="left">{nombre}&nbsp;</td>
+								  <td align="left">{rut}-{dv}&nbsp;</td>
+								  <td align="left">{empresa}&nbsp;</td>
+								  <td align="center">{activado}&nbsp;</td>
+								  <td align="center" nowrap><a href="javascript:ventanaObjeto('Modificar Chofer','{nombre}','{id}','{est_activado}','{id_empresa}','ModAddDelChoferTrans','{rut}','{dv}');"><img src="img/editicon.gif" border="0" height="17" width="19" title="Editar Motivo"></a>&nbsp;<a href="javascript:aEliminar('{id}','ModAddDelChoferTrans');"><img src="img/trash.gif" border="0" height="16" width="16" title="Eliminar Motivo"></a></td>
+								</tr>
+							  </tbody>
+							  <!-- END DYNAMIC: LIST_CHOFERES -->
+							</table>
+							<center>
+								<span id="msj_choferes">{msj_choferes}</span> 
+							</center>
+							<br /><br /><br />
+					  </div>
+					</div>
+					
+					<div class="tab-page" id="modulo2">
+						
+                      <h2 class="tab" id="Patentes_001">Patentes</h2>
+				        <div align="left">
+							<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
+								<tr height="25" valign="middle">
+									<td align="left"><b>Patentes de transportes</b></td>
+									<td align="right"><a href="javascript:ventanaObjeto('Nueva Patente','','0','0','0','ModAddDelPatenteTrans','','');">NUEVO</a></td>
+								</tr>
+							</table>
+							<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" class="tabla2 sortable">
+							  <tr> 
+								<th width="10%" align="center">ID</th>
+								<th width="20%" align="center">Patente</th>
+								<th width="10%" align="center">M&aacute;x. Bins</th>
+								<th width="20%" align="center">Empresa</th>
+								<th width="20%" align="center">Activado</th>
+								<th width="20%" align="center">Acci&oacute;n</th>
+							  </tr>
+							  <!-- BEGIN DYNAMIC: LIST_PATENTES -->
+							  <tbody id="pat_{id}">
+								<tr> 
+								  <td align="left">{id}&nbsp;</td>
+								  <td align="left">{patente}&nbsp;</td>
+								  <td align="center">{bins}&nbsp;</td>
+								  <td align="left">{empresa}&nbsp;</td>
+								  <td align="center">{activado}&nbsp;</td>
+								  <td align="center" nowrap><a href="javascript:ventanaObjeto('Modificar Patente','{patente}','{id}','{est_activado}','{id_empresa}','ModAddDelPatenteTrans','{bins}','');"><img src="img/editicon.gif" border="0" height="17" width="19" title="Editar Patente"></a>&nbsp;<a href="javascript:aEliminar('{id}','ModAddDelPatenteTrans');"><img src="img/trash.gif" border="0" height="16" width="16" title="Eliminar Patente"></a></td>
+								</tr>
+							  </tbody>
+							  <!-- END DYNAMIC: LIST_PATENTES -->
+							</table>
+							<center>
+								<span id="msj_patentes">{msj_patentes}</span> 
+							</center>
+							<br /><br /><br />
+					  </div>
+					</div>
+					
+					<div class="tab-page" id="modulo3">
+						
+                      <h2 class="tab" id="Fonos_001">Fonos</h2>
+				        <div align="left">
+							<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
+								<tr height="25" valign="middle">
+									<td align="left"><b>Fonos de transportes</b></td>
+									<td align="right"><a href="javascript:ventanaObjeto('Nuevo Fono','','0','0','0','ModAddDelFonoTrans','','');cargaFono();">NUEVO</a></td>
+								</tr>
+							</table>
+							<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" class="tabla2 sortable">
+							  <tr> 
+								<th width="10%" align="center">ID</th>
+								<th width="20%" align="center">Descripci&oacute;n</th>
+								<th width="10%" align="center">C&oacute;digo</th>
+								<th width="10%" align="center">N&uacute;mero</th>
+								<th width="20%" align="center">Empresa</th>
+								<th width="15%" align="center">Activado</th>
+								<th width="15%" align="center">Acci&oacute;n</th>
+							  </tr>
+							  <!-- BEGIN DYNAMIC: LIST_FONOS -->
+							  <tbody id="fono_{id}">
+								<tr> 
+								  <td align="left">{id}&nbsp;</td>
+								  <td align="left">{nombre}&nbsp;</td>
+								  <td align="center">{codigo}&nbsp;</td>
+								  <td align="center">{numero}&nbsp;</td>
+								  <td align="left">{empresa}&nbsp;</td>
+								  <td align="center">{activado}&nbsp;</td>
+								  <td align="center" nowrap><a href="javascript:ventanaObjeto('Modificar Fono','{nombre}','{id}','{est_activado}','{id_empresa}','ModAddDelFonoTrans','{codigo}','{numero}');cargaFono();"><img src="img/editicon.gif" border="0" height="17" width="19" title="Editar Fono"></a>&nbsp;<a href="javascript:aEliminar('{id}','ModAddDelFonoTrans');"><img src="img/trash.gif" border="0" height="16" width="16" title="Eliminar Fono"></a></td>
+								</tr>
+							  </tbody>
+							  <!-- END DYNAMIC: LIST_FONOS -->
+							</table>
+							<center>
+								<span id="msj_fonos">{msj_fonos}</span> 
+							</center>
+							<br /><br /><br />
+					  </div>
+					</div>
+
+					
+
+
+				</div>
+			</td>
+		</tr>
+	</table>
+	<p align="center">&nbsp;</p>
+	
+<div id="loading" style="display:none">
+<table style="Z-INDEX: 500; LEFT: 0; POSITION: absolute; TOP: 0" cellSpacing="0" cellPadding="0" border="0">
+<tr>
+<td width="75" height="25" bgcolor="#FF0000">&nbsp;&nbsp;&nbsp;<font color="#FFFFFF"><b>Cargando...</b></font></td>
+</tr>
+</table>
+</div>
+	
+		</td>
+	</tr>
+</table>
+<table width="780" border="0" cellpadding="0" cellspacing="0" bgcolor="#f1f0e9" style="border-top:1px solid #ABABAB; border-bottom:1px solid #ABABAB">
+	<tr>
+		<td align="center" bgcolor="#67b01a" class="infoBL" height="19"><div align="center">Back Office Central - Jumbo.cl</div></td>
+	</tr>
+</table>
+</body>
+</html>
+
+<script>
+var select_empresa = "";
+<!-- BEGIN DYNAMIC: LIST_EMPRESAS_ACTIVAS -->
+	select_empresa += "<option value=\"{id}\">{nombre}</option>";
+<!-- END DYNAMIC: LIST_EMPRESAS_ACTIVAS -->
+
+limpiarMsjAndWin();
+</script>

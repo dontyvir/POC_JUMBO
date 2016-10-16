@@ -1,0 +1,908 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+<title>Jumbo.cl - Pagar</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<meta name="description" content="Sitio online de la cadena de supermercados e hipermercados Jumbo. Venta online de productos" />
+<meta name="keywords" content="Jumbo, Supermercado, supermercado, supermercado online, Mas Jumbo, Hipermercado, productos, comida, abastecimiento, puntos mas, Cencosud, Almacenes Paris, Paris, Santa Isabel, Easy, Circulo mas, vinos, carnes, frutas, verduras, lacteos, pescados, mariscos, abarrotes, mercaderia a domicilio, marcas propias jumbo, locales, ofertas, promociones, Servicios, Rincon Jumbo, Visitas Guiadas, Servicios Especiales, Jumbo Va, Seguridad, Venta Empresas, nuestros clubes jumbo, Club Madre e Hijo, Club Jumbito, Plug and Play, recetas, consejos utiles, 5 es vida, venta empresas, supercash, cajas de regalo, catalogo online de productos, compra online, jumbo mas, jumbo blog" />
+<meta name="robots" content="index, follow" />
+<meta http-equiv="CACHE-CONTROL" content="NO-CACHE" />
+<meta http-equiv="PRAGMA" content="NO-CACHE" />
+<meta http-equiv="EXPIRES" content="Mon, 22 Jul 2002 11:12:01 GMT" />
+<link rel="Shortcut Icon" href="/FO_IMGS/img/favicon.ico" />
+
+
+<link href="/FO_WebContent/css/paso3.css" rel="stylesheet" type="text/css" />
+<link href="/FO_WebContent/css/paso3new.css" rel="stylesheet" type="text/css" />
+<link href="/FO_WebContent/css/estilostextos.css" rel="stylesheet" type="text/css" />
+
+
+<script type="text/javascript" src="/FO_WebContent/js/prototype.js"></script>
+<script type="text/javascript" src="/FO_WebContent/js/funciones.js"></script>
+<script type="text/javascript" src="/FO_WebContent/js/funciones_teclado.js"></script>
+<script type="text/javascript" src="/FO_WebContent/js/layer.js"></script>
+<script type="text/javascript" src="/FO_WebContent/js/checkout.js"></script>
+<script type="text/javascript" src="/FO_WebContent/js/checkrut.js"></script>
+<script type="text/javascript" src="/FO_WebContent/js/flashobject.js"></script>
+<script type="text/javascript" src="/FO_WebContent/js/dw_event.js"></script>
+<script type="text/javascript" src="/FO_WebContent/js/dw_viewport.js"></script>
+<script type="text/javascript" src="/FO_WebContent/js/dw_tooltip.js"></script>
+<link id="luna-tab-style-sheet" type="text/css" rel="stylesheet" href="/FO_WebContent/css/luna/tab.css" />
+<script type="text/javascript" src="/FO_WebContent/js/tabpane.js"></script>
+<script type="text/javascript" src="/FO_WebContent/js/promo.js"></script>
+<script type="text/javascript" src="/FO_WebContent/js/paso1.js"></script>
+<script type="text/javascript" src="/FO_WebContent/js/paso2.js"></script>
+<script type="text/javascript" src="/FO_WebContent/js/paso3.js"></script>
+<script type="text/javascript" src="/FO_WebContent/js/carro_paso3.js"></script>
+<link href="/FO_WebContent/css/acordeon_paso3.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/FO_WebContent/js/effects.js"></script>
+<script type="text/javascript" src="/FO_WebContent/js/accordion.js"></script>
+<script src="/FO_WebContent/Scripts/swfobject_modified.js" type="text/javascript"></script>
+<script type="text/javascript" src="/FO_WebContent/js/cencosud.chat.js"></script>
+<script type="text/javascript" src="/FO_WebContent/js/pasos.js"></script>
+<script type="text/javascript">
+//----- INI - DATOS PARA EL CHAT -----
+NOMBRE = "{nom_cliente}";
+APELLIDO = "{ape_cliente}";
+DIA = "{dia_actual}";
+HORA = {hora_actual};
+//----- FIN - DATOS PARA EL CHAT -----
+</script>
+<script type="text/javascript">
+PASO_ACTUAL = 3;
+</script>
+
+<script type="text/javascript">
+function carga(laAction) {
+  document.getElementById('redirect').action = laAction;
+  
+  try {
+      var pageTracker = _gat._getTracker("UA-1529321-1");
+      pageTracker._trackPageview();
+      pageTracker._trackEvent('Pagos', 'intento','OK TBK Luego de boton pagar');
+    } catch(err) {}
+  
+  document.getElementById('redirect').submit();
+}
+function cargaErr(laAction) {
+	try {
+      var pageTracker = _gat._getTracker("UA-1529321-1");
+      pageTracker._trackPageview();
+      pageTracker._trackEvent('Pagos', 'intento','Error luego de boton pagar' + laAction);
+    } catch(err) {}
+  window.location = laAction;
+}
+function cargaMas(laAction, tipoAutorizacion, numeroTarjeta, rutCliente, usoClave, glosaRespuesta, codigoRespuesta) {
+  document.getElementById('redirect').action = laAction;
+  if ( "null" != tipoAutorizacion ) document.getElementById('idTipoAutorizacion').value = tipoAutorizacion;
+  if ( "null" != numeroTarjeta ) document.getElementById('idNumeroTarjeta').value = numeroTarjeta;
+  if ( "null" != rutCliente ) document.getElementById('idRutCliente').value = rutCliente;
+  if ( "null" != usoClave ) document.getElementById('idUsoClave').value = usoClave;
+  if ( "null" != glosaRespuesta ) document.getElementById('idGlosaRespuesta').value = glosaRespuesta;
+  if ( "null" != codigoRespuesta ) document.getElementById('idCodigoRespuesta').value = codigoRespuesta;
+  
+  try {
+      var pageTracker = _gat._getTracker("UA-1529321-1");
+      pageTracker._trackPageview();
+      pageTracker._trackEvent('Pagos', 'intento','OK CAT Luego de boton pagar');
+    } catch(err) {}
+  
+  document.getElementById('redirect').submit();
+}
+</script>
+<style type="text/css">
+.bt_agrega{ float:right; height:20px; width: 150px; }
+</style>
+<!--[if IE]>
+<style type="text/css">
+#acor_lista_de_productos { width: 97%; }
+</style>
+<![endif]-->
+</head>
+<body onload="setEstiloNormal('calendarioactivo');MM_preloadImages('/FO_IMGS/img/estructura/paso3/bt_agregarProductosB.gif','/FO_IMGS/img/estructura/bt_promociones_agregadas_b.gif','/FO_IMGS/img/estructura/bt_promociones_agregadas_vb.gif','/FO_IMGS/img/estructura/paso3/bt_agregarCuponB.gif','FO_IMGS/img/estructura/bt_auto_indicacionesb.gif','/FO_IMGS/img/estructura/paso3/bt_ag_prodb.gif','/FO_IMGS/img/estructura/paso3/bt_ag_cupb.gif','/FO_IMGS/img/estructura/bt_auto_indicacionesb.gif','/FO_IMGS/img/estructura/paso3/bt_confirmarcomprab.gif');if(document.frmPedido.tipo_documento[1].checked == true) datosFactura('visible');Tooltip.init();">
+  <form id="redirect">
+    <input type="hidden" name="tipoAutorizacion" id="idTipoAutorizacion"/>
+    <input type="hidden" name="numeroTarjeta" id="idNumeroTarjeta"/>
+    <input type="hidden" name="rutCliente" id="idRutCliente"/>
+    <input type="hidden" name="usoClave" id="idUsoClave"/>
+    <input type="hidden" name="glosaRespuesta" id="idGlosaRespuesta"/>
+    <input type="hidden" name="codigoRespuesta" id="idCodigoRespuesta"/>
+  </form>
+  <div style="width:960px; height:auto; margin-left:auto; margin-right:auto; float:none; clear:both;">
+    <div class="menu_superior_2011" style="margin-bottom:26px;">
+  				<div class="logo_jumbo_2011" style="width:150px; height:111px;">
+                	<a href="http://www.jumbo.cl" target="_self"><img src="/FO_IMGS/images/header/logo_wht_bg.jpg" alt="JUMBO" width="150" height="111" border="0" /></a>
+                </div>
+      <div class="menu_arriba_2011">
+        <div class="linea_menu_arriba_2011">
+          <div class="menu_arriba_necesitas_ayuda"><a href="http://www.jumbo.cl/supermercado/preguntas/preguntas.html" target="_blank">Preguntas Frecuentes</a></div>
+          <div class="menu_arriba_necesitas_ayuda">Necesitas Ayuda? <span style="color:#1FA22E"> 600 400 3000</span></div>
+        </div>
+        <div class="linea_menu_arriba_2011">
+          <div class="menu_arriba_cerrar_sesion"><a href="Logoff">Cerrar Sesi&oacute;n</a></div>
+          <div class="menu_arriba_nombre_cliente">{nombre_cliente}</div>
+          <div class="link_disponibilidad_despacho"><a href="javascript:getOfficesAvailable('L')" >Ver Disponibilidad de Despacho</a></div>
+        </div>
+      </div>
+      <div class="menu_links_jumbo_2011">
+        <ul id="menunew">
+          <li class="micuenta"><a href="javascript:ir_mi_cuenta()">Mi Cuenta</a></li>
+          <li class="mislistas"><a href="javascript:ir_mis_listas()">Mis Listas</a></li>
+          <li class="productos"><a href="javascript:ir_supermercado()">Agregar Productos</a></li>
+          <li class="pagar"><a class="selected" href="#">Pagar</a></li>
+        </ul>
+      </div>
+    </div>
+    <div style="width:860px; float:left; height:auto; padding-left: 100px; border:1px solid #CCC;">
+      <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <td width="5" height="240"></td>
+          <td width="693" valign="top" class="lectura">
+            <div id="cuerpo3" style="visibility:block;">
+              <table width="100%" border="0" cellspacing="0" cellpadding="15">
+                <tr>
+                  <td valign="top"><input type="hidden" name="mostrar_evento" id="mostrar_evento" value="{mostrar_evento}" />
+                    <div style="color:#1FA22E;float:left;font-family: Arial,Helvetica,sans-serif;font-size:18px;font-style:normal;font-weight:bold;height:90px;text-transform: none;width:540px;"><span class="tituloNaranjo">Termina tu compra </span><br />{nombre_cliente}</div>
+                    <div style="float:left;height:80px;width:265px;">
+                      <!-- a href="ayuda-paso3.html" target="_blank"><img src="/FO_IMGS/img/estructura/bt_ayuda.gif" alt="Ayuda" border="0" align="right" /></a -->
+                      <a href="#"><img src="/FO_IMGS/img/estructura/te_asistimos.jpg" width="262" height="78" border="0" onclick="MM_openBrWindow('http://clickandtalk.medularis.com/popups/show/?uuid=5bd1474-95c1-11e0-bd4b-001d09e495000','','width=480,height=400')" /></a>
+                    </div>
+                    <div class="actualiza_datos">
+                      <form action="" method="post" name="frmActDatos" id="frmActDatos">
+
+                        <div style="float:left; border-bottom:1px dashed #CCC; width:800px; padding-bottom:5px; font-family:Arial, Helvetica, sans-serif; font-size:16px; color:#666; font-weight:bold;">Completa y Actualiza tus Datos</div>
+
+                        <div class="ad_med">Esta informaci&oacute;n es importante por si tenemos que contactarte durante el proceso de compra <br /><br />
+                          <div class="ad_med_1"> Tel&eacute;fono Celular:
+                            <select name="fon_cod_2" class="campo" id="fon_cod_2">
+                              <option value="6" {fon_cod_2_sel6}>6</option>
+                              <option value="7" {fon_cod_2_sel7}>7</option>
+                              <option value="8" {fon_cod_2_sel8}>8</option>
+                              <option value="9" {fon_cod_2_sel9}>9</option>
+                            </select>
+                            <input name="fon_num_2" type="text" value="{fon_num_2}" class="campo" id="fon_num_2" size="7" maxlength="8" />
+                          </div>
+                          <div class="ad_med_2">Tel&eacute;fono Casa:
+                            <select name="fon_cod_1_casa" class="campo" id="fon_cod_1_casa">
+                              <option value='02' {fon_cod_1_sel2}>02</option>
+                              <option value='32' {fon_cod_1_sel32}>32</option>
+                              <option value='33' {fon_cod_1_sel33}>33</option>
+                              <option value='34' {fon_cod_1_sel34}>34</option>
+                              <option value='35' {fon_cod_1_sel35}>35</option>
+                              <option value='41' {fon_cod_1_sel41}>41</option>
+                              <option value='42' {fon_cod_1_sel42}>42</option>
+                              <option value='43' {fon_cod_1_sel43}>43</option>
+                              <option value='45' {fon_cod_1_sel45}>45</option>
+                              <option value='51' {fon_cod_1_sel51}>51</option>
+                              <option value='52' {fon_cod_1_sel52}>52</option>
+                              <option value='53' {fon_cod_1_sel53}>53</option>
+                              <option value='55' {fon_cod_1_sel55}>55</option>
+                              <option value='57' {fon_cod_1_sel57}>57</option>
+                              <option value='58' {fon_cod_1_sel58}>58</option>
+                              <option value='61' {fon_cod_1_sel61}>61</option>
+                              <option value='63' {fon_cod_1_sel63}>63</option>
+                              <option value='64' {fon_cod_1_sel64}>64</option>
+                              <option value='65' {fon_cod_1_sel65}>65</option>
+                              <option value='67' {fon_cod_1_sel67}>67</option>
+                              <option value='71' {fon_cod_1_sel71}>71</option>
+                              <option value='72' {fon_cod_1_sel72}>72</option>
+                              <option value='73' {fon_cod_1_sel73}>73</option>
+                              <option value='75' {fon_cod_1_sel75}>75</option>
+                            </select>
+                            <input name="fon_num_1" type="text" value="{fon_num_1}" class="campo" id="fon_num_1" size="7" maxlength="7" />
+                          </div>
+                          <div class="ad_med_2">Otro Tel&eacute;fono:
+                            <select name="fon_cod_3" class="campo" id="fon_cod_3">
+                              <option value='02' {fon_cod_3_sel2}>02</option>
+                              <option value='32' {fon_cod_3_sel32}>32</option>
+                              <option value='33' {fon_cod_3_sel33}>33</option>
+                              <option value='34' {fon_cod_3_sel34}>34</option>
+                              <option value='35' {fon_cod_3_sel35}>35</option>
+                              <option value='41' {fon_cod_3_sel41}>41</option>
+                              <option value='42' {fon_cod_3_sel42}>42</option>
+                              <option value='43' {fon_cod_3_sel43}>43</option>
+                              <option value='45' {fon_cod_3_sel45}>45</option>
+                              <option value='51' {fon_cod_3_sel51}>51</option>
+                              <option value='52' {fon_cod_3_sel52}>52</option>
+                              <option value='53' {fon_cod_3_sel53}>53</option>
+                              <option value='55' {fon_cod_3_sel55}>55</option>
+                              <option value='57' {fon_cod_3_sel57}>57</option>
+                              <option value='58' {fon_cod_3_sel58}>58</option>
+                              <option value='61' {fon_cod_3_sel61}>61</option>
+                              <option value='63' {fon_cod_3_sel63}>63</option>
+                              <option value='64' {fon_cod_3_sel64}>64</option>
+                              <option value='65' {fon_cod_3_sel65}>65</option>
+                              <option value='67' {fon_cod_3_sel67}>67</option>
+                              <option value='71' {fon_cod_3_sel71}>71</option>
+                              <option value='72' {fon_cod_3_sel72}>72</option>
+                              <option value='73' {fon_cod_3_sel73}>73</option>
+                              <option value='75' {fon_cod_3_sel75}>75</option>
+                            </select>
+                            <input name="fon_num_3" type="text" value="{fon_num_3}" class="campo" id="fon_num_3" size="7" maxlength="7" />
+                          </div>
+                          <div class="ad_med_3">Tu email registrado  es:
+                            <input name="email1" type="text" value="{email1}" class="campo" id="email1" size="15" maxlength="25" />
+                            <span class="formularios">@</span>
+                            <input name="dominio1" type="text" value="{dominio1}" class="campo" id="dominio1" size="8" maxlength="25" />
+                          </div>
+                          <div class="ad_med_3b">* Tu email es importante para enviarte promociones especiales<br />y la confirmaci&oacute;n de tu compra.</div>
+                        </div>
+                      </form>
+                    </div>
+                    <div class="tit_despl_prod"><a name="carro_de_compras" id="carro_de_compras"></a>Tienes en tu carro de compras los siguientes productos.</div>
+                    <div class="bt_agrega_prod"><a href="CategoryDisplay">Agregar productos</a></div>
+                    <div class="despliegue_prod_1">
+                      <div class="dp_a">Cantidad</div>
+                      <div class="dp_b">Productos</div>
+                      <div class="dp_c">Comentarios</div>
+                      <div class="dp_d">*Precio Unitario</div>
+                      <div class="dp_e">Monto Total</div>
+                      <div class="dp_f">Eliminar</div>
+                    </div>
+                    <div class="despliegue_prod_2">
+                      <div id="carro_de_compras_paso3"></div>
+                    </div>
+                    <div class="despliegue_total">
+                      <div class="tx_total">Sub Total Productos:<br /><span class="chica">*sin promociones</span></div>
+                      <div class="campo_total">
+                        <div id="totalizador"><strong>&nbsp;$0</strong></div>
+                      </div>
+                    </div>
+                    <div class="cupones">
+                      <div class="ad_arriba">Promociones y Cupones de Descuento</div>
+                      <div class="cupon_med" id="promo_cupones">
+                        <div style="width:550px; float:left; height:auto; padding:10px;">
+                          <div style="width:210px; float:left; height:25px;">Si tienes un cup&oacute;n, ingresa el c&oacute;digo:</div>
+                          <div style="width:170px; float:left; height:25px; padding-left:10px;"><input type="text" name="cupon" id="cupon" value="" class="campo" maxlength="30" size="28"/></div>
+                          <div style="width:142px; float:left; height:30px; padding-left:10px;"><a href="javascript:add_cupon();"><img src="/FO_IMGS/img/estructura/paso3/bt_ag_cup.gif" name="Image98" border="0" id="Image98" alt="Agregar Cup&oacute;n" title="Agregar Cup&oacute;n"/></a></div>
+                          <script type="text/javascript">document.getElementById('cupon').onkeypress=KeyIsNumber;//document.fcupones.cupon.onkeypress=KeyIsNumber;</script>
+                          <table width="500" border="0" cellpadding="0" cellspacing="0" id="tb_de_cupones">
+                            <tr>
+                              <td width="200" align="right" valign="top" class="lectura1">Cupones ingresados:</td>
+                              <td width="300" valign="top">
+                                <table id="t_cupones" width="100%" align="left"  border="0" cellpadding="0" cellspacing="0">
+                                  <tr>
+                                    <td width="78%" height="1"></td>
+                                    <td width="22%" align="left"></td>
+                                  </tr>
+                                </table>
+                              </td>
+                            </tr>
+                          </table>
+                        </div>
+                        <form action="#" name="ftotal_desc" id="ftotal_desc">
+                          <input name="_total_desc_j_txt" type="hidden" value="" />
+                          <input name="_total_desc_tc_txt" type="hidden" value="" />
+                          <div id="promo_form">
+                            <div style="width:500px; float:left; height:auto; padding:10px; font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-weight: bold;">Total con promociones</div>
+                            <div style="float:left; width:650px; height:auto; padding-bottom:10px; border-bottom: 1px dashed #CCC;">
+                              <div style="width:60px; float:left; height:auto; padding-left: 100px; padding-top: 10px;"><img src="/FO_IMGS/img/promociones/tarjetas-ch.gif" alt="Tarjetas M&aacute;s" width="56" height="12" /></div>
+                              <div style="width:230px; float:left; height:auto; padding:10px; line-height: 18px;">Con <strong>Tarjeta M&aacute;s</strong> (sin cuotas) pagas:<span class="chica"><br /><img src="/FO_IMGS/img/estructura/fl.gif" width="6" height="7" alt="" /><a href="javascript:ver_promo('j')">Ver detalle de promociones</a></span></div>
+                              <div style="width:100px; float:left; height:auto; padding:10px;"><input type="text" name="_total_desc_j" value="0" class="campo" size="10" readonly="readonly"/></div>
+                            </div>
+                            <div style="float:left; width:650px; height:auto; padding-bottom:10px;">
+                              <div style="width:60px; float:left; height:auto; padding-left: 100px; padding-top: 10px;"></div>
+                              <div style="width:230px; float:left; height:auto; padding:10px; line-height: 18px;"> Con <strong>otro medio de pago</strong> (sin cuotas) pagas<span class="chica">:<br/><img src="/FO_IMGS/img/estructura/fl.gif" width="6" height="7" alt="" /><a href="javascript:ver_promo('tc')">Ver detalle de promociones</a></span></div>
+                              <div style="width:100px; float:left; height:auto; padding:10px;"><input type="text" name="_total_desc_tc" value="0" class="campo" size="10" readonly="readonly"/></div>
+                            </div>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                    <!--div class="nota"><span class="titulolectura">Nota:</span><br />El valor total a pagar puede variar dependiendo de los productos pesables y los sustitutos requeridos. Para asegurar que tu compra cubra estas diferencias, reservamos un 5% adicional al total de tu pedido, el cual no ser&aacute; descontado de tu tarjeta a menos que estas diferencias existan.</div-->
+                  </td>
+                </tr>
+              </table>
+
+              <div style="float:left; border-bottom:1px dashed #CCC; width:800px; padding-bottom:5px; font-family:Arial, Helvetica, sans-serif; font-size:16px; color:#666; font-weight:bold;">Despacho</div>
+
+              <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                  <td valign="top"><input type="hidden" name="forma_despacho" id="forma_despacho" value="{forma_despacho}" />
+                    <input type="hidden" name="id_local_selec" id="id_local_selec" value="{id_local_selec}" />
+                    <table width="100%" border="0" cellspacing="0" cellpadding="15">
+                      <tr>
+                        <td>
+                          <div class="despacho_domicilio" id="despacho_domicilio_normal">
+                            <span class="titulo_verde_2011">Direcci&oacute;n de Despacho</span>
+                            <br />
+                            <label>Direcci&oacute;n de despacho: <span id="txt_dir_desp">{direccion_despacho}</span><br /></label>
+                            <span class="NoDisponible"><a href="javascript:showModificarDireccionLayer();">&iquest;Quieres modificar tu direcci&oacute;n de despacho?</a></span>
+                          </div>
+                          <div class="despacho_domicilio" id="despacho_domicilio">
+                            <span class="titulo_verde_2011">Forma de despacho<br /></span>
+                            <p>
+                              <label>
+                                <input name="despacho_retiro1" type="radio" id="despacho1" value="radio" onclick="javascript:cambioFormaDespacho();" checked="checked" />
+                                Despacho a domicilio <span id="txt_dir_desp1">{direccion_despacho}</span><br />
+                              </label>
+                              <label>
+                                <input name="despacho_retiro1" type="radio" id="retiro1" value="radio" onclick="javascript:cambioFormaDespacho();" />
+                                <span class="naranjo"> <strong>Retiro en local Jumbo</strong> </span>
+                              </label>
+                            </p>
+                            <a href="http://www.jumbo.cl/supermercado/preguntas/preguntas.html#16" target="_blank" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('autojumbo','','/FO_IMGS/img/estructura/bt_auto_indicacionesb.gif',1)"> <img src="/FO_IMGS/img/estructura/bt_auto_indicaciones.gif" alt="ver indicaciones para retirar tu pedido" name="autojumbo" border="0" id="autojumbo" /> </a> <br />
+                            <span class="NoDisponible"><a href="javascript:showModificarDireccionLayer();">&iquest;Quieres modificar tu direcci&oacute;n de despacho?</a></span>
+                          </div>
+                          <div class="despacho_autojumbo" id="despacho_autojumbo">
+                            <div><span class="titulo_verde_2011">Forma de despacho<br /></span></div>
+                            <div id="chkbx_auto_jumbo">
+                              <label>
+                                <input name="despacho_retiro2" type="radio" id="retiro2" value="radio" onclick="javascript:cambioFormaDespacho();" checked="checked" />
+                                <span class="naranjo"> <strong>Retiro en local Jumbo</strong> <i> (<span id="str_local_retiro">{str_local_retiro}</span>)</i>&nbsp;&nbsp; <img src="/FO_IMGS/img/estructura/fl.gif" alt="flechita" /> <a href="javascript:linkJumboAuto();">ver indicaciones</a> </span>
+                              </label>
+                            </div>
+                            <div>
+                              <label>
+                                <input name="despacho_retiro2" type="radio" id="despacho2" value="radio" onclick="javascript:cambioFormaDespacho();" />
+                                Despacho a domicilio<br />
+                              </label>
+                              <br/>
+                              <span class="NoDisponible"><a href="javascript:showModificarDireccionLayer();">&iquest;Quieres modificar tu local de retiro?</a></span>
+                            </div>
+                          </div>
+                          <br/>
+                          <a name="cal_ancla" id="cal_ancla"></a>
+                          <p><span class="titulo_verde_2011">Programa tu despacho</span><br /><span class="lectura1">Para elegir el d&iacute;a y jornada de despacho, debes seleccionar dentro del recuadro el casillero que m&aacute;s <br />se ajuste a tu preferencia. Haz click y quedar&aacute; seleccionado en color amarillo.<br />S&oacute;lo se podr&aacute; cambiar la jornada de despacho elegida con 12 horas de anticipaci&oacute;n a la ya seleccionada.<br /><br />Hoy es {fechaactual} </span> </p>
+                          <table width="75%" border="0" cellspacing="0" cellpadding="3">
+                            <tr>
+                              <td><div id="frm_despacho"></div></td>
+                            </tr>
+                          </table>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+              <form name="frmPedido" id="frmPedido" method="post" action="OrderProcess">
+                <input type="hidden" name="total_compra" value="0" />
+                <input type="hidden" name="num_tja" value="" />
+                <input type="hidden" name="num_cuotas" value="" />
+                <input type="hidden" name="jpicking" value="" />
+                <input type="hidden" name="jprecio" value="" />
+                <input type="hidden" name="jdespacho" value="" />
+                <input type="hidden" name="jfecha" value="" />
+                <input type="hidden" name="tipo_despacho" value="" />
+                <input type="hidden" name="horas_economico" value="" />
+                <input type="hidden" name="zona_despacho" value="" />
+                <input type="hidden" name="cant_prod" value="" />
+                <input type="hidden" name="t_auxano" value="{t_auxano}" />
+                <input type="hidden" name="t_auxmes" value="{t_auxmes}" />
+                <input type="hidden" name="t_auxcuotas" value="{t_auxcuotas}" />
+                <input type="hidden" name="pol_sustitucion" value="1--S&iacute;" />
+                <input type="hidden" name="rut_cli" value="{rut_cli}" />
+                <input type="hidden" name="dv_cli" value="{dv_cli}" />
+                <input type="hidden" name="empleado" value="{empleado}" />
+                <input type="hidden" name="flag_valcta" value="0" />
+                <input type="hidden" name="cod_valcta" value="0" />
+                <input type="hidden" name="tipo_paris" value="" />
+                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                  <tr>
+                    <td valign="top">
+                      <table width="100%" border="0" cellspacing="0" cellpadding="15">
+                        <tr>
+                          <td>
+                            <div id="personareemplazo_despacho">
+                              <span class="titulolectura"><strong id="msj_titulo_despacho">Si no estas en casa al momento de la entrega:</strong></span>
+                              <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                <tr>
+                                  <td width="2%"><input name="sin_gente_op" type="radio" value="0" {chknadie1} style="display:none"/></td>
+                                  <td width="49%"><label><span class="tabla" id="msj_autorizacion">Autorizas a recibir tu pedido a:</span></label><input name="sin_gente_txt" id="sin_gente_txt" type="text" class="campo" maxlength="250" value="{sin_gente_txt}" /><input name="retira_txt" id="retira_txt"  type="text" class="campo" maxlength="250" value="{retira_txt}" /></td>
+                                  <td>
+                                    <table width="98%" border="0" cellspacing="0" cellpadding="0" id="tabla_rut_sin_gente">
+                                      <tr>
+                                        <td width="13%">rut:</td>
+                                        <td width="20%"><input name="sin_gente_rut" id="sin_gente_rut" type="text" class="campo" value="{sin_gente_rut}" size="10" maxlength="10" /></td>
+                                        <td width="4%" align="center">-</td>
+                                        <td width="63%"><input name="sin_gente_dv"  id="sin_gente_dv"  type="text" class="campo" value="{sin_gente_dv}" size="2" maxlength="2" /></td>
+                                      </tr>
+                                    </table>
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td width="5%">
+                                    <input name="sin_gente_op" type="radio" value="1" {chknadie2} style="display:none" />
+                                  </td>
+                                  <!--td colspan="2" class="tabla">Quieres que reprogramemos tu despacho<em> (tendr&aacute; un  valor adicional de $9.990)</em></td-->
+                                </tr>
+                              </table>
+                              <div class="lectura" id="nota_despachadores"><strong>Nota:</strong><br />El servicio de despachadores est&aacute; incluido en el costo de despacho. No es necesario entregar propinas.</div>
+                              <br />
+                              <br />
+                              <!-- BEGIN DYNAMIC: FONO_COMPRA_MOBILE -->
+                              <div class="nota_mobile" style="background:url(/FO_IMGS/images/html/tipopedido.gif) top left no-repeat;">
+                                <div style="width: 4%; margin-top: 33px; margin-left: 25px;">
+                                  <input type="checkbox" name="mobile_fono" value="I" />
+                                </div>
+                                <div style="width: 26%; margin-top: 33px;"><b>Compra MOBILE</b></div>
+                                <div style="width: 50%; margin-top: 28px;"><i>La selecci&oacute;n de compra mobile inhibir&aacute; el env&iacute;o del correo electr&oacute;nico de conformaci&oacute;n de la compra al cliente</i></div>
+                              </div>
+                              <!-- END DYNAMIC: FONO_COMPRA_MOBILE -->
+                            </div>
+                          </td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                </table>
+
+                <div style="float:left; border-bottom:1px dashed #CCC; width:800px; padding-bottom:5px; font-family:Arial, Helvetica, sans-serif; font-size:16px; color:#666; font-weight:bold;">Pago</div>
+
+                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                  <tr>
+                    <td valign="top">
+                      <table width="100%" border="0" cellspacing="0" cellpadding="15">
+                        <tr>
+                          <td valign="top">
+                            <p class="titulo_verde_2011">Escoge tu forma de pago:</p>
+                            <div id="seleccion_tmas_bancaria">
+                              <div id="tx_t_mas"> Vas a pagar con:<input name="forma_pago" type="radio" id="ronline" value="1" checked="checked" /><label for="tmas"></label>Tarjeta M&aacute;s </div>
+                              <div id="t_mas"></div>
+                              <div id="tx_t_bancaria"><input type="radio" name="forma_pago" id="tbancaria" value="2" /><label for="tbancaria"></label>Tarjeta Bancaria </div>
+                              <div id="t_bancaria"></div>
+                            </div>
+                            <div style="float: left; width: 600px; height:40px;">
+								Vas a querer<input name="tipo_documento" type="radio" value="B" checked="checked" onclick="datosFactura('hidden')"/>
+								Boleta<input name="tipo_documento" type="radio" value="F" {chk_tipo_doc} onclick="datosFactura('visible')"/>
+								Factura <br /><br />
+                            </div>
+                            <div id="div_factura" style="position:relative; width: 570px; height: 31px; float:left;">
+                              <div id="factura" style="float:left;">
+                                <table width="73%" border="0" cellspacing="0" cellpadding="0">
+                                  <tr>
+                                    <td width="6" height="6"><img src="/FO_IMGS/img/estructura/tablasupizq.gif" width="6" height="6" alt=""/></td>
+                                    <td width="656" height="6" style="background: url(/FO_IMGS/img/estructura/tablasup.gif);"><img src="/FO_IMGS/img/estructura/tablasup.gif" width="1" height="6" alt=""/></td>
+                                    <td width="10" height="6"><img src="/FO_IMGS/img/estructura/tablasupder.gif" width="6" height="6" alt=""/></td>
+                                  </tr>
+                                  <tr>
+                                    <td width="6" height="117" style="background: url(/FO_IMGS/img/estructura/tablaizq.gif);"><img src="/FO_IMGS/img/estructura/tablaizq.gif" width="6" height="1" alt=""/></td>
+                                    <td valign="top">
+                                      <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                        <tr>
+                                          <td height="30" class="titulo">Datos Facturaci&oacute;n </td>
+                                        </tr>
+                                        <tr>
+                                          <td height="30" class="TablaDiponiblePaso1"> Rut<input name="fac_rut" type="text" class="campo" size="8" maxlength="10" value="{fac_rut}" />&nbsp;-&nbsp;<input name="fac_dv" type="text" class="campo" size="1" maxlength="1" value="{fac_dv}" /></td>
+                                        </tr>
+                                        <tr>
+                                          <td height="30" class="TablaDiponiblePaso1"> Raz&oacute;n Social<input name="fac_razon" type="text" class="campo" size="50" maxlength="100" value="{fac_razon}" /></td>
+                                        </tr>
+                                        <tr>
+                                          <td height="30" class="TablaDiponiblePaso1"> Giro<input name="fac_giro" type="text" class="campo" size="50" maxlength="50" value="{fac_giro}" /></td>
+                                        </tr>
+                                        <tr>
+                                          <td height="30" class="TablaDiponiblePaso1"> Direcci&oacute;n<input name="fac_direccion" type="text" class="campo" size="50" maxlength="50" value="{fac_direccion}" /></td>
+                                        </tr>
+                                        <tr>
+                                          <td height="30" class="TablaDiponiblePaso1"> Tel&eacute;fono
+                                            <select name="fac_cod_1" class="campo" id="fon_cod_1">
+											  <option value='02'>02</option>
+											  <option value='32'>32</option>
+											  <option value='33'>33</option>
+											  <option value='34'>34</option>
+											  <option value='35'>35</option>
+											  <option value='41'>41</option>
+											  <option value='42'>42</option>
+											  <option value='43'>43</option>
+											  <option value='45'>45</option>
+											  <option value='51'>51</option>
+											  <option value='52'>52</option>
+											  <option value='53'>53</option>
+											  <option value='55'>55</option>
+											  <option value='57'>57</option>
+											  <option value='58'>58</option>
+											  <option value='61'>61</option>
+											  <option value='63'>63</option>
+											  <option value='64'>64</option>
+											  <option value='65'>65</option>
+											  <option value='67'>67</option>
+											  <option value='71'>71</option>
+											  <option value='72'>72</option>
+											  <option value='73'>73</option>
+											  <option value='75'>75</option>
+											</select>
+											<input name="fac_fono" type="text" class="campo" size="9" maxlength="9" value="{fac_fono}" />
+									      </td>
+									    </tr>
+									    <tr>
+									      <td height="30" class="TablaDiponiblePaso1"> Comuna<input type="text" name="fac_comuna" value="" maxlength="100" class="campo" size="20" /></td>
+									    </tr>
+									    <tr>
+									      <td height="30" class="Tabla"> Ciudad<input type="text" name="fac_ciudad" value="" maxlength="100" class="campo" size="20" /></td>
+									    </tr>
+									  </table>
+									</td>
+									<td width="10" style="background: url(/FO_IMGS/img/estructura/tablader.gif);"><img src="/FO_IMGS/img/estructura/tablader.gif" width="6" height="1" alt=""/></td>
+							      </tr>
+							      <tr>
+							        <td width="6" height="6"><img src="/FO_IMGS/img/estructura/tablainfizq.gif" width="6" height="6" alt=""/></td>
+							        <td height="6" style="background: url(/FO_IMGS/img/estructura/tablainf.gif);"><img src="/FO_IMGS/img/estructura/tablainf.gif" width="1" height="6" alt=""/></td>
+							        <td width="10" height="6"><img src="/FO_IMGS/img/estructura/tablainfder.gif" width="6" height="6" alt=""/></td>
+							      </tr>
+							    </table>
+							  </div>
+							</div>
+					      </td>
+					    </tr>
+					    <tr>
+					      <td>
+					        <table width="600px" border="0" cellspacing="0" cellpadding="0">
+					          <tr>
+					            <td width="100%" align="center" valign="top"><p> <a href="javascript:new_preOrderProcess();" id="confirmar"><img src="/FO_IMGS/img/estructura/paso3/bt_confirmarcompra.gif" name="img_confirmar" border="0" id="img_confirmar" alt="Confirmar Compra" title="Confirmar Compra"/></a></p></td>
+					          </tr>
+					          <tr>
+					            <td width="100%" valign="bottom" height="90" align="left">
+
+					               <div style="width:650px; height:90px; float:left;">
+								                              <object id="FlashID" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="650" height="90">
+								                                <param name="movie" value="/FO_IMGS/img/estructura/paso3/clicktocall.swf" />
+								                                <param name="quality" value="high" />
+								                                <param name="wmode" value="opaque" />
+								                                <param name="swfversion" value="6.0.65.0" />
+								                                <!-- Esta etiqueta param indica a los usuarios de Flash Player 6.0 r65 o posterior que descarguen la versi&oacute;n m&aacute;s reciente de Flash Player. Elim&iacute;nela si no desea que los usuarios vean el mensaje. -->
+								                                <param name="expressinstall" value="Scripts/expressInstall.swf" />
+								                                <!-- La siguiente etiqueta object es para navegadores distintos de IE. Oc&uacute;ltela a IE mediante IECC. -->
+								                                <!--[if !IE]>-->
+								                                <object type="application/x-shockwave-flash" data="/FO_IMGS/img/estructura/paso3/clicktocall.swf" width="650" height="90">
+								                                <!--<![endif]-->
+								                                <param name="quality" value="high" />
+								                                <param name="wmode" value="opaque" />
+								                                <param name="swfversion" value="6.0.65.0" />
+								                                <param name="expressinstall" value="Scripts/expressInstall.swf" />
+								                                <!-- El navegador muestra el siguiente contenido alternativo para usuarios con Flash Player 6.0 o versiones anteriores. -->
+								                                <div>
+								                                  <h4>El contenido de esta p&aacute;gina requiere una versi&oacute;n m&aacute;s reciente de Adobe Flash Player.</h4>
+								                                  <p><a href="http://www.adobe.com/go/getflashplayer"><img src="http://www.adobe.com/images/shared/download_buttons/get_flash_player.gif" alt="Obtener Adobe Flash Player" /></a></p>
+								                                </div>
+								                                <!--[if !IE]>-->
+								                                </object>
+								                                <!--<![endif]-->
+								                              </object>
+                                  </div>
+
+					            </td>
+					          </tr>
+					        </table>
+					      </td>
+					    </tr>
+					  </table>
+					</td>
+				  </tr>
+				</table>
+			  </form>
+			</div>
+			<div id="cuerpo3Pago" style="visibility:hidden;display:none;" align="center" style="padding:10px;">
+			  <div class="nombre innerpay_order" align="left" ><span class="tituloNaranjo">Proceso de pago</span><br />{nombre_cliente}</div>
+			  <iframe src="/FO_WebContent/paso3loading.html" name="centroDePago" width="650px" height="500px" id="centroDePago"></iframe>
+			  <div class="innerpay_order">
+			    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+			      <tr>
+			        <td valign="top" colspan="3" height="60">
+			          <div style="width:650px; height:90px; float:left;">
+			            <object id="FlashID" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="650" height="90">
+			              <param name="movie" value="/FO_IMGS/img/estructura/paso3/clicktocall.swf" />
+			              <param name="quality" value="high" />
+			              <param name="wmode" value="opaque" />
+			              <param name="swfversion" value="6.0.65.0" />
+			              <!-- Esta etiqueta param indica a los usuarios de Flash Player 6.0 r65 o posterior que descarguen la versi&oacute;n m&aacute;s reciente de Flash Player. Elim&iacute;nela si no desea que los usuarios vean el mensaje. -->
+			              <param name="expressinstall" value="Scripts/expressInstall.swf" />
+			              <!-- La siguiente etiqueta object es para navegadores distintos de IE. Oc&uacute;ltela a IE mediante IECC. -->
+			              <!--[if !IE]>-->
+			              <object type="application/x-shockwave-flash" data="/FO_IMGS/img/estructura/paso3/clicktocall.swf" width="650" height="90">
+			              <!--<![endif]-->
+			              <param name="quality" value="high" />
+			              <param name="wmode" value="opaque" />
+			              <param name="swfversion" value="6.0.65.0" />
+			              <param name="expressinstall" value="Scripts/expressInstall.swf" />
+			              <!-- El navegador muestra el siguiente contenido alternativo para usuarios con Flash Player 6.0 o versiones anteriores. -->
+			              <div>
+			                <h4>El contenido de esta p&aacute;gina requiere una versi&oacute;n m&aacute;s reciente de Adobe Flash Player.</h4>
+			                <p><a href="http://www.adobe.com/go/getflashplayer"><img src="http://www.adobe.com/images/shared/download_buttons/get_flash_player.gif" alt="Obtener Adobe Flash Player" /></a></p>
+			              </div>
+			              <!--[if !IE]>-->
+			              </object>
+			              <!--<![endif]-->
+			            </object>
+			          </div>
+			        </td>
+			      </tr>
+			      <tr>
+			        <td width="37%"><img src="/FO_IMGS/img/estructura/paso3/telefono.gif" alt="Ll&aacute;manos al 600 400 3000" width="203" height="31" /></td>
+			        <td width="41%"><img src="/FO_IMGS/img/estructura/paso3/seguridad2.gif" alt="Comprar aqu{i el 100% seguro" width="218" height="37" /></td>
+			        <td width="22%" align="right"><a href="/FO/CheckoutForm"> <img src="/FO_IMGS/img/estructura/paso3/bt_cambiar_forma_depago.gif" alt="Cambiar forma de pago" title="Cambiar forma de pago" border="0" /></a><br /></td>
+			      </tr>
+			    </table>
+			  </div>
+			</div>
+		  </td>
+		  <td width="5" height="240" align="right" style=""><img src="/FO_IMGS/img/estructura/bordeLatDerecho.gif" width="5" height="1" alt=""/></td>
+		</tr>
+	  </table>
+	</div>
+	<div id="act_datos">
+	  <div id="dragbar1" onmousedown="javascript:initializedrag(event,'act_datos','dragbar1');" style="cursor:move;">
+	    <table align="center" width="350" border="0" cellpadding="0" cellspacing="0">
+	      <tr>
+	        <td width="8" height="7" valign="top"><img src="/FO_IMGS/img/estructura/layers/esquinaSupIzq.gif" width="8" height="7" alt=""/></td>
+	        <td width="334" height="7" valign="top" style="background: url(/FO_IMGS/img/estructura/layers/arriba.gif);"><img src="/FO_IMGS/img/estructura/layers/arriba.gif" width="1" height="7" alt=""/></td>
+	        <td width="8" height="7" valign="top"><img src="/FO_IMGS/img/estructura/layers/esquinaSupDer.gif" width="8" height="7" alt=""/></td>
+	      </tr>
+	      <tr>
+	        <td height="5" valign="top" style="background: url(/FO_IMGS/img/estructura/layers/izquierdoArriba.gif);"><img src="/FO_IMGS/img/estructura/layers/izquierdoArriba.gif" width="8" height="1" alt=""/></td>
+	        <td height="5" align="center" valign="top" style="background: url(/FO_IMGS/img/estructura/layers/tramafondo.gif);">&nbsp;</td>
+	        <td width="8" height="0" valign="top" style="background: url(/FO_IMGS/img/estructura/layers/derechoArriba.gif);"><img src="/FO_IMGS/img/estructura/layers/derechoArriba.gif" width="8" height="1" alt=""/></td>
+	      </tr>
+	    </table>
+	    <iframe name="i_act_datos" id="i_act_datos" src="/FO_WebContent/layers/act_mail.html" frameborder="0" width="350" height="190" scrolling="no"></iframe>
+	  </div>
+	</div>
+  </div>
+  <!-- cerrado el contenedor principal -->
+
+
+
+  <div id="ventana_evento">
+    <div id="dragbar3" onmousedown="javascript:initializedrag(event,'ventana_evento','dragbar3');" style="cursor:move;">
+	    <table width="400" border="0" cellpadding="0" cellspacing="0">
+	      <tr>
+	        <td width="8" height="7" valign="top"><img src="/FO_IMGS/img/estructura/layers/esquinaSupIzq.gif" width="8" height="7" alt=""/></td>
+	        <td height="7" colspan="2" valign="top" style="background: url(/FO_IMGS/img/estructura/layers/arriba.gif);"><img src="/FO_IMGS/img/estructura/layers/arriba.gif" width="1" height="7" alt=""/></td>
+	        <td width="8" height="7" valign="top"><img src="/FO_IMGS/img/estructura/layers/esquinaSupDer.gif" width="8" height="7" alt=""/></td>
+	      </tr>
+	      <tr>
+	        <td height="31" valign="top" style="background: url(/FO_IMGS/img/estructura/layers/izquierdoArriba.gif);"><img src="/FO_IMGS/img/estructura/layers/izquierdoArriba.gif" width="8" height="1" alt=""/></td>
+	        <td width="506" height="31" align="center" valign="top" style="background: url(/FO_IMGS/img/estructura/layers/tramafondo.gif);"><span class="titulosLayersEventos">{titulo_evento}&nbsp;</span></td>
+	        <td width="14" align="center" valign="top" style="background: url(/FO_IMGS/img/estructura/layers/tramafondo.gif);"><a href="javascript:hideEvento();"><img src="/FO_IMGS/img/estructura/bt_cerrar.gif" alt="cerrar ventana" border="0" width="29" height="23" align="right" /></a></td>
+	        <td width="8" height="31" valign="top" style="background: url(/FO_IMGS/img/estructura/layers/derechoArriba.gif);"><img src="/FO_IMGS/img/estructura/layers/derechoArriba.gif" width="8" height="1" alt=""/></td>
+	      </tr>
+	    </table>
+	</div>
+	  <table width="400" border="0" cellpadding="0" cellspacing="0">
+	    <tr>
+	      <td height="259" valign="top" style="background: url(/FO_IMGS/img/estructura/layers/bordeIzq.gif);"></td>
+	      <td colspan="2" valign="top" bgcolor="#FFFFFF">
+	        <table width="95%" border="0" align="center" cellpadding="0" cellspacing="0">
+	          <tr>
+	            <td height="124" align="center" valign="top" bgcolor="#FFFFFF">{src_flash}</td>
+	          </tr>
+	        </table>
+	      </td>
+	      <td width="8" height="259" valign="top" style="background: url(/FO_IMGS/img/estructura/layers/bordeDer.gif);"></td>
+	    </tr>
+	    <tr>
+	      <td width="8" height="7" valign="top"><img src="/FO_IMGS/img/estructura/layers/esquinaInfIzq.gif" width="8" height="7" alt=""/></td>
+	      <td height="7" colspan="2" style="background: url(/FO_IMGS/img/estructura/layers/abajo.gif);"><img src="/FO_IMGS/img/estructura/layers/abajo.gif" width="1" height="7" alt=""/></td>
+	      <td width="8" height="7" valign="top"><img src="/FO_IMGS/img/estructura/layers/esquinaInfDer.gif" width="8" height="7" alt=""/></td>
+	    </tr>
+	  </table>
+  </div>
+  <div id="ventanarespromo">
+    <div id="dragbar4" onmousedown="javascript:initializedrag(event,'ventanarespromo','dragbar4');" style="cursor:move;">
+      <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <td width="3%" align="left" valign="top" bgcolor="#7ABD09"><img src="/FO_IMGS/img/ficha/tabla-sup-izq.gif" width="5" height="4" alt=""/></td>
+          <td width="79%" height="30" valign="middle" bgcolor="#7ABD09">
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+              <tr>
+                <td width="35"></td>
+                <td valign="middle"> <span class="rescateCompras">PROMOCIONES AGREGADAS</span></td>
+              </tr>
+            </table>
+          </td>
+          <td width="15%" align="right" bgcolor="#7ABD09"><a href="javascript:top.hidePromoPaso3();" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image10','','/FO_IMGS/img/estructura/bt_cerrar-verde.gif',1)"><img src="/FO_IMGS/img/estructura/bt_cerrar-verde.gif" name="Image10" width="30" height="25" border="0" id="Image10" alt=""/></a></td>
+          <td width="3%" align="right" valign="top" bgcolor="#7ABD09"><img src="/FO_IMGS/img/ficha/tabla-sup-der.gif" width="6" height="4" alt=""/></td>
+        </tr>
+      </table>
+    </div>
+    <iframe name="frm_promo_paso3" id="frm_promo_paso3" src="/FO_WebContent/blank.html" frameborder="0" width="396" height="310" scrolling="no"></iframe>
+  </div>
+  <div id="modificardireccion">
+    <div id="dragbar5" onmousedown="javascript:initializedrag(event,'modificardireccion','dragbar5');" style="cursor:move;">
+		<table align="center" width="283" border="0" cellpadding="0" cellspacing="0">
+		  <tr>
+			<td width="8" height="7" valign="top"><img src="/FO_IMGS/img/estructura/layers/esquinaSupIzq.gif" width="8" height="7" alt=""/></td>
+			<td width="267" height="7" valign="top" style="background: url(/FO_IMGS/img/estructura/layers/arriba.gif);"><img src="/FO_IMGS/img/estructura/layers/arriba.gif" width="1" height="7" alt=""/></td>
+			<td width="8" height="7" valign="top"><img src="/FO_IMGS/img/estructura/layers/esquinaSupDer.gif" width="8" height="7" alt=""/></td>
+		  </tr>
+		  <tr>
+			<td height="5" valign="top" style="background: url(/FO_IMGS/img/estructura/layers/izquierdoArriba.gif);"><img src="/FO_IMGS/img/estructura/layers/izquierdoArriba.gif" width="8" height="1" alt=""/></td>
+			<td height="5" align="center" valign="top" style="background: url(/FO_IMGS/img/estructura/layers/tramafondo.gif);"><span class="titulosLayers">Advertencia</span></td>
+			<td width="8" height="0" valign="top" style="background: url(/FO_IMGS/img/estructura/layers/derechoArriba.gif);"><img src="/FO_IMGS/img/estructura/layers/derechoArriba.gif" width="8" height="1" alt=""/></td>
+		  </tr>
+		</table>
+      <div id="modificar_direccion"></div>
+    </div>
+  </div>
+  <div id="loading" style="display:none;">
+    <table cellpadding="0" cellspacing="0" border="0" style="font: 10px Verdana, Geneva, Arial, Helvetica, sans-serif; z-index: 500;">
+      <tr>
+        <td><img src="/FO_IMGS/images/nuevojumbo/loading_left.gif" height="50" width="6" alt=""/></td>
+        <td style="background: url(/FO_IMGS/images/nuevojumbo/loading_center.gif); width:100px; text-align: center;vertical-align: middle;"><strong>Cargando...</strong></td>
+        <td><img src="/FO_IMGS/images/nuevojumbo/loading_right.gif" height="50" width="6" alt=""/></td>
+      </tr>
+    </table>
+  </div>
+  <!-- NUEVO POST DE PROCESO PAGO -->
+  <form id="newpost" name="newpost" method="post" action="ProcesaPago">
+  <input type="hidden" id="vhc_id_jdespacho" name="id_jdespacho" value="">
+  <input type="hidden" id="vhc_tipo_despacho" name="tipo_despacho" value="">
+  <input type="hidden" id="cdc_email1" name="email1" value="">
+  <input type="hidden" id="cdc_dominio1" name="dominio1" value="">
+  <input type="hidden" id="cdc_fon_cod_1" name="fon_cod_1" value="">
+  <input type="hidden" id="cdc_fon_num_1" name="fon_num_1" value="">
+  <input type="hidden" id="cdc_fon_cod_2" name="fon_cod_2" value="">
+  <input type="hidden" id="cdc_fon_num_2" name="fon_num_2" value="">
+  <input type="hidden" id="cdc_fon_cod_3" name="fon_cod_3" value="">
+  <input type="hidden" id="cdc_fon_num_3" name="fon_num_3" value="">
+  
+  <input type="hidden" id="ocr_total_compra" name="total_compra" value="" />
+  <input type="hidden" id="ocr_num_tja" name="num_tja" value="" />
+  <input type="hidden" id="ocr_num_cuotas" name="num_cuotas" value="" />
+  <input type="hidden" id="ocr_jpicking" name="jpicking" value="" />
+  <input type="hidden" id="ocr_jprecio" name="jprecio" value="" />
+  <input type="hidden" id="ocr_jdespacho" name="jdespacho" value="" />
+  <input type="hidden" id="ocr_jfecha" name="jfecha" value="" />
+  <input type="hidden" id="ocr_tipo_despacho" name="tipo_despacho" value="" />
+  <input type="hidden" id="ocr_horas_economico" name="horas_economico" value="" />
+  <input type="hidden" id="ocr_zona_despacho" name="zona_despacho" value="" />
+  <input type="hidden" id="ocr_cant_prod" name="cant_prod" value="" />
+  <input type="hidden" id="ocr_t_auxano" name="t_auxano" value="" />
+  <input type="hidden" id="ocr_t_auxmes" name="t_auxmes" value="" />
+  <input type="hidden" id="ocr_t_auxcuotas" name="t_auxcuotas" value="" />
+  <input type="hidden" id="ocr_pol_sustitucion" name="pol_sustitucion" value="" />
+  <input type="hidden" id="ocr_rut_cli" name="rut_cli" value="" />
+  <input type="hidden" id="ocr_dv_cli" name="dv_cli" value="" />
+  <input type="hidden" id="ocr_empleado" name="empleado" value="" />
+  <input type="hidden" id="ocr_flag_valcta" name="flag_valcta" value="" />
+  <input type="hidden" id="ocr_cod_valcta" name="cod_valcta" value="" />
+  <input type="hidden" id="ocr_tipo_paris" name="tipo_paris" value="" />
+  
+  <input type="hidden" id="ocr_fac_rut" name="fac_rut" value="" />
+  <input type="hidden" id="ocr_fac_dv" name="fac_dv" value="" />
+  <input type="hidden" id="ocr_fac_razon" name="fac_razon" value="" />
+  <input type="hidden" id="ocr_fac_giro" name="fac_giro" value="" />
+  <input type="hidden" id="ocr_fac_direccion" name="fac_direccion" value="" />
+  <input type="hidden" id="ocr_fac_cod_1" name="fac_cod_1" value="" />
+  <input type="hidden" id="ocr_fac_fono" name="fac_fono" value="" />
+  <input type="hidden" id="ocr_fac_comuna" name="fac_comuna" value="" />
+  <input type="hidden" id="ocr_fac_ciudad" name="fac_ciudad" value="" />  
+ 
+   <input type="hidden" id="ocr_forma_pago" name="forma_pago" value="" /> 
+   <input type="hidden" id="ocr_sin_gente_txt" name="sin_gente_txt" value="" />
+   <input type="hidden" id="ocr_retira_txt" name="retira_txt" value="" /> 
+   <input type="hidden" id="ocr_sin_gente_rut" name="sin_gente_rut" value="" /> 
+   <input type="hidden" id="ocr_sin_gente_dv" name="sin_gente_dv" value="" />
+   <input type="hidden" id="ocr_sin_gente_op" name="sin_gente_op" value="" /> 
+   <input type="hidden" id="ocr_tipo_documento" name="tipo_documento" value="" /> 
+   
+    <input type="hidden" id="TBK_TIPO_TRANSACCION"	name="TBK_TIPO_TRANSACCION"	value="TR_NORMAL" size="50" />
+    <input type="hidden" id="TBK_URL_EXITO" 		name="TBK_URL_EXITO" 		value="{webpay_url}/FO/paso4TbkOK.jsp" size="50" />
+    <input type="hidden" id="TBK_URL_FRACASO" 		name="TBK_URL_FRACASO" 		value="{webpay_url}/FO/paso4TbkFail.jsp" size="50" />
+    <input type="hidden" id="TBK_ID_SESION" 		name="TBK_ID_SESION" 		value="1" size="50" />
+    <input type="hidden" id="TBK_ORDEN_COMPRA" 		name="TBK_ORDEN_COMPRA" 	value="0" size="50" />
+    <input type="hidden" id="TBK_MONTO" 			name="TBK_MONTO" 			value="0" size="50" />
+    <input type="hidden" id="TBK_FORM_ACTION" name="TBK_FORM_ACTION" value="{webpay_url_kit}"  />
+	
+	
+    <input type="hidden" name="numeroEmpresa" value="{numero_empresa}" size="50" />
+    <input type="hidden" name="numeroTransaccion" id="numeroTransaccion" value="" size="50" />
+    <input type="hidden" name="idCarroCompra" id="idCarroCompra" value="" size="50" />
+    <input type="hidden" name="montoOperacion" id="montoOperacion" value="0" size="50" />
+    <input type="hidden" name="urlNotificacion" id="urlNotificacion" value="{boton_url}/FO/paso4MasOK.jsp" size="50" />
+    <input type="hidden" name="tiempoSesion" value="60" size="50" />
+    <input type="hidden" name="tiempoNotificacion" value="60" size="50" />
+	<input type="hidden" name="cat_form_action" id="cat_form_action" value="{boton_url_kit}"  />
+  <!-- FIN POST -->
+  </form>
+  <!-- WEBPAY -->
+  <form id="webpay" name="webpay" method="post" action="{webpay_url_kit}">
+    <input type="hidden" id="TBK_TIPO_TRANSACCION"	name="TBK_TIPO_TRANSACCION"	value="TR_NORMAL" size="50" />
+    <input type="hidden" id="TBK_URL_EXITO" 		name="TBK_URL_EXITO" 		value="{webpay_url}/FO/paso4TbkOK.jsp" size="50" />
+    <input type="hidden" id="TBK_URL_FRACASO" 		name="TBK_URL_FRACASO" 		value="{webpay_url}/FO/paso4TbkFail.jsp" size="50" />
+    <input type="hidden" id="TBK_ID_SESION" 		name="TBK_ID_SESION" 		value="1" size="50" />
+    <input type="hidden" id="TBK_ORDEN_COMPRA" 		name="TBK_ORDEN_COMPRA" 	value="0" size="50" />
+    <input type="hidden" id="TBK_MONTO" 			name="TBK_MONTO" 			value="0" size="50" />
+  </form>
+  <!-- PAGOS CAT -->
+  <form id="cat" name="cat" method="post" action="{boton_url_kit}">
+    <input type="hidden" name="numeroEmpresa" value="{numero_empresa}" size="50" />
+    <input type="hidden" name="numeroTransaccion" id="numeroTransaccion" value="" size="50" />
+    <input type="hidden" name="idCarroCompra" id="idCarroCompra" value="" size="50" />
+    <input type="hidden" name="montoOperacion" id="montoOperacion" value="0" size="50" />
+    <input type="hidden" name="urlNotificacion" value="{boton_url}/FO/paso4MasOK.jsp" size="50" />
+    <input type="hidden" name="tiempoSesion" value="60" size="50" />
+    <input type="hidden" name="tiempoNotificacion" value="60" size="50" />
+  </form>
+  <script type="text/javascript">
+    iniFormaDespacho();
+    llenarCarroCompras();
+    {formaDePagoLayer}
+    {datosFactura};
+    window.document.frmPedido.fac_rut.onkeypress 		 = KeyIsNumber;
+    window.document.frmPedido.fac_razon.onkeypress 		 = KeyIsTexto_Razon;
+    window.document.frmPedido.fac_giro.onkeypress 		 = KeyIsTexto;
+    window.document.frmPedido.fac_direccion.onkeypress 	 = KeyIsTexto;
+    window.document.frmPedido.fac_fono.onkeypress		 = KeyIsNumber;
+    window.document.frmPedido.sin_gente_txt.onkeypress	 = KeyIsTexto;
+    window.document.frmPedido.fac_comuna.onkeypress 	 = KeyIsTexto;
+    window.document.frmPedido.fac_ciudad.onkeypress 	 = KeyIsTexto;
+    window.document.frmActDatos.fon_num_1.onkeypress= KeyIsTelefono;
+    window.document.frmActDatos.fon_num_2.onkeypress= KeyIsTelefono;
+    window.document.frmActDatos.fon_num_3.onkeypress= KeyIsTelefono;
+    if( {error} == 1 ) {
+      alert( "{mensaje_error}" );
+    } else if( {error} == 2 ) {
+      alert( "{mensaje_error}" );
+      document.location.replace("BienvenidaForm");
+    }
+    if(document.frmPedido.tipo_documento[0].checked == true)
+      datosFactura('hidden');
+      if(document.frmPedido.tipo_documento[1].checked == true)
+        datosFactura('visible');
+  </script>
+  <script type="text/javascript">
+    if ($("mostrar_evento").value == 'SI') {
+      showEvento();
+    }
+    $("loading").style.position = 'absolute';
+    $("loading").style.width = '112px';
+    $("loading").style.height = '50px';
+    $("loading").style.zIndex = 50;
+    var globalCallbacks = {
+                onCreate: function() {
+					var ypos = document.documentElement.scrollTop ? document.documentElement.scrollTop : document.body.scrollTop;
+					$("loading").style.left = (screen.availWidth-112)/2 + 'px';
+					$("loading").style.top = (screen.availHeight-200)/2 + ypos - 50 + 'px';
+					$("loading").show();
+                },
+                onComplete: function() {
+                        if(Ajax.activeRequestCount == 0){
+                                $("loading").hide();
+                        }
+                }
+    };
+    Ajax.Responders.register( globalCallbacks );
+  </script>
+  <!-- Start of DoubleClick Spotlight Tag: Please do not remove-->
+<!-- Activity Name for this tag is:Paso 3 -->
+<!-- Web site URL where tag should be placed: http://www.jumbo.cl -->
+<!-- This tag must be placed within the opening <body> tag, as close to the beginning of it as possible-->
+<!-- Creation Date:11/06/07 -->
+<script type="text/javascript">
+var axel = Math.random()+"";
+var a = axel * 10000000000000;
+document.write('<img src="https://ad.doubleclick.net/activity;src=1463301;type=jumbcpgr;cat=jbcgrpa3;ord=1;num='+ a + '?" width="1" height="1" border="0" alt="" />');
+</script>
+<noscript>
+<img src="https://ad.doubleclick.net/activity;src=1463301;type=jumbcpgr;cat=jbcgrpa3;ord=1;num=1?" width="1" height="1" border="0" alt="" />
+</noscript>
+<!-- End of DoubleClick Spotlight Tag: Please do not remove-->
+<!-- Tag for Activity Group: Jumbo Sales, Activity: Resumen de Compra -->
+<!-- Start of DoubleClick Spotlight Tag: Please do not remove-->
+<!-- Activity Name for this tag is:Resumen de Compra -->
+<!-- Web site URL where tag should be placed: https://www.jumbo.cl/FO/CheckoutForm -->
+<!-- Creation Date:2/20/2008 -->
+<img src="https://ad.doubleclick.net/activity;src=973642;type=sjumbo;cat=sjumbore;qty=1;cost=[Revenue];ord=[OrderID]?" width="1" height="1" border="0" alt="" />
+<!-- End of DoubleClick Spotlight Tag: Please do not remove-->
+<!-- Google Code for Lista de personas que llegaron al Check-out Remarketing List -->
+<script type="text/javascript">
+<!--
+var google_conversion_id = 1036899053;
+var google_conversion_language = "en";
+var google_conversion_format = "3";
+var google_conversion_color = "666666";
+var google_conversion_label = "E6MCCOu5qwEQ7aW37gM";
+var google_conversion_value = 0;
+//-->
+</script>
+<script type="text/javascript" src="https://www.googleadservices.com/pagead/conversion.js">
+</script>
+<noscript>
+<div style="display:inline;">
+<img height="1" width="1" style="border-style:none;" alt="" src="https://www.googleadservices.com/pagead/conversion/1036899053/?label=E6MCCOu5qwEQ7aW37gM&amp;guid=ON&amp;script=0"/>
+</div>
+</noscript>
+</body>
+</html>

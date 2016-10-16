@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap 
+   PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" 
+   "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap >
+	<resultMap id="resultMunicipality" class="java.util.HashMap">
+		<result property="key" column="row_id"/>
+		<result property="valor" column="col2"/>
+		<result property="estado" column="estado"/>
+	</resultMap>
+	
+	<select id="getMunicipality" resultMap="resultMunicipality" >
+	<![CDATA[
+		SELECT
+			COMUNA.ID_COMUNA||'-'||COMUNA.REG_ID||'-'||COMUNA.ID_LOCAL AS row_id,
+			COMUNA.ID_COMUNA||'|'||COMUNA.NOMBRE||'|'||COMUNA.REG_ID||'|'||COMUNA.ID_LOCAL AS col2,
+			'N' AS ESTADO
+		FROM
+			(
+              select c.ID_COMUNA, c.REG_ID, c.NOMBRE, l.ID_LOCAL
+                         from BODBA.bo_poligono p 
+                         inner join BODBA.bo_comunas c on c.ID_COMUNA = p.ID_COMUNA 
+                         inner join BODBA.BO_ZONAS z on z.ID_ZONA=p.ID_ZONA
+                        inner join BODBA.BO_LOCALES l on l.ID_LOCAL=z.ID_LOCAL
+                         where c.TIPO = 'W' 
+                         and p.NUM_POLIGONO='0'
+                         group by c.ID_COMUNA, c.REG_ID, c.NOMBRE, l.ID_LOCAL
+                         order by c.REG_ID, c.NOMBRE                        
+                        
+			) COMUNA
+	]]>
+	</select>
+	<select id="getMunicipalityNov" resultMap="resultMunicipality" >
+	<![CDATA[
+	WITH DATOS
+	(
+        ID_DAT_COMUNA,
+	    COL2
+	)
+	AS
+	(
+		SELECT
+			COMUNA.ID_COMUNA||'-'||COMUNA.REG_ID||'-'||COMUNA.ID_LOCAL AS ID_DAT_COMUNA,
+			COMUNA.ID_COMUNA||'|'||COMUNA.NOMBRE||'|'||COMUNA.REG_ID||'|'||COMUNA.ID_LOCAL AS col2
+		FROM
+			(
+              select c.ID_COMUNA, c.REG_ID, c.NOMBRE, l.ID_LOCAL
+                         from BODBA.bo_poligono p 
+                         inner join BODBA.bo_comunas c on c.ID_COMUNA = p.ID_COMUNA 
+                         inner join BODBA.BO_ZONAS z on z.ID_ZONA=p.ID_ZONA
+                        inner join BODBA.BO_LOCALES l on l.ID_LOCAL=z.ID_LOCAL
+                         where c.TIPO = 'W' 
+                         and p.NUM_POLIGONO='0'
+                         group by c.ID_COMUNA, c.REG_ID, c.NOMBRE, l.ID_LOCAL
+                         order by c.REG_ID, c.NOMBRE                        
+                        
+			) COMUNA
+    )
+	SELECT PRE.ROW_ID,
+		   PRE.COL2,
+		   PRE.ESTADO
+	  FROM (
+	    /* MODIFICADOS */
+	    SELECT DATOS.ID_DAT_COMUNA AS ROW_ID, DATOS.COL2, 'M' AS ESTADO
+	      FROM DATOS, bodba.BO_INT_COMUNA AS DIS
+	     WHERE DIS.ID_INT_COMUNA = DATOS.ID_DAT_COMUNA
+	       AND DIS.INT_DATA != DATOS.COL2
+	       
+	     UNION ALL
+	     /* NUEVOS */
+        SELECT D.ID_DAT_COMUNA AS ROW_ID, D.COL2, 'N' AS ESTADO
+	    FROM DATOS D LEFT JOIN bodba.BO_INT_COMUNA AS CMN on D.ID_DAT_COMUNA=CMN.ID_INT_COMUNA WHERE CMN.ID_INT_COMUNA is null  
+                    
+	     UNION ALL
+	     /* ELIMINADOS */
+	    SELECT DIS.ID_INT_COMUNA AS ROW_ID, DIS.INT_DATA AS COL2, 'E' AS ESTADO
+	      FROM bodba.BO_INT_COMUNA AS DIS
+	     WHERE NOT EXISTS
+	           (SELECT 1
+	              FROM DATOS AS DAT
+                  JOIN bodba.BO_INT_COMUNA AS CMN
+                    ON DAT.ID_DAT_COMUNA = CMN.ID_INT_COMUNA)
+        UNION ALL
+	     /* ELIMINADOS cuando no viene en la estructura datos*/	    	
+		    SELECT DIS.ID_INT_COMUNA AS ROW_ID, DIS.INT_DATA AS COL2, 'E' AS ESTADO
+		    FROM bodba.BO_INT_COMUNA AS DIS LEFT JOIN DATOS D on DIS.ID_INT_COMUNA = D.ID_DAT_COMUNA  WHERE D.ID_DAT_COMUNA is null
+	     ) AS PRE
+	]]>
+	</select>
+</sqlMap>

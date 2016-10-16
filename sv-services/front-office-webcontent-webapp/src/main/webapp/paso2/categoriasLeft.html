@@ -1,0 +1,23 @@
+							<ul id="menuvertical"  style="z-index:500; position:relative;">
+								<!-- BEGIN DYNAMIC: CATEGORIAS -->
+								<li>
+									<a href="#" id="{cat_id}" class="cabecera"  onclick="chaordicCategorias('{cat_nombre}',id_cliente,nombre_cliente,email_cliente);">{cat_nombre}</a>
+									<ul>
+										<!-- BEGIN DYNAMIC: INTERMEDIAS -->
+										<!-- <input id="banner_{cat_id}" type="hidden" value="{banner_subcat}" />-->
+<!-- 13112012 VMatheu-->  
+										<li>
+												<a id="{cat_cab}_{cat_id}" href="javascript:muestraterminal({cat_cab},{cat_id}, -1);" class="intermedia" onclick="chaordicSubCategorias('{nombre_subcat}','{nombre_padre}',id_cliente,nombre_cliente,email_cliente);">> {nombre_subcat}</a>
+											<ul>
+												<!-- BEGIN DYNAMIC: TERMINALES -->
+												<input id="banner_{cat_id}" type="hidden" value="{banner_subcat}" />
+												<li><a class="terminal" id="{cat_cab}_{cat_padre}_{cat_id}" href="#" onclick="chaordicSubSubCategorias('{nombre_subcat}','{nombre_padre}','{nombre_abuelo}',id_cliente,nombre_cliente,email_cliente);">{nombre_subcat}</a></li>
+												<!-- END DYNAMIC: TERMINALES -->
+											</ul>
+										</li>									
+<!-- - 13112012 VMatheu-->  									
+										<!-- END DYNAMIC: INTERMEDIAS -->
+									</ul>
+								</li>
+								<!-- END DYNAMIC: CATEGORIAS -->
+							</ul>

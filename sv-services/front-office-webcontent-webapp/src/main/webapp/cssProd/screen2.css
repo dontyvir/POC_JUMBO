@@ -1,0 +1,867 @@
+* {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+BODY {
+	PADDING-BOTTOM: 0px; BACKGROUND-COLOR: #dedfe1; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT: 11px Arial, Helvetica, "Trebuchet MS"; COLOR: #61696e; PADDING-TOP: 0px
+}
+P {
+	MARGIN: 0px 0px 10px
+}
+A IMG {
+	BORDER-BOTTOM-STYLE: none !important; BORDER-RIGHT-STYLE: none !important; BORDER-TOP-STYLE: none !important; BORDER-LEFT-STYLE: none !important
+}
+TABLE {
+	
+}
+TD {
+	
+}
+CAPTION {
+	DISPLAY: none; VISIBILITY: hidden
+}
+H1 {
+	
+}
+H2 {
+	COLOR: #a3b204; FONT-SIZE: 12px
+}
+H3 {
+	COLOR: #61696e; FONT-SIZE: 11px; FONT-WEIGHT: bold
+}
+H4 {
+	
+}
+H5 {
+	
+}
+H6 {
+	
+}
+STRONG {
+	
+}
+B {
+	
+}
+A {
+	COLOR: #3b5161; TEXT-DECORATION: none
+}
+A:hover {
+	COLOR: #36779f; TEXT-DECORATION: none
+}
+:focus {
+	OUTLINE-STYLE: none
+}
+FORM {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+INPUT {
+	
+}
+SELECT {
+	
+}
+TEXTAREA {
+	
+}
+LABEL {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; DISPLAY: block; PADDING-TOP: 0px
+}
+UL {
+	
+}
+BUTTON {
+	BORDER-BOTTOM-STYLE: none; PADDING-BOTTOM: 0px; BORDER-RIGHT-STYLE: none; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BORDER-TOP-STYLE: none; BORDER-LEFT-STYLE: none; CURSOR: pointer; PADDING-TOP: 0px
+}
+ACRONYM {
+	BORDER-BOTTOM: #a3b204 1px dotted; COLOR: #a3b204; CURSOR: default; FONT-WEIGHT: bold
+}
+ACRONYM A {
+	BORDER-BOTTOM: #a3b204 1px dotted; COLOR: #a3b204; CURSOR: default; FONT-WEIGHT: bold
+}
+.clear {
+	CLEAR: both
+}
+.division {
+	BORDER-BOTTOM: #d4dde2 2px dotted; MARGIN: 0px 0px 15px; WIDTH: 460px
+}
+.division_archivo {
+	BORDER-BOTTOM: #d4dde2 1px dotted; MARGIN: 0px 0px 15px
+}
+.float_left {
+	MARGIN: 0px; FLOAT: left
+}
+.float_right {
+	MARGIN: 0px; FLOAT: right
+}
+.fotos_derecha {
+	BORDER-BOTTOM: #ccd0d2 2px solid; BORDER-LEFT: #ccd0d2 2px solid; FLOAT: right; MARGIN-LEFT: 10px; BORDER-TOP: #ccd0d2 2px solid; BORDER-RIGHT: #ccd0d2 2px solid
+}
+.margen_aviso {
+	BORDER-LEFT: #d9e4e2 4px dotted; PADDING-LEFT: 10px; MARGIN-LEFT: 75px
+}
+.rss {
+	MARGIN: -10px 55px 0px 0px; FLOAT: right
+}
+.hidden {
+	DISPLAY: none
+}
+#contenedor {
+	PADDING-BOTTOM: 0px; MARGIN: 0px auto; PADDING-LEFT: 0px; WIDTH: 960px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+#cabecera {
+	PADDING-BOTTOM: 0px; PADDING-LEFT: 0px; WIDTH: 960px; PADDING-RIGHT: 0px; HEIGHT: 140px; PADDING-TOP: 0px
+}
+#cabecera .logo {
+	MARGIN: 0px; WIDTH: 217px; FLOAT: left; HEIGHT: 111px
+}
+#menu_util {
+	PADDING-BOTTOM: 0px; MARGIN: 20px 0px 0px; PADDING-LEFT: 0px; WIDTH: 235px; PADDING-RIGHT: 0px; FLOAT: right; HEIGHT: 30px; PADDING-TOP: 0px
+}
+#menu_util UL {
+	BORDER-BOTTOM-STYLE: none; PADDING-BOTTOM: 0px; BORDER-RIGHT-STYLE: none; LIST-STYLE-TYPE: none; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BORDER-TOP-STYLE: none; BORDER-LEFT-STYLE: none; PADDING-TOP: 0px
+}
+#menu_util LI {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; DISPLAY: block; FLOAT: left; PADDING-TOP: 0px
+}
+#menu_util UL LI A {
+	POSITION: relative; BORDER-RIGHT-WIDTH: 0px; TEXT-INDENT: -9000px; DISPLAY: block; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; BORDER-LEFT-WIDTH: 0px; TEXT-DECORATION: none
+}
+#menu_util #inicio A {
+	BORDER-RIGHT-WIDTH: 0px; WIDTH: 46px; BACKGROUND: url(/FO_IMGS/images/menu_util/inicio.gif) no-repeat; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; HEIGHT: 30px; BORDER-LEFT-WIDTH: 0px
+}
+#menu_util #contactenos A {
+	BORDER-RIGHT-WIDTH: 0px; WIDTH: 68px; BACKGROUND: url(/FO_IMGS/images/menu_util/contacto.gif) no-repeat; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; HEIGHT: 30px; BORDER-LEFT-WIDTH: 0px
+}
+#menu_util #telefonos A {
+	BORDER-RIGHT-WIDTH: 0px; WIDTH: 67px; BACKGROUND: url(/FO_IMGS/images/menu_util/telefono.gif) no-repeat; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; HEIGHT: 30px; BORDER-LEFT-WIDTH: 0px
+}
+#menu_util #mapa A {
+	BORDER-RIGHT-WIDTH: 0px; WIDTH: 50px; BACKGROUND: url(/FO_IMGS/images/menu_util/mapa.gif) no-repeat; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; HEIGHT: 30px; BORDER-LEFT-WIDTH: 0px
+}
+#cabecera .servicio_cliente {
+	TEXT-ALIGN: right; MARGIN: 30px 0px 0px; WIDTH: 700px; FLOAT: right; HEIGHT: 35px
+}
+#menu_principal {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; WIDTH: 960px; PADDING-RIGHT: 0px; FLOAT: left; PADDING-TOP: 0px
+}
+#menu_principal UL {
+	BORDER-BOTTOM-STYLE: none; PADDING-BOTTOM: 0px; BORDER-RIGHT-STYLE: none; LIST-STYLE-TYPE: none; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BORDER-TOP-STYLE: none; BORDER-LEFT-STYLE: none; PADDING-TOP: 0px
+}
+#menu_principal LI {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; WIDTH: auto; PADDING-RIGHT: 0px; DISPLAY: block; FLOAT: left; PADDING-TOP: 0px
+}
+#menu_principal UL LI A {
+	POSITION: relative; BORDER-RIGHT-WIDTH: 0px; TEXT-INDENT: -9000px; DISPLAY: block; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; BORDER-LEFT-WIDTH: 0px; TEXT-DECORATION: none
+}
+#menu_principal #novedades A {
+	BORDER-RIGHT-WIDTH: 0px; WIDTH: 88px; BACKGROUND: url(/FO_IMGS/images/menu_principal/novedades.gif) no-repeat; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; HEIGHT: 39px; BORDER-LEFT-WIDTH: 0px
+}
+#menu_principal #productos_mundo A {
+	BORDER-RIGHT-WIDTH: 0px; WIDTH: 151px; BACKGROUND: url(/FO_IMGS/images/menu_principal/productos_del_mundo.gif) no-repeat; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; HEIGHT: 39px; BORDER-LEFT-WIDTH: 0px
+}
+#menu_principal #nuestras_marcas A {
+	BORDER-RIGHT-WIDTH: 0px; WIDTH: 131px; BACKGROUND: url(/FO_IMGS/images/menu_principal/nuestras_marcas.gif) no-repeat; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; HEIGHT: 39px; BORDER-LEFT-WIDTH: 0px
+}
+#menu_principal #mundosjumbo A {
+	BORDER-RIGHT-WIDTH: 0px; WIDTH: 125px; BACKGROUND: url(/FO_IMGS/images/menu_principal/mundos_jumbo.gif) no-repeat; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; HEIGHT: 39px; BORDER-LEFT-WIDTH: 0px
+}
+#menu_principal #locales A {
+	BORDER-RIGHT-WIDTH: 0px; WIDTH: 79px; BACKGROUND: url(/FO_IMGS/images/menu_principal/locales.gif) no-repeat; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; HEIGHT: 39px; BORDER-LEFT-WIDTH: 0px
+}
+#menu_principal #recetas A {
+	BORDER-RIGHT-WIDTH: 0px; WIDTH: 81px; BACKGROUND: url(/FO_IMGS/images/menu_principal/recetas.gif) no-repeat; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; HEIGHT: 39px; BORDER-LEFT-WIDTH: 0px
+}
+#menu_principal #catalogos A {
+	BORDER-RIGHT-WIDTH: 0px; WIDTH: 95px; BACKGROUND: url(/FO_IMGS/images/menu_principal/catalogos.gif) no-repeat; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; HEIGHT: 39px; BORDER-LEFT-WIDTH: 0px
+}
+#menu_principal #familiajumbo A {
+	BORDER-RIGHT-WIDTH: 0px; WIDTH: 118px; BACKGROUND: url(/FO_IMGS/images/menu_principal/familia_jumbo.gif) no-repeat; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; HEIGHT: 39px; BORDER-LEFT-WIDTH: 0px
+}
+#menu_principal #tarjeta_mas A {
+	BORDER-RIGHT-WIDTH: 0px; WIDTH: 92px; BACKGROUND: url(/FO_IMGS/images/menu_principal/tarjetas.gif) no-repeat; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; HEIGHT: 39px; BORDER-LEFT-WIDTH: 0px
+}
+#menu_principal #novedades A:hover {
+	BACKGROUND-POSITION: 0px -40px
+}
+#menu_principal #productos_mundo A:hover {
+	BACKGROUND-POSITION: 0px -40px
+}
+#menu_principal #nuestras_marcas A:hover {
+	BACKGROUND-POSITION: 0px -40px
+}
+#menu_principal #locales A:hover {
+	BACKGROUND-POSITION: 0px -40px
+}
+#menu_principal #recetas A:hover {
+	BACKGROUND-POSITION: 0px -40px
+}
+#menu_principal #catalogos A:hover {
+	BACKGROUND-POSITION: 0px -40px
+}
+#menu_principal #familiajumbo A:hover {
+	BACKGROUND-POSITION: 0px -40px
+}
+#menu_principal #mundosjumbo A:hover {
+	BACKGROUND-POSITION: 0px -40px
+}
+#menu_principal #tarjeta_mas A:hover {
+	BACKGROUND-POSITION: 0px -40px
+}
+#breadcrumbs {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; WIDTH: 100%; PADDING-RIGHT: 0px; BACKGROUND: url(/FO_IMGS/images/html/bg_ruta.jpg) repeat-x; FLOAT: left; HEIGHT: 21px; PADDING-TOP: 0px
+}
+#ruta {
+	PADDING-BOTTOM: 2px; MARGIN: 0px 0px 0px 7px; PADDING-LEFT: 5px; WIDTH: 688px; PADDING-RIGHT: 0px; FONT-FAMILY: "Arial Narrow", Arial, Helvetica; BACKGROUND: url(/FO_IMGS/images/html/ico_ruta.gif) no-repeat left 50%; FLOAT: left; COLOR: #a7acaf; FONT-SIZE: 11px; PADDING-TOP: 2px
+}
+#ruta .primero {
+	PADDING-BOTTOM: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px; PADDING-TOP: 0px
+}
+#ruta .normal {
+	BORDER-LEFT: #a3c53a 1px dotted; PADDING-BOTTOM: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px; PADDING-TOP: 0px
+}
+#ruta .ultimo {
+	BORDER-LEFT: #a3c53a 1px dotted; PADDING-BOTTOM: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px; COLOR: #a3c53a; FONT-WEIGHT: bold; PADDING-TOP: 0px
+}
+#ruta A {
+	COLOR: #a7acaf; TEXT-DECORATION: none
+}
+#ruta A:hover {
+	COLOR: #999; TEXT-DECORATION: none
+}
+#ruta UL {
+	PADDING-BOTTOM: 0px; LIST-STYLE-TYPE: none; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+#ruta LI {
+	PADDING-BOTTOM: 0px; PADDING-LEFT: 12px; PADDING-RIGHT: 3px; FLOAT: left; PADDING-TOP: 0px
+}
+#ccc {
+	PADDING-BOTTOM: 0px; MARGIN: 1px 0px 0px; PADDING-LEFT: 0px; WIDTH: 960px; PADDING-RIGHT: 0px; HEIGHT: 340px; PADDING-TOP: 0px
+}
+.flash_portada {
+	BACKGROUND-IMAGE: url(/FO_IMGS/swf/base.jpg); MARGIN: 6px 9px 0px 0px; WIDTH: 688px; BACKGROUND-REPEAT: no-repeat; FLOAT: right; HEIGHT: 310px
+}
+#ccc_int {
+	BORDER-BOTTOM: #fff 1px solid; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; HEIGHT: 192px; BORDER-TOP: #fff 1px solid; PADDING-TOP: 0px
+}
+#ccc_int_med {
+	BORDER-BOTTOM: #fff 0px solid; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; HEIGHT: 99px; BORDER-TOP: #fff 1px solid; PADDING-TOP: 0px
+}
+#contenido {
+	PADDING-BOTTOM: 0px; MARGIN: 10px 0px 0px; PADDING-LEFT: 0px; WIDTH: 960px; PADDING-RIGHT: 0px; BACKGROUND: #fff; PADDING-TOP: 0px
+}
+#contenido_int {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; WIDTH: 960px; PADDING-RIGHT: 0px; BACKGROUND: url(/FO_IMGS/images/html/bg_contenido_internas.jpg) #fff repeat-x left top; PADDING-TOP: 0px
+}
+#ingreso_clientes {
+	MARGIN-TOP: 15px; WIDTH: 230px; BACKGROUND: url(/FO_IMGS/images/html/fondo_login.gif) no-repeat left top; FLOAT: left; HEIGHT: 306px; COLOR: #fff; MARGIN-LEFT: 10px
+}
+#ingreso_clientes_lbox {
+	MARGIN: 20px 0px 0px 9px; WIDTH: 230px; BACKGROUND: url(/FO_IMGS/images/html/fondo_login_lbox.gif) no-repeat left top; FLOAT: left; HEIGHT: 306px; COLOR: #fff
+}
+#ingreso_clientes LABEL {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 10px; PADDING-RIGHT: 0px; DISPLAY: block; PADDING-TOP: 0px
+}
+.login {
+	MARGIN: 5px 0px 5px 5px
+}
+#ingreso_clientes .top_ic {
+	WIDTH: 272px; HEIGHT: 80px
+}
+#ingreso_clientes .cont_ic {
+	WIDTH: 230px; FLOAT: left; HEIGHT: auto
+}
+#ingreso_clientes INPUT {
+	BORDER-BOTTOM-STYLE: none; PADDING-BOTTOM: 0px; BORDER-RIGHT-STYLE: none; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BORDER-TOP-STYLE: none; BORDER-LEFT-STYLE: none; PADDING-TOP: 0px
+}
+#ingreso_clientes .cont_ic .input_rut {
+	BORDER-BOTTOM: #9ebc91 1px solid; BORDER-LEFT: #9ebc91 1px solid; MARGIN: 0px; WIDTH: 79px; BACKGROUND: url(/FO_IMGS/images/html/bg_input.jpg) repeat-x left top; HEIGHT: 19px; BORDER-TOP: #9ebc91 1px solid; BORDER-RIGHT: #9ebc91 1px solid
+}
+#ingreso_clientes .cont_ic .input_dv {
+	BORDER-BOTTOM: #9ebc91 1px solid; BORDER-LEFT: #9ebc91 1px solid; MARGIN: 0px; WIDTH: 20px; BACKGROUND: url(/FO_IMGS/images/html/bg_input.jpg) repeat-x left top; HEIGHT: 19px; BORDER-TOP: #9ebc91 1px solid; BORDER-RIGHT: #9ebc91 1px solid
+}
+#ingreso_clientes .cont_ic .input_clave {
+	BORDER-BOTTOM: #ccc 1px solid; BORDER-LEFT: #ccc 1px solid; WIDTH: 110px; BACKGROUND: url(/FO_IMGS/images/html/bg_input.jpg) repeat-x left top; HEIGHT: 19px; BORDER-TOP: #ccc 1px solid; BORDER-RIGHT: #ccc 1px solid
+}
+#ingreso_clientes .cont_ic .bot_ingresar {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; WIDTH: 58px; PADDING-RIGHT: 0px; BACKGROUND: url(/FO_IMGS/images/html/bt_entrar.gif) no-repeat; HEIGHT: 25px; COLOR: #568349; FONT-SIZE: 1px; CURSOR: pointer; PADDING-TOP: 0px
+}
+#ingreso_clientes #accesos_directos {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 13px; PADDING-RIGHT: 0px; FLOAT: left; PADDING-TOP: 10px
+}
+#ingreso_clientes #accesos_directos UL {
+	BORDER-BOTTOM-STYLE: none; PADDING-BOTTOM: 18px; BORDER-RIGHT-STYLE: none; LIST-STYLE-TYPE: none; MARGIN: 0px; PADDING-LEFT: 0px; WIDTH: 110px; PADDING-RIGHT: 0px; BORDER-TOP-STYLE: none; FLOAT: left; BORDER-LEFT-STYLE: none; PADDING-TOP: 11px
+}
+#ingreso_clientes #accesos_directos LI {
+	BORDER-BOTTOM: #87bc52 1px dotted; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; WIDTH: auto; PADDING-RIGHT: 0px; DISPLAY: block; FLOAT: left; PADDING-TOP: 3px
+}
+#ingreso_clientes #accesos_directos UL LI A {
+	POSITION: relative; BORDER-RIGHT-WIDTH: 0px; TEXT-INDENT: -9000px; DISPLAY: block; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; BORDER-LEFT-WIDTH: 0px; TEXT-DECORATION: none
+}
+#ingreso_clientes #accesos_directos #olvidaste_clave A {
+	BORDER-RIGHT-WIDTH: 0px; WIDTH: 103px; BACKGROUND: url(/FO_IMGS/images/menu_ic/bot_olvidaste_tu_clave.gif) no-repeat; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; HEIGHT: 11px; BORDER-LEFT-WIDTH: 0px
+}
+#ingreso_clientes #accesos_directos #preguntas_frecuentes A {
+	BORDER-RIGHT-WIDTH: 0px; WIDTH: 103px; BACKGROUND: url(/FO_IMGS/images/menu_ic/bot_preguntas_frecuentes.gif) no-repeat; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; HEIGHT: 11px; BORDER-LEFT-WIDTH: 0px
+}
+#ingreso_clientes #accesos_directos #tour_virtual A {
+	BORDER-RIGHT-WIDTH: 0px; WIDTH: 103px; BACKGROUND: url(/FO_IMGS/images/menu_ic/bot_tour_virtual.gif) no-repeat; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; HEIGHT: 11px; BORDER-LEFT-WIDTH: 0px
+}
+#ingreso_clientes #accesos_directos #registrate_aqui A {
+	BORDER-RIGHT-WIDTH: 0px; WIDTH: 103px; BACKGROUND: url(/FO_IMGS/images/menu_ic/bot_registrate_aqui.gif) no-repeat; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; HEIGHT: 11px; BORDER-LEFT-WIDTH: 0px
+}
+#ingreso_clientes #accesos_directos #formas_de_pago A {
+	BORDER-RIGHT-WIDTH: 0px; WIDTH: 103px; BACKGROUND: url(/FO_IMGS/images/menu_ic/bot_formas_de_pago.gif) no-repeat; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; HEIGHT: 11px; BORDER-LEFT-WIDTH: 0px
+}
+#ingreso_clientes #accesos_directos #zona_cobertura A {
+	BORDER-RIGHT-WIDTH: 0px; WIDTH: 103px; BACKGROUND: url(/FO_IMGS/images/menu_ic/bot_zona_de_cobertura.gif) no-repeat; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; HEIGHT: 11px; BORDER-LEFT-WIDTH: 0px
+}
+#ingreso_clientes .bottom_ic {
+	PADDING-BOTTOM: 0px; MARGIN: -1px 0px 0px; PADDING-LEFT: 0px; WIDTH: 230px; PADDING-RIGHT: 0px; HEIGHT: 120px; PADDING-TOP: 0px
+}
+#banners {
+	PADDING-BOTTOM: 0px; MARGIN: 0px 10px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+#banners DIV {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FLOAT: left; PADDING-TOP: 0px
+}
+#banners LABEL {
+	PADDING-BOTTOM: 0px; MARGIN: 62px 0px 0px 30px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; DISPLAY: block; PADDING-TOP: 0px
+}
+#banners LABEL IMG {
+	DISPLAY: block
+}
+#banners INPUT {
+	BORDER-BOTTOM-STYLE: none; PADDING-BOTTOM: 0px; BORDER-RIGHT-STYLE: none; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BORDER-TOP-STYLE: none; BORDER-LEFT-STYLE: none; PADDING-TOP: 0px
+}
+#banners .cupones {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; WIDTH: 234px; PADDING-RIGHT: 0px; BACKGROUND: url(/FO_IMGS/images/html/bg_cupones.jpg) no-repeat left top; HEIGHT: 156px; COLOR: #ced5da; PADDING-TOP: 0px
+}
+#banners .cupones .input_rut {
+	BORDER-BOTTOM: #ced5da 1px solid; BORDER-LEFT: #ced5da 1px solid; MARGIN: 0px 0px 7px; WIDTH: 79px; BACKGROUND: url(/FO_IMGS/images/html/bg_input.jpg) repeat-x left top; HEIGHT: 19px; BORDER-TOP: #ced5da 1px solid; BORDER-RIGHT: #ced5da 1px solid
+}
+#banners .cupones .input_dv {
+	BORDER-BOTTOM: #ced5da 1px solid; BORDER-LEFT: #ced5da 1px solid; MARGIN: 0px 0px 7px; WIDTH: 20px; BACKGROUND: url(/FO_IMGS/images/html/bg_input.jpg) repeat-x left top; HEIGHT: 19px; BORDER-TOP: #ced5da 1px solid; BORDER-RIGHT: #ced5da 1px solid
+}
+#banners .cupones .input_verificador {
+	BORDER-BOTTOM: #ced5da 1px solid; BORDER-LEFT: #ced5da 1px solid; WIDTH: 112px; BACKGROUND: url(/FO_IMGS/images/html/bg_input.jpg) repeat-x left top; HEIGHT: 19px; BORDER-TOP: #ced5da 1px solid; BORDER-RIGHT: #ced5da 1px solid
+}
+#banners .cupones .bot_buscar {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; WIDTH: 58px; PADDING-RIGHT: 0px; BACKGROUND: url(/FO_IMGS/images/html/bot_buscar.gif) no-repeat; HEIGHT: 25px; COLOR: #568349; FONT-SIZE: 1px; CURSOR: pointer; PADDING-TOP: 0px
+}
+#carrusel_jumbo {
+	PADDING-BOTTOM: 0px; MARGIN: 5px 0px 5px 25px; PADDING-LEFT: 0px; WIDTH: 896px; PADDING-RIGHT: 0px; BACKGROUND: url(/FO_IMGS/images/html/bg_carrusel.jpg) repeat-x left top; FLOAT: left; HEIGHT: 160px; PADDING-TOP: 0px
+}
+#carrusel_jumbo .panel {
+	PADDING-BOTTOM: 5px; MARGIN: 10px; PADDING-LEFT: 5px; WIDTH: 240px; PADDING-RIGHT: 5px; BORDER-RIGHT: #bdc7cd 1px dotted; PADDING-TOP: 5px
+}
+#carrusel_jumbo .panel .primero {
+	MARGIN: 10px 40px
+}
+#carrusel_jumbo .panel .ultimo {
+	MARGIN: 10px 40px
+}
+#carrusel_jumbo .panel .thumb_producto {
+	MARGIN: 5px 5px 0px 0px; FLOAT: left
+}
+#carrusel_jumbo .panel H1 {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: #62696f; FONT-SIZE: 12px; FONT-WEIGHT: bold; PADDING-TOP: 0px
+}
+#carrusel_jumbo .panel P {
+	PADDING-BOTTOM: 0px; MARGIN: 0px 0px 6px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: #62696f; FONT-SIZE: 11px; PADDING-TOP: 0px
+}
+#carrusel_jumbo .panel EM {
+	PADDING-BOTTOM: 0px; FONT-STYLE: normal; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; DISPLAY: block; COLOR: #db4709; FONT-SIZE: 15px; FONT-WEIGHT: bold; PADDING-TOP: 0px
+}
+#carrusel_jumbo .panel BIG {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: Arial Narrow, Helvetica, sans-serif; COLOR: #db4709; FONT-SIZE: 20px; FONT-WEIGHT: bold; PADDING-TOP: 0px
+}
+.stepcarousel {
+	POSITION: relative; WIDTH: 220px; HEIGHT: 160px
+}
+.stepcarousel .belt {
+	POSITION: absolute; TOP: 0px; LEFT: 0px
+}
+.stepcarousel .panel {
+	MARGIN: 10px; WIDTH: 220px; FLOAT: left; OVERFLOW: hidden
+}
+#banners_inf {
+	TEXT-ALIGN: center; PADDING-BOTTOM: 0px; MARGIN: 0px auto; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BACKGROUND: url(/FO_IMGS/images/html/bg_banners_inf.jpg) repeat-x left top; HEIGHT: 80px; PADDING-TOP: 0px
+}
+#banners_inf UL {
+	BORDER-BOTTOM-STYLE: none; PADDING-BOTTOM: 0px; BORDER-RIGHT-STYLE: none; LIST-STYLE-TYPE: none; MARGIN: 0px; PADDING-LEFT: 20px; PADDING-RIGHT: 20px; BORDER-TOP-STYLE: none; BORDER-LEFT-STYLE: none; PADDING-TOP: 0px
+}
+#banners_inf LI {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; WIDTH: auto; PADDING-RIGHT: 0px; DISPLAY: block; FLOAT: left; PADDING-TOP: 0px
+}
+#banners_inf UL LI A {
+	POSITION: relative; BORDER-RIGHT-WIDTH: 0px; TEXT-INDENT: -9000px; DISPLAY: block; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; BORDER-LEFT-WIDTH: 0px; TEXT-DECORATION: none
+}
+#banners_inf #fb A {
+	BORDER-RIGHT-WIDTH: 0px; WIDTH: 45px; BACKGROUND: url(/FO_IMGS/images/html/facebook.gif) no-repeat; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; HEIGHT: 78px; BORDER-LEFT-WIDTH: 0px
+}
+#banners_inf #twitter A {
+	BORDER-RIGHT-WIDTH: 0px; WIDTH: 38px; BACKGROUND: url(/FO_IMGS/images/html/twitter.gif) no-repeat; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; HEIGHT: 78px; BORDER-LEFT-WIDTH: 0px
+}
+#banners_inf #youtube A {
+	BORDER-RIGHT-WIDTH: 0px; WIDTH: 71px; BACKGROUND: url(/FO_IMGS/images/html/youtube.gif) no-repeat; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; HEIGHT: 78px; BORDER-LEFT-WIDTH: 0px
+}
+#banners_inf #vivirsano A {
+	BORDER-RIGHT-WIDTH: 0px; WIDTH: 71px; BACKGROUND: url(/FO_IMGS/images/html/vivirsano.gif) no-repeat; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; HEIGHT: 78px; BORDER-LEFT-WIDTH: 0px
+}
+#banners_inf #mobile A {
+	BORDER-RIGHT-WIDTH: 0px; WIDTH: 153px; BACKGROUND: url(/FO_IMGS/images/html/mobile.gif) no-repeat; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; HEIGHT: 78px; BORDER-LEFT-WIDTH: 0px
+}
+#banners_inf #giftcard A {
+	BORDER-RIGHT-WIDTH: 0px; WIDTH: 118px; BACKGROUND: url(/FO_IMGS/images/html/giftcard.gif) no-repeat; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; HEIGHT: 78px; BORDER-LEFT-WIDTH: 0px
+}
+#banners_inf #nectar A {
+	BORDER-RIGHT-WIDTH: 0px; WIDTH: 76px; BACKGROUND: url(/FO_IMGS/images/html/nectar.gif) no-repeat; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; HEIGHT: 78px; BORDER-LEFT-WIDTH: 0px
+}
+#banners_inf #ventaempresas A {
+	BORDER-RIGHT-WIDTH: 0px; WIDTH: 144px; BACKGROUND: url(/FO_IMGS/images/html/jumbo_empresas.gif) no-repeat; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; HEIGHT: 78px; BORDER-LEFT-WIDTH: 0px
+}
+#banners_inf #fb A:hover {
+	BACKGROUND-POSITION: 0px -78px
+}
+#banners_inf #twitter A:hover {
+	BACKGROUND-POSITION: 0px -78px
+}
+#banners_inf #youtube A:hover {
+	BACKGROUND-POSITION: 0px -78px
+}
+#banners_inf #mobile A:hover {
+	BACKGROUND-POSITION: 0px -78px
+}
+#banners_inf #giftcard A:hover {
+	BACKGROUND-POSITION: 0px -78px
+}
+#banners_inf #nectar A:hover {
+	BACKGROUND-POSITION: 0px -78px
+}
+#banners_inf #ventaempresas A:hover {
+	BACKGROUND-POSITION: 0px -78px
+}
+#banners_inf #vivirsano A:hover {
+	BACKGROUND-POSITION: 0px -78px
+}
+#marcas_newsletter {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; HEIGHT: 80px; BORDER-TOP: #fff 1px solid; PADDING-TOP: 0px
+}
+#marcas_newsletter .marcas {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 22px; PADDING-RIGHT: 0px; FLOAT: left; PADDING-TOP: 0px
+}
+#marcas_newsletter .newsletter {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 20px; WIDTH: 246px; PADDING-RIGHT: 0px; BACKGROUND: url(/FO_IMGS/images/html/bg_newsletter_home.jpg) #d1d4d9 repeat-x left top; FLOAT: right; HEIGHT: 60px; PADDING-TOP: 15px
+}
+#marcas_newsletter .newsletter IMG {
+	PADDING-BOTTOM: 3px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+#marcas_newsletter .newsletter .input_email {
+	BORDER-BOTTOM: #ced5da 1px solid; BORDER-LEFT: #ced5da 1px solid; WIDTH: 152px; BACKGROUND: url(/FO_IMGS/images/html/bg_input.jpg) repeat-x left top; HEIGHT: 19px; BORDER-TOP: #ced5da 1px solid; BORDER-RIGHT: #ced5da 1px solid
+}
+#marcas_newsletter .newsletter .bot_enviar {
+	BORDER-BOTTOM-STYLE: none; PADDING-BOTTOM: 0px; BORDER-RIGHT-STYLE: none; MARGIN: 0px; PADDING-LEFT: 0px; WIDTH: 45px; PADDING-RIGHT: 0px; BORDER-TOP-STYLE: none; BACKGROUND: url(/FO_IMGS/images/html/bot_enviar.gif) no-repeat; HEIGHT: 21px; COLOR: #889e75; FONT-SIZE: 1px; BORDER-LEFT-STYLE: none; CURSOR: pointer; TEXT-DECORATION: none; PADDING-TOP: 0px
+}
+#mapa_portada {
+	POSITION: relative; PADDING-BOTTOM: 0px; MARGIN: -6px 0px 0px; PADDING-LEFT: 0px; WIDTH: 960px; PADDING-RIGHT: 0px; BACKGROUND: url(/FO_IMGS/images/html/bg_mapa_del_sitio.jpg) #077f42 repeat-x left top; HEIGHT: 165px; PADDING-TOP: 0px
+}
+#mapa_portada H1 {
+	PADDING-BOTTOM: 0px; BORDER-RIGHT-WIDTH: 0px; TEXT-INDENT: -9000px; MARGIN: 20px 20px 0px; PADDING-LEFT: 0px; WIDTH: 157px; PADDING-RIGHT: 0px; DISPLAY: block; BACKGROUND: url(/FO_IMGS/images/html/mapa_del_sitio.gif) no-repeat left top; FLOAT: left; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; HEIGHT: 42px; BORDER-LEFT-WIDTH: 0px; TEXT-DECORATION: none; PADDING-TOP: 0px
+}
+#mapa_portada UL {
+	PADDING-BOTTOM: 0px; LIST-STYLE-TYPE: none; MARGIN: 38px 0px 0px; PADDING-LEFT: 0px; WIDTH: 170px; PADDING-RIGHT: 0px; FLOAT: left; PADDING-TOP: 0px
+}
+#mapa_portada LI {
+	PADDING-BOTTOM: 3px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+#mapa_portada LI A {
+	PADDING-BOTTOM: 0px; LIST-STYLE-TYPE: none; MARGIN: 0px; PADDING-LEFT: 15px; PADDING-RIGHT: 0px; FONT-FAMILY: Arial, Helvetica, sans-serif; BACKGROUND: url(/FO_IMGS/images/html/bullet_mapa.gif) no-repeat 0px 2px; COLOR: #e1e7ea; FONT-SIZE: 11px; TEXT-DECORATION: none; PADDING-TOP: 0px
+}
+#mapa_portada LI A:hover {
+	COLOR: #fff
+}
+#mapa_portada UL.sep {
+	BORDER-LEFT: #8ac073 1px dotted; PADDING-BOTTOM: 0px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; PADDING-TOP: 0px
+}
+#link_footer {
+	TEXT-ALIGN: center; PADDING-BOTTOM: 10px; MARGIN: 10px 0px 0px; PADDING-LEFT: 20px; WIDTH: 928px; PADDING-RIGHT: 10px; FLOAT: left; PADDING-TOP: 0px
+}
+#link_footer P {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; DISPLAY: inline; PADDING-TOP: 0px
+}
+#link_footer P A {
+	PADDING-BOTTOM: 0px; LIST-STYLE-TYPE: none; MARGIN: 0px; PADDING-LEFT: 15px; PADDING-RIGHT: 10px; FONT-FAMILY: Arial, Helvetica, sans-serif; BACKGROUND: url(/FO_IMGS/images/html/bullet_mapa.gif) no-repeat 0px 2px; COLOR: #e1e7ea; FONT-SIZE: 11px; TEXT-DECORATION: none; PADDING-TOP: 0px
+}
+#link_footer P A:hover {
+	COLOR: #fff
+}
+#pie_home {
+	MARGIN: 0px; WIDTH: 960px; BACKGROUND: url(/FO_IMGS/images/html/bg_footer.jpg) repeat-x left top; HEIGHT: 56px
+}
+#pie_home P {
+	TEXT-ALIGN: center; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: #fff; PADDING-TOP: 15px
+}
+#pie_home P STRONG {
+	COLOR: #8fc22b; FONT-WEIGHT: bold
+}
+#pie_home SPAN.copyright {
+	PADDING-BOTTOM: 0px; MARGIN: -10px 45px 0px 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FLOAT: right; PADDING-TOP: 0px
+}
+#ingreso_visitas {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; WIDTH: 274px; PADDING-RIGHT: 0px; FONT-FAMILY: Arial Narrow, Helvetica, sans-serif; BACKGROUND: url(/FO_IMGS/images/html/bg_ingreso_visitas2.gif) no-repeat left top; FLOAT: left; HEIGHT: 246px; FONT-SIZE: 10px; PADDING-TOP: 0px
+}
+#ingreso_visitas .cerrar {
+	MARGIN: 10px 0px 0px 10px; FLOAT: left
+}
+#ingreso_visitas H1 {
+	PADDING-BOTTOM: 10px; TEXT-INDENT: -999px; MARGIN: 30px 0px 0px 95px; PADDING-LEFT: 0px; WIDTH: 133px; PADDING-RIGHT: 0px; BACKGROUND: url(/FO_IMGS/images/html/tit_ver_todos_los_productos.gif) no-repeat left top; HEIGHT: 42px; PADDING-TOP: 0px
+}
+#ingreso_visitas FORM {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 95px; PADDING-RIGHT: 0px; PADDING-TOP: 10px
+}
+#ingreso_visitas LABEL {
+	DISPLAY: block
+}
+#ingreso_visitas P {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; DISPLAY: block; COLOR: #6c6e69; PADDING-TOP: 0px
+}
+#ingreso_visitas .bot_ver {
+	BORDER-BOTTOM-STYLE: none; PADDING-BOTTOM: 0px; BORDER-RIGHT-STYLE: none; MARGIN: 5px 0px 0px; PADDING-LEFT: 0px; WIDTH: 78px; PADDING-RIGHT: 0px; BORDER-TOP-STYLE: none; BACKGROUND: url(/FO_IMGS/images/html/bot_ver.gif) no-repeat; HEIGHT: 23px; COLOR: #568349; FONT-SIZE: 1px; BORDER-LEFT-STYLE: none; CURSOR: pointer; PADDING-TOP: 0px
+}
+#menu_lateral {
+	MARGIN: 0px 27px 0px 0px; WIDTH: 220px; BACKGROUND: url(/FO_IMGS/images/html/bg_menu_lateral.jpg) #fff no-repeat left top; FLOAT: left
+}
+#menu_lateral H1 {
+	PADDING-BOTTOM: 0px; PADDING-LEFT: 20px; PADDING-RIGHT: 0px; COLOR: #70a128; FONT-SIZE: 12px; PADDING-TOP: 15px
+}
+#menu_lateral UL {
+	PADDING-BOTTOM: 0px; LIST-STYLE-TYPE: none; MARGIN: 10px 0px 0px 10px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+#menu_lateral LI {
+	BORDER-BOTTOM: #e0e9e7 1px solid; PADDING-BOTTOM: 5px; LIST-STYLE-TYPE: none; MARGIN: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px; PADDING-TOP: 5px
+}
+#menu_lateral LI A {
+	PADDING-BOTTOM: 0px; TEXT-TRANSFORM: uppercase; FONT-STYLE: normal; PADDING-LEFT: 13px; PADDING-RIGHT: 0px; DISPLAY: block; FONT-FAMILY: Arial Narrow, Helvetica, sans-serif; BACKGROUND: url(/FO_IMGS/images/html/bullet_menu_izq.gif) no-repeat 0px 5px; COLOR: #61696e; FONT-SIZE: 11px; TEXT-DECORATION: none; PADDING-TOP: 0px
+}
+#menu_lateral LI.selec {
+	BACKGROUND-COLOR: #d9e4e2; FONT-WEIGHT: bold
+}
+#menu_lateral LI.selec A {
+	TEXT-TRANSFORM: uppercase; FONT-FAMILY: Arial Narrow, Helvetica, sans-serif; COLOR: #61696e; FONT-SIZE: 11px; FONT-WEIGHT: bold
+}
+#menu_lateral LI.selec A:hover {
+	COLOR: #000
+}
+#menu_lateral .submenu {
+	MARGIN-TOP: 4px; MARGIN-LEFT: 15px; FONT-SIZE: 10px; FONT-WEIGHT: normal
+}
+#menu_lateral .submenu LI {
+	BORDER-BOTTOM-STYLE: none; BORDER-RIGHT-STYLE: none; BORDER-TOP-STYLE: none; BORDER-LEFT-STYLE: none
+}
+#menu_lateral LI.selec .submenu A {
+	COLOR: #000000; FONT-WEIGHT: bold; TEXT-DECORATION: none
+}
+#menu_lateral LI.selec .submenu A:hover {
+	COLOR: #000000; FONT-WEIGHT: bold; TEXT-DECORATION: underline
+}
+.boton_subir {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FLOAT: right; PADDING-TOP: 0px
+}
+.textos {
+	PADDING-BOTTOM: 0px; PADDING-LEFT: 0px; WIDTH: 688px; PADDING-RIGHT: 0px; FLOAT: left; PADDING-TOP: 10px
+}
+.textos2 {
+	PADDING-BOTTOM: 0px; PADDING-LEFT: 10px; WIDTH: 940px; PADDING-RIGHT: 10px; FLOAT: left; PADDING-TOP: 10px
+}
+.textos H1 {
+	PADDING-BOTTOM: 5px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: Arial Narrow, Helvetica, sans-serif; COLOR: #70a128; FONT-SIZE: 18px; PADDING-TOP: 0px
+}
+.textos2 H1 {
+	PADDING-BOTTOM: 5px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: Arial Narrow, Helvetica, sans-serif; COLOR: #70a128; FONT-SIZE: 18px; PADDING-TOP: 0px
+}
+.textos_izq {
+	MARGIN: 0px 22px 0px 0px; WIDTH: 320px; FLOAT: left
+}
+.textos_izq_b {
+	PADDING-BOTTOM: 10px; MARGIN: 0px 16px 0px 0px; PADDING-LEFT: 10px; WIDTH: 275px; PADDING-RIGHT: 10px; FLOAT: left; PADDING-TOP: 10px
+}
+.textos .col3_izq {
+	MARGIN: 0px 22px 0px 0px; WIDTH: 205px; FLOAT: left
+}
+.encuesta_izq_a {
+	POSITION: relative; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 30px; WIDTH: 412px; PADDING-RIGHT: 0px; FLOAT: left; PADDING-TOP: 20px
+}
+.encuesta_izq_b {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 10px; WIDTH: 470px; PADDING-RIGHT: 10px; FLOAT: left; PADDING-TOP: 20px
+}
+.bot_votar {
+	BORDER-BOTTOM-STYLE: none; PADDING-BOTTOM: 0px; BORDER-RIGHT-STYLE: none; MARGIN: 0px; PADDING-LEFT: 0px; WIDTH: 76px; PADDING-RIGHT: 0px; BORDER-TOP-STYLE: none; BACKGROUND: url(/FO_IMGS/images/html/bot_votar.jpg) no-repeat; HEIGHT: 27px; COLOR: #568349; FONT-SIZE: 1px; BORDER-LEFT-STYLE: none; CURSOR: pointer; PADDING-TOP: 0px
+}
+.bot_ver_resultados {
+	BORDER-BOTTOM-STYLE: none; PADDING-BOTTOM: 0px; BORDER-RIGHT-STYLE: none; MARGIN: 0px; PADDING-LEFT: 0px; WIDTH: 107px; PADDING-RIGHT: 0px; BORDER-TOP-STYLE: none; BACKGROUND: url(/FO_IMGS/images/html/bot_ver_resultados.jpg) no-repeat; HEIGHT: 27px; COLOR: #7f938b; FONT-SIZE: 1px; BORDER-LEFT-STYLE: none; CURSOR: pointer; PADDING-TOP: 0px
+}
+.herramientas {
+	PADDING-BOTTOM: 5px; MARGIN: 5px 0px 0px; PADDING-LEFT: 5px; WIDTH: 688px; PADDING-RIGHT: 5px; FLOAT: left; PADDING-TOP: 5px
+}
+.herramientas IMG {
+	PADDING-BOTTOM: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 18px; PADDING-TOP: 0px
+}
+.destacado {
+	COLOR: #61696e; FONT-WEIGHT: bold
+}
+.middle {
+	VERTICAL-ALIGN: middle
+}
+.center {
+	TEXT-ALIGN: center
+}
+.img_left {
+	MARGIN: 0px 4px 4px 0px; FLOAT: left
+}
+.img_right {
+	MARGIN: 0px 0px 4px 4px; FLOAT: right
+}
+.foto_encuesta {
+	BORDER-BOTTOM: #bec9c7 4px solid; BORDER-LEFT: #bec9c7 4px solid; MARGIN: 0px 0px 0px 80px; FLOAT: left; BORDER-TOP: #bec9c7 4px solid; BORDER-RIGHT: #bec9c7 4px solid
+}
+FORM {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: #61696e; PADDING-TOP: 0px
+}
+FIELDSET {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: #61696e; PADDING-TOP: 0px
+}
+LABEL {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: #61696e; PADDING-TOP: 0px
+}
+INPUT {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: #61696e; PADDING-TOP: 0px
+}
+.checkbox {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: #61696e; PADDING-TOP: 0px
+}
+TEXTAREA {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: #61696e; PADDING-TOP: 0px
+}
+SELECT {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: #61696e; PADDING-TOP: 0px
+}
+OPTION {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: #61696e; PADDING-TOP: 0px
+}
+FORM DIV {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: #61696e; PADDING-TOP: 0px
+}
+FIELDSET {
+	BORDER-BOTTOM-STYLE: none; PADDING-BOTTOM: 1em; BORDER-RIGHT-STYLE: none; MARGIN: 0px auto; PADDING-LEFT: 1em; WIDTH: 90%; PADDING-RIGHT: 1em; BORDER-LEFT-STYLE: none; BORDER-TOP: #dbe6e4 1px solid; PADDING-TOP: 1em
+}
+LEGEND {
+	DISPLAY: none; VISIBILITY: hidden
+}
+INPUT.text {
+	BORDER-BOTTOM: #dbe6e4 1px solid; BORDER-LEFT: #dbe6e4 1px solid; BACKGROUND-COLOR: #f9fbfb; MARGIN: 0px; FONT: 11px Arial, Helvetica, "Trebuchet MS"; BORDER-TOP: #dbe6e4 1px solid; BORDER-RIGHT: #dbe6e4 1px solid
+}
+INPUT.corto {
+	BORDER-BOTTOM: #dbe6e4 1px solid; BORDER-LEFT: #dbe6e4 1px solid; BACKGROUND-COLOR: #f9fbfb; MARGIN: 0px; FONT: 11px Arial, Helvetica, "Trebuchet MS"; BORDER-TOP: #dbe6e4 1px solid; BORDER-RIGHT: #dbe6e4 1px solid
+}
+TEXTAREA {
+	BORDER-BOTTOM: #dbe6e4 1px solid; BORDER-LEFT: #dbe6e4 1px solid; BACKGROUND-COLOR: #f9fbfb; MARGIN: 0px; FONT: 11px Arial, Helvetica, "Trebuchet MS"; BORDER-TOP: #dbe6e4 1px solid; BORDER-RIGHT: #dbe6e4 1px solid
+}
+SELECT {
+	BORDER-BOTTOM: #dbe6e4 1px solid; BORDER-LEFT: #dbe6e4 1px solid; BACKGROUND-COLOR: #f9fbfb; MARGIN: 0px; FONT: 11px Arial, Helvetica, "Trebuchet MS"; BORDER-TOP: #dbe6e4 1px solid; BORDER-RIGHT: #dbe6e4 1px solid
+}
+OPTION {
+	FLOAT: none; CLEAR: both; MARGIN-RIGHT: 2em
+}
+INPUT.radio {
+	MARGIN-RIGHT: 0.5em
+}
+INPUT.checkbox {
+	MARGIN-RIGHT: 0.5em
+}
+INPUT.text {
+	PADDING-BOTTOM: 0.2em; PADDING-LEFT: 0.2em; PADDING-RIGHT: 0.2em; PADDING-TOP: 0.2em
+}
+INPUT.button {
+	PADDING-BOTTOM: 0.2em; PADDING-LEFT: 0.2em; PADDING-RIGHT: 0.2em; PADDING-TOP: 0.2em
+}
+TEXTAREA {
+	PADDING-BOTTOM: 0.2em; PADDING-LEFT: 0.2em; PADDING-RIGHT: 0.2em; PADDING-TOP: 0.2em
+}
+SELECT {
+	PADDING-BOTTOM: 0.2em; PADDING-LEFT: 0.2em; PADDING-RIGHT: 0.2em; PADDING-TOP: 0.2em
+}
+TEXTAREA {
+	BACKGROUND: url(/FO_IMGS/images/html/bg_textarea.jpg) #fff repeat-x left top
+}
+INPUT.button {
+	BORDER-BOTTOM-STYLE: none; PADDING-BOTTOM: 0.2em; BORDER-RIGHT-STYLE: none; PADDING-LEFT: 0.6em; WIDTH: 45px; PADDING-RIGHT: 0.6em; BORDER-TOP-STYLE: none; BACKGROUND: url(/FO_IMGS/images/html/bot_enviar.gif) no-repeat 0px 0px; HEIGHT: 21px; COLOR: #b8cae5; MARGIN-LEFT: 270px; FONT-SIZE: 1px; BORDER-LEFT-STYLE: none; CURSOR: pointer; MARGIN-RIGHT: 1em; PADDING-TOP: 0.2em
+}
+.readonly {
+	BACKGROUND: #e7e7e7; COLOR: #999
+}
+.wauto {
+	WIDTH: auto
+}
+.formulario .row DIV {
+	OVERFLOW: hidden
+}
+.formulario {
+	OVERFLOW: hidden
+}
+.formulario EM {
+	PADDING-BOTTOM: 3px; FONT-STYLE: normal; PADDING-LEFT: 0px; PADDING-RIGHT: 28px; FLOAT: right; COLOR: #61696e; FONT-SIZE: 10px; PADDING-TOP: 0px
+}
+.formulario .row {
+	BORDER-BOTTOM: #dbe6e4 1px dotted; PADDING-BOTTOM: 0.3em; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; WHITE-SPACE: nowrap; CLEAR: both; OVERFLOW: hidden; PADDING-TOP: 0.3em
+}
+.formulario LABEL {
+	FLOAT: left
+}
+.formulario .row P {
+	FLOAT: left
+}
+.formulario .row DIV {
+	FLOAT: left
+}
+.formulario INPUT {
+	FLOAT: left
+}
+.formulario SELECT {
+	FLOAT: left
+}
+.formulario TEXTAREA {
+	FLOAT: left
+}
+.formulario .text {
+	PADDING-BOTTOM: 0px; PADDING-LEFT: 0px; WIDTH: 250px; PADDING-RIGHT: 0px; BACKGROUND: url(/FO_IMGS/images/html/bg_input_formularios.jpg) repeat-x; HEIGHT: 23px; PADDING-TOP: 0px
+}
+.formulario .opinar {
+	PADDING-BOTTOM: 0px; PADDING-LEFT: 0px; WIDTH: 300px; PADDING-RIGHT: 0px; HEIGHT: auto; PADDING-TOP: 0px
+}
+.formulario LABEL {
+	TEXT-ALIGN: right; MARGIN: 0.5em 1em 0.5em 0px; WIDTH: 15%; WHITE-SPACE: normal; OVERFLOW: hidden
+}
+.formulario .row P {
+	TEXT-ALIGN: right; MARGIN: 0.5em 1em 0.5em 0px; WIDTH: 15%; WHITE-SPACE: normal; OVERFLOW: hidden
+}
+.formulario .row DIV {
+	WHITE-SPACE: nowrap; CLEAR: none; OVERFLOW: hidden
+}
+.formulario .row DIV * {
+	FLOAT: none; CLEAR: none
+}
+.formulario DIV DIV INPUT {
+	MARGIN-RIGHT: 0px
+}
+.formulario .row LABEL {
+	TEXT-ALIGN: left; WIDTH: 30%
+}
+.clearfix:after {
+	DISPLAY: block; HEIGHT: 0px; VISIBILITY: hidden; CLEAR: both; CONTENT: "."
+}
+.tabla {
+	MARGIN-LEFT: 0px
+}
+.tabla TH {
+	BORDER-BOTTOM: #b0bec8 1px dotted; TEXT-ALIGN: left; PADDING-BOTTOM: 1px; BACKGROUND-COLOR: #459522; COLOR: #ffffff; BORDER-TOP: #b0bec8 1px dotted; FONT-WEIGHT: bold; PADDING-TOP: 1px
+}
+.tabla TH.center {
+	BORDER-BOTTOM: #b0bec8 1px dotted; TEXT-ALIGN: center; PADDING-BOTTOM: 1px; BACKGROUND-COLOR: #d1e1e7; COLOR: #4f6b72; BORDER-TOP: #b0bec8 1px dotted; FONT-WEIGHT: bold; PADDING-TOP: 1px
+}
+.tabla TD {
+	BORDER-BOTTOM: #b0bec8 1px dotted; PADDING-BOTTOM: 4px; PADDING-LEFT: 2px; PADDING-RIGHT: 2px; COLOR: #4f6b72; PADDING-TOP: 4px
+}
+.aviso {
+	PADDING-BOTTOM: 50px; WIDTH: 315px; FLOAT: right
+}
+.textos .textos_izq UL {
+	MARGIN-LEFT: 20px
+}
+.textos .textos_izq LI {
+	BACKGROUND-IMAGE: url(/FO_IMGS/images/common/li.gif); LIST-STYLE-TYPE: none; PADDING-LEFT: 25px; BACKGROUND-REPEAT: no-repeat; BACKGROUND-POSITION: left top
+}
+.textos_izq_b UL {
+	MARGIN-LEFT: 20px
+}
+.textos_izq_b LI {
+	BACKGROUND-IMAGE: url(/FO_IMGS/images/common/li.gif); LIST-STYLE-TYPE: none; PADDING-LEFT: 25px; BACKGROUND-REPEAT: no-repeat; BACKGROUND-POSITION: left top
+}
+.textos2 UL {
+	MARGIN-LEFT: 20px
+}
+.textos2 LI {
+	BACKGROUND-IMAGE: url(/FO_IMGS/images/common/li.gif); LIST-STYLE-TYPE: none; PADDING-LEFT: 25px; BACKGROUND-REPEAT: no-repeat; BACKGROUND-POSITION: left top
+}
+.tit_grande {
+	BORDER-BOTTOM: #c4d9d4 2px solid; PADDING-BOTTOM: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: "Arial Narrow", Arial, Helvetica; COLOR: #a8c1bf; FONT-SIZE: 33px; FONT-WEIGHT: normal; PADDING-TOP: 0px
+}
+.formulario .row DIV {
+	OVERFLOW: hidden
+}
+.formulario {
+	OVERFLOW: hidden
+}
+.formulario EM {
+	PADDING-BOTTOM: 3px; FONT-STYLE: normal; PADDING-LEFT: 0px; PADDING-RIGHT: 28px; FLOAT: right; COLOR: #61696e; FONT-SIZE: 10px; PADDING-TOP: 0px
+}
+.formulario .row {
+	BORDER-BOTTOM: #dbe6e4 1px dotted; PADDING-BOTTOM: 3px; PADDING-LEFT: 3px; WIDTH: 330px; PADDING-RIGHT: 3px; WHITE-SPACE: nowrap; FLOAT: left; HEIGHT: 27px; BORDER-RIGHT: #dbe6e4 1px dotted; PADDING-TOP: 3px
+}
+.formulario .rowlargo {
+	BORDER-BOTTOM: #dbe6e4 1px dotted; WIDTH: 665px; WHITE-SPACE: nowrap; FLOAT: left; HEIGHT: 27px
+}
+.formulario .rowlargo2 {
+	BORDER-BOTTOM: #dbe6e4 1px dotted; WIDTH: 665px; WHITE-SPACE: nowrap; FLOAT: left; HEIGHT: 150px
+}
+.campocontacto {
+	WIDTH: 125px; FLOAT: left; HEIGHT: 150px
+}
+.campocontacto2 {
+	PADDING-BOTTOM: 3px; PADDING-LEFT: 3px; WIDTH: 350px; PADDING-RIGHT: 3px; FLOAT: left; HEIGHT: 150px; PADDING-TOP: 3px
+}
+.formulario LABEL {
+	FLOAT: left
+}
+.formulario .row P {
+	FLOAT: left
+}
+.formulario .row DIV {
+	FLOAT: left
+}
+.formulario INPUT {
+	FLOAT: left
+}
+.formulario SELECT {
+	FLOAT: left
+}
+.formulario TEXTAREA {
+	FLOAT: left
+}
+.formulario .text {
+	PADDING-BOTTOM: 0px; PADDING-LEFT: 0px; WIDTH: 180px; PADDING-RIGHT: 0px; HEIGHT: 20px; PADDING-TOP: 0px
+}
+.formulario .corto {
+	PADDING-BOTTOM: 0px; PADDING-LEFT: 0px; WIDTH: 122px; PADDING-RIGHT: 0px; HEIGHT: 20px; PADDING-TOP: 0px
+}
+.formulario .opinar {
+	PADDING-BOTTOM: 0px; PADDING-LEFT: 0px; WIDTH: 300px; PADDING-RIGHT: 0px; HEIGHT: auto; PADDING-TOP: 0px
+}
+.formulario LABEL {
+	TEXT-ALIGN: left; MARGIN: 5px 2px 5px 0px; WIDTH: 120px; WHITE-SPACE: normal; CLEAR: both; OVERFLOW: hidden
+}
+.formulario .row P {
+	TEXT-ALIGN: left; MARGIN: 5px 2px 5px 0px; WIDTH: 120px; WHITE-SPACE: normal; CLEAR: both; OVERFLOW: hidden
+}
+.formulario .row {
+	WHITE-SPACE: nowrap; CLEAR: none; OVERFLOW: hidden
+}
+.row_comentario {
+	HEIGHT: 60px; CLEAR: both; PADDING-TOP: 3px
+}
+.formulario DIV DIV INPUT {
+	MARGIN-RIGHT: 0px
+}
+.formulario .row LABEL {
+	TEXT-ALIGN: left; WIDTH: 110px
+}

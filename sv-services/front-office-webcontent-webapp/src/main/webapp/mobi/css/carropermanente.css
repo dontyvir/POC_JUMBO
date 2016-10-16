@@ -1,0 +1,40 @@
+/* CARRO PERMANENTE */
+#carro{
+	width:100%;
+	vertical-align: bottom;
+	position: fixed;
+	left: auto;
+	bottom: 0px;
+	display: scroll;
+}
+.total {
+	width:100%;
+ 	background-image: url(/FO_IMGS/images/mobi/fondo_carro.gif);
+	height: 25px;
+}
+.carrito_abajo {
+	background-image: url(/FO_IMGS/images/mobi/fondo.gif);
+	background-repeat: repeat-x;
+}
+.links_abajo {
+	height: 100px;
+	clear: both;
+	width: 100%;
+	text-align: center;
+}
+.carrito{
+	width:23px;
+ 	height: 25px;
+	float:left;
+	}
+.totalizador{
+	width: 130px;
+	font-family:Arial;
+	font-size:11px;
+	color:#FFFFFF;
+	float: left;
+	height: 10px;
+	}
+.bt_paso3{
+	float: right;
+}

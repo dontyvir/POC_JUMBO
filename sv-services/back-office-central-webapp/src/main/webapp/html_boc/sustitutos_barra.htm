@@ -1,0 +1,32 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+	<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+	<META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+	<META HTTP-EQUIV="EXPIRES" CONTENT="Mon, 22 Jul 2002 11:12:01 GMT">
+	<title>Jumbo.cl Back Office Central</title>
+</head>
+
+<body>
+	<input type="hidden" id="dpickingId" value="{dpickingId}" />
+	<input type="hidden" id="cbarra" value="{barra}" />
+	<input type="hidden" id="precio" value="{precio}" />
+	<input type="hidden" id="productoId" value="{producto_id}" />
+
+
+	<table border="1">
+		<tr>
+			<th>local</th> <th>precio</th> <th>barra</th> <th>descripci&oacute;n </th> <th>descripci&oacute;n sustituto</th>
+		</tr>
+		
+		<tr>
+			<td>{local}</td>
+			<td align="right">{precio}</td>
+			<td>{barra}</td>
+			<td>{descripcion}</td>
+			<td><input id='descripcion_sust' type="text" size="50"  value="{descripcion_sust}" /></td>
+		</tr>
+	</table>
+	<button id="grabar">Grabar</button>
+</html>

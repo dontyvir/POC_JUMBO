@@ -1,0 +1,28 @@
+	<fieldset>
+		<legend>Asistencia</legend>
+					<table>
+						<tr>
+							<th>Login</th>
+							<th>Nombre</th>
+							<th>Apellido</th>
+							<th>Asistencia</th>
+						</tr>
+					<!-- BEGIN DYNAMIC: PICKEADORES -->
+						<tr>
+							<td>
+								{login}
+							</td>
+							<td>
+								{nombre}
+							</td>
+							<td>
+								{apellido}
+							</td>
+							<td align="right">
+								<input id="asis{id}_{asistencia_id}" name="asis{id}_{asistencia_id}" type="text" value="{asistencia}" size="2" maxlength="2" onKeyUp="this.value=this.value.toUpperCase();"/>
+							</td>
+						</tr>
+				<!-- END DYNAMIC: PICKEADORES -->	
+					</table>
+					<button id="guardar" type="submit">Guardar</button>
+	</fieldset>			

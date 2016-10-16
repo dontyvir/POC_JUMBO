@@ -1,0 +1,25 @@
+<html>
+<head>
+<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="EXPIRES" CONTENT="Mon, 22 Jul 2002 11:12:01 GMT">
+
+<script language="JavaScript" src="funciones.js"></script>
+</head>
+<body bgcolor="white">
+
+
+<link href="estilos.css" rel="stylesheet" type="text/css">
+{msg}
+<table border="0" align="center" cellpadding="2" cellspacing="0" class="tabla2" >
+{mensaje}
+  <!-- BEGIN DYNAMIC: LOCALES -->
+  <tr valign="top">
+  	<td width="69">{loc_id}</td>
+  	<td width="325"><div align="left">{loc_nom}</div></td>
+	<td width="48""><a href='javascript:validar_eliminar("Esta seguro que desea eliminar?","ModLocUser?accion=eliminar&loc_id={loc_id}&usu_cod={usu_cod}&url=ViewUsrLocalIframe?usu_cod={usu_cod}");'><img src='img/trash.gif' border=0></a></td>
+  </tr>
+<!-- END DYNAMIC: LOCALES -->
+</table>
+</body>
+</html>                           

@@ -1,0 +1,20 @@
+#lo anterior al 18 Abril 2012 CTA.
+#cd /u02/WebSphere/AppServer/profiles/default/deamons/GatillaCapturaTBK
+#java -Djava.awt.headless=true -cp  .:./lib/db2jcc.jar:./lib/db2jcc_license_cu.jar:./lib/db2jcc_license_cisuz.jar:./lib/GatillaCapturaTBK.jar cl.jumbo.url.Url_TBK >> logs.txt
+
+# Se busca proceso en ejecución, se debe agregar identificado único del proceso en el primer grep
+##resultado='ps -fea | grep irsmonitor | grep -v grep'
+resultado=`ps -fea | grep process-gatillacaptura-tbk.jar | grep -v grep`  
+
+#echo $resultado
+
+#Compara resultado anterior si esta vacía la variable 
+
+if [ "$resultado" == "" ]
+then
+    echo $(date) - 'voy a ejecutar el proceso captura mas purga' >> logs.txt
+    cd /u02/WebSphere/AppServer/profiles/default/deamons/GatillaCapturaTBK
+    java -Djava.awt.headless=true -cp process-gatillacaptura-tbk.jar cl.jumbo.url.Url_TBK >> logs.txt
+else
+    echo 'El proceso esta en ejecucion, NO se ejecuta nuevamente hasta terminar el actual' >> logs.txt
+fi

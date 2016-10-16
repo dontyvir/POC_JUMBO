@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<webappext:WebAppExtension xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:webappext="webappext.xmi" xmi:id="WebAppExtension_1210191744630">
+  <webApp href="WEB-INF/web.xml#WebApp_ID"/>
+  <resourceRefExtensions xmi:id="ResourceRefExtension_1210191744630" isolationLevel="TRANSACTION_REPEATABLE_READ" connectionManagementPolicy="Default">
+    <resourceRef href="WEB-INF/web.xml#ResourceRef_1176415568265"/>
+  </resourceRefExtensions>
+  <resourceRefExtensions xmi:id="ResourceRefExtension_1210191782349" isolationLevel="TRANSACTION_REPEATABLE_READ" connectionManagementPolicy="Default">
+    <resourceRef href="WEB-INF/web.xml#ResourceRef_1182976525296"/>
+  </resourceRefExtensions>
+</webappext:WebAppExtension>

@@ -1,0 +1,95 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html><!-- InstanceBegin template="/Templates/print.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="EXPIRES" CONTENT="Mon, 22 Jul 2002 11:12:01 GMT">
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>Política de Sustitución</title>
+<!-- InstanceEndEditable -->
+<!-- InstanceBeginEditable name="head" -->
+<!-- InstanceEndEditable -->
+<link href="estilos.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+<!--
+body {
+	background-color: #FFFFFF;
+}
+-->
+</style></head>
+
+<body>
+<!-- InstanceBeginEditable name="Body" -->
+<script>
+ function validar_form(form){
+ 	if (!verify(form)) return false;
+ 	if (form.motivo.value.length > 220){
+ 		alert("Observaciones permite como máximo 220 caracteres");
+ 		return false;
+ 	}
+ 	if (form.sel_mot.value==""){
+ 		alert("Debe seleccionar un motivo de despublicación");
+ 		return false;
+ 	}
+	 valor=1; 
+	 window.returnValue = valor;
+     window.close();
+     return true; 	
+ }
+
+</script>
+<script src="validacion.js"></script>
+<SCRIPT LANGUAGE="JavaScript">window.name='winhijo'</SCRIPT>
+<br>
+	<fieldset><legend>Políticas de Sustitución</legend>
+	<table width="95%" border="0" align="center" cellpadding="2" cellspacing="2" class="textonormal">
+		<tr height="5">
+		<td colspan="2" align="center"></td>
+		</tr>
+	<form name="form1" method="get" action="ModPolSustitOP" target="winhijo" onsubmit="return validar_form(this);" >
+	<input type="hidden" name="url" value="ViewPolSustitOPForm?id_pedido={id_pedido}">
+	<input type="hidden" name="id_pedido" value="{id_pedido}">
+		<tr valign="top">
+			<td width=50% align=center>Politicas de sustitucion</td>
+			<td width=50% align=center><select name="sel_psu"  onchange="document.form1.btnGuardar.disabled = false;">
+				<!-- BEGIN DYNAMIC: listado_pol_sust -->
+				<option value="{id_psu}" {sel_psu} >{desc_psu}</option>
+				<!-- END DYNAMIC: listado_pol_sust -->				
+			</select></td>
+		</tr>		
+		<br>
+		<tr valign="top">		
+			<td >
+			  <div align=center><input name="btnGuardar" type="submit" value="Guardar" disabled >
+			  </div>	
+			  </td>
+			  </form>		         
+			  <td>
+			      <div align=center>
+			      <form name="cerrar" action="ViewOPFormPedido" target="winpedido1" onsubmit="window.close();">
+					  <input type="hidden" name="id_pedido" value="{id_pedido}">
+					  <input type="hidden" name="mod" value="1">					  
+                     <input type="submit" name="cerrar" value="Cerrar" >
+                  </form>
+			    </div>
+              </td>
+		</tr>
+		<tr>
+			<td colspan=2>
+			<center><font color=red>{mensaje}</font></center>
+			</td>
+		</tr>
+	</table>
+	</fieldset>
+
+
+ <SCRIPT LANGUAGE="JavaScript">
+<!--
+ document.form1.motivo.obligatorio=true;
+ document.form1.motivo.label = 'Observacion';
+//-->
+</SCRIPT>
+<!-- InstanceEndEditable --></body>
+<!-- InstanceEnd --></html>

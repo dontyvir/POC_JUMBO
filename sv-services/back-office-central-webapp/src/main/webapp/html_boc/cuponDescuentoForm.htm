@@ -1,0 +1,416 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="EXPIRES" CONTENT="Mon, 22 Jul 2002 11:12:01 GMT">
+<title>Jumbo.cl Back Office Central</title>
+<script languaje="JavaScript" src="CalendarPopup.js"></script>
+<script languaje="JavaScript" src="validacion.js"></script>
+<script languaje="JavaScript">
+	document.write(getCalendarStyles());
+</script>
+<script language="JavaScript" src="popup.js"></script>
+<script language="JavaScript" src="funciones.js"></script>
+<script language="JavaScript">
+	window.name = 'winpedido'
+</script>
+<script language="JavaScript" src="calendario.js"></script>
+<script language="JavaScript">
+
+
+
+function validar_fecha() {
+	
+	var fi = document.getElementById("fec_ini"); 
+	var ff = document.getElementById("fec_fin"); 
+	
+		if ((document.frm_fec.fec_ini.value == "" && document.frm_fec.fec_fin.value != "")
+				|| (document.frm_fec.fec_ini.value != "" && document.frm_fec.fec_fin.value == "")) {
+				
+				if(fi.value == "")
+					fi.style.border = 'solid red 1px';
+				else
+					fi.style.border = 'solid Black 1px';
+				
+				if(ff.value == "")
+					ff.style.border = 'solid red 1px';
+				else
+					ff.style.border = 'solid Black 1px';
+				
+			return false;
+		}
+		if (document.frm_fec.fec_ini.value != "" && document.frm_fec.fec_fin.value != "") {
+			var fecha1 = document.frm_fec.fec_ini.value.substring(6, 10)
+					+ document.frm_fec.fec_ini.value.substring(3, 5)
+					+ document.frm_fec.fec_ini.value.substring(0, 2);
+			var fecha2 = document.frm_fec.fec_fin.value.substring(6, 10)
+					+ document.frm_fec.fec_fin.value.substring(3, 5)
+					+ document.frm_fec.fec_fin.value.substring(0, 2);
+			if (fecha1 > fecha2) {
+				alert("La fecha de inicio es mayor a la fecha de fin, revise por favor");
+				fi.style.border = 'solid red 1px';
+				return false;
+			}
+		}
+
+		if (document.frm_fec.fec_ini.value == "" && document.frm_fec.fec_fin.value == "") {
+			fi.style.border = 'solid red 1px';
+			ff.style.border = 'solid red 1px';
+			return false;
+		}
+		return true;
+	}
+
+
+	
+	
+function radios(obj){ 
+
+	if(obj.value=="SD_S"){ 
+		document.frm_fec.rad_tipo[0].disabled=true;
+		document.frm_fec.rad_tipo[1].disabled=true;
+		document.frm_fec.rad_tipo[0].checked="";
+		document.frm_fec.rad_tipo[1].checked="";
+	} 
+	else if(obj.value=="SD_N"){ 
+		document.frm_fec.rad_tipo[0].disabled=false;
+		document.frm_fec.rad_tipo[1].disabled=false;
+	}
+	else if(obj.value=="TS_S"){ 
+		document.frm_fec.rad_solo_despacho[0].disabled=true;
+		document.frm_fec.rad_solo_despacho[1].disabled=true;
+		document.frm_fec.rad_solo_despacho[0].checked="";
+		document.frm_fec.rad_solo_despacho[1].checked="";
+	} 
+	else if(obj.value=="TS_N"){ 
+		document.frm_fec.rad_solo_despacho[0].disabled=false;
+		document.frm_fec.rad_solo_despacho[1].disabled=false;
+	}	
+}
+
+function validar_campos(){
+
+var cod = document.getElementById("codigo");
+var desc = document.getElementById("descuento"); 
+var cant = document.getElementById("cantidad"); 
+
+		if (cod.value == "" && desc.value != "" && cant.value != "") {
+			return false;
+		}
+		if (cod.value != "" && desc.value == "" && cant.value != "") {
+			return false;
+		}
+		if (cod.value != "" && desc.value != "" && cant.value == "") {
+			return false;
+		}
+		if (cod.value != "" && desc.value == "" && cant.value == "") {
+			return false;
+		}
+		if (cod.value == "" && desc.value == "" && cant.value != "") {
+			return false;
+		}
+		if (cod.value == "" && desc.value != "" && cant.value == "") {
+			return false;
+		}
+		if (cod.value == "" && desc.value == "" && cant.value == "") {
+			return false;
+		}
+		
+		return true;
+
+}
+
+
+function guardarCupon(){
+	
+	if(validar_campos() && validar_fecha())	{
+		document.frm_fec.action='CreateCuponDescuento'; document.frm_fec.submit()
+	}	
+}
+
+
+function radios(obj){ 
+
+var ap = document.getElementById("asociarRut"); 
+
+	if(obj.value=="0")
+		ap.style.display = (ap.style.display == 'none') ? 'block' : 'none'; 
+	else
+		ap.style.display = (ap.style.display == 'none') ? 'block' : 'none';	
+		
+}
+
+function AsociarProductosForm(id_cup_dto){
+
+var a = (document.frm_fec.rad_Publico[0].checked == "") ? document.frm_fec.rad_Publico[1].value : document.frm_fec.rad_Publico[0].value
+window.location.href = 'ViewCuponAsociaProductosForm?id_cup_dto='+id_cup_dto+'&rad_Publico='+a;
+
+}
+
+
+function alerta(obj) {
+
+var cod = document.getElementById("codigo");
+var desc = document.getElementById("descuento"); 
+var cant = document.getElementById("cantidad"); 
+
+	if(obj == 1 && cod.value == "")
+		cod.style.border = 'solid red 1px';
+	 else if( obj == 1 && cod.value != "")
+		cod.style.border = 'solid Black 1px';
+	
+	if(obj == 2 && desc.value == "") {
+		desc.style.border = 'solid red 1px';
+	}
+	else if(obj == 2 && (desc.value <= 0 || desc.value > 100)) {
+		desc.style.border = 'solid red 1px';
+		desc.value="";
+	}
+	else if(obj == 2 && desc.value != "") {
+		desc.style.border = 'solid Black 1px';
+	}	
+	
+	if(obj == 3 && cant.value == "" )
+		cant.style.border = 'solid red 1px';
+	else if(obj == 3 && cant.value != "" )
+		cant.style.border = 'solid Black 1px';
+
+}
+
+
+</script>
+
+
+<script language="JavaScript" ID="js17">
+	var ayer = new Date(30, 4, 2006, 12, 0, 0, 0);
+	var cal1 = new CalendarPopup("testdiv1");
+	cal1.offsetX = -140;
+	cal1.offsetY = 20;
+</script>
+
+
+<link rel="stylesheet" href="menu/menu.css">
+<link href="estilos.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+<!--
+.style1 {
+	color: #666666
+}
+-->
+</style>
+</head>
+
+<body>
+	<script language="JavaScript" src="menu/menu.js"></script>
+	<script language="JavaScript" src="menu/menu_tpl.js"></script>
+	<script language="JavaScript" src="menu/menu_items.js"></script>
+	<table width="780" height="100%" border="0" cellpadding="0"
+		cellspacing="0">
+		<tr>
+			<td height="78" valign="top">
+				<table width="100%" height=59 border=0 align="center"
+					cellpadding="0" cellspacing="0" bgcolor="#ffffff">
+					<tr>
+						<td width="275" height="59" align="left" class="user"><img
+							src="img/header2.jpg" width="275" height="60" />
+						</td>
+						<td width="505" align="left" valign="bottom"
+							background="img/bg-1.jpg" class="user">
+							<table width="90%" border="0" align="center" cellpadding="0"
+								cellspacing="2">
+								<tr>
+									<td>&nbsp;</td>
+								</tr>
+								<tr>
+									<td><div align="right" class="infoBL">Usuario:
+											{hdr_nombre}&nbsp;&nbsp;| {hdr_fecha}</div>
+									</td>
+								</tr>
+							</table></td>
+					</tr>
+				</table>
+				<table width="100%" height="19" border="0" align="center"
+					cellpadding="0" cellspacing="0" bgcolor="#f1f0e9"
+					style="border-top: 1px solid #ABABAB; border-bottom: 1px solid #ABABAB">
+					<tr>
+						<td align="left" bgcolor="#FFFFFF" class="user"></td>
+					</tr>
+				</table></td>
+		</tr>
+		<tr>
+			<td valign="top" bgcolor="#FFFFFF">
+				<table border="0" width="100%" class='ContentTitle'>
+					<tr>
+						<td width="53%" height="20" class='HeaderTitle'>Cupón de
+							Descuento</td>
+							<td align="right"><a href="ViewCuponDescuentos"><img src="img/volver.gif" width="32" height="32" border="0"></a></td>
+					</tr>
+				</table> <br />
+				<table width="99%" border="0" align="center" cellpadding="0"
+					cellspacing="0">
+					
+					<tr>
+						<td align="center" class="infoRj">{mensaje}</td>
+					</tr>
+					<tr>
+						<td>
+						<form name="frm_fec" method="post" action="">
+							<fieldset>
+								<legend align="left">Datos del Cupón</legend>
+								<table width="100%" border="0" align="center" cellpadding="0"
+									cellspacing="0">
+									<tr>
+										<td height="20" valign="bottom" width="15%" >Cód. Cupón</td>
+										<td height="20" valign="bottom"><input id="codigo" name="codigo" type="text" size="30"
+											maxlength="30" value="{codigo}" onblur="alerta(1)" />
+											<input id="id_cup_dto" name="id_cup_dto" type="hidden" value="{id_cup_dto}" />
+										</td>
+									</tr>
+									<tr>
+										<td height="20" valign="bottom">Descuento</td>
+										<td height="20" valign="bottom"><input id="descuento" name="descuento" type="text" size="5"
+											maxlength="3" value="{descuento}" onblur="alerta(2)" /> &nbsp;%.</td>
+									</tr>
+									<tr>
+										<td height="20" valign="bottom">Uso del cupón</td>
+										<td height="20" valign="bottom"><input id="cantidad" name="cantidad" type="text" size="5"
+											value="{cantidad}" onblur="alerta(3)" /> &nbsp;veces.</td>
+									</tr>
+									<tr>
+										<td height="20" valign="bottom">Fecha Inicio</td>
+										<td height="20" valign="bottom"><input id="fec_ini" name="fec_ini" type="text" size="12"
+											maxlength="20" value="{fecha_ini}" readonly
+											onClick="cal1.select(document.frm_fec.fec_ini,'anchor1','dd-MM-yyyy'); return false;"
+											title="Fecha de Inicio"> <a href="#"
+											onClick="cal1.select(document.frm_fec.fec_ini,'anchor1','dd-MM-yyyy'); return false;"
+											name="anchor1" id="anchor1"> <img src="img/cal.gif"
+												width="16" height="16" border="0"
+												alt="Debe ingresar Fecha de Inicio y Fecha de Fin" /> </a></td>
+									</tr>
+									<tr>
+										<td height="20" valign="bottom">Fecha Termino</td>
+										<td height="20" valign="bottom"><input id="fec_fin" name="fec_fin" type="text" size="12"
+											maxlength="20" value="{fecha_fin}" readonly
+											onClick="cal1.select(document.frm_fec.fec_fin,'anchor2','dd-MM-yyyy'); return false;"
+											title="Fecha de Fin" /> <a href="#"
+											onClick="cal1.select(document.frm_fec.fec_fin,'anchor2','dd-MM-yyyy'); return false;"
+											name="anchor2" id="anchor2"> <img src="img/cal.gif"
+												width="16" height="16" border="0"
+												alt="Debe ingresar Fecha de Inicio y Fecha de Fin" /> </a></td>
+									</tr>
+									<tr><td colspan="3">&nbsp;</td></tr>
+									<tr>
+										<td height="20" valign="bottom" colspan="3">
+											
+												<fieldset>
+													<legend align="left">Tipos de Asociaciones</legend>
+												<table width="100%" border="0" cellspacing="0"
+													cellpadding="0" align="left">
+													
+														<tr>
+															<td></td>
+														</tr>
+													<tr>
+														<td height="20" valign="bottom" colspan="4">
+															Medio de pago<br>&nbsp;
+															<input name="rad_MedioPago" type="radio" value="1" {check_1} />
+															CAT&nbsp;
+															<input name="rad_MedioPago" type="radio" value="2" {check_2} />
+															TBK&nbsp;
+															<input name="rad_MedioPago" type="radio" value="0" {check_3} />
+															Todo medio de pago
+														</td>
+													</tr>
+													<tr><td>&nbsp;</td></tr>
+													<tr>
+														<td height="20" valign="bottom" colspan="8">
+															<div align="left" style="display:{check_4};">
+																Publico<br>&nbsp;
+																<input name="rad_Publico" type="radio" value="1" {check_5} onclick="radios(this)" />
+																S&iacute;&nbsp;
+																<input name="rad_Publico" type="radio" value="0" {check_6} onclick="radios(this)" />
+																No&nbsp;
+																<div style="font-size: 11px;padding-top: 5px; padding-bottom: 5px; display:{check_7};" id="asociarRut">
+																	<a href="ViewCuponAsociaRutForm?id_cup_dto={id_cup_dto}&cargando=0">Asociar Rut</a>&nbsp;
+																</div>
+															</div>
+															<br>
+															<div align="left" style="display:{check_8};">
+																<a onclick="AsociarProductosForm({id_cup_dto})">Asociar Producto(s), Rubro(s) o Secci&oacute;n(es)</a>
+															</div>
+														</td>
+													</tr>
+													<tr><td height="20" valign="bottom" colspan="4">&nbsp;</td></tr>
+													<tr>
+														<td>
+														<div align="left" style="display:{check_8};">
+															<table width="20%">
+																<tr height="20" valign="bottom">
+									                              <td >Fecha Creaci&oacute;n </td>
+									                              <td>{fec_crea}</td>
+									                            </tr>
+									                            <tr height="20" valign="bottom">
+									                              <td>Fecha Ult. Modif. </td>
+									                              <td>{fec_act}</td>
+									                            </tr>
+									                            <tr height="20" valign="bottom">
+									                              <td>Usuario Ult. Mod.</td>
+									                              <td>{usu_act}</td>
+									                            </tr>
+								                            </table>
+								                            </div>
+								                         </td>
+								                       </tr>
+												</table>
+												</fieldset>
+											</td>
+									</tr>
+									<tr><td colspan="3">&nbsp;</td></tr>
+									<tr>
+										<td colspan="3" align="center">
+											<div align="center" style="display:{check_9};">
+												<input id="btnCrear" type="button" Value=" Crear "
+												onClick="javascript:guardarCupon();">
+											</div>
+											<div align="center" style="display:{check_10};">
+												<input type="button" Value=" Guardar "
+												onClick="javascript:guardarCupon();">
+											</div>
+										</td>
+									</tr>
+								</table>
+							</fieldset>
+						</form>
+						</td>
+					</tr>
+					
+				</table>
+				<div id="testdiv1"
+					style="position: absolute; visibility: hidden; background-color: white; layer-background-color: white;"></div>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<table width="100%" height=19 border=0 align="center"
+					cellpadding="0" cellspacing="0" bgcolor="#f1f0e9"
+					style="border-top: 1px solid #ABABAB; border-bottom: 1px solid #ABABAB">
+					<tr>
+						<td align="center" bgcolor="#67b01a" class="infoBL"><div
+								align="center">Back Office Central - Jumbo.cl</div>
+						</td>
+					</tr>
+				</table></td>
+		</tr>
+	</table>
+	
+<script type="text/javascript">
+	window.document.frm_fec.descuento.onkeypress 	= KeyIsNumber;
+	window.document.frm_fec.cantidad.onkeypress 	= KeyIsNumber;
+</script>	
+
+</body>
+</html>
+

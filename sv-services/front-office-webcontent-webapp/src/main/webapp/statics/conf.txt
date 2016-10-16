@@ -1,0 +1,6 @@
+autojumbo + ID_LOCAL + .html
+
+autojumbo4.html -> Jumbo La Florida
+autojumbo5.html -> Jumbo Dominicos
+
+* Poner el tag de google analytic, con el detalle "/FO/autojumbo/NOMBRE_LOCAL"

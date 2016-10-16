@@ -1,0 +1,161 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html><!-- InstanceBegin template="/Templates/print.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="EXPIRES" CONTENT="Mon, 22 Jul 2002 11:12:01 GMT">
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>Jumbo.cl Back Office Central</title>
+<!-- InstanceEndEditable -->
+<!-- InstanceBeginEditable name="head" -->
+<SCRIPT LANGUAGE="JavaScript" SRC="/BO/BOL/CalendarPopup.js"></SCRIPT>
+<SCRIPT LANGUAGE="JavaScript">document.write(getCalendarStyles());</SCRIPT>
+<!-- InstanceEndEditable -->
+<link href="../estilos.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+<!--
+body {
+	background-color: #FFFFFF;
+}
+-->
+</style></head>
+
+<body>
+<!-- InstanceBeginEditable name="Body" -->
+			
+			
+			 <br>
+            <table width="446"  border="0" align="center" cellpadding="0" cellspacing="0">
+              <tr valign="top">
+                <td height="17"><div align="center">Calendario de Despacho </div></td>
+              </tr>
+              <tr valign="top">
+                <td width="310" height="17">Seleccione fecha </td>
+              </tr>
+			 
+			  <tr valign="top">
+              <form name="form2" method="get" action="ViewCalJorForm">  
+			  <input type="hidden" name="id_pedido" value="{id_pedido}">            
+                <!-- JScript Calendario -->
+					<SCRIPT LANGUAGE="JavaScript" ID="js17">
+								var ayer = new Date(30,4,2006,12,0,0,0);
+								var cal1 = new CalendarPopup("testdiv1");
+								cal1.offsetX = -140;
+								cal1.offsetY = -50;
+					</SCRIPT>				
+						<td><input name ="fecha" type="text" id="txt_fecha" value="{fecha}"
+							onClick="cal1.select(document.forms[0].txt_fecha,'anchor1','yyyy-MM-dd'); return false;">
+						<a href="#"
+							onClick="cal1.select(document.forms[0].txt_fecha,'anchor1','yyyy-MM-dd'); return false;"
+							name="anchor1" id="anchor1"> <img src="img/cal.gif" width="16"
+							height="16" border="0"> </a> <input type="button" class="cmd"
+							value="Buscar" onClick="submit(this);"></td>
+				</form>
+			  </tr>					
+			</table>
+				<br>
+				<DIV ID="testdiv1"
+					STYLE="position:absolute;visibility:hidden;background-color:white;layer-background-color:white;"></DIV>
+                <table width="575" height="22" border="0" align="center"
+					cellpadding="0" cellspacing="0">
+                  <tr class="tabla2">
+                    <td width="132">Id Semana</td>
+                    <td width="443">{id_semana}</td>
+                  </tr>
+                  <tr class="tabla2">
+                    <td>N&deg; semana </td>
+                    <td>{n_semana}</td>
+                  </tr>
+                  <tr class="tabla2">
+                    <td>A&ntilde;o</td>
+                    <td>{ano}</td>
+                  </tr>
+                  <tr class="tabla2">
+                    <td>Fechas</td>
+                    <td> del {f_ini} al {f_fin}</td>
+                  </tr>
+                  <tr class="tabla2">
+                    <td>N&deg; Pedido</td>
+                    <td>{id_pedido}</td>
+                  </tr>
+                  <tr class="tabla2">
+                    <td>Zona</td>
+                    <td>{zona}</td>
+                  </tr>
+                  <tr class="tabla2">
+                    <td>Capac Picking Pedido </td>
+                    <td>{capac_picking}</td>
+                  </tr>
+                </table>
+			
+			
+			<div align="center"><br>
+			</div>
+			<table width="528"  border="0" align="center" cellpadding="1" cellspacing="0" class="tabla2">
+              <tr>
+                <th width="77" align="right"><div align="center">&nbsp;</div></th>
+                <th width="66" align="right"><div align="center">Lunes<br>{f_lu}</div></th>
+                <th width="62" align="right"><div align="center">Martes<br>{f_ma}</div></th>
+                <th width="62" align="right"><div align="center">Mi&eacute;rcoles<br>{f_mi}</div></th>
+                <th width="63" align="right"><div align="center">Jueves<br>{f_ju}</div></th>
+                <th width="62" align="right"><div align="center">Viernes<br>{f_vi}</div></th>
+                <th width="57" align="right"><div align="center">S&aacute;bado<br>{f_sa}</div></th>
+                <th width="61" align="right"><div align="center">Domingo<br>{f_do}</div></th>
+              </tr>
+              <form name="forma1" method="post" action="/BO/BOC/ReagendaDespacho">
+              <input type="hidden" name="url" value="/BO/BOC/ViewCalJorForm?id_pedido={id_pedido}">
+              <input type="hidden" name="id_pedido" value="{id_pedido}">
+              
+              <!-- BEGIN DYNAMIC: listado -->
+              <tr>
+                <td align="right"><div align="center">{h_ini} - {h_fin}</div></td>
+                <td align="right"><div align="center">
+                  <input name="id_jdespacho" type="radio" value="{id_jdespacho_lu}" {disabled_lu} >
+                  {precio_lu}</div></td>
+                <td align="right"><div align="center">
+                  <input name="id_jdespacho" type="radio" value="{id_jdespacho_ma}" {disabled_ma} >
+                  {precio_ma}</div></td>
+                <td align="right"><div align="center">
+                  <input name="id_jdespacho" type="radio" value="{id_jdespacho_mi}" {disabled_mi} >
+                  {precio_mi}</div></td>
+                <td align="right"><div align="center">
+                  <input name="id_jdespacho" type="radio" value="{id_jdespacho_ju}" {disabled_ju} >
+                  {precio_ju}</div></td>
+                <td align="right"><div align="center">
+                  <input name="id_jdespacho" type="radio" value="{id_jdespacho_vi}" {disabled_vi} >
+                  {precio_vi}</div></td>
+                <td align="right"><div align="center">
+                  <input name="id_jdespacho" type="radio" value="{id_jdespacho_sa}" {disabled_sa} >
+                  {precio_sa}</div></td>
+                <td align="right">
+                  <div align="center">
+                  <input name="id_jdespacho" type="radio" value="{id_jdespacho_do}" {disabled_do} >
+                  {precio_do}</div></td>
+              </tr>      
+              <!-- END DYNAMIC: listado -->
+            </table>
+            <br>
+            <table width="59%"  border="0" align="center" cellpadding="0" cellspacing="2">
+              <tr>
+                <td><input name="conservaprecio" type="radio" value="0" checked> 
+                Respetar Precio Original 
+                <input name="conservaprecio" type="radio" value="1">
+                  Aplicar Nuevo Precio
+                  <input type="text" name="precio" value="0" size="10">$
+                  </td>
+              </tr>
+              <tr>
+                <td><div align="center">
+                  <input type="submit" name="Button" value="Reagendar">
+                  <input type="button" name="Button" value="Cerrar" onClick="window.close();">
+                </div></td>
+              </tr>
+            </form>
+            </table>
+            <br>
+            <br>
+            <br>
+<!-- InstanceEndEditable --></body>
+<!-- InstanceEnd --></html>

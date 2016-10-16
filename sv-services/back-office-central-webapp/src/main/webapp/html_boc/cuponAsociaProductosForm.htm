@@ -1,0 +1,456 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="EXPIRES" CONTENT="Mon, 22 Jul 2002 11:12:01 GMT">
+<title>Jumbo.cl Back Office Central</title>
+<script languaje="JavaScript" src="CalendarPopup.js"></script>
+<script languaje="JavaScript" src="validacion.js"></script>
+<script languaje="JavaScript">
+	document.write(getCalendarStyles());
+</script>
+<script language="JavaScript" src="popup.js"></script>
+<script language="JavaScript" src="funciones.js"></script>
+<script language="JavaScript">
+	window.name = 'winpedido'
+</script>
+<script language="JavaScript" src="calendario.js"></script>
+<script type="text/javascript" language="JavaScript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script language="JavaScript">
+	
+
+function radios(obj){ 
+	if(obj.value=="P"){ 
+	
+		document.frm_fec.rad_buscar[0].disabled=false; 
+		document.frm_fec.rad_buscar[1].disabled=false;
+		document.frm_fec.botonBuscar.disabled=false;
+		document.frm_fec.txtBuscar.disabled=false;
+		document.frm_fec.botonAsociar.disabled=false;
+		
+		document.frm_fec.rad_despacho[0].disabled=false; 
+		document.frm_fec.rad_despacho[1].disabled=false;
+		document.frm_fec.rad_despacho[0].checked="";
+		document.frm_fec.rad_despacho[1].checked="checked";
+		document.frm_fec.rad_buscar[0].checked="checked";
+		
+		var ap = document.getElementById("asociarProducto"); //se define la variable "el" igual a nuestro div
+		ap.style.display = (ap.style.display == 'none') ? 'block' : 'none'; //damos un atributo display:none que oculta el div
+		var ar = document.getElementById("asociarRubro"); //se define la variable "el" igual a nuestro div
+		ar.style.display = (ar.style.display == 'none') ? 'none' : 'none'; //damos un atributo display:none que oculta el div
+		var as = document.getElementById("asociarSeccion"); //se define la variable "el" igual a nuestro div
+		as.style.display = (as.style.display == 'none') ? 'none' : 'none'; //damos un atributo display:none que oculta el div
+		var sd = document.getElementById("asociarTodasLassecciones_o_Despachos"); //se define la variable "el" igual a nuestro div
+		sd.style.display = (sd.style.display == 'none') ? 'none' : 'none'; //damos un atributo display:none que oculta el div
+		
+	} 
+	else if(obj.value=="R") { 
+		
+		document.frm_fec.rad_buscar[0].disabled=true; 
+		document.frm_fec.rad_buscar[1].disabled=true;
+		document.frm_fec.rad_buscar[0].checked="";
+		document.frm_fec.rad_buscar[1].checked="";
+		document.frm_fec.botonBuscar.disabled=true;
+		document.frm_fec.txtBuscar.disabled=true;
+		document.frm_fec.txtBuscar.value="";
+		
+		document.frm_fec.rad_despacho[0].disabled=false; 
+		document.frm_fec.rad_despacho[1].disabled=false;
+		document.frm_fec.rad_despacho[0].checked="";
+		document.frm_fec.rad_despacho[1].checked="checked";
+		
+		var ap = document.getElementById("asociarProducto"); //se define la variable "el" igual a nuestro div
+		ap.style.display = (ap.style.display == 'none') ? 'none' : 'none'; //damos un atributo display:none que oculta el div
+		var ar = document.getElementById("asociarRubro"); //se define la variable "el" igual a nuestro div
+		ar.style.display = (ar.style.display == 'none') ? 'block' : 'none'; //damos un atributo display:none que oculta el div
+		var as = document.getElementById("asociarSeccion"); //se define la variable "el" igual a nuestro div
+		as.style.display = (as.style.display == 'none') ? 'none' : 'none'; //damos un atributo display:none que oculta el div	
+		
+		var sd = document.getElementById("asociarTodasLassecciones_o_Despachos"); //se define la variable "el" igual a nuestro div
+		sd.style.display = (sd.style.display == 'none') ? 'none' : 'none'; //damos un atributo display:none que oculta el div
+			
+	} 
+	else if(obj.value=="S") {
+		
+		document.frm_fec.rad_buscar[0].disabled=true; 
+		document.frm_fec.rad_buscar[1].disabled=true;
+		document.frm_fec.rad_buscar[0].checked="";
+		document.frm_fec.rad_buscar[1].checked="";
+		document.frm_fec.botonBuscar.disabled=true;
+		document.frm_fec.txtBuscar.disabled=true;
+		document.frm_fec.txtBuscar.value="";
+		
+		document.frm_fec.rad_despacho[0].disabled=false; 
+		document.frm_fec.rad_despacho[1].disabled=false;
+		document.frm_fec.rad_despacho[0].checked="";
+		document.frm_fec.rad_despacho[1].checked="checked";
+		
+		var ap = document.getElementById("asociarProducto"); //se define la variable "el" igual a nuestro div
+		ap.style.display = (ap.style.display == 'none') ? 'none' : 'none'; //damos un atributo display:none que oculta el div
+		var ar = document.getElementById("asociarRubro"); //se define la variable "el" igual a nuestro div
+		ar.style.display = (ar.style.display == 'none') ? 'none' : 'none'; //damos un atributo display:none que oculta el div
+		var as = document.getElementById("asociarSeccion"); //se define la variable "el" igual a nuestro div
+		as.style.display = (as.style.display == 'none') ? 'block' : 'none'; //damos un atributo display:none que oculta el div
+		
+		var sd = document.getElementById("asociarTodasLassecciones_o_Despachos"); //se define la variable "el" igual a nuestro div
+		sd.style.display = (sd.style.display == 'none') ? 'none' : 'none'; //damos un atributo display:none que oculta el div
+		
+		}	
+		
+	else if(obj.value=="TS") {
+		
+		document.frm_fec.rad_buscar[0].disabled=true; 
+		document.frm_fec.rad_buscar[1].disabled=true;
+		document.frm_fec.rad_buscar[0].checked="";
+		document.frm_fec.rad_buscar[1].checked="";
+		document.frm_fec.botonBuscar.disabled=true;
+		document.frm_fec.txtBuscar.disabled=true;
+		document.frm_fec.txtBuscar.value="";
+	
+		
+		document.frm_fec.rad_despacho[0].disabled=false; 
+		document.frm_fec.rad_despacho[1].disabled=false;
+		document.frm_fec.rad_despacho[0].checked="";
+		document.frm_fec.rad_despacho[1].checked="checked";
+		
+		var ap = document.getElementById("asociarProducto"); //se define la variable "el" igual a nuestro div
+		ap.style.display = (ap.style.display == 'none') ? 'none' : 'none'; //damos un atributo display:none que oculta el div
+		var ar = document.getElementById("asociarRubro"); //se define la variable "el" igual a nuestro div
+		ar.style.display = (ar.style.display == 'none') ? 'none' : 'none'; //damos un atributo display:none que oculta el div
+		var as = document.getElementById("asociarSeccion"); //se define la variable "el" igual a nuestro div
+		as.style.display = (as.style.display == 'none') ? 'none' : 'none'; //damos un atributo display:none que oculta el div
+		
+		var sd = document.getElementById("asociarTodasLassecciones_o_Despachos"); //se define la variable "el" igual a nuestro div
+		sd.style.display = (sd.style.display == 'none') ? 'block' : 'block'; //damos un atributo display:none que oculta el div
+		
+		}	
+		
+		else if(obj.value=="D") {
+		
+		document.frm_fec.rad_buscar[0].disabled=true; 
+		document.frm_fec.rad_buscar[1].disabled=true;
+		document.frm_fec.rad_buscar[0].checked="";
+		document.frm_fec.rad_buscar[1].checked="";
+		document.frm_fec.botonBuscar.disabled=true;
+		document.frm_fec.txtBuscar.disabled=true;
+		document.frm_fec.txtBuscar.value="";
+		
+		
+		
+		document.frm_fec.rad_despacho[0].disabled=true; 
+		document.frm_fec.rad_despacho[1].disabled=true;
+		document.frm_fec.rad_despacho[0].checked="checked";
+		document.frm_fec.rad_despacho[1].checked="";
+		
+		var ap = document.getElementById("asociarProducto"); //se define la variable "el" igual a nuestro div
+		ap.style.display = (ap.style.display == 'none') ? 'none' : 'none'; //damos un atributo display:none que oculta el div
+		var ar = document.getElementById("asociarRubro"); //se define la variable "el" igual a nuestro div
+		ar.style.display = (ar.style.display == 'none') ? 'none' : 'none'; //damos un atributo display:none que oculta el div
+		var as = document.getElementById("asociarSeccion"); //se define la variable "el" igual a nuestro div
+		as.style.display = (as.style.display == 'none') ? 'none' : 'none'; //damos un atributo display:none que oculta el div
+		
+		var sd = document.getElementById("asociarTodasLassecciones_o_Despachos"); //se define la variable "el" igual a nuestro div
+		sd.style.display = (sd.style.display == 'none') ? 'block' : 'block'; //damos un atributo display:none que oculta el div
+		
+		}	
+}
+
+function submitAsociar(id_cup_dto){
+
+var prod = document.getElementById("dato_tipo_prodcuto");
+var rub = document.getElementById("dato_tipo_rubro");
+var secc = document.getElementById("dato_tipo_seccion");
+
+
+if( prod.value != "" || rub.value != "" || secc.value != "" ) {
+
+	if(!confirm(" Esta seguro ?  \n Al asociar un tipo distinto al cupon, se borraran los tipos asociados actualmente.")) 
+  	{
+  		return false;
+  	} 
+  	else {
+          //document.frm_fec.action='ViewCuponAsociaProductosForm?id_cup_dto='+id_cup_dto; 
+          
+           var form_url = 'ViewCuponAsociaProductosForm?id_cup_dto='+id_cup_dto;
+		  $("#frm_fec").attr("action", form_url);
+          
+          document.frm_fec.submit();
+               return false;
+       }   
+}
+else{
+	alert("Debe seleccionar un item de la lista");
+}
+
+
+}
+
+
+
+
+
+
+
+
+function submitAsociarTD(id_cup_dto){
+
+if(!confirm(" Esta seguro ?  \n Al asociar un tipo distinto al cupon, se borraran los tipos asociados actualmente.")) 
+  {
+  	return false;
+  } 
+  else {
+        //open("ejemplos/jscript/pregunta.htm");
+         // document.frm_fec.action='ViewCuponAsociaProductosForm?id_cup_dto='+id_cup_dto; 
+          
+          var form_url = 'ViewCuponAsociaProductosForm?id_cup_dto='+id_cup_dto;
+		  $("#frm_fec").attr("action", form_url);
+          document.frm_fec.submit();
+               return false;
+       }   
+}
+
+function submitGuardar(id_cup_dto_up){
+
+	var form_url = 'ViewCuponAsociaProductosForm?id_cup_dto_up='+id_cup_dto_up;
+	$("#frm_fec").attr("action", form_url);
+	document.frm_fec.submit();
+
+}
+
+//document.frm_fec.action='ViewCuponAsociaProductosForm?id_cup_dto={id_cup_dto}'; document.frm_fec.submit()
+function buscar(id_cup_dto) {
+
+
+var form_url = 'ViewCuponAsociaProductosForm?id_cup_dto='+id_cup_dto;
+	$("#frm_fec").attr("action", form_url);
+	document.frm_fec.submit();
+
+//document.frm_fec.action='ViewCuponAsociaProductosForm?id_cup_dto={id_cup_dto}'; document.frm_fec.submit();
+
+}
+</script>
+
+
+
+<link rel="stylesheet" href="menu/menu.css">
+<link href="estilos.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+<!--
+.style1 {
+	color: #666666
+}
+-->
+</style>
+</head>
+
+<body>
+	<script language="JavaScript" src="menu/menu.js"></script>
+	<script language="JavaScript" src="menu/menu_tpl.js"></script>
+	<script language="JavaScript" src="menu/menu_items.js"></script>
+	<table width="780" height="100%" border="0" cellpadding="0"
+		cellspacing="0">
+		<tr>
+			<td height="78" valign="top">
+				<table width="100%" height=59 border=0 align="center"
+					cellpadding="0" cellspacing="0" bgcolor="#ffffff">
+					<tr>
+						<td width="275" height="59" align="left" class="user"><img
+							src="img/header2.jpg" width="275" height="60" />
+						</td>
+						<td width="505" align="left" valign="bottom"
+							background="img/bg-1.jpg" class="user">
+							<table width="90%" border="0" align="center" cellpadding="0"
+								cellspacing="2">
+								<tr>
+									<td>&nbsp;</td>
+								</tr>
+								<tr>
+									<td><div align="right" class="infoBL">Usuario:
+											{hdr_nombre}&nbsp;&nbsp;| {hdr_fecha}</div>
+									</td>
+								</tr>
+							</table></td>
+					</tr>
+				</table>
+				<table width="100%" height="19" border="0" align="center"
+					cellpadding="0" cellspacing="0" bgcolor="#f1f0e9"
+					style="border-top: 1px solid #ABABAB; border-bottom: 1px solid #ABABAB">
+					<tr>
+						<td align="left" bgcolor="#FFFFFF" class="user"></td>
+					</tr>
+				</table></td>
+		</tr>
+		<tr>
+			<td valign="top" bgcolor="#FFFFFF">
+				<table border="0" width="100%" class='ContentTitle'>
+					<tr>
+						<td width="53%" height="20" class='HeaderTitle'>Asociar tipo (Producto - Rubro - Seccion)</td>
+							<td align="right"><a href="ViewCuponDescuentos"><img src="img/volver.gif" width="32" height="32" border="0"></a></td>
+					</tr>
+				</table> <br />
+				<table width="99%" border="0" align="center" cellpadding="0"
+					cellspacing="0">
+					
+					<tr>
+						<td align="center" class="infoRj">{mensaje}</td>
+					</tr>
+					<tr>
+						<td>
+						<form id = "frm_fec" name="frm_fec" method="post" action="">
+							<input type="hidden" name="codigo" value="{codigo}" >
+							<input type="hidden" name="rad_Publico" value="{rad_Publico}" >
+							
+							<fieldset>
+								<legend align="left">Tipo asociación</legend>
+								<table width="100%" border="0" align="center" cellpadding="0"
+									cellspacing="0">					
+									<tr>
+										<td>Código cupón : {cod_cupon}</td>
+									</tr>
+													<tr>
+														<td colspan="8">
+															<input name="rad_tipo" type="radio" value="P" {check_1} onclick="radios(this)" />
+															Producto&nbsp;
+															<input name="rad_tipo" type="radio" value="R" {check_2} onclick="radios(this)" />
+															Rubro&nbsp;
+															<input name="rad_tipo" type="radio" value="S" {check_3} onclick="radios(this)" />
+															Sección&nbsp;
+															<input name="rad_tipo" type="radio" value="TS" {check_4} onclick="radios(this)" />
+															Todas las secci&oacute;n&nbsp;
+															<input name="rad_tipo" type="radio" value="D" {check_5} onclick="radios(this)" />
+															Solo despacho
+														</td>
+													</tr>
+													<tr>
+														<td>Buscar Por</td>
+													</tr>
+													<tr>
+														<td height="20"><input type="radio" name="rad_buscar"
+															value="cod" {check_6} /> C&oacute;digo <input type="radio"
+															name="rad_buscar" value="desc" {check_7} /> Descripci&oacute;n
+														</td>
+													</tr>
+													<tr>
+														<td align="center">
+														<input type="hidden" name="action"
+															value="bus_codig" /> <input id="txtBuscar" name="codDesc" type="text"
+															size="50" maxlength="30" value="{codDesc}" {buscador} /> <!-- <input name="bus_codDesc" type="submit" class="cmd" value=" Buscar " /> -->
+															<!-- <INPUT TYPE="button" VALUE="Buscar" ONCLICK="buscar()"> -->
+															<input id="botonBuscar" type="button" Value=" Buscar " {buscador}
+															onClick="javascript:buscar('{id_cup_dto}');">
+														</td>
+													</tr>
+													
+													
+												</table>
+												</fieldset>
+											
+											</td>
+									</tr>
+									<tr>
+										<td colspan="3" align="center">
+										<div style="font-size: 11px;padding-top: 5px; padding-bottom: 5px; display:{listProductos};" id="asociarProducto" >
+											<select id="dato_tipo_prodcuto"
+												name="dato_tipo_prodcuto" class="tipos">
+													<option value="">----------------</option>
+													<!-- BEGIN DYNAMIC: PRODUCTOS -->
+													<option value="{dato_tipo_cod}"{sel_tipo_buscado}>{dato_tipo_desc}</option>
+													<!-- END DYNAMIC: PRODUCTOS -->
+											</select>
+											<input id="botonAsociar" type="button" Value=" Asociar "
+															onClick="submitAsociar({id_cup_dto})";>
+										</div>
+										<div style="font-size: 11px;padding-top: 5px; padding-bottom: 5px; display:{listRubros};" id="asociarRubro" >
+											<select id="dato_tipo_rubro"
+												name="dato_tipo_rubro" class="tipos">
+													<option value="">----------------</option>
+													<!-- BEGIN DYNAMIC: RUBROS -->
+													<option value="{dato_tipo_cod}"{sel_tipo_buscado}>{dato_tipo_desc}</option>
+													<!-- END DYNAMIC: RUBROS -->
+											</select>
+											<input id="botonAsociar" type="button" Value=" Asociar "
+															onClick="submitAsociar({id_cup_dto})";>
+											</div>
+										<div style="font-size: 11px;padding-top: 5px; padding-bottom: 5px; display:{listSecciones};" id="asociarSeccion" >
+											<select id="dato_tipo_seccion"
+												name="dato_tipo_seccion" class="tipos">
+													<option value="">----------------</option>
+													<!-- BEGIN DYNAMIC: SECCIONES -->
+													<option value="{dato_tipo_cod}"{sel_tipo_buscado}>{dato_tipo_desc}</option>
+													<!-- END DYNAMIC: SECCIONES -->
+											</select>
+											<input id="botonAsociar" type="button" Value=" Asociar "
+															onClick="submitAsociar({id_cup_dto})";>
+										</div>
+										<div style="font-size: 11px;padding-top: 5px; padding-bottom: 5px; display:{btnAsociar};" id="asociarTodasLassecciones_o_Despachos" >
+											<input id="botonAsociar" type="button" Value=" Asociar "
+															onClick="submitAsociarTD({id_cup_dto})";>
+										</div>
+										</td>
+									</tr>
+									<tr><td>&nbsp;</td></tr>
+									<tr>
+										<td colspan="8" valign="top" aling="center">
+										<table width="80%"  border="1" align="center" cellpadding="0" cellspacing="0" class="tabla2">
+										  <tr align="left">
+										  	<th>C&oacute;digo</th>
+											<th>Descripci&oacute;n</th>
+										  </tr>
+											<!-- BEGIN DYNAMIC: LISTA_ASOCIACIONES -->
+											<tr>
+												<td valign="top">{listaIdProdRubSecc}</td>
+												<td>{listaNombreProdRubSecc}</td>
+											</tr>
+											<!-- END DYNAMIC: LISTA_ASOCIACIONES -->
+										</table>
+										</td>
+									</tr>
+									<tr><td>&nbsp;</td></tr>
+									<tr>
+										<td height="20" valign="bottom" colspan="8">
+											Despacho&nbsp;
+											<input name="rad_despacho" type="radio" value="1" {check_8} />
+											Sí&nbsp;
+											<input name="rad_despacho" type="radio" value="0" {check_9} />
+											No
+										</td>
+									</tr>
+									<tr><td>&nbsp;</td></tr>
+									<tr align="center">
+										<td>
+										<div style="display:{check_10};">
+										<input id="botonGuardar" type="button" Value=" Guardar "
+											onClick="submitGuardar('{id_cup_dto_up}')"> 
+										</div>
+										</td>
+									</tr>
+									<tr><td>&nbsp;</td></tr>
+								</table>
+							</fieldset>
+						</form>
+						</td>
+					</tr>
+				</table>
+				<div id="testdiv1"
+					style="position: absolute; visibility: hidden; background-color: white; layer-background-color: white;"></div>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<table width="100%" height=19 border=0 align="center"
+					cellpadding="0" cellspacing="0" bgcolor="#f1f0e9"
+					style="border-top: 1px solid #ABABAB; border-bottom: 1px solid #ABABAB">
+					<tr>
+						<td align="center" bgcolor="#67b01a" class="infoBL"><div
+								align="center">Back Office Central - Jumbo.cl</div>
+						</td>
+					</tr>
+				</table></td>
+		</tr>
+	</table>
+</body>
+</html>
+

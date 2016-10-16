@@ -1,0 +1,107 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="EXPIRES" CONTENT="Mon, 22 Jul 2002 11:12:01 GMT">
+<title>Jumbo.cl Back Office Local</title>
+<script language="JavaScript" src="funciones.js"></script>
+<script type="text/javascript" src="js/layer.js"></script>
+<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+<link href="estilos.css" rel="stylesheet" type="text/css">
+<link href="html_bol/estilostextos.css" rel="stylesheet" type="text/css">
+<link href="light_box_PD.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+<!--
+.style1 {color: #666666}
+#alertamontofuerarango {
+	position:absolute;
+	width: 0px;
+	height: 0px;
+	left: 0px;
+	top: 0px;
+	visibility: hidden;
+	border: 1;
+	z-index: 10;
+}
+.Estilo1 {
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight: bold;
+	font-size: 14px;
+	color: #003399;
+}
+-->
+</style>
+
+<script language="JavaScript" type="text/javascript">
+function incluirPickeo(id_prod){
+	var lista = window.opener.prod_faltantes_apickear;
+	if(document.getElementById(id_prod).checked){
+		window.opener.addprod(id_prod);
+	} else {
+		window.opener.deleteprodpick(id_prod);
+	}
+	
+}
+function repickearSeleccionados(){
+	if(window.opener.seleccionaRepickeo()){
+		window.opener.repickearSeleccionados();
+	} else {
+		alert("Debe seleccionar al menos un producto faltante a repickear");
+	}
+	
+}
+</script>
+</head>
+<body>
+<link rel="stylesheet" href="menu/menu.css" />
+		<table width="780" height="100%" border="0" cellpadding="0" cellspacing="0">
+			<tr>
+				<td height="78" valign="top">
+					<table width="100%" height="59" border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#ffffff">
+						<tr>
+							<td width="275" height="59" align="left" class="user"><img src="img/header2.jpg" width="275" height="60" /></td>
+							<td width="505" align="left" valign="bottom" background="img/bg-1.jpg" class="user">
+								<table width="90%" border="0" align="center" cellpadding="0" cellspacing="2">
+									<tr>
+										<td>&nbsp;</td>
+									</tr>
+									<tr>
+										<td></td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+			<tr><td>
+	<FORM name="repickear" method="POST" action="RevisionFaltante?id_pedido={id_pedido}&btn=R&id_jornada={id_jornada}">
+			<table border="0" style="margin-left:30px"><tr><td style="color:black;">
+			<h3><p><strong>Seleccione los productos faltantes a repickear</strong><br /></p></h3>
+			<table width="465" border="1" align="center" cellpadding="2" cellspacing="0" class="tabla2">
+				<tr>
+					<th width="76">Cod Prod</th>
+					<th width="185">Descripci&oacute;n</th>
+					<th width="112">Cant. Faltante</th>
+					<th width="112">Repickear</th>
+				</tr>
+				<!-- BEGIN DYNAMIC: select_faltantes -->
+				<tr valign="top">
+					<td><div align="center">{cod_prod}</div></td>
+					<td><div align="left">{descripcion}</div></td>
+					<td><div align="center">{cant}</div></td>
+					<td align="center"><input type="checkbox" name="productospickear" id="{cod_prod}" onclick="incluirPickeo({cod_prod});" /> </td>
+				</tr>
+				<!-- END DYNAMIC: select_faltantes -->
+			</table>
+
+			</td></tr><tr><td align="right">
+			<INPUT type="button" name="btnRepick" value="Repickear Faltante" id="btnRepick" align="bottom" onclick="repickearSeleccionados();" >
+			</td></tr></table>
+		</FORM>
+			</td></tr></table>															
+</body>
+</html>

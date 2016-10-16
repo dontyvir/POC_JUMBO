@@ -1,0 +1,247 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html><!-- InstanceBegin template="/Templates/fullbody.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="EXPIRES" CONTENT="Mon, 22 Jul 2002 11:12:01 GMT">
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>Jumbo.cl Back Office Local</title>
+<!-- InstanceEndEditable -->
+
+<!-- InstanceBeginEditable name="head" -->
+<SCRIPT LANGUAGE="JavaScript" SRC="CalendarPopup.js"></SCRIPT>
+<SCRIPT LANGUAGE="JavaScript">document.write(getCalendarStyles());</SCRIPT>
+<script language="JavaScript" src="funciones.js"></script>
+<!-- InstanceEndEditable -->
+
+<link href="estilos.css" rel="stylesheet" type="text/css">
+<!--link href="../Prototipo/default.css" rel="stylesheet" type="text/css"-->
+<style type="text/css">
+<!--
+.style1 {color: #666666}
+-->
+</style>
+</head>
+
+<body>
+<link rel="stylesheet" href="menu/menu.css">
+<script language="JavaScript" src="menu/menu.js"></script>
+<script language="JavaScript" src="menu/menu_tpl.js"></script>
+<script language="JavaScript" src="menu/menu_items.js"></script>
+<table width="780" height="100%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+    <td height="78" valign="top">
+	
+	<TABLE width="100%" height=59 border=0 align="center" cellpadding="0" cellspacing="0" bgcolor="#ffffff">
+	  <TR>
+		<TD width=275 height="59" align=left class=user><img src="img/header2.jpg" width="275" height="60"></TD>
+		<TD width=505 align=left valign="bottom" background="img/bg-1.jpg" class=user><table width="90%"  border="0" align="center" cellpadding="0" cellspacing="2">
+          <tr>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td><div align="right" class="infoBL">Usuario: {hdr_nombre} | Local: {hdr_local} | {hdr_fecha} </div></td>
+          </tr>
+        </table></TD>
+	  </TR>
+	</TABLE>
+	<TABLE width="100%" height=19 border=0 align="center" cellpadding="0" cellspacing="0" bgcolor="#f1f0e9" style="border-top:1px solid #ABABAB; border-bottom:1px solid #ABABAB">
+	  <TR>
+		<TD align=left bgcolor="#FFFFFF" class=user></TD>
+		</TR>
+	</TABLE>
+
+	
+	</td>
+  </tr>
+  <tr height="400">
+    <td valign="top" bgcolor="#FFFFFF">
+      <table border=0 width="100%" class='ContentTitle'>
+        <tr>
+          <td width="53%" height="20" class='HeaderTitle'><!-- InstanceBeginEditable name="Titulo" -->Administraci&oacute;n Calendario de Despacho <!-- InstanceEndEditable --></td>
+          <td width="47%" class='HeaderTitle'><!-- InstanceBeginEditable name="Botonera" --><!-- InstanceEndEditable --></td>
+        </tr>
+      </table>
+	  <br>
+      <table width="100%"  border="0" cellspacing="2" cellpadding="2">
+        <tr valign="top">
+          <td width="71%"><!-- InstanceBeginEditable name="Izquierda" --><table width="614"  border="0" align="center" cellpadding="0" cellspacing="0">
+              <tr valign="top">
+                <td>Seleccione Zona de Despacho</td>
+                <td height="17">Seleccione fecha </td>
+              </tr>
+			  <tr valign="top">
+              <form name="formselect" method="get" action="ViewCalDespacho" >              
+                <td width="157"><select name="id_zona" onChange="submit(this.form);">
+                <!-- BEGIN DYNAMIC: select_zona_despacho -->
+                  <option value = "{id_zona}" {sel}>{nombre}</option>
+                <!-- END DYNAMIC: select_zona_despacho -->                  
+                </select></td>
+               </form> 
+              <form name="form2" method="get" action="ViewCalDespacho" >                              
+                <!-- JScript Calendario -->
+					<SCRIPT LANGUAGE="JavaScript" ID="js17">
+								var ayer = new Date(30,4,2006,12,0,0,0);
+								var cal1 = new CalendarPopup("testdiv1");
+								cal1.offsetX = -140;
+								cal1.offsetY = -50;
+					</SCRIPT>				
+						<td>
+						<input type = "hidden" name = "id_zona" value = "{id_zona}">
+						<input name ="fecha" type="text" id="txt_fecha" value="{fecha}" onClick="cal1.select(document.forms[1].txt_fecha,'anchor1','yyyy-MM-dd'); return false;" readonly="true">
+						<a href="#"
+							onClick="cal1.select(document.forms[1].txt_fecha,'anchor1','yyyy-MM-dd'); return false;"
+							name="anchor1" id="anchor1"> <img src="img/cal.gif" width="16"
+							height="16" border="0"> </a> <input type="button" class="cmd"
+							value="Buscar" onClick="submit(this);"></td>
+			  	        <td width="257"><font color="red">{msg2}{rc}</font></td>
+						
+				</form>
+			  </tr>								  
+			</table>
+				<br>
+				<DIV ID="testdiv1"
+					STYLE="position:absolute;visibility:hidden;background-color:white;layer-background-color:white;"></DIV>
+                <table width="720" height="22" border="0" align="center"
+					cellpadding="0" cellspacing="0">
+                  <tr class="tabla2">
+                    <td width="138">Id Semana</td>
+                    <td width="620">{id_semana}</td>
+                  </tr>
+                  <tr class="tabla2">
+                    <td>N&deg; semana </td>
+                    <td>{n_semana}</td>
+                  </tr>
+                  <tr class="tabla2">
+                    <td>A&ntilde;o</td>
+                    <td>{ano}</td>
+                  </tr>
+                  <tr class="tabla2">
+                    <td>Fechas</td>
+                    <td> del {f_ini} al {f_fin}</td>
+                  </tr>
+                </table>
+              <br>
+              <table width="748"  border="0" align="center" cellpadding="2" cellspacing="0" class="tabla2">
+                <tr>
+                  <th width="60"><div align="center">H.Ini<br>-<br>H.Fin</div></th>
+                  <th width="78"><div align="center"> &nbsp;</div></th>
+                  <th width="80">Lunes<br>{f_lu}</th>
+                  <th width="80">Martes <br>{f_ma}</th>
+                  <th width="80">Miercoles<br>{f_mi}</th>
+                  <th width="80">Jueves<br>{f_ju}</th>
+                  <th width="80">Viernes<br>{f_vi}</th>
+                  <th width="80">S&aacute;bado<br>{f_sa}</th>
+                  <th width="80">Domingo<br>{f_do}</th>
+                  <th width="3">&nbsp;</th>
+                </tr>
+                <!-- BEGIN DYNAMIC: listado -->
+                <tr>
+                  <td><div align="center">{h_ini}<br>-<br>{h_fin}</div></td>
+                  <td valign="top">Id: <br>
+	                J.Pick:<br>
+                    Capacidad:<br>
+                    T. Normal:<br>
+                    <font color='#FF0000'>T. Express:</font><br>
+                    <font color='#663300'>T. Bajo Umbral:</font>
+                  </td>
+                  
+                  <td valign="top">{id_jdespacho_lu}<br><a href="ViewJornada?id_jornada={id_jpicking_lu}">{id_jpicking_lu}</a>
+                  			<br>{capac_ocupada_lu}<font color="red"> / </font>{capac_despacho_lu}<br>{tarifa_normal_lu}<br>
+                  			<font color='#FF0000'>{tarifa_express_lu}</font><br>
+                  			<font color='#663300'>{tarifa_umbral_lu}</font>
+                  </td>
+                  			
+                  <td valign="top">{id_jdespacho_ma}<br><a href="ViewJornada?id_jornada={id_jpicking_ma}">{id_jpicking_ma}</a>
+                  			<br>{capac_ocupada_ma}<font color="red"> / </font>{capac_despacho_ma}<br>{tarifa_normal_ma}<br>
+                  			<font color='#FF0000'>{tarifa_express_ma}</font><br>
+                  			<font color='#663300'>{tarifa_umbral_ma}</font>             			
+                  </td>
+                  			
+                  <td valign="top">{id_jdespacho_mi}<br><a href="ViewJornada?id_jornada={id_jpicking_mi}">{id_jpicking_mi}</a>
+                  			<br>{capac_ocupada_mi}<font color="red"> / </font>{capac_despacho_mi}<br>{tarifa_normal_mi}<br>
+                  			<font color='#FF0000'>{tarifa_express_mi}</font><br>
+                  			<font color='#663300'>{tarifa_umbral_mi}</font>
+                  </td>
+                  			
+                  <td valign="top">{id_jdespacho_ju}<br><a href="ViewJornada?id_jornada={id_jpicking_ju}">{id_jpicking_ju}</a>
+                  			<br>{capac_ocupada_ju}<font color="red"> / </font>{capac_despacho_ju}<br>{tarifa_normal_ju}<br>
+                  			<font color='#FF0000'>{tarifa_express_ju}</font><br>
+                  			<font color='#663300'>{tarifa_umbral_ju}</font>
+                  </td>
+                  			
+                  <td valign="top">{id_jdespacho_vi}<br><a href="ViewJornada?id_jornada={id_jpicking_vi}">{id_jpicking_vi}</a>
+                  			<br>{capac_ocupada_vi}<font color="red"> / </font>{capac_despacho_vi}<br>{tarifa_normal_vi}<br>
+                  			<font color='#FF0000'>{tarifa_express_vi}</font><br>
+                  			<font color='#663300'>{tarifa_umbral_vi}</font>
+                  </td>
+                  			
+                  <td valign="top">{id_jdespacho_sa}<br><a href="ViewJornada?id_jornada={id_jpicking_sa}">{id_jpicking_sa}</a>
+                  			<br>{capac_ocupada_sa}<font color="red"> / </font>{capac_despacho_sa}<br>{tarifa_normal_sa}<br>
+                  			<font color='#FF0000'>{tarifa_express_sa}</font><br>
+                  			<font color='#663300'>{tarifa_umbral_sa}</font>
+                  </td>
+                  			
+                  <td valign="top">{id_jdespacho_do}<br><a href="ViewJornada?id_jornada={id_jpicking_do}">{id_jpicking_do}</a>
+                  			<br>{capac_ocupada_do}<font color="red"> / </font>{capac_despacho_do}<br>{tarifa_normal_do}<br>
+                  			<font color='#FF0000'>{tarifa_express_do}</font><br>
+                  			<font color='#663300'>{tarifa_umbral_do}</font>
+                  </td>
+                  
+                  <td><div align="center">{modificar}{eliminar}</div></td>
+                </tr>
+                <!-- END DYNAMIC: listado -->
+                <!-- ****************************   JORNADA ECONOMICA ********************************-->
+                <!-- BEGIN DYNAMIC: lst_horario_econonico -->
+                <tr>
+                  <td><div align="center"> {h_ini_desp_economico}<br>-<br>{h_fin_desp_economico}</div></td>
+                  <td valign="top">
+                    Capac.Total:<br>
+                    <font color='#009900'>T.Econ&oacute;mica:</font>
+                  </td>
+                  <td valign="top">{capac_total_ocupada_lu}<font color="red"> / </font>{capac_total_despacho_lu}<br>{tarifa_economica_lu}</td>
+                  <td valign="top">{capac_total_ocupada_ma}<font color="red"> / </font>{capac_total_despacho_ma}<br>{tarifa_economica_ma}</td>
+                  <td valign="top">{capac_total_ocupada_mi}<font color="red"> / </font>{capac_total_despacho_mi}<br>{tarifa_economica_mi}</td>
+                  <td valign="top">{capac_total_ocupada_ju}<font color="red"> / </font>{capac_total_despacho_ju}<br>{tarifa_economica_ju}</td>
+                  <td valign="top">{capac_total_ocupada_vi}<font color="red"> / </font>{capac_total_despacho_vi}<br>{tarifa_economica_vi}</td>
+                  <td valign="top">{capac_total_ocupada_sa}<font color="red"> / </font>{capac_total_despacho_sa}<br>{tarifa_economica_sa}</td>
+                  <td valign="top">{capac_total_ocupada_do}<font color="red"> / </font>{capac_total_despacho_do}<br>{tarifa_economica_do}</td>
+                  <td></td>
+                </tr>
+                <!-- END DYNAMIC: lst_horario_econonico -->
+                <!-- *********************************************************************************-->
+                <tr>
+                  <td><div align="center">
+                  </div></td>
+                  <td><div align="center">
+                  </div></td>
+                  <td colspan="6" align="center"><font color="red"></b>{mensaje}<b></font></td>
+                  <td><input type="button" name="Button" value="Agregar" onClick="location.href='ViewAgregaJorDespacho?id_semana={id_semana}&fecha={fecha_param}&id_zona={id_zona}'" {disabled_3}></td>
+                  <td><div align="center">
+
+                  </div></td>
+                </tr>
+            </table>
+              <br>
+              <br>
+    <!-- InstanceEndEditable --></td>
+        </tr>
+      </table>
+      </td>
+  </tr>
+  <tr>
+    <td>
+	<TABLE width="100%" height=19 border=0 align="center" cellpadding="0" cellspacing="0" bgcolor="#f1f0e9" style="border-top:1px solid #ABABAB; border-bottom:1px solid #ABABAB">
+	  <TR>
+		<TD align=center bgcolor="#67b01a" class=infoBL><div align="center">Back Office Local - Jumbo.cl</div></TD>
+		</TR>
+	</TABLE>
+
+	
+	</td>
+  </tr>
+</table>
+</body>
+<!-- InstanceEnd --></html>

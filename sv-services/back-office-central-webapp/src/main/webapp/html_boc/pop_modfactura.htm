@@ -1,0 +1,216 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html><!-- InstanceBegin template="/Templates/print.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="EXPIRES" CONTENT="Mon, 22 Jul 2002 11:12:01 GMT">
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>Modificar Factura del Pedido</title>
+<!-- InstanceEndEditable -->
+<!-- InstanceBeginEditable name="head" -->
+<SCRIPT LANGUAGE="JavaScript" SRC="funciones.js"></SCRIPT>
+<SCRIPT LANGUAGE="JavaScript" SRC="verificar.js"></SCRIPT>
+
+<script language="JavaScript">
+
+function documentoDePagoLayer(value) {	
+	if (value == 'B') {
+		document.getElementById('boleta').style.visibility = 'visible';
+		document.getElementById('factura').style.visibility = 'hidden';
+		document.getElementById('documentoDePago').style.height = '{height_bol}';		
+		document.getElementById('mensaje_fact').style.visibility = 'hidden';
+		
+		
+//		alert("boleta");
+		
+	}
+	if (value == 'F') {
+		document.getElementById('factura').style.visibility = 'visible';
+		document.getElementById('boleta').style.visibility = 'hidden';
+		document.getElementById('documentoDePago').style.height = '{height_fac}'; //120px
+		document.frmMod.rut.onkeypress = KeyIsNumber;	
+		document.frmMod.rut.obligatorio=true;
+		document.frmMod.rut.label = 'Rut';
+		document.frmMod.dv.obligatorio=true;
+		document.frmMod.dv.onkeypress= KeyIsRut;
+		document.frmMod.dv.label = 'Digito verificador';		
+		document.frmMod.razon.obligatorio=true;
+		document.frmMod.razon.label = 'Razon';
+		document.frmMod.direccion.obligatorio=true;
+		document.frmMod.direccion.label = 'Direccion';
+		document.frmMod.telefono.onkeypress = KeyIsNumber;
+		document.frmMod.giro.obligatorio=true;
+		document.frmMod.giro.label = 'Giro';	
+		document.getElementById('mensaje_bol').style.visibility = 'hidden';
+	}
+}	
+
+</script>
+<link href="estilos.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+<!--
+body {
+	background-color: #FFFFFF;
+}
+.style11 {color: #507B06}
+.Estilo2 {font-family: "Trebuchet MS"; font-size: 12px; font-style: normal; line-height: normal; font-weight: bold; font-variant: normal; text-transform: none; color: #333333; text-decoration: none; }
+
+
+#boleta {
+	position:absolute;
+	visibility:visible;
+	overflow:visible;
+	top:0px;
+	left:10px;
+	height:{height_bol};<!--110px-->
+	z-index:1;
+}	
+#factura {
+	position:absolute;
+	visibility:hidden;
+	overflow:visible;
+	top:0px;
+	left:10px;
+	height:{height_fac};<!--120px-->
+	z-index:1;	
+}
+-->
+</style><!-- InstanceEndEditable -->
+<link href="estilos.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+<!--
+body {
+	background-color: #FFFFFF;
+}
+-->
+</style></head>
+
+<body>
+<!-- InstanceBeginEditable name="Body" -->
+<script>window.name='winmodfact'</script>
+<script src="validacion.js"></script>
+  <form name = "frmMod" action = "ModFactura" method = "post" target="winmodfact"  >
+    <input type = "hidden" name = "id_pedido" value = "{id_pedido}">
+    <input type = "hidden" name = "id_factura" value = "{id_factura}">
+    <input type = "hidden" name = "url" value = "ViewModFactForm?id_pedido={id_pedido}">
+    <table border=0 width="100%" class='ContentTitle'>
+	  <tr>
+	    <td align=center width="90%" height="20" class='HeaderTitle'>Modificación de Documento de Pago</td>
+	    <td width="10%" class='HeaderTitle'>&nbsp;</td>
+	  </tr>
+	</table>	
+	  <table width="100%"  border="0" cellspacing="2" cellpadding="0">
+	    <tr>
+	      <td width="23%">Documento de Pago </td>
+	      <td width="77%">
+	      <input type="radio" name = "dpago" value = "B" onfocus="documentoDePagoLayer(this.value);" {check_1}>Boleta
+	      <input type="radio" name = "dpago" value = "F" onfocus="documentoDePagoLayer(this.value);" {check_2}>Factura
+	      </td>
+	    </tr>
+	  </table>
+<div id="documentoDePago" style="position:relative; height: 100px;">    
+	<div id = "factura">
+		<table width="100%" height="22" border="0" align="center" cellpadding="1" cellspacing="1">						
+		  <tr >
+		    <td colspan="2" align="center"><font color = "RED" id="mensaje_fact">{mensaje}</font></td>
+		  </tr>  
+		  <tr class="tabla2">
+		    <td colspan="2" class="HeaderTitle" align="center">Datos Para Facturar</td>
+		  </tr>
+		  <tr class="tabla2">
+		    <td width=30%>Rut</td>
+		    <td width=70%><input name="rut" type="text" class="campo" value="{rut}" size="8" maxlength="8" />-<input name="dv" type="text" class="campo" value="{dv}" size="1" maxlength="1" /></td>
+		  </tr>
+		  <tr class="tabla2">
+		    <td width=30%>Razon</td>
+		    <td width=70%><input name="razon" type="text" class="campo" value="{razon}" size="40" maxlength="255" /></td>
+		  </tr>
+		  <tr class="tabla2">
+		    <td width=30%>Direccion</td>
+		    <td width=70%><input name="direccion" type="text" class="campo" value="{direccion}" size="50" maxlength="255" /></td>
+		  </tr>
+		  <tr class="tabla2">
+		    <td width=30%>Telefono</td>
+		    <td width=70%><input name="telefono" type="text" class="campo" value="{fono}" size="15" maxlength="20" /></td>
+		  </tr>
+		  <tr class="tabla2">
+		    <td width=30%>Giro</td>
+		    <td width=70%><input name="giro" type="text" class="campo" value="{giro}" size="40" maxlength="255" /></td>
+		  </tr>
+		  <tr class="tabla2">
+		    <td width=30%>Ciudad</td>
+		    <td width=70%><input name="ciudad" type="text" class="campo" value="{ciudad}" size="40" maxlength="100" /></td>
+		  </tr>
+		  <tr class="tabla2">
+		    <td width=30%>Comuna</td>
+		    <td width=70%><input name="comuna" type="text" class="campo" value="{comuna}" size="40" maxlength="100" /></td>
+		  </tr>
+		  <tr class="tabla2">
+		    <td colspan=2><br></td>
+		  </tr>
+		  <tr class="tabla2">
+		      <td width=50% align="center">
+		          <input type = "button" name = "Guardar" value = "Guardar" onclick=" validar_form(frmMod);">
+		        </td>
+		      <td width=50% align="center">
+		          <input type = "button" name = "Cerrar" value = "Cerrar" onClick=" window.close();">
+		        </td>
+		  </tr>
+		</table>
+	</div>
+	<div id="boleta">
+		<table width="100%" height="22" border="0" align="center" cellpadding="1" cellspacing="1" >						
+	  	<tr class="tabla2">
+			    <td colspan="2" align="center"><font color = "RED" id = "mensaje_bol">{mensaje}</font></td>
+			    <td width=50% align="center">&nbsp;</td>
+		  </tr>  	
+		  <tr class="tabla2">
+			     <td width=50% align="center">
+			         <input type = "button" name = "Guardar" value = "Guardar" onclick="validar_form(document.frmMod);">
+			     </td>
+			     <td width=50% align="center">
+			         <input type = "button" name = "Cerrar" value = "Cerrar" onClick=" window.close();">
+			     </td>
+		  </tr>
+		</table>  
+	</div>
+</div>
+</form>
+
+<script>
+	function validar_form(form){
+		
+		var ok = true;
+		
+		// verificamos que los campos sean obligatorios...
+		if( !verify(form) ){
+			ok = false;
+		}
+		var valor_radio;
+		for(i=0;i<frmMod.dpago.length;i++){
+			 if(frmMod.dpago[i].checked == true && frmMod.dpago[i].value == "F"){
+				 valor_radio = "F";			
+			 }if(frmMod.dpago[i].checked == true && frmMod.dpago[i].value == "B"){
+			    valor_radio = "B";
+			 }
+		}
+		if(valor_radio == "F"){
+		// Verificamos DV del rut
+			if ( getDV( document.frmMod.rut.value ).toLowerCase() != document.frmMod.dv.value ){
+				alert('El dígito verificador es incorrecto');
+				ok = false;
+			}
+		}
+		// si las validaciones están OK entonces hacemos submit	
+		if ( ok ){
+			form.submit();
+		//	window.close();
+		}		
+				
+	}
+</script>
+
+<!-- InstanceEndEditable --></body>
+<!-- InstanceEnd --></html>

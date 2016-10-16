@@ -1,0 +1,66 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<meta http-equiv="CACHE-CONTROL" content="NO-CACHE" />
+<meta http-equiv="PRAGMA" content="NO-CACHE" />
+<meta http-equiv="EXPIRES" content="Mon, 22 Jul 2002 11:12:01 GMT" />
+<title>Jumbo.cl</title>
+<style type="text/css">
+    tr.bordBottom td{ 
+		border-bottom-width: 1px;
+		border-bottom-style: solid;
+		border-bottom-color: #CCC; }
+	
+	td.bordLeft { 
+		border-left-width: 1px;
+		border-left-style: solid;
+		border-left-color: #CCC; 
+		width: 170px;}
+	
+	td.bordRight { 
+		border-right-width: 1px;
+		border-right-style: solid;
+		border-right-color: #CCC; }
+	tr.colorTR td{
+		background-color:#5FB404;
+	}
+  </style>
+
+</head>
+<body>
+<p>
+	<font face="Trebuchet MS" size="2" color="#333333">&nbsp;Este es el resumen de los cambios, luego de aplicar el proceso {tipoProceso}.</font>	
+</p>
+<table width="400"  align="center" cellpadding="0" cellspacing="0">
+	<tr class="colorTR">
+		<td colspan="3"><font face="Trebuchet MS" size="3" color="#FFFFFF">&nbsp;Resumen:&nbsp;<b>{local}</b></font></td>
+	</tr>
+	
+	<tr class="bordBottom">
+		<td class="bordLeft"><font face="Trebuchet MS" size="2" color="#333333">&nbsp;Publicados Con Stock&nbsp;&nbsp;&nbsp;</font></td>
+		<td class="bordLeft" align="right"><font face="Trebuchet MS" size="2" color="#333333">{publicadosConStock}</font></td>
+		<td class="bordLeft" align="right"><font face="Trebuchet MS" size="2" color="#333333"><b>{cambioConStock}</b></font></td>
+	</tr>
+	<tr class="bordBottom">
+		<td class="bordLeft"  valign="top"><font face="Trebuchet MS" size="2" color="#333333">&nbsp;Publicados Sin Stock</font></td>
+		<td class="bordLeft" align="right"><font face="Trebuchet MS" size="2" color="#333333">{publicadosSinStock}</font></td>
+		<td class="bordLeft" align="right"><font face="Trebuchet MS" size="2" color="#333333"><b>{cambioSinStock}</b></font></td>
+	</tr>
+	<tr class="bordBottom">
+		<td class="bordLeft"  valign="top"><font face="Trebuchet MS" size="2" color="#333333">&nbsp;Despublicados</font></td>
+		<td class="bordLeft" align="right" colspan="2"><font face="Trebuchet MS" size="2" color="#333333">{despublicados}</font></td>
+	</tr>
+	<tr class="bordBottom">
+		<td class="bordLeft"><font face="Trebuchet MS" size="2" color="#333333">&nbsp;Total Maestra</font></td>
+		<td class="bordRight" colspan="2" align="right"><font face="Trebuchet MS" size="2" color="#333333"><b>{maestra}</b></font></td>
+	</tr>
+</table>
+<p>
+	<font face="Trebuchet MS" size="2" color="#333333">
+		&nbsp;Adjunto va el detalle.<br><br>
+		*Este resumen muestra los cambios para el proceso "{tipoProceso}", aquellos productos que fueron marcados como "{proceso}", no est&aacute;n contemplados en este resumen.
+	</font>	
+</p>
+</body>
+</html>

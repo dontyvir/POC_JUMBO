@@ -1,0 +1,209 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><!-- InstanceBegin template="/Templates/inicio.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<meta http-equiv="CACHE-CONTROL" content="NO-CACHE" />
+<meta http-equiv="PRAGMA" content="NO-CACHE" />
+<meta http-equiv="EXPIRES" content="Mon, 22 Jul 2002 11:12:01 GMT" />
+<title>Jumbo.cl</title>
+<link rel="shortcut icon" href="/FO_IMGS/img/favicon.ico" />
+<meta name="Jumbo" content="Jumbo: Cadena de Hipermercados de Chile y Argentina, cuya misi�n es satisfacer a sus clientes con la mejor propuesta comercial del mercado. Para ello sus  pilares son: Personal amable y profesional; Excelente servicio; Amplio horario de atenci�n; La m�s amplia variedad y surtido; Locales modernos c�modos y acogedores; Inmejorables precios." />
+<meta name="keywords" content="Jumbo, Supermercado, supermercado,  Jumbo m�s, Hipermercado, productos, puntos,  Cencosud, Circulo m�s, vinos, carnes, frutas, verduras, l�cteos, pescados, mariscos, abarrotes, comprar, compra por internet" />
+<style type="text/css">
+<!--
+body {
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+}
+
+.footer {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 9px;
+	font-style: normal;
+	line-height: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	color: #666666;
+	text-decoration: none;
+}
+
+.style1 {color: #000000}
+
+a:link {
+	color: #333333;
+}
+
+a:visited {
+	color: #669900;
+}
+
+a:hover {
+	color: #333333;
+}
+
+a:active {
+	color: #669900;
+}
+-->
+</style>
+<link href="/FO_WebContent/css/estilostextos.css" rel="stylesheet" type="text/css" />
+<script type="text/JavaScript">
+<!--
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+function enviar_desinscripcion(){
+	var formulario = document.form1;
+	
+	if (!formulario.rut.value){
+		alert('Debes ingresar el campo RUT');
+		formulario.rut.focus();
+		return false;
+	}
+	
+	if (!formulario.dv.value){
+		alert('Debes ingresar el d�gito verificador de tu Rut');
+		formulario.dv.focus();
+		return false;
+	}
+
+    if(!checkRutField( formulario.rut.value + "-" + formulario.dv.value, formulario.rut ) ) {
+		formulario.rut.focus();
+		return false;
+	}
+
+	if ((!formulario.email.value) || (!formulario.dominio.value)){
+		alert('Debes ingresar el campo e-mail');
+		formulario.email.focus();
+		return false;
+	}
+
+	if(!validarEmailDominio(formulario.email,formulario.dominio))
+		return false;
+	
+	formulario.submit();
+}
+//-->
+</script>
+<script type="text/javascript" src="/FO_WebContent/js/funciones.js"></script>
+<script type="text/javascript" src="/FO_WebContent/js/funciones_teclado.js"></script>
+<script type="text/javascript" src="/FO_WebContent/js/checkrut.js"></script>
+<script type="text/javascript" src="/FO_WebContent/js/registro_val.js"></script>
+<script type="text/javascript" src="/FO_WebContent/js/flashobject.js"></script>
+</head>
+<body>
+<form id="form1" name="form1" method="post" action="DesinscribeMail">
+<table width="700" border="0" align="center" cellpadding="0" cellspacing="0">
+	<tr>
+		<td height="125" colspan="3">
+			<div id="header" style="width: 700px; height: 125px"></div>
+		</td>
+	</tr>
+	<tr>
+		<td width="2" height="240" style="background: url(/FO_IMGS/img/estructura/bordeLatizquierdo.gif);"><img src="/FO_IMGS/img/estructura/bordeLatizquierdo.gif" width="2" height="1" alt=""/></td>
+		<td width="693" height="240" valign="top" style="background: url(/FO_IMGS/img/estructura/degradefondoverde.gif);">
+			<table width="100%" border="0" cellspacing="0" cellpadding="15">
+				<tr>
+					<td valign="top" class="tituloNaranjo"><img src="/FO_IMGS/img/estructura/tit-desinscripcion.gif" alt="desinscripcion" title="desinscripcion"/><br />
+						<table width="96%" border="0" cellspacing="0" cellpadding="0">
+							<tr>
+								<td width="17%"><p class="lectura">&nbsp;</p></td>
+								<td width="83%"><p class="lectura"><strong>&iquest;No quieres recibir m&aacute;s informaci&oacute;n de novedades y promociones de jumbo.cl? </strong><br />
+									Ingresa tu RUT y el e-mail al que te llegan nuestros correos.<br />
+									Luego haz click en el bot&oacute;n &quot;enviar&quot;, para  no recibir m&aacute;s nuestros correos.
+									<br />
+									</p>
+									<table width="245" border="0" cellpadding="0" cellspacing="0">
+										<tr>
+											<td width="6" height="6"><img src="/FO_IMGS/img/estructura/tablasupizq.gif" width="6" height="6" alt=""/></td>
+											<td width="630" height="6" style="background: url(/FO_IMGS/img/estructura/tablasup.gif);"><img src="/FO_IMGS/img/estructura/tablasup.gif" width="1" height="6" alt=""/></td>
+											<td width="6" height="6"><img src="/FO_IMGS/img/estructura/tablasupder.gif" width="6" height="6" alt=""/></td>
+										</tr>
+										<tr>
+											<td width="6" height="32" style="background: url(/FO_IMGS/img/estructura/tablaizq.gif);"><img src="/FO_IMGS/img/estructura/tablaizq.gif" width="6" height="1" alt=""/></td>
+											<td valign="top"> 
+												<table width="260" border="0" cellspacing="0" cellpadding="5">
+													<tr>
+														<td width="31" align="right"><a name="pol_rut" class="formularios" id="pol_rut"><strong>RUT:</strong></a></td>
+														<td width="229"><input name="rut" type="text" class="campo" id="rut" value="" size="8" maxlength="8" onkeypress="javascript:return bloqueaCaracteres(event,/[0-9\b]/);"/>
+															<span class="formularios">-</span>
+															<input name="dv" value="" type="text" class="campo" size="1" maxlength="1" onkeypress="javascript:return bloqueaCaracteres(event,/[0-9kK\b]/);"/>
+														</td>
+													</tr>
+													<tr>
+														<td align="right"><a name="pol_email" class="formularios" id="pol_email"><strong>Email:</strong></a></td>
+														<td width="229"><input name="email" type="text" value="" class="campo" id="email" size="15" maxlength="25" />
+															<span class="formularios">@</span>
+															<input name="dominio" type="text" value="" class="campo" id="dominio" size="10" maxlength="25" />
+														</td>
+													</tr>
+													<tr>
+														<td>&nbsp;</td>
+														<td>  
+															<label>
+																<input type="button" name="Submit" value="Enviar" onclick="javascript:enviar_desinscripcion();"/>
+															</label>
+														</td>
+													</tr>
+												</table>
+											</td>
+											<td width="6" style="background: url(/FO_IMGS/img/estructura/tablader.gif);">&nbsp;</td>
+										</tr>
+										<tr>
+											<td width="6" height="6"><img src="/FO_IMGS/img/estructura/tablainfizq.gif" width="6" height="6" alt=""/></td>
+											<td height="6" style="background: url(/FO_IMGS/img/estructura/tablainf.gif);"><img src="/FO_IMGS/img/estructura/tablainf.gif" width="1" height="6" alt=""/></td>
+											<td width="6" height="6"><img src="/FO_IMGS/img/estructura/tablainfder.gif" width="6" height="6" alt=""/></td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td width="5" height="240" align="right" style="background: url(/FO_IMGS/img/estructura/bordeLatDerecho.gif);"><img src="/FO_IMGS/img/estructura/bordeLatDerecho.gif" width="5" height="1" alt=""/></td>
+	</tr>
+	<tr>
+		<td height="11" colspan="3" align="left" valign="bottom"><img src="/FO_IMGS/img/estructura/abajo.gif" width="701" height="14" alt=""/></td>
+	</tr>
+	<tr>
+		<td colspan="3" class="footer">
+			<div align="center">
+				<span class="style1"><br /></span>
+				<div align="center" class="footer">
+					<a href="http://www.jumbo.trabajando.com/" target="_blank">Trabaje en Jumbo</a> | <a href="http://www.jumbo.cl/supermercado/contactenos/proveedores.html" target="_blank">Sea Proveedor</a> | <a href="http://www.jumbo.cl/supermercado/contactenos/index.html" target="_blank">Contacto</a> | <a href="http://www.jumbo.cl/supermercado/familia_jumbo/index.html" target="_blank">Compa&ntilde;&iacute;a</a> | <a href="/FO_WebContent/seguridad.html" target="_blank">Seguridad y Privacidad </a> | <a href="http://www.jumbo.cl/supermercado/terminos/terminos.html" target="_blank">T&eacute;rminos del Servicio</a> | <a href="http://www.jumbo.cl/supermercado/preguntas/preguntas.html" target="_blank">Preguntas Frecuentes</a> | <a href="/FO_WebContent/tour.html">Tour Virtual</a>
+				</div>
+				<span class="style1"><br />
+				<br />
+				Servicio de Atenci&oacute;n al Cliente 600 400 3000 | Ayuda Internet 600 400 3000  |  Tarjeta M&aacute;s Jumbo  600 600 0505<br />
+				Copyright&copy; Cencosud 2006 | Sitio Desarrollado para Internet Explorer 6  |  Para ver el sitio necesita el<a href="http://www.macromedia.com/go/getflashplayer" target="_blank"> Plug in de Flash.</a>
+				</span>
+				<p>
+				<a href="http://validator.w3.org/check?uri=referer"><img
+			    src="/FO_IMGS/images/nuevojumbo/valid-xhtml10.png"
+        		alt="Valid XHTML 1.0 Transitional" title="Valid XHTML 1.0 Transitional" border="0" height="31" width="88" /></a>
+				</p>
+			</div>
+		</td>
+	</tr>
+</table>
+</form>
+<script type="text/javascript">
+document.form1.rut.focus();
+window.document.form1.email.onkeypress 	= KeyIsTexto_R;
+window.document.form1.dominio.onkeypress= KeyIsTexto_R;    	    	
+var fo = new FlashObject("/FO_IMGS/img/header-comodin.swf", "animationName", "700", "125", "8", "#FFFFFF");
+fo.addParam("allowScriptAccess", "sameDomain");
+fo.addParam("quality", "high");
+fo.addParam("scale", "noscale");
+fo.write("header");
+</script>
+</body>
+</html>

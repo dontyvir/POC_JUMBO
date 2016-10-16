@@ -1,0 +1,285 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html><!-- InstanceBegin template="/Templates/fullbody.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="EXPIRES" CONTENT="Mon, 22 Jul 2002 11:12:01 GMT">
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>Jumbo.cl Back Office Central</title>
+<!-- InstanceEndEditable -->
+
+<!-- InstanceBeginEditable name="head" --><!-- InstanceEndEditable -->
+
+<link href="estilos.css" rel="stylesheet" type="text/css">
+<!--link href="../default.css" rel="stylesheet" type="text/css"-->
+<style type="text/css">
+<!--
+.style1 {color: #666666}
+-->
+</style>
+</head>
+ 
+<body>
+<link rel="stylesheet" href="menu/menu.css">
+<script language="JavaScript" src="menu/menu.js"></script>
+<script language="JavaScript" src="menu/menu_tpl.js"></script>
+<script language="JavaScript" src="menu/menu_items.js"></script>
+<script language="JavaScript" src="popup.js"></script>
+<script language="JavaScript" src="funciones.js"></script>
+<SCRIPT LANGUAGE="JavaScript">window.name='padre'</SCRIPT>		
+
+<table width="780" height="100%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+    <td height="78" valign="top">
+	
+	<TABLE width="100%" height=59 border=0 align="center" cellpadding="0" cellspacing="0" bgcolor="#ffffff">
+	  <TR>
+		<TD width=275 height="59" align=left class=user><img src="img/header2.jpg" width="275" height="60"></TD>
+		<TD width=505 align=left valign="bottom" background="img/bg-1.jpg" class=user><table width="90%"  border="0" align="center" cellpadding="0" cellspacing="2">
+          <tr>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td><div align="right" class="infoBL">Usuario: Rocío Suárez&nbsp;&nbsp;| Tue Feb 06 10:32:39 VET 2007</div></td>
+          </tr>
+        </table></TD>
+	  </TR>
+	</TABLE>
+	<TABLE width="100%" height=19 border=0 align="center" cellpadding="0" cellspacing="0" bgcolor="#f1f0e9" style="border-top:1px solid #ABABAB; border-bottom:1px solid #ABABAB">
+	  <TR>
+		<TD align=left bgcolor="#FFFFFF" class=user></TD>
+		</TR>
+	</TABLE>
+
+	
+	</td>
+  </tr>
+  <tr height="400">
+    <td valign="top" bgcolor="#FFFFFF">
+      <table border=0 width="100%" class='ContentTitle'>
+        <tr>
+          <td width="53%" height="20" class='HeaderTitle'><!-- InstanceBeginEditable name="Titulo" -->
+				  Monitor de Promociones <!-- InstanceEndEditable --></td>
+          <td width="47%" class='HeaderTitle'><!-- InstanceBeginEditable name="Botonera" -->
+            <div align="right"></div>
+          <!-- InstanceEndEditable --></td>
+        </tr>
+      </table>
+	  <br>
+      <table width="100%"  border="0" cellspacing="2" cellpadding="2">
+        <tr valign="top">
+          <td width="71%"><!-- InstanceBeginEditable name="Izquierda" -->
+          <script language="JavaScript" src="funciones.js"></script>
+          <script language="JavaScript">
+            function guardar(form){
+				return true;
+			}
+          	function agregar(form){
+				form.submit();
+			}
+			function agregarLoc(form){
+				form.submit();
+			}
+			/*function cambia_imagen(form){
+				//alert(frmUsrGuardar.sel_banner.value);
+				form.img_banner.src = "img_prom/"+frmUsrGuardar.banner.value;
+				//form.submit();
+			}
+			*/
+		</script>
+          
+          
+          <script src="validacion.js"></script>
+            
+            <link id="luna-tab-style-sheet" type="text/css" rel="stylesheet" href="js/tabs/tabpane.css" />
+            <script type="text/javascript" src="js/tabs/tabpane.js"></script>
+            <table width="92%" align="center" border="0">
+              <tr>
+                <td><div class="tab-page" id="modules-cpanel">
+					<!-- tab ini -->
+                    <script type="text/javascript">
+				   		var tabPane1 = new WebFXTabPane( document.getElementById( "modules-cpanel" ), 0 )
+				    </script>
+                
+                    <div class="tab-page" id="modulo1">
+                      <h2 class="tab">Ficha</h2>
+                      <div align="left">
+					  
+				          <form name="frmUsrGuardar" method="post" action="ModPromocion" onsubmit="return guardar(this);">
+				          <input name=url type=hidden value="ViewPromoForm?codigo={codigo}">
+				          <input name="codigo" type="hidden" value="{codigo}">
+                          <strong>Datos de la Promoción</strong><br>
+
+                          <table width="90%"  border="0" align="center" cellpadding="0" cellspacing="2">
+				            <tr>
+				              <td width="25%">Código</td>
+				              <td width="75%">{codigo}</td>
+				            </tr>
+				            <tr>
+				              <td>Local</td>
+				              <td>{nom_local}</td>
+				            </tr>
+				            <tr>
+				              <td>Tipo</td>
+				              <td>{tipo}</td>
+				            </tr>
+				            <tr>
+				              <td>Descripción</td>
+				              <td><input type=text name="desc" value="{descripcion}" size=50 maxlength=50></td>
+				            </tr>
+				            <tr>
+				              <td>Fecha de inicio</td>
+				              <td>{fec_inicio}</td>
+				            </tr>
+				            <tr>
+				              <td>Fecha de fin</td>
+				              <td>{fec_fin}</td>
+				            </tr>
+				            <tr>
+				              <td>Sustituible</td>
+				              <td>
+								<select name="sustituto">
+									<option value="S" {sel_si} >Si</option>
+									<option value="N" {sel_no} >No</option>
+								</select>
+							  </td>
+				            </tr>
+				            <tr>
+				              <td>Permite producto faltante</td>
+				              <td>
+								<select name="faltante">
+									<option value="S"  {falt} >Si</option>
+									<option value="N" {no_falt} >No</option>
+								</select>
+							  </td>
+				            </tr>
+                          </table>
+						 
+                          <br><strong>Logotipos</strong><br>
+                        <table width="650"  border="0" align="center" cellpadding="2" cellspacing="0">
+						  <tr>
+							<td width="25%">Banner actual </td>
+							<td width="75%">
+								<input type="text" name="banner" value="{banner}">
+						</td>
+						  </tr>
+                          <tr>
+                          <td></td>
+                            <td width="80%" height=200><div align="center"><img name="img_banner" src="http://www.jumbo.cl/FO_IMGS/img/promociones/{banner}" onError="this.src='http://www.jumbo.cl/FO_IMGS/img/promociones/promocion.gif'"></div></td>
+                          </tr>
+						  <tr>
+                            <!--td width="80%">Cambiar banner
+								<select name="banner" onchange="javascript:cambia_imagen(frmUsrGuardar);">
+									<option value="logo2.jpg" {sel_1} >Logotipo1</option>
+									<option value="promo_1.png" {sel_2} >Logotipo2</option>
+									<option value="promo_2.jpg" {sel_3} >Logotipo3</option>
+									<option value="promo_3.jpg" {sel_4} >Logotipo4</option>
+								</select>
+							</td-->
+							
+							
+						  </tr>
+                          </table>
+
+						  <table width="650"  border="0" align="center" cellpadding="2" cellspacing="0">
+				            <tr>
+				              <td><br></td>
+				            </tr>
+                            <tr>
+                              <td align=center><input name="Button" type="submit" class="cmd" value="    Guardar    " >
+                                  <input name="Button" type="button" class="cmd" value="    Cancelar     " 
+    	                          onclick="javascript:location.href='ViewMonPromos';">
+	                          </td>
+                            </tr>
+                          </table>
+	                     </form>    
+
+                      </div>
+                    </div>
+					<div class="tab-page" id="modulo2">
+                      <h2 class="tab">Productos</h2>
+                      	<div align="left">
+						<!-- tab Productos ini -->
+						<p><b>Listado de productos en promoción</b></p>
+						<center>{more_prods}</center>												
+						<table width="500" align="center" border="0" cellpadding="0" cellspacing="0" class="tabla2">
+						<tr>
+							<th width="10%">Id</th>						
+							<th width="15%">Cod. Sap</th>
+							<th width="10%">Uni. Med</th>
+							<th width="40%">Descripción</th>
+							<th width="10%">Tipo</th>
+							<th width="15%">Acción</th>							
+						</tr>
+						<!-- BEGIN DYNAMIC: PRODUCTOS -->
+						<tr>
+						  <td>{prod_id}</td>
+						  <td>{sap}</td>
+						  <td>{um}</td>
+						  <td>{desc}</td>
+						  <td>{tipo}</td>
+						  <td><a href="javascript:popUpWindow('ViewProductSapForm?cod_prod={prod_id}', 100, 100, 600, 490)">Ver ficha</a></td>
+						  </tr>
+						<!-- END DYNAMIC: PRODUCTOS -->
+						</table>
+						<br>
+						<!-- tab Productos fin -->						
+						</div>
+                    </div>
+					<div class="tab-page" id="modulo3">
+                      <h2 class="tab">Categoría</h2>
+                      	<div align="left">
+						<!-- tab Categoría ini -->
+						<p><b>Listado de categorias sap en promoción</b></p>
+						<table width="500" align="center" border="0" cellpadding="0" cellspacing="0" class="tabla2">
+						<tr>
+							<th width="10%">N&deg; Cat.Sap</th>						
+							<th width="30%">Nombre</th>
+							<th width="10%">Activo</th>
+							<th width="15%">Tipo</th>
+							<th width="15%">Acción</th>							
+						</tr>
+						<!-- BEGIN DYNAMIC: CATEGORIAS -->						
+						<tr>
+							<td>{id_catsap}</td>						
+							<td>{nombre}</td>
+							<td>{estado}</td>
+							<td>{tipo}</td>
+							<!-- Este link lleva a la ficha de categoria BO-->
+							<td><a href="ViewMonMPV?id_cat_all={id_catsap}&sel_cat={id_catsap}&accion=bus_nav&tipo={tipo}&selcat={id_catsap}%7CI&Button=+++Mostrar+++">Ver Mix</a></td>
+						</tr>		
+						<!-- END DYNAMIC: CATEGORIAS -->	
+						</table>
+						<!-- tab Categoría fin -->
+						</div>
+                    </div>					
+					<!-- tab fin -->
+				   </div></td>
+              </tr>
+            </table>
+          </form>
+          <br>
+
+		      <br>
+	      <!-- InstanceEndEditable --></td>
+        </tr>
+      </table>
+      </td>
+  </tr>
+  <tr>
+    <td>
+	<TABLE width="100%" height=19 border=0 align="center" cellpadding="0" cellspacing="0" bgcolor="#f1f0e9" style="border-top:1px solid #ABABAB; border-bottom:1px solid #ABABAB">
+	  <TR>
+		<TD align=center bgcolor="#67b01a" class=infoBL><div align="center">Back Office Central - Jumbo.cl <br>
+	      BBR e-commerce & retail</div></TD>
+		</TR>
+	</TABLE>
+
+	
+	</td>
+  </tr>
+</table>
+</body>
+<!-- InstanceEnd --></html>

@@ -1,0 +1,25 @@
+
+PRODUCTO
+		<input type="hidden" id="id_producto" name="id_producto" value="{id}" />
+		<!-- BEGIN DYNAMIC: PRODUCTOS -->
+		<table>
+			<tr>
+			<td>
+		
+		<img name="img_minificha" src="{path_gr}{imagen2}"  width="80" height="80" onError="this.src='img/transp.gif'"></div>
+		</td>
+		<td>
+    	<table>
+<!--     		<tr><td>Id</td><td>:</td><td>{id}</td></tr>-->
+    		<tr><td>Tipo</td><td>:</td><td>{tipo}</td></tr>
+    		<tr><td>Marca</td><td>:</td><td>{marca}</td></tr>
+    		<tr><td>Descripcion</td><td>:</td><td>{desc_corta}</td></tr>
+    		<tr><td>Precio Normal</td><td>:</td><td>{precio_producto}</td></tr>
+    	</table>
+    	</td>
+    	</tr>
+    	</table>
+		<!-- END DYNAMIC: PRODUCTOS --> 
+		<!-- BEGIN DYNAMIC: SIN_PRODUCTOS -->
+		<h1>No existe el producto</h1>
+		<!-- END DYNAMIC: SIN_PRODUCTOS --> 

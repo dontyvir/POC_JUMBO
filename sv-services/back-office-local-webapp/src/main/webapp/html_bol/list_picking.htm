@@ -1,0 +1,207 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>Jumbo.cl Back Office Local</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="EXPIRES" CONTENT="Mon, 22 Jul 2002 11:12:01 GMT">
+
+<link href="estilos.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+<!--
+body {
+	background-color: #FFFFFF;
+}
+-->
+</style>
+<SCRIPT type="text/javascript" src="barcode.js"></SCRIPT>
+<script LANGUAGE=JAVASCRIPT>
+function getEAN13(){
+    var bc = new Barcode();
+    var val = "{id_ronda}";
+    bc.setParentElement("code128");
+	bc.setHeight(60);
+	bc.encode(val, "code128", true, false, false);		
+	//dv = bc.getCheckDigit();  
+	//alert(val + dv);
+
+	//var bc2 = new Barcode();
+	//var val2 = val + dv;
+
+	//alert(val2);
+
+	//bc2.setParentElement("ean13");
+    
+	//bc2.encode(val, "ean13", true, false, false);
+
+  
+}
+
+function formatEan(){
+     for (var i=0;i < document.getElementById('table_prod').rows.length; i++){ 
+                    textos = document.getElementById('table_prod').rows[i].cells[1].innerHTML;
+                    
+                   	var res = textos.split(' /');
+                   	var ean= "";
+                    var cont=0;
+                    if(res[0]!=null){
+                    	ean = res[0];
+                    	cont++;
+                    }
+                    for(var j=1;j<res.length;j++){
+                    	ean+="<br>"+res[j];
+                    	cont++;
+                    	if(cont==3){
+                    		break;
+                    	}
+                    }
+                    document.getElementById('table_prod').rows[i].cells[1].innerHTML = ean;
+                    
+     } 
+}
+
+
+</script>
+</head>
+<body topmargin="0" leftmargin="0" marginheight="0" marginwidth="0" onload="getEAN13();formatEan();">
+<table width="660" height="335" border="0" cellpadding="0" cellspacing="0" style="border: 2px solid #000000;">
+  <tr>
+    <td height="36" valign="top"><table width="650" border="0" cellspacing="2" cellpadding="2">
+        <tr>
+          <td width="31%" height="68"><img src="img/logo2.jpg" width="156" height="64"></td>
+          <!--td width="40%" valign="top"><font class="HeaderTitle">Ronda de Picking N&deg; {id_ronda}</font></td-->
+          <td width="29%"><DIV id="code128" style="display:block; position:relative;" align="center"></DIV></td>
+        </tr>
+      </table></td>
+  </tr>
+  <tr>
+    <td height="44" valign="middle"><div align="center">        <table width="90%"  border="0" cellspacing="2" cellpadding="0">
+          <tr>
+            <td width="23%" height="22" style="border:#000066 solid 1px;">Fecha: {fecha} </td>
+            <td width="13%">&nbsp;</td>
+            <td width="64%" style="border:#000066 solid 2px;"><b>Sector</b>: {Sector} <b>Zonas</b>:{zonas_r}</td>
+          </tr>
+        </table>
+    </div></td>
+  </tr>
+  <tr>
+    <td height="37" valign="middle"><table width="98%"  border="0" align="center" cellpadding="2" cellspacing="0" style="border:#000066 solid 1px;">
+      <tr>
+        <td width="20%" height="23">S: Sustituto - F: Faltante </td>
+        <td width="30%" style="border-left:#000066 solid 1px;">Jornada: {id_jornada} - {h_ini} a {h_fin} </td>
+        <td width="26%" style="border-left:#000066 solid 1px;">Hora de Impresi&oacute;n: {h_imp} </td>
+        <td width="24%" style="border-left:#000066 solid 1px;">Hora de t&eacute;rmino: ________ </td>
+      </tr>
+    </table>
+    <div align="center"></div></td>
+  </tr>
+  <tr>
+    <td height="28" valign="middle">
+    <div align="center">
+    <br>
+    		<!--  tabla posiciones comienzo-->
+		    <table width="300"cellpadding="2" cellspacing="0" class="tabla2"  style="border:#000066 solid 1px;">
+		    <tr>
+		    <th style="border-left:#000066 solid 1px;" width="20%" align="left">Pos</th>
+		    <th style="border-left:#000066 solid 1px;">1</th>
+		    <th style="border-left:#000066 solid 1px;">2</th>
+		    <th style="border-left:#000066 solid 1px;">3</th>
+		    <th style="border-left:#000066 solid 1px;">4</th>
+		    <th style="border-left:#000066 solid 1px;">5</th>
+		    <th style="border-left:#000066 solid 1px;">6</th>
+		    </tr>		    
+		    <tr height="16">
+		    <th style="border-left:#000066 solid 1px;" align="left">OP</th>
+		    <td style="border-left:#000066 solid 1px;">&nbsp;</td>
+		    <td style="border-left:#000066 solid 1px;">&nbsp;</td>
+		    <td style="border-left:#000066 solid 1px;">&nbsp;</td>
+		    <td style="border-left:#000066 solid 1px;">&nbsp;</td>
+		    <td style="border-left:#000066 solid 1px;">&nbsp;</td>
+		    <td style="border-left:#000066 solid 1px;">&nbsp;</td>
+		    </tr>
+		    <tr height="16">
+		    <th style="border-left:#000066 solid 1px;" align="left">Bin</th>
+		    <td style="border-left:#000066 solid 1px;">&nbsp;</td>
+		    <td style="border-left:#000066 solid 1px;">&nbsp;</td>
+		    <td style="border-left:#000066 solid 1px;">&nbsp;</td>
+		    <td style="border-left:#000066 solid 1px;">&nbsp;</td>
+		    <td style="border-left:#000066 solid 1px;">&nbsp;</td>
+		    <td style="border-left:#000066 solid 1px;">&nbsp;</td>
+		    </tr>
+		    <tr height="16">
+		    <th style="border-left:#000066 solid 1px;" align="left">Bodega</th>
+		    <td style="border-left:#000066 solid 1px;">&nbsp;</td>
+		    <td style="border-left:#000066 solid 1px;">&nbsp;</td>
+		    <td style="border-left:#000066 solid 1px;">&nbsp;</td>
+		    <td style="border-left:#000066 solid 1px;">&nbsp;</td>
+		    <td style="border-left:#000066 solid 1px;">&nbsp;</td>
+		    <td style="border-left:#000066 solid 1px;">&nbsp;</td>
+		    </tr>		    		    
+		    </table>
+		    <!--  tabla posiciones fin--> 
+		    <br>
+    </div>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top">
+	
+		<table width="644" border="0" align="center" cellpadding="2" cellspacing="0" class="tabla2" style="border:#000066 solid 1px;" id="table_prod">
+			<tr> 
+				<th width="35" >S/F</th>
+				<th width="55" style="border-left:#000066 solid 1px;">EAN</th>
+				<th width="67" style="border-left:#000066 solid 1px;">C&oacute;digo Sap</th>
+				<th width="55" style="border-left:#000066 solid 1px;">Sección Sap</th>
+				<th width="177" style="border-left:#000066 solid 1px;">Descripci&oacute;n</th>
+				<th width="35" style="border-left:#000066 solid 1px;">Cant Solic</th>
+				<th width="20" style="border-left:#000066 solid 1px;">UM</th>
+				<th width="65" style="border-left:#000066 solid 1px;">O/P</th>
+				<th width="95" style="border-left:#000066 solid 1px;">Criterio Sustituci&oacute;n</th>
+				<th width="95" style="border-left:#000066 solid 1px;">Precio Unitario</th>
+			</tr>
+			<!-- BEGIN DYNAMIC: select_listado_de_picking -->
+			<tr valign="top"> 
+				<td><input type="checkbox" name="option1" value="" ></td>
+				<td style="border-left:#000066 solid 1px;">{ean}</td>
+				<td style="border-left:#000066 solid 1px;"><div align="left">&nbsp;{cod_sap}<br><br></div></td>
+				<td style="border-left:#000066 solid 1px;">{seccion}</td>
+				<td style="border-left:#000066 solid 1px;">{descripcion}</td>
+				<td style="border-left:#000066 solid 1px;"><div align="center">{cant_sol}</div></td>
+				<td style="border-left:#000066 solid 1px;">{um}</td>
+				<td style="border-left:#000066 solid 1px;">{id_pedido}</td>
+				<td style="border-left:#000066 solid 1px;">{criterio_sustituto}&nbsp;</td>
+				<td style="border-left:#000066 solid 1px;">${precio}&nbsp;</td>
+			</tr>
+			<!-- END DYNAMIC: select_listado_de_picking -->
+		</table>
+		
+	</td>
+  </tr>
+  <tr>
+    <td valign="top">
+    </td>
+  </tr>  
+</table>
+<table width="620" border="0" align="center" cellpadding="2"
+					cellspacing="0" class="tabla2" >
+	<br>				
+	<tr>	
+	  <td>AUDITORIA</td>
+	  <td>Ok Auditoria <input type="checkbox" name="option1" value=""></td>
+	  <td>Firma Auditor ___________________</td>
+ 	</tr>
+</table>
+<table width="620" border="0" align="center" cellpadding="2"
+					cellspacing="0"  >
+<tr>
+	<td>Comentarios de Auditoria</td>
+</tr>
+<tr>	
+	<td width="90%" style="border:#000066 solid 1px;">&nbsp;<br><br><br><br></td>
+</tr>					
+</table>
+
+</body>
+</html>

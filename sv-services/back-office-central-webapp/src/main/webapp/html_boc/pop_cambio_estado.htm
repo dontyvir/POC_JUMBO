@@ -1,0 +1,66 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html><!-- InstanceBegin template="/Templates/print.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="EXPIRES" CONTENT="Mon, 22 Jul 2002 11:12:01 GMT">
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>Cambia el Estado de un Pedido</title>
+<!-- InstanceEndEditable -->
+<!-- InstanceBeginEditable name="head" -->
+<!-- InstanceEndEditable -->
+<link href="estilos.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+<!--
+body {
+	background-color: #FFFFFF;
+}
+-->
+</style></head>
+
+<body>
+<!-- InstanceBeginEditable name="Body" -->
+<script src="validacion.js"></script>
+<SCRIPT LANGUAGE="JavaScript">window.name='winmodal'</SCRIPT>
+<br>
+<form name="form1" method="POST" action="CambiaEstadoOP" target="winpedido1">
+	<input type="hidden" name="url" value="ViewOPFormPedido">
+	<input type="hidden" name="id_pedido" value="{id_pedido}">
+	<input type="hidden" name="id_usuario" value="{id_usuario}">
+	<input type="hidden" name="id_estado_actual" value="{id_estado_actual}">
+	<fieldset><legend>Cambia el Estado del Pedido #{id_pedido}</legend>
+	<table width="485" border="0" align="center" cellpadding="2" cellspacing="2" class="textonormal">
+		<tr height="30">
+		<td colspan="3" align="center">{mensaje}</td>
+		</tr>
+		<tr valign="top">
+			<td width="11"></td>
+			<td  align="center" width="453">
+				{mensaje2}
+			</td>
+			<td  valign="bottom" width="13">&nbsp;</td>
+		</tr>
+		<tr valign="top" align="center">		
+			<td width="11"></td>
+			<td width="453"><input {hab} type="button" name="Button" value="Aceptar" onClick="if(verify(document.form1)){
+					 form1.submit();			         
+			         //window.opener.location.reload();
+			         window.close();
+			         }">
+			         &nbsp;&nbsp;&nbsp;
+			    <input name="cancelar" type="button" class="cmd" value="Cancelar" onClick="window.close();">
+			</td>
+			<td width="13"></td>
+		</tr>
+	</table>
+	</fieldset>
+
+</form>
+<br>
+<br>
+<br>
+<br>
+<!-- InstanceEndEditable --></body>
+<!-- InstanceEnd --></html>

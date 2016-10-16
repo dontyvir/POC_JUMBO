@@ -1,0 +1,23 @@
+<html>
+<script type="text/javascript">
+var agent = navigator.userAgent.toLowerCase();
+var is_iphone = (agent.indexOf('iphone') != -1);
+var is_android = (agent.indexOf('android') != -1);
+if ( is_iphone || is_android ) {
+	alert("It's a mobile");
+
+	if ( is_iphone ) {
+
+	  alert("Iphone");
+
+	} else if ( is_android ) {
+
+	  alert("Androide");
+
+	}
+
+} else {
+	alert("It isn't a mobile");
+}
+</script>
+</html>

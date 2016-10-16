@@ -1,0 +1,531 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Jumbo.cl</title>
+<!-- <script type="text/javascript" src="/FO_WebContent/js/jquery.min.js"></script> -->
+<link href="/FO_WebContent/css/print.css"   rel="stylesheet" type="text/css" media="print" />
+<!-- inicio magno aperez -->
+<link type="text/css" 	rel="stylesheet"	href="/FO_WebContent/css/light_box.css" />
+<!-- fin magno -->
+<!-- INDRA 2012-11-13 -->
+		<link type="text/css" rel="stylesheet" href="/FO_WebContent/css/light_box_PD.css" />
+		<link rel="stylesheet" type="text/css" href="/FO_WebContent/css/tabla.css" />
+<!-- INDRA 2012-11-13 -->
+
+<script type="text/javascript">
+
+	jQuery().ready(
+		function() {
+			var display ="{display_calendario_despacho}";
+			var action  = "/FO/DespachosDisponibles";	
+			if(display == 'block'){
+				getOfficesAvailable('INIT_ML');
+			}
+		}
+	);
+</script>
+
+
+</head>
+<body  onload="actializarCarro1();" leftMargin=0 topMargin=0 marginheight="0" marginwidth="0"  style="text-align: left">
+
+	<script type="text/javascript">
+		try{
+			mxTracker._trackPageview('{mx_content}');
+		}
+		catch(e){};
+	</script>
+	<div style="float: left;	width: 580px;border:0px green solid">
+	  <div>	    	  			
+		<!-- DESPACHOS DISPONIBLES !!! -->
+		<div id="contenedor_lightbox_DP"  style="display:{display_calendario_despacho};" >
+			<div id="cont_cabecera_DP"><img src="/FO_IMGS/img/estructura/banner_contraer_despacho.jpg" border="0" alt="Cerrar" onclick="javascript:getOfficesAvailable('HIDE_ML')"/></div>
+			<div id="contenido_DP"></div>
+		</div>  
+		<!-- FIN DESPACHOS DISPONIBLES !!! -->	
+			
+		<div class="cont_bienvenida_mislistas"  style="border:0px violet solid;">
+	    	<div class="bienvenida_mislistas">
+				<font id="texto_titulo"></font> &nbsp; | &nbsp;
+				<!-- font color="#666" id="fecha_titulo"></font --> 
+				<font size="3" color="#666" id="nombre_titulo"></font>
+			</div>
+	    </div>
+	    <!--herramientas para todos-->
+
+  	<div class="noimprimir">
+	    <div class="modulo_grilla_fila" style="border:0px violet solid;">
+      	<div class="cont_herramientas"	style="padding-bottom: 40px; width: 520px;">  <!--Dcadiz 03082012 agrega boton agregar seleccion al carro-->	
+    		
+<!-- 20112012 VMatheu -->
+	        <div class="btn_imprimir"><img src="/FO_IMGS/img/print_save_bt2.gif" width="240" height="24" border="0" usemap="#Map2" /></div>
+	        <div class="btn_guardar_xls">
+			    <map name="Map2" id="Map2">
+					<area shape="rect" coords="1,1,59,24" href="javascript:imprimir();" alt="Imprimir" />
+					<area shape="rect" coords="64,1,139,24" href="javascript:exportar();" alt="Exportar" />
+					<area shape="rect" coords="144,1,240,24" href="javascript:enviar_correo(1);" alt="Enviar Lista" />
+			    </map>
+		    </div>	    
+<!-- - 20112012 VMatheu -->		 
+   	    
+          <div class="cont_check_todos">
+            <div class="cont_acepto_info">Seleccionar todos los productos de la lista</div>
+            <div style="float: left; padding-left:10px; margin-right:5px; margin-top:3px;"><input type="checkbox" checked="checked" name="todos" id="todos" onclick="selectall();"/></div>
+          </div>
+          <!--Dcadiz 03082012 agrega boton agregar seleccion al carro-->
+          <div class="cont_herramientas" style="text-align:right;">
+          	<a href="#"><img src="/FO_IMGS/img/bt_agregar_carro.gif" alt="Agregar productos al Carro" width="185" height="29" border="0" style="padding-right: 5px;" onclick="agregar_carro();"/>
+          	</a>
+          </div> 
+          <!--Dcadiz 03082012 agrega boton agregar seleccion al carro-->	
+
+        </div>
+      </div>
+		</div>
+			<!-- BEGIN DYNAMIC: CATEGORIAS -->
+			<div class="modulo_grilla_fila">
+				<table id="tabla_productos" cellpadding="0" cellspacing="0" width="100%"  style="border:0px violet solid">
+					<thead><th class="titulos_categorias_carro">&nbsp;&nbsp;&nbsp;<strong>{categoria}</strong><font style=" font-size:12px">&nbsp;</font> {tipo}</th></thead>
+					<tbody>
+						<tr>
+							<td style="border-bottom: 1px solid #E3E1DC;border-left: 1px solid #E3E1DC;border-right: 1px solid #E3E1DC;">
+								<ul class="list">
+									<!-- BEGIN DYNAMIC: PRODUCTOS -->
+									<li style="border:0px red solid">
+
+
+
+
+										<div class="modulo_producto_horizontal">
+								      <!-- campo1 -->
+								      <div class="modulo_foto_130_h"  style="border:0px #000000 solid">
+												<!-- 130 -->				
+												<!-- 				<img src="/FO_IMGS/ch/{imagen_chica}" width="130" height="130" onerror="this.src='/FO_IMGS/img/ch/fotopreparacion-chica.gif'" id="img_{pro_id}" onmouseover="javascript:top.desplegar_imagen('/FO_IMGS/gr/{imagen_chica}',this);" onmouseout="javascript:top.esconder_imagen();"/>-->
+												<img src="/FO_IMGS/gr/{imagen_chica}" width="100" height="100" onerror="this.src='/FO_IMGS/img/gr/fotopreparacion.gif'" id="img_{pro_id}"/>
+												<!-- BEGIN DYNAMIC: CON_PROMOCION -->
+												<div class="promo_h"><img src="/FO_IMGS/img/promociones/{promo_img}" width="40" height="41" onError="this.src='/FO_IMGS/img/promociones/promocion.gif'"/></div>
+												<!-- END DYNAMIC: CON_PROMOCION -->
+								      </div>
+								      <!-- campo2 -->
+											<div class="modulo_descripcion_h" style="border:0px #000000 solid">
+												<div class="txt_marca_h"  style="border:0px #000000 solid">{marca}</div>
+												<div class="txt_nombre_h"  style="border:0px #000000 solid">
+	<!-- 												<a id="ficha" href="javascript:ficha({id}, 2);"><b>{tipo}</b> <br/> {descripcion}</a> -->
+													{descripcion}
+												</div>
+												<!-- BEGIN DYNAMIC: CON_PROMOCION -->
+												<div class="txt_promo_h"  style="border:0px white solid"><!-- bug firefox 6-10, para solucionarlo se pinta borde blanco -->
+													<table id="x3" style="border:0px red solid" width="100%">
+														<tr>
+															<td style="text-align: center;border:0px black solid"">
+																<span class="Marca">{promo_desc}</span> 
+															</td>
+	<!-- 														<td width="60%" valign="center" style="text-align: left;border:0px black solid"">
+																<img src="/FO_IMGS/img/promociones/{promo_img}" border="0" onerror="this.src='/FO_IMGS/img/promociones/promocion.gif'" />
+															</td>
+	-->													</tr>
+													</table>
+												</div>
+												<!-- END DYNAMIC: CON_PROMOCION -->
+												<!-- BEGIN DYNAMIC: DESTACADO -->
+												<div class="txt_promo_h"  style="border:1px white solid"><!-- bug firefox 6-10, para solucionarlo se pinta borde blanco -->
+													<table id="x3" style="border:0px red solid" width="100%">
+														<tr>
+															<td width="40%" valign="center" style="text-align: right;border:0px black solid">
+																<span class="Marca">{destacado_descripcion}</span> 
+															</td>
+															<td width="60%" valign="center" style="text-align: left;border:0px black solid"">
+																<img src="/FO_IMGS/img/destacados/{destacado_imagen}" border="0" onerror="this.src='/FO_IMGS/img/destacados/destacado.jpg'" />
+															</td>
+														</tr>
+													</table>
+												</div>
+												<!-- END DYNAMIC: DESTACADO -->
+								      </div>
+							        <!-- campo3 -->
+											<div class="modulo_precio_h" style="border:0px #000000 solid">
+												<div class="txt_precio_h" style="border:0px #000000 solid">{precio}</div>
+<!-- 												<div class="txt_precio_medida_h" style="border:0px #000000 solid">{precio_por_unidad}</div>-->
+								      </div>
+								      <div class="icono_notas_h" style="border:0px #000000 solid">
+											<!-- BEGIN DYNAMIC: COMENTARIO -->
+												<a href="javascript:show_nota_paso1(document.forms['fp'].nota{contador},{contador});" ><img id="ImageComent_{contador}" src="/FO_IMGS/img/estructura/paso2/bt_notas.gif" border="0" alt="Agregar Comentario" title="Agregar Comentario"/></a>
+												<input type="hidden" name="nota{contador}" value="{nota}" id="nota{contador}" />
+											<!-- END DYNAMIC: COMENTARIO -->
+								      </div>
+							        <!-- campo4 -->
+											<div class="modulo_cantidad_h" style="border:0px #000000 solid">
+												<!-- BEGIN DYNAMIC: LISTA_SEL -->                 
+												<select name="cantidad_l{contador}" class="formularios">
+													<!-- BEGIN DYNAMIC: CANTIDADES -->
+													<option value="{valor}" {selected}>{opcion}</option>
+													<!-- END DYNAMIC: CANTIDADES -->
+												</select>
+												<!-- END DYNAMIC: LISTA_SEL -->
+												<!-- BEGIN DYNAMIC: INPUT_SEL -->
+												<div class="form_cantidad" style="border:0px brown solid">
+													<div>
+														<input name="maximo_l{contador}" value="{maximo}" type="hidden" />
+														<input class="form_cantidad_style" name="cantidad_l{contador}" id="fp_cantidad_l{contador}" value="{valor}" type="text" class="cc" size="4" maxlength="4" onKeyPress="javascript:return bloqueaCaracteres(event,/[0-9.\b]/);" onChange="javascript:valida_cantidad('fp_cantidad_l{contador}',{intervalo},{maximo});" />
+													</div> 
+													<div class="modulo_mas_menos">
+														<div class="modulo_agregar_mas"><a href="javascript:top.up(document.fp.cantidad_l{contador},{intervalo},{maximo});" id=arriba_cantidad_{id}><img src="/FO_IMGS/img/estructura/paso2/bt_mas.gif" width="27" height="22" border="0" /></a></div>
+														<div class="modulo_quitar_menos"><a href="javascript:top.down(document.fp.cantidad_l{contador},{intervalo},{maximo});" id=abajo_cantidad_{id}><img src="/FO_IMGS/img/estructura/paso2/bt_menos.gif" width="27" height="22" border="0" /></a></div>
+													</div>
+												</div>
+												<!-- END DYNAMIC: INPUT_SEL -->
+												<div style="text-align: center;border:0px brown solid">
+							            <!-- BEGIN DYNAMIC: IMG_AGREGAR -->
+							            <a id="agregar_{productoId}" href="javascript:;"><img name="imagen_{productoId}" id="imagen_{productoId}" src="/FO_IMGS/img/estructura/paso2/bt_agregar_carro.gif" alt="agregar o quitar unidades" border="0"  width="58" height="22" /></a>
+							            <!-- END DYNAMIC: IMG_AGREGAR -->
+							            <!-- BEGIN DYNAMIC: IMG_MODIFICAR -->
+							            <a id="modificar_{productoId}" href="javascript:;"><img name="imagen_{productoId}" id="imagen_{productoId}" src="/FO_IMGS/img/estructura/paso2/bt_actualizar_carro.gif" alt="agregar o quitar unidades" border="0"  width="58" height="22"/></a>
+							            <!-- END DYNAMIC: IMG_MODIFICAR -->
+												  <!-- BEGIN DYNAMIC: IMG_SINSTOCK -->
+												  <img src="/FO_IMGS/img/estructura/paso2/sinstock.gif" width="28" height="28" alt="Producto sin Stock" border="0"  />
+												  <!-- END DYNAMIC: IMG_SINSTOCK -->
+												</div>
+								      </div>
+								      <div style="text-align:center;" class="checkbox_h">
+											<!-- BEGIN DYNAMIC: CHECKBOX -->
+												<input type="checkbox" name="id_prod_{contador}" value="{id_prod}" {checked}/>
+											<!-- END DYNAMIC: CHECKBOX -->
+											<!-- BEGIN DYNAMIC: IMAGEN -->
+												<img src="/FO_IMGS/img/estructura/agregado.gif" alt="Producto Agregado" title="Producto Agregado" />
+											<!-- END DYNAMIC: IMAGEN -->
+											<!-- BEGIN DYNAMIC: IMAGEN_NODISP -->
+												<img src="/FO_IMGS/img/estructura/paso1/checkboxNodisponible.gif" width="13" height="13" alt="Producto no disponible" title="Producto no disponible"/>
+											<!-- END DYNAMIC: IMAGEN_NODISP -->
+								    	</div>
+										</div>
+											
+											
+											
+									</li>
+									<!-- END DYNAMIC: PRODUCTOS -->
+						    </ul>
+					    </td>
+				    </tr>
+					</tbody>
+		    </table>
+			</div>
+			<!-- END DYNAMIC: CATEGORIAS -->
+			<!-- BEGIN DYNAMIC: SIN_CATEGORIAS -->
+			<div class="msj_vacio">
+				<a href="/FO/CategoryDisplay" alt="Agregar Productos">
+					<img id="img_sinlista" src="" width="530" height="530" border="0" />
+				</a>
+			</div>
+			<!-- END DYNAMIC: SIN_CATEGORIAS -->
+			<input type="hidden" name="max_productos" value="{max_productos}" />
+			<input type="hidden" id="primera_carga" name="primera_carga" value="{primera_carga}" />
+			<input type="hidden" id="check_all_prods" name="check_all_prods" value="{checked_all}" />
+		</div>
+
+ 	<div class="noimprimir">
+		<div class="menu_abajo_paso1_2011" style="text-align:right;">
+			<a href="#"><img src="/FO_IMGS/img/bt_agregar_carro.gif" alt="Agregar productos al Carro" width="185" height="29" border="0" onclick="agregar_carro()"/></a>
+		</div>
+	</div>
+	</div>
+	<div id="derecha">
+	
+ 	<div class="noimprimir">
+			<div align="center" id="marketing_imagen" >
+				<!-- BEGIN DYNAMIC: MOSTRAR_LOGUEADO -->
+				<a href="javascript:ir_mis_listas2()"><img src="/FO_IMGS/img/imagen_logeado.jpg"  alt="" border="0" onerror="this.style.display='none';"/></a>
+				<!-- END DYNAMIC: MOSTRAR_LOGUEADO -->
+				<!-- BEGIN DYNAMIC: MOSTRAR_NO_LOGUEADO -->
+				<a href="javascript:ir_mis_listas2()"><img src="/FO_IMGS/img/imagen_no_logeado.jpg"  alt="" border="0" onerror="this.style.display='none';"/></a>
+				<!-- END DYNAMIC: MOSTRAR_NO_LOGUEADO -->
+			</div>
+			<div id="total_carro">
+			<!-- ***********************  START DIV TOTAL CARRO *************************** -->
+				<div id="inputtotdesc" style="display: none;">
+					<table width="93%" border="0" cellspacing="0" cellpadding="2">
+					  <tr><td height="26" class="titulosVerdesCopy" align="center" nowrap="nowrap" ><span class="Estilo2">Total con promociones</span></td></tr>
+					  <tr>
+					    <td>
+					      <div style="float:left; width:84px; height:25px; font-family:Arial, Helvetica, sans-serif; font-size:11px; color:#666; padding-top:8px; padding-left:8px; text-align:right; padding-right: 8px;"><a href="javascript:resumen_promo();">Ver detalle</a></div>
+					      <div style="float: left; width: 90px; height: 21px; padding-top: 5px;">
+					        <form name="ftotal_desc" method="post" action="" style="{margin: 0px; padding: 0px;}">
+					          <input id="_total_desc" name="_total_desc" type="text" class="campoblancoTotal" size="10" value="0" readonly="readonly" />
+					          <input id="_total_desc_txt" name="_total_desc_txt" type="hidden" value="" />
+					        </form>
+					      </div>
+					    </td>
+					  </tr>
+					</table>
+				</div>
+				<div id="inputtot"  class="contenido_carro_paso1_2011">
+					<div style="float:left; width:210px; height:auto; background-color:#EEE; padding-bottom:10px;">
+						<div style="float:left; width:210px; height:20px; font-family:Arial, Helvetica, sans-serif; font-size:14px; font-weight:bold; color:#1FA22E; padding-top:10px; text-align:center;">Carro de Compras</div>
+						<div style="float:left; width:100px; height:25px; font-family:Arial, Helvetica, sans-serif; font-size:13px; color:#666; padding-top:8px; padding-left:8px;">Total a pagar:</div>
+						<div style="float: left; width: 90px; height: 21px; padding-top: 5px;">
+							<form name="ftotal" method="post" style="{margin: 0px; padding: 0px;}">
+								<div align="right"><input id="_total" name="_total" type="text" class="campoblancoTotal" size="10" value="0" readonly="readonly" /></div>
+							</form>
+						</div>
+						<form name="fdesc" method="post">
+							<div class="txt_carro_ahorro"><a href="#">Ahorro:</a></div>
+							<div id="_total_ahorro" style="float: left; width: 70px; height: 20px;font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#666; text-align:right;"></div>
+							<div style="float:left; width:120px; height:20px; font-family:Arial, Helvetica, sans-serif; font-size:12px; color: #C00; padding-left:8px;">T. Cencosud:</div>
+							<div id="_total_tarjeta_mas" style="float: left; width: 70px; height: 20px;font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#C00; text-align:right;"></div>
+							<div class="txt_carro_ahorro">Ahorro T. Cencosud:</div>
+							<div id="_total_ahorro_tarjeta_mas" style="float: left; width: 70px; height: 20px;font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#666; text-align:right;"></div>
+						</form>
+						<div style="float:left; width:180px; height:31px; padding-left:15px; padding-top: 5px;">
+							
+							<DIV style=" WIDTH: 180px; FLOAT: left; HEIGHT: 31px; PADDING-TOP: 5px">
+<!-- INDRA 2012-11-13 -->
+								<!-- a href="/FO/MiCarro"-->
+								<a href="#" onclick="javascript:validarProductosCarro()">
+									<IMG id=Image56 title="Ir a pagar" border=0 name=Image56 alt="Ir a pagar" src="/FO_IMGS/img/estructura/pagar.gif">
+								</A>
+<!-- INDRA 2012-11-13 -->
+							</DIV>
+							</DIV>
+							<DIV style="BACKGROUND-COLOR: #eee; WIDTH: 210px; border-top:#ccc 1px dashed; FLOAT: left; HEIGHT: 25px;">
+							<DIV align="center" class="txt_carro_ahorro" style="width: 200px; padding-top:5px;"><strong><a href="/FO/CategoryDisplay">AGREGAR M&Aacute;S PRODUCTOS <font color="#1fa22e" size="+1">&rsaquo;</font></a></strong></DIV> <!--Dcadiz-->
+						
+						
+							<!--
+							<a href="CategoryDisplay"><img src="/FO_IMGS/img/estructura/paso1/bt_irapaso2.gif" alt="Ir al Paso2 - Agregar Productos" name="Image56" border="0" id="Image56" title="Ir al Paso2 - Agregar Productos"/></a>
+							<!a href="javascript:ir_supermercado();"><img src="/FO_IMGS/img/estructura/paso1/bt_irapaso2.gif" alt="Ir al Paso2 - Agregar Productos" name="Image56" border="0" id="Image56" title="Ir al Paso2 - Agregar Productos"/></a>
+		 	  					<a href="javascript:ir_pagar();"><img src="/FO_IMGS/img/estructura/pagar.gif" alt="Ir a pagar" name="Image56" border="0" id="Image56" title="Ir a pagar"/></a>
+							-->
+		
+						</div>
+					</div>
+						<div>
+							<table width="100%" style="border-bottom: 1px dashed #CCC; clear:both;">
+								<tr>
+									<td class="operacion_carro" style="text-align:left ;padding-left: 5px; padding-bottom: 10px;	padding-top: 5px;"><a href="javascript:verificalista();">Guardar Carro</a></td>
+									<td class="operacion_carro" style="text-align:right ;padding-right: 5px; padding-bottom: 10px;	padding-top: 5px;"><a href="javascript:limpiarCarro();">Eliminar Carro</a></td>
+							</tr>
+							</table>
+						</div>
+<!-- 					<div style="float:left; width:210px; height:31px;">
+						<a href="javascript:verificalista();" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image75','','/FO_IMGS/img/estructura/bt_mi_listab.gif',1)"><img src="/FO_IMGS/img/estructura/bt_mi_lista.gif" alt="guardar mi lista" title="guardar mi lista" name="Image75" width="168" height="31" border="0" id="Image75" /></a>
+					</div>
+-->				</div>
+				<div id="carro_de_compras"></div>
+				<div align="center" id="despacho">
+					<!-- BEGIN DYNAMIC: MOSTRAR_BANNER_DESPACHO -->
+					<img src="/FO_IMGS/img/banners/bannersedal.jpg" width="210" height="95" alt="" border="0"/>
+					<!-- END DYNAMIC: MOSTRAR_BANNER_DESPACHO -->
+				</div>
+				<div align="center" id="banner_carro"></div>
+			</div>
+		</div>
+		<input type="hidden" name="cant_reg" id="cant_reg" value="{cant_reg}" />
+		<input type="hidden" name="total_carro_compras" id="total_carro_compras" value="{total}" />
+		<input type="hidden" name="total_desc_carro_compras" id="total_desc_carro_compras" value="{total_desc}" />
+		<input type="hidden" name="total_desc_carro_compras_sf" id="total_desc_carro_compras_sf" value="{total_desc_sf}" />
+		<input type="hidden" name="total_desc_carro_compras_tc" id="total_desc_carro_compras_tc" value="{total_desc_tc}" />
+		<input type="hidden" name="total_desc_carro_compras_tc_sf" id="total_desc_carro_compras_tc_sf" value="{total_desc_tc_sf}" />
+		<input type="hidden" name="promo_desc_carro_compras" id="promo_desc_carro_compras" value="{promo_desc}" />
+	</div>
+	<!-- inicio magno -->
+	<input type="hidden" name="correo_lista_producto" id="correo_lista_producto" value="" />
+	<!-- inicio ventana modal 1 -->
+	<div id="hiddenModalJumboConfirmacionMail1" style="display: none; border:0px yellow solid">		
+		<div class="mail_contenedor_lightbox" id="modalJumboConfirmacionMail1">		
+	        <div id="cont_inputs_close" class="cont_inputs_close">
+	        	<a href="javascript:closeLBoxWin();">
+	        		<img src="/FO_IMGS/images/html/btn_cerrar.gif" alt="Cerrar" border="0"/>
+	        	</a>
+	        </div>			
+			<div id="comunas_sesion">
+			  <table width="100%">
+				<tbody><tr>
+					<td colspan="4" align="left">				    
+						<div class="titulo_confirmacion_lightbox">Conf&iacute;rmanos tu mail</div>	                    
+					</td>
+					</tr>	            
+					<tr>
+						<td align="left" colspan="4">
+		            		<div class="txt_confirmacion_lightbox"> <span id="email_lista"/> </div>
+		            	</td>
+		            </tr>
+					<tr>
+						<td colspan="4">&nbsp;</td>
+					</tr>
+					<tr align="left" id="botones_tr_ventana1" style="display: none;">
+			            <td width="80">&nbsp;</td>
+						<td width="140"><a href="javascript:enviar_correo(4);"><img src="/FO_IMGS/images/html/btn_aceptar.gif" width="120" height="29" /></a></td>
+						<td width="128"><a href="javascript:enviar_correo(2);"><img src="/FO_IMGS/images/html/btn_cambiarmail.gif" width="128" height="29" /></a></td>
+						<td width="80"></td>
+					</tr>	
+					<tr>
+						<td colspan="4" style="padding-bottom:20px;">&nbsp;</td>
+					</tr>	
+				</tbody>
+			</table>
+		</div>
+	</div>
+	</div>
+	<!-- fin ventana modal 1 -->
+
+	<!-- inicio ventana modal 2 -->	
+	<div id="hiddenModalJumboConfirmacionMail2" style="display: none"  style="border:0px yellow solid">		
+	<div class="mail_contenedor_lightbox" id="modalJumboConfirmacionMail2">		
+        <div id="cont_inputs_close" class="cont_inputs_close">
+        	<a href="javascript:closeLBoxWin();">
+        		<img src="/FO_IMGS/images/html/btn_cerrar.gif" alt="Cerrar" border="0"/>
+        	</a>
+        </div>		
+		<div id="comunas_sesion">
+			  <table width="100%">
+			  	<tbody><tr>
+					<td colspan="4" align="left">			    
+				    	<div class="titulo_confirmacion_lightbox">Conf&iacute;rmanos tu mail</div>                    
+					</td>
+				</tr>            
+				<tr>
+					<td align="center" colspan="4">
+	            		<div class="txt_confirmacion_lightbox" style="height:20px; padding-top:20px;">
+	            			&iquest;A qu&eacute; correo quieres que  enviemos tu lista?
+	            		</div>
+	            	</td>
+	            </tr>    
+				<tr>
+			  		<td colspan="4" align="center" style="padding-left:22px"> 
+			  			<form id="formCambioEmail" name="formCambioEmail" method="post" action="">         
+							<div class="txt_confirmacion_form_lightbox">				            
+								<label for="textfield"></label>
+				              	<input type="text" name="nombreEmail" id="nombreEmail" value=""/>				            
+					        </div>
+				         	<div class="txt_confirmacion_form_lightbox">@</div>
+				         	<div class="txt_confirmacion_form_lightbox">
+								<label for="textfield"></label>
+				              	<input type="text" name="dominioEmail" id="dominioEmail" value=""/>
+							</div>
+						</form>
+						
+						          
+					</td>
+				</tr>
+				<tr align="center">            
+				  <td colspan="4">
+				  	<div align="center"><span id="error_correo_envio" /></div>				  	
+				  </td>
+				</tr>
+	          	<tr>            
+				  <td>
+				  	<div align="center"> 
+						<a href="javascript:enviar_correo(3);"><img src="/FO_IMGS/images/html/btn_confirmar.gif" width="120" height="29" /></a>
+				  	</div>
+				  </td>
+				</tr>
+				<tr><td colspan="4" style="padding-bottom:20px;">&nbsp;</td></tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+	<!-- fin ventana modal 2 -->
+	
+	<!-- inicio ventana modal 3 -->	
+	<div id="hiddenModalJumboConfirmacionMail3" style="display: none; border:0px yellow solid">		
+		<div class="mail_contenedor_lightbox" id="modalJumboConfirmacionMail3">		
+	        <div id="cont_inputs_close" class="cont_inputs_close">
+	        	<a href="javascript:closeLBoxWin();">
+	        		<img src="/FO_IMGS/images/html/btn_cerrar.gif" alt="Cerrar" border="0"/>
+	        	</a>
+	        </div>			
+			<div id="comunas_sesion">
+			  <table width="100%">
+				<tbody><tr>
+					<td colspan="4" align="left">				    
+						<div class="titulo_confirmacion_lightbox">Enviar lista a mi mail</div>	                    
+					</td>
+					</tr>	            
+					<tr>
+						<td align="left" colspan="4">
+		            		<div class="txt_confirmacion_lightbox">Tu lista  ser&aacute; enviada al correo <span id="email_lista2"/> </div>
+		            	</td>
+		            </tr>
+					<tr>
+						<td colspan="4">&nbsp;</td>
+					</tr>
+					<tr align="left">
+			            <td width="80">&nbsp;</td>
+						<td width="140"><a href="javascript:enviar_correo(4);"><img src="/FO_IMGS/images/html/btn_enviar.gif" width="120" height="29" /></a></td>
+						<td width="128"><a href="javascript:closeLBoxWin();"><img src="/FO_IMGS/images/html/btn_cancelar.gif" width="128" height="29" /></a></td>
+						<td width="80"></td>
+					</tr>	
+					<tr>
+						<td colspan="4" style="padding-bottom:20px;">&nbsp;</td>
+					</tr>	
+				</tbody>
+			</table>
+		</div>
+	</div>
+	</div>
+	<!-- fin ventana modal 3 -->
+	<!-- inicio ventana modal 4 (exito) -->
+	<div id="hiddenModalJumboConfirmacionMail4" style="display: none; border:0px yellow solid">		
+		<div class="mail_contenedor_lightbox" id="modalJumboConfirmacionMail4">
+			<div id="cont_inputs_close" class="cont_inputs_close">
+	        	<a href="javascript:closeLBoxWin();">
+	        		<img src="/FO_IMGS/images/html/btn_cerrar.gif" alt="Cerrar" border="0"/>
+	        	</a>
+	        </div>	        
+	        <div id="comunas_sesion">
+				<table width="100%" align="center">
+					<tbody>
+						<tr>
+							<td align="center">						    
+								<div class="titulo_confirmacion_lightbox" style="height:50px; border:none;">
+									<span id="mensaje_error_exito"/>
+								</div>
+							</td>
+						</tr>			          
+						<tr>							
+							<td>
+								<div align="center">
+								<a href="javascript:closeLBoxWin();"><img align="middle" src="/FO_IMGS/images/html/btn_cerrar_2.gif" width="90" height="29" /></a>															
+								</div>
+								
+							</td>							
+						</tr>			
+						<tr>
+							<td style="padding-bottom:20px;">&nbsp;</td>
+						</tr>			
+					</tbody>
+				</table>
+			</div>
+	        <!--  -->	        
+		</div>
+	</div>
+	<!-- fin ventana modal 4 (exito) -->
+	<!-- fin magno -->
+	<!-- INICIO INDRA 2012-11-13 -->
+
+	<!-- FIN INDRA 2012-11-13-->
+</body>
+</html>
+
+<script language="javascript">
+jQuery().ready(function() { 
+	actualizaCarro();
+});
+function actualizaCarro() {
+  $j.get("/FO/OrderItemDisplay", function(datos) {
+    $j('div#carro_de_compras').html(datos);
+    descuento = $j('input#total_desc_carro_compras_sf').val();
+    $j('input#_total').val($j('input#total_desc_carro_compras_tc').val());
+    $j('input#_total_desc').val($j('input#total_desc_carro_compras_tc').val());
+
+    $j('div#_total_ahorro').text($j('input#total_desc_carro_compras_tc_sf').val());//total_carro_compras - promo_desc_carro_compras
+    $j('div#_total_tarjeta_mas').text($j('input#total_desc_carro_compras').val());
+    $j('div#_total_ahorro_tarjeta_mas').text($j('input#total_desc_carro_compras_sf').val());
+    //por compatibilidad con codigo antiguo que sobrevivio
+		$j('input#_total_desc_txt').val($j('input#promo_desc_carro_compras').val()); 
+	  $j('div#inputtotdesc').hide();
+  });
+}
+
+</script>

@@ -1,0 +1,332 @@
+<!-- Inicio modal window login -->
+<div id="contenedor" class="contenedor_class">
+<div id="hiddenModalProdDesp" style="display: block"  style="border:0px yellow solid">
+			<div id="tablaPrincipal" class="contenedor_lightbox_listas">
+				<div id="botonCerrar" class="Estilo2" style="border:0px yellow solid;">
+					<a style="float:right;" href="javascript:closeLBoxWin();">
+						<img src="/FO_IMGS/images/html/btn_cerrar.gif" border="0" alt="Cerrar"/>
+					</a>
+				</div>
+				<!-- 14-11-2012 INDRA -->
+				<div id="textoCabecera" style="color: #009A46;font-family: Arial,Helvetica,sans-serif;font-size: 16px;font-weight: bold;">
+					{txtCabecera}
+				</div>
+				<!-- 14-11-2012 INDRA -->
+				<div id="logoCabecera">
+					<img src="/FO_IMGS/img/logoJB.jpg" width="100%" height="15" />
+				</div>
+				<div id="textoDescripcion" class="fila_registro_2012_name"  align="left" style="text-align: center;">
+					Aqu&iacute; est&aacute; el listado para que puedas revisarlo y buscar alternativas:
+				</div>
+				<div id="logoDescripcion">
+					<img src="/FO_IMGS/img/logoJB.jpg" width="100%" height="15" />
+				</div>
+				<div id="tablaProductos" style="height:250px; max-height: 250px; overflow-y: scroll;">
+				<script type="text/javascript">
+					try{mxTracker._trackPageview('/Carro/Lista productos no disponibles');}catch(e){};
+				</script>
+					<!-- height="240px" -->
+					<table class="tablesorter" id="myTable1" width="100%" border="0" cellpadding="0" cellspacing="0" >
+					<!-- 14-11-2012 INDRA -->
+						<thead>
+							<tr>
+								<th style="width : 300px; font-weight: bold; color: black;">Producto</th>
+								<th style="font-weight: bold; color: black;">Marca</th>
+							</tr>
+						</thead>
+					<!-- 14-11-2012 INDRA -->
+						<!-- BEGIN DYNAMIC: PRODUCTOS_DESPUBLICADOS -->
+						<tbody>
+						<!-- 14-11-2012 INDRA -->
+							<tr>
+								<td class="celda_p1" align="center" style="width : 300px;">{producto}</td>
+								<td class="celda_p1" align="center">{marca}</td>
+							</tr>
+							<!-- END DYNAMIC: PRODUCTOS_DESPUBLICADOS -->
+						<!-- 14-11-2012 INDRA -->
+						</tboby>
+					</table>
+				</div>
+				<div align="right">
+					<table>
+						<tr height="50px">
+						<!-- 14-11-2012 INDRA -->
+							<td style="vertical-align: baseline; padding-top: 10px;">
+								<a href="javascript:{reemplazarProductos_carro}" onclick="try{mxTracker._trackEvent('Carro','Lista productos no disponibles','BuscarAlternativas');}catch(e){};" id="reemplazarProductos">
+                                   <img src="/FO_IMGS/img/btn_ver_alternativas.jpg"/>&nbsp;
+                                 </a>
+							</td>
+							<td style="vertical-align: baseline; padding-top: 10px;">
+								<a href="javascript:{borrarProductos_carro}" onclick="try{mxTracker._trackEvent('Carro','Lista productos no disponibles','BorrarNoDisponibles');}catch(e){};" id="borrarProductos">
+                                   <img src="/FO_IMGS/img/btn_borrar_prod.jpg"/>
+                                </a>
+							</td>
+						<!-- 14-11-2012 INDRA -->
+						</tr>
+					</table>
+				</div>
+				<div id="piePagina" class="fila_registro_2012_name" style="text-align:center; padding-bottom:10px; font-size:10px; color:#666; vertical-align: bottom">
+						Si deseas ver las alternativas mantendremos la lista de productos no disponibles abierta para facilitar tu revisi&oacute;n.(Debes permitir en tu navegador la visualizaci&oacute;n de Pop Ups de Jumbo.cl)
+				</div>
+			</div>
+
+<!--		</div>-->
+		<input type="hidden" id="existen_despublicados_carro" name="existen_despublicados_carro" value="{existen_despublicados_carro}" />
+		<input type="hidden" id="productosList_carro" name="productosList_carro" value="{productosList_carro}" />
+		<input type="hidden" id="popup_carro" name="popup_carro" value="" />
+<!--	</form>-->
+</div>
+</div>
+
+	<!-- POPUP -->
+	<div id="idContPopupCarro" class="classContPopup">
+	<div id="popupRecordatorio" style="border: 0px red solid; width:400px; height:auto; display: block;">
+	<!-- 14-11-2012 INDRA -->
+		<!-- div id="tablaPrincipal" class="contenedor_lightbox_popup"-->
+	<!-- 14-11-2012 INDRA -->
+		<table class="contenedor_lightbox_popup" style="border:0px blue solid; width:400px; height:auto;" cellpadding="2" cellspacing="2">
+
+            <tr>
+				<td width="100%" height="16" align="left" style="text-align: center;" class="fila_registro_2012_name" colspan="5">
+					Busca alternativas en las distintas categorías para<br/ >  los siguientes productos que se encuentran sin stock:
+				</td>
+			</tr>
+            <tr>
+				<td width="100%" height="16" align="left" style="text-align: center;" class="fila_registro_2012_name" colspan="5">
+				</td>
+			</tr>
+			<tr height="400px">
+				<td colspan="5" align="center" valign="top" height="54">
+					<div id="tablaProductos" style="height:250px; max-height: 250px; overflow-y: scroll;">
+					<!-- height="240px" -->
+						<table class="tablesorter" id="myTable1" width="100%" border="0" cellpadding="0" cellspacing="0" >
+							<thead>
+								<tr>
+									<th style="width : 50%">Producto</th>
+									<th style="width : 50%">Marca</th>
+								</tr>
+							</thead>
+							<!-- BEGIN DYNAMIC: PRODUCTOS_DESPUBLICADOS -->
+							<tbody>
+								<tr>
+									<td class="celda_p1" align="center">{producto}</td>
+									<td class="celda_p1" align="center">{marca}</td>
+								</tr>
+								<!-- END DYNAMIC: PRODUCTOS_DESPUBLICADOS -->
+							</tboby>
+						</table>
+					</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	</div>
+	<!-- POPUP -->
+
+<script language="javascript">
+var XBROWSER 		= navigator.appName;
+var status1=0;
+var status2=0;
+
+jQuery().ready(function() {
+	if($j('#el_listado_de_compras').find('#ficha1').length>0){
+		var link=$j('#el_listado_de_compras').find('#ficha1').get(0) + '';
+		var ret = eval(link.replace(/javascript:/gi,''));
+	}
+	else
+		muestraProductos2("","");
+//	$j('#el_listado_de_compras').find('#ficha').get(1).click(); //en mac y ios no funciona
+
+	$j("#xxx1a").datepicker({changeMonth:true, changeYear:true, maxDate: "+0D",dateFormat: "dd-mm-yy" , firstDay: 1 , dayNames: ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sabado"] ,dayNamesMin: ["Do", "Lu", "Ma", "Mi", "Ju", "Vi", "Sa"],monthNames: ["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"],monthNamesShort: ["Ene","Feb","Mar","Abr","May","Jun","Jul","Ago","Sep","Oct","Nov","Dic"] });
+	$j("#xxx2a").datepicker({changeMonth:true, changeYear:true, maxDate: "+0D",dateFormat: "dd-mm-yy" , firstDay: 1 , dayNames: ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sabado"] ,dayNamesMin: ["Do", "Lu", "Ma", "Mi", "Ju", "Vi", "Sa"],monthNames: ["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"],monthNamesShort: ["Ene","Feb","Mar","Abr","May","Jun","Jul","Ago","Sep","Oct","Nov","Dic"] });
+	$j("#xxx1b").datepicker({changeMonth:true, changeYear:true, maxDate: "+0D",dateFormat: "dd-mm-yy" , firstDay: 1 , dayNames: ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sabado"] ,dayNamesMin: ["Do", "Lu", "Ma", "Mi", "Ju", "Vi", "Sa"],monthNames: ["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"],monthNamesShort: ["Ene","Feb","Mar","Abr","May","Jun","Jul","Ago","Sep","Oct","Nov","Dic"] });
+	$j("#xxx2b").datepicker({changeMonth:true, changeYear:true, maxDate: "+0D",dateFormat: "dd-mm-yy" , firstDay: 1 , dayNames: ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sabado"] ,dayNamesMin: ["Do", "Lu", "Ma", "Mi", "Ju", "Vi", "Sa"],monthNames: ["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"],monthNamesShort: ["Ene","Feb","Mar","Abr","May","Jun","Jul","Ago","Sep","Oct","Nov","Dic"] });
+	var myAccordion = new $j.Zebra_Accordion('.Zebra_Accordion');
+
+	$j('.Zebra_Accordion dt').click(function(e) {
+		var strOpcion="0";
+
+		id = $j(this).attr("id");
+		if(id =='opcion1'){
+			strTitulo='Mis Compras en Jumbo.cl';
+			strOpcion="1";
+			strImage="/FO_IMGS/img/no_compras_jumbo-cl.jpg";
+		}else if(id =='opcion2'){
+			strTitulo='Mis Compras en Jumbo';
+			strOpcion="2";
+			strImage="/FO_IMGS/img/no_compras_jumbo.jpg";
+		}else if(id =='opcion3'){
+			strTitulo='Mis listas guardadas';
+			strOpcion="3";
+			strImage="/FO_IMGS/img/no_listas.jpg";
+		}
+
+		if($j('#el_listado_de_compras').find('#ficha' + strOpcion).length>0){
+			var link=$j('#el_listado_de_compras').find('#ficha' + strOpcion).get(0) + '';
+			var ret = eval(link.replace(/javascript:/gi,''));
+		}
+		else{
+			muestraProductos2("","");
+			//alert($j('#img_sinlista').attr("src"));
+			//$j('#img_sinlista').attr("src",strImage);
+		}
+	});
+
+
+	$j('.Zebra_Accordion dd').click(function(e) {
+		id = $j(this).attr("id");
+		if(id =='opcion1'){
+			strTitulo='Mis Compras en Jumbo.cl';
+		}else if(id =='opcion2'){
+			strTitulo='Mis Compras en Jumbo';
+		}else if(id =='opcion3'){
+			strTitulo='Mis listas guardadas';
+		}
+
+		$j('#texto_titulo').html(strTitulo);
+	});
+});
+
+function closeLBoxWin() {
+  tb_remove();
+}
+
+function muestraLBProdDesp(){
+  showLightBoxProdDesp();
+//  greenBack();
+	$j("#myTable1").tablesorter({widgets: ['zebra'], headers: { 0: { sorter: false }}});
+
+  $j(document).click(function(e){
+	  id = $j(this).val();
+	  if(e.target.id=='TB_overlay') //cierra si hace clic fuera de la ventana
+		  closeLBoxWin();
+  });
+}
+
+function upWeb() {
+  if ( XBROWSER == "Microsoft Internet Explorer" ) {
+    window.scrollTo(0,0);
+  }
+}
+
+function showLightBoxProdDesp() {
+//  tb_show('Jumbo.cl','#TB_inline?height=316&width=523&inlineId=hiddenModalContent&modal=true');
+  tb_show('Jumbo.cl','#TB_inline?height=500&width=700&inlineId=hiddenModalProdDesp&modal=true');
+}
+function selectAllLists1(obj){
+	if (status1==0)
+		status1=1;
+	else
+		status1=0;
+	$j('table#myTable1 tbody tr').each(function(row) {
+		var strObj=$j(this).find('input:checkbox');
+		if (status1==0)
+			strObj.attr('checked', '');
+		else
+			strObj.attr('checked', 'checked');
+	});
+}
+function selectAllLists2(obj){
+	if (status2==0)
+		status2=1;
+	else
+		status2=0;
+	$j('table#myTable2 tbody tr').each(function(row) {
+		var strObj=$j(this).find('input:checkbox');
+		if (status2==0)
+			strObj.attr('checked', '');
+		else
+			strObj.attr('checked', 'checked');
+	});
+}
+function buscar1(){
+	var i=0;
+
+	if(datoToNumber($j('#xxx1a').val())>fechaToNumber()){
+		alert("Las fecha de busqueda no debe ser mayor a la fecha de hoy.");
+		$j('#xxx1a').val("");
+		return;
+	}
+
+	if(datoToNumber($j('#xxx2a').val())>fechaToNumber()){
+		alert("Las fecha de busqueda no debe ser mayor a la fecha de hoy.");
+		$j('#xxx2a').val("");
+		return;
+	}
+
+	if(datoToNumber($j('#xxx1a').val())>datoToNumber($j('#xxx2a').val())){
+		alert("Las fecha de busqueda debe ser de menor a mayor.");
+		return;
+	}
+
+	$j('table#myTable1 tbody tr').each(function(row) {
+		var strFecha=$j(this).children(".celda_p1").text().substring(0,10);
+
+		if(datoToNumber($j('#xxx1a').val())<=datoToNumber(strFecha) && datoToNumber($j('#xxx2a').val())>=datoToNumber(strFecha))
+			$j(this).show();
+		else
+			$j(this).hide();
+		i++;
+	});
+	$j("#myTable1").tablesorter({widgets: ['zebra']});
+}
+function buscar2(){
+	var i=0;
+
+	if(datoToNumber($j('#xxx1b').val())>fechaToNumber()){
+		alert("Las fecha de busqueda no debe ser mayor a la fecha de hoy.");
+		$j('#xxx1b').val("");
+		return;
+	}
+
+	if(datoToNumber($j('#xxx2b').val())>fechaToNumber()){
+		alert("Las fecha de busqueda no debe ser mayor a la fecha de hoy.");
+		$j('#xxx2b').val("");
+		return;
+	}
+
+	if(datoToNumber($j('#xxx1b').val())>datoToNumber($j('#xxx2b').val())){
+		alert("Las fecha de busqueda debe ser de menor a mayor.");
+		return;
+	}
+	$j('table#myTable2 tbody tr').each(function(row) {
+		var strFecha=$j(this).children(".celda_p1").text().substring(0,10);
+
+		if(datoToNumber($j('#xxx1b').val())<=datoToNumber(strFecha) && datoToNumber($j('#xxx2b').val())>=datoToNumber(strFecha))
+			$j(this).show();
+		else
+			$j(this).hide();
+		i++;
+	});
+	$j("#myTable2").tablesorter({widgets: ['zebra']});
+}
+
+function datoToNumber(str){
+	if(str.length==10){
+		var ano=str.substring(6);
+		var mes=str.substring(3,5);
+		var dia=str.substring(0,2);
+		return ano.concat(mes,dia);
+	}
+	else
+		return "";
+}
+
+function fechaToNumber(){
+	var currentDate=new Date();
+	var strFecha='';
+	var ano=currentDate.getFullYear();
+	var mes='0' + (currentDate.getMonth()+1);
+	var dia='0' + currentDate.getDate();
+	mes=mes.substr(mes.length-2,mes.length);
+	dia=dia.substr(dia.length-2,dia.length);
+	return strFecha.concat(ano,mes,dia);
+}
+
+function reemplazarReferencias(borrar, reemplazar){
+	document.getElementById("borrarProductos").href = borrar;
+	document.getElementById("reemplazarProductos").href = reemplazar;
+
+}
+</script>
+

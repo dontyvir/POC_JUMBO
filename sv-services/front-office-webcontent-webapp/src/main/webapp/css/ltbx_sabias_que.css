@@ -1,0 +1,112 @@
+.contenedor_lightbox1{
+	float:left;
+	text-align:left;
+	padding:10px 0px 30px 0px;
+	border:1px solid #CCC;
+	background:#FFFFFF;
+	width:466px;
+	border-radius: 8px 8px 8px 8px;
+	-moz-border-radius-bottomleft: 8px;
+	-moz-border-radius-topleft: 8px;
+	-moz-border-radius-topright: 8px;
+	-webkit-border-bottom-left-radius: 8px;
+	-webkit-border-top-left-radius: 8px;
+	-webkit-border-top-right-radius: 8px;
+	border-bottom-left-radius: 8px;
+	-moz-border-radius-bottomright: 8px;
+	-webkit-border-bottom-right-radius: 8px;
+	border-bottom-right-radius: 8px;
+	-moz-box-shadow: 0px 4px 10px #CCC;
+	-webkit-box-shadow: 0px 4px 10px #CCC;
+	box-shadow: 0px 4px 10px #CCC;
+	height:200px;
+	height: auto;
+}
+.cont_inputs_close1 {
+    margin-right: 2px;
+    margin-top: 5px;
+    padding-right: 10px;
+    position: relative;
+    text-align: right;
+}
+.btns1{
+	float:left;
+	height: auto;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:12px;
+	color:#666;
+	padding-left: 46px;
+	cursor:pointer;
+	padding-top: 5px;
+}
+
+.col_opcion_011{
+	width:405px;
+	float:left;
+	height: auto;
+	padding-top: 10px;
+}
+
+
+.col_btn_accion1{
+	float:left;
+	height: auto;
+	padding-top: 30px;
+	padding-left: 100px;
+	cursor: pointer;
+}
+
+
+.fila_titulo1{
+	width:230px;
+	float:left;
+	height: 50px;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:16px;
+	color:#009640;
+	padding-left: 77px;
+}
+.dash_line1{
+	width: 314px;
+	height: 5px;
+	border-bottom-color: #009640;
+	border-bottom-style: dashed;
+	border-bottom-width: 1px;
+}
+
+.cont_acepto_info1{
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:10px;
+	color:#999;
+	width: 170px;
+	float: left;
+	height: auto;
+	padding-left: 6px;
+	padding-top: 5px;
+}
+.cont_opcion1{
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:14px;
+	color:#999;
+	width: 323px;
+	float: left;
+	height: auto;
+	padding-left: 10px;
+	padding-top: 5px;
+}
+.cont_info1{
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:10px;
+	color:#999;
+	width: 500px;
+	float: left;
+	height: auto;
+	text-align:center;
+	padding-top: 15px;
+}
+a1 {
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:10px;
+	color:#999;
+	text-decoration: underline;
+}

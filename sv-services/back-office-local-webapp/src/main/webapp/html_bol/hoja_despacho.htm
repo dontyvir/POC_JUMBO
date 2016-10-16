@@ -1,0 +1,455 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>Jumbo.cl Back Office Local</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="EXPIRES" CONTENT="Mon, 22 Jul 2002 11:12:01 GMT">
+<link href="estilos.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+<!--
+body {
+	background-color: #FFFFFF;
+}
+body,td,th {
+	color: #555555;
+}
+.lectura {	font-family: "Trebuchet MS";
+	font-size: 12px;
+	font-style: normal;
+	line-height: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	color: #333333;
+	text-decoration: none;
+}
+.Estilo1 {
+	font-size: 12px;
+	font-weight: bold;
+}
+.tabla_despacho {
+	color: fuchsia;
+	font-size: 20px;
+}
+-->
+</style>
+</head>
+
+<body topmargin="0" leftmargin="0" marginheight="0" marginwidth="0">
+
+<table border="0" cellpadding="0" cellspacing="0" >
+  <tr>
+    <td height="17" valign="top" width="670"><img src="img/imprimir_arriba_02.jpg" width="670" height="66"></td>
+  </tr>
+  <tr>
+    <td valign="top" height="725" width="670">      
+	
+	<table width="670" border="0" cellpadding="0" cellspacing="2" class="TablaHojaDespacho">
+        <tr>
+          <td valign="top" width="97%">
+		  
+		  <table width="670" border="0" cellspacing="4" cellpadding="0">
+		    <tr>
+			  <td><span class="titulosVerdes"><strong>Hoja de Despacho N&deg; {id_pedido}</strong></span></td>
+			</tr>
+			<tr> 
+			  <td>
+			  
+			  
+			  
+			    <table width="657" border="0" cellspacing="0" cellpadding="0">
+				  <tr> 
+				    <td width="6" height="6"><img src="img/tablasupizq.gif" width="6" height="6" /></td>
+					<td width="645" height="6" background="img/tablasup.gif"></td>
+					<td width="6" height="6"><img src="img/tablasupder.gif" width="6" height="6" /></td>
+			      </tr>
+				  <tr> 
+				      <td width="6" height="50" background="img/tablaizq.gif"></td>
+					<td valign="top">
+					  
+							<table width="645" border="0" cellspacing="4" cellpadding="0">
+                                <tr> 
+                                  <td width="174"><strong>Nombre del Cliente:</strong></td>
+                                  <td colspan="3">{nom_cliente} {rut_cliente}</td>
+                                </tr>
+                                <tr> 
+                                  
+                            <td><strong>Direcci&oacute;n de Despacho:</strong></td>
+                                  
+                            <td colspan="3">{txt_dir} {direccion}</td>
+                                </tr>
+                                <tr> 
+                                  <td><strong>Comuna:</strong></td>
+                                  <td width="166">{comuna}</td>
+                                  <td width="107"><strong>Tel&eacute;fono:</strong></td>
+                                  <td width="178">{telefono}{palito}{celular}</td>
+                                </tr>
+                                <tr> 
+                                  <td><strong>Persona Autorizada para {accion_desp}:</strong></td>
+                                  <td colspan="3">{per_autorizada}</td>
+                                </tr>
+                                <tr> 
+                                  <td><strong>Observaciones:</strong></td>
+                                  <td colspan="3">{observaciones}</td>
+                                </tr>
+                              </table>
+						  
+						</td>
+                      <td width="6" background="img/tablader.gif"></td>
+                    </tr>
+                    <tr> 
+                      <td width="6" height="6"><img src="img/tablainfizq.gif" width="6" height="6" /></td>
+                      <td height="6" background="img/tablainf.gif"></td>
+                      <td width="6" height="6"><img src="img/tablainfder.gif" width="6" height="6" /></td>
+                    </tr>
+                  </table>
+				  
+				  
+				</td>
+              </tr>
+			  
+			<tr> 
+			  <td>
+
+
+			    <table width="657" border="0" cellspacing="0" cellpadding="0">
+				  <tr> 
+				    <td width="6" height="6"><img src="img/tablasupizq.gif" width="6" height="6" /></td>
+					<td width="645" height="6" background="img/tablasup.gif"></td>
+					<td width="6" height="6"><img src="img/tablasupder.gif" width="6" height="6" /></td>
+				  </tr>
+				  <tr> 
+				      <td width="6" height="50" background="img/tablaizq.gif"></td>
+					<td valign="top">
+					
+					  <table width="645" border="0" cellspacing="4" cellpadding="0">
+					    <tr> 
+						    <td width="174"><strong>Zona:</strong></td>
+						  <td colspan="3">{zona}</td>
+						</tr>
+						<tr> 
+						  <td><strong>Fecha de Compromiso:</strong></td>
+						    <td width="166">{fec_entrega}</td>
+						    <td width="107"><strong>Fecha de Venta:</strong></td>
+						    <td width="178">{fec_venta}&nbsp;</td>
+						</tr>
+						<tr> 
+						  <td><strong>Tipo de Despacho:</strong></td>
+						  <td>{tipo_despacho}</td>
+						  <td><strong>Ventana Horaria:</strong></td>
+						  <td>{h_entrega}</td>
+						</tr>
+						<tr> 
+						  <td><strong>N&ordm; de Documento:</strong></td>
+						  <td>{num_doc}</td>
+						  <td><strong>N&ordm; de Caja:</strong></td>
+						  <td>{num_caja}</td>
+						</tr>
+						<tr> 
+						    <td><strong>Total Bandejas Norm. y Coolers:</strong></td>
+						  <td>{total_ban_y_cool}</td>
+						  <td><strong>Total Productos</strong>:</td>
+						  <td>{total_cant_prod}</td>
+						</tr>
+						<tr> 
+						  <td><strong>Monto Total Neto:</strong></td>
+						  <td>{monto_total}</td>
+						  <td>&nbsp;</td>
+						  <td>&nbsp;</td>
+						</tr>
+					  </table>
+					
+					</td>
+					<td width="6" background="img/tablader.gif"></td>
+				  </tr>
+				  <tr> 
+				    <td width="6" height="6"><img src="img/tablainfizq.gif" width="6" height="6" /></td>
+					<td height="6" background="img/tablainf.gif"></td>
+					<td width="6" height="6"><img src="img/tablainfder.gif" width="6" height="6" /></td>
+				  </tr>
+				</table>
+				
+				
+			  </td>
+			</tr>
+			  
+            </table>
+            <TABLE width="635" border="0" valing = "top">
+              <CAPTION align="top">
+              </CAPTION>
+              <TBODY>
+                <TR>
+                  <TD width="360" rowspan="2" valign="top"><table width="99%" border="0" cellspacing="0" cellpadding="0">
+                      <tr>
+                        <td width="6" height="6"><img src="img/tablasupizq.gif" width="6" height="6" /></td>
+                        <td width="158" height="6" background="img/tablasup.gif"></td>
+                        <td width="10" height="6"><img src="img/tablasupder.gif" width="6" height="6" /></td>
+                      </tr>
+                      <tr>
+                        <td width="6" height="149" background="img/tablaizq.gif"></td>
+                        <td valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="5">
+                            <tr>
+                              <td><TABLE border="0" cellpadding="0" cellspacing="0">
+                                  <TR>
+                                    <TD width="332" height="20" valign="top"><span class="Estilo1">BANDEJAS  Y SECTOR PICKING <br>
+                                    </span></TD>
+                                  </TR>
+                                </TABLE>
+                                  <DIV align="left">
+                                    <TABLE width="364" border="0" cellpadding="2" cellspacing="0" class="tabla2">
+                                      <TR>
+                                        <TH width="180" align="center">Cod Bin</TH>
+                                        <!-- TH width="120" align="center">Cod Ubicaci&oacute;n</TH-->
+                                        <TH width="180" align="center">Sector Picking</TH>
+                                      </TR>
+                                      <!-- BEGIN DYNAMIC: select_bins_pedido -->
+                                      <TR valign="top">
+                                        <TD><DIV align="center">{cod_bin}</DIV></TD>
+                                        <!-- TD><DIV align="center">{cod_ubicacion}</DIV></TD-->
+                                        <TD><DIV align="center">{sector_picking}</DIV></TD>
+                                      </TR>
+                                      <!-- END DYNAMIC: select_bins_pedido -->
+                                    </TABLE>
+                                  </DIV></td>
+                            </tr>
+                        </table></td>
+                        <td width="10" background="img/tablader.gif"></td>
+                      </tr>
+                      <tr>
+                        <td width="6" height="6"><img src="img/tablainfizq.gif" width="6" height="6" /></td>
+                        <td height="6" background="img/tablainf.gif"></td>
+                        <td width="10" height="6"><img src="img/tablainfder.gif" width="6" height="6" /></td>
+                      </tr>
+                    </table>
+                      <br>
+                      <table width="99%" border="0" cellspacing="0" cellpadding="0">
+                        <tr>
+                          <td width="6" height="6"><img src="img/tablasupizq.gif" width="6" height="6" /></td>
+                          <td width="158" height="6" background="img/tablasup.gif"></td>
+                          <td width="10" height="6"><img src="img/tablasupder.gif" width="6" height="6" /></td>
+                        </tr>
+                        <tr>
+                          <td width="6" height="149" background="img/tablaizq.gif"></td>
+                          <td valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="5">
+                              <tr>
+                                <td><TABLE border="0" cellpadding="0" cellspacing="0"
+								>
+                                    <TR>
+                                      <TD width="332" height="20" valign="top"><span class="Estilo1">PRODUCTOS SUELTOS <br>
+                                      </span></TD>
+                                    </TR>
+                                  </TABLE>
+                                    <TABLE width="364" border="0" align="center" cellpadding="2"
+								cellspacing="0" class="tabla2">
+                                      <TR>
+                                        <TH width="60">Descripci&oacute;n</TH>
+                                        <TH width="70">C&oacute;digo</TH>
+                                        <TH width="51">Cant</TH>
+                                      </TR>
+                                      <!-- BEGIN DYNAMIC: select_detalle_productos_sueltos -->
+                                      <TR valign="top">
+                                        <TD><DIV align="left">{descripcion}</DIV></TD>
+                                        <TD><DIV align="center">{codigo}<BR>
+                                        </DIV></TD>
+                                        <TD><DIV align="center">{cant}</DIV></TD>
+                                      </TR>
+                                      <!-- END DYNAMIC: select_detalle_productos_sueltos -->
+                                  </TABLE></td>
+                              </tr>
+                          </table></td>
+                          <td width="10" background="img/tablader.gif"></td>
+                        </tr>
+                        <tr>
+                          <td width="6" height="6"><img src="img/tablainfizq.gif" width="6" height="6" /></td>
+                          <td height="6" background="img/tablainf.gif"></td>
+                          <td width="10" height="6"><img src="img/tablainfder.gif" width="6" height="6" /></td>
+                        </tr>
+                      </table>
+                    <DIV align="left"></DIV>
+                  </TD>
+                  <TD width="265"><table width="99%" border="0" cellspacing="0" cellpadding="0">
+                      <tr>
+                        <td width="6" height="6"><img src="img/tablasupizq.gif" width="6" height="6" /></td>
+                        <td width="158" height="6" background="img/tablasup.gif"></td>
+                        <td width="10" height="6"><img src="img/tablasupder.gif" width="6" height="6" /></td>
+                      </tr>
+                      <tr>
+                        <td width="6" height="149" background="img/tablaizq.gif">&nbsp;</td>
+                        <td valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="5">
+                            <tr>
+                              <td><TABLE width="245" border="0" align="left" cellpadding="2"
+								cellspacing="0">
+                                  <TR> 
+                                    <TD height="9" colspan="2"><span class="Estilo1">ANTECEDENTES 
+                                      DE LA ENTREGA </span></TD>
+                                  </TR>
+                                  <TR> 
+                                    <TD height="9" colspan="2">Nombre de quien 
+                                      recibe:</TD>
+                                  </TR>
+                                  <TR> 
+                                    <TD height="40" colspan="2" style="border:#777777 solid 1px;">&nbsp;</TD>
+                                  </TR>
+                                  <TR> 
+                                    <TD height="20" colspan="2">Rut:</TD>
+                                  </TR>
+                                  <TR> 
+                                    <TD height="15" colspan="2" style="border:#777777 solid 1px;">&nbsp;</TD>
+                                  </TR>
+                                  <TR> 
+                                    <TD width="113" height="10">Fecha de Entrega:</TD>
+                                    <TD width="98" height="10">Hora de Entrega:</TD>
+                                  </TR>
+                                  <TR> 
+                                    <TD height="20" > <table width="100%" border="0" cellspacing="0" cellpadding="0" style="border:#777777 solid 1px;">
+                                        <tr> 
+                                          <td height="15">&nbsp;</td>
+                                        </tr>
+                                      </table></TD>
+                                    <TD height="20"><table width="100%" border="0" cellspacing="0" cellpadding="0" style="border:#777777 solid 1px;">
+                                        <tr> 
+                                          <td height="15">&nbsp;</td>
+                                        </tr>
+                                      </table></TD>
+                                  </TR>
+                                  <TR> 
+                                    <TD height="10">Cantidad de productos sueltos:</TD>
+                                    <TD height="10"> <table width="35" border="0" cellspacing="0" cellpadding="0" style="border:#777777 solid 1px;">
+                                        <tr> 
+                                          <td height="15"></td>
+                                        </tr>
+                                      </table></TD>
+                                  </TR>
+                                  <TR> 
+                                    <TD height="10">Cantidad de bandejas: </TD>
+                                    <TD height="10"> <table width="35" border="0" cellspacing="0" cellpadding="0" style="border:#777777 solid 1px;">
+                                        <tr> 
+                                          <td height="15"></td>
+                                        </tr>
+                                      </table></TD>
+                                  </TR>
+                                  <TR> 
+                                    <TD height="10">Sello de Seguridad:</TD>
+                                    <TD height="10"><label></label></TD>
+                                  </TR>
+                                  <TR> 
+                                    <TD height="54" colspan="2" style="border:#777777 solid 0px;" align="right"> 
+                                      <table width="90%" border="0" cellspacing="0" cellpadding="0">
+                                        <tr> 
+                                          <td width="13%" height="20" align="left"> 
+                                            <table width="13" border="0" cellspacing="0" cellpadding="0" style="border:#777777 solid 1px;">
+                                              <tr> 
+                                                <td height="10"></td>
+                                              </tr>
+                                            </table></td>
+                                          <td width="87%" height="20" align="left">Buen 
+                                            Estado</td>
+                                        </tr>
+                                        <tr> 
+                                          <td height="20" align="left"> <table width="13" border="0" cellspacing="0" cellpadding="0" style="border:#777777 solid 1px;">
+                                              <tr> 
+                                                <td height="10"></td>
+                                              </tr>
+                                            </table></td>
+                                          <td height="20" align="left">Alteradas</td>
+                                        </tr>
+                                        <tr> 
+                                          <td height="20" align="left"> <table width="13" border="0" cellspacing="0" cellpadding="0" style="border:#777777 solid 1px;">
+                                              <tr> 
+                                                <td height="10"></td>
+                                              </tr>
+                                            </table></td>
+                                          <td height="20" align="left">No existen 
+                                          </td>
+                                        </tr>
+                                      </table></TD>
+                                  </TR>
+								  
+								  <!-- BEGIN DYNAMIC: recibe_regalo -->
+                                  <TR> 
+                                    <TD height="10" colspan="2">
+										<table width="100%" border="0" cellspacing="0" cellpadding="0">
+											<tr>
+												<td width="50%">Regalo recibido:</td>
+												<td width="10%">Si</td>
+												<td width="15%">
+												
+												<table width="13" border="0" cellspacing="0" cellpadding="0" style="border:#777777 solid 1px;">
+													<tr> 
+														<td height="10"></td>
+													</tr>
+												</table>
+																								
+												</td>
+												<td width="10%">No</td>
+												<td width="15%">
+												
+												<table width="13" border="0" cellspacing="0" cellpadding="0" style="border:#777777 solid 1px;">
+													<tr> 
+														<td height="10"></td>
+													</tr>
+												</table>
+												
+												</td>
+											</tr>
+										</table> 
+									</TD>
+                                  </TR>
+								  <!-- END DYNAMIC: recibe_regalo -->
+								  
+                                  <TR> 
+                                    <TD height="23" colspan="2" style="border:#777777 solid 0px;">Comentario 
+                                      de la Entrega:</TD>
+                                  </TR>
+                                  <TR> 
+                                    <TD height="54" colspan="2" style="border:#777777 solid 1px;">&nbsp;</TD>
+                                  </TR>
+                                </TABLE></td>
+                            </tr>
+                        </table></td>
+                        <td width="10" background="img/tablader.gif"></td>
+                      </tr>
+                      <tr>
+                        <td width="6" height="6"><img src="img/tablainfizq.gif" width="6" height="6" /></td>
+                        <td height="6" background="img/tablainf.gif"></td>
+                        <td width="10" height="6"><img src="img/tablainfder.gif" width="6" height="6" /></td>
+                      </tr>
+                  </table></TD>
+                </TR>
+                <TR>
+                  <TD ><TABLE border="0" align="center">
+                      <TBODY>
+                        <TR>
+                          <TD height="70" width="244" valign="bottom"> 
+                            <div align="center">__________________________________<br>
+                            Firma Persona que Recibe</div></TD>
+                        </TR>
+                      </TBODY>
+                  </TABLE>				  </TD>
+                </TR>
+              </TBODY>
+            </TABLE>
+            <table width="100%" border="0" cellspacing="5" cellpadding="0">
+              <tr>
+                <td width="23%" height="20">Reprogramaci&oacute;n del Despacho</td>
+                <td width="77%"height="20" style="border:#777777 solid 1px;" >&nbsp;</td>
+              </tr>
+            </table></td>
+            </tr>
+            <tr>
+               <td>
+                  <div align="center">Si tiene cualquier consulta ll&aacute;menos al <b>600 400 3000</b></div>
+               </td>
+            </tr>
+            </table>           </td>
+  </tr>
+  <tr>
+    <td valign="top"><img src="img/abajo.gif"></td>
+  </tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<artifactId>sv-services</artifactId>
+		<groupId>cl.cencosud.jumbo.services</groupId>
+		<version>2.0.12-SNAPSHOT</version>
+	</parent>
+
+	<groupId>cl.cencosud.jumbo.services.backoffice.webapp</groupId>
+	<artifactId>back-office-central-webapp</artifactId>
+	<packaging>war</packaging>
+	
+	<properties>
+		<m2eclipse.wtp.contextRoot>JumboBOCentral</m2eclipse.wtp.contextRoot>
+	</properties>
+
+	<name>back-office-central-webapp</name>
+	<dependencies>
+		<dependency>
+                <groupId>org.jboss.javaee</groupId>
+                <artifactId>jboss-servlet-api</artifactId>
+            
+            </dependency>
+		<dependency>
+                <groupId>javax.servlet.jsp</groupId>
+                <artifactId>jsp-api</artifactId>
+                
+            </dependency>
+		<dependency>
+                <groupId>jboss</groupId>
+                <artifactId>jboss-j2ee</artifactId>
+                
+            </dependency>
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi</artifactId>
+			<version>3.2-FINAL</version>
+		</dependency>
+		<dependency>
+			<groupId>oreilly</groupId>
+			<artifactId>cos</artifactId>
+			<version>20021105</version>
+		</dependency>
+		<dependency>
+			<groupId>net.sf.json-lib</groupId>
+			<artifactId>json-lib</artifactId>
+			<classifier>jdk13</classifier>
+		</dependency>
+		<dependency>
+			<groupId>cl.jumbo.modules.common</groupId>
+			<artifactId>common-module</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>cl.jumbo.modules.casos</groupId>
+			<artifactId>casos-module</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>cl.jumbo.modules.informes</groupId>
+			<artifactId>informes-module</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>cl.jumbo.modules.ldap</groupId>
+			<artifactId>ldap-module</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>cl.jumbo.modules.bolsas</groupId>
+			<artifactId>bolsas-module</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>cl.jumbo.modules.pedidos</groupId>
+			<artifactId>pedidos-module</artifactId>
+			<version>${project.version} </version>
+		</dependency>
+		<dependency>
+			<groupId>cl.jumbo.modules.venta.cotizaciones</groupId>
+			<artifactId>venta-cotizaciones-module</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<finalName>back-office-central-webapp</finalName>
+        <filters>
+            <filter>src/main/filters/${deployEnvironment}.properties</filter>
+        </filters>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+		<plugins>
+			<plugin>
+				<artifactId>maven-war-plugin</artifactId>
+				<configuration>
+					<packagingExcludes>WEB-INF/lib/*.jar</packagingExcludes>
+					<archive>
+						<manifest>
+							<addClasspath>true</addClasspath>
+						</manifest>
+					</archive>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>

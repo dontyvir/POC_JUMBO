@@ -1,0 +1,139 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html><!-- InstanceBegin template="/Templates/print.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="EXPIRES" CONTENT="Mon, 22 Jul 2002 11:12:01 GMT">
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>Jumbo.cl Back Office Central</title>
+<!-- InstanceEndEditable -->
+<!-- InstanceBeginEditable name="head" --><!-- InstanceEndEditable -->
+<link href="estilos.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+<!--
+body {
+	background-color: #FFFFFF;
+}
+-->
+</style></head>
+
+<body>
+<!-- InstanceBeginEditable name="Body" --><br>		
+<script language="JavaScript" src="funciones.js"></script>
+		<script>
+			function validar_navegacion(form){
+				if (form.categoria.value == "-"){
+					alert("Selección no valida, seleccione una categoría");
+					return false;
+				}
+				return true;
+			}
+			function validar_numcat(form){
+			    if (form.busq_num_cat.value == ""){
+			    	alert("Debe ingresar un número de categoría");
+			    	return false;
+			    }
+				if (validar_solonumero(form.busq_num_cat, "Nº Categoría es un Campo Numerico")) return false;
+				return true;
+			}   
+			function validar_nomcat(form){
+				if (form.busq_nom_cat.value == ""){
+				 	alert("Debe ingresar un nombre de categoría");
+			    	return false;
+			    }						
+				//if (validar_letranumero(form.busq_nom_cat, "La búsqueda por Nombre de categoría solo permite letras y números")) return false;
+				return true;
+			}
+			
+		</script>	
+<SCRIPT LANGUAGE="JavaScript">window.name='winmodal'</SCRIPT>				
+
+			<br>
+		<table width="95%"  border="0" align="center" cellpadding="0" cellspacing="2">
+          <tr>
+            <td>
+			<fieldset>
+            <legend>Buscar Categor&iacute;a </legend>
+			<table width="100%"  border="0" cellspacing="0" cellpadding="0" align="center">
+                <tr>
+                      <td width="40%">N&deg; Categor&iacute;a </td>
+                      <td width="40%">Nombre Categor&iacute;a </td>
+                      <td width="20%">Subir un Nivel</td>
+                </tr>
+                <tr>
+                    <form name="form_num" method="get" action="ViewNavCatForm" onsubmit="return validar_numcat(this);" target="winmodal">
+                    <input name="action" type="hidden" value="bus_num">
+                    <input name="tipo" type="hidden" value="{tipo}">
+                    <td><input name="busq_num_cat" type="text" size="10" value="{busq_num_cat}" maxlength="9">
+                    
+                          <input name="Envnum" type="submit" class="cmd" value="Buscar"></td>
+                    </form>
+                    <form name="form_nom" method="get" action="ViewNavCatForm" onsubmit="return validar_nomcat(this);" target="winmodal">
+                    <input name="action" type="hidden" value="bus_nom">
+                    <input name="tipo" type="hidden" value="{tipo}">
+                      <td><input name="busq_nom_cat" type="text" size="15" value="{busq_nom_cat}" maxlength="50">
+                          <input name="Envnom" type="submit" class="cmd" value="Buscar"></td>
+                    </form>      
+                    <td align = center><a href='ViewNavCatForm?cod_cat=-1&tipo={tipo}' target= 'winmodal'>
+				<img src="img/back.gif" width="16" height="16" border=0 onmouseover="javascript:style.cursor='hand';" ALT="Subir un nivel" ></a></td>
+                </tr>
+			</table>
+			</fieldset>
+		    </td>
+          </tr>
+	    </table>
+			<br><br><br>
+			<table width="95%"  border="1" align="center" cellpadding="0" cellspacing="0" class="tabla2">
+			  <tr align="left">
+				<th width="13%">Cód Categoría</th>
+				<th width="29%">Descripción</th>
+				<th width="29%">Categoría Padre</th>
+				<th width="15%">Tipo</th>
+				<th colspan=2 width="9%">Sel</th>
+			  </tr>
+			  <!-- BEGIN DYNAMIC: CATEGORIAS -->
+			  <tr>
+				<td>{cod_cat}</td>
+				<td>{desc}</td>
+				<td>{desc_padre}</td>
+				<td>{tipo}</td>
+				<td> {listar}</td>
+				<td>
+				<img src="img/forward.gif" width="16" height="16" onclick="javascript: valor='{valor}'; window.returnValue = valor; window.close();"  onmouseover="javascript:style.cursor='hand';" ALT="Seleccionar Categoría">
+				</td>
+			  </tr>
+			  <!-- END DYNAMIC: CATEGORIAS -->
+			</table>
+
+			<table width="95%"  border="0" align="center" cellpadding="0" cellspacing="0">
+			<form name="form" action="ViewNavCatForm" method=get TARGET='winmodal'>
+			<input type="hidden" name="tipo" value="{tipo}" >
+			<input type="hidden" name="busq_num_cat" value="{busq_num_cat}" >
+			<input type="hidden" name="busq_nom_cat" value="{busq_nom_cat}" >
+			  <tr>
+				<td align="right">P&aacute;ginas : 
+				<select name="pagina" onchange="submit(this.form);">
+				<!-- BEGIN DYNAMIC: PAGINA -->
+				<option value="{pag}" {sel_pag} >{pag}</option>
+				<!-- END DYNAMIC: PAGINA -->
+				</select>
+				</td>
+			  </tr>
+			  </form>
+			  </table>
+			  <tr>
+				<td align="right">	
+				<div align="center">
+				  <input name="Button" type="button" class="cmd" value="  Cerrar  " onClick="window.close();">
+				  
+				</div></td>
+			  </tr>
+			</table>
+			<script>
+			document.form_num.busq_num_cat.onkeypress = KeyIsSoloNum;
+			</script>
+
+<!-- InstanceEndEditable --></body>
+<!-- InstanceEnd --></html>

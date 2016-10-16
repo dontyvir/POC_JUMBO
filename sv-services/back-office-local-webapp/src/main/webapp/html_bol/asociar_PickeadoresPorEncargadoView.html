@@ -1,0 +1,26 @@
+<fieldset>
+	<legend>Seleccione pickeadores</legend>
+
+			<form id="asociacion" name="asociacion" method="post" action="Asociar_PickeadoresPorEncargadoUpd">
+				<input type="hidden" id="encargadoId" name="encargadoId" value="{encargadoId}">
+				<table>
+				<!-- BEGIN DYNAMIC: PICKEADORES -->
+					<tr>
+						<td>
+							<input type="checkbox" name="pickeadoresId" value="{id}" {checked}>
+						</td>
+						<td>
+							{login}
+						</td>
+						<td>
+							{nombre}
+						</td>
+						<td>
+							{apellido}
+						</td>
+					</tr>
+				<!-- END DYNAMIC: PICKEADORES -->	
+				</table>
+				<input align="middle" name="Button" type="submit" value="Guardar" id="guardar">
+			</form>
+</fieldset>			

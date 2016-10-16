@@ -1,0 +1,291 @@
+@charset "utf-8";
+/* CSS Document */
+p{
+	font-family: Arial, Helvetica, sans-serif;
+	font-size:12px;
+	color:#666;
+	padding: 3px;
+	margin: 0px;
+	line-height: 14px;
+}
+.nombre {
+	float:left;
+	width:620px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 18px;
+	font-style: normal;
+	font-weight: bold;
+	text-transform: none;
+	color: #1FA22E;
+	height: 90px;
+}
+/* @group dc */
+.innerpay_order {
+	margin-left: 20px;
+	margin-right: 20px;
+	margin-top: 20px;
+}
+.bt_mover {
+	margin-left: 53px;
+}
+.bt_mover2 {
+	margin-top: 25px;
+}
+/* @end */
+.ayuda{
+	float:right;
+	width:30px;
+	height:90px;
+	}
+.actualiza_datos{
+	width: 680px;
+	height: 150px;
+	float: left;
+	clear: both;
+	margin-bottom: 15px;
+}
+.ad_arriba{
+	width: 680px;
+	height: 23px;
+	text-indent: 10px;
+	line-height: 21px;
+	float: left;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size:14px;
+	color:#1FA22E;
+	font-weight: bold;
+}
+.ad_med{
+	height: 115px;
+	padding: 5px;
+}
+.ad_bajo{
+	background-repeat: no-repeat;
+	width: 660px;
+	/*height: 8px;*/
+}
+.ad_med_1{
+	height: 30px;
+	padding: 5px;
+	float:left;
+	width: 210px;
+	border-bottom:1px dashed #CCC;
+	line-height: 30px;
+	margin-bottom: 5px;
+}
+.ad_med_2{
+	height: 30px;
+	padding: 5px;
+	float:left;
+	border-left:1px dashed #CCC;
+	border-bottom:1px dashed #CCC;
+	width: 210px;
+	line-height: 30px;
+	margin-bottom: 5px;
+}
+.ad_med_3{
+	height: 30px;
+	padding: 5px;
+	float:left;
+	width: 350px;
+	line-height: 30px;
+}
+.ad_med_3b{
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:11px;
+	color:#999;
+	height: 30px;
+	float:right;
+	width: 310px;
+	padding-top: 10px;
+}
+.despliegue_prod_1{
+	height: 35px;
+	float:left;
+	width: 678px;
+	line-height: 30px;
+	clear: both;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:11px;
+	color:#333333;
+	background-color: #EEE;
+	border-top: 1px solid #CCC;
+	border-left: 1px solid #CCC;
+	border-right: 1px solid #CCC;
+}
+.dp_a{
+	width: 90px;
+	float:left;
+	padding:3px;
+	text-indent: 10px;
+	color: #666;
+}
+.dp_b{
+	width: 270px;
+	float:left;
+	padding:3px;
+	color: #666;
+}
+.dp_c{
+	width: 85px;
+	float:left;
+	padding:3px;
+	color: #666;
+}
+.dp_d{
+	width: 65px;
+	float:left;
+	padding:3px;
+	line-height: 15px;
+	color: #666;
+}
+.dp_e{
+	width: 65px;
+	float:left;
+	padding:3px;
+	color: #666;
+}
+.dp_f{
+	width: 40px;
+	float:left;
+	padding:3px;
+	color: #666;
+}
+.despliegue_prod_2{
+	/*float:left;*/
+	width: 678px;
+	clear: both;
+	border-left:1px solid #CCC;
+	border-right:1px solid #CCC;
+	height: 300px;
+}
+.despliegue_total{
+	height: 66px;
+	float:left;
+	width: 678px;
+	background-repeat: no-repeat;
+	clear: both;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:12px;
+	color:#666;
+	font-weight:bold;
+	margin-bottom: 15px;
+	padding-top: 10px;
+	border-bottom: 1px solid #CCC;
+	border-left: 1px solid #CCC;
+	border-right: 1px solid #CCC;
+	background-color: #EEE;
+}
+.tx_total{
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:12px;
+	font-weight:bold;
+	float: left;
+	padding-right:10px;
+	padding-top: 3px;
+	text-align: right;
+	padding-left: 430px;
+}
+.campo_total{
+	border:1px solid #7abd09;
+	height:20px;
+	width:100px;
+	float: right;
+	background-color: #FFFFFF;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	margin: 5px;
+}
+.tit_despl_prod{
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:14px;
+	color:#1FA22E;
+	height: 30px;
+	float:left;
+	width: 530px;
+	font-weight: bold;
+}
+.bt_agrega_prod{
+	height: 30px;
+	float:left;
+	width: 140px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	font-weight: bold;
+}
+.cupones {
+	width:660px;
+	float:left;
+	/*margin-bottom: 20px;*/
+}
+#carro_de_compras_paso3 {
+	 height:300px;     
+     overflow:auto;
+}
+.cupon_med{
+	width: 678px;
+	overflow:hidden;
+	/*background-image: url(/FO_IMGS/img/promociones/mina.jpg);
+	background-repeat: no-repeat;
+	background-position: left bottom;*/
+	padding-right: 5px;
+	border: 1px solid #CCC;
+	float: left;
+}
+.nota{
+	width: 680px;
+	float: left;
+	padding-top: 15px;
+}
+.tit_tablas{
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:12px;
+	color:#ffffff;
+}
+.sub_tit_cup {
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:12px;
+	color:#1FA22E;
+	font-weight:bold;
+}
+/*ELECCION MEDIO DE PAGO CHILE*/
+#seleccion_tmas_bancaria{
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:12px;
+	color:#777777;
+	height: 50px;
+	line-height: 50px;
+	background-image: url(/FO_IMGS/img/estructura/paso3/pago.gif);
+	background-repeat: no-repeat;
+	float: left;
+	width:700px;
+}
+#t_mas{
+	height: 50px;
+	line-height: 50px;
+	width:100px;
+	height:30px;
+	float:left;
+}
+#t_bancaria{
+	height: 30px;
+	width:250px;
+	line-height: 50px;
+	float:left;
+}
+#tx_t_mas{
+	height:50px;
+	line-height: 20px;
+	width:190px;
+	height:30px;
+	float:left;
+	padding-top: 10px;
+	padding-left: 10px;
+}
+#tx_t_bancaria{
+	height:30px;
+	width:120px;
+	line-height: 20px;
+	float:left;
+	padding-top: 10px;
+}

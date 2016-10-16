@@ -1,0 +1,85 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+	<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<META http-equiv="refresh" content="20">
+	<META http-equiv="Content-Style-Type" content="text/css">
+	<LINK href="default.css" rel="stylesheet" type="text/css">
+	<LINK href="estilos.css" rel="stylesheet" type="text/css">
+	<TITLE>Jumbo.cl Back Office Local</TITLE>
+	<SCRIPT language="JavaScript">
+		function validarEliminar(id){
+			if(confirm("¿Esta seguro que desea eliminar el registro?")){
+				document.form1.idEliminar.value= id;
+				document.form1.submit();
+				return true;
+			}else{
+				return false;
+			}
+		}
+	</SCRIPT>
+</HEAD>
+<BODY>
+	<FORM id="form1" name="form1" action="ElimProductosSobreMargen" method="post">
+		<INPUT type="hidden" id="idElimiinar" name="idEliminar">
+	</FORM>
+	<div style="width: 640px; height: 100%">
+	<TABLE width="100%" height=59 border=0 align="center" cellpadding="0" cellspacing="0" bgcolor="#ffffff">
+	  <TR>
+		<TD width=275 height="59" align=left class=user><img src="img/header2.jpg" width="275" height="60"></TD>
+		<TD width=505 align=left valign="bottom" background="img/bg-1.jpg" class=user><table width="90%"  border="0" align="center" cellpadding="0" cellspacing="2">
+          <tr>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td><div align="right" class="infoBL">Usuario: {hdr_nombre} | Local: {hdr_local} | {hdr_fecha} </div></td>
+          </tr>
+        </table></TD>
+	  </TR>
+	</TABLE>
+	<TABLE width="100%" height=19 border=0 align="center" cellpadding="0" cellspacing="0" bgcolor="#f1f0e9" style="border-top:1px solid #ABABAB; border-bottom:1px solid #ABABAB">
+	  <TR>
+		<TD align=left bgcolor="#FFFFFF" class=user></TD>
+		</TR>
+	</TABLE>
+	<div style="padding-bottom: 20px" class="HeaderTitle">
+		<strong>Reporte de productos sustitutos sobre margen</strong><br />
+	</div>
+	<table width="640" border="0" align="center" cellpadding="2"
+					cellspacing="0" class="tabla2">
+		<tr>
+			<th width="80">Fecha y Hora</th>
+			<th width="45">Nombre Pickeador<br></th>
+			<th width="50">Apellido Pickeador<br></th>
+			<th width="40">Código Producto</th>
+			<th width="110">Descripción del producto</th>
+			<th width="50">Número de ronda</th>
+			<th width="50">Número de BIN</th>
+			<th width="150">Mensaje</th>
+			<th width="30">Acción</th>
+		</tr>
+		<!-- BEGIN DYNAMIC: listado -->
+		<tr>
+			<td><div align="center">{fecha_operacion}</div></td>
+			<td><div align="center">{pickeador_nombre}</div></td>
+			<td><div align="center">{pickeador_apellido}</div></td>
+			<td><div align="center">{id_producto}</div></td>
+			<td><div align="center">{descripcion_producto}</div></td>
+			<td><div align="center">{id_ronda}</div></td>
+			<td><div align="center">{cod_bin}</div></td>
+			<td><div align="center">{mensaje}</div></td>
+			<td><div style="text-align: center;"><a href="javascript: validarEliminar({id_sustituto_sobre_umbral});" title="Eliminar"><IMG src="img/trash.gif"></a></div></td>
+		</tr>
+		<!-- END DYNAMIC: listado -->
+	</table>
+	<DIV style="padding-top: 10px; height: 10px"></DIV>
+	<TABLE width="100%" height=19 border=0 align="center" 
+		   cellpadding="0" cellspacing="0" bgcolor="#f1f0e9" 
+		   style="border-top:1px solid #ABABAB; border-bottom:1px solid #ABABAB;">
+	  <TR>
+		<TD align=center bgcolor="#67b01a" class="infoBL"><div style="text-align: center;" class="infoBL">Back Office Local - Jumbo.cl</div></TD>
+		</TR>
+	</TABLE>
+	</div>
+</BODY>
+</HTML>

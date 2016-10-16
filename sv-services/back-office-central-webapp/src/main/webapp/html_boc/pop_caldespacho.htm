@@ -1,0 +1,310 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="EXPIRES" CONTENT="Mon, 22 Jul 2002 11:12:01 GMT">
+<title>Jumbo.cl Back Office Central</title>
+<script>window.name='wincaldes'</script>
+<script language="JavaScript" src="CalendarPopup.js"></script>
+<script language="JavaScript">document.write(getCalendarStyles());</script>
+<script language="JavaScript" ID="js17">
+var ayer = new Date(30,4,2006,12,0,0,0);
+var cal1 = new CalendarPopup("testdiv1");
+cal1.offsetX = -140;
+cal1.offsetY = -50;
+</script>
+<script language="JavaScript" src="funciones.js"></script>
+<script language="JavaScript">
+function validar_fecha(form) {
+  var fecha = form.fecha.value.split("-");
+  if (fecha.length != 3 ) {
+    alert("Formato de fecha incorrecto (dd-mm-aaaa)");
+    return false;
+  }
+}
+function activar(formulario) {
+	formulario.reagendar.disabled = false;
+}
+function valida_form(form) {
+  if ( form.precio.value == "" ) {
+    form.precio.value = 0;
+    return false;
+  } else {
+    //Validar fecha tope
+    if ( "{medio_pago}" != "{medio_pago_lc}" ) {
+	    var fecha_sel = parseInt( document.getElementById("fecha_"+getCheckedValue(form.id_jdespacho)).value,10 );
+	    var fecha_max = parseInt( document.getElementById("fecha_max").value,10 );
+	    if ( fecha_sel > fecha_max ) {
+	      alert("La fecha seleccionada supera lo permitido, de acuerdo a la fecha de captura.");
+	      return false;
+	    }
+    }
+    var precio_original = parseInt( document.getElementById("original_precio").value,10 );
+    var precio_nuevo = 0;
+    if ( getCheckedValue(document.forma1.otroprecio) == '0' ) {
+      // comparar precio seleccionado
+      precio_nuevo = parseInt( document.getElementById("precio_"+getCheckedValue(form.id_jdespacho)).value,10 );
+    } else {
+      //comparar con precio ingresado
+      precio_nuevo = parseInt( document.getElementById("precio").value,10 );
+    }
+    if ( precio_nuevo > precio_original ) {
+      alert("El valor de despacho debe ser menor o igual que el original.");
+      return false;
+    }
+    if ( precio_nuevo == 0 ) {
+      alert("El precio debe ser mayor a cero");
+      return false;
+    }
+    if ( form.motivo.value == '0') {
+      alert("Debe seleccionar un motivo de la reprogramación");
+      return false;
+    }
+    if ( form.responsable.value == '0') {
+      alert("Debe seleccionar un responsable de la reprogramación");
+      return false;
+    }
+    return true;
+  }
+}
+function getCheckedValue( radioObj ) {
+  if ( !radioObj )
+    return "";
+  var radioLength = radioObj.length;
+  if ( radioLength == undefined )
+    if ( radioObj.checked )
+      return radioObj.value;
+    else
+      return "";
+    for ( var i = 0; i < radioLength; i++ ) {
+      if ( radioObj[i].checked ) {
+        return radioObj[i].value;
+      }
+    }
+  return "";
+}
+</script>
+
+<link href="estilos.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+<!--
+body {
+	background-color: #FFFFFF;
+}
+-->
+</style>
+
+</head>
+<body>
+<br />
+<table width="446"  border="0" align="center" cellpadding="0" cellspacing="0">
+	<tr valign="top">
+		<td height="17"><div align="center">Calendario de Despacho </div></td>
+	</tr>
+	<tr valign="top">
+		<td width="310" height="17">Seleccione fecha </td>
+	</tr>
+	<tr valign="top">
+		<td>
+			<form name="form2" method="get" action="ViewCalJorForm" onsubmit="return validar_fecha(this);">
+				<input type="hidden" name="id_pedido" value="{id_pedido}" />
+				<input type="hidden" name="origen" value="{origen}" />
+				<input type="hidden" name="id_ruta" value="{id_ruta}" />
+				<input name ="fecha" type="text" id="txt_fecha" value="{fecha}" readOnly onClick="cal1.select(document.forms[0].txt_fecha,'anchor1','yyyy-MM-dd'); return false;" />
+				<a href="#" onClick="cal1.select(document.forms[0].txt_fecha,'anchor1','yyyy-MM-dd'); return false;" name="anchor1" id="anchor1">
+					<img src="img/cal.gif" width="16" height="16" border="0">
+				</a>
+				<input type="submit" class="cmd" value="Buscar">
+			</form>
+		</td>
+	</tr>
+</table>
+<br />
+<table width="575" height="22" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr class="tabla2">
+	<td width="132">Id Semana</td>
+	<td width="443">{id_semana}</td>
+  </tr>
+  <tr class="tabla2">
+	<td>N&deg; semana </td>
+	<td>{n_semana}</td>
+  </tr>
+  <tr class="tabla2">
+	<td>A&ntilde;o</td>
+	<td>{ano}</td>
+  </tr>
+  <tr class="tabla2">
+	<td>Fechas</td>
+	<td> del {f_ini} al {f_fin}</td>
+  </tr>
+  <tr class="tabla2">
+	<td>N&deg; Pedido</td>
+	<td>{id_pedido_view} <input type="hidden" name="original_precio" id="original_precio" value="{precio}" /></td>
+  </tr>
+  <tr class="tabla2">
+	<td>Zona</td>
+	<td>{zona} - {nom_zona}</td>
+  </tr>
+  <tr class="tabla2" {view_pick} >
+	<td>Capac Picking Pedido </td>
+	<td>{capac_picking}</td>
+  </tr>
+</table>
+
+<form name="forma1" method="post" action="ReagendaDespacho" target="wincaldes" onSubmit="return valida_form(forma1)">
+	<input type="hidden" name="url" value="ViewCalJorForm?id_pedido={id_pedido}" />
+	<input type="hidden" name="id_pedido" value="{id_pedido}" />
+	<input type="hidden" name="id_ruta" value="{id_ruta}" />
+	<input type="hidden" name="origen" value="{origen}" />
+	
+	<input type="hidden" name="fecha_max" id="fecha_max" value="{fecha_max}" />
+	
+	<table width="590"  border="0" align="center" cellpadding="1" cellspacing="0" class="tabla2">
+	  <tr>
+		<th width="100" align="right"><div align="center">&nbsp;</div></th>
+		<th width="70" align="right"><div align="center">Lunes<br>{f_lu}</div></th>
+		<th width="70" align="right"><div align="center">Martes<br>{f_ma}</div></th>
+		<th width="70" align="right"><div align="center">Mi&eacute;rcoles<br>{f_mi}</div></th>
+		<th width="70" align="right"><div align="center">Jueves<br>{f_ju}</div></th>
+		<th width="70" align="right"><div align="center">Viernes<br>{f_vi}</div></th>
+		<th width="70" align="right"><div align="center">S&aacute;bado<br>{f_sa}</div></th>
+		<th width="70" align="right"><div align="center">Domingo<br>{f_do}</div></th>
+	  </tr>
+	  <!-- BEGIN DYNAMIC: listado -->
+	  <tr>
+		<td align="right" height="27"><div align="center">{h_ini} - {h_fin}</div></td>
+		<td align="right">
+		  <input name="id_jdespacho" type="radio" value="{id_jdespacho_lu}" {disabled_lu} {sel_lu} onClick="activar(forma1);" />{precio_lu}
+		  <input type="hidden" name="fecha_{id_jdespacho_lu}" id="fecha_{id_jdespacho_lu}" value="{fecha_lu}" />
+		  <input type="hidden" name="precio_{id_jdespacho_lu}" id="precio_{id_jdespacho_lu}" value="{precio2_lu}" />
+		</td>
+		<td align="right">
+		  <input name="id_jdespacho" type="radio" value="{id_jdespacho_ma}" {disabled_ma}  {sel_ma} onClick="activar(forma1);" />{precio_ma}
+		  <input type="hidden" name="fecha_{id_jdespacho_ma}" id="fecha_{id_jdespacho_ma}" value="{fecha_ma}" />
+		  <input type="hidden" name="precio_{id_jdespacho_ma}" id="precio_{id_jdespacho_ma}" value="{precio2_ma}" />
+		</td>
+		<td align="right">
+		  <input name="id_jdespacho" type="radio" value="{id_jdespacho_mi}" {disabled_mi}  {sel_mi} onClick="activar(forma1);" />{precio_mi}
+		  <input type="hidden" name="fecha_{id_jdespacho_mi}" id="fecha_{id_jdespacho_mi}" value="{fecha_mi}" />
+		  <input type="hidden" name="precio_{id_jdespacho_mi}" id="precio_{id_jdespacho_mi}" value="{precio2_mi}" />
+		</td>
+		<td align="right">
+		  <input name="id_jdespacho" type="radio" value="{id_jdespacho_ju}" {disabled_ju}  {sel_ju} onClick="activar(forma1);" />{precio_ju}
+		  <input type="hidden" name="fecha_{id_jdespacho_ju}" id="fecha_{id_jdespacho_ju}" value="{fecha_ju}" />
+		  <input type="hidden" name="precio_{id_jdespacho_ju}" id="precio_{id_jdespacho_ju}" value="{precio2_ju}" />
+		</td>
+		<td align="right">
+		  <input name="id_jdespacho" type="radio" value="{id_jdespacho_vi}" {disabled_vi}  {sel_vi} onClick="activar(forma1);" />{precio_vi}
+		  <input type="hidden" name="fecha_{id_jdespacho_vi}" id="fecha_{id_jdespacho_vi}" value="{fecha_vi}" />
+		  <input type="hidden" name="precio_{id_jdespacho_vi}" id="precio_{id_jdespacho_vi}" value="{precio2_vi}" />
+		</td>
+		<td align="right">
+		  <input name="id_jdespacho" type="radio" value="{id_jdespacho_sa}" {disabled_sa}  {sel_sa} onClick="activar(forma1);" />{precio_sa}
+		  <input type="hidden" name="fecha_{id_jdespacho_sa}" id="fecha_{id_jdespacho_sa}" value="{fecha_sa}" />
+		  <input type="hidden" name="precio_{id_jdespacho_sa}" id="precio_{id_jdespacho_sa}" value="{precio2_sa}" />
+		</td>
+		<td align="right">
+		  <input name="id_jdespacho" type="radio" value="{id_jdespacho_do}" {disabled_do}  {sel_do} onClick="activar(forma1);" />{precio_do}
+		  <input type="hidden" name="fecha_{id_jdespacho_do}" id="fecha_{id_jdespacho_do}" value="{fecha_do}" />
+		  <input type="hidden" name="precio_{id_jdespacho_do}" id="precio_{id_jdespacho_do}" value="{precio2_do}" />
+		</td>
+	  </tr>
+	  <!-- END DYNAMIC: listado -->
+	</table>
+	<br />
+	
+  <table width="80%" border="0" align="center" cellpadding="0" cellspacing="2">
+    <tr {view_transito}> 
+      <td align="center" height="30" valign="top" colspan="4"> <input type="checkbox" name="check_en_transito" value="1" /> 
+        &nbsp; Seleccionar si el pedido a reprogramar estuvo en tr&aacute;nsito. 
+        (en ruta) </td>
+    </tr>
+	
+	<tr>
+		<td align="center" colspan="4" >
+			<table width="100%" border="0" cellspacing="0" cellpadding="0">
+			  <tr>
+				<td>Motivo</td>
+				<td>
+				
+				<select name="motivo" id="motivo" style="width:210px;">
+				<option value="0">Motivo Reprogramación</option>
+				<!-- BEGIN DYNAMIC: MOTIVOS -->
+				<option value="{id}">{nombre}</option>
+				<!-- END DYNAMIC: MOTIVOS -->
+				</select>
+				
+				</td>
+				<td>Responsable</td>
+				<td>
+				
+				<select name="responsable" id="responsable" style="width:210px;">
+				<option value="0">Responsable Reprogramación</option>
+				<!-- BEGIN DYNAMIC: RESPONSABLES -->
+				<option value="{id}">{nombre}</option>
+				<!-- END DYNAMIC: RESPONSABLES -->
+				</select>
+				
+				</td>
+			  </tr>
+			</table>
+			<br />
+		</td>	
+	</tr>
+	
+	<!-- BEGIN DYNAMIC: MOSTRAR_PRECIOS -->
+    <tr> 
+      <td width="32%"><input name="otroprecio" type="radio" value="0" checked />
+        Se reaplicará nuevo precio </td>
+      <td width="24%"><input name="otroprecio" type="radio" value="1" />
+        sobreescribir precio</td>
+      <td width="22%">
+        <input type="text" name="precio" value="{precio}" size="10" maxlength="8" onChange="javascript:document.forma1.otroprecio[1].checked=true" />$</td>
+      <td width="22%"><input type="submit" name="reagendar" value="Reagendar" disabled /></td>
+    </tr>
+    <!-- END DYNAMIC: MOSTRAR_PRECIOS -->
+	
+	<!-- BEGIN DYNAMIC: NO_MOSTRAR_PRECIOS -->
+	<tr> 
+      <td colspan="4" align="center">
+        <input name="otroprecio" type="hidden" value="0" />
+		<input type="hidden" name="precio" value="1" />
+		<input type="submit" name="reagendar" value="Reagendar" disabled />
+	  </td>
+    </tr>
+	<!-- END DYNAMIC: NO_MOSTRAR_PRECIOS -->
+	
+    <tr> 
+      <td colspan="4" align="center"><font color="red"><b>{msg}</b></font></td>
+    </tr>
+  </table>
+</form>
+	<!-- BEGIN DYNAMIC: BOTONES_MON_PEDIDO -->
+	<form name="cerrar" action="ViewOPFormPedido" target="winpedido1" onsubmit="window.close();">
+		<input type="hidden" name="id_pedido" value="{id_pedido}" />
+		<input type="hidden" name="mod" value="1" />
+		<center><br /><input type="submit" name="cerrar" value="Cerrar" /></center>
+	</form>
+	<!-- END DYNAMIC: BOTONES_MON_PEDIDO -->
+	
+	<!-- BEGIN DYNAMIC: BOTONES_MON_DESPACHO -->
+	<form name="cerrar1" action="ViewModDetPedidoRuta" target="winrutapedido" onsubmit="window.close();">
+		<input type="hidden" name="id_pedido" value="{id_pedido}" />
+		<input type="hidden" name="id_ruta" value="{id_ruta}" />
+		<input type="hidden" name="origen" value="1" />
+		<center><br /><input type="submit" name="cerrar" value="Cerrar" /></center>
+	</form>
+	<!-- END DYNAMIC: BOTONES_MON_DESPACHO -->
+	
+	<br />
+	<center>{mns}</center>
+
+<div id="testdiv1" style="position:absolute;visibility:hidden;background-color:white;layer-background-color:white;"></div>
+<script>
+document.forma1.precio.onkeypress = KeyIsSoloNum;
+</script>
+</body>
+</html>

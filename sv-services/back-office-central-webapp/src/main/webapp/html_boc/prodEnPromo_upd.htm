@@ -1,0 +1,167 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+	<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+	<META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+	<META HTTP-EQUIV="EXPIRES" CONTENT="Mon, 22 Jul 2002 11:12:01 GMT">
+	<title>Jumbo.cl Back Office Central</title>
+	
+	<script language="JavaScript">
+
+		function mostrar(){
+			document.getElementById('contenido').style.display = 'block';
+			document.getElementById('puto_iframe').style.display = 'none';
+			document.getElementById('list').style.display = 'none';
+			document.formMktMasiva.excel_archivo.value='';
+		}
+		
+		function mostrarIframe(){
+		    var tipo =  parseInt($j('input[name="tipo_carga"]:checked').val());
+			var accion;
+			var x = document.getElementById("excel_archivo").value;
+			
+			if(tipo == 0){
+				accion = 'la Carga Masiva?';
+			} else{
+				accion = 'el Revert?';
+			}
+			
+			
+            if(x.length >  0){
+			    var r = confirm("Estas seguro de ejecutar "+accion);
+			    if (r == true) {
+			       	document.getElementById('puto_iframe').style.display = 'block';
+			       	document.getElementById('resumen').style.display = 'block';
+			       	document.formMktMasiva.submit();
+			    } else {
+			        document.getElementById('resumen').style.display = 'none';
+			        document.formMktMasiva.obs.focus();
+			    }
+			 
+			 }
+			return false;
+		}	
+		
+		function mostrarList(){
+			document.getElementById('list').style.display = 'block';
+		}
+		
+		function ocultar(){
+			document.getElementById('contenido').style.display = 'none';
+			document.getElementById('puto_iframe').style.display = 'none';
+			document.getElementById('list').style.display = 'none';
+			document.formMktMasiva.excel_archivo.value='';
+		}
+
+		  function handleFileSelect(evt) {
+		    var files = evt.target.files; // FileList object
+		
+		    // files is a FileList of File objects. List some properties.
+		    var output = [];
+		    for (var i = 0, f; f = files[i]; i++) {
+		      output.push('<li>Nombre Archivo: <strong>', escape(f.name), '</strong></li><li>Tipo: (', f.type || 'n/a', ') </li>',
+		                  '<li>Tamano: ',f.size, ' bytes, </li><li>Ultimo cambio: ',
+		                  f.lastModifiedDate ? f.lastModifiedDate.toLocaleDateString() : 'n/a',
+		                  '</li>');
+		    }
+		    document.getElementById('list').innerHTML = '<ul>' + output.join('') + '</ul>';
+		    document.getElementById('puto_iframe').setAttribute('src', '');
+		    $j('#div_cargando').fadeOut('slow');
+		  }
+		  
+		  document.getElementById('excel_archivo').addEventListener('change', handleFileSelect, false);
+
+		</script>
+</head>
+
+<body>
+	<table width="780" height="100%" border="0" cellpadding="0" cellspacing="0">
+		<tr height="400">
+			<td valign="top" bgcolor="#FFFFFF">
+				<table border=0 width="100%" class='ContentTitle'>
+					<tr><td width="53%" height="20" class='HeaderTitle'>Carga masiva de banner de productos</td></tr>
+				</table>
+				
+				<br>
+				<table width="100%"  border="0" cellspacing="2" cellpadding="2">
+					<tr valign="top">
+						<td width="71%">
+							<table width="92%" align="center" border="0">
+              					<tr>
+									<td>
+										<h2 class="tab"></h2>
+										<div width="100%" align="right" valign="top">
+											<a href="Plantilla_BannerProducto_masiva.xls">Descargar Plantilla Excel Tipo<img src="img/ico_excel.gif" width="16" height="16" border="0" style="margin-left:  5px"></a>
+										</div> 
+										
+										<div align="left" id="div_ficha">
+											<form id="formMktMasiva" name="formMktMasiva" enctype='multipart/form-data' method="post" action="UpdProdEnPromo" target="puto_iframe">
+												<input type="hidden" id="locales" name="locales" value="">
+												<fieldset>
+													<legend>Datos</legend>
+													<input type="radio" name="tipo_carga" value="0" onclick="mostrar()" checked >
+									                        Carga masiva
+									                        <input type="radio" name="tipo_carga" onclick="ocultar()" value="1">
+									                        Revert masivo
+									                    <br /> 
+													<br />
+													<!-- 
+													<div>
+														<LABEL for="locales">Locales:</LABEL><br />-->
+														<!-- BEGIN DYNAMIC: LOCALES -->
+															<!-- <input type="checkbox" name="local_check" value="{local_id}">{local_nombre} -->
+														<!-- END DYNAMIC: LOCALES -->
+	                          							<!-- <input type="checkbox" id="checkAllAuto" name="checkAllAuto">Todos los Locales -->
+													<!--</div> -->
+													<!--<br />-->
+													
+													  
+	                       							<br />
+	                       				
+													<div>  
+									              		<label for="excel_archivo">Archivo excel: </label> 
+										            	<input id="excel_archivo" name="excel_archivo" multiple type="file" onclick="mostrarList()" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel">
+										            	<div id="list"></div>
+										            </div>
+													<br />
+													
+													<div id="contenido">
+														<LABEL for="obs">Comentarios: </LABEL>
+														<input type="text" id="obs" name="obs" maxlength="80" size="80"/>
+	                       							</div>
+	                       							<br />
+	                       							
+													<div id="resumen">
+														<LABEL for="resumen">Resumen proceso:</LABEL><br />
+														<iframe id="puto_iframe" style="float: left; margin: auto 1.5em;" name="puto_iframe" width="300" height="120" frameborder="0" marginheight="0" marginwidth="0" src="" ></iframe>
+														<div id="div_cargando" style="position: relative; margin: 0 auto; overflow: hidden; text-align: center;display: none;">
+														    <div style="margin: 2em auto;">
+														        <div style="float: left; margin: auto 1.5em;">
+														            <img id="img_cargando"  src="img/cargando.gif" /><br />
+														        </div>
+														    </div>
+														</div>
+													</div>
+													<br />									 
+												</fieldset>     
+											</form>
+              							</div>
+									</td>
+								</tr>
+								 <tr>
+									<td align="right"><br>
+										<input id="ejecutar" name="ejecutar" value="Ejecutar" type="button" onclick="return mostrarIframe()">
+										<input id="btnvolver" name="btnvolver" value="Volver" type="button" onclick="location.href='ViewMonProducts'">
+									</td>
+								</tr>
+							</table>
+							<p>&nbsp;</p>
+	     			</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+	</table>
+</body>
+</html>

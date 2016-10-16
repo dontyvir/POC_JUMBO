@@ -1,0 +1,336 @@
+/* PASO 3 */
+body {
+	background-color: #FFFFFF;
+	margin: 0px;
+}
+#contenedor_b {
+	width: 98%;
+	height: 100%;
+	padding-left: 1%;
+	padding-right: 1%;
+}
+
+#encabezado_b {
+	width: 98%;
+	height: 50px;
+	clear: right;
+	padding-bottom:10px;
+}
+#boton_b {
+	width: 98%;
+	height: 24px;
+	clear: right;
+	padding-bottom:0px;
+}
+h2 {
+	background-image: url(/FO_IMGS/images/mobi/logo-header.gif);
+	text-indent: -9999px;
+	display: block;
+	height: 100%;
+	width: 100%;
+	margin-top: 0px;
+	margin-right: auto;
+	margin-bottom: 0px;
+	margin-left: auto;
+	background-repeat: no-repeat;
+	background-position: center bottom;
+}
+h3 {
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:0.7em;
+	color:#FFFFFF;
+	margin: 0px;
+	padding: 0px;
+	text-indent: 10px;
+}
+#margen_verde {
+	width: 98%;
+	height: 20px;
+	background-color:#A9D246;
+	top: 0px;
+	border-right: thin solid #ffffff;
+	border-left: thin solid #A9D246;
+	position: relative;
+}
+#contenido {
+	width: 98%;
+	border-right: thin solid #A9D246;
+	border-left: thin solid #A9D246;
+	border-bottom: thin solid #A9D246;
+	padding-top: 10px;
+	height: auto;
+}
+.tx_nombre {
+	float:left;
+	clear:right;
+	padding-top: 2px;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:1.3em;
+	color:#779A25;
+	height: 30px;
+	width: 90%;
+	display: block;
+	text-align: left;
+	padding-left: 5px;
+}
+#contenido_p3 {
+	width: 98%;
+	border-right: thin solid #A9D246;
+	border-left: thin solid #A9D246;
+	border-bottom: thin solid #A9D246;
+	padding-top: 10px;
+	height: 650px;
+}
+.botonera_paso3{
+	height: 46px;
+	width: 95%;
+	clear: both;
+	padding-bottom: 10px;
+}
+#modulo_confirmar {
+	width: 95%;
+	height: auto;
+	clear: both;
+	border: thin solid #A9D246;
+	float: none;
+	margin-bottom: 10px;
+	background-color: #B7DA65;
+	overflow: hidden;
+}
+.ver_carro{
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:0.7em;
+	color:#000000;
+	width: 90%;
+	height: auto;
+	float: left;
+	border-bottom-width: thin;
+	border-bottom-style: dashed;
+	border-bottom-color: #789B26;
+	padding: 10px;
+}
+.bt_ver_carro{
+	width:30px;
+	float: left;
+}	
+.no_autorizo{
+	font-family:Arial, Helvetica, sans-serif;
+	color:#000000;
+	width: 70%;
+	float: left;
+	padding-left: 140px;
+}
+.ultima_fila{
+	width: 90%;
+	height: 40px;
+	float: left;
+	padding: 10px;
+}
+#modulo_programar {
+	width: 95%;
+	height: 350px;
+	clear: both;
+	border: thin solid #A9D246;
+	float: none;
+	margin-bottom: 10px;
+	background-color: #B7DA65;
+}
+.dia{
+	width: 90%;
+	height: 40px;
+	float: left;
+	padding: 10px;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:0.7em;
+	color:#000000;
+}
+.modulo_horario{
+	width: 70%;
+	height: auto;
+	float: left;
+	margin-top: 1px;
+	margin-right: 10%;
+	margin-bottom: 10px;
+	margin-left: 15%;
+}
+.horario{
+	width: 100%;
+	float: left;
+	font-family:Arial, Helvetica, sans-serif;
+	color:#000000;
+	border: thin solid #789B26;
+}
+.horario_econom{
+	width: 100%;
+	float: left;
+	font-family:Arial, Helvetica, sans-serif;
+	color:#000000;
+	margin-top: 10px;
+	border:thin solid #789B26;
+}
+.hora{
+	width: 40%;
+	padding: 1%;
+	float: left;
+	background-color: #8CB52D;
+	height: 30px;
+	font-size: 12px;
+	text-align: center;
+	line-height: 30px;
+}
+.horario_sh {
+	width: 115%;
+	float: left;
+	font-family:Arial, Helvetica, sans-serif;
+	color:#000000;
+	border: thin solid #789B26;
+}
+.sin_horas {
+	width: 100%;
+	padding: 1%;
+	float: left;
+	background-color: #8CB52D;
+	height: 30px;
+	font-size: 12px;
+	text-align: center;
+	line-height: 30px;
+}
+.precio_horario{
+	width: 40%;
+	padding: 1%;
+	float: left;
+	height: 30px;
+	font-size: 12px;
+	text-align: center;
+	line-height: 30px;
+}
+.seleccion{
+	width:14%;
+	padding: 1%;
+	float: left;
+	height: 30px;
+}
+#modulo_pago {
+	width: 90%;
+	/*height: 700px;*/
+	clear: both;
+	float: none;
+	margin-bottom: 10px;
+}
+.boleta_factura{
+	width: 280px;
+	padding: 1%;
+	height: 30px;
+	float: left;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:0.7em;
+	color:#000000;
+	clear: right;
+}
+.modulo_tarjeta {
+	width: 285px;
+	height: auto;
+	border: thin solid #A9D246;
+	float: left;
+	margin-bottom: 10px;
+	vertical-align: top;
+	position: absolute;
+}
+.modulo_tarjeta2 {
+	width: 285px;
+	height: auto;
+	border: thin solid #A9D246;
+	float: left;
+	margin-bottom: 10px;
+	top: 80px;
+	vertical-align: top;
+	position: absolute;
+	overflow: hidden;
+}
+.datos_facturacion {
+	width: 98%;
+	height: 20px;
+	float: left;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:1em;
+	color:#666666;
+	font-weight: bold;
+	padding: 1%;
+}
+.campos {
+	width: 98%;
+	height: 30px;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:0.7em;
+	color:#000000;
+	border-bottom: thin dashed #A9D246;
+	float:left;
+	text-align: left;
+	padding-right: 1%;
+	padding-left: 1%;
+	padding-top: 2px;
+	padding-bottom: 2px;
+}
+.campo_final{
+	width: 98%;
+	height: 25px;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:0.7em;
+	color:#000000;
+	float:left;
+	padding: 1%;
+	text-align: left;
+}
+.eleccion_bancarias{
+	width: 98%;
+	height: auto;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:0.7em;
+	color:#000000;
+	border-bottom: thin dashed #A9D246;
+	float:left;
+	padding: 1%;
+	text-align: left;
+}
+.banc1{
+	width: 96%;
+	height: 30px;
+	float: left;
+}
+.banc2{
+	width: 96%;
+	height: 30px;
+	float: left;
+}
+.banc_sub1{
+	width: 70px;
+	float: left;
+}
+.banc_sub2{
+	width: 150px;
+	float: left;
+}
+.guardar3{
+	width: 50px;
+	padding: 1%;
+	height: 30px;
+	float: left;
+}
+.verysign{
+	width: 150px;
+	padding: 1%;
+	height: 30px;
+	float: right;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 0.6em;
+	text-align: left;
+	color: #666666;
+}
+.camposelect3 {
+	font: Arial, Helvetica, sans-serif;
+	font-size: 1.2em;
+	display: block;
+	width:93%;
+	height:30px;
+	text-align: left;
+}

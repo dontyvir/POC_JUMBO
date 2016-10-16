@@ -1,0 +1,233 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html><!-- InstanceBegin template="/Templates/print.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="EXPIRES" CONTENT="Mon, 22 Jul 2002 11:12:01 GMT">
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>Jumbo.cl Back Office Central</title>
+<!-- InstanceEndEditable -->
+<!-- InstanceBeginEditable name="head" -->
+<!-- InstanceEndEditable -->
+<link href="estilos.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+<!--
+body {
+	background-color: #FFFFFF;
+}
+-->
+</style></head>
+
+<body>
+<!-- InstanceBeginEditable name="Body" -->
+<script language="JavaScript" src="funciones.js"></script>  
+<script src="validacion.js"></script>
+<SCRIPT LANGUAGE="JavaScript">window.name='winmodal'</SCRIPT>		
+<script>
+  <!--
+	//var response="";
+	//var valzona="";
+	
+	
+	//	exec_AJAXRPC('GET', 'ViewComboAjax?comuna={com}', 'procesaResp');
+	function addOption(text,value,sel) {
+	   var oOpt=new Option(text,value);
+	   var oSelect=sel;
+	   oSelect.options[oSelect.options.length]=oOpt;
+	}
+	function removeOption(index,sel) {
+		   var oSelect=sel;
+		   oSelect.options[index]=null;
+	} 
+
+	function procesaResp(texto) {
+		var response = texto.split("#");
+		var larcampo = document.form1.zona.length;
+		
+
+		for (i = 0; i < larcampo; i++ ){
+			removeOption(0, document.getElementById("zona"));
+		}
+		for (a = 0 ; a < response.length; a++){
+			resp = response[a].split("|");
+			addOption((resp[1])?resp[1]:'',(resp[0])?resp[0]:'',document.getElementById("zona") );
+		}
+		
+	}
+	
+	 function invocaAjax(){
+	 	var comuna= document.form1.comuna.value;
+		exec_AJAXRPC('GET', 'ViewComboAjax?comuna='+comuna, 'procesaResp');
+	 }	
+	 
+	 
+	 function validar_form(form){
+		if (validar_letranumero(form.alias, "El Alias solo soporta letras y números")) return false;
+		if (validar_letranumero(form.calle, "La calle solo soporta letras y números")) return false;
+		if (validar_solonumero(form.numero, "Nº de casa es un Campo Numerico")) return false;
+		if (validar_letranumero(form.depto, "Departamento solo soporta letras y números")) return false;
+		if (validar_letranumero(form.comentario, "Comentario solo soporta letras y números")) return false;
+		if(!verify(document.form1))return false;
+	//	window.close();
+		return true;
+
+	 }
+//-->
+</script>
+
+<br>		
+<font color="red"><center></center></font>
+<br>
+<p>Direcciones de Despacho creadas:</p>
+	<table width="80%"  border="0" align="center" cellpadding="2" cellspacing="0" class="tabla2">
+	  <tr>
+		<th width="5%">&nbsp;</th>
+		<th width="33%">Direcci&oacute;n</th>
+		<th width="18%">Comuna</th>
+		<th width="10%">Región</th>                            
+		<th width="21%">Local</th>
+	  </tr>
+	  <!-- BEGIN DYNAMIC: DIR_DESPACHOS -->	
+	  <tr>
+		<td><a href='javascript:validar_eliminar("Esta seguro que desea eliminar?","DelDirDespacho?id_dir={dir_id}&id_sucursal={id_sucursal}&url="+escape("ViewSucursalForm?id_sucursal={id_sucursal}"));'><img src='img/trash.gif' border=0 ></a></td>
+		<td>{dir_nom_tip_calle} {dir_calle}  {dir_numero}, {dir_depto}</td>
+		<td>{dir_nom_comuna}</td>
+		<td>{dir_nom_region}</td>                            
+		<td>{dir_nom_local}</td>
+	  </tr>
+	  <!-- END DYNAMIC: DIR_DESPACHOS -->	
+	  </table>
+<form name="form1" method="post" action="AddDirDespacho" target="winmodal" onsubmit="return validar_form(this); ">
+<input type="hidden" name="url" value="ViewDirDespachoForm">
+<input type="hidden" name="id_sucursal" value="{id_sucursal}">
+<table width="80%"  border="0" align="center" cellpadding="0" cellspacing="2">
+  <tr>
+    <td align="right" width="25%"><div align="left">Comuna</div></td>
+    <td align="right" width="75%"><div align="left">
+      <select name="comuna" id="comuna" onchange="invocaAjax();">
+      <!-- BEGIN DYNAMIC: COMUNAS -->
+        <option value="{id_comuna}" {sel_com}>{nom_comuna}</option>
+       <!-- END DYNAMIC: COMUNAS -->
+      </select>
+    </div></td>
+  </tr>
+  <tr>
+    <td width="29%" align="right"><div align="left">Zona</div></td>
+    <td width="71%" align="right"><div align="left">
+      <select name="zona" id="zona" >
+      <!-- BEGIN DYNAMIC: ZONAS -->
+        <option value="{id_zona}" {sel_zon}>{nom_zona}</option>
+       <!-- END DYNAMIC: ZONAS -->
+      </select>
+    </div></td>
+  </tr>
+  <tr>
+    <td align="right"><div align="left">Tipo Calle </div></td>
+    <td align="right"><div align="left">
+      <select name="tipo_calle">
+      <!-- BEGIN DYNAMIC: T_CALLE -->
+        <option value="{id_tip_call}" {sel_tca}>{nom_tip_call}</option>
+       <!-- END DYNAMIC: T_CALLE -->      
+      </select>
+    </div></td>
+  </tr>
+  <tr>
+    <td align="right"><div align="left">Alias</div></td>
+    <td align="right"><div align="left">
+      <input name="alias" type="text" value=""  maxlength="20">
+    </div></td>
+  </tr>
+  <tr>
+    <td align="right"><div align="left">Calle</div></td>
+    <td align="right">
+      <div align="left">
+        <input name="calle" type="text" value="" size="40" maxlength="50">
+      </div></td>
+  </tr>
+  <tr>
+    <td align="right"><div align="left">N&deg; Casa</div></td>
+    <td align="right"><div align="left">
+      <input name="numero" type="text" value="" size="10" maxlength="20">
+    </div></td>
+  </tr>
+  <tr>
+    <td align="right"><div align="left">Nº Depto</div></td>
+    <td align="right"><div align="left">
+      <input name="depto" type="text" value="" size="10" maxlength="20">
+    </div></td>
+  </tr>
+  <tr>
+    <td align="right" valign="top"><div align="left">Comentarios</div></td>
+    <td align="right"><div align="left">
+      <textarea name="comentario" cols="50" rows="5"  onchange="if(this.value.length > 255){ alert('Has superado el tama&ntilde;o m&aacute;ximo permitido (255 Caracteres)'); return false; }"></textarea>
+    </div></td>
+  </tr>
+ <!-- <tr>
+    <td align="right"><div align="left">Estado</div></td>
+    <td align="right"><div align="left">
+      <select name="estado">
+      <!-- BEGIN DYNAMIC: EST_DIR -->
+	<!--	<OPTION value="{id_estado}" {sel_estd}>{nom_estado}</OPTION>      
+      <!-- END DYNAMIC: EST_DIR -->
+   <!--   </select>
+    </div></td>
+  </tr> -->
+  <tr>
+  <td align="right"><div align="left">Fecha Creaci&oacute;n </div></td>
+    <td align="right"><div align="left">{fec_actual}</div></td>
+  </tr>
+  <tr>
+    <td align="right">&nbsp;</td>
+    <td align="right">&nbsp;</td>
+  </tr>
+  </table>
+  <table width="52%"  border="0" align="center" cellpadding="0" cellspacing="2">
+  <tr>
+    <td align="center">
+        <input name="guardar" type="submit" class="cmd" value=" Guardar " >
+        <!--input name="cancelar" type="button" class="cmd" value="Cerrar" onClick="window.close();"-->  
+         </form></td>
+		<TD align=left>
+		    <FORM name="cerrar" action="ViewSucursalForm" target="padre" onsubmit="window.close();">
+			<INPUT type="hidden" name="id_sucursal" value="{id_sucursal}">
+			<INPUT type="submit" name="cerrar" value="  Siguiente  ">		
+		</FORM>        
+		</TD>        
+  </tr>
+   </table>
+
+
+ <SCRIPT LANGUAGE="JavaScript">
+<!--
+ document.form1.comuna.obligatorio=true;
+ document.form1.comuna.label = 'Comuna';
+ document.form1.zona.obligatorio=true;
+ document.form1.zona.label = 'Zona';
+ document.form1.alias.obligatorio=true;
+ document.form1.alias.label = 'Alias';
+ document.form1.calle.obligatorio=true;
+ document.form1.calle.label = 'Calle';
+ document.form1.comuna.obligatorio=true;
+ document.form1.comuna.label = 'Comuna';
+ document.form1.tipo_calle.obligatorio=true;
+ document.form1.tipo_calle.label = 'Tipo de Calle';
+ document.form1.numero.obligatorio=true;
+ document.form1.numero.label = 'Numero';
+/* document.form1.estado.obligatorio=true;
+ document.form1.estado.label = 'Estado';
+ */
+ window.document.form1.alias.onkeypress 		= KeyIsTexto; 
+ window.document.form1.numero.onkeypress 		= KeyIsNumber; 
+ window.document.form1.depto.onkeypress  		= KeyIsTexto;
+ window.document.form1.calle.onkeypress         = KeyIsTexto;
+ window.document.form1.comentario.onkeypress    = KeyIsTexto;
+
+//-->
+</SCRIPT>
+
+
+	
+<!-- InstanceEndEditable --></body>
+<!-- InstanceEnd --></html>

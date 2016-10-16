@@ -1,0 +1,273 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<meta name="viewport" content="width=320;initial-scale=1.0; maximum-scale=1.0; user-scalable=false;"/>
+<title>Jumbo Mobile - Registro</title>
+<link href="/FO/mobi/css/registro.css" rel="stylesheet" type="text/css" />
+<link href="/FO/mobi/css/bordes_redondeados.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/FO/mobi/js/registro.js"></script>
+<script type="text/javascript" src="/FO/mobi/js/listas.js"></script>
+</head>
+<body>
+<div id="contenedor_b">
+<div id="encabezado_b">
+  	<h2>Jumbo.cl mobile, m�s tiempo para ti</h2>
+</div>
+<div id="boton_b">
+  <img src="/FO_IMGS/images/mobi/bt_registro.gif" alt="Bienvenida" />
+</div>
+<div id="margen_verde">
+	<div class="top-right-corner_b"><div class="top-right-inside_b">&bull;</div></div>
+</div>
+<div id="contenido">
+<form name="cliente" id="cliente" action="RegisterNewMobi" method="post" >
+	<div class="tit_r"> Datos Personales </div>
+	<div id="mod_reg">
+		<div class="campos_reg">
+			  <div class="iz_campos_reg_1">*RUT: </div>
+			  <input name="rut" type="text" id="rut" value="{rut}" size="10" maxlength="8" />-<input name="dv" value="{dv}" type="text" class="campo" size="3" maxlength="1"/>
+	    </div>
+		<div class="campos_reg">
+				<div class="iz_campos_reg_1">*Nombre: </div>
+		  		<input name="nombre" type="text" value="{nombre}" id="nombre" maxlength="20" size="25" />
+		</div>
+		<div class="campos_reg">
+				<div class="iz_campos_reg_1">*Apellido Paterno: </div>
+		  		<input name="ape_pat" type="text" value="{ape_pat}" id="ape_pat" maxlength="20"  size="25" />
+		</div>
+		<div class="campos_reg">
+				<div class="iz_campos_reg_1">*Apellido Materno: </div>
+		  		<input name="ape_mat" type="text" value="{ape_mat}" id="ape_mat" maxlength="20" size="25" />
+		</div>
+		<div class="campos_reg">
+				<div class="iz_campos_reg_1">*Fecha de Nacimiento: </div>
+				<select name="dia" class="campo" >
+					<option value="">...</option>
+					<!-- BEGIN DYNAMIC: select_dias -->
+					<option value="{option_dia}" {selectdia}>{option_dia}</option>
+					<!-- END DYNAMIC: select_dias -->
+				</select>
+
+				<select name="mes" class="campo" onchange="calendar_dias(ano.value, this.value)">
+					<option value="">...</option>
+					<option value="1" {mes1}>Enero</option>
+					<option value="2" {mes2}>Febrero</option>
+					<option value="3" {mes3}>Marzo</option>
+					<option value="4" {mes4}>Abril</option>
+					<option value="5" {mes5}>Mayo</option>
+					<option value="6" {mes6}>Junio</option>
+					<option value="7" {mes7}>Julio</option>
+					<option value="8" {mes8}>Agosto</option>
+					<option value="9" {mes9}>Septiembre</option>
+					<option value="10" {mes10}>Octubre</option>
+					<option value="11" {mes11}>Noviembre</option>
+					<option value="12" {mes12}>Diciembre</option>
+				</select>
+
+				<select name="ano" class="campo" onchange="calendar_dias(this.value, mes.value)">
+					<option value="">...</option>
+					<!-- BEGIN DYNAMIC: select_anos -->
+					<option value="{option_ano}" {selectano}>{option_ano}</option>
+					<!-- END DYNAMIC: select_anos -->
+				</select>
+        </div>
+		<div class="ult_campo_reg">
+			    <div class="iz_campos_reg_1">*Sexo: </div>
+	            <input name="genero" type="radio" value="F" {checkedF} />
+	            femenino
+	            <input name="genero" type="radio" value="M" {checkedM} />
+        masculino</div>
+		</div>
+	<div class="tit_r"> Forma de Contacto </div>
+	<div id="mod_reg">
+		<div class="campos_reg">
+			  <div class="iz_campos_reg">*E-mail: </div>
+			  <input name="email1" type="text" value="{email1}" id="email1" size="16" maxlength="25" />  @ <input name="dominio1" type="text" value="{dominio1}" id="dominio1" size="6" maxlength="25" />
+			  </div>
+		<div class="campos_reg">
+				<div class="iz_campos_reg">*Confirmar <br />
+			    E-mai: </div>
+				<input name="email2" type="text" value="{email2}" id="email2" size="16" maxlength="25" /> @ <input name="dominio2" type="text" value="{dominio2}" id="dominio2" size="6" maxlength="25" />
+				</div>
+		<div class="campos_reg">
+				<div class="iz_campos_reg">Tel&eacute;fono 1: </div>
+				<select name="fon_cod_1" id="fon_cod_1">
+					<option value='02' {selectfono02}>02</option>
+					<option value='32' {selectfono32}>32</option>
+					<option value='33' {selectfono33}>33</option>
+					<option value='34' {selectfono34}>34</option>
+					<option value='35' {selectfono35}>35</option>
+					<option value='41' {selectfono41}>41</option>
+					<option value='42' {selectfono42}>42</option>
+					<option value='43' {selectfono43}>43</option>
+					<option value='45' {selectfono45}>45</option>
+					<option value='51' {selectfono51}>51</option>
+					<option value='52' {selectfono52}>52</option>
+					<option value='53' {selectfono53}>53</option>
+					<option value='55' {selectfono55}>55</option>
+					<option value='57' {selectfono57}>57</option>
+					<option value='58' {selectfono58}>58</option>
+					<option value='61' {selectfono61}>61</option>
+					<option value='63' {selectfono63}>63</option>
+					<option value='64' {selectfono64}>64</option>
+					<option value='65' {selectfono65}>65</option>
+					<option value='67' {selectfono67}>67</option>
+					<option value='71' {selectfono71}>71</option>
+					<option value='72' {selectfono72}>72</option>
+					<option value='73' {selectfono73}>73</option>
+					<option value='75' {selectfono75}>75</option>
+				</select>
+				<input name="fon_num_1" type="text" value="{fon_num_1}" id="fon_num_1" size="16" maxlength="7" />
+		</div>
+		<div class="campos_reg">
+				<div class="iz_campos_reg">Tel&eacute;fono 2:<br /> 
+			    (celular)  </div>
+				<select name="fon_cod_2" id="fon_cod_2">
+					<option value="6">6</option>
+					<option value="7">7</option>
+					<option value="8">8</option>
+					<option value="9" selected="selected">9</option>
+				</select>
+				<input name="fon_num_2" type="text" value="{fon_num_2}" id="fon_num_2" size="16" maxlength="7" /> 
+		</div>
+		<div class="campos_reg">
+				<div class="iz_campos_reg">Tel&eacute;fono 3 : </div>
+				<select name="fon_cod_3" id="fon_cod_3">
+					<option value='02' {selectfono02}>02</option>
+					<option value='32' {selectfono32}>32</option>
+					<option value='33' {selectfono33}>33</option>
+					<option value='34' {selectfono34}>34</option>
+					<option value='35' {selectfono35}>35</option>
+					<option value='41' {selectfono41}>41</option>
+					<option value='42' {selectfono42}>42</option>
+					<option value='43' {selectfono43}>43</option>
+					<option value='45' {selectfono45}>45</option>
+					<option value='51' {selectfono51}>51</option>
+					<option value='52' {selectfono52}>52</option>
+					<option value='53' {selectfono53}>53</option>
+					<option value='55' {selectfono55}>55</option>
+					<option value='57' {selectfono57}>57</option>
+					<option value='58' {selectfono58}>58</option>
+					<option value='61' {selectfono61}>61</option>
+					<option value='63' {selectfono63}>63</option>
+					<option value='64' {selectfono64}>64</option>
+					<option value='65' {selectfono65}>65</option>
+					<option value='67' {selectfono67}>67</option>
+					<option value='71' {selectfono71}>71</option>
+					<option value='72' {selectfono72}>72</option>
+					<option value='73' {selectfono73}>73</option>
+					<option value='75' {selectfono75}>75</option>
+				</select>
+				<input name="fon_num_3" type="text" value="{fon_num_3}" id="fon_num_3" size="16" maxlength="7" /> 
+	    </div>
+		<div class="ult_campo_reg">
+			<div class="iz_campos_reg">Acepta SMS:</div>
+			<input type="checkbox" name="sms" /> 
+		</div>
+	  </div>
+	<div class="tit_r"> Clave </div>
+	<div id="mod_reg">
+			<div class="campos_reg">
+				  <div class="iz_campos_reg_2">*Clave:<br />(minimo 4 car&aacute;cteres)</div>
+					<input name="clave" type="password" id="clave" size="20" maxlength="10" {readonly} />
+			</div>
+			<div class="campos_reg">
+					<div class="iz_campos_reg_2">*Repetir Clave: </div>
+					<input name="clave1" type="password" id="clave1" size="20" maxlength="10" {readonly} />
+			</div>
+			<div class="campos_reg">
+					<div class="iz_campos_reg_2">*Pregunta Secreta<br />(ej: &iquest;nombre de mi perro?): </div>
+					<input name="pregunta" value="{pregunta}" type="text" id="pregunta" size="20" maxlength="50" />
+			</div>
+			<div class="ult_campo_reg">
+					<div class="iz_campos_reg_2">*Respuesta:<br />(ej: Lyca)</div>
+					<input name="respuesta" value="{respuesta}" type="text" id="respuesta" size="20" maxlength="50" />
+			</div>
+	</div>
+	
+	<div class="tit_r">Direcci&oacute;n de Despacho </div>
+	
+	<div id="mod_reg">
+		<div class="campos_reg">
+			  <div class="iz_campos_reg">Tipo: </div>
+			<select name="tipo_calle" id="tipo_calle">
+				<option value="" selected="selected">--</option>
+				<!-- BEGIN DYNAMIC: select_tipocalle -->		
+				<option value="{option_calle_id}" {selectcalle}>{option_calle_nombre}</option>
+				<!-- END DYNAMIC: select_tipocalle -->
+			</select>
+		</div>
+	    <div class="campos_reg">
+				<div class="iz_campos_reg">Calle: </div>
+		  		<input name="calle" type="text" value="{calle}" size="25" maxlength="50" />
+		</div>
+		<div class="campos_reg">
+				<div class="iz_campos_reg">N&uacute;mero: </div>
+		  		<input name="numero" type="text" value="{numero}" size="25" maxlength="20" />
+		</div>
+		<div class="campos_reg">
+				<div class="iz_campos_reg">Dpto./Casa: </div>
+		  <input name="departamento" type="text" value="{departamento}" size="25" maxlength="20" />
+		</div>
+		<div class="campos_reg">
+			<div class="iz_campos_reg">Regi&oacute;n: </div>
+			<select name="region" id="region" onchange="buscar_comunas()">
+				<option {selectregionaux} value="0">Seleccionar</option>
+				<!-- BEGIN DYNAMIC: select_regiones -->	
+				<option value="{option_reg_id}" {selectregion}>{option_reg_nombre}</option>
+				<!-- END DYNAMIC: select_regiones -->		
+			</select>
+	    </div>
+		<div class="campos_reg">
+			<div class="iz_campos_reg">Comuna: </div>
+			<select name="comuna" id="comuna" >
+				<option value="0">Seleccionar</option>
+			</select>
+	    </div>
+		<div class="campos_reg">
+			<div class="iz_campos_reg">Guardar Como: </div>
+			<input name="alias" type="text" value="{alias}" size="25" maxlength="20" />
+		</div>
+		<div class="ult_campo_reg">
+			<div class="iz_campos_reg">Observaciones para el despacho</div>
+			<textarea name="comentario" cols="23" rows="5" id="comentario" onfocus="vaciar_comentario()" onkeydown="javascript:checklength(this)">{comentario}</textarea>
+		</div>
+	</div>
+	<div class="tit_r"> T&eacute;rminos y Condiciones del Servicio:	</div>
+  	  <div id="mod_reg_2">Para registrarte en Jumbo.cl y poder comprar debes aceptar los T&eacute;rminos y Condiciones de Jumbo.cl<br /><a href="http://www.jumbo.cl/supermercado/terminos/terminos.html" target="_blank" class="link_verde">Leer los T&eacute;rminos y Condiciones del Servicio</a><br /><br />
+  	    <input type="checkbox" name="terminos" />Acepto
+  	  </div>
+	  	<div class="bt_final_r">
+			<div class="bt_volver_r"> <a href="javascript:volver();"><img src="/FO_IMGS/images/mobi/bt_volver.gif" alt="volver" name="volver" border="0" id="volver" /></a>
+			</div>
+			<div class="bt_guardar_r"><a href="javascript:submit_registro();"><img src="/FO_IMGS/images/mobi/bt_guardar_datos.gif" name="guardar" border="0" id="guardar" /></a>
+			</div>
+		</div>
+</form>
+</div>
+</div>
+
+<iframe name="ifcomuna" id="ifcomuna" src="" frameborder="0" width="0" height="0" scrolling="yes" style='visibility: hidden;'></iframe>
+<script type="text/javascript">
+buscar_comunas();
+window.document.cliente.rut.focus();
+if( {error} == 1 ) {
+	alert( "{mensaje_error}" );
+}
+function fsel_com(idcom){
+	for( var i = 0; i < document.cliente.comuna.length ; i++ ) {
+		if( document.cliente.comuna.options[i].value == "{fsel_com}" ) {
+			document.cliente.comuna.selectedIndex = i;
+			break;
+		}
+	}
+}
+</script>
+<script type="text/javascript" src="/FO/mobi/js/prototype.js"></script>
+<script type="text/javascript" src="/FO/mobi/js/global.js"></script>
+<script type="text/javascript" src="/FO/mobi/js/registro_val.js"></script>
+<script type="text/javascript" src="/FO/mobi/js/rut.js"></script>
+<script type="text/javascript" src="/FO/mobi/js/validaciones.js"></script>
+</body>
+</html>

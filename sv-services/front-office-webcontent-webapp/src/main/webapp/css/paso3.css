@@ -1,0 +1,260 @@
+.footer {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 9px;
+	font-style: normal;
+	line-height: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	color: #666666;
+	text-decoration: none;
+}
+.style1 {color: #000000}
+
+.lectura1 {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-style: normal;
+	line-height: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	color: #666;
+	text-decoration: none;
+}
+
+.style11 {color: #507B06}
+
+.Estilo2 {font-family: "Trebuchet MS"; font-size: 12px; font-style: normal; line-height: normal; font-weight: bold; font-variant: normal; text-transform: none; color: #333333; text-decoration: none; }
+
+#mpa {
+	position:absolute;
+	visibility:hidden;
+	overflow:visible;
+	top:0px;
+	left:0px;
+	height:110px;
+	z-index:1;
+}
+
+#jumbo2 {
+	position:absolute;
+	visibility:visible;
+	overflow:visible;
+	top:0px;
+	left:0px;
+	height:90px;
+	width: 500px;
+	z-index:1;
+}
+
+#paris {
+	position:absolute;
+	visibility:hidden;
+	overflow:visible;
+	top:0px;
+	left:0px;
+	height:50px;
+	width:550px;
+	z-index:1;
+}
+
+#parisempleado {
+	position:absolute;
+	visibility:hidden;
+	overflow:visible;
+	top:0px;
+	left:0px;
+	height:100px;
+	width:550px;
+	z-index:1;
+}
+
+#parisnormal {
+	position:absolute;
+	visibility:hidden;
+	overflow:visible;
+	top:30px;
+	left:0px;
+	height:120px;
+	width:550px;
+	z-index:2;
+}
+
+#paris-adicional {
+	position:absolute;
+	visibility:hidden;
+	overflow:visible;
+	top:90px;
+	left:0px;
+	height:180px;
+	width:550px;
+	z-index:3;
+}
+
+#masparis {
+	position:absolute;
+	visibility:hidden;
+	overflow:visible;
+	top:30px;
+	left:0px;
+	height:100px;
+	width:550px;
+	z-index:1;
+}
+
+#bancaria {
+	position:absolute;
+	visibility:hidden;
+	overflow:visible;
+	top:0px;
+	left:0px;
+	height:250px;
+	width: 500px;
+	z-index:1;
+}
+
+#factura {
+	position:absolute;
+	visibility:hidden;
+	overflow:visible;
+	top:0px;
+	left:0px;
+	height:245px;
+	width:500px;
+	z-index:3;
+}
+
+#modificardireccion {
+	position:absolute;
+	width: 0px;
+	height: 0px;
+	left: 0px;
+	top: 0px;
+	visibility: hidden;
+	border: 1;
+	z-index: 10;
+}
+
+#ventana_evento {
+	position:absolute;
+	width: 0px;
+	height: 0px;
+	left: 0px;
+	top: 0px;
+	visibility: hidden;
+	border: 1;
+	z-index: 10;
+}
+
+#ventanarespromo {
+	position:absolute;
+	width: 0px;
+	height: 0px;
+	left: 0px;
+	top: 0px;
+	visibility: hidden;
+	border: 1;
+	z-index: 10;
+}
+
+#ventana_explicacion {
+	position:absolute;
+	width: 0px;
+	height: 0px;
+	left: 0px;
+	top: 0px;
+	visibility: hidden;
+	border: 1;
+	z-index: 10;
+}
+
+#act_datos {
+	position:absolute;
+	width: 0px;
+	height: 0px;
+	left: 0px;
+	top: 0px;
+	visibility: hidden;
+	border: 1;
+	z-index: 10;
+}
+
+#mastarjetas {
+	visibility: hidden;
+}
+
+#textoahorro {
+	visibility: hidden;
+}
+
+#ahorro {
+	visibility: hidden;
+}
+
+#promomas {
+	visibility: hidden;
+}
+
+#cupones {
+	/*visibility: hidden;*/
+	width:500px;
+	display: block;
+	clear: both;
+	/*border: 1px solid #7abd09;*/
+	margin: 5px;
+	float: left;
+}
+
+a:link {
+	color: #666666;
+}
+
+a:visited {
+	color: #666666;
+}
+
+a:hover {
+	color: #1FA22E;
+}
+
+a:active {
+	color: #666666;
+}
+.inputOculto {
+	display: none;
+}
+.campos {
+border-color: #CCCCCC;
+border-style: solid;
+border-width: 1px;
+color: #666666;
+font-family: Arial,Helvetica,sans-serif;
+font-size: 12px;
+font-style: normal;
+font-variant: normal;
+font-weight: normal;
+float: left;
+width: 160px;
+margin-top: 4px;
+}
+.cont_nombre_campos {
+	float:left;
+	margin-top:5px;
+	height: 20px;
+	width: 68px;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:12px;
+	color:#666;
+	text-align: right;
+	padding-right: 10px;
+}
+.cont_campos {
+	float:left;
+	margin-top:15px;
+	height: 30px;
+	width: 247px;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:12px;
+	color:#666;
+}

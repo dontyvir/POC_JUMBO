@@ -1,0 +1,223 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html><!-- InstanceBegin template="/Templates/fullbody.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="EXPIRES" CONTENT="Mon, 22 Jul 2002 11:12:01 GMT">
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>Jumbo.cl Back Office Local</title>
+<!-- InstanceEndEditable -->
+
+<!-- InstanceBeginEditable name="head" -->
+
+
+
+<!-- InstanceEndEditable -->
+
+<link href="estilos.css" rel="stylesheet" type="text/css">
+<!--link href="../Prototipo/default.css" rel="stylesheet" type="text/css"-->
+<style type="text/css">
+<!--
+.style1 {color: #666666}
+-->
+</style>
+</head>
+
+<body>
+<link rel="stylesheet" href="menu/menu.css">
+<script language="JavaScript" src="menu/menu.js"></script>
+<script language="JavaScript" src="menu/menu_tpl.js"></script>
+<script language="JavaScript" src="menu/menu_items.js"></script>
+<table width="780" height="100%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+    <td height="78" valign="top">
+	
+	<TABLE width="100%" height=59 border=0 align="center" cellpadding="0" cellspacing="0" bgcolor="#ffffff">
+	  <TR>
+		<TD width=275 height="59" align=left class=user><img src="img/header2.jpg" width="275" height="60"></TD>
+		<TD width=505 align=left valign="bottom" background="img/bg-1.jpg" class=user><table width="90%"  border="0" align="center" cellpadding="0" cellspacing="2">
+          <tr>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td><div align="right" class="infoBL">Usuario: {hdr_nombre} | Local: {hdr_local} | {hdr_fecha} </div></td>
+          </tr>
+        </table></TD>
+	  </TR>
+	</TABLE>
+	<TABLE width="100%" height=19 border=0 align="center" cellpadding="0" cellspacing="0" bgcolor="#f1f0e9" style="border-top:1px solid #ABABAB; border-bottom:1px solid #ABABAB">
+	  <TR>
+		<TD align=left bgcolor="#FFFFFF" class=user></TD>
+		</TR>
+	</TABLE>
+
+	
+	</td>
+  </tr>
+  <tr height="400">
+    <td valign="top" bgcolor="#FFFFFF">
+      <table border=0 width="100%" class='ContentTitle'>
+        <tr>
+          <td width="53%" height="20" class='HeaderTitle'><!-- InstanceBeginEditable name="Titulo" -->
+				  Resumen de Picking de la Ronda Nº {id_ronda}<!-- InstanceEndEditable --></td>
+          <td width="47%" class='HeaderTitle'>
+          <!-- InstanceBeginEditable name="Botonera" -->
+          <a href="ViewFormPicking?id_ronda={id_ronda}"><img src="img/1a.gif" width="40" height="40" border="0" ></a>
+           <a href="ViewFormPickingSustitutos?id_ronda={id_ronda}"><img src="img/2a.gif" width="40" height="40" border="0" ></a>
+           <a href="ViewFormPickingResumen?id_ronda={id_ronda}"><img src="img/3b.gif" width="40" height="40" border="0" ></a>
+          <!-- InstanceEndEditable --></td>
+        </tr>
+      </table>
+	  <br>
+	  
+      <table width="100%"  border="0" cellspacing="2" cellpadding="2">
+        <tr valign="top">
+          <td width="71%"><!-- InstanceBeginEditable name="Izquierda" -->
+
+			<center><font color="red">{mns}</font></center>	
+			<p><strong>Productos Pedidos
+			</strong></p>
+			<table width=750 border="0" align="center" cellpadding="2" cellspacing="0"  class="tabla2">
+				<tr>
+				  <th width="43">&nbsp;</th>
+				   <th width="43">Id Prod</th>
+				   <th width="43">Cod SAP</th>
+				   <th width="29">Unid</th>
+				   <th width="162">Descripci&oacute;n</th>
+				   <th width="40">Cant Ped.</th>
+				   <th width="40">Cant Pick.</th>
+				   <th width="40">Cant Falt.</th>
+				   <th width="40">Cant S/Pick.</th>	
+				</tr>
+				<!-- BEGIN DYNAMIC: PROD_PED -->
+				<tr valign="top">
+				  <td><div align="center">{img}</div></td>
+					<td>{id_producto}</td>
+					<td>{cod_sap}</td>
+					<td align=center>{uni_med}</td>
+					<td>{desc}</td>
+					<td>{cant_ped}</td>
+					<td>{cant_pick}</td>
+					<td>{cant_falt}</td>
+					<td>{cant_spick}</td>
+			    </tr>				  				  
+				<!-- END DYNAMIC: PROD_PED -->
+				</table>			
+			<p><strong>Productos Pickeados</strong></p>
+			<table width=750 border="0" align="center" cellpadding="2" cellspacing="0" class="tabla2" >
+				<tr>
+				   <th width="125">Id Prod</th>
+				   <th width="75">Cod SAP</th>
+				   <th width="65">Unid</th>
+				   <th width="341">Descripci&oacute;n</th>
+				   <th width="101">Cod. Bin</th>
+				   <th width="101">Cant Pick.</th>
+				</tr>
+				<!-- BEGIN DYNAMIC: PICKEADOS -->
+				<tr valign="top">
+					<td align="center">{id_prod}</td>
+					<td>{cod_sap}</td>
+					<td align=center>{uni_med}</td>
+					<td>{desc}</td>
+					<td align="center">{cod_bin}</td>
+					<td align="center">{cant_pickeada}</td>
+			  </tr>				  				  
+				<!-- END DYNAMIC: PICKEADOS -->
+			</table>
+			<p><strong>Sustitutos</strong></p>
+                    <table width="754" border="0" align="center" cellpadding="2" cellspacing="0" class="tabla2">
+                      <tr><th width="47">id_det</th>
+                        <th width="47">Cod Prod</th>
+                        <th width="188">Descripci&oacute;n</th>
+                        <th width="25">Cant</th>
+                        <th width="37">Precio Unit. </th>
+                        <th width="16">&nbsp;</th>
+                        <th width="63">Cod Sustituto </th>
+                        <th width="195">Descripci&oacute;n</th>
+                        <th width="25">Cant</th>
+                        <th width="59">Precio Unit.</th>
+                      </tr>
+                      <!-- BEGIN DYNAMIC: SUSTITUTOS -->
+                      <tr valign="top">
+                      
+                        <td><div align="center">{id_det}</div></td>
+                        <td><div align="center">{sap_ped}</div></td>
+                        <td><div align="left">{desc_ped}</div></td>
+                        <td><div align="center">{cant_ped}</div></td>
+                        <td>{precio_ped}</td>
+                        <td><div align="center">&rarr;</div></td>
+                        <td><div align="center">{sap_sust}</div></td>
+                        <td>{desc_sust}</td>
+                        <td><div align="center">{cant_sust}</div></td>
+                        <td>{precio_sust}</td>
+                      </tr>
+                      <!-- END DYNAMIC: SUSTITUTOS -->
+            </table>
+            <br>
+                    <br clear="all">
+                    <table width="465" border="0" align="center" cellpadding="2" cellspacing="0">
+					<tr><td><p align="left" ><strong>Faltantes</strong><br /></p></td></tr>
+					</table>
+					<br>
+                    <table width="465" border="0" align="center" cellpadding="2" cellspacing="0" class="tabla2">
+                      <tr>
+                       <th width="76">Id det</th>
+                        <th width="76">Cod Prod</th>
+                        <th width="185">Descripci&oacute;n</th>
+                        <th width="112">Cant. Faltante </th>
+                      </tr>
+                        <!-- BEGIN DYNAMIC: FALTANTES -->
+                      <tr valign="top">
+                        <td><div align="center">{id_det}</div></td>                      
+                        <td><div align="center">{cod_sap_falt}</div></td>
+                        <td><div align="left">{desc_prod_falt}</div></td>
+                        <td><div align="center">{cant_falt}</div></td>
+                      </tr>
+                        <!-- END DYNAMIC: FALTANTES -->
+            </table>
+			  <br clear="all">
+			  <script>
+			  	function validar_finalizar(form){
+			  		/*if (form.haySpick.value == 1){
+			  			alert("Existen productos sin pickear, no se puede finalizar el picking.");
+			  			return false;
+			  		}*/
+			  		if (form.hayPickPend.value == 1){
+			  			alert("Existen productos pickeados pendientes, no se puede finalizar el picking.");
+			  			return false;
+			  		}
+			  		return true;
+			  	}
+			  
+			  </script>
+			  <form name="finaliza" method="post" action="FinalizaFormPickManual"  onsubmit="return validar_finalizar(this);" >
+			  <input type="hidden" name="haySpick" value="{haySpick}" >
+			  <input type="hidden" name="hayPickPend" value="{hayPickPend}" >			  
+			  <input type="hidden" name="id_ronda" value="{id_ronda}" >
+			  <input type="hidden" name="url" value="ViewRonda?id_ronda={id_ronda}" >
+			<p align="center"><input type="submit" name="rel_picking" value="Finaliza picking de Ronda"></p>
+			</form>
+			   <script>
+							//document.frmGeneraPedido.costo.onkeypress = KeyIsSoloNum;
+			  </script>
+          <!-- InstanceEndEditable --></td>
+        </tr>
+      </table>
+      </td>
+  </tr>
+  <tr>
+    <td>
+	<TABLE width="100%" height=19 border=0 align="center" cellpadding="0" cellspacing="0" bgcolor="#f1f0e9" style="border-top:1px solid #ABABAB; border-bottom:1px solid #ABABAB">
+	  <TR>
+		<TD align=center bgcolor="#67b01a" class=infoBL><div align="center">Back Office Local - Jumbo.cl</div></TD>
+		</TR>
+	</TABLE>
+
+	
+	</td>
+  </tr>
+</table>
+</body>
+<!-- InstanceEnd --></html>

@@ -1,0 +1,269 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html><!-- InstanceBegin template="/Templates/fullbody.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="EXPIRES" CONTENT="Mon, 22 Jul 2002 11:12:01 GMT">
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>Jumbo.cl Back Office Central</title>
+<!-- InstanceEndEditable -->
+
+<!-- InstanceBeginEditable name="head" --><!-- InstanceEndEditable -->
+
+<link href="estilos.css" rel="stylesheet" type="text/css">
+<!--link href="../default.css" rel="stylesheet" type="text/css"-->
+<style type="text/css">
+<!--
+.style1 {color: #666666}
+-->
+</style>
+</head>
+
+<body>
+<link rel="stylesheet" href="menu/menu.css">
+<script language="JavaScript" src="menu/menu.js"></script>
+<script language="JavaScript" src="menu/menu_tpl.js"></script>
+<script language="JavaScript" src="menu/menu_items.js"></script>
+<script language="JavaScript" src="popup.js"></script>
+<script language="JavaScript" src="funciones.js"></script>
+<script language="JavaScript" src="validacion.js"></script>
+<table width="780" height="100%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+    <td height="78" valign="top">
+	
+	<TABLE width="100%" height=59 border=0 align="center" cellpadding="0" cellspacing="0" bgcolor="#ffffff">
+	  <TR>
+		<TD width=275 height="59" align=left class=user><img src="img/header2.jpg" width="275" height="60"></TD>
+		<TD width=505 align=left valign="bottom" background="img/bg-1.jpg" class=user><table width="90%"  border="0" align="center" cellpadding="0" cellspacing="2">
+          <tr>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td><div align="right" class="infoBL">Usuario: {hdr_nombre}&nbsp;&nbsp;| {hdr_fecha}</div></td>
+          </tr>
+        </table></TD>
+	  </TR>
+	</TABLE>
+	<TABLE width="100%" height=19 border=0 align="center" cellpadding="0" cellspacing="0" bgcolor="#f1f0e9" style="border-top:1px solid #ABABAB; border-bottom:1px solid #ABABAB">
+	  <TR>
+		<TD align=left bgcolor="#FFFFFF" class=user></TD>
+		</TR>
+	</TABLE>
+
+	
+	</td>
+  </tr>
+  <tr height="400">
+    <td valign="top" bgcolor="#FFFFFF">
+      <table border=0 width="100%" class='ContentTitle'>
+        <tr>
+          <td width="53%" height="20" class='HeaderTitle'><!-- InstanceBeginEditable name="Titulo" --> Administraci&oacute;n de Compradores <!-- InstanceEndEditable --></td>
+          <td width="47%" class='HeaderTitle'><!-- InstanceBeginEditable name="Botonera" -->
+            <div align="right"><a href="ViewCompradorNewForm">Nuevo Comprador</a></div>
+          <!-- InstanceEndEditable --></td>
+        </tr>
+      </table>
+	  <br>
+      <table width="100%"  border="0" cellspacing="2" cellpadding="2">
+        <tr valign="top">
+          <td width="71%"><!-- InstanceBeginEditable name="Izquierda" -->
+			<script language="JavaScript">
+			
+				function addOption(text,value,sel) {
+				   var oOpt=new Option(text,value);
+				   var oSelect=sel;
+				   oSelect.options[oSelect.options.length]=oOpt;
+				}
+				function removeOption(index,sel) {
+					   var oSelect=sel;
+					   oSelect.options[index]=null;
+				} 
+			
+				function procesaResp(texto) {
+					var response = texto.split("#");
+					var larcampo = document.frmBusComp.id_sucursal.length;
+					
+			
+					for (i = 0; i < larcampo; i++ ){
+						removeOption(0, document.getElementById("id_sucursal"));
+					}
+					for (a = 0 ; a < response.length; a++){
+						resp = response[a].split("|");
+						addOption((resp[1])?resp[1]:'',(resp[0])?resp[0]:'',document.getElementById("id_sucursal") );
+					}
+					
+				}
+				
+				 function invocaAjax(){
+				 	var id_empresa= document.frmBusComp.id_empresa.value;
+					exec_AJAXRPC('GET', 'ViewComboEmpSucursalesAjax?id_empresa='+id_empresa, 'procesaResp');
+				 }	
+				 			
+          		function bus_comp(form){
+          		if (form.id_empresa.value == "" || form.id_sucursal.value==""){
+          			alert("Debe seleccionar empresa y sucursal");
+          			return false;
+          		}
+					return true;
+          		}
+          		
+          		function validar_form(form){
+          			
+          			if (form.buscapor[0].checked){
+          				if (validar_solonumero(form.buscar,"El rut es numerico, debe ingresarlo sin puntos ni digito verificador.")) 
+          					return false;
+          			}
+          			return true;
+          		}
+          		
+          	function abre_popup(){
+				valor="";
+				if ((valor = popUpWindowModalscroll('ViewEmpresasPopUp', 100, 100, 600, 400))> '0') {
+					if (valor != ""){
+						id = valor.split("|");
+						document.frmBusComp.id_empresa.value = id[0];
+						document.frmBusComp.empresa.value = id[1];
+						document.frmBusComp.id_sucursal.value="";
+						document.frmBusComp.sucursal.value="";
+					}
+				}
+			}
+          		
+          		
+          		function abre_popup_suc(emp_id){
+          	
+					if (emp_id == null || emp_id == "-1"){
+						alert("Primero debe seleccionar una empresa.");
+					}else{
+						valor="";
+						if ((valor = popUpWindowModalscroll('ViewSucursalesEmpPopUp?emp_id='+emp_id, 100, 100, 600, 400))> '0') {
+							if (valor != ""){
+								id = valor.split("|");
+								document.frmBusComp.id_sucursal.value = id[0];
+								document.frmBusComp.sucursal.value = id[1];
+							}
+						}
+					}
+				}			
+          		
+          	</script>
+			
+			<table width="600"  border="0" align="center" cellpadding="0" cellspacing="0">
+              <tr>
+                <td>
+				
+				<fieldset>
+                  <legend>Buscar Comprador </legend>
+                <form name="frmBus" method="post" action="ViewMonComprador" onsubmit="return validar_form(this);" >  
+                  <table width="100%"  border="0" cellspacing="2" cellpadding="0">
+                    <tr>
+                    <td>
+                    	<input type="radio" name="buscapor" value="rut" checked >Rut
+                    	<input type="radio" name="buscapor" value="apellido" {check_2} >Apellido                    	
+                    <br>
+                    	<input type="text" name="buscar" value="{buscar}">
+                    	<input type="submit" value="Buscar"> ( Rut: Sin puntos ni dígito verificador)
+                    </td>
+                    </tr>
+                    </table>
+                </form>
+                <form name="frmBusComp" method="post" action="ViewMonComprador" onsubmit="return bus_comp(this);" >  
+                <table>
+                    <tr>
+                      <td width="50%">Empresa</td>
+                      <td width="50%"> - Sucursal</td>
+                    </tr>
+                    <tr>
+                      <td>
+                      <input name="id_empresa" type="hidden" value="{id_empresa}" size="50" >
+					  <input name="empresa" type="text"  value="{empresa}" size="40" readOnly onclick="javascript:abre_popup();" >
+                      <a href="javascript:abre_popup();"><img title="Buscar empresa" src="img/magnify.jpg" width="16" height="16" border="0"></a> 
+
+                  </td>
+                      <td>
+						      <input name="id_sucursal" type="hidden" value="{id_sucursal}"  >
+							  <input name="sucursal" type="text"  value="{sucursal}" size="32" readOnly onclick="javascript:abre_popup_suc(document.frmBusComp.id_empresa.value);">
+                                <a href="javascript:abre_popup_suc(document.frmBusComp.id_empresa.value);">
+                                <img title="Buscar sucursal" src="img/magnify.jpg" width="16" height="16" border="0" alt="Seleccionar Sucursal">	
+                                </a> 
+
+                          <input name="Button" type="submit" class="cmd" value="Buscar" ></td>
+                    </tr>
+                  </table>
+                  </form>
+                </fieldset>
+                  
+				</td>
+              </tr>
+            </table>
+            
+			<div align="center"><font color=red>{msje}</font>&nbsp;{mje1}&nbsp;
+             <br><br></div>
+            <table width="600"  border="0" align="center" cellpadding="2" cellspacing="0" class="tabla2">
+              <tr>
+                <th width="20">Id</th>
+                <th width="80">RUT</th>
+                <th width="150">Nombres</th>
+                <th width="150">Apellido Paterno</th>
+                <th width="150">Apellido Materno</th>
+				<th width="50">Tipo</th>
+              </tr>
+              <!-- BEGIN DYNAMIC: lst_compradores -->
+              <tr>
+                <td><div align="center">{com_id}</div></td>
+                <td>{com_rut}-{com_dv}</td>
+                <td><div align="left">{com_nombre}</div></td>
+                <td><div align="left">{com_ape_pat}</div></td>
+                <td><div align="left">{com_ape_mat}</div></td>
+				<td><div align="left"><a href="ViewCompradorForm?id_comprador={com_id}">Editar</a></div></td>
+              </tr>
+              <!-- END DYNAMIC: lst_compradores -->
+			</table>
+            <center></center>
+            <FORM name=form3 method=get action="ViewMonComprador">
+		  	<input name=id_empresa type=hidden value="{id_empresa}">
+		  	<input name=empresa type=hidden value="{empresa}">
+		  	<input name=id_sucursal type=hidden value="{id_sucursal}">
+		  	<input name=sucursal type=hidden value="{sucursal}">
+		  	<input name=buscapor type=hidden value="{buscapor}">
+		  	<input name=buscar type=hidden value="{buscar}">		  			  	
+            <table width="715"  border="0" align="center" cellpadding="2" cellspacing="2">
+              <tr>
+                <td width="728"><div align="right">  
+					<a href="ViewMonComprador?pagina={anterior}&id_empresa={id_empresa}&id_sucursal={id_sucursal}&buscapor={buscapor}&buscar={buscar}&empresa={empresa}&sucursal={sucursal}">{anterior_label}&nbsp;</a>
+					Página :<select name="pagina" onchange="submit(this.form);">
+					<!-- BEGIN DYNAMIC: PAGINAS -->						
+						<option value="{pag}" {sel_pag}>{pag}</option>
+					<!-- END DYNAMIC: PAGINAS -->						
+						</select>
+					&nbsp; <a href="ViewMonComprador?pagina={siguiente}&id_empresa={id_empresa}&id_sucursal={id_sucursal}&buscapor={buscapor}&buscar={buscar}&empresa={empresa}&sucursal={sucursal}">{siguiente_label} &nbsp;</a>
+                </div></td>
+              </tr>
+            </table>
+            </FORM>
+            <br>
+            <p align="left"><br>
+		      <br>
+		      <br>
+		    </p>
+          <!-- InstanceEndEditable --></td>
+        </tr>
+      </table>
+      </td>
+  </tr>
+  <tr>
+    <td>
+	<TABLE width="100%" height=19 border=0 align="center" cellpadding="0" cellspacing="0" bgcolor="#f1f0e9" style="border-top:1px solid #ABABAB; border-bottom:1px solid #ABABAB">
+	  <TR>
+		<TD align=center bgcolor="#67b01a" class=infoBL><div align="center">Back Office Central - Jumbo.cl</div></TD>
+		</TR>
+	</TABLE>
+
+	
+	</td>
+  </tr>
+</table>
+</body>
+<!-- InstanceEnd --></html>

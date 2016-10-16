@@ -1,0 +1,117 @@
+<html>
+<head>
+<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="EXPIRES" CONTENT="Mon, 22 Jul 2002 11:12:01 GMT">
+<script language="JavaScript" src="funciones.js"></script>
+<script>
+	function f1(mod,margen_min_emp,origen,dscto_max_emp){
+	   valido = 0;
+	<!-- BEGIN DYNAMIC: PROD_COT -->
+	if (document.form.cantidad_{i}.value == "" || document.form.descuento_{i}.value == ""){
+		alert("Debe ingresar cantidad y descuento");
+		valido = 1;
+	}
+	if (validar_numero(document.form.cantidad_{i},"Campo Numerico"))valido = 1;
+	if (validar_numero(document.form.descuento_{i},"Campo Numerico"))valido = 1;
+	document.form.url.value = "ViewCotizProdIframe?cot_id={num_cot}&mod="+mod+"&mar_min_emp="+margen_min_emp+"&origen="+origen+"&dscto_max_emp="+dscto_max_emp;
+	<!-- END DYNAMIC: PROD_COT -->
+		if (valido != 1){
+			document.form.mod.value=mod;
+			document.form.submit();
+		}
+	}
+	
+	function f2(){
+		margen_tot = 0;
+		dscto_tot = 0;
+		suma_costos=0;
+		suma_precios_con_descto = 0;
+		suma_precios_sin_descto = 0;
+		margen_minimo_emp = 0;
+		dscto_max_emp=0;
+		//total de margen es : 1 - (sumatoria del costo / sumatoria del precio)
+		
+		<!-- BEGIN DYNAMIC: PROD_COT -->
+		if (document.form.descuento_{i}.value==""){	
+			suma_precios_con_descto+= document.form.cantidad_{i}.value *{precio_lista};}
+		else{	
+			suma_precios_con_descto+= document.form.cantidad_{i}.value *{precio_lista} * (1 - (document.form.descuento_{i}.value/100) );	}	
+		suma_precios_sin_descto+= document.form.cantidad_{i}.value *{precio_lista}
+		suma_costos += document.form.cantidad_{i}.value *{costo_unit};
+		
+		<!-- END DYNAMIC: PROD_COT -->
+		//calcula descuento y margen actual
+		dscto_tot=((1-(suma_precios_con_descto/suma_precios_sin_descto))*100).toFixed(2);
+		if (suma_precios_con_descto > 0){
+			margen_tot= ((1-(suma_costos/suma_precios_con_descto))*100).toFixed(2);
+		}
+		else
+			margen_tot=0;
+
+		margen_minimo_emp = parseFloat(document.form.mar_min_emp.value);
+		dscto_max_emp = parseFloat(document.form.dscto_max_emp.value);
+	
+		if (document.form.origen.value=="1"){
+			if (margen_tot < margen_minimo_emp && dscto_tot > dscto_max_emp){
+				alert("Advertencia: El margen mínimo de utilidad es inferior y el descuento es superior al permitido. \n Necesitará la autorización de un supervisor.");
+			}else if (margen_tot < margen_minimo_emp && dscto_tot <= dscto_max_emp)	{
+				alert("Advertencia: El margen mínimo de utilidad es inferior al permitido. \n Necesitará la autorización de un supervisor.");
+			}else if (margen_tot >= margen_minimo_emp && dscto_tot > dscto_max_emp)	{
+				alert("Advertencia: El descuento es superior al permitido. \n Necesitará la autorización de un supervisor.");
+			}	
+		}
+		//alert ("suma_costos:"+suma_costos+"suma_precios_con_descto:"+suma_precios_con_descto+" suma_precios_sin_descto:"+suma_precios_sin_descto);	
+		//alert ("descuento:"+dscto_tot+" margen:"+margen_tot);
+		parent.resumen_productos.res_dscto.value=dscto_tot;
+		parent.resumen_productos.res_margen.value=margen_tot;
+		
+		//modifica el total
+		parent.calc_linea_credito.res_monto_total.value= suma_precios_con_descto;
+		
+	}
+	
+</script>
+<link href="estilos.css" rel="stylesheet" type="text/css">
+</head>
+<body bgcolor="white" onLoad="javascript:f2();">
+
+
+
+	  <form name="form" method="post" action="ModProductoCotizacion" >
+	  <input type="hidden" name="accion" value="guarda">
+	  <input type="hidden" name="origen" value="{origen}">
+  	  <input type="hidden" name="mod" value="">
+  	  <input type="hidden" name="mar_min_emp" value="{mar_min_emp}">
+  	  <input type="hidden" name="dscto_max_emp" value="{dscto_max_emp}">  	  
+  	  <input type="hidden" name="url" value="" >
+ 	  <input type="hidden" name="cot_id" value="{num_cot}">  	   
+<table width="100%"  border="0" align="center" cellpadding="2" cellspacing="0" class="tabla2" >
+
+	  <!-- BEGIN DYNAMIC: PROD_COT -->
+	 
+ 
+      <tr valign="top">
+      	<td width="21">
+        <a href='javascript:validar_eliminar("Esta seguro que desea eliminar?","DelProdCotizacion?detcot_id={cot_detid}&cot_id={num_cot}&url="+escape("ViewCotizProdIframe?cot_id={num_cot}&mod={mod}"));'>{img_basurero}</a>
+        </td>
+        <td width="51">{id_prod}</td>
+        <td width="63">{cod_sap}</td>
+        <td width="32" align=center>{uni_med}</td>
+        <td width="340">{desc}</td>
+        <td width="100"><input name="cantidad_{i}" type="text" value="{cant_prod}" size="10" maxlength="10"></td>
+        <td width="212" align=right>{precio_lista}</td>
+        <td width="212" align=right><input name="descuento_{i}" type="text" value="{dcto}" size="5" maxlength="5">
+        %</td>
+        <td width="85" align=right>{precio_unit}</td>
+        <td width="49" align=right><p><A NAME='obs1'><a href="#obs1"><img src='img/book.gif' border='0' width='20' alt='{obs}'></a></p>
+        </td>
+      </tr>
+	  <!-- END DYNAMIC: PROD_COT -->  
+   
+</table>
+	  </form> 
+{mns}
+
+</body>
+</html>                           

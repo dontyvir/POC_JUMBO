@@ -1,0 +1,182 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0048)http://200.1.131.54/FO/OrderDisplay?psn=0&psa=23 -->
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+
+<title>Resumen de Compra</title>
+<link href="/FO_WebContent/css/clave.css" rel="stylesheet" type="text/css" />
+<link href="/FO_WebContent/css/totalizador_carro.css" rel="stylesheet" type="text/css" />
+<link href="/FO_WebContent/css/footer_standar_ie.css" rel="stylesheet" type="text/css" />
+
+<script type="text/javascript" src="/FO_WebContent/js/jquery.min.js"></script>
+<script type="text/javascript" src="/FO_WebContent/js/effects.core.js"></script>
+<script type="text/javascript" src="/FO_WebContent/js/password.js"></script>
+<script>
+	var $j = jQuery.noConflict();
+	jQuery(document).ready(function(){		
+		$j('#clave1').keyup(
+			function() { 
+				var res = passwordStrength($j('#clave1').val());
+				$j('#result_clave').width("90%");
+				$j('#result_clave').html( res );
+				if ( res == shortPass ) {
+					$j('#result_clave').animate({ color: "#FFFFFF", backgroundColor: "#cf0003" }, 200);
+				} else if ( res == badPass ) {
+					$j('#result_clave').animate({ color: "#FFFFFF", backgroundColor: "#cf0003" }, 200);
+				} else if ( res == goodPass ) {
+					$j('#result_clave').animate({ color: "#FFFFFF", backgroundColor: "#676767" }, 200);
+				} else {
+					$j('#result_clave').animate({ color: "#FFFFFF", backgroundColor: "#7db900" }, 200);
+				}
+			}
+		);
+		
+	});
+</script>
+
+<script type="text/JavaScript">
+function submit_clave() {
+	formulario = document.chgclave;
+    if (!formulario.clave1.value){
+    	alert('Debes ingresar el campo Clave');
+        formulario.clave1.focus();
+        return ;
+    }
+    if (!formulario.clave2.value){
+        alert('Debes ingresar el campo Repetir Clave');
+        formulario.clave2.focus();
+        return ;
+    }
+    if((formulario.clave1.value.length < 6 ) || (formulario.clave2.value.length < 6 )){
+        alert("La clave debe contener al menos 6 caracteres.");
+        formulario.clave1.focus();
+        return ;
+    }
+    if (formulario.clave1.value != formulario.clave2.value){
+        alert("La clave y su confirmaci�n deben ser iguales");
+        return ;
+    }
+    document.chgclave.submit();
+}
+</script>
+
+
+</head>
+
+<body>
+<form action="/FO/ChangeForgottenPassword" method="post" name="chgclave" id="chgclave">
+<input type="hidden" name="id" value="{id}" />
+<input type="hidden" name="rut" value="{rut}" />
+<div style="width:960px; height:auto; margin-left:auto; margin-right:auto; float:none; clear:both;">
+  <div class="banner_superior">
+    <div class="logo_jumbo_2011"><img src="/FO_IMGS/images/header/logo_wht_bg.jpg?Lo0P=f2dfe7792709bd79e5b8b0d554e489e614132" alt="" width="150" height="111" border="0" /></div>
+    <div class="menu_arriba_2011">
+      <div class="arriba_2011">
+        <div class="necesitas_ayuda">Necesitas Ayuda? <span style="color:#1FA22E"> 600 400 3000</span></div>
+      </div>
+      <!--<div class="franja_verde"><img src="/FO_IMGS/img/fondo_verde_clave.png" width="960" height="32" /></div>-->
+    </div>
+  </div>
+  <div class="contenedor_2012_flujo">
+  <div class="contenedor_2012">
+    <div class="titulo_principal">Ingresa tu Nueva Clave
+      <div class="info_clave"> Debe 
+              tener m&iacute;nimo 6 caracteres. <br />
+          Una clave segura mezcla letras 
+          con n&uacute;meros, <br />
+          y evita usar los n&uacute;meros de tu direcci&oacute;n 
+              o cumplea&ntilde;os.<br />
+              <br />
+            <table width="400" border="0" cellspacing="0" cellpadding="2">
+				<tr> 
+					<td width="80" align="right"><span class="lectura">Nueva clave:</span></td>
+					<td width="80" class="lectura"><input name="clave1" id="clave1" type="password" class="campo" size="12" maxlength="12" /></td>
+					<td width="240" class="lectura"><div id="result_clave"></div></td>
+				</tr>
+				<tr> 
+					<td width="80" align="right"><span class="lectura">Repetir clave:</span></td>
+					<td width="80"><input name="clave2" id="clave2" type="password" class="campo" size="12" maxlength="12" /></td>
+					<td width="240">&nbsp;</td>
+				</tr>
+			</table>
+      <br />
+      </div>
+      </div>
+      <div class="bt_continuar">
+          <a href="/FO/LogonForm"><img src="/FO_IMGS/img/cancelar.jpg" border="0" style="float: left; padding-right: 30px;" /></a>
+          <a href="javascript:submit_clave();"><img src="/FO_IMGS/img/continuar.jpg" border="0" style="float: left; padding-right: 30px;" /></a>
+      </div>
+      <div class="bt_continuar"></div>
+  </div>
+  </div>
+    <!-- FOOTER -->
+<!-- 			<div id="footer3">-->
+
+    		<div style="background-color: #EEE; clear: both; color: #666; float: none; font-family: Arial,Helvetica,sans-serif; font-size: 11px; height: 180px; margin-left: auto; margin-right: auto; margin-top: 10px; padding-left: 20px; padding-top: 10px;">
+					<div style="font-family: Arial, Helvetica, sans-serif;font-size: 11px;color: #666; float: left; width: 170px; height: 170px;border-right: 1px dashed #CCC;">
+    		    <div class="fila_footer_2011"><strong>Nuestra Empresa</strong></div>
+    		    <div class="fila_footer_2011"><a href="http://www.cencosud.cl/" title="Cencosud" target="_blank">Cencosud</a></div>
+    		    <div class="fila_footer_2011"><a href="http://www.jumbo.cl/supermercado/locales/index.html" title="Locales Jumbo" target="_blank">Locales Jumbo</a></div>
+            <div class="fila_footer_2011"><a href="http://www.puntoscencosud.cl" title="Puntos Cencosud" target="_blank">Puntos Cencosud</a></div>
+            <div class="fila_footer_2011"><a href="http://www.tarjetamas.cl/TarjetaMasWEB/inicio.do" title="Tarjeta Mas y Cencosud" target="_blank">Tarjeta M�s y Cencosud</a></div>
+            <div class="fila_footer_2011"><a href="https://www.segurosparis.cl/vseg-paris/index.jsp" title="Seguros Cencosud" target="_blank">Seguros Cencosud</a></div>
+            <div class="fila_footer_2011"><a href="http://cencosud.trabajando.com" title="Trabaja en Jumbo" target="_blank">Trabaja en Jumbo</a></div>
+            <div class="fila_footer_2011"><a href="http://www.jumbo.cl/supermercado/contactenos/informacion_proveedores.html" title="Proveedores" target="_blank">Proveedores</a></div>
+        </div>
+        <div style="font-family: Arial, Helvetica, sans-serif;font-size: 11px;color: #666; float: left; width: 170px; height: 170px; border-right: 1px dashed #CCC;">
+            <div class="fila_footer_2011"><strong> Jumbo</strong></div>
+            <div class="fila_footer_2011"><a href="http://www.jumbo.cl/supermercado/compromisos_jumbo/index.html" title="Compromisos" target="_blank">Compromisos</a></div>
+            <div class="fila_footer_2011"><a href="http://www.jumbo.cl/supermercado/catalogos/index.html" title="Cat�logos" target="_blank">Cat�logos</a></div>
+            <div class="fila_footer_2011"><a href="http://www.jumbo.cl/supermercado/mundosjumbo/index.html" title="Mundos Jumbo" target="_blank">Mundos Jumbo</a></div>
+            <div class="fila_footer_2011"><a href="http://www.productojumbo.cl/" title="Productos Jumbo" target="_blank">Productos Jumbo</a></div>
+<!--FVR         <div class="fila_footer_2011"><a href="http://www.jumbo.cl/supermercado/productos_del_mundo/index.html" title="Productos del mundo" target="_blank">Productos del Mundo</a></div>-->
+            <div class="fila_footer_2011"><a href="http://www.jumbo.cl/supermercado/novedades/index.html" title="Novedades" target="_blank">Novedades</a></div>
+            <div class="fila_footer_2011"><a href="http://www.jumbo.cl/supermercado/familia_jumbo/index.html" title="Familia Jumbo" target="_blank">Familia Jumbo</a></div>
+            <div class="fila_footer_2011"><a href="http://www.ventaempresascencosud.cl/" title="Venta Empresas" target="_blank">Venta Empresas</a></div>
+        </div>
+        <div style="font-family: Arial, Helvetica, sans-serif;font-size: 11px;color: #666; float: left; width: 170px; height: 170px; border-right: 1px dashed #CCC;">
+            <div class="fila_footer_2011"><strong>Nuestros Servicios</strong></div>
+            <div class="fila_footer_2011"><a href="http://www.jumbo.cl/supermercado/preguntas/preguntas.html" title="Recetas Jumbo Blog" target="_blank">Preguntas Frecuentes</a></div>
+            <div class="fila_footer_2011"><a href="http://www.jumbo.cl/supermercado/seguridad_y_privacidad/index.html" title="Seguridad y privacidad" target="_blank">Seguridad y Privacidad</a></div>
+            <div class="fila_footer_2011"><a href="http://www.jumbo.cl/supermercado/preguntas/preguntas.html#7" title="Formas de Pago" target="_blank">Formas de Pago</a></div>
+            <div class="fila_footer_2011"><a href="http://www.jumbo.cl/supermercado/preguntas/preguntas.html#5" title="Zonas de coberturas" target="_blank">Zonas de Cobertura</a></div>        
+				    <div class="fila_footer_2011"><a href="http://www.jumbo.cl/supermercado/preguntas/preguntas.html#13" title="Pol&iacute;ticas de Precio" target="_blank">Pol&iacute;ticas de Precio</a></div>
+				    <div class="fila_footer_2011"><a href="http://www.jumbo.cl/supermercado/terminos/terminos.html" title="T&eacute;rminos y Condiciones" target="_blank">T&eacute;rminos y Condiciones</a></div>
+				    <div class="fila_footer_2011"><a href="http://www.giftcard.cl/" title="Consultas Gift Card" target="_blank">Consultas Gift Card</a></div>
+				    <div class="fila_footer_2011"><a href="http://litev2.custodium.com/PortalBoleta/Boleta.do" title="Consulta tu Boleta" target="_blank">Consulta tu Boleta</a></div>
+    		</div>
+        <div style="font-family: Arial, Helvetica, sans-serif;font-size: 11px;color: #666; float: left; width: 170px; height: 170px;border-right: 1px dashed #CCC;">
+            <div class="fila_footer_2011"><strong>Contacto</strong></div>
+            <div class="fila_footer_2011"><a href="http://www.jumbo.cl/supermercado/contactenos/index.html" title="Cat�logos" target="_blank">Escr�benos</a></div>
+            <div class="fila_footer_2011"><a href="http://www.jumbo.cl/supermercado/telefonos/index.html" title="Familia Jumbo" target="_blank">Tel�fonos</a></div>
+            <div class="fila_footer_2011"><a href="http://www.jumbo.cl/supermercado/ganadores/index.html" title="Bases de Concursos" target="_blank">Concursos</a></div>
+            <div class="fila_footer_2011"><a href="http://www.jumbo.cl/supermercado/telefonos/index.html" title="Fono compras" target="_blank">Fono Compras<br/>600 400 3000</a></div>
+        </div>
+        <div style="font-family: Arial, Helvetica, sans-serif;font-size: 11px;color: #666; float: left; width: 230px; height: 170px;">
+            <div style="font-family: Arial, Helvetica, sans-serif;font-size: 11px;color: #666; float: left; width: 250px; height: 170px;">
+       		<div class="fila_footer_2011" style="width:240px !important; padding-left:14px;">
+       			<script>
+					function popupBalance(){
+						littleWindow = window.open("https://www.puntoscencosud.cl/portal/faces/consultar-puntos", "littleWindow", "location=no,width=390,height=350,scrollbars=no,resizable=NO,titlebar=no");
+					}
+				</script>
+       		 	<a href="javascript:popupBalance();" onclick="_gaq.push(['_trackEvent', 'nuevaclave', 'Footer', 'Consulta_Puntos_Cencosud']);" title="Consulta aquí tus Puntos Cencosud"><img src="http://www.jumbo.cl/FO_IMGS/img/btn_consulta_puntos_cencosud.png" alt="Consulta aqu&iacute; tus Puntos Cencosud" border="0" /></a>
+      		</div>
+            <div class="fila_footer_2011" style="margin-top:40px; padding-left: 8px; text-align:right;width: 230px;">
+                  S�guenos en
+                  <a href="https://www.facebook.com/jumbochile?fref=ts" target="_blank"><img src="http://static.jumbo.cl/FO_IMGS/img/facebook.jpg" /></a>
+                  <a href="https://www.twitter.com/jumbochile" target="_blank"><img src="http://static.jumbo.cl/FO_IMGS/img/twitter.jpg" /></a>
+                  <a href="http://www.youtube.com/user/SupermercadoJumbo" target="_blank"><img src="http://www.jumbo.cl/FO_IMGS/img/youtube.jpg" /></a>
+            </div>
+            <div class="fila_footer_2011" style=" width:200px; padding-top:15px; height:60px;">
+                
+            </div>
+        </div>
+        <p>&nbsp;</p>
+        </div>
+	    <!-- // fin pie de pagina -->
+</div>
+</form>
+</body>
+</html>

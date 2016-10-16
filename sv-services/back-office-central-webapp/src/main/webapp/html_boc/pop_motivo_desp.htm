@@ -1,0 +1,100 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html><!-- InstanceBegin template="/Templates/print.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="EXPIRES" CONTENT="Mon, 22 Jul 2002 11:12:01 GMT">
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>Motivo de Despublicación</title>
+<!-- InstanceEndEditable -->
+<!-- InstanceBeginEditable name="head" -->
+<!-- InstanceEndEditable -->
+<link href="estilos.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+<!--
+body {
+	background-color: #FFFFFF;
+}
+-->
+</style></head>
+
+<body>
+<!-- InstanceBeginEditable name="Body" -->
+<script>
+ function validar_form(form){
+ 	if (!verify(form)) return false;
+ 	if (form.motivo.value.length > 220){
+ 		alert("Observaciones permite como máximo 220 caracteres");
+ 		return false;
+ 	}
+ 	if (form.sel_mot.value==""){
+ 		alert("Debe seleccionar un motivo de despublicación");
+ 		return false;
+ 	}
+	 valor=1; 
+	 window.returnValue = valor;
+     window.close();
+     return true; 	
+ }
+
+</script>
+<script src="validacion.js"></script>
+<SCRIPT LANGUAGE="JavaScript">window.name='winhijo'</SCRIPT>
+<br>
+<form name="form1" method="get" action="PubDespProduct" target="winmodal" onsubmit="return validar_form(this);" >
+	<input type="hidden" name="url" value="ViewProductForm?cod_prod={id_producto}&tipo_prod={gen}">
+	<input type="hidden" name="id_producto" value="{id_producto}">
+	<input type="hidden" name="action" value="2">	
+	<input type="hidden" name="tipo_prod" value="{gen}">	
+	<fieldset><legend>Despublica Producto</legend>
+	<table width="485" border="0" align="center" cellpadding="2" cellspacing="2" class="textonormal">
+		<tr height="30">
+		<td colspan="3" align="center">{mensaje}</td>
+		</tr>
+		<tr valign="top">
+			<td>Motivo de Despublicación:</td>
+			<td><select name="sel_mot">
+				<option value="">---</option>				
+				<!-- BEGIN DYNAMIC: listado_motivos_desp -->
+				<option value="{id_desp}">{motivo}</option>
+				<!-- END DYNAMIC: listado_motivos_desp -->				
+			</select></td>
+			<td valign="bottom"></td>
+		</tr>		
+		<tr valign="top">
+			<td>Observación:</td>
+			<td><textarea  name="motivo"  cols="40" onchange="if(this.value.length > 219){ this.value=this.value.substring(0,220); window.event.keyCode=0; alert('Se permite un máximo de 220 caracteres en la descripción, se eliminaran los caracteres sobrantes.                               Presione Agregar Motivo para agregar Motivo de Despublicacion.'); }"></textarea></td>
+			<td valign="bottom"></td>
+		</tr>
+		<tr valign="top">		
+			<td></td>
+			<td><!--input type="button" name="Button" value="Agregar Motivo" onClick="if(verify(document.form1)){
+					 form1.submit();	
+					 valor=1; 
+					 window.returnValue = valor;
+			         window.close();
+			         }"-->
+                <input type="submit" value="Agregar Motivo" >			         
+			         &nbsp;&nbsp;&nbsp;
+			    <input name="cancelar" type="button" class="cmd" value="Cerrar" onClick=" valor=2; window.returnValue = valor; window.close();">
+			</td>
+			<td></td>
+		</tr>
+	</table>
+	</fieldset>
+
+</form>
+ <SCRIPT LANGUAGE="JavaScript">
+<!--
+ document.form1.motivo.obligatorio=true;
+ document.form1.motivo.label = 'Observacion';
+//-->
+</SCRIPT>
+<br>
+<br>
+<br>
+<br>
+<!-- InstanceEndEditable --></body>
+<!-- InstanceEnd --></html>

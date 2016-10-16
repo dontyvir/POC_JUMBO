@@ -1,0 +1,44 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>cl.jumbo.process</groupId>
+    <artifactId>sv-process</artifactId>
+    <version>2.0.12-SNAPSHOT</version>
+  </parent>
+  <artifactId>process-informes-colaborador</artifactId>
+  <name>InformeDescuentoColaborador</name>
+  <description>Proceso java que se encarga de generar y enviar cada quince días el estado de ventas y de descuentos realizados a los colaboradores por compras sobre el portal jumbo.cl</description>
+	<properties>
+        <process.startupShellScript>informes-vta-dscto-colaborador.sh</process.startupShellScript>
+    </properties>
+	<dependencies>
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi</artifactId>
+			<version>3.2-FINAL</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi-contrib</artifactId>
+			<version>3.2-FINAL</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi-scratchpad</artifactId>
+			<version>3.2-FINAL</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-lang</groupId>
+			<artifactId>commons-lang</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>javax.mail</groupId>
+			<artifactId>mail</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>commons-dbutils</groupId>
+			<artifactId>commons-dbutils</artifactId>
+			<version>1.2</version>
+		</dependency>
+	</dependencies>
+</project>

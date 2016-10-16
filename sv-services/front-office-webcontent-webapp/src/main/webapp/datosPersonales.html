@@ -1,0 +1,599 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Datos Personales</title>
+<script type="text/javascript" src="/FO_WebContent/js/jquery-1.6.2.min.js"></script>
+<script language="JavaScript" src="/FO_WebContent/js/lugaresdespacho.js" type="text/javascript"></script>
+<script language="JavaScript" src="/FO_WebContent/js/ajax.js" type="text/javascript"></script>
+<script type="text/javascript" src="/FO_WebContent/js/aphanumeric.js"></script>
+<script type="text/javascript" src="/FO_WebContent/js/codigosTelefonicos.js"></script>
+<script type="text/javascript">
+		jQuery("#fon_cod_1").append(getAllCodPhones());
+		var codigo1 = jQuery("#codigo").val();
+		var numero1 = jQuery("#numero1").val();
+				
+		jQuery("#fon_cod_2").append(getAllCodPhones());
+		var codigo2 = jQuery("#codigo2").val();
+		var numero2 = jQuery("#numero2").val();
+		
+		if(numero2!=""){
+			if(!validateCorrectNumber(codigo2,numero2,"fon_cod_2","fon_num_2")){
+				$j('#fon_num_2_error').html("Debe actualizar su n&uacute;mero de contacto");
+				$j('#fon_num_2').removeClass('campos').addClass('error_campos');
+			    jQuery("#fon_num_2").focus(); 
+			}
+		}
+		if(!validateCorrectNumber(codigo1,numero1,"fon_cod_1","fon_num_1")){
+			$j('#fon_num_1_error').html("Debe actualizar su n&uacute;mero de contacto");
+			$j('#fon_num_1').removeClass('campos').addClass('error_campos');
+		    jQuery("#fon_num_1").focus(); 
+		}
+		
+		initialize("fon_cod_1","fon_num_1");
+		initialize("fon_cod_2","fon_num_2");
+		
+		onChange("fon_cod_1","fon_num_1","fon_num_1_info");
+        onChange("fon_cod_2","fon_num_2","fon_num_2_info"); 
+</script>	
+<style type="text/css">
+#Layer1 {
+	position:absolute;
+	left:360px;
+	top:300px;
+	width:300px;
+	height:300px;
+	z-index:1;
+	visibility: hidden;
+}
+</style>
+</head>
+<body>
+<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-PWPZN" 
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>
+var mx_content = '{ta_mx_content}';
+var mx_user='{ta_mx_user}';
+var mx_loc='{ta_mx_loc}';
+(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PWPZN');</script>
+
+	<div id="Layer1">
+		<iframe name="texto3" src="/FO_WebContent/layers/enviodatos-exito2.html" frameborder="0" width="483" height="269"></iframe>
+	</div>
+	<!-- DESPACHOS DISPONIBLES !!! -->
+	<div id="contenedor_lightbox_DP"  style="display:none;display:{display_calendario_despacho};" >
+	<div id="cont_cabecera_DP"><img src="/FO_IMGS/img/estructura/banner_contraer_despacho.jpg" border="0" alt="Cerrar" onclick="javascript:getOfficesAvailable('HIDE_ML')"/></div>
+		<div id="contenido_DP"></div>
+	</div>  
+	<!-- FIN DESPACHOS DISPONIBLES !!! -->
+	<table style="border-bottom:0px solid brown;">
+	<tr>
+	</tr>
+	<tr>
+	<td>
+	<!--centro-->
+		<!-- datos personales-->
+		<form name="cliente" id="cliente" action="RegisterUpdate" method="post" onsubmit="return ValidaModificar();">
+			<input id="idcliente" type="hidden" value="{id_cliente}"/> <!-- 05/10/2012 : COREMETRICS {MARIO LOAIZA: mario.loaiza@magnotechnology.com}  -->
+			<table style="border-bottom:0px solid brown;">
+				<tr>
+					<!-- + 20121206 Modificar diseño página "Mis Listas FPenalozaP*/  -->					
+					<td><div class="nombre" style="padding-left: 20px;padding-bottom: 2px">{nombre_cliente}</div></td>
+					<!-- - 20121206 Modificar diseño página "Mis Listas FPenalozaP*/  -->					
+				</tr>
+				<tr>
+				
+				<!-- + 20121206 Modificar diseño página "Mis Listas FPenalozaP*/  -->
+					<td style="border-left:1px solid #ccc ">
+				<!-- + 20121206 Modificar diseño página "Mis Listas FPenalozaP*/  -->
+					
+				   	<div class="cont_resumen_mc">
+			  			<table style="border: 1px;align: left;"><tr align="left"><td colspan="3">
+			  			<div style="float:left; border-bottom:3px solid #E8F6E8; width:750px; padding-bottom:5px; height:22px;">
+								<h2> Datos Personales:</h2>
+					  	</div>
+					  	</td></tr><tr><td align="left";>
+			        <div class="cont_campos" style="margin-left: 0px;padding-left:0px;align:left;" >
+			        	<div style="float:left;margin-top:5px;height: 20px;width: 30px;font-family:Arial, Helvetica, sans-serif;font-size:12px;color:#666;padding-right: 10px;" >RUT*</div>
+				          <label for="rut"></label>
+				          <input name="rut" type="text" class="campos" id="rut" maxlength="15" size="14" value="{rut}-{dv}" style="align:left;" readonly/>
+									<div class="cont_alerta_error" id="rut_error"></div>
+			        </div></td><td>
+			        <div class="cont_campos">
+			        	<div style="float:left;margin-top:5px;height: 20px;width: 45px;font-family:Arial, Helvetica, sans-serif;font-size:12px;color:#666;padding-right: 10px;">Nombre*</div>
+			        <input name="nombre" type="text" value="{nombre}" class="campos" id="nombre" maxlength="30" size="20" style="align:left;" />
+			        <div class="cont_alerta_error" id="nombre_error"></div> 
+						</div></td><td>
+			        <div class="cont_campos">
+			        	<div style="float:left;margin-top:5px;height: 20px;width: 50px;font-family:Arial, Helvetica, sans-serif;font-size:12px;color:#666;padding-right: 10px;">Apellido*</div>
+									<input name="ape_pat" type="text" value="{ape_pat}" class="campos" id="ape_pat" maxlength="30"  size="20" style="align:left;" /> 
+			<!--          <input name="ape_mat" type="text" value="{ape_mat}" class="campo" id="ape_mat" maxlength="20"  size="10" /> -->
+				            <div class="cont_alerta_error" id="apellido_error"></div>
+			    			</div>
+			    		</td></tr><tr><td>	
+			        	<div class="cont_campos">
+			   	    		<div style="float:left;margin-top:5px;height: 20px;width: 30px;font-family:Arial, Helvetica, sans-serif;font-size:12px;color:#666;padding-right: 10px;">Mail*</div>
+				          <label for="apellido"></label>
+				          <input name="email1" type="text"  value="{email1}@{dominio1}" onclick="this.select();" class="campos" id="email1" size= "20" maxlength="50" /> 
+				      		<div class="cont_alerta_error" id="mail_error"></div>
+			    			</div></td><td>
+			          <div class="cont_campos">
+			            <div style="float:left;margin-top:5px;height: 20px;width: 60px;font-family:Arial, Helvetica, sans-serif;font-size:12px;color:#666;padding-right: 10px;">Tel&eacute;fono&nbsp;1*</div>
+				            <div style="float:left; margin-right:8px;">
+						          <select name="fon_cod_1" class="campos" id="fon_cod_1" style="width:50px"></select>
+						            	 <input name="codigo" type="hidden"  id="codigo"  value="{fon_cod_1}"/>
+   										  <input name="numero1" type="hidden"  id="numero1"  value="{fon_num_1}" />	
+			              </div>
+			              <div>
+					          <label for="textfield3"></label>
+					          <input name="fon_num_1" type="text"  class="campo" id="fon_num_1" size="8 " maxlength="8" style="margin-top:5px;" />
+					        </div>     
+					         <div class="cont_acepto_info" id="fon_num_1_info"></div>
+					          <div class="cont_alerta_error" id="fon_num_1_error"></div> 
+								</div></td><td>
+			        	<div class="cont_campos">
+									<div style="float:left;margin-top:5px;height: 20px;width: 60px;font-family:Arial, Helvetica, sans-serif;font-size:12px;color:#666;padding-right: 10px;">Tel&eacute;fono 2</div>
+									<div style="float:left; margin-right:8px;">
+							          <select name="fon_cod_2" class="campos" id="fon_cod_2" style="width:45px">
+							          </select>	
+					          				<input name="codigo2" type="hidden"  id="codigo2"  value="{fon_cod_2}" />
+										    <input name="numero2" type="hidden"  id="numero2"  value="{fon_num_2}" />	
+									</div>
+			            <div>
+					          <label for="textfield3"></label>
+										<input name="fon_num_2" type="text"  class="campo" id="fon_num_2" size="8" maxlength="8" style="margin-top:5px;"/>
+			        		</div>     
+			        					<div class="cont_acepto_info" id="fon_num_2_info"></div>
+										<div class="cont_alerta_error" id="fon_num_2_error"></div> 
+			          </div>
+			          </td></tr>
+			            <!--legales-->
+			         <tr style="height:70px"><td>   
+			        <div class="fila_registro_2012_form"  style="height:auto;">
+			<!-- 			    <div style="float: left; padding-left:60px;"></div>-->
+						    <div class="cont_acepto_info"><input type="checkbox" name="terminos" id="terminos" {email_checked}/>&nbsp;&nbsp; Acepto recibir ofertas y novedades<br />de Jumbo en mi mail</div>
+						  </div> </td><td colspan="2">
+						  <div class="fila_registro_2012_form"  style="height:auto;">
+			<!-- 			    <div style="float: left; padding-left:50px;"></div>-->
+						    <div class="cont_acepto_info"><input type="checkbox" name="sms" id="sms" {sms_checked}/>&nbsp;&nbsp; Acepto recibir ofertas y novedades<br />de Jumbo en mi celular</div>     
+						  </div>
+			    <!--fin legales-->
+			    </td></tr></table>
+						</div>
+					</td>
+				</tr>
+				<!-- + 20121206 Modificar diseño página "Mis Listas FPenalozaP*/  -->
+				<tr><td style="border-left:1px solid #ccc ">&nbsp;</td></tr>
+				<tr><td style="border-left:1px solid #ccc ">&nbsp;</td></tr>
+				<!-- + 20121206 Modificar diseño página "Mis Listas FPenalozaP*/  -->
+				
+				<tr>
+				<!-- + 20121206 Modificar diseño página "Mis Listas FPenalozaP*/  -->
+					<td style="border-left:1px solid #ccc ">
+				<!-- + 20121206 Modificar diseño página "Mis Listas FPenalozaP*/  -->
+				<!--fin datos personales-->
+						<!--cambio de clave-->
+						<div class="cont_resumen_mc">
+							<div style="float:left; border-bottom:3px solid #E8F6E8; width:750px; padding-bottom:5px; height:22px;">
+				  			<h2>Cambio de Clave:</h2>
+					  	</div>
+				    <div class="cont_txt" style="text-align:left;">Tu clave debe tener m&iacute;nimo 6 caracteres, mezclando letras y n&uacute;meros. Evita usar n&uacute;meros de tu direcci&oacute;n o cumplea&ntilde;os.</div>
+				    <div class="cont_campos">
+				    	<div class="cont_nombre_campos" style="width:80px;">Clave Actual*</div>
+								<div class="campos_registro_2011x"><input name="clave_ant" type="password" class="campo" id="clave_ant" size="14" maxlength="12" {claves_eje}/></div>
+										<div class="cont_alerta_error" id="clave_ant_error"></div>
+				    </div>
+				    <div class="cont_campos">
+				    	<div class="cont_nombre_campos" style="width:80px;">Nueva Clave*</div>
+								<div class="campos_registro_2011x"><input name="clave" type="password" class="campo" id="clave" size="14" maxlength="12" {claves_eje}/><div id="result_clave"></div></div>
+										<div class="cont_alerta_error" id="clave_error"></div>
+				    </div>
+				    <div class="cont_campos">
+				    	<div class="cont_nombre_campos" style="width:120px;">Repetir Nueva Clave*</div>
+								<div class="campos_registro_2011x"><input name="clave1" type="password" class="campo" id="clave1" size="14" maxlength="12" {claves_eje}/></div>
+										<div class="cont_alerta_error" id="clave1_error"></div>
+							</div>
+					    <!--legales-->
+					    <div class="fila_registro_2012_form"  style="height:auto;"></div>
+							<div class="fila_registro_2012_form"  style="height:auto;"></div>
+					    <!--fin legales-->
+					  </div>
+						<!--fin cambio de clave-->
+					</td>
+				</tr>
+			</form>
+		</td>
+	</tr>
+	
+	<!-- + 20121206 Modificar diseño página "Mis Listas FPenalozaP*/  -->
+	<tr><td style="border-left:1px solid #ccc ">&nbsp;</td></tr>
+	<tr><td style="border-left:1px solid #ccc ">&nbsp;</td></tr>
+	<!-- + 20121206 Modificar diseño página "Mis Listas FPenalozaP*/  -->
+	
+	<tr>
+
+	<!-- + 20121206 Modificar diseño página "Mis Listas FPenalozaP*/  -->
+		<td style="border-left:1px solid #ccc ">	
+	<!-- + 20121206 Modificar diseño página "Mis Listas FPenalozaP*/  -->
+	
+			<table style="border-bottom:0px solid brown;">
+				<tr>
+					<td>	
+						<!-- direcciones-->
+						<div class="cont_resumen_mc" style="border:0px solid red;">
+							<div style="float:left; border-botom:3px solid #E8F6E8; width:750px; padding-bottom:5px; height:30px;">
+								<h2> Tus direcciones de despacho son:</h2>
+							</div>
+							<!--tit direcciones-->
+							<div style="width:750px; float:left; height:auto;border:0px solid violet;">
+								<table border="0" align="left" cellpadding="0" cellspacing="0" style="border:0px solid violet;">
+									<tr>
+										<td height="6" style="background-color:#EEE; margin-top:20px;">
+											<div class="lectura" style="width:110px; float:left;">
+												<strong>Nombre</strong>
+											</div>
+											<div class="lectura" style="width:170px; float:left; height:20px;">
+												<strong>Direcci&oacute;n</strong>
+											</div>
+											<div class="lectura" style="width:100px; float:left; height:20px;">
+												<strong>Comuna</strong>
+											</div>
+											<div class="lectura" style="width:110px; float:left; height:20px;">
+												<strong>Regi&oacute;n</strong>
+											</div>
+											<div class="lectura" style="width:170px; float:left; height:20px;">
+												<strong>Observaciones</strong>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td align="left" valign="top" class="tabla">
+											<form method="post" name="form1a" id="form1a" action="">
+												<!-- BEGIN DYNAMIC: dir_despachos -->
+												<input name="nombre_{dir_valor}" id="nombre_{dir_valor}" type="hidden" value="{dir_opcion}" />
+												<input name="calle_{dir_valor}"  id="calle_{dir_valor}" type="hidden" value="{dir_calle}" />
+												<input name="numero_{dir_valor}" id="numero_{dir_valor}" type="hidden" value="{dir_numero}" />
+												<input name="dpto_{dir_valor}"   id="dpto_{dir_valor}" type="hidden" value="{dir_dpto}" />
+												<input name="comuna_{dir_valor}" id="comuna_{dir_valor}" type="hidden" value="{dir_id_comuna}" />
+												<input name="region_{dir_valor}" id="region_{dir_valor}" type="hidden" value="{dir_id_region}" />
+												<input name="tipocalle_{dir_valor}" id="tipocalle_{dir_valor}" type="hidden" value="{dir_tipid}" />
+												<input name="comentario_{dir_valor}" id="cometario_{dir_valor}" type="hidden" value="{dir_comentario}" />
+												<input name="val_dir_valor" id="val_dir_valor" type="hidden" value="{dir_valor}" />
+												<table border="0" cellpadding="0" cellspacing="0" class="TablaDiponiblePaso1">
+													<tr>
+														<td><div style="width:110px; float:left; height:auto;color:#1FA22E;">{dir_opcion}</div></td>
+														<td><div style="width:170px; float:left; height:auto;">{dir_calle},&nbsp;{dir_numero},&nbsp;{dir_dpto}</div></td>
+														<td><div style="width:100px; float:left; height:auto;">{dir_comuna}</div></td>
+														<td><div style="width:110px; float:left; height:auto;">{dir_region}</div></td>
+														<td><div style="width:170px; float:left; height:auto;"><label title="{dir_comentario}">{dir_comentario_s}&nbsp;</label></div></td>
+														<td><a href="javascript:EditaDireccion({dir_valor})"><img src="/FO_IMGS/img/estructura/bt_editar.gif" alt="editar la direcci&oacute;n" name="editar{dir_valor}" width="72" height="26" border="0" id="editar{dir_valor}" /></a></td>
+														<!-- BEGIN DYNAMIC: NOBOTONBORRAR -->
+					<!-- 													<td width="9%" class="celda1"><a href="javascript:EliminaDireccion({dir_valor})"><img src="/FO_IMGS/img/estructura/bt_eliminar.gif" alt="eliminar esta direcci&oacute;n" name="eliminar{dir_valor}" width="33" height="29" border="0" id="eliminar{dir_valor}" /></a></td>-->
+															<td width="9%" class="celda1"><a href="javascript:EliminaDireccion({dir_valor})"><img src="/FO_IMGS/img/estructura/paso3/eliminar.gif" alt="eliminar esta direcci&oacute;n" name="eliminar{dir_valor}" border="0" id="eliminar{dir_valor}" /></a></td>
+														<!-- END DYNAMIC: NOBOTONBORRAR -->
+													</tr>
+												</table>
+												<!-- END DYNAMIC: dir_despachos -->
+											</form>
+										</td>
+									</tr>
+								</table>
+					    <!--fin tit direcciones-->
+							</div>
+						<!--fin direcciones-->
+					  </div>
+					</td>
+				</tr>
+				<tr><td>&nbsp;</td></tr>
+				<tr><td>&nbsp;</td></tr>
+				<tr>
+					<td>
+					  <div class="cont_resumen_mc" style="border:0px solid green;">
+							<div style="float:left; width: 750px; border-bottom:3px solid #E8F6E8; padding-bottom:5px; height:22px;">
+								<h2>Agregar o editar una direcci&oacute;n de despacho:</h2>
+							</div>
+					  	<div style="float:left; width:900px; height:auto;">
+								<form action="" method="post" name="despachos" id="despachos">
+									<input type="hidden" name="accion" value="" />
+									<input type="hidden" name="dir_id" value="" />
+									<table border="0" cellpadding="2" cellspacing="0" class="lectura">
+										<tr>
+											<td width="70">Tipo </td>
+											<td width="160">Calle</td>
+											<td width="36">N&deg;</td>
+											<td width="60">Dpto./Casa</td>
+											<td >Regi&oacute;n</td>
+											<td width="90">Comuna</td>
+											<td>* Guardar como <br /><span class="footer"><em>(ej:casa mam&aacute;)</em></span></td>
+										</tr>
+										<tr>
+											<td width="70" height="30">
+												<select name="tipo_calle" class="campo" id="tipo_calle">
+													<option value="" selected>--</option>
+													<!-- BEGIN DYNAMIC: select_tipocalle -->
+														<option value="{option_calle_id}">{option_calle_nombre}</option>
+													<!-- END DYNAMIC: select_tipocalle -->
+												</select>
+											</td>
+											<td width="160"><input name="calle" value="{calle}" type="text" class="campo" size="25" maxlength="50"/></td>
+											<td width="36"><input name="numero" value="{numero}" type="text" class="campo" size="6" maxlength="10"/></td>
+											<td><input name="departamento" value="{departamento}" type="text" class="campo" size="7" maxlength="20"/></td>
+											<td>
+												<select name="region" class="campo" id="region" onchange="buscar_comunas()">
+													<option selected="selected" value="0">Seleccionar</option>
+													<!-- BEGIN DYNAMIC: select_regiones -->
+														<option value="{option_reg_id}">{option_reg_nombre}</option>
+													<!-- END DYNAMIC: select_regiones -->
+												</select>
+											</td>
+											<td>
+												<select name="comuna" class="campo" id="comuna" >
+													<option value="0">Seleccionar</option>
+												</select>
+											</td>
+											<td><input name="alias" value="{alias}" type="text" class="campo" size="12" maxlength="20"/></td>
+										</tr>
+									</table>
+									<table width="223" border="0" cellpadding="0" cellspacing="0">
+									  <tr>
+											<td height="6"><span class="lectura">Observaciones para el despacho</span></td>
+									  </tr>
+										<tr>
+											<td width="212" height="50" valign="top"><textarea name="comentario" cols="48" rows="4" class="campoblanco" id="comentario" onfocus="vaciar_comentario();" onkeydown="javascript:checklength(this)">{comentario}</textarea></td>
+										</tr>
+									</table>
+							  </form>
+							</div>
+							<div class="cont_btn_guardar" style="margin-top:8px;margin-bottom:8px;margin-right: 20px;width:734px;">
+								<img src="/FO_IMGS/img/estructura/bt-guardar-datos.gif" onclick="javascript:submit_cliente();"/>
+							</div>
+							<div style="float:left; width: 750px; border-bottom:3px solid #E8F6E8; padding-bottom:5px; height:22px;">
+								<h2>Estado de tu pedido:</h2>
+							</div>
+							<div class="cont_txt" style="text-align:left;margin-bottom: 20px; height: 25px;">Revisa <a href="/FO/TrackingOP?from=BienvenidaForm#"><span style="color:#1FA22E ;text-decoration: underline;">aqu&iacute; </span></a>en qu&eacute; estado est&aacute; tu pedido nuevo
+							</div>
+						</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+	</table>
+	<!--fin datos personales-->
+	<!--fin centro-->
+	<iframe name="ifcomuna" id="ifcomuna" src="#" frameborder="0" width="0" height="0" scrolling="yes"></iframe>
+</body>
+</html>
+<script>
+function submit_cliente() {
+	var formulario = document.cliente;
+	if( ValidaDatos() == false ) {
+		return;
+	}
+
+	var url = "/FO/DatosPersonalesUpdate?";
+	var i = 0;
+	var txt = "";
+	for( i = 0; i < formulario.elements.length; i++ ) {
+		if ( formulario.elements[i].name != "terminos" && formulario.elements[i].name != "sms" ){
+			if (formulario.elements[i].type == "checkbox"){
+				if (formulario.elements[i].checked){
+	    			url += formulario.elements[i].name+"="+formulario.elements[i].value + "&";
+	    		}
+	    	}
+			else{
+			    url += formulario.elements[i].name+"="+formulario.elements[i].value + "&";
+				} 
+			}
+	}
+	var _idclient = formulario.elements[0].value;
+	var _mailclient = formulario.elements[3].value;
+	
+	
+	var formulario = document.despachos;
+	for( i = 0; i < formulario.elements.length; i++ ) {
+		if ( formulario.elements[i].name != "terminos" && formulario.elements[i].name != "sms" ){
+			    url += formulario.elements[i].name+"="+formulario.elements[i].value + "&";			   
+			}
+	}
+	 
+	
+
+	var formulario = document.cliente;
+	if( formulario.sms.checked == true )
+	    url += "sms=1&";//"sms=1&";
+	else
+		url += "sms=0&";//"sms=0&";/*
+	if( formulario.terminos.checked == true )
+	    url += "terminos=1";
+	else
+		url += "terminos=0";
+	exec_AJAXRPC('GET', url, 'proreg');	
+}
+
+function proreg( texto ) {
+	var ancho = screen.availWidth;
+	var largo = screen.availHeight;
+	var ypos = document.documentElement.scrollTop ? document.documentElement.scrollTop : document.body.scrollTop;
+
+	if( texto == "1" || texto == "10") {
+		document.getElementById('Layer1').style.width = '450px';
+		document.getElementById('Layer1').style.height = '240px';
+		document.getElementById('Layer1').style.left = (ancho-450)/2 + 'px';
+		document.getElementById('Layer1').style.top = (largo-400)/2 + ypos - 50 + 'px';
+		MM_showHideLayers('Layer1','','show');
+	}
+/*	else if( texto == "2" ) {
+		document.getElementById('Layer2').style.width = '450px';
+		document.getElementById('Layer2').style.height = '240px';
+		document.getElementById('Layer2').style.left = (ancho-450)/2 + 'px';
+		document.getElementById('Layer2').style.top = (largo-400)/2 + ypos - 50 + 'px';
+		MM_showHideLayers('Layer2','','show');
+		return;
+	}
+	else {
+		document.getElementById('Layer3').style.width = '450px';
+		document.getElementById('Layer3').style.height = '240px';
+		document.getElementById('Layer3').style.left = (ancho-450)/2 + 'px';
+		document.getElementById('Layer3').style.top = (largo-400)/2 + ypos - 50 + 'px';
+		MM_showHideLayers('Layer3','','show');
+		return;
+	}*/
+		
+	var formulario = document.cliente;		
+	
+	formulario.clave_ant.value = "";
+	formulario.clave.value = "";
+	formulario.clave1.value = "";
+}
+
+//Maxbell Caballero 2014-04-14
+function validarEmail(valor) {
+	re=/^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;     
+	if(!re.exec(valor))    {
+		return(false);
+	} else {
+		return(true);
+	}
+}
+//****************************
+
+function ValidaDatos() {
+	var formulario = document.cliente;
+	var formulario_estatus = true;
+	
+	formulario.email1.value = formulario.email1.value.trim();
+	
+	//Maxbell 2014-04-09 validar mail
+	if (!validarEmail(Trim(formulario.email1.value))){ //(!formulario.email1.value) || (!formulario.dominio1.value)){
+		$j('#mail_error').html('El formato del Mail es incorrecto');
+		$j('#email1').removeClass('campos').addClass('error_campos');
+		formulario_estatus=false;
+	}
+	//******************************
+	
+	if ((!formulario.rut.value) || (formulario.rut.value == '123123-3')){
+		$j('#rut_error').html('Debes ingresar tu RUT');
+		$j('#rut').removeClass('campos').addClass('error_campos');
+//		formulario.rut.focus();
+		if ((formulario.rut.value) && (formulario.rut.value == '123123-3'))
+			$j('#rut').removeAttr('readonly');
+		formulario_estatus=false;
+	}
+	
+	if (Trim(formulario.nombre.value) == ""){
+		$j('#nombre_error').html('Debes ingresar tu Nombre');
+		$j('#nombre').removeClass('campos').addClass('error_campos');
+//		formulario.nombre.focus();
+		formulario_estatus=false;
+	}
+	if (Trim(formulario.ape_pat.value) == ""){
+		$j('#apellido_error').html('Debes ingresar tu Apellido');
+		$j('#ape_pat').removeClass('campos').addClass('error_campos');
+//		formulario.ape_pat.focus();
+		formulario_estatus=false;
+	}
+	if (Trim(formulario.email1.value) == ""){ //(!formulario.email1.value) || (!formulario.dominio1.value)){
+		$j('#mail_error').html('Debes ingresar tu Mail');
+		$j('#email1').removeClass('campos').addClass('error_campos');
+//		formulario.email1.focus();
+		formulario_estatus=false;
+	}
+	if (!formulario.fon_num_1.value){
+		$j('#fon_num_1_error').html('Debes ingresar un tel&eacute;fono');
+		$j('#fon_num_1').removeClass('campos').addClass('error_campos');
+//		formulario.fon_num_1.focus();
+		formulario_estatus=false;
+	}else if(isLongNumberInsert(jQuery("#fon_cod_1").val())){
+			if(!/\d{8}/.test(jQuery('#fon_num_1').val())) {
+				$j('#fon_num_1_error').html('Debe ingresar su n&uacute;mero de contacto correctamente');
+				$j('#fon_num_1').removeClass('campos').addClass('error_campos');
+				formulario_estatus=false;
+			}
+		}else{
+			if(!/\d{7}/.test(jQuery('#fon_num_1').val())) {
+				$j('#fon_num_1_error').html('Debe ingresar su n&uacute;mero de contacto correctamente');
+				$j('#fon_num_1').removeClass('campos').addClass('error_campos');
+				formulario_estatus=false;
+			}	
+	    }
+	if (formulario.fon_num_2.value){
+		if(isLongNumberInsert(jQuery("#fon_cod_2").val())){
+			if(!/\d{8}/.test(jQuery('#fon_num_2').val())) {
+				$j('#fon_num_2_error').html('Debe ingresar su n&uacute;mero de contacto correctamente');
+				$j('#fon_num_2').removeClass('campos').addClass('error_campos');
+				formulario_estatus=false;
+			}
+		}else{
+			if(!/\d{7}/.test(jQuery('#fon_num_2').val())) {
+				$j('#fon_num_2_error').html('Debe ingresar su n&uacute;mero de contacto correctamente');
+				$j('#fon_num_2').removeClass('campos').addClass('error_campos');
+				formulario_estatus=false;
+			}
+		}		
+	}
+	if(formulario.clave_ant.value.length > 0 || formulario.clave.value.length > 0 || formulario.clave1.value.length > 0){
+		if (!formulario.clave_ant.value){
+			$j('#clave_ant_error').html('Debes ingresar el campo Clave Anterior');
+			$j('#clave_ant').removeClass('campos').addClass('error_campos');
+			formulario.clave_ant.focus();
+			formulario_estatus=false;
+		}
+    if (!formulario.clave.value){
+			$j('#clave_error').html('Debes ingresar el campo Clave');
+			$j('#clave').removeClass('campos').addClass('error_campos');
+			formulario.clave.focus();
+			formulario_estatus=false;
+    }
+    if (!formulario.clave1.value){
+			$j('#clave1_error').html('Debes ingresar el campo Repetir Clave');
+			$j('#clave1').removeClass('campos').addClass('error_campos');
+			formulario.clave1.focus();
+			formulario_estatus=false;
+		}
+	}
+	if(formulario_estatus==false)
+		alert("Existen errores en el formulario, favor de verificar los datos.");
+	return formulario_estatus;
+}
+function buscar_comunas() {
+	var formulario = document.despachos;
+
+	reg_sel = formulario.region.options[formulario.region.selectedIndex].value;
+
+	var d = new Date();
+	var url = "ComunasList?reg_id="+reg_sel+"&tm="+d.getTime();
+	top.frames['ifcomuna'].location.href=url;
+}
+
+function procom() {
+	var formulario = document.despachos;
+
+	texto = top.frames['ifcomuna'].document.frmcom.com.value;
+	var response = (top.frames['ifcomuna'].document.frmcom.com.value).split("|");
+	var cant = formulario.comuna.options.length;
+	for( var i = 0; i < cant; i++ )
+		formulario.comuna.options[i] = null;
+	formulario.comuna.length=0;
+
+	makeOptionList(formulario.comuna,'Seleccionar',0,0);
+	for( i = 0; i < response.length-1; i++ ) {
+		comunas = response[i].split("-");
+		if( comunas[0] == _comuna )
+			makeOptionList(formulario.comuna,comunas[1],comunas[0],1);
+		else
+			makeOptionList(formulario.comuna,comunas[1],comunas[0],0);
+	}
+}
+
+function makeOptionList(objeto, name,value, sel) {
+	var o=new Option( name,value);
+	objeto.options[objeto.length]=o;
+	if( sel == 1 )
+		objeto.selectedIndex = objeto.length-1;
+}
+
+</script>

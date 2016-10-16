@@ -1,0 +1,79 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Jumbo.cl Back Office Local</title>
+<link href="estilos.css" rel="stylesheet" type="text/css">
+
+<SCRIPT LANGUAGE="JavaScript" SRC="funciones.js"></SCRIPT>
+<style type="text/css">
+<!--
+.style1 {color: #666666}
+-->
+</style>
+</head>
+<body>
+<script language="JavaScript">
+    function validar_form(form){
+        if( validar_obligatorio( form.descripcion, "Es Obligación ingresar "+form.descripcion.label ) ) return false;
+        if( validar_obligatorio( form.precio, "Es Obligación ingresar "+form.precio.label ) ) return false;
+        if (validar_solonumero(form.precio, "Precio es un campo numerico, ingresar nuevamente")) return false;
+        if(form.precio.value<=0){
+            alert("El Precio debe ser mayor a 0");
+            return false;
+        }else{
+            if (form.precio.value>10000){
+                var entrar = confirm("¿Esta seguro que el valor del producto es el correcto?");
+                if (!entrar){
+                    //self.close();
+                    form.precio.focus();
+                    return false;
+                }
+            }
+        }
+        opener.location.reload();
+        return true;
+    }
+</script>
+
+<table width="100%" height=59 border=0 align="center" cellpadding="0" cellspacing="0" bgcolor="#ffffff" class='ContentTitle'>
+	<form name=form1 action="ModSustitutoFormato" method="post" onSubmit="return validar_form(this);">
+	<table width="100%" border="0" cellpadding="0" cellspacing="0"  class="tabla2">
+		<input type="hidden" name="url" value = "ViewSustitutosCambioFormato">
+		<input type="hidden" name="id_detalle" value ="{id_detalle}">
+		<tr>
+			<td>&nbsp;</td>
+			<td><font size="2"><b>Sustitutos no reconocidos</b></font></td>			
+		</tr>	
+		<tr>
+			<td>Codigo de Barra: </td>
+			<td>{c_barra}</td>
+		</tr>	
+		<tr>
+			<td>Descripción: </td>
+			<td><input type="text" name="descripcion" value="{descripcion}" size="50" maxlength="255"></td>
+		</tr>
+		<tr>	
+			<td>Precio: </td>
+			<td><input type="text" name="precio" value="{precio}" ></td>
+		</tr>
+		<tr>
+				<td ><strong>&nbsp;</strong></td>				
+				<td ><strong class="infoRj">{mensaje}</strong></td>								
+		</tr>
+		<tr>
+			<td>&nbsp;</td><!-- onClick="javascript:opener.location.reload();"-->
+			<td><input type="submit" value="Grabar" name="grabar">&nbsp;<input type="button" value="Cerrar" name="cerrar" onClick="javascript:window.close();"></td>
+		</tr>
+	</table>
+	</form>
+</table>
+<script>
+	document.form1.descripcion.label = 'Descripcion';	
+	document.form1.precio.label = 'Precio';	
+
+	document.form1.precio.numerico=true;
+	document.form1.precio.onkeypress = KeyIsNumber;
+</script>
+</body>
+</html>

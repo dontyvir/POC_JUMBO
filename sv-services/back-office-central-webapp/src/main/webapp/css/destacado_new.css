@@ -1,0 +1,50 @@
+form {
+/*	font-family: "Arial", sans-serif;
+	font-size: 12px;*/
+	color: #333333;
+	margin: 10px auto;
+}
+
+legend{
+	font-size: 11px;
+	font-family: "Tahoma";
+	font-weight: bold;
+}
+
+form div {
+	display: block;
+	margin: 4px 0px;
+}
+
+label {
+	float: left;
+	text-align: right;
+	width: 200px;
+	padding: 0px 50px 0px 0px;
+}
+
+div#div_imagen{
+	float: right;
+}
+
+
+.dark li.ui-timepickr span {
+/*    background:#333 url('btn.png') repeat-x!important;*/
+		/*background:#333;*/
+		background:buttonface !important;
+    font-family:monospace;
+    font-size:100%;
+    font-weight:bold;
+    border:1px solid buttonshadow;
+    /*color:#ccc!important;*/
+    /*color:buttontext;*/
+    
+    color: buttontext !important;
+}
+.dark li.ui-timepickr.hover span {
+/*    background:#3679AE url('btn-hover.png') repeat-x!important;*/
+		background:#3679AE !important;;
+    color:#fff!important;
+}
+
+

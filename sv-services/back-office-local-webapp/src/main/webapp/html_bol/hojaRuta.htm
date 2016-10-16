@@ -1,0 +1,208 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>Jumbo.cl Back Office Local</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="EXPIRES" CONTENT="Mon, 22 Jul 2002 11:12:01 GMT">
+
+<script type="text/javascript" src="http://maps.google.com/maps?file=api&amp;v=2&amp;key={key}"></script>
+<script language="JavaScript" src="js/mapa.js"></script>
+
+<link href="estilos.css" rel="stylesheet" type="text/css">
+<script language="JavaScript">
+function dibujaMapa(){
+  //initialize({latitud}, {longitud}, 13, '{nom_local}');
+  <!-- BEGIN DYNAMIC: OPS -->
+     createMarker2({lat}, {lng}, '{op}', "{marca}");
+  <!-- END DYNAMIC: OPS -->
+}
+</script>
+<style type="text/css">
+<!--
+body {
+	background-color: #FFFFFF;
+}
+body,td,th {
+	color: #555555;
+}
+.lectura {	font-family: "Trebuchet MS";
+	font-size: 12px;
+	font-style: normal;
+	line-height: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	color: #333333;
+	text-decoration: none;
+}
+.Estilo1 {
+	font-size: 12px;
+	font-weight: bold;
+}
+.tabla_despacho {
+	color: fuchsia;
+	font-size: 20px;
+}
+-->
+</style>
+</head>
+
+<body onload="initializeRuta({latitud}, {longitud}, 13, '{nom_local}');" onunload="GUnload();" topmargin="0" leftmargin="0" marginheight="0" marginwidth="0">
+
+<table border="0" cellpadding="0" cellspacing="0" >
+  <tr>
+    <td height="17" valign="top" width="670"><img src="img/imprimir_arriba_02.jpg" width="670" height="66"></td>
+  </tr>
+  <tr>
+    <td valign="top" width="670">      
+	
+	<table width="670" border="0" cellpadding="0" cellspacing="2" class="TablaHojaDespacho">
+        <tr>
+          <td valign="top" width="97%">
+		  
+		  <table width="670" border="0" cellspacing="4" cellpadding="0">
+              <tr> 
+                <td><span class="titulosVerdes"><strong>Hoja de Ruta N&deg; {id_ruta}</strong></span></td>
+              </tr>
+              <tr> 
+                <td> <table width="657" border="0" cellspacing="0" cellpadding="0">
+                    <tr> 
+                      <td width="6" height="6"><img src="img/tablasupizq.gif" width="6" height="6" /></td>
+                      <td width="645" height="6" background="img/tablasup.gif"></td>
+                      <td width="6" height="6"><img src="img/tablasupder.gif" width="6" height="6" /></td>
+                    </tr>
+                    <tr> 
+                      <td width="6" height="50" background="img/tablaizq.gif"></td>
+                      <td valign="top"><table width="100%" border="0" align="center" cellpadding="0" cellspacing="4">
+                          <tr> 
+                            <td width="17%">ID de Ruta</td>
+                            <td width="1%">:</td>
+                            <td width="30%">{id_ruta} </td>
+                            <td width="20%">Estado Ruta</td>
+                            <td width="2%">:</td>
+                            <td width="30%">{estado}</td>
+                          </tr>
+                          <tr> 
+                            <td>Fono contacto m&oacute;vil</td>
+                            <td>:</td>
+                            <td>{fono}</td>
+                            <td>Chofer</td>
+                            <td>:</td>
+                            <td>{chofer}</td>
+                          </tr>
+                          <tr> 
+                            <td>Patente</td>
+                            <td>:</td>
+                            <td>{patente}</td>
+                            <td>N&uacute;mero de Bins</td>
+                            <td>:</td>
+                            <td>{bins}</td>
+                          </tr>
+                          <tr> 
+                            <td>Fecha</td>
+                            <td>:</td>
+                            <td>{fecha}</td>
+                            <td>Fecha/Hora salida Local</td>
+                            <td>:</td>
+                            <td>{fecha_hora_out}</td>
+                          </tr>
+                          <tr> 
+                            <td>Zonas de Despacho</td>
+                            <td>:</td>
+                            <td colspan="4">{zonas}</td>
+                          </tr>
+                          <tr> 
+                            <td>Jornada de Despacho</td>
+                            <td>:</td>
+                            <td colspan="4">{jornadas}</td>
+                          </tr>
+                        </table> </td>
+                      <td width="6" background="img/tablader.gif"></td>
+                    </tr>
+                    <tr> 
+                      <td width="6" height="6"><img src="img/tablainfizq.gif" width="6" height="6" /></td>
+                      <td height="6" background="img/tablainf.gif"></td>
+                      <td width="6" height="6"><img src="img/tablainfder.gif" width="6" height="6" /></td>
+                    </tr>
+                  </table></td>
+              </tr>
+            </table>
+            <br>
+            <table width="99%" border="0" align="center" cellpadding="0" cellspacing="0" class="tabla2">
+              <tr> 
+                <th width="1%" align="center">&nbsp;</th>
+                <th width="9%" align="center">N&deg; OP</th>
+                <th width="10%" align="center">Tipo Pedido</th>
+                <th width="5%" align="center">&iquest;Reprog.?</th>
+                <th width="13%" align="center">Direcci&oacute;n despacho</th>
+                <th width="9%" align="center">Comuna despacho</th>
+                <th width="9%" align="center">Zona Despacho</th>
+                <th width="9%" align="center">Jornada Despacho</th>
+                <th width="9%" align="center">Estado</th>
+                <th width="9%" align="center">Fecha/Hora Llegada Domi</th>
+                <th width="9%" align="center">Fecha/Hora Salida Domi</th>
+				<th width="4%" align="center">Tipo Doc</th>
+				<th width="4%" align="center">Medio Pago</th>
+              </tr>
+              <!-- BEGIN DYNAMIC: OPS -->
+              <tr> <!-- <script>document.write(String.fromCharCode("A".charCodeAt(0) + {marca}));</script> -->
+                <td><font color="red">
+                        <STRONG>
+                            <script>
+                                if ("{marca}" != " "){
+                                    document.write("{marca}" + ")");
+                                }else{
+                                    document.write(" ");
+                                }
+                            </script>&nbsp;
+                        </STRONG>
+                    </font>
+                </td>
+                <td>{op}&nbsp;</td>
+                <td>{tipo}&nbsp;</td>
+                <td>{repr}&nbsp;</td>
+                <td>{direc}&nbsp;</td>
+                <td>{comuna}&nbsp;</td>
+                <td>{zona}&nbsp;</td>
+                <td>{jornada}&nbsp;</td>
+                <td>{estado}&nbsp;</td>
+                <td>{llegada}&nbsp;</td>
+                <td>{salida}&nbsp;</td>
+				<td align="center">{doc}&nbsp;</td>
+				<td align="center">{mpa}&nbsp;</td>
+              </tr>
+              <!-- END DYNAMIC: OPS -->
+            </table> 
+            <br />
+          </td>
+        </tr>
+        <tr>
+            <td>
+                <table width="90%" border="0" align="center" cellpadding="5" cellspacing="0" bgcolor="#f1f0e9" style="border:1px solid #ABABAB;">
+                   <tr>
+                      <td>
+                         <div id="map_canvas" style="width: 600px; height: 300px"></div>
+                      </td>
+                   </tr>
+                </table>
+			    <br />
+            </td>
+        </tr>
+        <tr>
+           <td>
+               <div align="center">Si tiene cualquier consulta ll&aacute;menos al <b>600 400 3000</b></div>
+           </td>
+        </tr>
+     </table>
+   </td>
+  </tr>
+  <tr>
+    <td valign="top"><img src="img/abajo.gif"></td>
+  </tr>
+</table>
+</body>
+</html>

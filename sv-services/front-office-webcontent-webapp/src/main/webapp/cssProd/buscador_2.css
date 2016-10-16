@@ -1,0 +1,18 @@
+.buscador_header {
+	WIDTH: 360px; FLOAT: left; HEIGHT: 70px; PADDING-TOP: 25px
+}
+.fondo_buscador {
+	BACKGROUND-IMAGE: url(/FO_IMGS/img/fondo_buscador.jpg); WIDTH: 350px; FLOAT: left; HEIGHT: 57px
+}
+.form_buscador {
+	PADDING-LEFT: 12px; WIDTH: 260px; FLOAT: left; HEIGHT: 30px; PADDING-TOP: 15px
+}
+.input_buscador {
+	BORDER-BOTTOM: #fff 1px solid; BORDER-LEFT: #fff 1px solid; WIDTH: 250px; FONT-FAMILY: Arial, Helvetica, sans-serif; FLOAT: left; HEIGHT: 28px; COLOR: #666; FONT-SIZE: 14px; BORDER-TOP: #fff 1px solid; BORDER-RIGHT: #fff 1px solid
+}
+.bt_ir_buscador {
+	WIDTH: 60px; BACKGROUND-REPEAT: no-repeat; BACKGROUND-POSITION: 0px 14px; FLOAT: left; HEIGHT: 28px; PADDING-TOP: 15px
+}
+A.bt_ir_buscador:hover {
+	BACKGROUND-POSITION: 0px -50px
+}

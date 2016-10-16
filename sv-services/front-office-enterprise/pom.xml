@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<artifactId>sv-services</artifactId>
+		<groupId>cl.cencosud.jumbo.services</groupId>
+		<version>2.0.12-SNAPSHOT</version>
+	</parent>
+
+	<groupId>cl.cencosud.jumbo.services.frontoffice.enterprise</groupId>
+	<artifactId>front-office-enterprise</artifactId>
+	<packaging>ear</packaging>
+
+	<name>front-office-enterprise</name>
+
+	<build>
+		<finalName>jumbo-${project.artifactId}</finalName>
+		<plugins>
+			<plugin>
+				<groupId>org.appfuse.plugins</groupId>
+				<artifactId>maven-warpath-plugin</artifactId>
+				<extensions>true</extensions>
+				<executions>
+					<execution>
+						<goals>
+							<goal>add-classes</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<artifactId>maven-ear-plugin</artifactId>
+				<configuration>
+					<version>${j2ee.ear.version}</version>
+					<applicationName>FO</applicationName>
+					<skinnyWars>true</skinnyWars>
+					<generateApplicationXml>true</generateApplicationXml>
+					<displayName>${project.build.finalName}</displayName>
+					<modules>
+						<webModule>
+							<groupId>cl.cencosud.jumbo.services.frontoffice.webapp</groupId>
+							<artifactId>front-office-webapp</artifactId>
+							<contextRoot>FO</contextRoot>
+							<bundleFileName>front-office-webapp.war</bundleFileName>
+						</webModule>
+					</modules>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+	<dependencies>
+		<dependency>
+			<groupId>cl.cencosud.jumbo.services.frontoffice.webapp</groupId>
+			<artifactId>front-office-webapp</artifactId>
+			<version>${project.version}</version>
+			<type>war</type>
+		</dependency>
+		<dependency>
+			<groupId>cl.cencosud.jumbo.services.frontoffice.webapp</groupId>
+			<artifactId>front-office-webapp</artifactId>
+			<version>${project.version}</version>
+			<type>warpath</type>
+		</dependency>
+	</dependencies>
+</project>

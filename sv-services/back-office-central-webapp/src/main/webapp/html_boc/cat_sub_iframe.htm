@@ -1,0 +1,23 @@
+<html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="EXPIRES" CONTENT="Mon, 22 Jul 2002 11:12:01 GMT">
+<script language="JavaScript" src="funciones.js"></script>
+</head>
+<body bgcolor="white">
+
+<link href="estilos.css" rel="stylesheet" type="text/css">
+<table border="0" align="center" cellpadding="2" cellspacing="0" class="tabla2" >
+{mensaje}
+	<!-- BEGIN DYNAMIC: CATEG -->
+	<tr valign="top">
+		<td width="74"><div align="center">{id_categ}</div></td>
+		<td width="325">{nom_categ}</td>
+		<td width="48"><a href='javascript:validar_eliminar("Esta seguro que desea eliminar?","ModSubCatWeb?action=eliminar&id_cat={categoria_id}&sel_cat={id_categ}&url=ViewCatSubIframe?categoria_id={categoria_id}");'><img src='img/trash.gif' border=0></a></td>
+		</tr>
+	<!-- END DYNAMIC: CATEG -->
+</table>
+{mns}
+</body>
+</html>                           

@@ -1,0 +1,316 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html><!-- InstanceBegin template="/Templates/fullbody.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="EXPIRES" CONTENT="Mon, 22 Jul 2002 11:12:01 GMT">
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>Jumbo.cl Back Office Central</title>
+<!-- InstanceEndEditable -->
+
+<!-- InstanceBeginEditable name="head" --><!-- InstanceEndEditable -->
+
+<link href="estilos.css" rel="stylesheet" type="text/css">
+<!--link href="../default.css" rel="stylesheet" type="text/css"-->
+<style type="text/css">
+<!--
+.style1 {color: #666666}
+-->
+</style>
+
+	<script type="text/javascript" src="js/jquery/jquery-1.3.1.js"></script>
+	<script type="text/javascript" src="js/pubMasiva.js"></script>
+
+</head>
+
+<body>
+<link rel="stylesheet" href="menu/menu.css">
+<script language="JavaScript" src="menu/menu.js"></script>
+<script language="JavaScript" src="menu/menu_tpl.js"></script>
+<script language="JavaScript" src="menu/menu_items.js"></script>
+<script language="JavaScript" src="popup.js"></script>
+<script language="JavaScript" src="funciones.js"></script>
+<table width="780" height="100%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+    <td height="78" valign="top">
+	
+	<TABLE width="100%" height=59 border=0 align="center" cellpadding="0" cellspacing="0" bgcolor="#ffffff">
+	  <TR>
+		<TD width=275 height="59" align=left class=user><img src="img/header2.jpg" width="275" height="60"></TD>
+		<TD width=505 align=left valign="bottom" background="img/bg-1.jpg" class=user><table width="90%"  border="0" align="center" cellpadding="0" cellspacing="2">
+          <tr>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td><div align="right" class="infoBL">Usuario: {hdr_nombre}&nbsp;&nbsp;| {hdr_fecha}</div></td>
+          </tr>
+        </table></TD>
+	  </TR>
+	</TABLE>
+	<TABLE width="100%" height=19 border=0 align="center" cellpadding="0" cellspacing="0" bgcolor="#f1f0e9" style="border-top:1px solid #ABABAB; border-bottom:1px solid #ABABAB">
+	  <TR>
+		<TD align=left bgcolor="#FFFFFF" class=user></TD>
+		</TR>
+	</TABLE>
+
+	
+	</td>
+  </tr>
+  <tr height="400">
+    <td valign="top" bgcolor="#FFFFFF">
+    	<div id="div_form">
+      <table border=0 width="100%" class='ContentTitle'>
+        <tr>
+          <td width="53%" height="20" class='HeaderTitle'><!-- InstanceBeginEditable name="Titulo" --> Administraci&oacute;n de Productos<!-- InstanceEndEditable --></td>
+          <td width="47%" class='HeaderTitle'><!-- InstanceBeginEditable name="Botonera" -->
+            <div align="right">
+            	<a href="ViewProductNewForm">Crear Productos Genéricos</a><br />
+            	<a id="pubMasiva" href="#">Publicaci&oacute;n / Despublicaci&oacute;n masiva de productos.</a><br />
+            	<a id="mktMasiva" href="#">Carga masiva de banner de productos.</a><br/>
+            	<!-- hs nuevo link para stock online -->
+            	<a href="ViewStockOnlineSKUForm">Stock Online</a><br/>
+            	<!-- hs nuevo link para stock online -->
+            	<a href="ViewCatalogacionMasivaForm">Catalogaci&oacute;n Masiva</a> <br/>
+            	<a href="ViewCargaSapMasivaForm">Carga masiva de productos sap</a>    	
+            </div>
+          <!-- InstanceEndEditable --></td>
+        </tr>
+      </table>
+	  <br>
+      <table width="100%"  border="0" cellspacing="2" cellpadding="2">
+        <tr valign="top">
+          <td width="71%"><!-- InstanceBeginEditable name="Izquierda" -->		
+		<script>
+			function validar_navegacion(form){
+				if (form.sel_cat.value == "-"){
+					alert("Selección no valida, seleccione una categoría");
+					return false;
+				}
+				return true;
+			}
+			function rev_cod(form){
+				if(form.tipo_sap[0].checked) {
+					if(validar_solonumero(form.cod_sap,'El código del producto debe ser numérico'))
+						return false;
+					if (Trim(form.cod_sap.value) == ""){	
+						alert("El Código de producto no puede ser vacío ");
+						form.cod_sap.value = "";
+						form.cod_sap.focus();
+						return false;
+					}						
+				}
+				
+				if(form.tipo_sap[1].checked) {
+					//var checkOK = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+					//var checkStr = form.cod_sap.value;
+					//var allValid = true;
+					//for (i = 0;  i < checkStr.length;  i++)
+					//{
+					//	ch = checkStr.charAt(i);
+					//	for (j = 0;  j < checkOK.length;  j++)
+					//		if (ch == checkOK.charAt(j))
+					//		break;
+					//		if (j == checkOK.length)
+					//		{
+					//			allValid = false;
+					//			break;
+					//		}
+					//}
+					//if (!allValid) {
+					//	alert("Solamente caracteres alfanuméricos en el campo SAP Producto");
+					//	form.cod_sap.focus();
+					//	return (false);
+					//}
+						
+					if (Trim(form.cod_sap.value) == ""){	
+						alert("El Código SAP producto no puede ser vacío ");
+						form.cod_sap.value = "";
+						form.cod_sap.focus();
+						return false;
+					}						
+				}
+				
+				//form.action.value="bus_prod";
+				form.submit();
+			}
+			function rev_des(form){
+				if (form.descrip.value == "" ){
+					alert("Debe ingresar una descripción antes de buscar");
+				}else{
+					if (!validar_letranumero(form.descrip, "Descripción solo permite letras y números")){
+						//form.action.value="bus_desc";
+						form.submit();
+					}
+				}
+			}
+			function rev_cat(form){
+				if(validar_solonumero(form.busq_num_cat,'El código de la categoría debe ser numérico'))
+						return false;
+				if (form.busq_num_cat.value == ""){
+					alert("Debe ingresar un Nº de Categoría");
+					return false;
+				}
+				form.sel_cat.value = form.busq_num_cat.value ;
+				return true;
+			}
+			
+			function abre_popup(){
+				valor= "";
+				if ((valor = popUpWindowModalscroll('ViewNavCatForm', 100, 100, 600, 400))> '0') {
+					if (valor != ""){ 
+						id = valor.split("|");
+						document.form_num.busq_num_cat.value = id[0];
+					}
+				}
+			}
+		</script>	          	
+            <table width="94%"  border="0" align="center" cellpadding="0" cellspacing="2">
+              <tr>
+                <td><fieldset>
+                <legend>Buscar Productos</legend>
+                <table width="92%"  border="0" align="center" cellpadding="0" cellspacing="0">
+                      <form name="frmBusq" method="get" action="ViewMonProducts">
+                      <input name="action" type="hidden" value="bus_prod">      
+                  <tr>
+                    <td width="40%">C&oacute;digo:
+                        <input type="radio" name="tipo_sap" value="prod" {check_1} >
+                        Producto
+                        <input type="radio" name="tipo_sap" value="sap" {check_2} >
+                        SAP Producto</td>
+                    <td width="35%">Descripción del producto</td>
+                    <td width="25%">Navegar Arbol Categor&iacute;as Web</td>
+                  </tr>
+                  <tr>
+       
+                    <td>&nbsp;
+                    <br>
+                        <input name="cod_sap" type="text" size="20" maxlength="20" value="{cod_sap}" onpaste="return null" onkeypress='key = window.event.keyCode; keychar = String.fromCharCode(key); keychar = keychar.toLowerCase(); if (!(("0123456789").indexOf(keychar) > -1)){ event.keyCode = 0;}' >
+                        <!--  onKeydown="if (event.ctrlKey && (String.fromCharCode(event.keyCode).toLowerCase() == 'c' || String.fromCharCode(event.keyCode).toLowerCase() == 'v')) { event.keyCode = 0; }"> -->
+                        <!-- input name="agprods" type="button" class="cmd" value="Buscar"-->
+                        <input name="Envnum" type="button" class="cmd" value="Buscar" onClick="javascript:rev_cod(frmBusq)">
+                    </form>
+                    </td>
+                    <td>
+                    <form name="frmDesc" method="get" action="ViewMonProducts">
+					<input name="action" type="hidden" value="bus_desc">      
+                    <input name="descrip" type="text" size="25" maxlength="40" value="{descrip}" >
+                        <input name="Envdes" type="button" class="cmd" value="Buscar" onClick="javascript:rev_des(frmDesc)">
+                    </td>
+                     </form>
+                     
+                     <form name="form_num" method="get" action="ViewMonProducts"  onsubmit=" return rev_cat(form_num);">
+                     <input name="action" type="hidden" value="bus_cat">
+                     <input name="sel_cat" type="hidden" value="{sel_cat}" >
+                    <td><input name="busq_num_cat" type="text" size="10" value="{sel_cat}" maxlength="9" >
+                    <a href="javascript:abre_popup();"><img src="img/magnify.jpg" width="16" height="16" border="0" ALT="Muestra Categorías"></a>
+                          <input name="Envnum" type="submit" class="cmd" value="Buscar" ></td>
+                    </form>
+                  </tr>
+                 
+                </table>
+                </fieldset></td>
+              </tr>
+            </table>
+			<br>
+			<FORM name="frmProd" method="get" action="ViewMonProducts">
+			<input name="action" type="hidden" value="bus_tip_est">
+		      <input name="tipo_sap" type="hidden" value="{tipo_sap}" >
+		      <input name="cod_sap" type="hidden" value="{cod_sap}" >		      
+		      <input name="descrip" type="hidden" value="{descrip}" >		
+		      <input name="sel_cat" type="hidden" value="{sel_cat}" >   		
+			<table width="94%"  border="1" align="center" cellpadding="0" cellspacing="0" class="tabla2">
+			  <tr align="left">
+				<th width="8%">Id<br>Prod<br>FO</th>
+				<th width="8%">Cód<br>SAP</th>
+				<th width="8%">Unidad<br>medida</th>				
+				<th width="50%">Descripción</th>
+				<th width="10%">Tipo<br>
+				  <select name="tipo" onchange="submit(this.frmProd)">
+				    <option value="0">Todos</option>
+				    <!-- BEGIN DYNAMIC: TIPOS -->
+				    <option value="{tip_id}" {sel_tip}>{tip_nombre}</option>
+				    <!-- END DYNAMIC: TIPOS -->
+			      </select>
+				<th width="10%">Estado<br>
+				  <select name="estado" onchange="submit(this.frmProd)">
+				    <option value="0">Todos</option>
+				    <!-- BEGIN DYNAMIC: EST_PROD -->
+				    <option value="{id_estado}" {sel_est}>{nom_estado}</option>
+				    <!-- END DYNAMIC: EST_PROD -->
+			      </select>    
+			  <th width="9%">Acciones				</tr>
+			  <!-- BEGIN DYNAMIC: PRODUCTOS -->
+			  <tr>
+				<td>{cod_prod}</td>
+				<td>{cod_sap}</td>
+				<td>{uni_med}</td>
+				<td>{prod_desc}</td>
+				<td>{tipo}</td>
+				<td>{est_prod}</td>
+				<td> <div align="center"><a href="ViewProductForm?cod_prod={cod_prod}&tipo_prod={tipo_prod}"><IMG SRC="img/info.gif" WIDTH="16" HEIGHT="16" BORDER="0" ALT="Editar Producto"></a></div></td>
+			  </tr>		
+			  <!-- END DYNAMIC: PRODUCTOS -->	  
+			</table>
+			<center> {mje1}</center>
+			</FORM>
+			<script language="JavaScript">
+				function getProductos(){
+					frmPag.submit();
+				}
+			</script>
+			
+			<form name="frmPag" action="ViewMonProducts" method=get>
+		      <input name="action"   type="hidden" value="{action}">
+		      <input name="tipo_sap" type="hidden" value="{tipo_sap}" >
+		      <input name="cod_sap"  type="hidden" value="{cod_sap}" >		      
+		      <input name="descrip"  type="hidden" value="{descrip}" >		
+		      <input name="sel_cat"  type="hidden" value="{sel_cat}" >      
+		      <input name="tipo"     type="hidden" value="{tipo}" >  
+		      <input name="estado"   type="hidden" value="{estado}" > 
+			  <input name="id_cat"   type="hidden" value="{id_cat}" > 
+			
+			   		      		      
+			<table width="723"  border="0" align="center" cellpadding="0" cellspacing="0">
+					<tr>
+						<td colspan="7" align="right">
+							Pagina :<select name="pagina" onchange="javascript:getProductos();">
+							<!-- BEGIN DYNAMIC: PAGINAS -->
+								<option value="{pag}" {sel_pag}>{pag}</option>
+							<!-- END DYNAMIC: PAGINAS -->						
+								</select>
+						
+						</td>
+					</tr>
+			  <tr>
+				<td align="right">&nbsp;				  </td>
+			  </tr>
+			</table>
+			</form>
+		<script>
+			document.form_num.busq_num_cat.onkeypress = KeyIsSoloNum;
+			document.frmDesc.descrip.onkeypress = KeyNotCarExt;
+			document.frmBusq.cod_sap.onkeypress = KeyNotCarExt;
+		</script>
+		  <!-- InstanceEndEditable --></td>
+        </tr>
+      </table>
+      
+      </div> <!-- end div_form -->
+      </td>
+  </tr>
+  <tr>
+    <td>
+	<TABLE width="100%" height=19 border=0 align="center" cellpadding="0" cellspacing="0" bgcolor="#f1f0e9" style="border-top:1px solid #ABABAB; border-bottom:1px solid #ABABAB">
+	  <TR>
+		<TD align=center bgcolor="#67b01a" class=infoBL><div align="center">Back Office Central - Jumbo.cl</div></TD>
+		</TR>
+	</TABLE>
+
+	
+	</td>
+  </tr>
+</table>
+</body>
+<!-- InstanceEnd --></html>

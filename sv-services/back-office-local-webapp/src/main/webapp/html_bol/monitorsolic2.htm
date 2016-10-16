@@ -1,0 +1,401 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html><!-- InstanceBegin template="/Templates/fullbody.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="EXPIRES" CONTENT="Mon, 22 Jul 2002 11:12:01 GMT">
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>Jumbo.cl Back Office Local</title>
+<!-- InstanceEndEditable -->
+
+<!-- InstanceBeginEditable name="head" -->
+
+
+<!-- InstanceEndEditable -->
+
+<link href="estilos.css" rel="stylesheet" type="text/css">
+<!--link href="../Prototipo/default.css" rel="stylesheet" type="text/css"-->
+<style type="text/css">
+<!--
+.style1 {color: #666666}
+-->
+</style>
+</head>
+
+<body>
+<link rel="stylesheet" href="menu/menu.css">
+<script language="JavaScript" src="menu/menu.js"></script>
+<script language="JavaScript" src="menu/menu_tpl.js"></script>
+<script language="JavaScript" src="menu/menu_items.js"></script>
+<table width="780" height="100%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+    <td height="78" valign="top">
+	
+	<TABLE width="100%" height=59 border=0 align="center" cellpadding="0" cellspacing="0" bgcolor="#ffffff">
+	  <TR>
+		<TD width=275 height="59" align=left class=user><img src="img/header2.jpg" width="275" height="60"></TD>
+		<TD width=505 align=left valign="bottom" background="img/bg-1.jpg" class=user><table width="90%"  border="0" align="center" cellpadding="0" cellspacing="2">
+          <tr>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td><div align="right" class="infoBL">Usuario: {hdr_nombre} | Local: {hdr_local} | {hdr_fecha} </div></td>
+          </tr>
+        </table></TD>
+	  </TR>
+	</TABLE>
+	<TABLE width="100%" height=19 border=0 align="center" cellpadding="0" cellspacing="0" bgcolor="#f1f0e9" style="border-top:1px solid #ABABAB; border-bottom:1px solid #ABABAB">
+	  <TR>
+		<TD align=left bgcolor="#FFFFFF" class=user></TD>
+		</TR>
+	</TABLE>
+
+	
+	</td>
+  </tr>
+  <tr height="400">
+    <td valign="top" bgcolor="#FFFFFF">
+      <table border=0 width="100%" class='ContentTitle'>
+        <tr>
+          <td width="53%" height="20" class='HeaderTitle'><!-- InstanceBeginEditable name="Titulo" -->
+				Detalle de la Solicitud <!-- InstanceEndEditable --></td>
+          <td width="47%" class='HeaderTitle'><!-- InstanceBeginEditable name="Botonera" -->Botonera<!-- InstanceEndEditable --></td>
+        </tr>
+      </table>
+	  <br>
+      <table width="100%"  border="0" cellspacing="2" cellpadding="2">
+        <tr valign="top">
+          <td width="71%"><!-- InstanceBeginEditable name="Izquierda" --><br>
+				<link id="luna-tab-style-sheet" type="text/css" rel="stylesheet"
+					href="js/tabs/tabpane.css" />
+				<script type="text/javascript" src="js/tabs/tabpane.js"></script>
+				<table width="95%" align="center" border="0">
+					<tr>
+						<td>
+						<div class="tab-page" id="modules-cpanel"><script
+							type="text/javascript">
+	   var tabPane1 = new WebFXTabPane( document.getElementById( "modules-cpanel" ), 0 )
+	  </script>
+						<div class="tab-page" id="modulo1">
+						<h2 class="tab">General</h2>
+						<div align="left"><strong>Datos de la Solicitud</strong><br />
+						<br>
+						<table width="660" border="0" cellspacing="2" cellpadding="2">
+							<tr>
+								<td width="121">N&deg; Solicitud</td>
+								<td width="306">12345</td>
+							</tr>
+							<tr>
+								<td>Tipo de Solicitud</td>
+								<td>Solicitud de Trabajo y Compras Menores</td>
+							</tr>
+							<tr>
+								<td>Estado</td>
+								<td><strong><font color="#00CC00">Enviada</font></strong></td>
+							</tr>
+							<tr>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+							</tr>
+							<tr>
+								<td>Fecha de Ingreso</td>
+								<td>01-01-2006 12:30</td>
+							</tr>
+							<tr>
+								<td>Solicitante</td>
+								<td>Zacar&iacute;as Flores del Campo</td>
+							</tr>
+						</table>
+						<table width="660" border="0" cellspacing="2" cellpadding="2">
+							<tr>
+								<td width="121">N&deg; Solicitud</td>
+								<td width="306">{num_sol}</td>
+							</tr>
+							<tr>
+								<td>Tipo de Solicitud</td>
+								<td>{tip_sol}</td>
+							</tr>
+							<tr>
+								<td>Estado</td>
+								<td><strong><font color="#00CC00">{estado}</font></strong></td>
+							</tr>
+							<tr>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+							</tr>
+							<tr>
+								<td>Fecha de Ingreso</td>
+								<td>{fec_ing}</td>
+							</tr>
+							<tr>
+								<td>Solicitante</td>
+								<td>{solicitante}</td>
+							</tr>
+						</table>						
+						<br>
+						<br>
+						<br>
+						<br>
+						<br>
+						<br>
+						<br>
+						<br>
+						<br>
+						<br>
+						<br>
+						<br>
+						<br />
+						</div>
+						</div>
+						<div class="tab-page" id="modulo1">
+						<h2 class="tab">Solicitud</h2>
+						<div align="left"><strong>Contenido de la Solicitud </strong><br />
+						<table width="660" border="0" cellspacing="2" cellpadding="2">
+							<tr>
+								<td width="196">Asunto</td>
+								<td width="450">Reparaci&oacute;n Techo</td>
+							</tr>
+							<tr>
+								<td>Prioridad</td>
+								<td>Media</td>
+							</tr>
+							<tr>
+								<td>Fecha Ejecuci&oacute;n Trabajo</td>
+								<td>01/02/2005</td>
+							</tr>
+							<tr>
+								<td>Rut Proveedor</td>
+								<td>77.654.321-1</td>
+							</tr>
+							<tr>
+								<td>Raz&oacute;n Social</td>
+								<td>Comercial el Aguilucho Ltda.</td>
+							</tr>
+							<tr>
+								<td>Direcci&oacute;n</td>
+								<td>Las Camelias 1234, Santiago</td>
+							</tr>
+							<tr>
+								<td>Fono</td>
+								<td>234 56 78</td>
+							</tr>
+							<tr>
+								<td>Fax</td>
+								<td>234 56 79</td>
+							</tr>
+							<tr>
+								<td>E-mail</td>
+								<td>info@elaguilucho.cl</td>
+							</tr>
+							<tr>
+								<td>Detalle O/C</td>
+								<td>Solicito autorizaci&oacute;n para reparar techo.
+								<p>Reemplazo techumbre $ 2.500.000<br>
+								Reemplazo canaletas $ 70.000<br>
+								-----------------------------------<br>
+								Total $ 2.570.000</p>
+								</td>
+							</tr>
+						</table>
+						<table width="660" border="0" cellspacing="2" cellpadding="2">
+							<tr>
+								<td width="196">Asunto</td>
+								<td width="450">{asunto}</td>
+							</tr>
+							<tr>
+								<td>Prioridad</td>
+								<td>{prioridad}</td>
+							</tr>
+							<tr>
+								<td>Fecha Ejecuci&oacute;n Trabajo</td>
+								<td>{fec_ejec}</td>
+							</tr>
+							<tr>
+								<td>Rut Proveedor</td>
+								<td>{rut_proveedor}</td>
+							</tr>
+							<tr>
+								<td>Raz&oacute;n Social</td>
+								<td>{razon_social}</td>
+							</tr>
+							<tr>
+								<td>Direcci&oacute;n</td>
+								<td>{direccion}</td>
+							</tr>
+							<tr>
+								<td>Fono</td>
+								<td>{telefono}</td>
+							</tr>
+							<tr>
+								<td>Fax</td>
+								<td>{fax}</td>
+							</tr>
+							<tr>
+								<td>E-mail</td>
+								<td>{mail}</td>
+							</tr>
+							<tr>
+								<td>Detalle O/C</td>
+								<td>{detalle}
+								</td>
+							</tr>
+						</table>
+						<br>
+						<br>
+						<br>
+						<BR>
+						</div>
+						</div>
+						<div class="tab-page" id="modulo1">
+						<h2 class="tab">Tracking</h2>
+						<div align="left"><strong>Tracking de la OT</strong><br />
+						<br>
+						<table width="669" border="0" align="center" cellpadding="2"
+							cellspacing="0" class="tabla2">
+							<tr>
+								<th width="95">Fecha</th>
+								<th width="84">Usuario</th>
+								<th width="359">Descripci&oacute;n</th>
+							</tr>
+							<!-- BEGIN DYNAMIC: select_tracking -->
+							<tr valign="top">
+								<td>{fecha}</td>
+								<td>
+								<div align="center">{usuario}</div>
+								</td>
+								<td>{descripcion}</td>
+							</tr>
+							<!-- END DYNAMIC: select_tracking -->
+							<tr valign="top">
+								<td>01/01/2005 12:32</td>
+								<td>
+								<div align="center">Sistema</div>
+								</td>
+								<td>Ingreso Solicirud</td>
+							</tr>
+							<tr valign="top">
+								<td>05/01/2005 12:32</td>
+								<td>
+								<div align="center">admin</div>
+								</td>
+								<td>Cambio de estado solicitud: Ingresada -&gt; Aprobada</td>
+							</tr>
+							<tr valign="top">
+								<td>19/01/2005 12:32</td>
+								<td>
+								<div align="center">admin</div>
+								</td>
+								<td>Evento</td>
+							</tr>
+							<tr valign="top">
+								<td>05/08/2005 10:00</td>
+								<td>
+								<div align="center">admin</div>
+								</td>
+								<td>Evento</td>
+							</tr>
+							<tr valign="top">
+								<td>05/08/2005 10:00</td>
+								<td>
+								<div align="center">admin</div>
+								</td>
+								<td>Evento</td>
+							</tr>
+						</table>
+						<table width="596" border="0" align="center" cellpadding="2"
+							cellspacing="2" class="textonormal">
+							<tr valign="top">
+								<td width="385"><textarea name="textarea" cols="60"></textarea></td>
+								<td width="108" valign="bottom"><input type="button"
+									name="Button" value="Ingresar"></td>
+							</tr>
+						</table>
+						<br>
+						<br>
+						<br>
+						<br>
+						<br>
+						<br>
+						<br>
+						<br>
+						<br>
+						<br>
+						<br>
+						</div>
+						</div>
+						<div class="tab-page" id="modulo1">
+						<h2 class="tab">Acciones</h2>
+						<div align="left"><strong>Acciones Disponibles</strong><br />
+						<br>
+						<table width="51%" border="0" align="center" cellpadding="2"
+							cellspacing="2">
+							<tr>
+								<td>
+								<div align="center"><input name="Button" type="button"
+									class="cmd" style="color:#009900"
+									onClick="javascript:popUpWindow('pop_compra_pe.htm', 100, 100, 400, 300);"
+									value="Cambiar Estado"></div>
+								</td>
+								<td>
+								<div align="center"><input name="Button" type="button"
+									class="cmd" style="color:#FF0000" value="Anular"></div>
+								</td>
+								<td>
+								<div align="center"><input name="Button" type="button"
+									class="cmd" value="     Imprimir     "></div>
+								</td>
+							</tr>
+							<tr>
+								<td width="43%">
+								<div align="center">Pr&oacute;xima Acci&oacute;n</div>
+								</td>
+								<td width="21%">
+								<div align="center">Anular</div>
+								</td>
+								<td width="36%">
+								<div align="center"></div>
+								</td>
+							</tr>
+						</table>
+						<br>
+						<br>
+						<br>
+						<br>
+						<br>
+						<br>
+						<br>
+						<br>
+						<br>
+						<br>
+						<br>
+						<br>
+						<br>
+						<br>
+						</div>
+						</div>
+						</div>
+						</td>
+					</tr>
+				</table>
+				<p>&nbsp;</p>
+				<!-- InstanceEndEditable --></td>
+        </tr>
+      </table>
+      </td>
+  </tr>
+  <tr>
+    <td>
+	<TABLE width="100%" height=19 border=0 align="center" cellpadding="0" cellspacing="0" bgcolor="#f1f0e9" style="border-top:1px solid #ABABAB; border-bottom:1px solid #ABABAB">
+	  <TR>
+		<TD align=center bgcolor="#67b01a" class=infoBL><div align="center">Back Office Local - Jumbo.cl</div></TD>
+		</TR>
+	</TABLE>
+
+	
+	</td>
+  </tr>
+</table>
+</body>
+<!-- InstanceEnd --></html>

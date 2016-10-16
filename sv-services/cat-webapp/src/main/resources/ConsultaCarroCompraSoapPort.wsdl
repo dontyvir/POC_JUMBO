@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://tempuri.org/action/" xmlns:tns1="http://botonpago.cencosud.cl" xmlns:wsdlns="http://tempuri.org/action/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="ConsultaCarroCompra" targetNamespace="http://tempuri.org/action/">
+<types>
+  <schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" elementFormDefault="qualified" targetNamespace="http://botonpago.cencosud.cl">
+    <complexType name="ConsultaCarroCompraRep">
+        <all>
+            <element name="codigoResp" type="xsd:int">
+            </element>
+            <element name="glosaResp" type="xsd:string">
+            </element>
+            <element name="idCarroCompra" type="xsd:string">
+            </element>
+            <element name="detalleCarroCompra" type="tns1:ArrayOfConsultaCarroCompraDet">
+            </element>
+        </all>
+    </complexType>
+    <complexType name="ArrayOfConsultaCarroCompraDet">
+        <sequence>
+            <element maxOccurs="unbounded" minOccurs="0" name="ConsultaCarroCompraDet" type="tns1:ConsultaCarroCompraDet">
+            </element>
+        </sequence>
+    </complexType>
+    <complexType name="ConsultaCarroCompraDet">
+        <all>
+            <element name="secuencia" type="xsd:int">
+            </element>
+            <element name="monto" type="xsd:double">
+            </element>
+            <element name="nemoProveedor" type="xsd:string">
+            </element>
+            <element name="glosaServicio" type="xsd:string">
+            </element>
+        </all>
+    </complexType>
+  </schema>
+  <schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/action/">
+    <import namespace="http://botonpago.cencosud.cl"/>
+    <element name="ConsultaCarroCompra.Execute">
+        <complexType>
+           <sequence>
+              <element maxOccurs="1" minOccurs="1" name="Idcarrocompra" type="xsd:string"/>
+              <element maxOccurs="1" minOccurs="1" name="Consultacarrocompra" type="tns1:ConsultaCarroCompraRep"/>
+           </sequence>
+        </complexType>
+    </element>
+    <element name="ConsultaCarroCompra.ExecuteResponse">
+        <complexType>
+           <sequence>
+              <element maxOccurs="1" minOccurs="1" name="Idcarrocompra" type="xsd:string"/>
+              <element maxOccurs="1" minOccurs="1" name="Consultacarrocompra" type="tns1:ConsultaCarroCompraRep"/>
+           </sequence>
+        </complexType>
+    </element>
+  </schema>
+</types>
+<message name="ConsultaCarroCompra.ExecuteSoapIn">
+   <part element="tns:ConsultaCarroCompra.Execute" name="parameters"/>
+</message>
+<message name="ConsultaCarroCompra.ExecuteSoapOut">
+   <part element="tns:ConsultaCarroCompra.ExecuteResponse" name="parameters"/>
+</message>
+<portType name="ConsultaCarroCompraSoapPort">
+    <operation name="Execute">
+        <input message="wsdlns:ConsultaCarroCompra.ExecuteSoapIn"/>
+	  <output message="wsdlns:ConsultaCarroCompra.ExecuteSoapOut"/>
+    </operation>
+</portType>
+<binding name="ConsultaCarroCompraSoapBinding" type="wsdlns:ConsultaCarroCompraSoapPort">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="Execute">
+        <soap:operation soapAction="http://tempuri.org/action/action/ACONSULTACARROCOMPRA.Execute"/>
+        <input>
+           <soap:body use="literal"/>
+        </input>
+        <output>
+            <soap:body use="literal"/>
+        </output>
+    </operation>
+</binding>
+<service name="ConsultaCarroCompra">
+    <port binding="wsdlns:ConsultaCarroCompraSoapBinding" name="ConsultaCarroCompraSoapPort">
+        <soap:address location="http://localhost:9080/WS_CAT/services/ConsultaCarroCompraSoapPort"/>
+    </port>
+</service>
+</definitions>

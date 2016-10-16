@@ -1,0 +1,154 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html><!-- InstanceBegin template="/Templates/print.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="EXPIRES" CONTENT="Mon, 22 Jul 2002 11:12:01 GMT">
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>Modificar Dirección de Facturación</title>
+<!-- InstanceEndEditable -->
+<!-- InstanceBeginEditable name="head" -->
+<SCRIPT LANGUAGE="JavaScript" SRC="funciones.js"></SCRIPT>
+<SCRIPT LANGUAGE="JavaScript" SRC="verificar.js"></SCRIPT>
+
+<script language="JavaScript">
+
+function documentoDePagoLayer(value) {	
+	if (value == 'B') {
+		document.getElementById('boleta').style.visibility = 'visible';
+		document.getElementById('factura').style.visibility = 'hidden';
+	
+//		alert("boleta");
+	
+	}
+	if (value == 'F') {
+		document.getElementById('factura').style.visibility = 'visible';
+		document.getElementById('boleta').style.visibility = 'hidden';
+	}
+}	
+
+</script>
+<link href="estilos.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+<!--
+body {
+	background-color: #FFFFFF;
+}
+.style11 {color: #507B06}
+.Estilo2 {font-family: "Trebuchet MS"; font-size: 12px; font-style: normal; line-height: normal; font-weight: bold; font-variant: normal; text-transform: none; color: #333333; text-decoration: none; }
+
+
+#boleta {
+	position:absolute;
+	visibility:visible;
+	overflow:visible;
+	top:0px;
+	left:10px;
+	height:{height_bol};<!--110px-->
+	z-index:1;
+}	
+#factura {
+	position:absolute;
+	visibility:hidden;
+	overflow:visible;
+	top:0px;
+	left:10px;
+	height:{height_fac};<!--120px-->
+	z-index:1;	
+}
+-->
+</style><!-- InstanceEndEditable -->
+<link href="estilos.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+<!--
+body {
+	background-color: #FFFFFF;
+}
+-->
+</style></head>
+
+<body>
+<!-- InstanceBeginEditable name="Body" -->
+<script>window.name='winmodmp'</script>
+<script src="validacion.js"></script>
+  <form name = "frmMod" action = "ModDoc" method = "post" target="winmodmp"  >
+    <input type = "hidden" name = "cot_id" value = "{cot_id}">
+    <input type = "hidden" name = "suc_id" value = "{suc_id}">
+    <input type = "hidden" name = "url" value = "ViewModDocPagoForm?cot_id={cot_id}&suc_id={suc_id}">
+    <table border=0 width="100%" class='ContentTitle'>
+	  <tr>
+	    <td align=center width="90%" height="20" class='HeaderTitle'>Modificación de Documento de Pago</td>
+	    <td width="10%" class='HeaderTitle'>&nbsp;</td>
+	  </tr>
+	</table>	
+	  <table width="100%"  border="0" cellspacing="2" cellpadding="0">
+	    <tr>
+	      <td width="33%">Seleccione tipo documento:</td>
+	      <td width="67%">
+	      <input type="radio" name = "dpago" value = "B" onfocus="documentoDePagoLayer(this.value);" {check_1}>Boleta
+	      <input type="radio" name = "dpago" value = "F" onfocus="documentoDePagoLayer(this.value);" {check_2}>Factura
+	      </td>
+	    </tr>
+	  </table>
+<div id="documentoDePago" style="position:relative; height: 100px;">    
+	<div id = "factura">
+	<br>
+	<table  width="100%" height="22" border="0" align="center" class="tabla2" cellpadding="0" cellspacing="0">						
+	    <tr>
+	    	<td>Rut Sucursal : {rut_suc}</td>
+	    </tr>
+		<tr>
+			<td>Razon Social: {raz_soc}</td>
+	    </tr>
+	</table>
+	<br>
+	<table  width="100%" height="22" border="0" align="center" cellpadding="1" cellspacing="1">						
+	  <tr class="tabla2">
+	    <td colspan=2 class="HeaderTitle" align="center" >Direcciones de Facturación</td>
+	  </tr>
+	  <tr class="tabla2">
+		 <th width= "10%">&nbsp;</th>
+		 <th width= "90%">Dirección</th>
+	  </tr>
+	  <!-- BEGIN DYNAMIC: DIR_FACT -->
+	  <tr class="tabla2">
+		<td ><input type="radio" name = "dir_fac" value="{df_id}" {check_1}></td>
+		<td >{direccion}</td>
+	  </tr>
+		  <!-- END DYNAMIC: DIR_FACT -->
+		  <tr class="tabla2">
+		      <td align="center" colspan=2>
+		          <input type = "button" name = "Guardar" value = "Guardar" >
+		          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		          <input type = "button" name = "Cerrar" value = "Cerrar" onClick=" window.close();">
+		        </td>
+		  </tr>
+		</table>
+	</div>
+	<div id="boleta">
+		<table width="100%" height="22" border="0" align="center" cellpadding="1" cellspacing="1" >						
+	  	<tr class="tabla2">
+			    <td colspan="2" align="center"><font color = "RED" id = "mensaje_bol">{mensaje}</font></td>
+			    <td width=50% align="center">&nbsp;</td>
+		  </tr>  	
+		  <tr class="tabla2">
+			     <td width=50% align="center">
+			         <input type = "button" name = "Guardar" value = "Guardar">
+			     </td>
+			     <td width=50% align="center">
+			         <input type = "button" name = "Cerrar" value = "Cerrar" onClick=" window.close();">
+			     </td>
+		  </tr>
+		</table>  
+	</div>
+</div>
+</form>
+
+<script>
+
+</script>
+
+<!-- InstanceEndEditable --></body>
+<!-- InstanceEnd --></html>

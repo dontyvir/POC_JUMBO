@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.12.0.min.js"></script>
+<title>Venta Masiva - Interna</title>
+</head>
+<body>
+
+<form action="http://172.18.145.62/VentaMasiva/PurchaseOrder" method="post" id="PurchaseOrder" name="PurchaseOrder">
+<table width="732" border="0">
+    <tr>
+      <td width="17" valign="top"><input type="hidden" id="id_pedido_cat" value="1650471" name="id_pedido_cat" />
+          <input type="hidden" id="id_pedido_tbk" value="1627815" name="id_pedido_tbk" /></td>
+      <td width="699"><input type="text" id="id_pedido" name="id_pedido" value="" />
+      	  <input type="hidden" id="tienecook" value="1" name="tienecook">
+          <input type="text" id="rut" name="rut" value="7361980-7"  />
+          <input type="text" id="name" name="name" value="Tania"  />
+          <input type="text" id="last_name" name="last_name" value="Quilenan"  />
+          <input type="text" id="email" name="email" value="xyz@gmail.com"  />
+          <input type="text" id="address" name="address" value="address 123456"  />
+          <input type="text" id="phone_number" name="phone_number" value="123456789"  />
+          <input type="text" id="observation" name="observation" value="sin observacion"  />
+          <input type="text" id="products" name="products" value='[{"product_id": "6967","quantity": "3"},{"product_id": "1139","quantity": "2"}]'  />
+          <input type="text" id="date" name="date" value=""  />
+          <input type="text" id="window" name="window" value="AM"  />
+          <input type="text" id="delivery_price" name="delivery_price" value="1990"  />
+          <input type="text" id="payment_method" name="payment_method" value=""  />
+        CAT
+        <input type="radio"  id="cat" name="forma_pago" value="CAT" />
+        | TBK
+        <input type="radio" id="tbk" name="forma_pago" value="TBK" /></td>
+    </tr>
+    <tr>
+      <td valign="top">&nbsp;</td>
+      <td><input name="button" type="button" id="boton" onclick="javascript:orderprocess();" value="PAGAR" /></td>
+    </tr>
+  </table>
+
+
+</form>
+	
+<script type="text/javascript">
+  $(document).ready(function(){
+  	var d = new Date(),
+    month = '' + (d.getMonth() + 1),
+    day = '' + (d.getDate()+1),
+    year = d.getFullYear();
+
+    if (month.length < 2) month = '0' + month;
+    if (day.length < 2) day = '0' + day;
+            
+    $("#date").val( [year, month, day].join('-') );	
+  });
+   
+  $("input[name='forma_pago']").change(function(){
+    var name = $(this).attr('id'); 
+		if(name==""){
+      alert("CAT o TBK");
+		  return;
+		}
+		$("#payment_method").val($(this).val());    	
+  });
+
+  function orderprocess() {
+    if($('#payment_method').val()==""){
+      alert("CAT o TBK");
+		  return;
+		}
+    /* 
+		var id = "";    
+		if(medio_pago=="CAT"){
+		  id = $("#id_pedido_cat").val();
+    }else{
+	    id = $("#id_pedido_tbk").val();
+	  }
+    $("#id_pedido").val(id);
+    $("#payment_method").val(medio_pago);
+		*/
+		
+     document.PurchaseOrder.submit();
+  }				
+</script>
+</body>
+</html>

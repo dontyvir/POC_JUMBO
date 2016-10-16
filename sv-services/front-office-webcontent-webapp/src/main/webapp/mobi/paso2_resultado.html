@@ -1,0 +1,94 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Jumbo.CL</title>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<meta name="viewport" content="width=320; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;"/>
+</head>
+<body>
+	<div id="resultado">
+	<!-- BEGIN DYNAMIC: RESULTADO -->
+		<input type="hidden" id="ultima_accion" name="ultima_accion" value="{ultima_accion}"/>
+		<div class="resultado_estado">
+			{total_encontrados} productos.  {categoria_nombre}/{subcategoria_nombre} <br/>
+
+			<label for="marca">Marca</label>
+			<select name="marca" onchange="javascript:filtrarMarca(this.value);">
+				<!-- BEGIN DYNAMIC: MARCAS -->
+					<option value="{id}" {selected}>{value}</option>
+				<!-- END DYNAMIC: MARCAS -->
+			</select>
+			
+			<label for="ordenar_por">Ordenar por</label>
+			<select name="ordenar_por" onchange="javascript:ordenarPor(this.value);">
+				<!-- BEGIN DYNAMIC: ORDENAR_POR -->
+					<option value="{id}" {selected}>{value}</option>
+				<!-- END DYNAMIC: ORDENAR_POR -->
+			</select>
+			<label for="mostrar_cantidad">Mostrar</label>
+			<select name="mostrar_cantidad" onchange="javascript:mostrarCantidad(this.value);">
+				<!-- BEGIN DYNAMIC: MOSTRAR_CANTIDAD-->
+					<option value="{id}" {selected}>{value}</option>
+				<!-- END DYNAMIC: MOSTRAR_CANTIDAD -->
+			</select>
+		</div>
+		<div id="productos_listas_p2">
+			<div class="cuadrado_verde">
+				<div class="foto_p2">Foto</div>
+				<div class="descripcion_p2">Descripci&oacute;n</div>
+				<div class="precio_p2">Precio</div>
+				<div class="cantidad_p2">Cantidad</div>
+				<div class="agregar_p2">Agregar</div>
+			</div>
+			<!-- BEGIN DYNAMIC: PRODUCTOS -->
+			<div id="despliegue_prod_listas_p2">
+				<div class="producto_p2_b">
+					<!-- BEGIN DYNAMIC: CON_FOTO -->
+					<a href="/FO_IMGS/gr/{imagen_chica}" rel="lightbox" title="Jumbo.CL">
+						<img src="/FO_IMGS/ch/{imagen_chica}" width="40" height="40" border="0" onError="this.src='/FO_IMGS/img/ch/fotopreparacion-chica.gif'"/>
+					</a>
+					<!-- END DYNAMIC: CON_FOTO -->
+				</div>
+				<div class="descripcion_p2_b"> {tipo} - <span class="tx_marca">{marca}</span><br /> {descripcion}<br />
+					<span class="ppum">{precio_por_unidad}</span> <!-- $xKilo:$4.927  -->
+				</div>
+				<div class="precio_p2_b">{precio}</div>
+				<div class="cantidad_p2_b">
+					<select name="cantidad_{id}" id="cantidad_{id}">
+							{cantidades}
+					</select>
+				</div>
+				<div class="agregar_p2_b">
+					<!-- BEGIN DYNAMIC: IMG_AGREGAR -->
+						<a href="javascript:submit_form('agregar', {productoId})"><img name="imagen_{productoId}" id="imagen_{productoId}" src="/FO_IMGS/img/estructura/paso2/agregar.gif" alt="agregar o quitar unidades" border="0"  /></a>
+					<!-- END DYNAMIC: IMG_AGREGAR -->
+					<!-- BEGIN DYNAMIC: IMG_MODIFICAR -->
+						<a href="javascript:submit_form('modificar', {productoId})"><img name="imagen_{productoId}" id="imagen_{productoId}" src="/FO_IMGS/img/estructura/paso2/modificar.gif" alt="agregar o quitar unidades" border="0"  /></a>
+					<!-- END DYNAMIC: IMG_MODIFICAR -->
+				</div>
+			</div>
+	    	<!-- END DYNAMIC: PRODUCTOS -->
+		</div>
+		<div id="paginador">
+			<!--  BEGIN DYNAMIC: ANTERIORB -->
+				  <img src="/FO_IMGS/images/mobi/fl_retr_pg_b.gif" alt="ver pagina anterior" width="20" height="25" border="0" /> 
+			<!--  END DYNAMIC: ANTERIORB -->
+			<!--  BEGIN DYNAMIC: ANTERIOR -->
+				<a href="javascript:sigAnt({start});"> 
+					<img src="/FO_IMGS/images/mobi/fl_retr_pg.gif" alt="ver pagina anterior" width="20" height="25" border="0" /> 
+				</a>
+			<!--  END DYNAMIC: ANTERIOR -->
+				Mostrando p&aacute;gina. {pag_actual} de {pag_total} 
+			<!--  BEGIN DYNAMIC: SIGUIENTE -->
+				<a href="javascript:sigAnt({start});">
+					<img src="/FO_IMGS/images/mobi/fl_av_pg.gif" alt="ver pagina siguiente" width="20" height="25" border="0" />	
+				</a>
+			<!--  END DYNAMIC: SIGUIENTE -->
+			<!--  BEGIN DYNAMIC: SIGUIENTEB -->
+					<img src="/FO_IMGS/images/mobi/fl_av_pg_b.gif" alt="ver pagina siguiente" width="20" height="25" border="0" />	
+			<!--  END DYNAMIC: SIGUIENTEB -->
+		</div>
+	<!-- END DYNAMIC: RESULTADO -->
+	</div>
+</body>
+</html>

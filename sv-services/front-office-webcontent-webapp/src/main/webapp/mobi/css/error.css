@@ -1,0 +1,37 @@
+/*ERROR*/
+#contenedor_b {
+	width: 98%;
+	height: 100%;
+	padding-left: 1%;
+	padding-right: 1%;
+}
+#encabezado_general{
+	width: 98%;
+	height: 80px;
+	clear: right;
+	position: relative;
+	background-image: url(/FO_IMGS/images/mobi/ini-logo.gif);
+	text-indent: -9999px;
+	display: block;
+	margin-top: 0px;
+	margin-right: auto;
+	margin-bottom: 10px;
+	margin-left: auto;
+	background-repeat: no-repeat;
+	background-position: center bottom;
+}
+#error {
+	background-image: url(/FO_IMGS/images/mobi/error.jpg);
+	background-repeat: no-repeat;
+	background-position: left;
+	width: 70%;
+	height: 270px;
+	float: none;
+	margin-right: auto;
+	margin-left: auto;
+	padding-left: 93px;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:0.8em;
+	color:#333333;
+	line-height: 20px;
+}

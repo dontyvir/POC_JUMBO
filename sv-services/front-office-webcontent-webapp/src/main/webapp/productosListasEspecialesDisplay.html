@@ -1,0 +1,96 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Jumbo.cl</title>
+<link type="text/css" rel="stylesheet" href="/FO_WebContent/css/acordeon_paso1.css" />
+<link href="/FO_WebContent/css/estilostextos.css" rel="stylesheet" type="text/css" />
+<link href="/FO_WebContent/css/paso1.css" rel="stylesheet" type="text/css" />
+</head>
+<body leftMargin=0 topMargin=0 marginheight="0" marginwidth="0">
+<div id="acor_lista_de_productos">
+	<!-- BEGIN DYNAMIC: CATEGORIAS -->
+	<h6 class="accordion_toggle">{categoria}</h6>
+	<div class="accordion_content">	
+		<!-- BEGIN DYNAMIC: PRODUCTOS -->        
+			<table width="100%" border="0" cellpadding="0" cellspacing="0" class="{CLASE_TABLA}">
+				<tr>
+					<td width="106" class="{CLASE_CELDA_IZQ}">
+						<input type="hidden" name="lugar_compra{contador}" id="lugar_compra{contador}" value="U" />
+						<input type="hidden" name="carr_id{contador}" id="carr_id{contador}" value="{carr_id}" />
+						<table border="0" cellpadding="0" cellspacing="0">
+							<tr>
+								<td>
+									<!-- BEGIN DYNAMIC: LISTA_SEL -->                 
+									<select name="cantidad_l{contador}" id="cantidad_l{contador}" class="formularios">
+										<!-- BEGIN DYNAMIC: CANTIDADES -->
+										<option value="{valor}" {selected}>{opcion}</option>
+										<!-- END DYNAMIC: CANTIDADES -->
+									</select>
+									<!-- END DYNAMIC: LISTA_SEL -->
+									<!-- BEGIN DYNAMIC: INPUT_SEL -->
+									<table border="0" cellspacing="0" cellpadding="0">
+										<tr>
+											<td><a href="javascript:top.up(document.fp.cantidad_l{contador},{intervalo},{maximo});modProducto({contador});"><img src="/FO_IMGS/img/estructura/carro/flechasuperior.gif" border="0" /></a></td>
+											<td width="10px"></td>
+											<td rowspan="2">
+												<input name="maximo_l{contador}" id="maximo_l{contador}" value="{maximo}" type="hidden" />
+												<input name="cantidad_l{contador}" id="cantidad_l{contador}" value="{valor}" type="text" class="cc" size="4" maxlength="4" onKeyPress="javascript:return bloqueaCaracteres(event,/[0-9.\b]/);" onChange="javascript:valida_cantidad('cantidad_l{contador}',{intervalo},{maximo});modProducto({contador});" />
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<a href="javascript:top.down(document.fp.cantidad_l{contador},{intervalo},{maximo});modProducto({contador});"><img src="/FO_IMGS/img/estructura/carro/flechainferior.gif" border="0" /></a>
+											</td>
+										</tr>
+									</table>
+									<!-- END DYNAMIC: INPUT_SEL -->
+								</td>
+								<td>
+									<span class="NoDisponible">{valor} {unidad}</span>
+								</td>
+							</tr>
+						</table>
+					</td>
+					<td class="{CLASE_CELDA}">
+						<a href="javascript:ficha_listas({pro_id},{contador})" class="desc_productos">{descripcion} - <span class="Marca">{marca}</span>&nbsp; {NO_DISPONIBLE}</a>
+					</td>
+					<td width="50" class="{CLASE_CELDA}" align="center">
+						<!-- BEGIN DYNAMIC: COMENTARIO -->
+							<a href="javascript:show_nota_paso1(document.forms['fp'].nota{contador},{contador});" ><img id="ImageComent_{contador}" src="/FO_IMGS/img/estructura/comentario.gif" border="0" alt="Agregar Comentario" title="Agregar Comentario"/></a>
+							<input type="hidden" name="nota{contador}" value="{nota}" id="nota{contador}" />
+						<!-- END DYNAMIC: COMENTARIO -->
+						<!-- BEGIN DYNAMIC: COMENTARIO_NODISP -->
+							<img id="ImageComent_{contador}" src="/FO_IMGS/img/estructura/comentariogris.gif" border="0"/>
+							<input type="hidden" name="nota{contador}" value="{nota}" id="nota{contador}" />
+						<!-- END DYNAMIC: COMENTARIO_NODISP -->
+					</td>
+					<td width="60" class="{CLASE_CELDA}">{codigo}</td>
+					<td width="100" class="{CLASE_CELDA}"><div align="right">{precio}</div></td>
+					<td width="78" class="{CLASE_CELDA}">
+						<div align="center">
+							<!-- BEGIN DYNAMIC: CHECKBOX -->
+								<input type="checkbox" name="id_prod_{contador}" id="id_prod_{contador}" value="{id_prod}" {checked}/>
+							<!-- END DYNAMIC: CHECKBOX -->
+							<!-- BEGIN DYNAMIC: IMAGEN -->
+								<a href="javascript:modProducto({contador});"><img src="/FO_IMGS/img/estructura/paso2/modificar.gif" alt="Producto Agregado" title="Producto Agregado" border="0" /></a>
+							<!-- END DYNAMIC: IMAGEN -->
+							<!-- BEGIN DYNAMIC: IMAGEN_NODISP -->
+								<img src="/FO_IMGS/img/estructura/paso1/checkboxNodisponible.gif" width="13" height="13" alt="Producto no disponible" title="Producto no disponible"/>
+							<!-- END DYNAMIC: IMAGEN_NODISP -->
+						</div>
+					</td>
+				</tr>
+			</table>
+		 <!-- END DYNAMIC: PRODUCTOS -->       		
+	</div>
+	<!-- END DYNAMIC: CATEGORIAS -->
+	<!-- BEGIN DYNAMIC: SIN_CATEGORIAS -->
+	<div class="msj_vacio">Sin productos para listar</div>
+	<!-- END DYNAMIC: SIN_CATEGORIAS -->
+<input type="hidden" name="max_productos" id="max_productos" value="{max_productos}" />
+<input type="hidden" id="primera_carga" name="primera_carga" value="{primera_carga}" />
+<input type="hidden" id="check_all_prods" name="check_all_prods" value="{checked_all}" />
+</div>
+</body>
+</html>

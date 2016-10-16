@@ -1,0 +1,174 @@
+color: #666/*{fcContent}*/;
+}
+a:hover {
+color: #1FA22E;
+text-decoration: none;
+}
+
+#TB_window {
+	color: #000000;
+}
+#TB_ajaxContent .cont_inputs_close { text-align: right; margin-right: -5px;  }
+
+.menu_list {	
+	width: 150px;
+}
+a img{
+	border:none;
+}
+/* INDRA 14-12-2012*/
+.contenedor_lightbox_listas{
+	text-align:center ! important;
+	padding:20px 20px 20px 20px ! important;
+	border:1px solid #CCC ! important;
+	background:#FFFFFF ! important;
+	width: 550px ! important;
+	-moz-border-radius-bottomleft: 8px ! important;
+	-webkit-border-bottom-left-radius: 8px ! important;
+	-webkit-border-top-left-radius: 8px ! important;
+	-webkit-border-top-right-radius: 8px ! important;
+	border-bottom-left-radius: 8px ! important;
+	-moz-border-radius-bottomright: 8px ! important;
+	-webkit-border-bottom-right-radius: 8px ! important;
+	border-bottom-right-radius: 8px ! important;
+	-moz-box-shadow: 0px 4px 10px #CCC ! important;
+	-webkit-box-shadow: 0px 4px 10px #CCC ! important;
+	box-shadow: 0px 4px 10px #CCC ! important;
+	height: 410px ! important;
+	overflow: hidden ! important;
+}
+/* INDRA 14-12-2012*/
+
+.fila_registro_2012_name_PD{
+	height: 20px;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:14px;
+	color:#1FA22E;
+}
+
+.fila_registro_2012_name_b_PD{
+	height: 20px;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:14px;
+	color:#1FA22E;
+	padding-left:3px;
+}
+.fila_registro_2012_name_c_PD{
+	height: 20px;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:14px;
+	color:#1FA22E;
+	padding-left:10px;
+}
+.Estilo2_PD {
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:20px;
+	font-weight:bold;
+	color:#009A46;
+}
+.form_registro_2012_PD {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-style: normal;
+	line-height: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	color: #666;
+	border-color: #CCC;
+	border-style: solid;
+	border-width: 1px;
+	height: 15px;
+	width: 20px;
+}
+.form_registro_2012_b_PD {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-style: normal;
+	line-height: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	color: #666;
+	border-color: #CCC;
+	border-style: solid;
+	border-width: 1px;
+	height: 15px;
+	width: 35px;
+}
+.form_registro_2012_c_PD {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-style: normal;
+	line-height: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	color: #666;
+	border-color: #CCC;
+	border-style: solid;
+	border-width: 1px;
+	height: 100px;
+	width: 400px;
+}
+.newsletter_PD {
+	text-decoration:none;
+	margin:0;
+	padding-left: 4px;;
+	width: 10px;
+	height: 10px;
+}
+.newsletter_PD .bot_enviar {
+	background:url(http://static.jumbo.cl/FO_IMGS/images/html/bot_enviar.gif?Lo0P=90152583cb244a061eeac362c681cde7292) no-repeat;
+	margin:0;
+	padding:0;
+	cursor:pointer;
+	border:none;
+	text-decoration:none;
+	width: 29px;
+	height: 23px;
+	font-size: 1px;
+}
+/* INDRA 14-11-2012*/
+.celda_p1_PD {
+	font-family:"Trebuchet MS" ! important;
+    border-left:1px dashed #7ABD09 ! important;
+	border-bottom:1px dashed #CCCCCC ! important;
+	font-size: 8.5pt ! important;;
+	font-style: normal ! important;
+	line-height: normal ! important;
+	font-weight: normal ! important;
+	font-variant: normal ! important;
+	text-transform: none ! important;
+	text-decoration: none ! important;
+	padding-left: 3px ! important;
+	padding-right: 3px ! important;
+}
+table.tablesorter_PD {
+	font-family:arial;
+	background-color: #CDCDCD;
+	margin:10px 0pt 15px;
+	font-size: 8pt;
+	width: 100%;
+	text-align: left;
+}
+table.tablesorter thead tr th, table.tablesorter tfoot tr th {
+	background-color: #e6EEEE;
+	border: 1px solid #FFF;
+	font-size: 8pt;
+	padding: 4px;
+	heigth:30px;
+}
+table.tablesorter thead tr .header {
+	background-image: url(bg.gif);
+	background-repeat: no-repeat;
+	background-position: center right;
+	cursor: pointer;
+}
+table.tablesorter tbody td {
+	color: #3D3D3D;
+	padding: 4px;
+	background-color: #FFF;
+	vertical-align: top;
+}
+/* INDRA 14-11-2012*/

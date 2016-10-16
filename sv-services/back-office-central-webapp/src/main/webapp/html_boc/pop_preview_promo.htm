@@ -1,0 +1,150 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html><!-- InstanceBegin template="/Templates/print.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="EXPIRES" CONTENT="Mon, 22 Jul 2002 11:12:01 GMT">
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>Jumbo.cl Back Office Central</title>
+<!-- InstanceEndEditable -->
+<!-- InstanceBeginEditable name="head" -->
+<!-- InstanceEndEditable -->
+<link href="estilos.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+<!--
+body {
+	background-color: #FFFFFF;
+}
+-->
+</style></head>
+
+<body>
+<!-- InstanceBeginEditable name="Body" -->
+<script language="JavaScript" src="funciones.js"></script>  
+<script src="validacion.js"></script>
+<SCRIPT LANGUAGE="JavaScript">window.name='winmodal'</SCRIPT>		
+<script>
+  <!--
+	
+	 function validar_form(form){
+		if(!verify(document.form1))return false;
+	//	window.close();
+		return true;
+
+	 }
+//-->
+</script>
+
+<br>			
+<font color="red"><center></center></font>
+
+		<form name="form1" method="post" action="ViewRecalculoForm.htm" target="winmodal" onsubmit="return validar_form(this); ">
+		<strong><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PROMOCIONES VÁLIDAS EL DÍA DE HOY</strong></p>
+                    <table width="95%" border="0" align="center" cellpadding="2" cellspacing="0" class="tabla2">
+                      <tr>
+                        <th width="5%">Cod Prom</th>
+                        <th width="8%">Tipo</th>
+                        <th width="20%">Descripcion</th>
+                        <th width="8%">Fec Inicio</th>
+                        <th width="8%">Fec Fin</th>
+                        <th width="31%">Productos relacionados</th>
+                        <th width="10%">Dscto Tot(%)</th>
+                        <th width="10%">Monto Dscto Total</th>
+                      </tr>
+                      <tr>
+                        <td>1</td>
+                        <td>001</td>
+                        <td>Descuento simple sin condicion</td>
+                        <td>01/02/2007</td>
+                        <td>01/03/2007</td>
+                        <td>Aceite Maravilla</td>
+                        <td>12%</td>
+                        <td>$500</td>
+                      </tr>
+                      <tr>
+                        <td>2</td>
+                        <td>015</td>
+                        <td>Descuento simple con condicion</td>
+                        <td>01/02/2007</td>
+                        <td>01/03/2007</td>
+                        <td>Coca Cola,Papas Lays</td>
+                        <td>8%</td>
+                        <td>$400</td>
+                      </tr>
+                      <tr>
+                        <td>3</td>
+                        <td>100</td>
+                        <td>Promocion simple</td>
+                        <td>01/02/2007</td>
+                        <td>01/03/2007</td>
+                        <td>Sprite 2lt</td>
+                        <td>12%</td>
+                        <td>$360</td>
+                      </tr>
+                      <tr>
+                        <td>4</td>
+                        <td>011</td>
+                        <td>Pack MxN</td>
+                        <td>01/02/2007</td>
+                        <td>01/03/2007</td>
+                        <td>Cerveza Cristal 3 paga 2</td>
+                        <td>33.3%</td>
+                        <td>$700</td>
+                      </tr>
+                      <tr>
+                        <td>5</td>
+                        <td>200</td>
+                        <td>Multipack 3 productos</td>
+                        <td>01/02/2007</td>
+                        <td>01/03/2007</td>
+                        <td>Doritos, Papas Lays, Tortitos</td>
+                        <td>10%</td>
+                        <td>$85</td>
+                      </tr>
+                      <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td><b>TOTAL</b></td>
+                        <td>$2.045</td>
+                      </tr>
+                     </table>
+					 <br>
+                    <table width="95%" border="0" align="center" cellpadding="2" cellspacing="0">
+                      <tr>
+                        <td width="50%" align=left><b>MONTO TOTAL DE DESCUENTO DEL PEDIDO:</b></td>
+                        <td width="50%">$2.185</td>
+                      </tr>
+                      <tr>
+                        <td align=left><b>MONTO TOTAL DE DESCUENTO CALCULADO:</b></td>
+                        <td>$2.045</td>
+                      </tr>
+                     </table>
+					 <br>
+
+  <table width="52%"  border="0" align="center" cellpadding="0" cellspacing="2">
+  <tr>
+    <td align="center">
+        <input name="guardar" type="submit" class="cmd" value=" Aplicar Recálculo " >
+        <!--input name="cancelar" type="button" class="cmd" value="Cerrar" onClick="window.close();"-->  
+         </form></td>
+		<TD align=left>
+		    <FORM name="cerrar" action="ViewOpFormPedido.htm" target="winpedido1" onsubmit="window.close();">
+			<INPUT type="submit" name="cerrar" value="  Cerrar  ">		
+		</FORM>        
+		</TD>        
+  </tr>
+   </table>
+
+
+
+<br>
+<!-- InstanceEndEditable -->
+</body>
+<!-- InstanceEnd -->
+</html>

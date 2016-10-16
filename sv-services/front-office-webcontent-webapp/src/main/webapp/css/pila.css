@@ -1,0 +1,40 @@
+@charset "utf-8";
+.pilatx {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	font-style: normal;
+	line-height: normal;
+	font-weight: normal;
+	color: #333333;
+}
+.pilatx2 {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	font-style: normal;
+	line-height: normal;
+	font-weight: normal;
+	color: #333333;
+	font-weight:bold;
+}
+.porcentage_pila{
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:12px;
+	font-weight:bold;
+	color:333333;
+	}
+.pila{
+	width:63px;
+	float:left;
+	padding:2px;	
+}
+.dosis{
+	float:left;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	font-style: normal;
+	line-height: normal;
+	font-weight: normal;
+	color: #333333;
+	clear: both;
+	width:100%;	
+}

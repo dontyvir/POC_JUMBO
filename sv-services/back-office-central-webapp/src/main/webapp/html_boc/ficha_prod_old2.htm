@@ -1,0 +1,505 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html><!-- InstanceBegin template="/Templates/fullbody.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="EXPIRES" CONTENT="Mon, 22 Jul 2002 11:12:01 GMT">
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>Jumbo.cl Back Office Central</title>
+<script type="text/javascript" src="popup.js"></script>
+<!-- InstanceEndEditable -->
+
+<!-- InstanceBeginEditable name="head" --><!-- InstanceEndEditable -->
+
+<link href="estilos.css" rel="stylesheet" type="text/css">
+<!--link href="../default.css" rel="stylesheet" type="text/css"-->
+<style type="text/css">
+<!--
+.style1 {color: #666666}
+-->
+</style>
+</head>
+
+<body>
+<link rel="stylesheet" href="menu/menu.css">
+<script language="JavaScript" src="menu/menu.js"></script>
+<script language="JavaScript" src="menu/menu_tpl.js"></script>
+<script language="JavaScript" src="menu/menu_items.js"></script>
+<script language="JavaScript" src="popup.js"></script>
+<script language="JavaScript" src="funciones.js"></script>
+<table width="780" height="100%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+    <td height="78" valign="top">
+	
+	<TABLE width="100%" height=59 border=0 align="center" cellpadding="0" cellspacing="0" bgcolor="#ffffff">
+	  <TR>
+		<TD width=275 height="59" align=left class=user><img src="img/header2.jpg" width="275" height="60"></TD>
+		<TD width=505 align=left valign="bottom" background="img/bg-1.jpg" class=user><table width="90%"  border="0" align="center" cellpadding="0" cellspacing="2">
+          <tr>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td><div align="right" class="infoBL">Usuario: {hdr_nombre}&nbsp;&nbsp;| {hdr_fecha}</div></td>
+          </tr>
+        </table></TD>
+	  </TR>
+	</TABLE>
+	<TABLE width="100%" height=19 border=0 align="center" cellpadding="0" cellspacing="0" bgcolor="#f1f0e9" style="border-top:1px solid #ABABAB; border-bottom:1px solid #ABABAB">
+	  <TR>
+		<TD align=left bgcolor="#FFFFFF" class=user></TD>
+		</TR>
+	</TABLE>
+
+	
+	</td>
+  </tr>
+  <tr height="400">
+    <td valign="top" bgcolor="#FFFFFF">
+      <table border=0 width="100%" class='ContentTitle'>
+        <tr>
+          <td width="53%" height="20" class='HeaderTitle'><!-- InstanceBeginEditable name="Titulo" --> Ficha de Producto <!-- InstanceEndEditable --></td>
+          <td width="47%" class='HeaderTitle'><!-- InstanceBeginEditable name="Botonera" -->
+            <div align="right"><a href="adm_productos.htm"><img src="img/back.png" width="32" height="32" border="0"></a></div>
+          <!-- InstanceEndEditable --></td>
+        </tr>
+      </table>
+	  <br>
+      <table width="100%"  border="0" cellspacing="2" cellpadding="2">
+        <tr valign="top">
+          <td width="71%"><!-- InstanceBeginEditable name="Izquierda" -->
+            <link id="luna-tab-style-sheet" type="text/css" rel="stylesheet" href="js/tabs/tabpane.css" />
+            <script type="text/javascript" src="js/tabs/tabpane.js"></script>
+            <table width="92%" align="center" border="0">
+              <tr>
+                <td><div class="tab-page" id="modules-cpanel">
+                    <script type="text/javascript">
+				   		var tabPane1 = new WebFXTabPane( document.getElementById( "modules-cpanel" ), 0 )
+				    </script>
+                    <div class="tab-page" id="modulo1">
+                      <h2 class="tab">Ficha</h2>
+                      <div align="left">
+					  
+                          <p><strong>Datos del Producto</strong></p>
+                          <table width="80%"  border="0" align="center" cellpadding="0" cellspacing="2">
+                            <tr>
+                              <td width="18%">Cod SAP</td>
+                              <td width="82%">{cod_sap}</td>
+                            </tr>
+                            <tr>
+                              <td>Estado</td>
+                              <td>{estado}                              </td>
+                            </tr>
+                            <tr>
+                              <td>Gen&eacute;rico</td>
+                              <td><strong>{generico}</strong></td>
+                            </tr>
+                            <tr>
+                              <td>&nbsp;</td>
+                              <td>&nbsp;</td>
+                            </tr>
+                            <tr>
+                              <td>Tipo</td>
+                              <td><input name="tipo" type="text" value="{tipo}"></td>
+                            </tr>
+                            <tr>
+                              <td> Marca </td>
+                              <td><select name="marca">
+                              <!-- BEGIN DYNAMIC: MARCAS -->
+                                <option value={mrc_id} {mrc_tip}>{mrc_nombre}</option>
+                              <!-- END DYNAMIC: MARCAS -->  
+                                </select></td>
+                            </tr>
+                            <tr>
+                              <td>Descripci&oacute;n Corta </td>
+                              <td><input name="descr_corta" type="text" value="{desc_corta}" size="50" maxlength="100"></td>
+                            </tr>
+                            <tr>
+                              <td valign="top">Descripci&oacute;n Larga </td>
+                              <td><textarea name="desc_larga" cols="80" rows="4" onkeypress="if(this.value.length > 254){ this.value=this.value.substring(0,255); window.event.keyCode=0; alert('Se permite un máximo de 255 caracteres en la descripción'); }" >{desc_larga}</textarea></td>
+                            </tr>
+                            <tr>
+                              <td>&nbsp;</td>
+                              <td>&nbsp;</td>
+                            </tr>
+                            <tr>
+                              <td> Unidad Medida </td>
+                              <td><select name="fmedida">
+                              <!-- BEGIN DYNAMIC: UNI_MED -->
+                                <option value={ume_id} {ume_tip}>{ume_nombre}</option>
+                              <!-- END DYNAMIC: UNI_MED -->  
+                                </select></td>
+                            </tr>
+                            <tr>
+                              <td> Contenido </td>
+                              <td><input name="contenido" type="text" size="10" value="{contenido}"></td>
+                            </tr>
+                            <tr>
+                              <td>&nbsp;</td>
+                              <td>&nbsp;</td>
+                            </tr>
+                            <tr>
+                              <td>Ranking</td>
+                              <td>{ranking}</td>
+                            </tr>
+                            <tr>
+                              <td>&nbsp;</td>
+                              <td>&nbsp;</td>
+                            </tr>
+                            <tr>
+                              <td>Fecha Creaci&oacute;n </td>
+                              <td>{fec_crea}</td>
+                            </tr>
+                            <tr>
+                              <td>Fecha Ult. Modif. </td>
+                              <td>{fec_act} </td>
+                            </tr>
+                            <tr>
+
+                              <td>Usuario Ult. Mod.</td>
+                              <td>{usr_act}</td>
+                            </tr>
+                            <tr>
+                              <td>&nbsp;</td>
+                              <td>&nbsp;</td>
+                            </tr>
+                            <tr>
+                              <td>&nbsp;</td>
+                              <td><input name="Button" type="submit" class="cmd" value="    Guardar    "> <input name="Button" type="button" class="cmd" value="   Publicar    "> </td>
+                            </tr>
+                          </table>
+                          <br>
+                        <br>
+                      </div>
+                    </div>
+					
+                    <div class="tab-page" id="modulo2">
+                      <h2 class="tab">Im&aacute;genes</h2>
+					  
+                          <div align="left"> <strong>Listado de alertas de validacion de la OP </strong><br />
+                          <br>
+                          <br>
+                          <br>
+                          <table width="80%"  border="0" align="center" cellpadding="0" cellspacing="2">
+                            <tr>
+                              <td width="49%">Im&aacute;gen Minificha </td>
+                              <td width="51%">Im&aacute;gen Ficha </td>
+                            </tr>
+                            <tr>
+                              <td>&nbsp;</td>
+                              <td>&nbsp;</td>
+                            </tr>
+                            <tr>
+                              <td><div align="center"><img name="img_minificha" src="img/logo2.jpg"></div></td>
+                              <td><div align="center"><img name="img_minificha" src="img/logo2.jpg"></div></td>
+                            </tr>
+                            <tr>
+                              <td>&nbsp;</td>
+                              <td>&nbsp;</td>
+                            </tr>
+                            <tr>
+                              <td><input type="file" name="textfield"></td>
+                              <td><input type="file" name="textfield"></td>
+                            </tr>
+                          </table>
+                          <br>
+                          <br>
+                      </div>
+                    </div>
+					
+					
+                    <div class="tab-page" id="modulo3">
+                      <h2 class="tab">Categor&iacute;as</h2>
+					  
+                         <div align="left"> <strong>Listado de Categor&iacute;as a la que pertenece el producto</strong><br />
+                          <br>
+                          <table width="78%"  border="0" align="center" cellpadding="0" cellspacing="2">
+                            <tr>
+                              <td width="50%">Seleccione la categor&iacute;a</td>
+                            </tr>
+                            <tr>
+                              <td><select name="categoria">
+                              <!-- BEGIN DYNAMIC: CATEGORIAS -->
+                                  <option value="{cat_id}" {sel}>{cat_nombre}</option>
+                              <!-- END DYNAMIC: CATEGORIAS -->
+                                  <option>L&aacute;cteos</option>
+                                  <option>Carnes</option>
+                                  <option>Frutas</option>
+                                  <option>Verduras</option>
+                                  <option>----------------------------------------</option>
+                                  <option>SUBIR UN NIVEL</option>
+                                </select>
+                                <input name="Button" type="button" class="cmd" value="Agregar"></td>
+                              <td>Orden</td>
+                              <td><input name="orden" type="text" value="{orden}" size="10"></td>
+                            </tr>
+                          </table>
+                          <br>
+                          <table width="459" border="0" align="center" cellpadding="2" cellspacing="0" class="tabla2">
+                            <tr>
+                              <th width="74">Cod Categ </th>
+                              <th width="325">Nombre</th>
+                              <th width="48">Sel</th>
+                            </tr>
+                            <!-- BEGIN DYNAMIC: CAT_ASOC -->
+                            <tr valign="top">
+                              <td><div align="center">{cod_cat}</div></td>
+                              <td>{nom_cat}</td>
+                              <td><input type="checkbox" name="eli_cat" value="{id_cat}"></td>
+                            </tr>
+                            <!-- END DYNAMIC: CAT_ASOC -->
+                            <tr valign="top">
+                              <td><div align="center">3457</div></td>
+                              <td>Abarrotes/Aceite</td>
+                              <td><input type="checkbox" name="checkbox" value="checkbox"></td>
+                            </tr>
+                            <tr valign="top">
+                              <td><div align="center">3456</div></td>
+                              <td>Abarrotes</td>
+                              <td><input type="checkbox" name="checkbox" value="checkbox"></td>
+                            </tr>
+                            <tr valign="top">
+                              <td><div align="center">3457</div></td>
+                              <td>Abarrotes</td>
+                              <td><input type="checkbox" name="checkbox" value="checkbox"></td>
+                            </tr>
+                            <tr valign="top">
+                              <td><div align="center">3456</div></td>
+                              <td>Abarrotes</td>
+                              <td><input type="checkbox" name="checkbox" value="checkbox"></td>
+                            </tr>
+                          </table>
+                          <table width="63%"  border="0" align="center" cellpadding="0" cellspacing="2">
+                            <tr>
+                              <td width="50%"><div align="right">
+                                  <input name="Button" type="button" class="cmd" value="Desasociar">
+                                </div></td>
+                            </tr>
+                          </table>
+                          <br>
+                      </div>
+                    </div>
+
+                    <div class="tab-page" id="modulo4">
+                      <h2 class="tab">Items</h2>
+					  
+                        <div align="left"> <strong>Items del producto </strong><br />
+                          <br>
+                          <table width="64%"  border="0" align="center" cellpadding="0" cellspacing="2">
+                            <tr>
+                              <td width="34%">C&oacute;d Producto Item</td>
+                              <td width="29%">Desc</td>
+                              <td width="23%">Atributo Diferenciador</td>
+                              <td width="14%">&nbsp;</td>
+                            </tr>
+                            <tr>
+                              <td><input name="cod_prod_it" type="text" value="{cod_prodit}" size="10">
+                              <a href="javascript:popUpWindow('bus_productos.htm', 100, 100, 500, 400);"><img src="img/magnify.jpg" width="16" height="16" border="0"></a> </td>
+                              <td><input name="descrip" type="text" disabled value="{descrip}" size="20"></td>
+                              <td><input name="at_direncia" type="text" size="20"></td>
+                              <td>                                <input name="Button" type="button" class="cmd" value="Agregar"></td>
+                            </tr>
+                          </table>
+                          <br>
+                          <table width="463" border="0" align="center" cellpadding="2" cellspacing="0" class="tabla2">
+                            <tr>
+                              <th width="69">Cod Categ </th>
+                              <th width="227"><div align="left">Descripci&oacute;n</div></th>
+                              <th width="94"><div align="left">Atributo Dif </div></th>
+                              <th width="57">Sel</th>
+                            </tr>
+                            <!-- BEGIN DYNAMIC: ATR_DIF -->
+                            <tr valign="top">
+                              <td><div align="center">{cod_cat}</div></td>
+                              <td>{desc_cat}</td>
+                              <td>{atr_difer}</td>
+                              <td><input type="checkbox" name="des_atdif" value="checkbox"></td>
+                            </tr>
+                            <!-- END DYNAMIC: ATR_DIF -->
+                            <tr valign="top">
+                              <td><div align="center">3457</div></td>
+                              <td>Galletas Trit&oacute;n 120gr Vainilla</td>
+                              <td>Vainilla</td>
+                              <td><input type="checkbox" name="checkbox" value="checkbox"></td>
+                            </tr>
+                            <tr valign="top">
+                              <td><div align="center">3456</div></td>
+                              <td>Galletas Trit&oacute;n 120gr Crema </td>
+                              <td>Crema</td>
+                              <td><input type="checkbox" name="checkbox" value="checkbox"></td>
+                            </tr>
+                            <tr valign="top">
+                              <td><div align="center">3457</div></td>
+                              <td>Galletas Trit&oacute;n 120gr Chocolate </td>
+                              <td>Chocolate</td>
+                              <td><input type="checkbox" name="checkbox" value="checkbox"></td>
+                            </tr>
+                          </table>
+                          <table width="63%"  border="0" align="center" cellpadding="0" cellspacing="2">
+                            <tr>
+                              <td width="50%"><div align="right">
+                                  <input name="Button" type="button" class="cmd" value="Desasociar">
+                                </div></td>
+                            </tr>
+                          </table>
+                          <br>
+                          <br>
+                      </div>
+                    </div>
+					
+                    <div class="tab-page" id="modulo5">
+                      <h2 class="tab">Sugeridos</h2>
+                        <div align="left"> <strong>Productos sugeridos </strong><br />
+                          <br>
+                          <table width="51%"  border="0" align="center" cellpadding="0" cellspacing="2">
+                            <tr>
+                              <td width="42%">C&oacute;d Producto Item </td>
+                              <td width="33%">Tipo Relaci&oacute;n </td>
+                              <td width="25%">&nbsp;</td>
+                            </tr>
+                            <tr>
+                              <td><input name="cod_prod_it" type="text" size="20">
+                                <a href="javascript:popUpWindow('bus_productos.htm', 100, 100, 500, 400);"><img src="img/magnify.jpg" width="16" height="16" border="0"></a>                              </td>
+                              <td><select name="relacion">
+                                  <option value="A=>B" >A =&gt; B</option>
+                                  <option value="AB" >A &lt;=&gt; B</option>
+                                </select>
+                                <img src="img/hint.gif" width="16" height="16"></td>
+                              <td><input name="Enviar" type="submit" value="Agregar"></td>
+                            </tr>
+                          </table>
+                          <br>
+                          <table width="459" border="0" align="center" cellpadding="2" cellspacing="0" class="tabla2">
+                            <tr>
+                              <th width="74">Cod Categ </th>
+                              <th width="325"><div align="left">Descripci&oacute;n</div></th>
+                              <th width="48"><div align="left">Sel</div></th>
+                            </tr>
+                            <!-- BEGIN DYNAMIC: SUGERIDOS -->
+                            <tr valign="top">
+                              <td><div align="center">{cod_cat}</div></td>
+                              <td>{desc}</td>
+                              <td><div align="left">
+                                  <input type="checkbox" name="des_sug" value="{id_prod}">
+                                </div></td>
+                            </tr>
+                            <!-- END DYNAMIC: SUGERIDOS -->
+                            <tr valign="top">
+                              <td><div align="center">3457</div></td>
+                              <td>Papitas Fritas Kryspo Tradicional 80gr </td>
+                              <td><div align="left">
+                                  <input type="checkbox" name="checkbox" value="checkbox">
+                                </div></td>
+                            </tr>
+                            <tr valign="top">
+                              <td><div align="center">3456</div></td>
+                              <td>Cerveza Escudo Lata 350cc </td>
+                              <td><div align="left">
+                                  <input type="checkbox" name="checkbox" value="checkbox">
+                                </div></td>
+                            </tr>
+                          </table>
+                          <table width="63%"  border="0" align="center" cellpadding="0" cellspacing="2">
+                            <tr>
+                              <td width="50%"><div align="right">
+                                  <input name="Button" type="button" class="cmd" value="Desasociar">
+                                </div></td>
+                            </tr>
+                          </table>
+                          <br>
+                      </div>
+                    </div>
+					
+                    <div class="tab-page" id="modulo6">
+                      <h2 class="tab">Log</h2>
+                        <div align="left"> <strong>Log del Producto </strong><br />
+                          <br>
+                          <table width="669" border="0" align="center" cellpadding="2" cellspacing="0" class="tabla2">
+                            <tr>
+                              <th width="95">Fecha </th>
+                              <th width="84"><div align="left">Usuario</div></th>
+                              <th width="359">Descripci&oacute;n</th>
+                            </tr>
+                            <!-- BEGIN DYNAMIC: LOG_PROD -->
+                            <tr valign="top">
+                              <td>{fecha}</td>
+                              <td><div align="left">{usuario}</div></td>
+                              <td>{descripcion}</td>
+                            </tr>
+                            <!-- END DYNAMIC: LOG_PROD -->
+                            <tr valign="top">
+                              <td>05/01/2005 12:32 </td>
+                              <td><div align="left">admin</div></td>
+                              <td>Ingreso Mix Producto </td>
+                            </tr>
+                            <tr valign="top">
+                              <td>19/01/2005 12:32 </td>
+                              <td><div align="left">admin</div></td>
+                              <td>Cambio estado &gt;&gt; Publicado </td>
+                            </tr>
+                            <tr valign="top">
+                              <td>05/08/2005 10:00 </td>
+                              <td><div align="left">admin</div></td>
+                              <td>Actualizaci&oacute;n Producto</td>
+                            </tr>
+                            <tr valign="top">
+                              <td>05/08/2005 10:00</td>
+                              <td><div align="left">admin</div></td>
+                              <td>Cambio estado </td>
+                            </tr>
+                          </table>
+                          <br>
+                          <br>
+                          <br>
+                      </div>
+                    </div>
+					
+                    <div class="tab-page" id="modulo1">
+                      <h2 class="tab">Utilidades</h2>
+                      <div align="left"> <strong>Utilidades Disponibles</strong><br />
+                        <br>
+                        <table width="57%"  border="0" align="center" cellpadding="2" cellspacing="2">
+                          <tr>
+                            <td><div align="center"><a href="javascript:popUpWindow('printframe1.htm', 100, 100, 700, 500);"><img src="img/ico_print.gif" width="34" height="34" border="0"></a> </div></td>
+                            <td><div align="center"><img src="img/ico_print.gif" width="34" height="34"> </div></td>
+                          </tr>
+                          <tr>
+                            <td width="36%"><div align="center">Algo??</div></td>
+                            <td width="36%"><div align="center">Algo??</div></td>
+                          </tr>
+                        </table>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                      </div>
+                    </div>
+                  </div></td>
+              </tr>
+            </table>
+                       <div align="center"><br>
+                         <br>
+                         <br>
+                         <br>
+                       </div>
+          <!-- InstanceEndEditable --></td>
+        </tr>
+      </table>
+      </td>
+  </tr>
+  <tr>
+    <td>
+	<TABLE width="100%" height=19 border=0 align="center" cellpadding="0" cellspacing="0" bgcolor="#f1f0e9" style="border-top:1px solid #ABABAB; border-bottom:1px solid #ABABAB">
+	  <TR>
+		<TD align=center bgcolor="#67b01a" class=infoBL><div align="center">Back Office Central - Jumbo.cl</div></TD>
+		</TR>
+	</TABLE>
+
+	
+	</td>
+  </tr>
+</table>
+</body>
+<!-- InstanceEnd --></html>

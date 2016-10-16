@@ -1,0 +1,44 @@
+<html>
+<head>
+<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="EXPIRES" CONTENT="Mon, 22 Jul 2002 11:12:01 GMT">
+
+<script language="JavaScript" src="funciones.js"></script>
+</head>
+<body bgcolor="white" onLoad="parent.document.frmAgreCat.action.value='AddProdCatWeb';parent.document.frmAgreCat.Envnum.value = 'Agregar';parent.document.frmAgreCat.id_cat.value ='';parent.document.frmAgreCat.orden.value =1000;parent.document.frmAgreCat.nom_cate.value = '';parent.document.frmAgreCat.rad_pago[1].checked=true;">
+<script>
+	function editar(id_cat,nom_cat,orden, con_pago, procat_id){
+		parent.parent.document.frmAgreCat.id_cat.value = id_cat;
+		parent.parent.document.frmAgreCat.id_cat.disabled = true;
+		parent.parent.document.frmAgreCat.orden.value = orden;
+		parent.parent.document.frmAgreCat.nom_cate.value = nom_cat;
+		parent.parent.document.frmAgreCat.action.value='ModProdCatWeb';
+		parent.parent.document.frmAgreCat.procat_id.value = procat_id;
+		parent.parent.document.frmAgreCat.Envnum.value = 'Actualizar';
+		if(con_pago == 'Si'){
+			parent.document.frmAgreCat.rad_pago[0].checked=true;
+		}else{
+			parent.document.frmAgreCat.rad_pago[1].checked=true;
+		}
+		 
+	}
+</script>
+<link href="estilos.css" rel="stylesheet" type="text/css">
+<table border="574" align="center" cellpadding="2" cellspacing="0" class="tabla2" >
+{mensaje}
+	<!-- BEGIN DYNAMIC: CATEG -->
+	<tr valign="top">
+		<td width="55"><div align="center">{id_categ}</div></td>
+		<td width="176">{nom_categ}</td>
+		<td width="175">{nom_categ_padre}</td>
+	    <td width="58">{orden}</td>
+	    <td width="58">{con_pago}</td>
+	    <td width="25"><a href="javascript:editar({id_categ},'{nom_categ}',{orden},'{con_pago}',{procat_id});" ><img src='img/editicon.gif' border=0></a></td>
+	    <td width="25"><a href="javascript:validar_eliminar('{confirmacion}','ModSupCatProduct?id_prod={id_prod}&id_cat={id_categ}&origen=PROD&url='+escape('{direc}')); for(var i=0;i<40000; i++); {targ} "><img src='img/trash.gif' border=0 ></a></td>
+	</tr>
+	<!-- END DYNAMIC: CATEG -->
+</table>
+{mns}
+</body>
+</html>                           

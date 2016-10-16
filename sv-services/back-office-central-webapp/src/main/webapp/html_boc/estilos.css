@@ -1,0 +1,306 @@
+body {
+	background-color: #DCDCDC;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px; /*line-height: 24px;*/
+	color: #336699;
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+}
+
+td, th {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px; /*line-height: 24px;*/
+}
+
+ul {
+	padding-left: 0px;
+	margin-left: 20px;
+}
+li {
+	padding-left: 0px;
+	margin-left: 0px;
+}
+
+
+a {
+	color: #3366CC;
+	text-decoration: none;
+}
+
+form {
+	background-color: #FFFFFF;
+}
+
+.title {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 16px;
+	line-height: 24px;
+	background-color: #CCCCCC;
+	color: #EC0035;
+	text-decoration: none;
+	font-weight: bold;
+	padding-left: 10px;
+}
+
+.infoRj {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	line-height: 15px;
+	font-weight: bolder;
+	color: #EC0035;
+	margin-left: 10px;
+}
+
+.header {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 24px;
+	background-color: #006666;
+  color: #DCDCDC;
+}
+
+.nav {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+  font-weight: bold;
+	background-color: #CCCCCC;
+}
+
+.navLink {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	font-weight: bold;
+	background-color: #DEDECA;
+}
+
+.sidebar {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	line-height: 18px;
+	padding: 3px;
+	background-color: #FFFFFF;
+}
+
+.sidebarHeader {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 16px;
+	line-height: 24px;
+	color: #FFFFFF;
+	background-color: #339999;
+}
+
+.sidebarFooter {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	line-height: 18px;
+	background-color: #CCCCCC;
+}
+
+.footer {
+  font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	font-weight: bold;
+	line-height: 22px;
+	color: #333333;
+	background-color: #CCCCCC;
+}
+
+.legal {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 9px;
+	color: #333333;
+}
+
+.box1 {
+	border-color: #CCCCCC #333333 #333333 #CCCCCC;
+	border-width: medium;
+  border-style: ridge;
+}
+
+.promo {
+	font-family: "Times New Roman", Times, serif;
+	color: #000033;
+}
+
+.titlebar {
+	font-family: "Times New Roman", Times, serif;
+	font-size: 9px;
+	color: #FFFFFF;
+  background-color: #336699;
+}
+
+.dingbat {
+	font-family: Arial, Helvetica, sans-serif;
+	background-color: #99CC99;
+  color: #006666; 
+	font-weight: bolder;
+	font-size: medium;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+select {
+	font-size: 10px;
+}
+
+input {
+	font-size: 10px;
+}
+
+input.big {
+	width: 200px;
+}
+
+input.small {
+	width: 60px;
+}
+
+
+.tabla1
+{
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #000000;
+	border: 0px #FFFFFF;
+}
+	
+.tabla1 th
+{
+	background-color: #badb8a;
+	font: 10px Tahoma, Verdana, Arial, Helvetica, sans-serif;
+	font-weight: bold;
+	color: #546081;
+	padding: 3px;
+	border: 1pt solid #ABAFD8;
+}
+
+.tabla1 td {
+	border: 1px solid #D3D6EB;
+}
+
+.tabla1 tr.encabezado {background-color: #BCBCBC;}
+
+.tabla1 tr.trclaro {background-color: #FFFFFF;}
+.tabla1 tr.trobscuro {background-color: #EFEFDF;}/*#DEDEDE*/
+
+.tabla1 td.tdclaro {background-color: #FFFFFF;}
+.sub_caja {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-style: normal;
+	color: #FFFFFF;
+	font-weight: bold;
+}
+
+.tabla1 td.tdobscuro {background-color: #EFEFDF;}/*#DEDEDE*/
+
+.tabla2
+{
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #000000;
+	background-color:#DEDEDE;
+}
+
+.tabla2 td
+{
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #000000;
+	background-color:#FFFFFF;
+}
+
+
+.userinput {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	font-style: normal;
+	font-weight: bolder;
+	color: #434D67;
+}
+
+
+.tabla2
+{
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #000000;
+	border: 0px #FFFFFF;
+	border-spacing: 0px;
+}
+.subt_rojo {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	font-weight: bold;
+	color: #EC0035;
+	padding-left: 10px;
+	padding-top: 10px;
+}
+
+	
+.tabla2 th
+{
+	background-color: #badb8a;
+	font: 10px Tahoma, Verdana, Arial, Helvetica, sans-serif;
+	font-weight: bold;
+	color: #555555;
+	padding: 3px;
+	border: 0pt solid #ABAFD8;
+	border-top: 1px solid #67b01a;
+	border-bottom: 1px solid #67b01a;
+	border-spacing: 0px;
+	vertical-align:top;
+}
+
+.tabla2 td {
+	border: 0px solid #D3D6EB;
+	border-bottom: 1px solid #badb8a;
+}
+
+select {
+	font-size: 9px;
+}
+
+.select1 {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 9px;
+	color: #000000;
+	border: 0px #FFFFFF;
+}
+
+
+.boton1 {
+	font-size: 10px;
+	color: #000000;
+	background-color: #FF0000;
+}
+.infoBL {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	font-style: normal;
+	font-weight: normal;
+	color: #FFFFFF;
+	margin-left: 10px;
+}
+.infoVR {
+
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	font-style: normal;
+	font-weight: normal;
+	color: #349E9C;
+}
+
+.ContentTitle {background-color:#F5F5F5;height:;padding:0px;padding-left:6px;color:#CCCCCC;font-size:12px;border-width:0px;border-style:solid;border-bottom-width:1px;border-color:#EFEFEF;} 
+.HeaderTitle {background-color:;padding:7px;color:#666666;font-size:12px;font-weight:800;vertical-align:middle;border-width:0px;} 
+
+.MensageRojo {background-color:;padding:7px;color:#CC0000;font-size:12px;font-weight:800;vertical-align:middle;border-width:0px;} 
+
+
+Select {font-family:verdana;font-size:10px;color:#000066;background-color:;} 
+Input {font-family:verdana;font-size:10px;color:#000066;background-color:;background-image:url('img/bk_input1.gif');} 
+Input:password {font-family:verdana;font-size:10px;color:#000066;background-color:;} 
+Textarea {font-family:verdana;font-size:10px;color:#000066;background-color:;}
+.cmd {font-family:verdana;font-size:10px;color:#333366;letter-spacing:0;cursor:pointer;cursor:hand;background-image:url('img/bk_button.gif');background-color:#FFFFFF;border-width:1px;border-color:#CCCCCC;}

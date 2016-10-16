@@ -1,0 +1,237 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="EXPIRES" CONTENT="Mon, 22 Jul 2002 11:12:01 GMT">
+<title>Jumbo.cl Back Office Central</title>
+<link href="estilos.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+<!--
+.style1 {color: #666666}
+-->
+</style>
+<script language="JavaScript">window.name='winrutapedido'</script>
+<script language="JavaScript" src="prototype.js"></script>
+<script type="text/javascript" src="js/pedidoRuta.js"></script>
+<script type="text/javascript" src="popup.js"></script>
+<link rel="stylesheet" href="menu/menu.css" />
+</head>
+
+<body>
+<script language="JavaScript" src="menu/menu.js"></script>
+<script language="JavaScript" src="menu/menu_tpl.js"></script>
+<script language="JavaScript" src="menu/menu_items.js"></script>
+<table width="780" height="100%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+    <td height="78" valign="top">
+
+	<TABLE width="100%" height=59 border=0 align="center" cellpadding="0" cellspacing="0" bgcolor="#ffffff">
+	  <TR>
+		<TD width=275 height="59" align=left class=user><img src="img/header2.jpg" width="275" height="60"></TD>
+		<TD width=505 align=left valign="bottom" background="img/bg-1.jpg" class=user><table width="90%"  border="0" align="center" cellpadding="0" cellspacing="2">
+          <tr>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td><div align="right" class="infoBL">Usuario: {hdr_nombre}&nbsp;&nbsp;| {hdr_fecha}</div></td>
+          </tr>
+        </table></TD>
+	  </TR>
+	</TABLE>
+	<TABLE width="100%" height=19 border=0 align="center" cellpadding="0" cellspacing="0" bgcolor="#f1f0e9" style="border-top:1px solid #ABABAB; border-bottom:1px solid #ABABAB">
+	  <TR>
+		<TD align=left bgcolor="#FFFFFF" class=user></TD>
+		</TR>
+	</TABLE>
+	</td>
+  </tr>
+  <tr>
+    <td valign="top" bgcolor="#FFFFFF">
+      <table border=0 width="100%" class='ContentTitle'>
+        <tr>
+          <td width="53%" height="20" class='HeaderTitle'> Detalle del Pedido 
+            {id_pedido} de la Ruta {id_ruta}</td>
+          <td width="47%" class='HeaderTitle'><div align="right"><a href="ViewDetRuta?id_ruta={id_ruta}"><img src="img/volver.gif" width="32" height="32" border="0"></a></div></td>
+        </tr>
+      </table>	  
+      <br />
+	  <table border="0" width="90%" align="center">
+        <tr> 
+          <td width="30%">N° OP</td>
+          <td width="1%">:</td>
+          <td width="69%">{id_pedido} 
+            <input type="hidden" name="id_pedido" id="id_pedido" value="{id_pedido_real}" /></td>
+        </tr>
+        <tr> 
+          <td>ID Ruta</td>
+          <td>:</td>
+          <td>{id_ruta}
+            <input type="hidden" name="id_ruta" id="id_ruta" value="{id_ruta}" /></td>
+        </tr>
+        <tr> 
+          <td>Fecha y Hora de Despacho</td>
+          <td>:</td>
+          <td>{fecha_hora_desp}</td>
+        </tr>
+        <tr> 
+          <td>Zona de Despacho</td>
+          <td>:</td>
+          <td>{zona}</td>
+        </tr>
+        <tr> 
+          <td>Tipo de pedido</td>
+          <td>:</td>
+          <td>{tipo_pedido}</td>
+        </tr>
+        <tr> 
+          <td>Tipo Despacho</td>
+          <td>:</td>
+          <td>{tipo_despacho}</td>
+        </tr>
+        <tr> 
+          <td>Costo despacho</td>
+          <td>:</td>
+          <td>{costo_despacho}</td>
+        </tr>
+        <tr> 
+          <td>&iquest;Reprogramada?</td>
+          <td>:</td>
+          <td>{reprogramada}</td>
+        </tr>
+        <tr> 
+          <td>Local</td>
+          <td>:</td>
+          <td>{local}</td>
+        </tr>
+        <tr> 
+          <td>Usuario editor</td>
+          <td>:</td>
+          <td><font color="#FF0000">{editor}</font></td>
+        </tr>
+        <tr> 
+          <td height="6"></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr> 
+          <td>Chofer</td>
+          <td>:</td>
+          <td>{chofer}</td>
+        </tr>
+        <tr> 
+          <td>Patente</td>
+          <td>:</td>
+          <td>{patente}</td>
+        </tr>
+        <tr> 
+          <td height="6"></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr> 
+          <td>Nombre Cliente</td>
+          <td>:</td>
+          <td>{nombre_cli}</td>
+        </tr>
+        <tr> 
+          <td>RUT Cliente</td>
+          <td>:</td>
+          <td>{rut_cli}</td>
+        </tr>
+        <tr> 
+          <td>Tel&eacute;fono Contacto Cliente</td>
+          <td>:</td>
+          <td>{fono1_cli}&nbsp;&nbsp;&nbsp;&nbsp; {fono2_cli}</td>
+        </tr>
+        <tr> 
+          <td>Direcci&oacute;n</td>
+          <td>:</td>
+          <td>{direc_cli}</td>
+        </tr>
+        <tr> 
+          <td>Comuna</td>
+          <td>:</td>
+          <td>{comuna_cli}</td>
+        </tr>
+        <tr> 
+          <td height="6"></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr> 
+          <td>Fecha y Hora Llegada a Domicilio</td>
+          <td>:</td>
+          <td>{fc_hora_llegada}</td>
+        </tr>
+        <tr> 
+          <td>Fecha y Hora Salida de Domicilio</td>
+          <td>:</td>
+          <td>{fc_hora_salida}</td>
+        </tr>
+        <tr> 
+          <td>Cumplimiento</td>
+          <td>:</td>
+          <td>{atrasado}</td>
+        </tr>
+        <tr> 
+          <td height="6"></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Tipo de Documento</td>
+          <td>:</td>
+          <td>{tipo_doc}</td>
+        </tr>
+        <tr> 
+          <td>N&uacute;mero de Documento</td>
+          <td>:</td>
+          <td>{num_docs}</td>
+        </tr>
+        <tr> 
+          <td>Monto total de Compra</td>
+          <td>:</td>
+          <td>{monto}</td>
+        </tr>
+        <tr> 
+          <td>Fecha y Hora de compra</td>
+          <td>:</td>
+          <td>{fc_hora_compra}</td>
+        </tr>
+      </table>
+	  
+	  <!-- BEGIN DYNAMIC: BOTONES -->
+	  <br/>
+	  <table border="0" width="90%" align="center">
+        <tr> 
+          <td width="25%" align="center">
+		  <input type="button" onclick="javascript:aReprogramar({alertar},'{estado}','{id_pedido_real}','{id_ruta}');" value="Reprogramar OP" style="width:130px" name="reprg" {disabled_reprogramar} />
+		  </td>
+          <td width="25%" align="center"><input type="button" name="bt4" value="Cambiar Estado OP" style="width:130px" onClick="javascript:cambiarEstado();" {disabled_estado} /></td>
+        </tr>
+      </table>
+	  <!-- END DYNAMIC: BOTONES -->
+     	  
+	  <br/>
+	   </td>
+  </tr>
+</table>
+<table width="780" height=19 border=0 align="left" cellpadding="0" cellspacing="0" bgcolor="#f1f0e9" style="border-top:1px solid #ABABAB; border-bottom:1px solid #ABABAB">
+	  <tr>
+		<td align=center bgcolor="#67b01a" class=infoBL><div align="center">Back Office Central - Jumbo.cl</div></td>
+		</tr>
+	</table>
+	
+	
+<div id="loading" style="display:none">
+	<table style="Z-INDEX: 500; LEFT: 0; POSITION: absolute; TOP: 0" cellSpacing="0" cellPadding="0" border="0" id="tabla_loading">
+		<tr>
+			<td width="75" height="25" bgcolor="#FF0000">&nbsp;&nbsp;&nbsp;<font color="#FFFFFF"><b>Cargando...</b></font></td>
+		</tr>
+	</table>
+</div>
+</body>
+</html>

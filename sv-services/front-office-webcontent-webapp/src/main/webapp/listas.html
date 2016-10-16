@@ -1,0 +1,272 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Jumbo.cl - {titulo_marco}</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<meta name="description" content="Sitio online de la cadena de supermercados e hipermercados Jumbo. Venta online de productos" />
+<meta name="keywords" content="Jumbo, Supermercado, supermercado, supermercado online, Mas Jumbo, Hipermercado, productos, comida, abastecimiento, puntos mas, Cencosud, Almacenes Paris, Paris, Santa Isabel, Easy, Circulo mas, vinos, carnes, frutas, verduras, lacteos, pescados, mariscos, abarrotes, mercaderia a domicilio, marcas propias jumbo, locales, ofertas, promociones, Servicios, Rincon Jumbo, Visitas Guiadas, Servicios Especiales, Jumbo Va, Seguridad, Venta Empresas, nuestros clubes jumbo, Club Madre e Hijo, Club Jumbito, Plug and Play, recetas, consejos utiles, 5 es vida, venta empresas, supercash, cajas de regalo, catalogo online de productos, compra online, jumbo mas, jumbo blog" />
+<meta name="robots" content="index, follow" />
+<meta http-equiv="CACHE-CONTROL" content="NO-CACHE" />
+<meta http-equiv="PRAGMA" content="NO-CACHE" />
+<meta http-equiv="EXPIRES" content="Mon, 22 Jul 2002 11:12:01 GMT" />
+<link rel="shortcut icon" href="/FO_IMGS/img/favicon.ico" />
+
+<link href="/FO_WebContent/css/estilostextos.css" rel="stylesheet" type="text/css" />
+<link type="text/css" rel="stylesheet" href="/FO_WebContent/css/listas.css" />
+<link href="/FO_WebContent/css/sustitutos.css" rel="stylesheet" type="text/css" />
+<link type="text/css" rel="stylesheet" href="/FO_WebContent/css/acordeon_paso1.css" />
+
+<script type="text/javascript" src="/FO_WebContent/js/flashobject.js"></script>
+<script type="text/javascript" src="/FO_WebContent/js/prototype.js"></script>
+<script type="text/javascript" src="/FO_WebContent/js/funciones.js"></script>
+<script type="text/javascript" src="/FO_WebContent/js/listas.js"></script>
+<script type="text/javascript" src="/FO_WebContent/js/layer.js"></script>
+<script type="text/javascript" src="/FO_WebContent/js/effects.js"></script>
+<script type="text/javascript" src="/FO_WebContent/js/accordion.js"></script>
+
+<!--[if IE]>
+<style type="text/css">
+#acor_lista_de_productos {
+	width: 97%;
+}
+</style>
+<![endif]-->
+
+
+</head>
+
+<body onload="MM_preloadImages('/FO_IMGS/img/estructura/sustitutos/bt_volverb.gif');onLoadListas();">
+<div id="contenedor">
+	<div id="header"></div>
+	<div class="margen_verde">{titulo_marco}</div>
+	<div id="contenido">
+		<div id="sustitutos">
+			<p><div id="banner" align="center"></div></p>
+      <p>
+	  {texto}
+	  <!--
+	  Para comprar las Listas Precargadas, sigue estos simples pasos:<br/>
+	  &nbsp;&nbsp;1. Elige un Grupo de Listas.<br/>
+	  &nbsp;&nbsp;2. Selecciona del primer recuadro todas las Listas que quieras comprar.<br/>
+	  &nbsp;&nbsp;3. En el segundo recuadro aparecer&aacute;n todos los productos asociados a las Listas seleccionadas, si deseas puedes modificar las cantidades de los productos solicitados.<br/>
+	  &nbsp;&nbsp;4. Una vez seguro de los productos y cantidades que quieres llevar, agrega los productos a tu Carro de Compras.
+	  -->
+	  </p>
+						
+			<p>
+			&nbsp;<b>Grupo de Listas:</b><br/>
+			&nbsp;<select name="id_grupo" id="id_grupo" style="width: 300px; height: 20px;" class="sel_combox" onchange="javascript:llenarListas();">
+			<!-- BEGIN DYNAMIC: GRUPOS -->
+				<option value="{id_grupo}">{nombre}</option>
+			<!-- END DYNAMIC: GRUPOS -->
+			</select>
+			</p>
+			<form name="form1" method="post" action="UltComprasForm">
+				<table width="99%" border="0" cellspacing="0" cellpadding="0" align="center">
+					<tr>
+						<td width="6" height="28" align="left"><img src="/FO_IMGS/img/estructura/paso1/tb_izq.gif" width="4" height="28" alt=""/></td>
+						
+            <td width="100%" height="28" style="background-image: url(/FO_IMGS/img/estructura/paso1/fn_tb.gif)" class="tit_listas">:: 
+              Listas</td>
+						<td width="4" height="28" align="right"><img src="/FO_IMGS/img/estructura/paso1/tb_der.gif" width="4" height="28" alt=""/></td>
+					</tr>
+					<tr>
+						<td colspan="3" class="td_lista_de_compras"><div id="el_listado_de_compras"></div></td>
+					</tr>
+					<tr>
+						<td width="6" height="7"><img src="/FO_IMGS/img/estructura/paso1/tb_izq_ab.gif" width="4" height="7" alt=""/></td>
+						<td height="7" style="background: url(/FO_IMGS/img/estructura/paso1/fn_tb_ab.gif);"></td>
+						<td width="54" height="7"><img src="/FO_IMGS/img/estructura/paso1/tb_der_ab.gif" width="4" height="7" alt=""/></td>
+					</tr>
+				</table>
+			</form>
+			<a name="producto_listado"></a>
+			
+			<table>
+				<tr>
+					<td width="60%" height="30">
+					<span class="tituloDespacho">Los productos disponibles en Jumbo.cl son:</span>
+					</td>
+					<td width="40%">					
+						<div id="msg" style="display:none;"> 
+							<b class="rtop">
+								<b class="r1"></b><b class="r2"></b><b class="r3"></b><b class="r4"></b>
+							</b> 
+							<div id="msg_respuesta"></div>
+							<b class="rbottom">
+								<b class="r4"></b><b class="r3"></b><b class="r2"></b><b class="r1"></b>
+							</b> 
+						</div>					
+					</td>
+				</tr>
+			</table>
+			
+			
+			
+			
+			
+			<form name="fp" id="fp" method="post" action="OrderItemAdd">
+				<table width="99%" border="0" cellspacing="0" cellpadding="0" align="center">
+					<tr>
+						<td width="4" height="35" align="left"><img src="/FO_IMGS/img/estructura/paso1/tb2_izq.gif" width="4" height="35" alt="" /></td>
+						<td width="100%" height="35" valign="top">
+							<div id="seleccionar_todos">
+								<table width="100%" border="0" cellpadding="0" cellspacing="0">
+									<tr>
+										<th width="102" height="35" class="tit_tb2" >Cantidad</th>
+										<th class="tit_tb2" height="35">Producto</th>
+										<th class="tit_tb2" width="50" height="35">Notas</th>
+										<th class="tit_tb2" width="60" height="35">C&oacute;digo</th>
+										<th class="tit_tb2" width="100" height="35">*Precio<br/>Unitario</th>
+										<th class="tit_tb2" width="20" height="35"><input type="checkbox" name="todos" id="todos" value="checkbox" onclick="selectall();" /></th>
+										<th class="tit_tb2" width="70" height="35">Seleccionar<br/>Todos</th>
+									</tr>
+								</table>
+							</div>
+						</td>
+						<td width="4" height="35" align="right" valign="top"><img src="/FO_IMGS/img/estructura/paso1/tb2_der.gif" width="4" height="35" alt="" /></td>
+					</tr>
+					<tr>
+						<td colspan="3" class="td_lista_de_productos"><div id="el_listado_de_productos"></div></td>
+					</tr>
+					<tr>
+						<td width="4" align="left" valign="top"><img src="/FO_IMGS/img/estructura/paso1/tb2_izq_ab.gif" width="4" height="48" alt=""/></td>
+						<td valign="middle"  height="48" style="background: url(/FO_IMGS/img/estructura/paso1/fn_tb2_ab.gif);">
+							<table width="100%" border="0" cellpadding="2" cellspacing="0">
+								<tr>
+									<td width="50%" align="left">
+									<!--
+										<a href="javascript:pageTracker._trackPageview('/FO/paso1/botones/imprimir');imprimir();"><img src="/FO_IMGS/img/estructura/paso1/bt_imp.gif" border="0" alt="Imprimir" title="Imprimir"/></a>
+										<a href="javascript:pageTracker._trackPageview('/FO/paso1/botones/exportar');exportar();"><img src="/FO_IMGS/img/estructura/paso1/bt_excel.gif" border="0" alt="Exportar" title="Exportar"/></a>
+									-->
+									</td>
+									<td width="50%" align="right">
+										<!--a href="javascript:agregar_carro();pageTracker._trackPageview('/FO/paso1/botones/agregar_carro');" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image18','','/FO_IMGS/img/estructura/paso1/bt_agregar_carrob.jpg',1)"><img src="/FO_IMGS/img/estructura/paso1/bt_agregar_carro.jpg" name="Image18" border="0" id="Image18" alt="Agregar productos al Carro" title="Agregar al Carro"/></a-->
+										<a href="javascript:agregar_carro();pageTracker._trackPageview('/FO/listas/{titulo_marco}/agregar');" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image18','','/FO_IMGS/img/estructura/paso1/bt_agregar_carrob.jpg',1)"><img src="/FO_IMGS/img/estructura/paso1/bt_agregar_carro.jpg" name="Image18" border="0" id="Image18" alt="Agregar productos al Carro" title="Agregar al Carro"/></a>
+										</td>
+								</tr>
+							</table>
+						</td>
+						<td width="4" align="right" valign="top"><img src="/FO_IMGS/img/estructura/paso1/tb2_der_ab.gif" width="4" height="48" alt=""/></td>
+					</tr>
+				</table>
+			</form>			
+		</div>
+		<div class="bts">
+			<div class="bt_volver">
+				<a href="javascript:salir('{from}');" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('volver','','/FO_IMGS/img/estructura/sustitutos/bt_volverb.gif',1)">
+					<img src="/FO_IMGS/img/estructura/sustitutos/bt_volver.gif" name="volver" width="84" height="39" border="0" id="volver" alt="" />
+				</a>				
+			</div>			
+		</div>
+	</div>
+	<div id="footer">
+		<img src="/FO_IMGS/img/estructura/abajo2.gif" width="700" height="14" alt=""/>
+		<div class="footer">
+			<a href="http://www.jumbo.trabajando.com/" target="_blank">Trabaje en Jumbo</a> | <a href="http://www.jumbo.cl/supermercado/contactenos/proveedores.html" target="_blank">Sea Proveedor</a> | <a href="http://www.jumbo.cl/supermercado/contactenos/index.html" target="_blank">Contacto</a> | <a href="http://www.jumbo.cl/supermercado/familia_jumbo/index.html" target="_blank">Compa&ntilde;&iacute;a</a> | <a href="/FO_WebContent/seguridad.html" target="_blank">Seguridad y Privacidad </a> | <a href="http://www.jumbo.cl/supermercado/terminos/terminos.html" target="_blank">T&eacute;rminos del Servicio</a> | <a href="http://www.jumbo.cl/supermercado/preguntas/preguntas.html" target="_blank">Preguntas Frecuentes</a> | <a href="/FO_WebContent/tour.html">Tour Virtual</a>
+		</div>
+		<span class="style1"><br /><br />
+			Servicio de Atenci&oacute;n al Cliente 600 400 3000 | Ayuda Internet 600 400 3000  |  Tarjeta M&aacute;s Jumbo  600 600 0505<br />
+			Copyright&copy; Cencosud 2006 | Sitio Desarrollado para Internet Explorer 6  |  Para ver el sitio necesita el<a href="http://www.macromedia.com/go/getflashplayer" target="_blank"> Plug in de Flash.</a>
+		</span>
+		<p>
+			<a href="http://validator.w3.org/check?uri=referer">
+				<img src="/FO_IMGS/images/nuevojumbo/valid-xhtml10.png" alt="Valid XHTML 1.0 Transitional" title="Valid XHTML 1.0 Transitional" border="0" height="31" width="88" />
+			</a>
+		</p>
+	</div>
+</div>
+
+</form>
+
+<div id="ventana_ficha"> 
+  <div id="dragbar3" onmousedown="javascript:initializedrag(event,'ventana_ficha','dragbar3');" style="cursor:move;"> 
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr> 
+        <td width="3%" align="left" valign="top" bgcolor="#7ABD09"><img src="/FO_IMGS/img/ficha/tabla-sup-izq.gif" width="5" height="4" alt=""/></td>
+        <td width="79%" height="30" valign="middle" bgcolor="#7ABD09"><span class="rescateCompras">PRODUCTO</span></td>
+        <td width="15%" align="right" bgcolor="#7ABD09"> <a href="javascript:hideFichaProducto();" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('imageFicha','','/FO_IMGS/img/estructura/bt_cerrar-verde.gif',1)"> 
+          <img src="/FO_IMGS/img/estructura/bt_cerrar-verde.gif" name="imageFicha" width="30" height="25" border="0" id="imageFicha" alt=""/> 
+          </a> </td>
+        <td width="3%" align="right" valign="top" bgcolor="#7ABD09"><img src="/FO_IMGS/img/ficha/tabla-sup-der.gif" width="6" height="4" alt=""/></td>
+      </tr>
+    </table>
+  </div>
+  <div id="fichaproducto"> 
+    <iframe name="frm_ficha" id="frm_ficha" src="../fichaprueba.html" frameborder="0" width="450px" height="421px" scrolling="no"></iframe>
+  </div>
+</div>
+
+<div id="comentarioproducto"> 
+  <table width="395" border="0" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF">
+    <tr> 
+      <td> <div id="dragbar4" onmousedown="javascript:initializedrag(event,'comentarioproducto','dragbar4');" style="cursor:move;"> 
+          <table width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr> 
+              <td width="3%" align="left" valign="top" bgcolor="#7ABD09"><img src="/FO_IMGS/img/ficha/tabla-sup-izq.gif" width="5" height="4" alt=""/></td>
+              <td width="79%" height="30" valign="middle" bgcolor="#7ABD09"><span class="rescateCompras">NOTAS 
+                PARA LA PREPARACI&Oacute;N DE TU PEDIDO</span></td>
+              <td width="15%" align="right" bgcolor="#7ABD09"> <a href="javascript:hideComentario();" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('imageComentarioProd','','/FO_IMGS/img/estructura/bt_cerrar-verde.gif',1)"> 
+                <img src="/FO_IMGS/img/estructura/bt_cerrar-verde.gif" name="cerrar" width="30" height="25" border="0" id="imageComentarioProd" alt=""/> 
+                </a> </td>
+              <td width="3%" align="right" valign="top" bgcolor="#7ABD09"><img src="/FO_IMGS/img/ficha/tabla-sup-der.gif" width="6" height="4" alt=""/></td>
+            </tr>
+          </table>
+        </div>
+        <table width="200" border="0" cellspacing="0" cellpadding="0" class="TablaFicha">
+          <tr> 
+            <td><iframe name="frm_comentarios" id="frm_comentarios" src="#" frameborder="0" width="395" height="200" scrolling="auto"></iframe></td>
+          </tr>
+        </table>
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr> 
+            <td width="5" height="5" align="left" valign="bottom"><img src="/FO_IMGS/img/ficha/tabla-inf-izq.gif" width="5" height="5" alt=""/></td>
+            <td style="background: url(/FO_IMGS/img/ficha/tabla-inferior.gif);"><img src="/FO_IMGS/img/ficha/tabla-inferior.gif" width="1" height="5" alt=""/></td>
+            <td style="background: url(/FO_IMGS/img/ficha/tabla-inferior.gif);"><img src="/FO_IMGS/img/ficha/tabla-inferior.gif" width="1" height="5" alt=""/></td>
+            <td width="6" height="5" align="right" valign="bottom"><img src="/FO_IMGS/img/ficha/tabla-inf-der.gif" width="6" height="5" alt=""/></td>
+          </tr>
+        </table></td>
+    </tr>
+  </table>
+</div>
+<div id="loading" style="display:none;">
+  <table cellpadding="0" cellspacing="0" border="0" style="font: 10px Verdana, Geneva, Arial, Helvetica, sans-serif; z-index: 500;">
+    <tr>
+	  <td><img src="/FO_IMGS/images/nuevojumbo/loading_left.gif" height="50" width="6" alt=""/></td>
+	  <td style="background: url(/FO_IMGS/images/nuevojumbo/loading_center.gif); width:100px; text-align: center;vertical-align: middle;"><strong>Cargando...</strong></td>
+	  <td><img src="/FO_IMGS/images/nuevojumbo/loading_right.gif" height="50" width="6" alt=""/></td>
+	</tr>
+  </table>
+</div>
+
+<script language="JavaScript">
+$("loading").style.position = 'absolute';
+$("loading").style.width = '112px';
+$("loading").style.height = '50px';
+$("loading").style.zIndex = 50;
+
+var bn = new FlashObject("/FO_IMGS/img/listas/{banner}", "animationName", "664", "97", "8", "#FFFFFF");
+bn.addParam("allowScriptAccess", "sameDomain");
+bn.addParam("quality", "high");
+bn.addParam("scale", "noscale");
+bn.write("banner");
+
+var globalCallbacks = {
+                onCreate: function() {
+					var ypos = document.documentElement.scrollTop ? document.documentElement.scrollTop : document.body.scrollTop;
+					$("loading").style.left = (screen.availWidth-112)/2 + 'px';
+					$("loading").style.top = (screen.availHeight-200)/2 + ypos - 50 + 'px';
+					$("loading").show();
+                },
+                onComplete: function() {
+                        if(Ajax.activeRequestCount == 0){
+                                $("loading").hide();
+                        }
+                }
+        };
+Ajax.Responders.register( globalCallbacks );
+</script>
+
+
+</body>
+</html>

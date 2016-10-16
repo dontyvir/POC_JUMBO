@@ -1,0 +1,43 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>cl.jumbo.process</groupId>
+        <artifactId>sv-process</artifactId>
+        <version>2.0.12-SNAPSHOT</version>
+    </parent>
+    <artifactId>process-mails</artifactId>
+    <dependencies>
+        <dependency>
+            <groupId>javax.mail</groupId>
+            <artifactId>mail</artifactId>
+        </dependency>
+    </dependencies>
+    
+    <build>
+        <finalName>process-mails</finalName>
+    	<filters>
+            <filter>src/main/filters/${deployEnvironment}.properties</filter>
+        </filters>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+        <plugins>
+	        <plugin>
+	            <groupId>org.apache.maven.plugins</groupId>
+	            <artifactId>maven-jar-plugin</artifactId>
+	            <configuration>
+	                <archive>
+	                    <manifest>
+	                        <addClasspath>true</addClasspath>
+	                        <classpathPrefix>lib/</classpathPrefix>
+	                        <mainClass>cl.jumbo.process.EnvioMailsProcess</mainClass>
+	                    </manifest>
+	                </archive>
+	            </configuration>
+	        </plugin>
+        </plugins>
+    </build>
+</project>

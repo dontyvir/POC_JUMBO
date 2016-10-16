@@ -1,0 +1,102 @@
+/* --- menu styles ---
+note:
+	not all browsers render styles the same way so try out your style sheet
+	on different browsers before publishing;
+*/
+/* level 0 inner */
+.m0l0iout {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	text-decoration: none;
+	text-align:center;
+	FONT-WEIGHT: normal; 
+	padding: 0px;
+	color: #FFFFFF;/* 0f3290 #FFFFFF;*/
+}
+.m0l0iover {
+	text-decoration: none;
+	text-align:center;
+	FONT-WEIGHT: normal;
+	padding: 0px;
+	color: #FFFFFF; /* 0f3290 */
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px;
+}
+
+/* level 0 outer */
+.m0l0oout {
+	text-decoration : none;
+	border : 1px solid #badb8a; /*#4682B4;*/
+	background-color: #badb8a;
+	color: #FFFFFF;
+}
+.m0l0oover {
+	text-decoration : none; /* EFB505 #FFCC00;*/
+	background-color: #67b01a;
+	border-top-width: 1px;
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-left-width: 1px;
+	border-top-style: solid;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-left-style: solid;
+	border-top-color: #67b01a;
+	border-right-color: #67b01a;
+	border-bottom-color: #67b01a;
+	border-left-color: #67b01a;
+}
+
+/* level 1 inner */
+.m0l1iout {
+	text-indent:4px;
+	text-decoration: none;
+	FONT-WEIGHT: normal;
+	padding: 0px;
+	color: #000000; /* 0f3290 #FFFFFF;*/
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px;
+}
+.m0l1iover {
+	text-indent:4px;
+	text-decoration : none;
+	FONT-WEIGHT: normal;
+	padding: 0px;
+	color: #ffffff; /* 0f3290 #FFFFFF;*/
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px;
+}
+
+/* level 1 outer */
+.m0l1oout {
+	text-decoration : none;
+	filter: alpha(opacity=90);
+	background-color: #d5efb0;
+	border: 1px solid #ffffff;
+}
+.m0l1oover {
+	text-decoration : none;
+	border : 1px solid #67b01a; /*#FFCC00;*/
+	background-color: #67b01a;
+}
+
+/* level 2 inner */
+.m0l2iover {
+	text-decoration : none;
+	padding: 0px;
+	color: #000000;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px;
+}
+
+/* level 2 outer */
+.m0l2oout {
+	text-decoration : none;
+	border : 1px solid #FFFFFF;
+	background-color: #990000;
+}
+.m0l2oover {
+	text-decoration : none;
+	border : 1px solid #FFFFFF;
+	background: #E55A5A;
+}

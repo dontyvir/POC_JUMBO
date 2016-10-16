@@ -1,0 +1,44 @@
+/* CSS Document para Buscador */
+
+.buscador_header {
+	float: left;
+	height: 70px;
+	width: 360px;
+	padding-top: 25px;
+/*	padding-left: 20px;*/
+}
+.fondo_buscador {
+	float: left;
+	height: 57px;
+	width: 350px;
+	background-image: url(/FO_IMGS/img/fondo_buscador.jpg);
+}
+.form_buscador {
+	float: left;
+	height: 30px;
+	width: 260px;
+	padding-top: 15px;
+	padding-left: 12px;
+}
+.input_buscador {
+	float: left;
+	width: 250px;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:14px;
+	color:#666;
+	border: solid 1px #FFF;
+	height: 28px;
+}
+.bt_ir_buscador {
+	float: left;
+	height: 28px;
+	width: 60px;
+	padding-top: 15px;
+	background-image: url(/FO_IMGS/img/btn_buscador_ir.jpg);
+	background-position: 0px 14px;
+	background-repeat: no-repeat;
+	cursor: pointer;
+}
+a.bt_ir_buscador:hover {
+	background-position: 0px -50px;
+}

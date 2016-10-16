@@ -1,0 +1,43 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>cl.cencosud.jumbo</groupId>
+		<artifactId>parent-pom</artifactId>
+		<version>2.0.12-SNAPSHOT</version>
+	</parent>
+	<groupId>cl.jumbo.modules</groupId>
+	<artifactId>sv-modules</artifactId>
+	<packaging>pom</packaging>
+	<name>Módulos compartidos JUMBO</name>
+	<modules>
+		<module>bolsas</module>
+		<module>common</module>
+		<module>shared</module>
+		<module>contenidos</module>
+		<module>clientes</module>
+		<module>eventos-personalizados</module>
+		<module>usuarios</module>
+		<module>interfaces</module>
+		<module>irs-promos</module>
+		<module>parametros</module>
+		<module>promociones-carga</module>
+		<module>promociones-libreria</module>
+		<module>venta-empresas</module>
+		<module>venta-cotizaciones</module>
+		<module>pedidos</module>
+		<module>casos</module>
+		<module>informes</module>
+		<module>ldap</module>
+		<module>umbrales-module</module>
+		<module>productos-module</module>
+		<module>hdp-module</module>
+	</modules>
+
+	<dependencies>
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+		</dependency>
+	</dependencies>
+
+</project>

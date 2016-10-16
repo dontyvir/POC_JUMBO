@@ -1,0 +1,538 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html><!-- InstanceBegin template="/Templates/fullbody.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="EXPIRES" CONTENT="Mon, 22 Jul 2002 11:12:01 GMT">
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>Jumbo.cl Back Office Central</title>
+<!-- InstanceEndEditable -->
+
+<!-- InstanceBeginEditable name="head" -->
+<SCRIPT LANGUAGE="JavaScript" SRC="CalendarPopup.js"></SCRIPT>
+<SCRIPT LANGUAGE="JavaScript">document.write(getCalendarStyles());</SCRIPT>
+<script language="JavaScript" src="funciones.js"></script>
+<!-- InstanceEndEditable -->
+
+<link href="estilos.css" rel="stylesheet" type="text/css">
+<!--link href="../Prototipo/default.css" rel="stylesheet" type="text/css"-->
+<style type="text/css">
+<!--
+.style1 {color: #666666}
+-->
+</style>
+</head>
+
+<body>
+<link rel="stylesheet" href="menu/menu.css">
+<script language="JavaScript" src="menu/menu.js"></script>
+<script language="JavaScript" src="menu/menu_tpl.js"></script>
+<script language="JavaScript" src="menu/menu_items.js"></script>
+<script language="JavaScript" src="popup.js"></script>
+<table width="780" height="100%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+    <td height="78" valign="top">
+	
+	<TABLE width="100%" height=59 border=0 align="center" cellpadding="0" cellspacing="0" bgcolor="#ffffff">
+	  <TR>
+		<TD width=275 height="59" align=left class=user><img src="img/header2.jpg" width="275" height="60"></TD>
+		<TD width=505 align=left valign="bottom" background="img/bg-1.jpg" class=user><table width="90%"  border="0" align="center" cellpadding="0" cellspacing="2">
+          <tr>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td><div align="right" class="infoBL">Usuario: {hdr_nombre} | Local: {hdr_local} | {hdr_fecha} </div></td>
+          </tr>
+        </table></TD>
+	  </TR>
+	</TABLE>
+	<TABLE width="100%" height=19 border=0 align="center" cellpadding="0" cellspacing="0" bgcolor="#f1f0e9" style="border-top:1px solid #ABABAB; border-bottom:1px solid #ABABAB">
+	  <TR>
+		<TD align=left bgcolor="#FFFFFF" class=user></TD>
+		</TR>
+	</TABLE>
+
+	
+	</td>
+  </tr>
+  <tr height="400">
+    <td valign="top" bgcolor="#FFFFFF">
+      <table border=0 width="100%" class='ContentTitle'>
+        <tr>
+          <td width="53%" height="20" class='HeaderTitle'><!-- InstanceBeginEditable name="Titulo" -->
+				Administrador de Regalos proveedores a clientes  <!-- InstanceEndEditable --></td>
+          <td width="47%" class='HeaderTitle'><!-- InstanceBeginEditable name="Botonera" --><!-- InstanceEndEditable --></td>
+        </tr>
+      </table>
+	  <br>
+      <table width="100%" border="0" cellspacing="2" cellpadding="2">
+        <tr valign="top">
+          <td width="71%"><!-- InstanceBeginEditable name="Izquierda" -->
+          
+        <script src="validacion.js"></script> 
+
+		<script language="JavaScript">
+			
+			//borrar los aprametros de la URL
+			if(location.href.indexOf('respuesta_ok') != -1){
+				var stateObj = { foo: "respuesta_ok" };
+				history.pushState(stateObj, "respuesta_ok", ".");
+			}
+			if(location.href.indexOf('result_validacion') != -1){
+				var stateObj = { foo: "result_validacion" };
+				history.pushState(stateObj, "result_validacion", ".");
+			}
+			
+			function cargarArchivoAsignacionMaestra(){
+				document.form2.action = "ViewAsignarBolsaCliente";
+				if( esVacio(document.getElementById('export_bolsas_cliente').value) ){
+					alert('Debe seleccionar un archivo a procesar');
+				}else{
+					document.form2.submit();
+				}
+		  	}
+
+			function submitForm1(flag){
+		  		df = document.form1;
+		  		df.id_jornada.value = document.getElementById('txt_id_jornada').value;
+				df.id_jornada.numerico = true;
+				df.id_jornada.label = 'Nº Jornada';
+				
+				if(verify(flag,df)) df.submit();
+		  	}
+
+		  	function validarStockBolsas(){
+				var flag = false;
+				var flagSel = false;
+				var e = document.form3.elements;
+
+				if(document.getElementById("id_local").value == "0"){
+					flagSel = true;
+				}
+
+				if(flagSel){
+					alert('Debe seleccionar una Sucursal');
+				}else{
+					for(i = 0; i < e.length; i++){
+						var obj = e[i];
+						if(obj.name.indexOf('stock_') != -1){
+							if(esNumero(obj.value)){
+								alert("Solo se deben ingresar campos num\u00E9ricos en cada stock");
+								obj.focus();
+								flag = true;
+								break;
+							}
+							if(esVacio(obj.value)){
+								alert("Debe ingresar un valor al campos stock");
+								obj.focus();
+								flag = true;
+								break;
+							}
+						}
+					}
+					if(!flag)document.form3.submit();
+				}
+			}
+			function submitCambioSucursal(id_local){
+				document.form4.id_sucursal.value = id_local;
+				document.form4.submit();
+			}
+
+			function EliminarBolsa(cod_bolsa, id_producto){
+				document.form5.cod_bolsa.value = cod_bolsa;
+				document.form5.id_producto.value = id_producto;
+				document.form5.submit();
+			}
+
+			function EditarBolsa(cod_bolsa){
+				valor = "";
+				if ((valor = popUpWindowModalscroll('ViewVerBolsaRegalo?cod_bolsa='+cod_bolsa, 100, 100, 400, 250))> '0') {
+					datos = valor.split("|");
+					document.form7.cod_bolsa.value = datos[0];
+					document.form7.desc_bolsa.value = datos[1];
+					document.form7.cod_barra_bolsa.value = datos[2];
+					document.form7.submit();
+				}
+			}
+
+			function DesargarListaAsignaciones(){
+				document.form2.action = "ExportarListaAsignacionesBolsa";
+				document.form2.submit();
+			}
+			
+			function CrearBolsa(){
+				var flag = false;
+				if(esVacio(document.form1.cod_sap.value)){
+					alert("El campo C\u00F3digo Sap es de tipo obligatorio");
+					document.form1.cod_sap.focus();
+					flag = true;
+					return;
+				}
+				if(esNumero(document.form1.cod_sap.value)){
+					alert("El campo C\u00F3digo Sap debe ser num\u00E9rico");
+					document.form1.cod_sap.focus();
+					flag = true;
+					return;
+				}
+
+
+				if(esVacio(document.form1.cod_bolsa.value)){
+					alert("El campo C\u00F3digo Bolsa es de tipo obligatorio");
+					document.form1.cod_bolsa.focus();
+					flag = true;
+					return;
+				}
+				if(esNumero(document.form1.cod_bolsa.value)){
+					alert("El campo C\u00F3digo Bolsa debe ser num\u00E9rico");
+					document.form1.cod_bolsa.focus();
+					flag = true;
+					return;
+				}
+
+
+				if(esVacio(document.form1.desc_bolsa.value)){
+					alert("El campo Descripci\u00F3n Bolsa es de tipo obligatorio");
+					document.form1.desc_bolsa.focus();
+					flag = true;
+					return;
+				}
+
+
+				if(esVacio(document.form1.cod_barra_bolsa.value)){
+					alert("El campo C\u00F3digo Barra Bolsa es de tipo obligatorio");
+					document.form1.cod_barra_bolsa.focus();
+					flag = true;
+					return;
+				}
+				if(esNumero(document.form1.cod_barra_bolsa.value)){
+					alert("El campo C\u00F3digo Barra Bolsa debe ser num\u00E9rico");
+					document.form1.cod_barra_bolsa.focus();
+					flag = true;
+					return;
+				}
+				
+				if(!flag){
+					ajaxValidaBolsa();
+				}
+			}
+
+			function esNumero(valor){
+				valor = valor.replace('-', '');
+				if (!/^([0-9])*$/.test(valor)){
+					return true;
+				}else{
+					return false;
+				}
+			}
+			
+			function esVacio(valor){
+				if (valor == "" && !(/^\s+$/.test(valor))){
+					return true;
+				}else{
+					return false;
+				}
+			}
+
+			function enviaDatosBolsa(resp){
+				alert('valida cod sap');
+				if(resp != ""){
+					alert(resp);
+					return false;
+				}
+			}
+
+			function mensajeRespuesta(resp){
+				respArr = resp.split('|');
+				
+				if(respArr[0] != ""){
+					alert(respArr[0]);
+					return false;
+				}
+
+				if(respArr[1] != ""){
+					alert(respArr[1]);
+					return false;
+				}
+				
+				document.form1.submit();
+			}
+
+			function ajaxValidaBolsa(){
+			 	var cod_bolsa = document.form1.cod_bolsa.value;
+				var cod_sap = document.form1.cod_sap.value;
+				exec_AJAXRPC('GET', 'ViewValidaBolsaAjax?cod_bolsa='+cod_bolsa+'&cod_sap='+cod_sap, 'mensajeRespuesta');
+			}
+
+	  </script> 
+		
+		<!-- Formularios -->
+		<form name="form5" id="form5" method="post" action="ViewEliminarBolsa">
+			<input type="hidden" name="cod_bolsa" id="cod_bolsa" value="0" />
+			<input type="hidden" name="id_producto" id="id_producto"/>
+		</form>
+		<form name="form6" id="form6" method="post" action="ExportarListaAsgnacionesBolsa">
+			<input type="hidden" name="cod_bolsa" id="cod_bolsa" value="0" />
+		</form>
+
+		<form name="form7" id="form7" method="post" action="ViewEditarBolsa">
+			<input type="hidden" name="cod_bolsa" id="cod_bolsa" value="0" />
+			<input type="hidden" name="desc_bolsa" id="desc_bolsa" value="0" />
+			<input type="hidden" name="cod_barra_bolsa" id="cod_barra_bolsa" value="0" />
+		</form>
+			
+
+		  <link id="luna-tab-style-sheet" type="text/css" rel="stylesheet"
+					href="js/tabs/tabpane.css" />
+				<script type="text/javascript" src="js/tabs/tabpane.js"></script>
+
+
+		  <table width="90%" align="center" border="0">
+			<tr>
+				<td>
+					<div class="tab-page" id="modules-cpanel">
+						<script type="text/javascript">
+						   var tabPane1 = new 
+								WebFXTabPane( document.getElementById( "modules-cpanel" ), true )
+				    	</script>
+						
+						<!-- TAB 1 -->
+						<div class="tab-page" id="modulo1">
+							<h2 class="tab">Crear Bolsa</h2>
+							<div align="center">
+							<br>
+							<strong>Creación de Bolsas</strong><br />
+							<br><br>
+							<!-- CONTENIDO DEL TAB -->
+							<form name="form1" method="post" action="ViewCrearBolsa">
+								<table>
+									<tr>
+										<td>Código sap</td>
+										<td> : </td>
+										<td><input type="text" name="cod_sap" id="cod_sap" /></td>
+									</tr>
+									<tr>
+										<td>Código bolsa</td>
+										<td> : </td>
+										<td><input type="text" name="cod_bolsa" id="cod_bolsa" /></td>
+									</tr>
+									<tr>
+										<td>Descripción</td>
+										<td> : </td>
+										<td><input type="text" name="desc_bolsa" id="desc_bolsa" /></td>
+									</tr>
+									<tr>
+										<td>Código barra</td>
+										<td> : </td>
+										<td><input type="text" name="cod_barra_bolsa" id="cod_barra_bolsa" /></td>
+									</tr>
+									<tr>
+										<td></td>
+										<td colspan="2"><input type="button" value="Crear Bolsa" onclick="javascript:CrearBolsa();"/></td>
+										<td></td>
+									</tr>
+								</table>
+								<br/><br/>
+								<table width="647" border="0" align="center" cellpadding="2"
+										cellspacing="0" class="tabla2">
+									<tr>
+										<th width="52">C&oacute;digo bolsa</th>
+										<th width="48">Descripci&oacute;n bolsa<br></th>
+										<th width="50">C&oacute;digo barra<br></th>
+										<th width="8"><br></th>
+										<th width="8"><br></th>
+									</tr>
+									
+									<!-- BEGIN DYNAMIC: listado -->
+									<tr>
+										<td><div align="center">{cod_bolsa}</div></td>
+										<td><div align="center">{desc_bolsa}</div></td>
+										<td><div align="center">{cod_barra_bolsa}</div></td>
+										<td><div align="center"><a href="javascript:EditarBolsa('{cod_bolsa}');"><img border="0" src="img/editicon.gif"  /></a></div></td>
+										<td><div align="center"><a href="javascript:EliminarBolsa('{cod_bolsa}', {id_producto});">{eliminar}</a></div></td>
+									</tr>
+									<!-- END DYNAMIC: listado -->
+									<br/><br/>
+								</table>
+							</form>
+
+							<br><br>
+							<form name="formB" method="post" action="ViewActivaBolsa">
+								<table width="647" border="0" align="center" cellpadding="2"
+										cellspacing="0" class="tabla2">
+									<tr>
+										<th width="90%">Estado asignación de Bolsa</th>
+										<td><input type="text" name="act_bolsa" id="act_bolsa" value="{activada}" readonly maxlenght="1"/></td>
+										<td colspan="2"><input type="submit" value="Cambiar estado" /></td>
+									</tr>
+									
+								</table>
+							</form>
+							</div>
+						</div>
+						<!-- FIN TAB 1 -->
+						
+
+						
+						<!-- TAB 2 -->
+						<div class="tab-page" id="modulo1">
+							<h2 class="tab">Asig. Bolsas</h2>
+							<div align="center">
+							<br>
+							<strong>Asignar Bolsas a Clientes</strong><br />
+							<br><br>
+							<!-- CONTENIDO DEL TAB -->
+							<form name="form2" method="POST" enctype="multipart/form-data" action="ViewAsignarBolsaCliente">
+								Adjuntar : <input type="file" name="export_bolsas_cliente" id="export_bolsas_cliente" title="export_bolsas_cliente">
+								<br/><br/><br/>
+								<input type="button" value="Cargar Lista Bolsas" onclick="javasctipt:cargarArchivoAsignacionMaestra();">
+								<input type="button" value="Descargar Lista Bolsas" onclick="javasctipt:DesargarListaAsignaciones();">
+							</form>
+							<br><br>
+
+							<script language="JavaScript">
+								respuestVal = "{result_validacion}";
+								respuestVal = respuestVal.replace('{', '');respuestVal = respuestVal.replace('}', '');
+								respuestVal = respuestVal.replace('result_validacion', '');
+								if(respuestVal != ""){
+									respuestVal2 = "<fieldset style='width: 80%;'>";
+									respuestVal2 += "<legend>Validaci&oacute;n carga maestra de bolsas</legend>";
+									respuestVal2 += "<table width='95%'  border='0' cellspacing='2' cellpadding='0'>";
+									respuestVal2 += "<tr><td width='50%'><br/>";
+									respuestVal2 += respuestVal;
+									respuestVal2 += "<br/><br/></td></tr></table></fieldset>";
+									document.write(respuestVal2);
+								}
+							</script>
+							<br>
+							</div>
+						</div>
+						<!-- FIN TAB 2 -->
+
+
+
+
+						<!-- TAB 3 -->
+						<div class="tab-page" id="modulo1">
+							<h2 class="tab">Asig. Stock</h2>
+							<div align="center">
+							<br>
+							<strong>Asignar Stock Bolsas</strong><br />
+							<br><br>
+							<!-- CONTENIDO DEL TAB -->
+							<form name="form3" method="post" action="ViewGuardarStock">
+									
+									Sucursal : <select name="id_local" id="id_local" onchange="javascript:submitCambioSucursal(this.value);">
+										          <option value="0">seleccionar</option>
+									              <!-- BEGIN DYNAMIC: LOCALES -->
+												  	<option value="{id_loc}" {sel_loc}>{local}</option>
+									           	  <!-- END DYNAMIC: LOCALES -->
+										       </select>
+									<br><br><br><br>
+									<table width="647" border="0" align="center" cellpadding="2"
+										cellspacing="0" class="tabla2">
+										<tr>
+											<th width="52">C&oacute;digo bolsa</th>
+											<th width="48">Descripci&oacute;n bolsa<br></th>
+											<th width="50">Stock<br></th>
+										</tr>
+										
+										<!-- BEGIN DYNAMIC: listado -->
+										<tr>
+											<td><div align="center">{cod_bolsa}</div></td>
+											<td><div align="center">{desc_bolsa}</div></td>
+											<td><div align="center"><input type="text" style="text-align: center;" name="stock_{cod_bolsa}_{id_sucursal}" id="stock_{cod_bolsa}_{id_sucursal}" value="{num_stock_bolsa}"/></div></td>
+										</tr>
+										<!-- END DYNAMIC: listado -->
+										
+									</table>
+							
+									<br><br>
+									<input type="button" name="Button"
+												value="Guardar Stock"
+												onClick="javascript:validarStockBolsas();" />
+							</form>
+							<br><br>
+							</div>
+						</div>
+
+						<form name="form4" method="post" action="ViewMonitorBolsas">
+							<input type="hidden" name="id_sucursal" id="id_sucursal" value="0" />
+						</form>
+						
+						<!-- FIN TAB 3 -->
+
+
+
+
+						<!-- TAB 4 -->
+						<div class="tab-page" id="modulo1">
+							<h2 class="tab">Log</h2>
+							<div align="center">
+							<br><br>
+							<!-- CONTENIDO DEL TAB -->
+
+							<table width="647" border="0" align="center" cellpadding="2"
+								cellspacing="0" class="tabla2">
+								<tr>
+									<th width="52">C&oacute;digo operaci&oacute;n</th>
+									<th width="48">Descripci&oacute;n operaci&oacute;n<br></th>
+									<th width="50">Fecha<br></th>
+									<th width="50">Hora<br></th>
+									<th width="50">Usuario<br></th>
+								</tr>
+								
+								<!-- BEGIN DYNAMIC: bitacora -->
+								<tr>
+									<td><div align="center">{cod_operacion}</div></td>
+									<td><div align="center">{desc_operacion}</div></td>
+									<td><div align="center">{fecha_operacion}</div></td>
+									<td><div align="center">{hora_operacion}</div></td>
+									<td><div align="center">{usuario_operacion}</div></td>
+								</tr>
+								<!-- END DYNAMIC: bitacora -->
+								
+							</table>
+							<br><br>
+
+							</div>
+						</div>
+						<!-- FIN TAB 4 -->
+
+					</div>
+				</td>
+			</tr>
+		  </table>
+
+
+
+
+		<!-- InstanceEndEditable --></td>
+        </tr>
+      </table>
+      </td>
+  </tr>
+  <tr>
+    <td>
+	<TABLE width="100%" height=19 border=0 align="center" cellpadding="0" cellspacing="0" bgcolor="#f1f0e9" style="border-top:1px solid #ABABAB; border-bottom:1px solid #ABABAB">
+	  <TR>
+		<TD align=center bgcolor="#67b01a" class=infoBL><div align="center">Back Office Local - Jumbo.cl</div></TD>
+		</TR>
+	</TABLE>
+	
+	</td>
+  </tr>
+</table>
+
+<script language="JavaScript">
+	respuestOK = "{respuesta_ok}";
+	respuestOK = respuestOK.replace('{', '');respuestOK = respuestOK.replace('}', '');
+	respuestOK = respuestOK.replace('respuesta_ok', '');
+	if(respuestOK != ""){
+		alert(respuestOK);
+	}
+</script>
+
+</body>
+<!-- InstanceEnd --></html>

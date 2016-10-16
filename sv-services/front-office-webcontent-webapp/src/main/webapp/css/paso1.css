@@ -1,0 +1,394 @@
+a:link{
+	color:#666666;
+	text-decoration:none;
+}
+
+a:visited{
+	color:#666666;
+	text-decoration: none;
+}
+
+a:hover{
+	color:#1FA22E;
+	text-decoration: underline;
+}
+.Estilo1 {
+	font-size: 10pt;
+	font-weight: bold;
+}
+.Estilo2 {font-size: 12px
+}
+.lectura1 {	font-family: "Trebuchet MS";
+	font-size: 12px;
+	font-style: normal;
+	line-height: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	color: #333333;
+	text-decoration: none;
+}
+
+.Estilo5 {color: #000000}
+
+#ventana {
+	position:absolute;
+	width: 0px;
+	height: 0px;
+	left: 0px;
+	top: 0px;
+	visibility: hidden;
+	border: 1;
+	z-index: 10;
+}
+
+#ventana_evento {
+	position:absolute;
+	width: 0px;
+	height: 0px;
+	left: 0px;
+	top: 0px;
+	visibility: hidden;
+	border: 1;
+	z-index: 10;
+}
+
+#ventana_resumen_promo {
+	position:absolute;
+	width: 0px;
+	height: 0px;
+	left: 0px;
+	top: 0px;
+	visibility: hidden;
+	border: 1;
+	z-index: 10;
+}
+
+#ventanarespromo {
+	position:absolute;
+	width: 0px;
+	height: 0px;
+	left: 0px;
+	top: 0px;
+	visibility: hidden;
+	border: 1;
+	z-index: 10;
+}
+
+#ventana_promo {
+	position:absolute;
+	width: 0px;
+	height: 0px;
+	left: 0px;
+	top: 0px;
+	visibility: hidden;
+	border: 1;
+	z-index: 10;
+}
+
+#ventanapromoproducto {
+	position:absolute;
+	width: 0px;
+	height: 0px;
+	left: 0px;
+	top: 0px;
+	visibility: hidden;
+	border: 1;
+	z-index: 10;
+}
+
+#ventanamispromo {
+	position:absolute;
+	width: 0px;
+	height: 0px;
+	left: 0px;
+	top: 0px;
+	visibility: hidden;
+	border: 1;
+	z-index: 10;
+}
+
+#modificardireccion {
+	position:absolute;
+	width: 0px;
+	height: 0px;
+	left: 0px;
+	top: 0px;
+	visibility: hidden;
+	border: 1;
+	z-index: 10;
+}
+
+#ventana_ficha {
+	position:absolute;
+	width: 0px;
+	height: 0px;
+	left: 0px;
+	top: 0px;
+	visibility: hidden;
+	border: 1;
+	z-index: 10;
+}
+
+#comentarioproducto {
+	position:absolute;
+	width: 0px;
+	height: 0px;
+	left: 0px;
+	top: 0px;
+	visibility: hidden;
+	border: 1;
+	z-index: 15;
+}
+
+#criteriosustitucion {
+	position:absolute;
+	width: 0px;
+	height: 0px;
+	left: 0px;
+	top: 0px;
+	visibility: hidden;
+	border: 1;
+	z-index: 15;
+}
+
+#sincompras {
+	position:absolute;
+	width: 0px;
+	height: 0px;
+	left: 0px;
+	top: 0px;
+	visibility: hidden;
+	border: 1;
+	z-index: 10;
+}
+
+#carrovacio {
+	position:absolute;
+	width: 0px;
+	height: 0px;
+	left: 0px;
+	top: 0px;
+	visibility: hidden;
+	border: 1;
+	z-index: 10;
+}
+
+#guardalista {
+	position:absolute;
+	width: 0px;
+	height: 0px;
+	left: 0px;
+	top: 0px;
+	visibility: hidden;
+	border: 1;
+	z-index: 10;
+}
+
+#carro_de_compras {
+	width:210px;
+	 height:500px;
+	overflow:auto;
+	float: left;
+}
+
+.celda_p1 {
+/*INDRA 2012-11-13*/
+    font-family:"Trebuchet MS" ! important;
+    border-left:1px dashed #7ABD09 ! important;
+	border-bottom:1px dashed #CCCCCC ! important;
+	font-size: 8.5pt ! important;;
+	font-style: normal ! important;
+	line-height: normal ! important;
+	font-weight: normal ! important;
+	font-variant: normal ! important;
+	text-transform: none ! important;
+	text-decoration: none ! important;
+	padding-left: 3px ! important;
+	padding-right: 3px ! important;
+/*INDRA 2012-11-13*/
+}
+.celda_p1_izq {
+    font-family:"Trebuchet MS";
+	border-bottom:1px dashed #CCCCCC;
+	font-size: 8.5pt;
+	font-style: normal;
+	line-height: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	text-decoration: none;
+	padding-left: 3px;
+	padding-right: 3px;
+}
+
+#inputtotdesc {
+	border-bottom: 1px dashed #9F9D9D;
+	padding-left: 5px;
+	padding-bottom: 5px;
+	position:relative;
+	overflow:visible;
+	visibility:hidden;
+	z-index:1;
+}
+
+
+
+
+/* listado de productos */
+#el_listado_de_productos {
+  float: left;
+	height:auto;
+/*	overflow:auto;*/
+	border: 1px solid #858585;
+}
+
+.td_lista_de_productos {
+	border-right-width: 1px;
+	border-left-width: 1px;
+	border-right-style: solid;
+	border-left-style: solid;
+	border-right-color: #7EC011;
+	border-left-color: #7EC011;
+}
+
+
+
+.despliegue_prod_2 {
+	/*float:left;*/
+	width: 658px;
+	clear: both;
+	border-left:1px solid #7abd09;
+	border-right:1px solid #7abd09;
+	height: 400px;
+}
+.despliegue_prod_1 {
+	height: 35px;
+	float:left;
+	width: 660px;
+	line-height: 30px;
+	background-image: url(/FO_IMGS/img/estructura/paso3/tabla-arriba.gif);
+	background-repeat: no-repeat;
+	clear: both;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:11px;
+	color:#333333;
+}
+.dp_a{
+	width: 90px;
+	float:left;
+	padding:3px;
+	text-indent: 10px;
+}
+.dp_b{
+	width: 270px;
+	float:left;
+	padding:3px;
+}
+.dp_c{
+width: 85px;
+float:left;
+padding:3px;
+}
+.dp_d{
+	width: 65px;
+	float:left;
+	padding:3px;
+	line-height: 15px;
+}
+.dp_e{
+width: 65px;
+float:left;
+padding:3px;
+}
+.dp_f{
+	width: 40px;
+	float:left;
+	padding:3px;
+}
+
+/* sustitucion */
+.desp_producto{
+	height:70px;
+}
+
+.ac2{
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	float:left;
+	width: 110px;
+	padding: 2px;
+	vertical-align: middle;
+	text-align: left;
+	color: #666;
+}
+.ac3{
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	color: #666;
+	border-left: 1px dashed #9acc45;
+	float:left;
+	width: 200px;
+	padding: 2px;
+	}
+.ac4{
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	border-left: 1px dashed #9acc45;
+	float:left;
+	width: 80px;
+	padding: 2px;
+	text-align: left;
+	height:60px;
+	color: #666;
+}
+.col_izq_2011{
+	float:left;
+	width:720px;
+	height:auto;
+	padding-left: 10px;
+	}
+
+	.menu_arriba_2011{
+	float:right;
+	width:500px;
+	height:90px;
+	}
+
+.menu_abajo_paso1_2011{
+	width:550px;
+	float:left;
+	height:30px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+.print_save_paso1_2011{
+	width:300px; 
+	float:left; 
+	height:30px; 
+}
+.agregar_carro_paso1_2011{
+  width:185px;
+	float:right;
+	height:30px;
+}
+.col_der_2011 {
+  float:right;
+  width:210px;
+  height:auto;
+  border-left: 1px dashed #ccc;
+  border-bottom: 1px dashed #ccc;
+}
+	
+	.promociones_carro_paso1_2011{
+	float:right;
+	width:210px;
+	height:auto;
+	}
+		.contenido_carro_paso1_2011{
+	float:left;
+	width:210px;
+	height:auto;
+	}
+	
+	

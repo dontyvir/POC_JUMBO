@@ -1,0 +1,25 @@
+<html>
+<head>
+<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="EXPIRES" CONTENT="Mon, 22 Jul 2002 11:12:01 GMT">
+
+<script language="JavaScript" src="funciones.js"></script>
+</head>
+<body bgcolor="white">
+
+<link href="estilos.css" rel="stylesheet" type="text/css">
+<table border="0" align="center" cellpadding="2" cellspacing="0" class="tabla2" >
+{mensaje}
+  <!-- BEGIN DYNAMIC: SUGS -->
+  <tr valign="top">
+    <td width="74">{sug_sug}</td>
+    <td width="225"><div align="left">{sug_des}</div></td>
+    <td width="100"><div align="left">{sug_dir}</div></td>
+    <td width="48"><a href='javascript:validar_eliminar("Esta seguro que desea eliminar?","ModSugProduct?action=desasociar&id_producto={id_prod}&id_producto_sug={sug_id}&sug_sug={sug_sug}&direccion=d&url=ViewProdSugIframe?id_prod={id_prod}");'><img src='img/trash.gif' border=0></a></td>
+  </tr>
+<!-- END DYNAMIC: SUGS -->
+</table>
+{mns}
+</body>
+</html>                           

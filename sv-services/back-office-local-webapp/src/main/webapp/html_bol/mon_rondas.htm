@@ -1,0 +1,272 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html><!-- InstanceBegin template="/Templates/fullbody.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="EXPIRES" CONTENT="Mon, 22 Jul 2002 11:12:01 GMT">
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>Jumbo.cl Back Office Local</title>
+<!-- InstanceEndEditable -->
+
+<!-- InstanceBeginEditable name="head" -->
+<SCRIPT LANGUAGE="JavaScript" SRC="CalendarPopup.js"></SCRIPT>
+<SCRIPT LANGUAGE="JavaScript">document.write(getCalendarStyles());</SCRIPT>  
+<script language="JavaScript" src="funciones.js"></script>
+<!-- InstanceEndEditable -->
+
+<link href="estilos.css" rel="stylesheet" type="text/css">
+<!--link href="../Prototipo/default.css" rel="stylesheet" type="text/css"-->
+<style type="text/css">
+<!--
+.style1 {color: #666666}
+-->
+</style>
+</head>
+
+<body>
+<link rel="stylesheet" href="menu/menu.css">
+<script language="JavaScript" src="menu/menu.js"></script>
+<script language="JavaScript" src="menu/menu_tpl.js"></script>
+<script language="JavaScript" src="menu/menu_items.js"></script>
+<table width="780" height="100%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+    <td height="78" valign="top">
+	
+	<TABLE width="100%" height=59 border=0 align="center" cellpadding="0" cellspacing="0" bgcolor="#ffffff">
+	  <TR>
+		<TD width=275 height="59" align=left class=user><img src="img/header2.jpg" width="275" height="60"></TD>
+		<TD width=505 align=left valign="bottom" background="img/bg-1.jpg" class=user><table width="90%"  border="0" align="center" cellpadding="0" cellspacing="2">
+          <tr>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td><div align="right" class="infoBL">Usuario: {hdr_nombre} | Local: {hdr_local} | {hdr_fecha} </div></td>
+          </tr>
+        </table></TD>
+	  </TR>
+	</TABLE>
+	<TABLE width="100%" height=19 border=0 align="center" cellpadding="0" cellspacing="0" bgcolor="#f1f0e9" style="border-top:1px solid #ABABAB; border-bottom:1px solid #ABABAB">
+	  <TR>
+		<TD align=left bgcolor="#FFFFFF" class=user></TD>
+		</TR>
+	</TABLE>
+
+	
+	</td>
+  </tr>
+  <tr height="400">
+    <td valign="top" bgcolor="#FFFFFF">
+      <table border=0 width="100%" class='ContentTitle'>
+        <tr>
+          <td width="53%" height="20" class='HeaderTitle'><!-- InstanceBeginEditable name="Titulo" -->
+				Monitor de Rondas <!-- InstanceEndEditable --></td>
+          <td width="47%" class='HeaderTitle'><!-- InstanceBeginEditable name="Botonera" --><!-- InstanceEndEditable --></td>
+        </tr>
+      </table>
+	  <br>
+      <table width="100%"  border="0" cellspacing="2" cellpadding="2">
+        <tr valign="top">
+          <td width="71%"><!-- InstanceBeginEditable name="Izquierda" --> 
+					<script src="validacion.js"></script> <script
+			language="JavaScript">
+	  	function submitForm1(flag){
+	  		
+	  		df = document.form1;
+	  		df.id_ronda.value = document.getElementById('txt_id_ronda').value;
+	  		
+	  		if (df.id_ronda.value == ""){
+	  			alert("Debe ingresar un Nº de Ronda"); 	  		
+	  			return false;
+	  		}
+	  		if (validar_solonumero(document.forma3.id_ron, "Nº de Ronda es un campo numerico")) return false;
+			// reglas de validacion
+			//df.id_ronda.obligatorio=true;
+			df.id_ronda.numerico=true;
+			df.id_ronda.label='Nº Pedido';
+			
+			if(verify(flag,df)) df.submit();
+
+	  	}
+	  	function submitForm2(){
+	  		df=document.form2;
+	  		df.fecha.value = document.getElementById('txt_fecha').value;	  		
+			if (df.fecha.value == ""){
+				alert("Debe ingresar fecha a buscar");
+				return false;
+			}
+	  		df.submit();
+	  	}	  		  	
+	  </script>
+				<!-- Formulario buscar por id_ronda -->
+				<form name="form1" method="get" action="ViewMonitorRondas"><input
+					type="hidden" name="id_ronda" value="">
+				</form>
+				<!-- Formulario buscar por fecha -->
+				<form name="form2" method="get" action="ViewMonitorRondas"><input
+					type="hidden" name="fecha" value="">
+				</form>
+				<!-- Fin formularios -->
+				<table width="90%" border="0" align="center" cellpadding="0" cellspacing="0">
+					<tr>
+						<td>
+						<fieldset><legend>Buscar Ronda </legend>
+						<table width="100%" border="0" cellspacing="2" cellpadding="0">
+							<tr>
+								<td width="31%">N&deg; Ronda</td>
+								<td width="40%">Fecha Picking de Ronda</td>
+								<td width="29%">&nbsp;</td>
+							</tr>
+							<!-- JScript Calendario -->
+		                  	<SCRIPT LANGUAGE="JavaScript" ID="js17">
+							var ayer = new Date(30,4,2006,12,0,0,0);
+							var cal1 = new CalendarPopup("testdiv1");
+							cal1.offsetX = 50;
+							cal1.offsetY = -85;
+							</SCRIPT>
+		                  <form name="forma3">
+		                  <tr>
+		                    <td><input name = "id_ron" type="text" id="txt_id_ronda" value="{id_ronda}" maxlength = "10" >
+		                        <input type="button" class="cmd" value="Buscar" onClick="submitForm1(0);"></td>
+		                    <td>
+		                    <input name = "fecha" type="text" id="txt_fecha" value="{fecha}" onClick="cal1.select(document.forms[2].txt_fecha,'anchor1','yyyy-MM-dd'); return false;" readonly="true">
+		                        <a href="#" onClick="cal1.select(document.forms[2].txt_fecha,'anchor1','yyyy-MM-dd'); return false;" name="anchor1" id="anchor1">
+		                        <img src="img/cal.gif" width="16" height="16" border="0">
+		                        </a>
+		                        <input type="button" class="cmd" value="Buscar" onClick="submitForm2();"></td>
+		                    <td>&nbsp;</td>
+		                  </tr> 
+		                  </form>  
+		                  <!--tr>
+		                  <td>
+		                  	<input type="button" class="cmd" value="Ir a Listado de Picking" onClick="javascript:location.href='ViewFormPicking?id_ronda=391'"></td>
+		                  </td>
+		                  </tr-->       
+						</table>
+						</fieldset>
+						</td>
+					</tr>
+					<tr><td><a href = "ViewMonitorRondas?fecha={anterior}&id_jornada={id_jornada}&id_seccion={id_seccion}&id_estado={id_estado}">{anterior_label}</a>
+						 {rondas} {fecha_ronda} 
+						<a href = "ViewMonitorRondas?fecha={siguiente}&id_jornada={id_jornada}&id_seccion={id_seccion}&id_estado={id_estado}">{siguiente_label}</a></td>
+					</tr>
+				</table>
+				
+				 <DIV ID="testdiv1" STYLE="position:absolute;visibility:hidden;background-color:white;layer-background-color:white;"></DIV>
+				<br>
+				<form name = "forma4" action = "ViewMonitorRondas" method = "get">
+				<input type = "hidden" name ="fecha" value = "{fecha}">
+				<table width="736" border="0" align="center" cellpadding="2"
+					cellspacing="0" class="tabla2">
+					<tr>
+						<th width="64">N&deg; Ronda </th>
+						<th width="64">Zonas 
+						<select name="id_zona" onchange="submit(this.form);">
+							<option value=""> Todas </option>
+							<!--BEGIN DYNAMIC: select_zonas -->
+								<option value="{id_zona}" {sel_zona}>{nom_zona}</option>
+							<!--END DYNAMIC: select_zonas -->							
+						</select>
+						
+						</th>						
+						<th width="50">Tipo</th>
+						<th width="67">N&deg; Jornada <br>
+						<select name="id_jornada" onchange="submit(this.form);">
+							<option value="-1"{sel}>Todas</option>
+							<!-- BEGIN DYNAMIC: select_jornada -->
+							<option value="{id_jornada}"{sel}>{jornada}</option>
+							<!-- END DYNAMIC: select_jornada -->
+						</select></th>
+						<th width="131">Sector Picking  <br>
+						<select name="id_seccion" onchange="submit(this.form);">
+							<option value="-1"{sel1}>Todos</option>						
+							<!-- BEGIN DYNAMIC: select_seccion -->
+							<option value="{id_seccion}"{sel1}>{seccion}</option>
+							<!-- END DYNAMIC: select_seccion -->							
+						</select></th>
+						<th width="54">Cant Prods. </th>
+						<th width="120">Tiempo Transcurrido</th>
+						<th width="105">Estado  <br>						
+						<select name="id_estado" onchange="submit(this.form);">
+							<option value="-1"{sel2}>Todos</option>
+							<!-- BEGIN DYNAMIC: select_estado -->
+							<option value="{id_estado}"{sel2}>{estado}</option>
+							<!-- END DYNAMIC: select_estado -->							
+						</select></th>
+						<th width="80">Acciones</th>
+					</tr>
+					<!-- BEGIN DYNAMIC: select_ronda -->
+					<tr>
+						<td {borderstyle}>
+						<div align="center">{id_ronda}</div>
+						</td>
+						<td {borderstyle}>{zonas}
+						</td>
+						<td {borderstyle}>{tipo_ve}&nbsp;
+						</td>
+						<td {borderstyle}>
+						<div align="center">{id_jornada}</div>
+						</td>
+						<td {borderstyle}>{seccion_jorn}</td>
+						<td {borderstyle}>
+						<div align="center">{cant_prod}</div>
+						</td>
+						<td {borderstyle}>
+						<div align="center">{tiempo_trans}</div>
+						</td>
+						<td {borderstyle}>{estado_jorn}</td>
+						<td {borderstyle}>
+						<div align="center"><a href="{direccion1}?id_ronda={id_ronda}">{accion1}</a>{accion2}</div>
+						</td>
+					</tr>
+					<!-- END DYNAMIC: select_ronda -->
+					<tr><td colspan="9" align="center" height="30"><font color="red"><b>{mensaje}</b></font></td>
+					</tr>
+				</table>
+				</form>
+				<table width="727" border="0" align="center" cellpadding="2"
+					cellspacing="2">
+					<tr>
+						<td>						<div align="center">
+						<form name="pagform" method="get" action="ViewMonitorRondas">
+						<input type = "hidden" name = "fecha" value = "{fecha}"> 						
+						<td width="98">
+						<div align="right">P&aacute;g <select name="pag"
+							onChange="submit(this.form);">
+							<!--  BEGIN DYNAMIC: paginador -->
+							<option value="{pag}"{sel}>{pag}</option>
+						    <!--  END DYNAMIC: paginador -->
+						</select></div>
+						</td>
+						</form>
+					</tr>
+				</table>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				
+				<script>
+					document.forma3.id_ron.numerico=true;
+					document.forma3.id_ron.label = 'Id Ronda';	
+					document.forma3.id_ron.onkeypress = KeyIsNumber;
+				</script>
+				
+				<!-- InstanceEndEditable --></td>
+        </tr>
+      </table>
+      </td>
+  </tr>
+  <tr>
+    <td>
+	<TABLE width="100%" height=19 border=0 align="center" cellpadding="0" cellspacing="0" bgcolor="#f1f0e9" style="border-top:1px solid #ABABAB; border-bottom:1px solid #ABABAB">
+	  <TR>
+		<TD align=center bgcolor="#67b01a" class=infoBL><div align="center">Back Office Local - Jumbo.cl</div></TD>
+		</TR>
+	</TABLE>
+
+	
+	</td>
+  </tr>
+</table>
+</body>
+<!-- InstanceEnd --></html>

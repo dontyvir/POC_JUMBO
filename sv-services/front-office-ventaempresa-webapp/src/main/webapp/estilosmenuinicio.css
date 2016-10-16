@@ -1,0 +1,76 @@
+.menu_normal{
+height:25px;
+padding-left: 20px;
+font-family: "Trebuchet MS";
+font-size: 8.5pt;
+text-decoration: none;
+text-align:left;
+color:#333333;
+background-image:url('/WebFOVE/img/menu/bt2-a.gif')
+}
+
+.menu_OnMouseOver{
+height:25px;
+padding-left: 20px;
+font-family: "Trebuchet MS";
+font-size: 8.5pt;
+text-decoration: none;
+text-align:left;
+color:#FFFFFF;
+background-image:url('/WebFOVE/img/menu/bt2-b.gif')
+}
+
+.menu_Seleccionado{
+height:25px;
+padding-left: 20px;
+font-family: "Trebuchet MS";
+font-size: 8.5pt;
+text-decoration: none;
+text-align:left;
+color:#FFFFFF;
+background-image:url('/WebFOVE/img/menu/bt2-b.gif')
+}
+.menu_normalinicial{
+height:24px;
+padding-left: 20px;
+font-family: "Trebuchet MS";
+font-size: 8.5pt;
+text-decoration: none;
+text-align:left;
+color:#333333;
+background-image:url('/WebFOVE/img/menu/bt1-a.gif')
+}
+
+.menu_OnMouseOverinicial{
+height:24px;
+padding-left: 20px;
+font-family: "Trebuchet MS";
+font-size: 8.5pt;
+text-decoration: none;
+text-align:left;
+color:#FFFFFF;
+background-image:url('/WebFOVE/img/menu/bt1-b.gif')
+}
+
+.menu_normalfinal{
+height:25px;
+padding-left: 20px;
+font-family: "Trebuchet MS";
+font-size: 8.5pt;
+text-decoration: none;
+text-align:left;
+color:#333333;
+background-image:url('/WebFOVE/img/menu/bt3-a.gif')
+}
+
+.menu_OnMouseOverfinal{
+height:25px;
+padding-left: 20px;
+font-family: "Trebuchet MS";
+font-size: 8.5pt;
+text-decoration: none;
+text-align:left;
+color:#FFFFFF;
+background-image:url('/WebFOVE/img/menu/bt3-b.gif')
+}
+

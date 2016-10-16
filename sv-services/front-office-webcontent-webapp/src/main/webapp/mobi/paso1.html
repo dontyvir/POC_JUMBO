@@ -1,0 +1,80 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<meta name="viewport" content="width=320;initial-scale=1.0; maximum-scale=1.0; user-scalable=false;"/>
+<title>Jumbo Mobile - Paso 1</title>
+<link href="/FO_WebContent/mobi/css/paso1.css" rel="stylesheet" type="text/css" />
+<link href="/FO_WebContent/mobi/css/bordes_redondeados.css" rel="stylesheet" type="text/css" />
+<link href="/FO_WebContent/mobi/css/carropermanente.css" rel="stylesheet" type="text/css" />
+</head>
+<body onload="consultar();actualizaCarro();">
+<div id="contenedor_b">
+	<div id="encabezado_b">
+	  <h2>Jumbo.cl mobile, mas tiempo para ti</h2>
+	</div>
+	<div id="boton_b">
+	  <a href="BienvenidaFormMobi"><img src="/FO_IMGS/images/mobi/bt_1_b.gif" alt="Bienvenida" border="0" /></a>
+	  <a href="UltComprasFormMobi"><img src="/FO_IMGS/images/mobi/bt_2.gif" alt="Paso1" border="0" /></a>
+	  <a href="PasoDosFormMobi"><img src="/FO_IMGS/images/mobi/bt_3_b.gif" alt="Paso2" border="0" /></a>
+	  <a href="PasoTresFormMobi"><img src="/FO_IMGS/images/mobi/bt_4_b.gif" alt="Paso3" border="0" /></a>
+	  <a href="OrderItemDisplayMobi"><img src="/FO_IMGS/images/mobi/bt_5_b.gif" alt="Carro" border="0" /></a>
+	</div>
+	<div id="margen_verde">
+		<h3>Elige entre tus 3 &uacute;ltimas listas</h3>  
+  </div>
+	<div id="contenido" align="center">
+		<form name="form1" method="post" action="UltComprasForm">
+			<input type="hidden" name="tupla" value="" />
+			<input type="hidden" name="cantreg" value="{cantreg}" />
+			<div id="listas_guardadas">
+				<div class="cuadrado_verde">
+					<div class="seleccionar">Seleccionar</div>
+					<div class="fecha">Fecha</div>
+					<div class="lista">Lista</div>
+					<div class="eliminar">Eliminar</div>
+				</div>
+				<!-- BEGIN DYNAMIC: ULT_COMPRAS -->
+				<div id="fila_lista_{id_compra}" class="despliegue_listas">
+					<div class="d_seleccionar">
+						<input name="idult_{i}" type="checkbox" value="{id}" {checked} onclick="consultar();" class="checkbox"/>
+					</div>
+					<div class="d_fecha">{fecha}&nbsp;</div>
+					<div class="d_lista">{nombre}&nbsp;</div>
+					<div class="d_eliminar">{elim}</div>
+				</div>
+				<!-- END DYNAMIC: ULT_COMPRAS -->
+				<!-- BEGIN DYNAMIC: SIN_ULT_COMPRAS -->
+				<div class="lista">Sin compras para listar</div>
+				<!-- END DYNAMIC: SIN_ULT_COMPRAS -->				
+			</div>
+			<div id="prod_ult_compras"></div>
+			<div class="ir_paso2">
+				<a href="javascript:agregar_carro();">
+					<img src="/FO_IMGS/images/mobi/bt_irapaso2.gif" alt="agregar m&aacute;s productos a tu carro" name="bt_irpaso2" border="0" id="bt_irpaso2" />
+				</a>
+			</div>
+		</form>
+	</div>
+</div>
+<div id="carro">
+	<div class="total"> 
+		<div class="carrito"><img src="/FO_IMGS/images/mobi/carrito.gif" /></div>
+		<div class="totalizador"><label><input name="total_carro_compra" id="total_carro_compra" type="text" size="13" readonly="readonly" /> Total</label></div>
+		<div class="bt_paso3"><a href="PasoTresFormMobi"><img src="/FO_IMGS/images/mobi/bt_irpaso3.gif" alt="Ir a paso 3" longdesc="Pasar directamente al Paso 3" border="0" /></a></div>
+	</div>
+	<div class="carrito_abajo">
+		<div class="links_abajo">
+			<a href="/FO/mobi/faq.html" target="_blank"><img src="/FO_IMGS/images/mobi/faq.gif" width="39" height="40" border="0" /></a>
+			<a href="AddressFormMobi"><img src="/FO_IMGS/images/mobi/cam-dir.gif" width="101" height="40" border="0" /></a>
+			<a href="javascript:salirDelSitio();"><img src="/FO_IMGS/images/mobi/guardar.gif" width="115" height="40" border="0" /></a>
+		</div>
+	</div>
+</div>
+<br/><br/><br/><br/>
+<script type="text/javascript" src="/FO_WebContent/mobi/js/prototype.js"></script>
+<script type="text/javascript" src="/FO_WebContent/mobi/js/global.js"></script>
+<script type="text/javascript" src="/FO_WebContent/mobi/js/paso1.js"></script>
+<script type="text/javascript" src="/FO_WebContent/mobi/js/flotante.js"></script>
+</body>
+</html>

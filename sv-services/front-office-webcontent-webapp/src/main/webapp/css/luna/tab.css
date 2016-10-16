@@ -1,0 +1,95 @@
+.dynamic-tab-pane-control.tab-pane {
+	position:	relative;
+	width:		100%;		/* width needed weird IE bug */
+	/*margin-right:	-2px;	 to make room for the shadow */	
+}
+
+.dynamic-tab-pane-control .tab-row .tab {
+	width:				180px;
+	height:				31px;
+	background-image:	url( "desactivo.gif" );
+	
+	position:			relative;
+	top:				0;
+	display:			inline;
+	float:				left;
+	overflow:			hidden;
+	
+	cursor: 			hand;
+	cursor:				pointer;
+
+	margin:				0px 3px 0px 0px;
+	padding:			0px 0px 0px 0px;
+	border:				0;
+
+	z-index:			1;
+	white-space:		nowrap;
+	text-align:			center;
+	color:				rgb( 253, 253, 253 );
+
+}
+
+.dynamic-tab-pane-control .tab-row .tab.selected {
+	outline:			inactiveborder;
+	width:				180px !important;
+	height:				31px !important;
+	background-image:	url( "activo.gif" ) !important;
+	background-repaet:	no-repeat;
+	border-bottom-width:	0;
+	z-index:			3;
+	padding:			0px 0px 0px 0px;
+	margin:				0px 3px 0px 0px;
+	top:				-3px; /*al seleccionar queda + arriba el tag*/
+	font:				14px Tahoma;
+}
+
+.dynamic-tab-pane-control .tab-row .tab a {
+	outline:			inactiveborder;
+	font:				13px Tahoma;
+	color:				#FFFFFF; /* COLOR NORMAL*/
+	font-weight: 		bold;
+	text-decoration:	none;
+	cursor: 			hand;
+	cursor:				pointer;
+}
+
+.dynamic-tab-pane-control .tab-row .tab.hover {
+	width:				180px;
+	height:				31px;
+	cursor: 			hand;
+	cursor:				pointer;
+	background-image:	url( "desactivo.gif" ); /* hover */
+	background-repaet:	no-repeat;
+	top:				-3px;
+}
+
+.dynamic-tab-pane-control .tab-row .hover a {
+	color:	#215027; /*COLOR HOVER*/
+}
+
+.dynamic-tab-pane-control .tab-row .tab.selected a {
+	color:	#215027; /*COLOR SELECCIONADO*/
+}
+
+.dynamic-tab-pane-control .tab-page {
+	clear:			both;
+	border:		 	0;
+	background:		rgb( 252, 252, 254 );
+	z-index:		2;
+	position:		relative;
+	top:			-4px; /*alto de pestaña*/
+
+	/*vertical-align: bottom;*/
+	/*
+	filter:			progid:DXImageTransform.Microsoft.Gradient(StartColorStr=#fffcfcfe, EndColorStr=#fff4f3ee, GradientType=0)
+					progid:DXImageTransform.Microsoft.Shadow(Color=#ff919899, Strength=2, Direction=135);
+	*/
+	/*244, 243, 238*/
+	/*145, 155, 156*/
+	/*padding:		10px;*/
+}
+
+.dynamic-tab-pane-control .tab-row {
+	z-index:		1;
+	white-space:	nowrap;
+}

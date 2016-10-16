@@ -1,0 +1,208 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<body>
+<font face="Trebuchet MS" size="2" color="#333333">
+	<table width="670" align="center">
+		<tr>
+			<td width="673" colspan="2" valign="top">
+				<img src="http://www.jumbo.cl/FO_IMGS/img/estructura/imprimir/imprimir-arriba.jpg" />
+				<table width="670" border="0" cellpadding="11">
+					<tr>
+						<td width="645">
+							<font face="Trebuchet MS" size="4" color="#82C12B">
+								<strong>{nombre_cliente}</strong>
+							</font>
+							<br />
+							<font color="#333333" size="2" face="Trebuchet MS">&iexcl;Tu pedido est&aacute; listo!<br />
+            Ya pas&oacute; por caja a las {hora_caja} hrs. con destino a la secci&oacute;n
+            de {accion_a_realizar}.<br />
+								Los productos de tu pedido permanecer&aacute;n refrigerados en nuestras bodegas hasta el momento de ser despachados.
+								Adem&aacute;s nuestros camiones cuentan con sistema de refrigeraci&oacute;n, para conservar la calidad de tus productos.<br />
+								<br />
+								<strong>El detalle de tu compra es: </strong>
+							</font>
+							<br /><br />
+							<table width="646" border="0" cellspacing="0">
+								<tr>
+									<td style="border-top:#D1D1D1 solid 1px;border-bottom:#D1D1D1 solid 1px;border-left:#D1D1D1 solid 1px;border-right:#D1D1D1 solid 1px;">
+										<table width="100%" cellspacing="0" cellpadding="5">
+											<tr>
+												<td width="40%" bgcolor="#DEF7AD">
+													<font color="#333333" size="2" face="Trebuchet MS">
+														<strong>D&iacute;a y jornada de {accion_a_realizar}</strong>
+													</font>
+												</td>
+												<td width="60%">
+													<font color="#333333" size="2" face="Trebuchet MS">{fecha_tramo}&nbsp;</font>
+												</td>
+											</tr>
+											<tr>
+												<td bgcolor="#DEF7AD">
+													<font color="#333333" size="2" face="Trebuchet MS"><strong>N&uacute;mero de pedido</strong></font>
+												</td>
+												<td>
+													<font color="#333333" size="2" face="Trebuchet MS">{idped}</font>
+												</td>
+											</tr>
+											<tr>
+												<td bgcolor="#DEF7AD">
+													<font color="#333333" size="2" face="Trebuchet MS"><strong>Monto Final Cobrado* </strong></font>
+												</td>
+												<td><font color="#333333" size="2" face="Trebuchet MS">{monto}&nbsp;</font></td>
+											</tr>
+											<tr>
+												<td bgcolor="#DEF7AD"><font color="#333333" size="2" face="Trebuchet MS"><strong>N&uacute;mero de Productos Enviados</strong></font></td>
+												<td><font color="#333333" size="2" face="Trebuchet MS">{can_pro_env} </font></td>
+											</tr>
+											<tr>
+												<td bgcolor="#DEF7AD"><strong><font color="#333333" size="2" face="Trebuchet MS">N&uacute;mero de Productos Sustituidos</font></strong></td>
+												<td><font color="#333333" size="2" face="Trebuchet MS">{can_pro_sus}</font></td>
+											</tr>
+											<tr>
+												<td bgcolor="#DEF7AD"><font color="#333333" size="2" face="Trebuchet MS"><strong>N&uacute;mero de Productos Faltantes</strong></font></td>
+												<td><font color="#333333" size="2" face="Trebuchet MS">{can_pro_fal}</font></td>
+											</tr>
+										</table>
+									</td>
+								</tr>
+							</table>
+							<font face="Trebuchet MS" size="1" color="#000000">*El monto total cobrado puede ser menor al total mostrado por internet debido a los productos faltantes y sustitutos del pedido.<br />
+							</font>
+							<br /><br />
+							<font color="#333333" size="2" face="Trebuchet MS"><strong>Detalle de Productos Enviados:</strong></font>
+							<br /><br />
+							<table width="646" border="0" cellspacing="0">
+								<tr>
+									<td valign="top" style="border-top:#D1D1D1 solid 1px;border-bottom:#D1D1D1 solid 1px;border-left:#D1D1D1 solid 1px;border-right:#D1D1D1 solid 1px;">
+										<table width="100%" bgcolor="#DEF7AD" cellpadding="5">
+											<tr>
+												<td width="5%" height="35"><font color="#333333" size="2" face="Trebuchet MS"><strong>Cant.</strong></font></td>
+												<td height="35"><font color="#333333" size="2" face="Trebuchet MS"><strong>Producto</strong></font></td>
+												<td width="18%" height="35"><font color="#333333" size="2" face="Trebuchet MS"><strong>*PrecioUnitario</strong></font></td>
+											</tr>
+										</table>
+										<table width="100%" cellspacing="0">
+											<tr>
+												<td>
+
+												<!-- BEGIN DYNAMIC: CATEGORIAS -->
+												<table width="100%" border="0" cellpadding="0" cellspacing="0">
+													<tr>
+														<td width="100%" height="20" valign="bottom" background="http://www.jumbo.cl/FO_IMGS/img/estructura/fondocategorias.gif"><font color="#ffffff" size="2" face="Trebuchet MS">{categoria}</font></td>
+													</tr>
+													<!-- BEGIN DYNAMIC: PRODUCTOS -->
+													<tr>
+														<td>
+
+														<table width="100%" cellspacing="3">
+															<tr>
+																<td width="5%" height="22">
+
+																	<!-- BEGIN DYNAMIC: INPUT_SEL -->
+																	<table border="0" cellspacing="0" cellpadding="0">
+																		<tr>
+																			<td class="NoDisponible"></td>
+																			<td rowspan="2" class="NoDisponible"><font color="#000000" size="2">{valor}</font></td>
+																		</tr>
+																		<tr>
+																			<td></td>
+																		</tr>
+																	</table>
+																	<!-- END DYNAMIC: INPUT_SEL -->
+
+																</td>
+																<td>{descripcion}</td>
+																<td width="18%" align="right">{precio_unitario}</td>
+															</tr>
+														</table>
+
+														</td>
+													</tr>
+													<!-- END DYNAMIC: PRODUCTOS -->
+												</table>
+												<!-- END DYNAMIC: CATEGORIAS -->
+
+												</td>
+											</tr>
+										</table>
+										<table width="100%" cellpadding="5" cellspacing="0">
+											<tr>
+												<td height="20" align="right" valign="middle" bgcolor="#DEF7AD">&nbsp;</td>
+											</tr>
+										</table>
+									</td>
+								</tr>
+							</table>
+							<br /><br />
+							<font color="#333333" size="2" face="Trebuchet MS"><strong>Detalle de Productos Sustituidos:</strong><br />
+								Al igual que cuando vas al supermercado, algunos de los productos de tu lista <br />
+								pueden no estar disponibles a la hora de preparar tu pedido, por lo que te enviaremos productos sustitutos.<br />
+								En caso de no estar conforme ll&aacute;manos al 600 400 6400 en menos de 24 hrs. <br />
+								<img src="http://www.jumbo.cl/FO_IMGS/img/estructura/flechita.gif" width="6" height="6" /> <a href="http://www.jumbo.cl/FO/sustitucion_mix.html" target="_blank">Ver pol&iacute;ticas de sustituci&oacute;n</a>
+							</font>
+							<br /><br />
+
+							<table width="646" border="0" cellspacing="0" cellpadding="2">
+							  <tr>
+								<td width="52" align="center" height="35" bgcolor="#DEF7AD" style="border-top:#D1D1D1 solid 1px;border-bottom:#D1D1D1 solid 1px;border-left:#D1D1D1 solid 1px;"><font color="#333333" size="2" face="Trebuchet MS"><strong>Cant.</strong></font></td>
+								<td width="159" align="center" bgcolor="#DEF7AD" style="border-top:#D1D1D1 solid 1px;border-bottom:#D1D1D1 solid 1px;"><font color="#333333" size="2" face="Trebuchet MS"><strong>Producto faltante </strong></font></td>
+								<td width="66" align="center" bgcolor="#DEF7AD" style="border-top:#D1D1D1 solid 1px;border-bottom:#D1D1D1 solid 1px;border-right:#D1D1D1 solid 1px;"><font color="#333333" size="2" face="Trebuchet MS"><strong>*Precio<br />Unitario</strong></font></td>
+								<td width="52" align="center" bgcolor="#DEF7AD" style="border-top:#D1D1D1 solid 1px;border-bottom:#D1D1D1 solid 1px;"><font color="#333333" size="2" face="Trebuchet MS"><strong>Cant.</strong></font></td>
+								<td width="159" align="center" bgcolor="#DEF7AD" style="border-top:#D1D1D1 solid 1px;border-bottom:#D1D1D1 solid 1px;"><font color="#333333" size="2" face="Trebuchet MS"><strong>Producto sustituto</strong></font></td>
+								<td width="66" align="center" bgcolor="#DEF7AD" style="border-top:#D1D1D1 solid 1px;border-bottom:#D1D1D1 solid 1px;border-right:#D1D1D1 solid 1px;"><font color="#333333" size="2" face="Trebuchet MS"><strong>*Precio<br />Unitario</strong></font></td>
+								<td width="92" align="center" bgcolor="#DEF7AD" style="border-top:#D1D1D1 solid 1px;border-bottom:#D1D1D1 solid 1px;border-right:#D1D1D1 solid 1px;"><img src="http://www.jumbo.cl/FO_IMGS/img/estructura/sustitutos/icono.gif" />&nbsp;<font color="#333333" size="2" face="Trebuchet MS"><strong>Criterio<br />Sustituci&oacute;n</strong></font></td>
+							  </tr>
+							  <!-- BEGIN DYNAMIC: LISTA_PROD_SUS -->
+							  <tr>
+							  	<td height="35" style="border-bottom:#D1D1D1 solid 1px;border-left:#D1D1D1 solid 1px;"><font color="#333333" style="font-size:9pt;" face="Trebuchet MS">{can_pro_sus1}</font></td>
+								<td style="border-bottom:#D1D1D1 solid 1px;"><font color="#333333" style="font-size:9pt;" face="Trebuchet MS">{descripcion_sus1}</font></td>
+								<td align="right" style="border-bottom:#D1D1D1 solid 1px;border-right:#D1D1D1 solid 1px;"><font color="#333333" style="font-size:9pt;" face="Trebuchet MS">{unitario_sus1}</font></td>
+								<td style="border-bottom:#D1D1D1 solid 1px;"><font color="#333333" style="font-size:9pt;" face="Trebuchet MS">{can_pro_sus2}</font></td>
+								<td style="border-bottom:#D1D1D1 solid 1px;"><font color="#333333" style="font-size:9pt;" face="Trebuchet MS">{descripcion_sus2}</font></td>
+								<td align="right" style="border-bottom:#D1D1D1 solid 1px;border-right:#D1D1D1 solid 1px;"><font color="#333333" style="font-size:9pt;" face="Trebuchet MS">{unitario_sus2}</font></td>
+								<td style="border-bottom:#D1D1D1 solid 1px;border-right:#D1D1D1 solid 1px;"><font color="#333333" style="font-size:9pt;" face="Trebuchet MS">{cri_sus}</font></td>
+							  </tr>
+							  <!-- END DYNAMIC: LISTA_PROD_SUS -->
+							  <tr bgcolor="#DEF7AD">
+								<td colspan="9" height="20" style="border-bottom:#D1D1D1 solid 1px;border-right:#D1D1D1 solid 1px;border-left:#D1D1D1 solid 1px;">&nbsp;</td>
+							  </tr>
+							</table>
+
+							<font face="Trebuchet MS" size="1" color="#000000">Si la descripci&oacute;n del producto faltante y el sustituto son similares, se debe a un cambio en el c&oacute;digo o en el formato. En estos casos el producto que recibir&aacute;s ser&aacute; el mismo que solicitaste.</font>
+							<br /><br /><br />
+							<font color="#333333" size="2"face="Trebuchet MS"> <strong>Detalle de Productos Faltantes</strong>:<br />El valor de estos productos no fue cobrado en la boleta.</font>
+							<br /><br />
+
+							<table width="646" border="0" cellspacing="0" cellpadding="3">
+								<tr bgcolor="#DEF7AD">
+									<td width="80" height="35" align="center" style="border-top:#D1D1D1 solid 1px;border-bottom:#D1D1D1 solid 1px;border-left:#D1D1D1 solid 1px;"><font color="#333333" size="2" face="Trebuchet MS"><strong>Cant.</strong></font></td>
+									<td width="335" align="center" style="border-top:#D1D1D1 solid 1px;border-bottom:#D1D1D1 solid 1px;"><font color="#333333" size="2" face="Trebuchet MS"><strong>Producto</strong></font></td>
+									<td width="90" align="center" style="border-top:#D1D1D1 solid 1px;border-bottom:#D1D1D1 solid 1px;"><font color="#333333" size="2" face="Trebuchet MS"><strong>*Precio<br />Unitario</strong></font></td>
+									<td width="141" align="center" style="border-top:#D1D1D1 solid 1px;border-bottom:#D1D1D1 solid 1px;border-right:#D1D1D1 solid 1px;"><img src="http://www.jumbo.cl/FO_IMGS/img/estructura/sustitutos/icono.gif" />&nbsp;<font color="#333333" size="2" face="Trebuchet MS"><strong>Criterio<br />Sustituci&oacute;n</strong></font></td>
+								</tr>
+								<!-- BEGIN DYNAMIC: LISTA_PROD_FAL -->
+								<tr>
+									<td height="35" style="border-bottom:#D1D1D1 solid 1px;border-left:#D1D1D1 solid 1px;"><font color="#333333" style="font-size:9pt;" face="Trebuchet MS">{can_pro_fal}</font></td>
+									<td style="border-bottom:#D1D1D1 solid 1px;"><font color="#333333" style="font-size:9pt;" face="Trebuchet MS">{descripcion_fal}</font></td>
+									<td align="right" style="border-bottom:#D1D1D1 solid 1px;"><font color="#333333" style="font-size:9pt;" face="Trebuchet MS">{unitario_fal}&nbsp;</font></td>
+									<td style="border-bottom:#D1D1D1 solid 1px;border-right:#D1D1D1 solid 1px;"><font color="#333333" style="font-size:9pt;" face="Trebuchet MS">{cri_sus}</font></td>
+								</tr>
+								<!-- END DYNAMIC: LISTA_PROD_FAL -->
+								<tr>
+									<td height="20" bgcolor="#DEF7AD" colspan="4" style="border-bottom:#D1D1D1 solid 1px;border-right:#D1D1D1 solid 1px;border-left:#D1D1D1 solid 1px;">&nbsp;</td>
+								</tr>
+							</table>
+							<font face="Trebuchet MS" size="1" color="#000000">No se encontró un producto sustituto acorde a las características del producto solicitado.</font><br /><br />
+							<font face="Trebuchet MS" size="4" color="#82C12B">&iexcl;Gracias por comprar en Jumbo.cl! </font><br />
+						</td>
+					</tr>
+				</table>
+				<img src="http://www.jumbo.cl/FO_IMGS/img/estructura/imprimir/abajo2.gif" />
+			</td>
+		</tr>
+	</table>
+</font>
+
+</body>
+
+</html>

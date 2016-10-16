@@ -1,0 +1,812 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html><!-- InstanceBegin template="/Templates/fullbody.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="EXPIRES" CONTENT="Mon, 22 Jul 2002 11:12:01 GMT">
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>Jumbo.cl Back Office Central</title>
+<!-- InstanceEndEditable -->
+
+<!-- InstanceBeginEditable name="head" -->
+
+
+
+
+
+
+
+
+<!-- InstanceEndEditable -->
+
+<link href="estilos.css" rel="stylesheet" type="text/css">
+<!--link href="../default.css" rel="stylesheet" type="text/css"-->
+<style type="text/css">
+<!--
+.style1 {color: #666666}
+-->
+</style>
+</head>
+
+<body>
+<link rel="stylesheet" href="menu/menu.css">
+<script language="JavaScript" src="menu/menu.js"></script>
+<script language="JavaScript" src="menu/menu_tpl.js"></script>
+<script language="JavaScript" src="menu/menu_items.js"></script>
+<script language="JavaScript" src="popup.js"></script>
+<script language="JavaScript" src="funciones.js"></script>
+<SCRIPT LANGUAGE="JavaScript" SRC="CalendarPopup.js"></SCRIPT>
+<SCRIPT LANGUAGE="JavaScript">document.write(getCalendarStyles());</SCRIPT>
+<table width="780" height="100%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+    <td height="78" valign="top">
+	
+	<TABLE width="100%" height=59 border=0 align="center" cellpadding="0" cellspacing="0" bgcolor="#ffffff">
+	  <TR>
+		<TD width=275 height="59" align=left class=user><img src="img/header2.jpg" width="275" height="60"></TD>
+		<TD width=505 align=left valign="bottom" background="img/bg-1.jpg" class=user><table width="90%"  border="0" align="center" cellpadding="0" cellspacing="2">
+          <tr>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td><div align="right" class="infoBL">Usuario: {hdr_nombre}&nbsp;&nbsp;| {hdr_fecha}</div></td>
+          </tr>
+        </table></TD>
+	  </TR>
+	</TABLE>
+	<TABLE width="100%" height=19 border=0 align="center" cellpadding="0" cellspacing="0" bgcolor="#f1f0e9" style="border-top:1px solid #ABABAB; border-bottom:1px solid #ABABAB">
+	  <TR>
+		<TD align=left bgcolor="#FFFFFF" class=user></TD>
+		</TR>
+	</TABLE>
+
+	
+	</td>
+  </tr>
+  <tr height="400">
+    <td valign="top" bgcolor="#FFFFFF">
+      <table border=0 width="100%" class='ContentTitle'>
+        <tr>
+          <td width="53%" height="20" class='HeaderTitle'><!-- InstanceBeginEditable name="Titulo" --> Detalle de la Cotización Nº {num_cot}<!-- InstanceEndEditable --></td>
+          <td width="47%" class='HeaderTitle'><!-- InstanceBeginEditable name="Botonera" -->
+            <div align="right"><a href="ViewMonCotizaciones"><img src="img/volver.gif" width="32" height="32" border="0"></a></div>
+          <!-- InstanceEndEditable --></td>
+        </tr>
+      </table>
+	  <br>
+      <table width="100%"  border="0" cellspacing="2" cellpadding="2">
+        <tr valign="top">
+          <td width="71%"><!-- InstanceBeginEditable name="Izquierda" -->
+<SCRIPT LANGUAGE="JavaScript">window.name='wincoti'</SCRIPT>				          
+<script src="validacion.js"></script>
+<script>
+
+var dir_id = new Array();
+var nom_local = new Array();
+
+<!-- BEGIN DYNAMIC: DIR_DESP -->
+    dir_id[{i}] = '{dd_id}';
+    nom_local[{i}] = '{nom_local}';
+<!-- END DYNAMIC: DIR_DESP -->
+
+function mostrar_locdesp(){
+    var formulario = document.act_cot;
+   
+    valor = formulario.sel_dirdes.value;    
+	// alert(valor);
+    for( i = 0; i < dir_id.length; i++ ){
+        if( dir_id[i] == valor ) {
+           formulario.loc_desp.value = nom_local[i];
+        }
+    }
+}
+            
+function abre_popup(){
+	valor="";
+	if ((valor = popUpWindowModalscroll('ViewBusqProdForm', 100, 100, 600, 400))> '0') {
+		if (valor != ""){
+			id = valor.split("|");
+			document.form1.id_prod.value = id[0];
+		}
+		
+	}
+}
+				
+function agregar(form){
+	form.submit();
+}
+					
+					
+function documentoDePagoLayer(value) {	
+	if (value == 'B') {
+		act_cot.sel_dirfac.disabled = true;
+		act_cot.sel_dirfac.value = null;
+	}
+	if (value == 'F') {
+		act_cot.sel_dirfac.disabled = false;
+	}
+}	
+		
+		
+function validar_form(form){
+	if (form.costo_desp.value == ""){
+		alert("Debe ingresar costo de despacho");
+		return false;
+	}
+	if (validar_numero(form.costo_desp,"Costo de despacho es un campo numerico.")) return false;
+	if (form.tipo_doc[1].checked && form.sel_dirfac.value=="---"){
+		alert("Debe seleccionar una dirección de facturacion");
+		return false;
+	}
+	if (form.costo_desp.value < 1){
+		alert("El costo de despacho debe ser mayor o igual a uno(1)");
+		return false;
+	}
+	if (form.sel_dirdes.value == "---"){
+		alert("Debe seleccionar una dirección de despacho");
+		return false;
+	}
+	if (form.fecha_venc.value == "---"){
+		alert("Debe seleccionar la fecha de vencimiento de la cotizacion");
+		return false;	
+	}
+
+	hora_desp = form.fec_desp.value.substr(11,8);
+	if (hora_desp == "00:00:00")
+	{
+		alert("Debe ingresar Fecha de Despacho válida.");
+		return false;
+	}
+	return true;
+}
+
+function revisa_linea_credito(saldo_empresa, estado){
+	var forma1 = document.act_cot;
+	var forma2  = document.calc_linea_credito;
+	monto_cotizacion = parseFloat(forma2.res_monto_total.value, 10) + parseFloat(forma1.costo_desp.value, 10);
+	//S : si realiza la revision , N: No hace la revision (estado o medio de pago diferente)
+	if (estado =='N')
+		return true;
+	
+	diferencia = saldo_empresa - monto_cotizacion;
+	
+	//alert("saldo_empresa: "+saldo_empresa+" monto_cotizacion: "+monto_cotizacion+" diferencia: "+diferencia);
+	//alert ('saldo_emp['+saldo_empresa+'] - montocotizacion['+monto_cotizacion+'] = diferencia ='+diferencia);
+	if (diferencia >= 0)
+		return true;
+	
+	alert('El saldo disponible de la línea de crédito es insuficiente para generar pedidos');
+	return false;
+}
+
+
+		function abre_popup_caldesp(){
+			popUpWindow('ViewCalJorDespRefCotizForm?id_cotizacion={num_cot}&id_local={loc_id}&mod={mod}', 100, 100, 600, 400);
+		}
+</script>					
+					
+
+      <link id="luna-tab-style-sheet" type="text/css" rel="stylesheet" href="js/tabs/tabpane.css" />
+	<script type="text/javascript" src="js/tabs/tabpane.js">
+	
+	
+	
+	</script>
+	<form name="calc_linea_credito">
+	<input type="hidden" name="res_monto_total" value="" size="5" readonly>
+	</form>
+	
+	<center><font color=red></font></center>
+	<table width="95%" align="center" border="0">
+        <tr>
+          <td>
+		<div class="tab-page" id="modules-cpanel">
+			<script type="text/javascript">
+				var tabPane1 = new WebFXTabPane( document.getElementById( "modules-cpanel" ), true )
+			</script>
+			
+			<div class="tab-page" id="modulo1">
+				<h2 class="tab">General</h2>
+					<div align="left"> 
+					<center><font color=red>{msje}</font></center>
+						<p><strong>Datos de la Cotización</strong></p>
+						<form name="act_cot" method="get" action="ModCotizacion" onsubmit="return validar_form(this);">
+							<input type="hidden" name="cot_id" value="{num_cot}"> 
+							<input type="hidden" name="mod" value="{mod}">
+							<input type="hidden" name="id_jornada" value="{id_jornada}">							
+							<input type="hidden" name="url" value="ViewCotizacionesForm?cot_id={num_cot}&mod={mod}">
+							<table width="660"  border="0" align="center" cellpadding="2" cellspacing="2">
+							<tr>
+							<td width="139">N&deg; Cotización</td>
+							<td width="507">{num_cot}</td>
+							</tr>
+							<tr>
+							<td>Empresa</td>
+							<td>{nom_emp}</td>
+							</tr>
+							<tr>
+							<td>Sucursal</td>
+							<td>{nom_suc}</td>
+							</tr>
+							<tr>
+							<td>Comprador</td>
+							<td>{nom_comp}</td>
+							</tr>
+							<tr>
+							<td>Fecha de Ingreso </td>
+							<td>{fec_ing}</td>
+							</tr>
+							{oper_fono}
+							<tr>
+							<td>Fecha de Despacho</td>
+							<td class="infoVd">
+							<input type="text" name="fec_desp" value="{fec_desp}" readOnly >
+							<a href='javascript:abre_popup_caldesp();'> <img src="img/magnify.jpg" width="16" height="16" border="0"> </a> 
+							
+							</td>
+							</tr>
+							<tr>
+							<td>Fecha de Vencimiento </td>
+							<td>
+							 
+								<SCRIPT LANGUAGE="JavaScript" ID="js17">
+									//var ayer = new Date({fec_venc_dia},{fec_venc_mes},{fec_venc_ano},12,0,0,0);
+									var cal1 = new CalendarPopup("testdiv1");
+									cal1.offsetX = 0;
+									cal1.offsetY = -175;
+									
+									function func_onclick_cal_fvenc(habilitado){
+										if (habilitado="enabled"){
+											cal1.select(document.act_cot.fecha_venc,'anchor1','dd/MM/yyyy'); return false;
+										}
+									}
+										
+								</SCRIPT>
+								
+		 
+								<!-- probar con document.forms.act_cot 
+								
+								<input name ="fecha" type="text" id="txt_fecha_venc" value="{fec_venc}" readOnly {hab_fecha_venc}
+								onClick="cal1.select(document.forms[0].txt_fecha_venc,'anchor1','dd-MM-yyyy'); return false;">
+								<a href="#"
+								onClick="cal1.select(document.forms[0].txt_fecha_venc,'anchor1','dd-MM-yyyy'); return false;"
+								name="anchor1" id="anchor1"> 
+								<img src="img/cal.gif" width="16"
+								height="16" border="0"> 
+								</a> 
+								
+								
+								-->
+							
+								
+								
+								
+								<input name="fecha_venc" type="text" id="fecha_venc" value="{fec_venc}" readOnly {hab_fecha_venc}
+								onClick="javascript:func_onclick_cal_fvenc('{hab_fecha_venc}');" name="anchor1" id="anchor1">
+								
+								<a href="#"
+								onClick="javascript:func_onclick_cal_fvenc('{hab_fecha_venc}');"
+								name="anchor1" id="anchor1"> 
+								<img src="img/cal.gif" width="16"
+								height="16" border="0"> 
+								</a> 
+															
+								<DIV ID="testdiv1" STYLE="position:absolute;visibility:hidden;background-color:white;layer-background-color:white;"></DIV>
+							</td>
+							</tr>
+							<tr>
+							<td>Estado</td>
+							<td class="infoVd"><strong>{estado}</strong> </td>
+							</tr>
+							<!--tr>
+							<td>Monto Cotización </td>
+							<td>{monto}</td>
+							</tr-->
+							<tr>
+							<td>Costo de Despacho </td>
+							<td>$<input name="costo_desp" type="text" value="{costo_desp}" size="10" maxlength="10" {hab_input_costo}></td>
+							</tr>
+							<tr>
+							<td>Total </td>
+							<td>{total}</td>
+							</tr>
+							<tr>
+							<td>Total Productos</td>
+							<td>{tot_productos}</td>
+							</tr>
+							<tr>
+							<td>Tipo Documento</td>
+							<td>
+								<input type="radio" name = "tipo_doc" value = "B" onfocus="documentoDePagoLayer(this.value);" {check_B} {hab_select_tipo_doc}>Boleta
+							    <input type="radio" name = "tipo_doc" value = "F" onfocus="documentoDePagoLayer(this.value);" {check_F} {hab_select_tipo_doc}>Factura
+							</td>
+							</tr>
+							<tr>
+							<td>Dirección Facturación</td>
+							<td>
+							<select name="sel_dirfac"  class="letracombo" {hab_sel_dirfact} >
+                              <option value="---">---</option>
+      						 <!-- BEGIN DYNAMIC: DIR_FACT -->                                 
+                              <option value={df_id} {sel_df} >{direccion}</option>
+							 <!-- END DYNAMIC: DIR_FACT -->     
+                            </select>
+                            </td>
+							</tr>	
+							<tr>
+							<td>Dirección de Despacho</td>
+							<td>
+							<select name="sel_dirdes"  class="letracombo"  {hab_sel_dirdesp} onchange="mostrar_locdesp();" >
+                              <option value="---">---</option>
+      						 <!-- BEGIN DYNAMIC: DIR_DESP -->                                 
+                              <option value={dd_id} {sel_dd} >{dir_desp}</option>
+							 <!-- END DYNAMIC: DIR_DESP -->     
+                            </select>	
+							</td>
+							</tr>
+							<tr>
+							<td>Local de Despacho</td>
+							<td>
+							<input type="text" name="loc_desp" value="{loc_desp}" {hab_sel_dirdesp}  readOnly>
+                            </td>
+							</tr>														
+							<tr>
+							<td>Cotización está siendo editada por:</td>
+							<td class="infoRj">{usuario_edita}</td>
+							</tr>
+							<tr>
+								<td valign="top">Autorización de Margen de Utilidad Menor:</td>
+								<td>								
+										<select name="aut_margen" {hab_aut_margen} >
+											<option value="S" {aut_margen_on} >Autorizado</option>
+											<option value="N" {aut_margen_off} >No Autorizado</option>
+										</select> <i>(solo supervisores)</i>
+								</td>
+							</tr>
+							<tr>
+								<td valign="top">Autorización de Descuento Mayor:</td>
+								<td>								
+									<select name="aut_dscto" {hab_aut_dscto} >
+										<option value="S" {aut_dscto_on} >Autorizado</option>
+										<option value="N" {aut_dscto_off} >No Autorizado</option>
+									</select> <i>(solo supervisores)</i>
+								</td>
+							</tr>
+							</table>
+							<p><strong>Datos del Medio de Pago</strong></p>
+							<table width="660"  border="0" align="center" cellpadding="2" cellspacing="2">
+							<tr>
+							<td width="139">&nbsp;</td>
+							<td width="507">&nbsp;</td>
+							</tr>
+							<tr>
+							<td>Medio de Pago </td>
+							<td>{medio_pago}</td>
+							</tr>
+							<tr>
+							<td>Tipo de Tarjeta</td>
+							<td>{tipo_tarjeta}</td>
+							</tr>
+							<tr>
+							<td>N&deg; Tarjeta</td>
+							<td>{num_tarjeta}</td>
+							</tr>
+							<tr>
+							<td>Fecha de expiración</td>
+							<td>{fec_expira}</td>
+							</tr>
+							<tr>
+							<td>Nº de cuotas</td>
+							<td>{num_cuotas}</td>
+							</tr>
+							<tr>
+							<td height="60">Observaciones</td>
+							<td><textarea name="obs" cols="60" rows="3" id="observacion">{obs}</textarea>                          </td>
+							</tr>
+							<tr>
+							<td>Productos fuera de Mix</td>
+							<td><textarea name="fuera_mix" cols="60" rows="3" id="fueramix">{prod_fuera_mix}</textarea></td>
+							</tr>
+							{hab_datos_lcredito_ini}
+							<tr>
+							<td>Saldo Disponible Reportado</td>
+							<td>{lc_saldo_reportado}</td>
+							</tr>                      
+							<tr>
+							<td>Saldo Pendientes Actuales</td>
+							<td>{lc_saldo_pendientes}</td>
+							</tr>                      
+							<tr>
+							<td>Disponible Actualizado</td>
+							<td>{lc_disponible_actual}</td>
+							</tr>                      														
+							{hab_datos_lcredito_fin}			
+						</table>
+						<script type="text/javascript" src="popup.js"></script>
+						<br><strong>Acciones sobre la Cotización </strong>
+						<br>
+						<br>
+						<table width="92%"  border="0" align="center" cellpadding="0" cellspacing="2">
+							<tr>
+							<td width="25%"><div align="center"><input name="guarda_cambios" type="submit" class="cmd" value="Guardar Cambios" {habgc} ></div></td>						
+					</form>
+							<!--td width="25%"><div align="center"><input enabled name="mod_docpago" type="button" class="cmd" value="Modificar Documento Pago" onClick="popUpWindowModal('ViewModDocPagoForm?cot_id={num_cot}&suc_id={suc_id}&mod=', 100, 100, 420, 400);"></div></td-->
+							<!-- td width="25%"><div align="center"><input enabled name="gen_ped" type="button" class="cmd" value="Generar Pedidos" onClick="location.href='ViewGeneraPedidos?id_cotizacion={num_cot}'" {habgp} ></div></td -->							
+							<td width="25%"><div align="center"><input enabled name="gen_ped" type="button" class="cmd" value="Generar Pedidos" onClick="javascript:if (revisa_linea_credito( {saldo_empresa} , '{estado_a_o_r}' )) location.href='ViewGeneraPedidos?id_cotizacion={num_cot}&jornada={id_jornada}&local={loc_id}&mod={mod}'; " {habgp} ></div></td>
+							<td width="*"><div align="center"><input enabled name="anulacot" type="submit" class="cmd" value="Anular Cotización" {habac} onClick="location.href='AnulaCotizacion?mod={mod}&cot_id={num_cot}&url_anucot='+ escape('ViewCotizacionesForm?cot_id={num_cot}&mod={mod}')"></div></td>
+							<td><div align="center"><input enabled name="liberaop" type="button" class="cmd" value="Libera Cotización" onClick="location.href='LiberaCotizacion?cot_id={num_cot}&origen=1&url=ViewMonCotizaciones'" {hablc} ></div></td>
+							<td><div align="center"><input  type="button" class="cmd" value="{nom_btn}" onClick="location.href='{enlace}'" {hab_btn} ></div></td>
+							</tr>
+							<tr>
+							<td><div align="center">Actualiza modificaciones a la cotizacion.</div></td>
+							<!-- td><div align="center">Modifica los datos de la Boleta / Factura</div></td  -->
+							<td><div align="center">Genera pedidos, (Comprador aceptó Cotizacion)</div></td>
+							<td><div align="center">Anula la cotización</div></td>
+							<td><div align="center">Permite que otro ejecutivo se haga cargo de esta cotización</div></td>
+							<td><div align="center">Permite cambiar el estado a las cotizaciones que tengan productos fuera de mix</div></td>
+							</tr>
+							<tr>
+							
+							<td></td>
+							<td></td>
+							<td></td>
+							</tr>
+							<tr>
+							
+							<td><div align="center"></div></td>
+							<td><div align="center"></div></td>
+							<td><div align="center"></div></td>
+							</tr>					  
+						</table>
+						<br>
+						<br/>
+					</div>
+				</div>
+				<div class="tab-page" id="modulo1">
+					<h2 class="tab">Empresa</h2>
+					<div align="left">
+						<p><strong>Datos de la Empresa</strong></p>
+						<table width="80%"  border="0" align="center" cellpadding="0" cellspacing="2">
+							<tr>
+							<td>Rut</td>
+							<td>{rut_emp}</td>
+							</tr>
+							<tr>
+							<td width="18%">Razon Social</td>
+							<td width="82%">{raz_soc}</td>
+							</tr>
+							<tr>
+							<td width="18%">Nombre Empresa</td>
+							<td width="82%">{emp_nombre}</td>
+							</tr>
+							<tr>
+							<td>Descripción </td>
+							<td>{desc}</td>
+							</tr>
+							<tr>
+							<td>E-mail</td>
+							<td>{mail}</td>
+							</tr>
+							<tr>
+							<td>Fono 1 </td>
+							<td>{fono1}</td>
+							</tr>
+							<tr>
+							<td>Fono 2 </td>
+							<td>{fono2}</td>
+							</tr>
+							<tr>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							</tr>
+							<tr>
+							<td>F.Creaci&oacute;n</td>
+							<td>{fec_crea}</td>
+							</tr>
+							<tr>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							</tr>
+							<tr>
+							<td>&nbsp;</td>
+							<td><input name="Button" type="button" class="cmd" value="   Ir a Ficha Empresa   " onClick="location.href='ViewEmpresaForm?id_empresa={emp_id}'"  {habemp} ></td>
+							</tr>
+							</table>
+							<p><strong>Datos de la Sucursal</strong></p>
+							<table width="80%"  border="0" align="center" cellpadding="0" cellspacing="2">
+							<tr>
+							<td>Rut</td>
+							<td>{rut_suc}</td>
+							</tr>
+							<tr>
+							<td width="18%">Razon Social</td>
+							<td width="82%">{raz_soc_suc}</td>
+							</tr>
+							<tr>
+							<td width="18%">Nombre Sucursal</td>
+							<td width="82%">{suc_nombre}</td>
+							</tr>
+							<tr>
+							<td>Descripción </td>
+							<td>{desc_suc}</td>
+							</tr>
+							<tr>
+							<td>E-mail</td>
+							<td>{mail_suc}</td>
+							</tr>
+							<tr>
+							<td>Fono 1 </td>
+							<td>{fono1_suc}</td>
+							</tr>
+							<tr>
+							<td>Fono 2 </td>
+							<td>{fono2_suc}</td>
+							</tr>
+							<tr>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							</tr>
+							<tr>
+							<td>F.Creaci&oacute;n</td>
+							</tr>
+							<tr>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							</tr>
+							<tr>
+							<td>&nbsp;</td>
+							<td><input name="Button" type="button" class="cmd" value="   Ir a Ficha Sucursal    " onClick="location.href='ViewSucursalForm?id_sucursal={suc_id}'"  {habsuc} ></td>
+							</tr>
+						</table>
+						</div>
+						<p> <br>
+						</p>
+					
+				</div>			
+				<div class="tab-page" id="modulo1">
+		             <h2 class="tab">Validacion</h2>
+        		     <div align="left"> <strong>Listado de alertas de validacion de la Cotización </strong><br />
+                		 <br>
+		                 <table width="544"  border="0" align="center" cellpadding="2" cellspacing="0" class="tabla2">
+        		           <tr>
+                		   <th width="5%">Tipo&nbsp;</th>
+		                   <th width="25%">Alerta</th>
+                           <th width="70%">Descripcion</th>
+                           </tr>
+                   	     </table>
+                   		 <CENTER><IFRAME SRC="ViewCotizAlertIframe?cot_id={num_cot}" NAME="val_cot" HEIGHT="214" WIDTH="544" border=0 > 
+			    		 </IFRAME></CENTER>
+                      </div>
+                      <div align="center">
+             			<table>
+             			<tr>
+             				<td>
+              				   <form name="validar" method="post" action="ValidarCotizacion?id_cotizacion={num_cot}" >
+              					  <input type="hidden" name="url" value="ViewCotizacionesForm?cot_id={num_cot}&mod=1">
+               					  <input type="hidden" name="id_cotizacion" value="{num_cot}">
+            					  <input  type="submit" value="Validar Cotizacion"  {habvc} >
+                			   </form>
+                 			</td>
+                 			<td>
+                 				<form name="confirmar" method="post" action="ConfirmarCotizacion" >
+                 					<input type="hidden" name="url" value="ViewCotizacionesForm?cot_id={num_cot}&mod=1">
+                					 <input type="hidden" name="id_cotizacion" value="{num_cot}">
+            						 <input   type="button" value="Confirmar Cotizacion"  onClick="if(verify(confirmar)){
+										 confirmar.submit();			         
+        									 }" {habcc} >
+                				 </form>
+                			</td>
+                 		</tr>
+                 		</table>
+                 	<center><font color=red></font></center>
+             		</div>
+	           </div>			  
+<script>
+	function validar_prod(form){
+
+		if (form.id_prod.value ==""|| form.cant.value=="" || form.desc.value =="" ){
+			alert("Debe ingresar todos los datos");
+			return false;
+		}
+		if (validar_solonumero(form.id_prod, "Id de Producto es un campo Numerico")) return false;
+		if (validar_numero(form.cant,    "Cantidad es un campo Numerico")) return false;
+		if (validar_numero(form.desc,    "Descuento es un campo Numerico")) return false;
+		if (validar_letranumero(form.obs, "Observaciones solo permite el uso de letras y números")) return false;					
+		if (form.obs.value.length > 255){ 
+			alert("El largo máximo permitido en observaciones es de 255 caracteres");
+			return false;
+		}
+		return true;
+	}
+	
+	
+
+</script>	
+           <div class="tab-page" id="modulo1">
+             <h2 class="tab">Productos</h2>
+             <div align="left"> <strong>Listado de Productos de la Cotizaci&oacute;n </strong><br />
+                 <br>
+                 <br>
+					<form name="form1"  method=post action="AddProdCotizacion" target="cotprod_ifr" onsubmit="return validar_prod(this);">
+					<input type="hidden" name="url" value="ViewCotizProdIframe?cot_id={num_cot}&mod={mod}">
+					<input type="hidden" name="cot_id" value="{num_cot}">
+					<input name="id_loc" type="hidden" value="{loc_id}">
+					<input name="mod" type="hidden" value="{mod}">
+                	<table width="89%"  border="0" align="center" cellpadding="0" cellspacing="2">
+                   		<tr>
+                    		 <td width="24%">Id Producto Web</td>
+		                     <td width="11%">Cantidad</td>
+		                     <td width="11%">Descuento</td>
+		                     <td width="41%">Observaci&oacute;n</td>
+		                     <td width="24%">&nbsp;</td>
+                 		</tr>
+	                    <tr>
+                     		<td valign="top"><input name="id_prod" type="text" size="15" maxlength="9">
+                         		<a href='javascript:abre_popup();'> <img src="img/magnify.jpg" width="16" height="16" border="0"> </a> </td>
+                     		<td valign="top"><input name="cant" type="text" size="10" maxlength="10"></td>
+                     		<td valign="top"><input name="desc" type="text" size="10" maxlength="5"></td>
+                    		<td valign="top"><textarea name="obs" cols="50" onchange="if(this.value.length > 254){ this.value=this.value.substring(0,255); window.event.keyCode=0; alert('Se permite un máximo de 255 caracteres en la descripción, se eliminaran los caracteres sobrantes.                               Presione Agregar para insertar el Producto.'); }" ></textarea></td>
+                     		<td valign="top"><input enabled name="Button" type="submit" class="cmd" value="Agregar" {habap} ></td>
+                   		</tr>                      
+                 	</table>
+                   </form>
+                     <br>
+                 <table width="95%" border="0" align="center" cellpadding="1" cellspacing="0" class="tabla2">
+			       <tr>
+                    <th width="21"></th>
+					<th width="51">Id Prod</th>
+					<th width="63">Cod SAP</th>
+					<th width="32">Unid</th>
+					<th width="340">Descripci&oacute;n</th>
+					<th width="100">Cant Ped.</th>
+					<th width="212" align=center>Precio Lista</th>
+					<th width="212">% Descuento</th>
+					<th width="85">Precio Unitario</th>
+					<th width="49" align=left>Obs</th>
+                   </tr>
+                 </table>
+                 <CENTER><IFRAME SRC="ViewCotizProdIframe?cot_id={num_cot}&mod={mod}&estado={id_est_cot}" NAME="cotprod_ifr" HEIGHT="194" WIDTH="95%" border=0 > 
+		   </IFRAME></CENTER>
+		   <script>
+		   		function valida_descto(form){
+		   			if (form.descto.value == ""){
+		   				alert("Debe ingresar el descuento a aplicar.");
+		   				return false;
+		   			}
+		   			//alert ("valor long descuento:"+parseInt(form.descto.value)    );
+		   			if ( (parseInt(form.descto.value) < 0  )   
+		   			||   (parseInt(form.descto.value) >  100) ) {
+		   				alert("Debe ingresar un descuento en porcentaje con valor entre 0 y 100.");
+		   				return false;
+		   			}		  
+		   			if (validar_numero(form.descto,"Campo Numerico."))return false;
+		   			return true;
+		   		}
+		   </script>
+		<p align="center">
+			<form name="resumen_productos">	
+			<table>	
+			<tr>
+			<td>	
+			Resumen % Descuento 
+			</td>
+			<td>
+			<input type="text" name="res_dscto" value="" size="5" maxlength="5" readonly><br>
+			</td>
+			</tr>
+			<tr>
+			<td>
+			Resumen % Margen Utilidad Apróximado 
+			</td>
+			<td>
+			<input type="text" name="res_margen" value="" size="5" maxlength="5" readonly>
+			</td>
+			</tr>
+			</table>
+			</form>
+			
+		</p>
+		<form name="guarda" method=post action="ModProductoCotizacion" target="cotprod_ifr" onsubmit=" return valida_descto(this);">		   
+		<input type="hidden" name="url" value="ViewCotizProdIframe?cot_id={num_cot}&mod={mod}&mar_min_emp={mar_min_emp}&origen=1&dscto_max_emp={dscto_max_emp}">
+		<input type="hidden" name="cot_id" value="{num_cot}">
+		<input type="hidden" name="accion" value="aplica">
+		<input type="hidden" name="mod" value="{mod}">		
+
+		
+		<p align="center">
+
+	
+			<input name="descto" type="text" size="5" maxlength="5" value="0">% de descuento a todos los productos
+			 <input type="submit" name="aplicar" value="Aplicar" {habad} >
+
+		</p>
+		<p align="center"><input type="button" name="guarda_cambios" value="Actualizar - Guardar Cambios" onclick=" parent.cotprod_ifr.f1({mod},{mar_min_emp},1,{dscto_max_emp});" {habgd} ></p>
+			</form>		
+		<table width="93%"  border="0" align="center" cellpadding="0" cellspacing="2">
+                   <tr>
+                     <!--td width="24%" valign="top"><input name="Button" type="button" class="cmd" value="Eliminar"></td-->
+                   </tr>
+                 </table>
+                 <script>
+                 document.guarda.descto.onkeypress = KeyIsDecimal;
+                 document.form1.id_prod.onkeypress = KeyIsSoloNum;
+                 document.form1.cant.onkeypress = KeyIsDecimal;
+                 document.form1.desc.onkeypress = KeyIsDecimal;                 
+                 document.act_cot.costo_desp.onkeypress = KeyIsDecimal;
+                 </script>
+                   <br>
+                   <br>
+                   <BR>
+                     </div>
+             </div>
+		 <div class="tab-page" id="modulo1">
+               <h2 class="tab">Pedidos</h2>
+               <div align="left"><strong>Listado de Pedidos generados por la Cotización </strong><br/>
+                   <br>
+                   <table width="654" border="0" align="center" cellpadding="2" cellspacing="0" class="tabla2">
+                     <tr>
+                       <th width="6%">Id</th>
+                       <th width="12%">Fec Pedido</th>
+                       <th width="12%">Fec Despacho</th>
+					<th width="15%">Local</th>
+					<th width="12%">Costo Desp</th>
+					<th width="8%">Cant Falt</th>
+                       <th width="15%" align="center">Estado</th>
+					<th width="5%">&nbsp;</th>
+                     </tr>
+                     </table>
+				 <CENTER><IFRAME SRC="ViewCotizPedidoIframe?id_cot={num_cot}" NAME="ped_ifr" HEIGHT="194" WIDTH="654" border=0 > 
+				   </IFRAME></CENTER>
+
+                  <br>
+                   <BR>
+                     </div>
+             </div>	
+			<div class="tab-page" id="modulo1">
+               <h2 class="tab">Log</h2>
+               <div align="left"><strong>Log de Cotización </strong><br/>
+                   <br>
+                   <table width="654" border="0" align="center" cellpadding="2" cellspacing="0" class="tabla2">
+                     <tr>
+                       <th width="20%">Fecha</th>
+                       <th width="25%">Usuario</th>
+                       <th width="55%">Descripción</th>
+                     </tr>
+                     </table>
+				 <CENTER><IFRAME SRC="ViewCotizLogIFrame?id_cot={num_cot}" NAME="log_ifr" HEIGHT="194" WIDTH="654" border=0 > 
+				   </IFRAME></CENTER>
+			           <center>
+			           <form name="frmLog" method=post action="ViewCotizLogIFrame"  target="log_ifr">
+                          <input type="hidden" name="id_cot" value="{num_cot}">
+                          <input name="Button" type="submit" class="cmd" value="Actualizar" {habal} >
+                       </form>
+                       </center>
+				<br>
+                   <BR>
+                     </div>
+             </div>		                	  
+</div>
+
+</table>
+     <p>&nbsp;</p>
+      {mns}
+    <!-- InstanceEndEditable --></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td>
+	<TABLE width="100%" height=19 border=0 align="center" cellpadding="0" cellspacing="0" bgcolor="#f1f0e9" style="border-top:1px solid #ABABAB; border-bottom:1px solid #ABABAB">
+	  <TR>
+		<TD align=center bgcolor="#67b01a" class=infoBL><div align="center">Back Office Central - Jumbo.cl</div></TD>
+		</TR>
+	</TABLE>
+
+	
+	</td>
+  </tr>
+</table>
+</body>
+<!-- InstanceEnd --></html>

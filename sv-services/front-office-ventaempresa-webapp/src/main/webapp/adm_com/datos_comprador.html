@@ -1,0 +1,384 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html><!-- InstanceBegin template="/Templates/interior1.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>Venta Empresas</title>
+<!-- InstanceEndEditable -->
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="EXPIRES" CONTENT="Mon, 22 Jul 2002 11:12:01 GMT">
+<script language="javascript" src="/WebFOVE/funciones.js"></script>
+<!-- InstanceBeginEditable name="head" -->
+<script language="JavaScript" src="/WebFOVE/checkrut.js"></script>
+<script language="JavaScript" src="/WebFOVE/registro_val.js"></script>
+<script language="JavaScript" src="/WebFOVE/registro_val.js"></script>
+
+<SCRIPT LANGUAGE="JavaScript">
+
+if ("{msg_error}" == 1){
+	alert("{desc_msg_error}");
+}
+
+function submit_comprador() {
+
+	var formulario = document.form1;
+
+	if (!formulario.rut.value){
+		alert('Debes ingresar el campo RUT');
+		formulario.rut.focus();
+		return false;
+	}
+	
+	if (!formulario.dv.value){
+		alert('Debes ingresar el número que está después del guión en tu Rut');
+		formulario.dv.focus();
+		return false;
+	}
+
+	if(!checkRutField( formulario.rut.value+"-"+formulario.dv.value, formulario.rut ) ) {
+		return false;
+	}
+	
+	if (Trim(formulario.nombre.value) == ""){
+		alert('Debes ingresar el campo Nombre');
+		formulario.nombre.focus();
+		return false;
+	}
+	
+	if (Trim(formulario.paterno.value) == ""){
+		alert('Debes ingresar campo Apellido Paterno');
+		formulario.paterno.focus();
+		return false;
+	}
+
+	if (Trim(formulario.materno.value) == ""){
+		alert('Debes ingresar el campo Apellido Materno');
+		formulario.materno.focus();
+		return false;
+	}
+
+	if (formulario.genero[0].checked == false && formulario.genero[1].checked == false){
+		alert("Debes selecionar campo Sexo");
+		return false;
+	}
+	
+	if (!formulario.fono1.value){
+		alert('Debes ingresar el campo Telefono1');
+		formulario.fono1.focus();
+		return false;
+	}
+
+	if (!formulario.email.value){
+		alert('Debes ingresar el campo e-mail');
+		formulario.email.focus();
+		return false;
+	}
+
+	if(!validarEmail(formulario.email)){
+		return false;
+	}	
+	
+	if (!formulario.email2.value){
+		alert('Por favor ingresar tu dirección de email en el campo Confirmar E-mail');
+		formulario.email2.focus();
+		return false;
+	}
+	
+	if(!validarEmail(formulario.email2)){
+		return false;
+	}	
+	
+	
+	if (formulario.email.value != formulario.email2.value){
+		alert("El e-mail y su confirmación deben ser iguales");
+		return false;
+	}
+	
+
+	if (!formulario.cpr_id.value){
+		if (!formulario.clave.value){
+			alert('Debes ingresar el campo Clave');
+			formulario.clave.focus();
+			return false;
+		}
+		
+		if (!formulario.clave2.value){
+			alert('Debes ingresar el campo Repetir Clave');
+			formulario.clave2.focus();
+			return false;
+		}
+	}
+
+
+	if (formulario.clave.value != formulario.clave2.value){
+		alert('Las claves deben ser iguales');
+		formulario.clave.focus();
+		return false;
+	}
+
+
+	if (formulario.cpr_id.value && formulario.clave.value != "" && formulario.clave.value.length < 4 )	{
+		alert("La clave debe contener al menos 4 caracteres.");
+		formulario.clave.focus();
+		return false;
+	}else if(!formulario.cpr_id.value){			
+		if((formulario.clave.value.length < 4 ) || (formulario.clave2.value.length < 4 )){
+			alert("La clave debe contener al menos 4 caracteres.");
+			formulario.clave.focus();
+			return false;
+		}
+	}
+
+
+	if(!formulario.pregunta.value || Trim(formulario.pregunta.value) == ""){
+		alert('Debes ingresar la pregunta secreta');
+		formulario.pregunta.focus();
+		return false;
+	}
+
+	if(!formulario.respuesta.value || Trim(formulario.respuesta.value) == ""){
+		alert('Debes ingresar la respuesta');
+		formulario.respuesta.focus();
+		return false;
+	}
+}
+
+</SCRIPT>
+
+<!-- InstanceEndEditable -->
+<link href="/WebFOVE/style.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+<!--
+body {
+	margin-left: 10px;
+	margin-top: 0px;
+	margin-right: 10px;
+	margin-bottom: 0px;
+}
+
+-->
+</style>
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript"></script>
+<script type="text/javascript">
+   _uacct = "UA-1529321-3";
+   urchinTracker();
+</script>
+</head>
+
+<body bgcolor="#ffffff">
+
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td>
+  <table width="100%" border="0" cellpadding="0" cellspacing="0">
+	  <tr>
+		<td width="315" align="left" valign="bottom"><img src="../WebFOVE/img/logove.gif" border="0" usemap="#Map"></td>
+	    <td>&nbsp;</td>
+	    <td width="21%" align="left" valign="bottom"><img src="../WebFOVE/img/lego.jpg" width="224" height="86"></td>
+	  </tr>
+	  <tr>
+		<td colspan="3" valign="middle" ><table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td align="left" background="../WebFOVE/img/bg-header.gif"><img src="../WebFOVE/img/header-bd-izq.gif" width="9" height="11"></td>
+            <td align="right" background="../WebFOVE/img/bg-header.gif"><img src="../WebFOVE/img/header-bd-der.gif" width="11" height="11"></td>
+          </tr>
+          <tr>
+            <td align="left" background="../WebFOVE/img/bk-izq-header.gif"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                  <tr>
+                    <td><img src="../WebFOVE/img/header-bd-izq-izq.gif" width="1" height="20"></td>
+                    <td class="user">Usuario: {nombre_comprador} </td>
+                  </tr>
+                          </table></td>
+            <td width="421" align="right"><table width="421" border="0" cellspacing="0" cellpadding="0">
+              <tr>
+                <td width="15"><img src="../WebFOVE/img/borde-med-header.gif"></td>
+                <td align="left" bgcolor="#419f27"><div class="texto_menu" id="myMenuID"></div>
+				<!--<div id="menu_nuevo" style="position:relative; left:0px; top:0px; width:0px; height:0px; z-index:1">MENU</div>--></td>
+                <td width="120" align="right" bgcolor="#419f27">
+								
+				<script type="text/javascript" src="/WebFOVE/flashobject.js"></script>
+              <div id="iconos" style="width: 120px; height: 19px"></div>
+          <script type="text/javascript">
+var fo = new FlashObject("/WebFOVE/img/banner/{bt_inicio}", "animationName", "120", "19", "7", "#FFFFFF");
+fo.addParam("allowScriptAccess", "sameDomain");
+fo.addParam("quality", "high");
+fo.addParam("scale", "noscale");
+fo.write("iconos");
+  </script>				</td>
+                <td width="11" align="right"><img src="../WebFOVE/img/borde-der-header.gif"></td>
+              </tr>
+            </table></td>
+          </tr>
+        </table></td>
+	  </tr>
+	  </table>
+	
+	<table width="100%" height="400" border="0" cellpadding="0" cellspacing="0" class="tabla_marco">
+	  <tr>
+		<td valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="10">
+	  <tr>
+		<td><!-- InstanceBeginEditable name="EditRegionTitulo" -->
+		  <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+            <tr>
+              <td valign="top"><span class="titulo">Datos comprador :</span><br>
+                <span class="texto">Ingresa  los datos de la persona que quieres autorizar a realizar compras para tu  empresa<br></span></td>
+              <td width="150" align="right"> <a href="ViewListCompradores" title="Volver"></a></td>
+            </tr>
+          </table>
+		<!-- InstanceEndEditable --></td>
+	  </tr>
+	</table><!-- InstanceBeginEditable name="EditRegionContenido" -->
+      <form name="form1" method="post" action="{action}" onsubmit="return submit_comprador();">
+      	<input type="hidden" name="cpr_id" value="{cpr_id}"  >
+		<input type="hidden" name="l_comprador" value="0"  >
+        <table width="80%"  border="0" align="center" cellpadding="5" cellspacing="0" class="tabla_marco">
+           <tr>
+            <td><table width="400" border="0" align="center" cellpadding="3" cellspacing="0">
+              <tr>
+                <td width="150" class="texto_formularios">RUT</td>
+                <td width="3">:</td>
+                <td><input type="text" name="rut" value="{rut}" size="10" maxlength="10" {readonly} onFocus="cambiar_color_on(this);" onBlur="cambiar_color_off(this);" onpaste="return false;">
+      -
+        <input name="dv" type="text" size="1" maxlength="1" value="{dv}" {readonly} onFocus="cambiar_color_on(this);" onBlur="cambiar_color_off(this);" onpaste="return false;"></td>
+              </tr>
+              <tr>
+                <td width="150" class="texto_formularios">Estado</td>
+                <td width="3">:</td>
+                <td>
+                  <select name="estado" onFocus="cambiar_color_on(this);" onBlur="cambiar_color_off(this);">
+                    <option value="A" {a_est_selected}>Activo</option>
+                    <option value="D" {d_est_selected}>Desactivo</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td width="150" class="texto_formularios">Nombre</td>
+                <td width="3">:</td>
+                <td><input type="text" name="nombre" value="{nombre}" onFocus="cambiar_color_on(this);" onBlur="cambiar_color_off(this);" maxlength="50" onpaste="return false;"></td>
+              </tr>
+              <tr>
+                <td width="150" class="texto_formularios">Apellido Paterno </td>
+                <td width="3">:</td>
+                <td><input type="text" name="paterno" value="{paterno}" onFocus="cambiar_color_on(this);" onBlur="cambiar_color_off(this);" maxlength="50" onpaste="return false;"></td>
+              </tr>
+              <tr>
+                <td width="150" class="texto_formularios">Apellido Materno </td>
+                <td width="3">:</td>
+                <td><input type="text" name="materno" value="{materno}" onFocus="cambiar_color_on(this);" onBlur="cambiar_color_off(this);" maxlength="50" onpaste="return false;"></td>
+              </tr>
+              <tr>
+                <td width="150" class="texto_formularios">G&eacute;nero</td>
+                <td width="3">:</td>
+                <td><span class="texto_formularios">Masculino</span>
+                    <input type="radio" name="genero" value="M" {generoM} onFocus="cambiar_color_on(this);" onBlur="cambiar_color_off(this);">
+&nbsp;<span class="texto_formularios">Femenino</span>
+      <input type="radio" name="genero" value="F" {generoF} onFocus="cambiar_color_on(this);" onBlur="cambiar_color_off(this);"></td>
+              </tr>
+              <tr>
+                <td width="150" class="texto_formularios">Tel&eacute;fono 1</td>
+                <td width="3">:</td>
+                <td><input type="text" name="fono1" value="{fono1}" onFocus="cambiar_color_on(this);" onBlur="cambiar_color_off(this);" maxlength="20" onpaste="return false;"></td>
+              </tr>
+              <tr>
+                <td width="150" class="texto_formularios">Tel&eacute;fono 2</td>
+                <td width="3">:</td>
+                <td><input type="text" name="fono2" value="{fono2}" onFocus="cambiar_color_on(this);" onBlur="cambiar_color_off(this);" maxlength="20" onpaste="return false;"></td>
+              </tr>
+              <tr>
+                <td width="150" class="texto_formularios">Tel&eacute;fono 3</td>
+                <td width="3">:</td>
+                <td><input type="text" name="fono3" value="{fono3}" onFocus="cambiar_color_on(this);" onBlur="cambiar_color_off(this);" maxlength="20" onpaste="return false;"></td>
+              </tr>
+              <tr>
+                <td width="150" class="texto_formularios">e-mail</td>
+                <td width="3">:</td>
+                <td><input type="text" name="email" value="{email}" onFocus="cambiar_color_on(this);" onBlur="cambiar_color_off(this);" onpaste="return false;"></td>
+              </tr>
+              <tr>
+                <td width="150" class="texto_formularios">Confirme e-mail </td>
+                <td width="3">:</td>
+                <td><input type="text" name="email2" value="{email}" onFocus="cambiar_color_on(this);" onBlur="cambiar_color_off(this);" maxlength="100" onpaste="return false;"></td>
+              </tr>
+              <tr>
+                <td width="150" class="texto_formularios">Crear clave </td>
+                <td width="3">:</td>
+                <td><input type="password" name="clave" value="" onFocus="cambiar_color_on(this);" onBlur="cambiar_color_off(this);" maxlength="200"></td>
+              </tr>
+              <tr>
+                <td width="150" class="texto_formularios">Repetir clave </td>
+                <td width="3">:</td>
+                <td><input type="password" name="clave2" value="" onFocus="cambiar_color_on(this);" onBlur="cambiar_color_off(this);" maxlength="200"></td>
+              </tr>
+              <tr>
+                <td width="150" class="texto_formularios">Pregunta Secreta </td>
+                <td width="3">:</td>
+                <td><input type="text" name="pregunta" value="{pregunta}" onFocus="cambiar_color_on(this);" onBlur="cambiar_color_off(this);" maxlength="200" onpaste="return false;"></td>
+              </tr>
+              <tr>
+                <td width="150" class="texto_formularios">Respuesta</td>
+                <td width="3">:</td>
+                <td><input type="text" name="respuesta" value="{respuesta}" onFocus="cambiar_color_on(this);" onBlur="cambiar_color_off(this);" maxlength="200" onpaste="return false;"></td>
+              </tr>
+              <tr>
+                <td align="center" colspan="3"><INPUT name="button" TYPE="button" class="botonChico" onclick="go_page('ViewListCompradores');" value="Volver">
+&nbsp;
+      <INPUT name="submit" TYPE="submit" class="botonChico" value="Grabar" ></td>
+              </tr>
+            </table></td>
+          </tr>
+        </table>
+        </form>
+	  <SCRIPT LANGUAGE="JavaScript">
+	  window.document.form1.nombre.onkeypress 	= KeyIsApellido;
+	  window.document.form1.paterno.onkeypress 	= KeyIsApellido;
+	  window.document.form1.materno.onkeypress 	= KeyIsApellido;
+      window.document.form1.clave.onkeypress 	= KeyIsClave;
+      window.document.form1.clave2.onkeypress 	= KeyIsClave;
+      window.document.form1.email.onkeypress 	= KeyIsTexto_R;    
+      window.document.form1.email2.onkeypress 	= KeyIsTexto_R;    	
+      window.document.form1.fono1.onkeypress	= KeyIsTelefono;
+      window.document.form1.fono2.onkeypress	= KeyIsTelefono;
+      window.document.form1.fono3.onkeypress	= KeyIsTelefono;
+	  window.document.form1.pregunta.onkeypress = KeyIsTexto;        
+	  window.document.form1.respuesta.onkeypress= KeyIsTexto;        
+	  </script>
+      <!-- InstanceEndEditable --></td>
+	  </tr>
+	</table>
+	<table width="100%" height="28" border="0" cellpadding="2" cellspacing="0">
+      <tr>
+        <td height="10" background="../WebFOVE/img/bk-izq-header.gif"><img src="../WebFOVE/img/bk-izq-header.gif" width="1" height="10"></td>
+      </tr>
+      <tr>
+        <td class="footer"><a href="http://www.jumbointernet.cl/contacto6.htm" target="_blank" class="footer">Contacto</a> | <a href="http://www.jumbo.cl/FO/LogonForm" target="_blank" class="footer">Compa&ntilde;&iacute;a</a> | <a href="http://www.jumbointernet.cl/preguntas_frecuentes.html" target="_blank" class="footer">Preguntas Frecuentes</a> | <a href="http://www.jumbointernet.cl/preguntas_frecuentes.html#1" target="_blank" class="footer"> C&oacute;mo Cotizar </a>|<a href="http://www.jumbointernet.cl/preguntas_frecuentes.html#b4" target="_blank" class="footer">Medios de Pago</a> | <a href="http://www.jumbointernet.cl/preguntas_frecuentes.html#5" target="_blank" class="footer">Costos de Despacho</a><br>
+          <br></td>
+      </tr>
+      <tr>
+        <td class="footer">Servicio de Atenci&oacute;n al Cliente 600 400 3000 | Fono Tarjeta Jumbo M&aacute;s: 600 600 0505<br>
+Copyright&copy; Cencosud 2007, Santiago Chile | Sitio Desarrollado para Internet Explorer 6 o superior,<br>
+Resoluci&oacute;n de pantalla 800x600 | Para ver el sitio necesita el plug in de Flash.</td>
+      </tr>
+    </table></td>
+</tr>	
+</table>
+	
+    <!--<link rel="stylesheet" href="/WebFOVE/menu/menu.css">
+	<script language="JavaScript" src="/WebFOVE/menu/menu.js"></script>
+    <script language="JavaScript" src="/WebFOVE/menu/menu_tpl.js"></script>
+    <script language="JavaScript" src="/WebFOVE/menu/menu_items.js"></script>	-->
+<script>var tipo_usuario = '{tipo_usuario}';</script>
+<map name="Map"><area shape="rect" coords="7,0,314,43" href="http://www.jumboempresas.cl" target="_blank">
+</map></body>
+<!-- INI menu -->
+<script type="text/javascript" src="/WebFOVE/menuJs/JSCookMenu.js"></script>
+<link rel="stylesheet" href="/WebFOVE/menuJs/ThemeGray/theme.css" type="text/css">
+<script type="text/javascript" src="/WebFOVE/menuJs/ThemeGray/theme.js"></script>
+<script type="text/javascript" src="/WebFOVE/menuJs/menuContent.js"></script>
+<script type="text/javascript">
+	cmDraw ('myMenuID', myMenu, 'hbr', cmThemeGray);
+</script>
+<!-- FIN menu -->
+
+
+<!-- InstanceEnd --></html>

@@ -1,0 +1,189 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html><!-- InstanceBegin template="/Templates/fullbody.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="EXPIRES" CONTENT="Mon, 22 Jul 2002 11:12:01 GMT">
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>Jumbo.cl Back Office Central</title>
+<!-- InstanceEndEditable -->
+
+<!-- InstanceBeginEditable name="head" -->
+
+<link id="luna-tab-style-sheet" type="text/css" rel="stylesheet" href="js/tabs/tabpane.css" />
+<SCRIPT LANGUAGE="JavaScript" SRC="validacion.js"></SCRIPT>	
+<script language="JavaScript" src="funciones.js"></script>
+<script type="text/javascript" src="js/tabs/tabpane.js"></script>
+<script language="JavaScript" src="prototype.js"></script>
+<script language="JavaScript" src="js/admSyF.js"></script>
+<script language="JavaScript">
+function exportarTabla() {
+	document.exportar.submit();
+}
+</script>
+
+<!-- InstanceEndEditable -->
+
+<link href="estilos.css" rel="stylesheet" type="text/css">
+<!--link href="../default.css" rel="stylesheet" type="text/css"-->
+<style type="text/css">
+<!--
+.style1 {color: #666666}
+-->
+</style>
+</head>
+
+<body>
+<link rel="stylesheet" href="menu/menu.css">
+<script language="JavaScript" src="menu/menu.js"></script>
+<script language="JavaScript" src="menu/menu_tpl.js"></script>
+<script language="JavaScript" src="menu/menu_items.js"></script>
+<script language="JavaScript" src="popup.js"></script>
+<script language="JavaScript" src="funciones.js"></script>
+<table width="780" height="100%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+    <td height="78" valign="top">
+	
+	<TABLE width="100%" height=59 border=0 align="center" cellpadding="0" cellspacing="0" bgcolor="#ffffff">
+	  <TR>
+		<TD width=275 height="59" align=left class=user><img src="img/header2.jpg" width="275" height="60"></TD>
+		<TD width=505 align=left valign="bottom" background="img/bg-1.jpg" class=user><table width="90%"  border="0" align="center" cellpadding="0" cellspacing="2">
+          <tr>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td><div align="right" class="infoBL">Usuario: {hdr_nombre}&nbsp;&nbsp;| {hdr_fecha}</div></td>
+          </tr>
+        </table></TD>
+	  </TR>
+	</TABLE>
+	<TABLE width="100%" height=19 border=0 align="center" cellpadding="0" cellspacing="0" bgcolor="#f1f0e9" style="border-top:1px solid #ABABAB; border-bottom:1px solid #ABABAB">
+	  <TR>
+		<TD align=left bgcolor="#FFFFFF" class=user></TD>
+		</TR>
+	</TABLE>
+
+	
+	</td>
+  </tr>
+  <tr height="400">
+    <td valign="top" bgcolor="#FFFFFF">
+      <table border=0 width="100%" class='ContentTitle'>
+        <tr>
+          <td width="53%" height="20" class='HeaderTitle'><!-- InstanceBeginEditable name="Titulo" --> Productos Originales y Sustitutos <!-- InstanceEndEditable --></td>
+          <td width="47%" class='HeaderTitle'><!-- InstanceBeginEditable name="Botonera" -->
+            <div align="right"></div>
+          <!-- InstanceEndEditable --></td>
+        </tr>
+      </table>
+	  <br>
+      <table width="100%"  border="0" cellspacing="2" cellpadding="2">
+        <tr valign="top">
+          <td width="71%"><!-- InstanceBeginEditable name="Izquierda" -->
+
+	
+	<form method="POST" enctype='multipart/form-data' name="frm_add_syf" action="AddSustitutosYFaltantes">
+	
+	          <table width="98%"  border="0" align="center" cellpadding="0" cellspacing="0" class="tabla3">
+                <tr>
+                  <th>&nbsp;</th>
+                  <th>&nbsp;</th>
+                  <th>&nbsp;</th>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                </tr>
+                <tr>
+                  <th width="2%">&nbsp;</th>
+                  <th width="14%">Subir Planilla</th>
+                  <th width="3%">:</th>
+                  <td width="31%"> <input name="upFile" id="upFile" type="file" class="boton" > 
+                    <input type="hidden" name="cargo_syf" id="cargo_syf" value="{cargo_syf}" >	
+                  </td>
+                  <td width="20%"><input name="Button2" type="button" class="cmd" style="width:90px" id="Button" value=" Actualizar Tabla " onClick="javascript:subirSyF();"></td>
+                  <td width="30%">
+				  	<!--a href="/JumboBOCentral/ExportarInfSustitutos" target="_blank"-->
+					<a href="javascript:exportarTabla();">
+						Exportar Datos de la Tabla&nbsp;&nbsp;<img src="img/ico_excel.gif" width="16" height="16" border="0" >
+					</a>
+				  </td>
+                </tr>
+                <tr>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                </tr>
+              </table>
+	  	
+	</form>
+	
+	<form action="ExportarInfSustitutos" name="exportar" method="post">
+	</form>	
+
+<div id="loading" style="display:none">
+<table style="Z-INDEX: 500; POSITION: absolute; LEFT: 0; TOP: 0" cellSpacing="0" cellPadding="0" border="0" id="tabla_loading">
+<tr>
+<td width="75" height="25" bgcolor="#FF0000">&nbsp;&nbsp;&nbsp;<font color="#FFFFFF"><b>Cargando...</b></font></td>
+</tr>
+</table>
+</div>
+
+<fieldset id="msj_respuesta">
+<legend align="left">Mensajes</legend>
+<table width="80%" border="0" align="center" cellpadding="0" cellspacing="0">
+      <tr valign="top">
+	  	<td align="left">{mensaje}</td>
+	</tr>
+</table>
+<div align="right"><a href="javascript:cerrarMsj();">Cerrar mensajes</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+</fieldset>
+
+<br>
+    <table width="98%" border="0" align="center" cellpadding="0" cellspacing="0" class="tabla2">
+      <tr valign="top">
+        <th width="4%" align="center">N&deg;</th>
+        <th width="24%" align="center" height="25">Cod. Original</th>
+        <th width="24%" align="center">Unidad Medida</th>
+        <th width="24%" align="center">Cod. Sustituto</th>
+        <th width="24%" align="center">Unidad Medida</th>
+      </tr>
+	  <!-- BEGIN DYNAMIC: PRODUCTOS -->
+      <tr>
+        <td align="right">{nro_registro}</td>
+        <td height="25" align="center">{cod_ori}</td>
+        <td align="center">{uni_ori}</td>
+        <td align="center">{cod_sus}</td>
+        <td align="center">{uni_sus}</td>
+      </tr>   
+	  <!-- END DYNAMIC: PRODUCTOS --> 
+    </table>
+	<center>{msj_prods}</center>
+          <br>
+          <!-- InstanceEndEditable --></td>
+        </tr>
+      </table>
+      </td>
+  </tr>
+  <tr>
+    <td>
+	<TABLE width="100%" height=19 border=0 align="center" cellpadding="0" cellspacing="0" bgcolor="#f1f0e9" style="border-top:1px solid #ABABAB; border-bottom:1px solid #ABABAB">
+	  <TR>
+		<TD align=center bgcolor="#67b01a" class=infoBL><div align="center">Back Office Central - Jumbo.cl</div></TD>
+		</TR>
+	</TABLE>
+
+	
+	</td>
+  </tr>
+</table>
+</body>
+<!-- InstanceEnd -->
+<script>
+init();
+</script>
+</html>

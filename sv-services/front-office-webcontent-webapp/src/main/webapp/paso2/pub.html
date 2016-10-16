@@ -1,0 +1,108 @@
+<script type="text/javascript">
+	jQuery().ready(
+		function() {
+			var display ="{display_calendario_despacho}";
+			var action  = "/FO/DespachosDisponibles";	
+			if(display == 'block'){
+				getOfficesAvailable('INIT_ML');
+			}
+			
+		}
+	);
+</script>
+<script type="text/javascript">
+	try{
+		mxTracker._trackPageview('{nombreCabecera}');
+		}
+	catch(e){};
+</script>
+<!-- DESPACHOS DISPONIBLES !!! -->
+<div id="contenedor_lightbox_DP"  style="display:{display_calendario_despacho};" >
+	<div id="cont_cabecera_DP"><img src="/FO_IMGS/img/estructura/banner_contraer_despacho.jpg" border="0" alt="Cerrar" onclick="javascript:getOfficesAvailable('HIDE_ML')"/></div>
+	<div id="contenido_DP"></div>
+</div>  
+<!-- FIN DESPACHOS DISPONIBLES !!! -->	
+
+	<div id="df">
+		<div id="dflash">
+			<div id="pub1">
+			</div>
+		</div>
+		<div id="pubTitulo">
+			<label class="tituloNaranjo">{nombreCabecera} / {nombre}</label>
+		</div>
+	</div>
+
+	<div id="mas_vendidos_layer">
+		<div id="mas_vendidos_tit" style="color:#666;font-family:Arial,Helvetica,sans-serif;font-size:12px;font-weight:bold;padding-bottom:10px;">Los m&aacute;s vendidos</div>
+		<div id="mas_vendidos">
+			<div id="masv_pro">
+				<!-- BEGIN DYNAMIC: PRODUCTOS -->
+				<div class="classmasv">
+					<div>
+						<img src="/FO_IMGS/gr/{imagen_chica}" width="100" height="100" border="0" onerror="this.src='/FO_IMGS/img/gr/fotopreparacion-chica.gif'" id="img_{pro_id}" />
+					</div>
+					<div>
+						{tipo} <br />
+						<span class="Marca">{marca}</span><br />
+						{descripcion}
+					</div>
+					<div>
+						<span class="chica">{precio_por_unidad}</span>
+					</div>
+					<!-- BEGIN DYNAMIC: CON_PROMOCION -->
+					<div align="left">
+						<span class="Marca">{promo_desc}</span>
+						<img class='masv_img' src="/FO_IMGS/img/promociones/{promo_img}" border="0" onerror="this.src='/FO_IMGS/img/promociones/promocion.gif'" />
+					</div>
+					<!-- END DYNAMIC: CON_PROMOCION -->
+					<!-- BEGIN DYNAMIC: DESTACADO -->
+					<div align="left">
+						<span class="Marca">{destacado_descripcion}</span>
+						<img class='masv_img' src="/FO_IMGS/img/destacados/{destacado_imagen}" border="0" onerror="this.src='/FO_IMGS/img/destacados/destacado.jpg'" />
+					</div>
+					<!-- END DYNAMIC: DESTACADO -->
+					<div>
+							{precio}
+					</div>
+				</div>
+				<!-- END DYNAMIC: PRODUCTOS -->
+			</div>
+			<div id="masv_carros">
+				<!-- BEGIN DYNAMIC: PRODUCTOS -->
+				<div class="classmasv">
+						<!-- BEGIN DYNAMIC: IMG_AGREGAR -->
+						<input id="min_cantidad_{id}" value="{cantidad_minima}" type="hidden">
+						<a id="agregar_{id}" href="javascript:;"><img name="imagen_{productoId}" id="imagen_{productoId}" src="/FO_IMGS/img/mas_vendidos/carrito.gif" border="0"  /></a>
+						<!-- END DYNAMIC: IMG_AGREGAR -->
+						<!-- BEGIN DYNAMIC: IMG_MODIFICAR -->
+            			<input id="min_cantidad_{id}" value="{cantidad_minima}" type="hidden">
+						<a id="agregar_{id}" href="javascript:;"><img name="imagen_{productoId}" id="imagen_{productoId}" src="/FO_IMGS/img/estructura/paso2/modificar.gif" border="0"  /></a>
+						<!-- END DYNAMIC: IMG_MODIFICAR -->
+						<!-- BEGIN DYNAMIC: IMG_SINSTOCK -->
+            			<img src="/FO_IMGS/img/estructura/paso2/sinstock.gif" alt="Producto sin Stock" border="0"  />
+            			<!-- END DYNAMIC: IMG_SINSTOCK -->
+				</div>
+				<!-- END DYNAMIC: PRODUCTOS -->
+			</div>
+		</div> <!--  mas_vendidos -->
+	</div>
+
+
+<!-- BEGIN DYNAMIC: BANNERS -->
+<script type="text/javascript">
+var fo = new FlashObject("/FO_IMGS/img/banners/cat_padre/{banner_principal}", "animationName", "550", "100", "8", "#FFFFFF");
+fo.addParam("allowScriptAccess", "sameDomain");
+fo.addParam("quality", "high");
+fo.addParam("scale", "noscale");
+fo.addParam("wmode" ,"transparent");
+fo.write("pub1");
+</script>
+<!-- END DYNAMIC: BANNERS -->
+
+<script type="text/javascript">
+var masvendx = "{nro_mas_vendidos}";
+if ( masvendx == "0" ) {
+  $j("#mas_vendidos_layer").hide();
+}
+</script>

@@ -1,0 +1,60 @@
+#pubTitulo {
+  float: left;
+  padding: 20px 10px 1px 14px;
+  text-align: left;
+  width: 510px;
+}
+#df {
+  float: left;
+  margin-bottom: 10px;
+}
+#dflash {
+  width: 540px;
+}
+	
+#pub1 {
+	float: left;
+	padding-left: 10px;
+	padding-top: 10px;
+	padding-right: 10px;
+	width: 550px;
+}
+#pub2 {
+}
+#pub21 {
+	padding-bottom: 5px;
+}
+#pub22 {
+	padding-top: 5px;
+}
+.classmasv {
+	float: left;
+	width: 23% !important;
+	width: 25%;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size: 8.5pt;
+	text-align: left;
+	border-left: 1px dashed #dfdfdf;
+	padding-left: 10px;
+}
+.masv_img{
+	max-width: 120;
+}
+#mas_vendidos_tit {
+  float:left;
+  text-align: left;
+  width: 560px;
+  font-size: 0px;
+}
+#mas_vendidos {
+  float:left;
+  overflow: hidden;
+  width: 560px;
+}
+#masv_pro{
+	overflow: hidden !important;
+	height: auto;
+}
+#masv_carros{
+	clear: left;
+}

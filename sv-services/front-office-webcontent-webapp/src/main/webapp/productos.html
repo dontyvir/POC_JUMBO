@@ -1,0 +1,171 @@
+<!-- BEGIN DYNAMIC: RESULTADO -->
+<div id="banner_b"></div>
+<input type="hidden" id="ultima_accion" name="ultima_accion" value="{ultima_accion}" />
+<div id="banner_subcat"><img id="img_banner_subcat" border="0px" src="/FO_IMGS/img/1x1trans.gif" onerror="this.src=get_banner();"></div>
+<div id="div_titulo"><p><label id="cat" class="tituloNaranjo">{categoria_nombre} / {subcategoria_nombre}</label></p><br /></div>
+<div id="resultado">
+  <!-- BEGIN DYNAMIC: SUGERENCIAS -->
+  <div id="div_sugerencias" class="lectura">
+    <input type="hidden" id="sugerencias" name="sugerencias" value="{sugerencias}" />
+    <label for="sugerencias">Sugerencias: </label>
+    <!-- BEGIN DYNAMIC: PALABRAS -->
+    <A href="#" id="linksug">{palabra}</A>
+    <!-- END DYNAMIC: PALABRAS -->
+    <br/><br/>
+  </div>
+  <!-- END DYNAMIC: SUGERENCIAS -->
+  <div id="filtros" class="lectura">Se encontraron {total_encontrados} resultados para su b&uacute;squeda.<br/>
+    <label for="marca">Buscar por marca</label>
+    <select id="marca" class="estilo_select">
+      <!-- BEGIN DYNAMIC: MARCAS -->
+      <option value="{id}" {selected}>{value}</option>
+      <!-- END DYNAMIC: MARCAS -->
+    </select>
+    <label for="ordenar_por">Ordenar por</label>
+    <select id="ordenar_por" class="estilo_select">
+      <!-- BEGIN DYNAMIC: ORDENAR_POR -->
+      <option value="{id}" {selected}>{value}</option>
+      <!-- END DYNAMIC: ORDENAR_POR -->
+    </select>
+    <!-- El paginado ya no va
+    <label for="mostrar_cantidad">Mostrar</label>
+    <select id="mostrar_cantidad" class="estilo_select">
+    <!-- BEGIN DYNAMIC: MOSTRAR_CANTIDAD-->
+    <!-- <option value="{id}" {selected}>{value}</option>  -->
+    <!-- END DYNAMIC: MOSTRAR_CANTIDAD -->
+    <!-- </select> -->
+  </div>
+  <div id="lista_productos">
+    <table id="tabla_productos" cellpadding="0" cellspacing="0" >
+      <thead class="headtable">
+        <tr>
+          <th width="10%" class="head_izq">Foto</th>
+          <th width="50%" class="head_dashed">Descripci&oacute;n</th>
+          <th width="15%" class="head_dashed">Precio</th>
+          <th width="15%" class="head_dashed">Cantidad</th>
+          <th width="10%" class="head_der">Agregar</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- BEGIN DYNAMIC: PRODUCTOS -->
+        <tr>
+          <td align="center" class="body_border"><img src="/FO_IMGS/ch/{imagen_chica}" width="50" height="50" border="0" onerror="this.src='/FO_IMGS/img/ch/fotopreparacion-chica.gif'" id="img_{pro_id}" onmouseover="javascript:top.desplegar_imagen('/FO_IMGS/gr/{imagen_chica}',this);" onmouseout="javascript:top.esconder_imagen();"/></td>
+          <td>
+            <a id="ficha" href="javascript:ficha({id}, 2);">{tipo} - <span class="Marca">{marca}</span><br />{descripcion}</a><br /><span class="chica">{precio_por_unidad}</span>
+            <div>
+              <!-- BEGIN DYNAMIC: VIEW_SUSTITUCION -->
+              <a href="javascript:ventanaCriSustitucion('{id}','2');" class="link_cri_sus" title="Asignar criterio de sustitución"><img src="/FO_IMGS/img/estructura/sustitutos/icono_sustitutos_p2.gif" border="0" alt="sustitutos" /></a>
+              <!-- END DYNAMIC: VIEW_SUSTITUCION -->
+            </div>
+            <div>
+              <!-- BEGIN DYNAMIC: CON_PROMOCION -->
+              <div align="right"><span class="Marca">{promo_desc}</span><img src="/FO_IMGS/img/promociones/{promo_img}" border="0" onerror="this.src='/FO_IMGS/img/promociones/promocion.gif'" /></div>
+              <!-- END DYNAMIC: CON_PROMOCION -->
+            </div>
+            <div>
+              <!-- BEGIN DYNAMIC: DESTACADO -->
+              <div align="right"><span class="Marca">{destacado_descripcion}</span><img src="/FO_IMGS/img/destacados/{destacado_imagen}" border="0" onerror="this.src='/FO_IMGS/img/destacados/destacado.jpg'" /></div>
+              <!-- END DYNAMIC: DESTACADO -->
+            </div>
+          </td>
+          <td align="right">{precio}</td>
+          <td align="right" >
+            <div  style="float: right;">
+              <input id="min_cantidad_{id}" value="{cantidad_minima}" type="hidden" />
+              <input id="max_cantidad_{id}" value="{cantidad_maxima}" type="hidden" />
+              <input id="cantidad_{id}" value="{cantidad}" type="text" class="cc" size="4" maxlength="4" />
+              {unidad}
+            </div>
+            <div>
+              <a href="#" id=arriba_cantidad_{id}> <img src="/FO_IMGS/img/estructura/carro/flechasuperior.gif" border="0"></a><br/>
+              <a href="#" id=abajo_cantidad_{id}> <img src="/FO_IMGS/img/estructura/carro/flechainferior.gif" border="0"></a>
+            </div>
+          </td>
+          <td align="center">
+            <!-- BEGIN DYNAMIC: IMG_CON_NOTA -->
+            <a id="nota_{productoId}" href="javascript:;"><img id="ImageComent_{productoId}" src="/FO_IMGS/img/estructura/paso2/notas.gif" border="0"/></a>
+            <input type="hidden" id="nota_txt_{productoId}" value="{nota}" />
+            <!-- END DYNAMIC: IMG_CON_NOTA -->
+            <!-- BEGIN DYNAMIC: IMG_AGREGAR -->
+            <a id="agregar_{productoId}" href="javascript:;"><img name="imagen_{productoId}" id="imagen_{productoId}" src="/FO_IMGS/img/estructura/paso2/agregar.gif" alt="agregar o quitar unidades" border="0"  /></a>
+            <!-- END DYNAMIC: IMG_AGREGAR -->
+            <!-- BEGIN DYNAMIC: IMG_MODIFICAR -->
+            <a id="modificar_{productoId}" href="javascript:;"><img name="imagen_{productoId}" id="imagen_{productoId}" src="/FO_IMGS/img/estructura/paso2/modificar.gif" alt="agregar o quitar unidades" border="0"  /></a>
+            <!-- END DYNAMIC: IMG_MODIFICAR -->
+            <!-- BEGIN DYNAMIC: IMG_SINSTOCK -->
+            <img src="/FO_IMGS/img/estructura/paso2/sinstock.gif" alt="Producto sin Stock" border="0"  />
+            <!-- END DYNAMIC: IMG_SINSTOCK -->
+          </td>
+        </tr>
+        <!-- END DYNAMIC: PRODUCTOS -->
+      </tbody>
+    </table>
+    <br />
+    <!-- BEGIN DYNAMIC: SUGPORMAX -->
+    <div id="div_sug_max" >Sugerencias de b&uacute;squeda:
+      <!-- BEGIN DYNAMIC: PALABRAS -->
+      <div id="div_lsug"><a href="#" id="lsug">{palabra}</a></div>
+      <!-- END DYNAMIC: PALABRAS -->
+    </div>
+    <!-- END DYNAMIC: SUGPORMAX -->
+    <br /><br />
+	<!-- no va paginador  
+	  <div id="paginador">
+	  <!--  BEGIN DYNAMIC: ANTERIORB -->
+	  <!-- 
+	  <img src="/FO_IMGS/images/mobi/fl_retr_pg_b.gif" alt="ver pagina anterior" width="20" height="25" border="0" /> 
+	  <!--  END DYNAMIC: ANTERIORB -->
+	  <!--  BEGIN DYNAMIC: ANTERIOR -->
+	  <!--
+	  <a href="#" id="{start}" > 
+	  <img src="/FO_IMGS/images/mobi/fl_retr_pg.gif" alt="ver pagina anterior" width="20" height="25" border="0" /> 
+	  </a>
+	  <!--  END DYNAMIC: ANTERIOR -->
+	  <!--
+	  Mostrando p&aacute;gina. {pag_actual} de {pag_total} 
+	  <!--  BEGIN DYNAMIC: SIGUIENTE -->
+	  <!--
+	  <a href="#" id="{start}" >
+	  <img src="/FO_IMGS/images/mobi/fl_av_pg.gif" alt="ver pagina siguiente" width="20" height="25" border="0" />	
+	  </a>
+	  <!--  END DYNAMIC: SIGUIENTE -->
+	  <!--  BEGIN DYNAMIC: SIGUIENTEB -->
+	  <!--
+	  <img src="/FO_IMGS/images/mobi/fl_av_pg_b.gif" alt="ver pagina siguiente" width="20" height="25" border="0" />	
+	  <!--  END DYNAMIC: SIGUIENTEB -->
+	  <!--	
+	  </div>
+	  -->
+	</div>
+  </div>
+  <script type="text/javascript">
+    ancho = $j("div#div_productos").width();
+    if("{banner}" != "") {
+      if( ancho <= 611) {
+        $j("img#img_banner_subcat").width(ancho - 40 );
+      }
+      $j("img#img_banner_subcat").attr("src", "/FO_IMGS/bn/1024/{banner}");
+    } else {
+      var fo = new FlashObject("/FO_IMGS/img/bn_busqueda/busqueda.swf", "animationName", "554", "80", "6", "#FFFFFF");
+      fo.addParam("allowScriptAccess", "sameDomain");
+      fo.addParam("quality", "high");
+      fo.addParam("scale", "noscale");
+      fo.addParam("wmode" ,"transparent");
+      fo.write("banner_b");
+    }
+    if ("{ultima_accion}" == "buscar") {
+      if ("{total_encontrados}" == "0")
+        pageTracker._trackPageview('/FO/busqueda/sin_resultado/{texto}');
+      else
+        pageTracker._trackPageview('/FO/busqueda/con_resultado/{texto}');
+    } else {
+      pageTracker._trackPageview('/FO/categorias/{categoria_nombre}/{subcategoria_nombre}');
+    }
+    function get_banner() {
+      $j("img#img_banner_subcat").width(1);
+      $j("img#img_banner_subcat").height(1);
+      return '/FO_IMGS/img/1x1trans.gif';
+    }
+  </script>
+<!-- END DYNAMIC: RESULTADO -->	
+	

@@ -1,0 +1,138 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<meta name="viewport" content="width=320;initial-scale=1.0; maximum-scale=1.0; user-scalable=false;"/>
+<title>Jumbo Mobile - Carro de Compras</title>
+<link href="/FO_WebContent/mobi/css/carro.css" rel="stylesheet" type="text/css" />
+<link href="/FO_WebContent/mobi/css/carropermanente.css" rel="stylesheet" type="text/css" />
+<link href="/FO_WebContent/mobi/css/lightbox.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/FO_WebContent/mobi/js/carro.js"></script>
+<script type="text/javascript" src="/FO_WebContent/mobi/js/listas.js"></script>
+
+</head>
+<body onload="actualizaCarro();ocultaNotas();initLightbox();">
+<form name="fc" method="post" action="">
+<div id="contenedor_b">
+	<div id="encabezado_b">
+		<h2>Jumbo.cl mobile, más tiempo para ti</h2>
+	</div>
+	<div id="boton_b">
+		<a href="BienvenidaFormMobi"><img src="/FO_IMGS/images/mobi/bt_1_b.gif" alt="Bienvenida" border="0" /></a>
+		<a href="UltComprasFormMobi"><img src="/FO_IMGS/images/mobi/bt_2_b.gif" alt="Paso1" border="0" /></a>
+		<a href="PasoDosFormMobi"><img src="/FO_IMGS/images/mobi/bt_3_b.gif" alt="Paso2" border="0" /></a>
+		<a href="PasoTresFormMobi"><img src="/FO_IMGS/images/mobi/bt_4_b.gif" alt="Paso3" border="0" /></a>
+		<a href="OrderItemDisplayMobi"><img src="/FO_IMGS/images/mobi/bt_5.gif" alt="Carro" border="0" /></a>
+	</div>
+	<div id="margen_naranjo">
+		<h3>Productos que haz agregado a tu carro  </h3> 
+	</div>
+	<div id="contenido_carro" align="center">
+		<div id="op_carro">
+			<div class="ver_foto" align="left">
+				<label>
+					<input type="checkbox" id="ver_foto" name="ver_foto" {foto_checked} onchange="cambioVerFoto();" /> ver foto
+					<input type="hidden" id="ver_foto_txt" name="ver_foto_txt" value="{ver_foto_txt}" />
+					<input type="hidden" name="cant_reg" id="cant_reg" value="{cant_reg}" />
+					<input type="hidden" name="pagina" id="pagina" value="{pag_actual}" />
+				</label>
+			</div>
+			<div class="mostrar" align="right"> 
+				<!-- BEGIN DYNAMIC: MOSTRAR_PAGINACIONES -->
+				mostrar 												
+				<select name="paginado" id="paginado" onchange="cambiaPaginacion(this.value)">
+					<!-- BEGIN DYNAMIC: PAGINACIONES -->
+					<option value="{pag}" {sel}>{pag}</option>
+					<!-- END DYNAMIC: PAGINACIONES -->
+				</select>
+				<!-- END DYNAMIC: MOSTRAR_PAGINACIONES -->
+			</div>
+		</div>
+		<div id="prod_carro">
+			<div class="cuadrado_verde">
+				<div class="c_producto">Prod.</div>
+				<div class="c_descripcion">Descripci&oacute;n</div>
+				<div class="c_precio">Precio</div>
+				<div class="c_cantidad">Cantidad</div>
+				<div class="c_nota">Notas</div>
+				<div class="c_eliminar">Eliminar</div>
+			</div>
+			<!-- BEGIN DYNAMIC: lista_carro -->
+			<div id="carro_compra_{id}" class="{estilo_div}">
+				<div class="c_desp_producto">
+					<!-- BEGIN DYNAMIC: MUESTRA_IMG -->
+					<a href="/FO_IMGS/gr/{pro_imagen}" rel="lightbox" title="Jumbo.CL">
+						<img src="/FO_IMGS/ch/{pro_imagen}" width="40" height="40" border="0" onerror="this.src='/FO_IMGS/img/ch/fotopreparacion-chica.gif'" />
+					</a>
+					<!-- END DYNAMIC: MUESTRA_IMG -->
+					&nbsp;
+				</div>
+				<div class="c_desp_descripcion">{nombrepro} {NO_DISPONIBLE}</div>
+				<div class="c_desp_precio">{subtotal}</div>
+				<div class="c_desp_cantidad">
+					<!-- BEGIN DYNAMIC: LISTA_SEL -->
+					<select name="cantidad_l{contador}" class="cc" onchange="mc({id}, this, {maximo}, {pro_id} )" {disabled} ></select><br/>{unidad}
+					<script>hl( document.fc.cantidad_l{contador}, {intervalo}, {maximo}, {valor} );</script>
+					<!-- END DYNAMIC: LISTA_SEL -->
+				</div>
+				<div class="c_desp_nota">
+					<!-- BEGIN DYNAMIC: COMENTARIO -->
+					<a href="javascript:showNota({idprod},{id_car},{contador});">
+						<img id="ImageComent_{contador}" src="/FO_IMGS/images/mobi/{comentario_img}" border="0" alt="Agregar Comentario" title="Agregar Comentario"/>
+					</a>
+					<input type="hidden" name="nota{contador}" value="{nota}" id="nota{contador}" />
+					<!-- END DYNAMIC: COMENTARIO -->
+					&nbsp;
+				</div>
+				<div class="c_desp_eliminar">
+					<a href="javascript:del(document.fc.cantidad_l{contador},1000,1,{id}, {pro_id})">
+						<img src="/FO_IMGS/images/mobi/bt_del.gif" width="22" height="20" border="0" alt="Eliminar Producto" title="Eliminar Producto"/>
+					</a>
+				</div>
+			</div>
+			<br/>
+			<!-- END DYNAMIC: lista_carro -->
+		</div>
+		<div id="paginador">
+			{anterior_label_vacia}
+			<a href="OrderItemDisplayMobi?pagina={anterior}&paginado={reg_x_pag}&ver_foto_txt={ver_foto_txt}">{anterior_label}</a>
+			mostrando p&aacute;gina {pag_actual} de {total_pag}
+			<a href="OrderItemDisplayMobi?pagina={siguiente}&paginado={reg_x_pag}&ver_foto_txt={ver_foto_txt}">{siguiente_label}</a>
+			{siguiente_label_vacia}
+		</div>
+	</div>
+	<br/><br/>
+</div>
+<div id="notas">
+	Nota del producto:<br />
+	<input type="text" id="nota_txt" value="" maxlength="64" size="30"></input><br />
+	<input type="button" value="Aceptar" onclick="javascript:guardarNota();" /> <input type="button" value="Cancelar" onclick="javascript:cancelarNota();" />
+	<input type="hidden" name="id_carro" id="id_carro" value="" />
+	<input type="hidden" name="id_producto" id="id_producto" value="" />
+	<input type="hidden" name="contador" id="contador" value="" />
+</div>
+</form>
+
+<div id="carro">
+	<div class="total"> 
+		<div class="carrito"><img src="/FO_IMGS/images/mobi/carrito.gif" /></div>
+		<div class="totalizador"><label><input name="total_carro_compra" id="total_carro_compra" type="text" size="13" readonly="readonly" /> Total</label></div>
+		<div class="bt_paso3"><a href="PasoTresFormMobi"><img src="/FO_IMGS/images/mobi/bt_irpaso3.gif" alt="Ir a paso 3" longdesc="Pasar directamente al Paso 3" border="0" /></a></div>
+	</div>
+	<div class="carrito_abajo">
+		<div class="links_abajo">
+			<a href="/FO/mobi/faq.html" target="_blank"><img src="/FO_IMGS/images/mobi/faq.gif" width="39" height="40" border="0" /></a>
+			<a href="AddressFormMobi"><img src="/FO_IMGS/images/mobi/cam-dir.gif" width="101" height="40" border="0" /></a>
+			<a href="javascript:salirDelSitio();"><img src="/FO_IMGS/images/mobi/guardar.gif" width="115" height="40" border="0" /></a>
+		</div>
+	</div>
+</div>
+<br/><br/><br/>
+
+<script type="text/javascript" src="/FO_WebContent/mobi/js/prototype.js"></script>
+<script type="text/javascript" src="/FO_WebContent/mobi/js/global.js"></script>
+<script type="text/javascript" src="/FO_WebContent/mobi/js/lightbox.js"></script>
+<script type="text/javascript" src="/FO_WebContent/mobi/js/flotante.js"></script>
+
+</body>
+</html>

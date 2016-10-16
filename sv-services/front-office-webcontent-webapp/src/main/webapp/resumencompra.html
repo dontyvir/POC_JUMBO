@@ -1,0 +1,540 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<meta http-equiv="CACHE-CONTROL" content="NO-CACHE" />
+<meta http-equiv="PRAGMA" content="NO-CACHE" />
+<meta http-equiv="EXPIRES" content="Mon, 22 Jul 2002 11:12:01 GMT" />
+<title>Jumbo.cl - Resumen Compra</title>
+<link rel="shortcut icon" href="FO_IMGS/img/favicon.ico" />
+<meta name="Jumbo" content="Jumbo: Cadena de Hipermercados de Chile y Argentina, cuya misi�n es satisfacer a sus clientes con la mejor propuesta comercial del mercado. Para ello sus  pilares son: Personal amable y profesional; Excelente servicio; Amplio horario de atenci�n; La m�s amplia variedad y surtido; Locales modernos c�modos y acogedores; Inmejorables precios." />
+<meta name="keywords" content="Jumbo, Supermercado, supermercado,  Jumbo m�s, Hipermercado, productos, puntos,  Cencosud, Circulo m�s, vinos, carnes, frutas, verduras, l�cteos, pescados, mariscos, abarrotes, comprar, compra por internet" />
+<link href="/FO_WebContent/css/estilostextos.css" rel="stylesheet" type="text/css" />
+<link href="/FO_WebContent/css/simple.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/FO_WebContent/js/prototype.js"></script>
+<script type="text/javascript" src="/FO_WebContent/js/funciones.js"></script>
+<script type="text/javascript" src="/FO_WebContent/js/layer.js"></script>
+<script type="text/javascript" src="/FO_WebContent/js/resumencompra.js"></script>
+<script type="text/javascript" src="/FO_WebContent/js/flashobject.js"></script>
+<style type="text/css">
+#ventana_evento {
+	position:absolute;
+	width: 0px;
+	height: 0px;
+	left: 0px;
+	top: 0px;
+	visibility: hidden;
+	border: 1;
+	z-index: 10;
+}
+</style>
+</head>
+
+<body onload="MM_preloadImages('/FO_IMGS/img/estructura/paso3/bt_terminarb.gif','/FO_IMGS/img/estructura/sustitutos/bt_sustb.jpg','FO_IMGS/img/estructura/sustitutos/bt_sustb.gif','FO_IMGS/img/estructura/sustitutos/bt_sust2b.gif')">
+<div id="contenedor">
+  <div class="menu_superior_2011">
+    <div class="logo_jumbo_2011"><img src="/FO_IMGS/img/logo_jumbo_2011.gif" width="245" height="71" border="0" /></div>
+    <div class="menu_arriba_2011">
+      <div class="linea_menu_arriba_2011">
+        <div class="menu_arriba_necesitas_ayuda">Preguntas Frecuentes<span style="color: #1FA22E"> </span></div>
+        <div class="menu_arriba_necesitas_ayuda">Necesitas Ayuda? <span style="color:#1FA22E"> 600 400 3000</span></div>
+      </div>
+      <div class="linea_menu_arriba_2011">
+        <div class="menu_arriba_cerrar_sesion"><a href="Logoff">Cerrar Sesi&oacute;n</a></div>
+        <div class="menu_arriba_nombre_cliente">{nombre_cliente}</div>
+      </div>
+    </div>
+    <div class="menu_links_jumbo_2011">
+      <ul id="menunew">
+        <li class="micuenta"><a href="/FO/BienvenidaForm">Mi Cuenta</a></li>
+      </ul>
+    </div>
+  </div>
+  <div id="contenido">
+
+	  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+			<tr>
+				<td height="149" colspan="2">
+					<div id="bn" style="width: 800px; height: 50px; float:left;"></div>
+						<div style="font-family:Arial, Helvetica, sans-serif; color:#1FA22E; float:left; width:800px; height:20px; padding-top:15px; padding-bottom:15px; font-weight:bold;">
+					        {nombre_cliente}
+					    </div>
+						<div style="font-family:Arial, Helvetica, sans-serif; color:#666; font-size:12px; width:800px; float:left; height:40px;">
+					        Gracias por comprar en www.jumbo.cl<br />
+							Esta compra ser&aacute; guardada  como lista base con la fecha de la compra.
+						</div>
+					    <div style="font-family:Arial, Helvetica, sans-serif; color:#666; font-size:12px; width:800px; float:left; padding-bottom:10px;">
+							<form id="form1" name="frmGuardaCompra" method="post" action="#" onsubmit="guarda_compra();">
+								<input type="hidden" name="mostrar_evento" id="mostrar_evento" value="{mostrar_evento}" />
+					            <input type="hidden" name="from" id="from" value="RESUMEN" />
+								<input type="hidden" name="unidades" value="{cantidad}" />
+					            <label>
+									&iquest;Quieres ponerle un nombre especial?
+								    <input name="opcionradio" type="radio" value="1" onclick="habilita_campo();"/>Si
+								</label>
+								<label>
+									<input name="opcionradio" type="radio" value="0" checked="checked" onclick="inhabilita_campo();"/>
+										No
+								</label>
+					            <br /><br />
+					            <label>
+									Nombre nuevo
+									<input name="txtNewNombre" type="text" class="campo" value="ej: lista cumplea&ntilde;os" onclick="this.value=''"/>
+								</label>
+					            <br />
+							</form>
+						</div>
+		          <!-- BEGIN DYNAMIC: MSG_SUSTITUTOS_NEW -->
+					 <div style="font-family:Arial, Helvetica, sans-serif; color:#666; font-size:12px; width:800px; float:left; padding-bottom:10px;">
+					         IMPORTANTE<br />
+					          <br />
+										<a href="javascript:modificar_sustitutos();pageTracker._trackPageview('/FO/resumen_compra/links/sustitucion');" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image40','','/FO_IMGS/img/estructura/sustitutos/bt_sustb.gif',1)"><img src="/FO_IMGS/img/estructura/sustitutos/bt_sust.gif" alt="elegir tus criterios de sustitucion" name="Image40" border="0" id="Image40" /></a><br />
+										<p>Al igual que cuando vas al supermercado, es posible que   no encontremos algunos de los productos que solicitaste.</p>
+										<p>Concientes de la importancia de que puedas contar con   estos productos Jumbo.cl te ofrece dos alternativas:<br /><br /></p>
+                    </div>
+					<table width="95%" border="0" cellspacing="0" cellpadding="0">
+						<tr>
+							<td width="6" height="6"><img src="/FO_IMGS/img/estructura/tablasupizq.gif" width="6" height="6" alt="" /></td>
+							<td height="6" style="background: url(/FO_IMGS/img/estructura/tablasup.gif);"><img src="/FO_IMGS/img/estructura/tablasup.gif" width="1" height="6" alt="" /></td>
+							<td width="10" height="6"><img src="/FO_IMGS/img/estructura/tablasupder.gif" width="6" height="6" alt="" /></td>
+						</tr>
+						<tr>
+							<td width="6" height="32" style="background: url(/FO_IMGS/img/estructura/tablaizq.gif);"><img src="/FO_IMGS/img/estructura/tablaizq.gif" width="6" height="1" alt="" /></td>
+							<td valign="top">
+								<span class="titulolectura">a) Criterio Jumbo (por defecto):</span>
+								<span class="lectura">Los sustituiremos por otros de las mismas caracter�sticas y en algunos casos donde no exista una sustituci�n evidente no los sustituiremos. <br />
+									<img src="/FO_IMGS/img/estructura/fl.gif" width="6" height="7" alt="" />
+									<a href="/FO/sustitucion.html" target="_blank">Ver pol�tica de sustituci�n</a><br />
+								</span>
+								<span class="chica">(De no estar conforme con estos, los puedes devolver dentro de 24 horas sin costo alguno llam�ndonos al 600 400 3000)</span><br /><br />
+                <span class="titulolectura">b) Sustituci�n Personal (opcional)</span>
+                <span class="lectura">: Gu&iacute;anos en la sustituci�n de tus
+                productos definiendo t� mismo el criterio por cada producto o
+                categor�a. <br />
+									<img src="/FO_IMGS/img/estructura/fl.gif" width="6" height="7" border="0" alt="" />
+									<a href="javascript:modificar_sustitutos();pageTracker._trackPageview('/FO/resumen_compra/links/sustitucion');">Haz Click Aqu�</a>
+								</span>
+							</td>
+							<td width="10" style="background: url(/FO_IMGS/img/estructura/tablader.gif);"><img src="/FO_IMGS/img/estructura/tablader.gif" width="6" height="1" alt="" /></td>
+						</tr>
+						<tr>
+							<td width="6" height="6"><img src="/FO_IMGS/img/estructura/tablainfizq.gif" width="6" height="6" alt="" /></td>
+							<td height="6" style="background: url(/FO_IMGS/img/estructura/tablainf.gif);"><img src="/FO_IMGS/img/estructura/tablainf.gif" width="1" height="6" alt="" /></td>
+							<td width="10" height="6"><img src="/FO_IMGS/img/estructura/tablainfder.gif" width="6" height="6" alt="" /></td>
+						</tr>
+					</table>
+					<!-- END DYNAMIC: MSG_SUSTITUTOS_NEW -->
+					<!-- BEGIN DYNAMIC: MSG_SUSTITUTOS_OLD_CON -->
+					<div style="float: left; height: auto; width: 800px;">
+					<span class="titulolectura">IMPORTANTE</span>
+					<br />
+					<span class="lectura">Tienes {cant_productos_nuevos} productos nuevos a los cuales no les ha definido un criterio de sustituci�n. <br />
+          <img src="/FO_IMGS/img/estructura/sustitutos/icono.gif" border="0" alt="" />&nbsp;<a href="javascript:modificar_sustitutos();pageTracker._trackPageview('/FO/resumen_compra/links/sustitucion');">As�gnale
+          tus preferencias aqu�.</a> </span>
+          </div>
+          <!-- END DYNAMIC: MSG_SUSTITUTOS_OLD_CON -->
+          <!-- BEGIN DYNAMIC: MSG_SUSTITUTOS_OLD_SIN -->
+          <div style="float: left; height: auto; width: 800px;">
+          <span class="lectura">A los productos de esta compra ya les asignaste
+          un criterio de sustituci&oacute;n, si deseas modificarlo <img src="/FO_IMGS/img/estructura/fl.gif" width="6" height="7" alt="" /><a href="javascript:modificar_sustitutos();pageTracker._trackPageview('/FO/resumen_compra/links/sustitucion');">Haz
+          click Aqu�.</a></span>
+          </div>
+          <!-- END DYNAMIC: MSG_SUSTITUTOS_OLD_SIN -->
+          <div style="float: left; height: auto; width: 800px; padding-top: 15px;">
+					<div style="float:left; border-bottom:1px dashed #CCC; width:800px; padding-bottom:5px; font-family:Arial, Helvetica, sans-serif; font-size:16px; color:#1FA22E; font-weight:bold;">El resumen de tu compra es:</div>
+					<table width="100%" border="0" cellspacing="0" cellpadding="0">
+						<tr>
+							<td width="7" height="6"></td>
+							<td width="201" height="6"></td>
+							<td width="416" height="6"></td>
+							<td width="10" height="6"></td>
+						</tr>
+						<tr>
+							<td width="7" height="189"></td>
+							<td colspan="2" valign="top">
+								<table width="100%" border="0" cellspacing="0" cellpadding="0">
+									<tr>
+										<td class="resumencompraobscuro">N&uacute;mero de pedido</td>
+										<td class="resumencompra">{idped}</td>
+									</tr>
+									<tr>
+										<td class="resumencompraobscuro">Comercio</td>
+										<td class="resumencompra">Jumbo.cl</td>
+									</tr>
+									<tr>
+										<td class="resumencompraobscuro">URL del comercio</td>
+										<td class="resumencompra">http://www.jumbo.cl</td>
+									</tr>
+									<tr>
+										<td class="resumencompraobscuro">Cliente</td>
+										<td class="resumencompra">{nombre_cliente}</td>
+									</tr>
+									<tr>
+										<td class="resumencompraobscuro">Tipo de transacci�n</td>
+										<td class="resumencompra">Venta</td>
+									</tr>
+                                    <!-- BEGIN DYNAMIC: PAGO_TRANSBANK -->
+									<tr>
+										<td class="resumencompraobscuro">Tarjeta de Cr&eacute;dito</td>
+										<td class="resumencompra">{4_ultimos}</td>
+									</tr>
+                                    <tr>
+										<td class="resumencompraobscuro">C&oacute;digo de autorizaci�n de la transacci�n</td>
+										<td class="resumencompra">{cod_aut_trx}</td>
+									</tr>
+                                    <tr>
+										<td class="resumencompraobscuro">N� de cuotas</td>
+										<td class="resumencompra">{nro_cuotas}</td>
+									</tr>
+                                    <tr>
+										<td class="resumencompraobscuro">Tipo de cuotas</td>
+										<td class="resumencompra">{tipo_cuotas}</td>
+									</tr>
+                                    <!-- END DYNAMIC: PAGO_TRANSBANK -->
+                                    <tr>
+										<td class="resumencompraobscuro">Descripci�n de los bienes</td>
+										<td class="resumencompra">Productos de supermercado</td>
+									</tr>
+                                    <tr>
+										<td class="resumencompraobscuro">Fecha de compra</td>
+										<td class="resumencompra">{fecha_hoy}</td>
+									</tr>
+                                    <tr>
+										<td class="resumencompraobscuro">Cantidad de productos</td>
+										<td class="resumencompra">{cantidad}</td>
+									</tr>
+									<tr>
+										<td class="resumencompraobscuro">Monto del pedido</td>
+										<td class="resumencompra">{monto_op}</td>
+									</tr>
+									<tr>
+										<td class="resumencompraobscuro">Monto del despacho</td>
+										<td class="resumencompra">{monto_desp}</td>
+									</tr>
+									<tr>
+										<td class="resumencompraobscuro">Monto total reservado *</td>
+										<td class="resumencompra">{monto_res}</td>
+									</tr>
+									<tr>
+										<td class="resumencompraobscuro">Forma de pago</td>
+										<td class="resumencompra">{forma_pago}</td>
+									</tr>
+									<tr>
+										<td class="resumencompraobscuro">Tipo documento</td>
+										<td class="resumencompra">{tip_doc}</td>
+									</tr>
+									<!-- BEGIN DYNAMIC: LUGAR_DESPACHO -->
+									<tr>
+										<td class="resumencompraobscuro">Lugar de despacho</td>
+										<td class="resumencompra">{lugar_despacho}</td>
+									</tr>
+									<!-- END DYNAMIC: LUGAR_DESPACHO -->
+									<!-- BEGIN DYNAMIC: LUGAR_RETIRO -->
+									<tr>
+										<td class="resumencompraobscuro">Forma de despacho</td>
+										<td class="resumencompra">
+											<table width="100%" border="0" cellspacing="0" cellpadding="0">
+												<tr>
+													<td width="70%" valign="top">{lugar_despacho}<br/>{dir_retiro_pedido}</td>
+													<td width="30%" valign="top"><img src="/FO_IMGS/img/estructura/fl.gif" alt="flechita" /><a href="/FO_WebContent/statics/autojumbo{id_local}.html" target="_blank" class="tituloDespacho">ver indicaciones</a></td>
+												</tr>
+											</table>
+										</td>
+									</tr>
+									<!-- END DYNAMIC: LUGAR_RETIRO -->
+									<tr>
+										<td class="resumencompraobscuro">{fc_hr_despacho}</td>
+										<td class="resumencompra">{fecha_tramo}</td>
+									</tr>
+									<!-- BEGIN DYNAMIC: SIN_GENTE_DESPACHO -->
+									<tr>
+										<td width="205" class="lectura">Persona autorizada a recibir el despacho</td>
+										<td class="resumencompraB">{sin_gente_txt}</td>
+									</tr>
+									<!-- END DYNAMIC: SIN_GENTE_DESPACHO -->
+									<!-- BEGIN DYNAMIC: SIN_GENTE_RETIRO -->
+									<tr>
+										<td class="resumencompraobscuro">Persona autorizada a retirar el despacho</td>
+										<td class="resumencompra">{sin_gente_txt}</td>
+									</tr>
+									<tr>
+										<td width="205" class="lectura">RUT persona autorizada a retirar el despacho</td>
+										<td class="resumencompraB">{sin_gente_rut}</td>
+									</tr>
+									<!-- END DYNAMIC: SIN_GENTE_RETIRO -->
+								</table>
+							</td>
+							<td width="10"></td>
+						</tr>
+						<tr>
+							<td width="7" height="6"></td>
+							<td height="6"></td>
+							<td height="6"></td>
+							<td width="10" height="6"></td>
+						</tr>
+					</table>
+					<p>Para compras con factura,  se agrega en la reserva el recargo por los impuestos adicionales al IVA que pudieran gravar los productos en el carro de compra <br />
+				    ( impuestos ICA, ILA, IHA).</p>
+					<p>** Los puntos ganados en esta compra estar&aacute;n disponibles dentro de las pr&oacute;ximas 72 hrs.<br />
+					  *** Valores expresados en pesos chilenos.</p>
+			    <br/>
+					<a href="http://www.jumbo.cl/supermercado/preguntas/preguntas.html#17" target="_blank"><img src="/FO_IMGS/img/estructura/tracking_op/bn_estadopedido_resumen.jpg" border="0" /></a>
+			</div>
+				</td>
+				<td width="4%" rowspan="2" valign="top">
+					<a href="ayuda-resumen.html" target="_blank"><img src="/FO_IMGS/img/estructura/bt_ayuda.gif" width="28" height="40" border="0" align="right" alt="" /></a>
+				</td>
+			</tr>
+		</table>
+		<br />
+		<table width="900px" border="0" cellspacing="0" cellpadding="0">
+			<tr>
+				<td width="65%" valign="top">
+				<span class="lectura"><img src="/FO_IMGS/img/estructura/fl.gif" width="6" height="7" border="0" alt="" />&nbsp;<a href="javascript:verDetallePedido();pageTracker._trackPageview('/FO/resumen_compra/links/listado_productos');">Ver listado de productos</a></span>
+				<br/>
+				<span class="lectura"><img src="/FO_IMGS/img/estructura/fl.gif" width="6" height="7" border="0" alt="" />&nbsp;<a href="http://www.jumbo.cl/supermercado/preguntas/preguntas.html#12" onclick="javascript:pageTracker._trackPageview('/FO/resumen_compra/links/politicas_devolucion');" target="_blank">Ver pol&iacute;ticas de devoluci&oacute;n de productos</a></span>
+				</td>
+				<td width="35%" align="right">
+					<table width="100%" border="0" cellpadding="0" cellspacing="0">
+						<tr>
+						    <td width="80%" align="right" valign="top" class="chica"><a href="javascript:imprimir()">Imprimir resumen<br/> y listado de productos</a></td>
+							<td width="20%" align="right" valign="top"><a href="javascript:imprimir()"><img src="/FO_IMGS/img/estructura/imprimir.gif" width="33" height="25" border="0" alt="Imprimir" title="Imprimir"/></a></td>
+						</tr>
+						<tr>
+							<td colspan="2" align="right" valign="bottom">
+								<!--form name="formebit" method="get" target="_blank" action="https://www.ebit.cl/bitconsumidor/encuesta1.asp"><input type=hidden name='empresa' value='186515' /> <input type="image" border="0" name="banner" src="FO_IMGS/images/nuevojumbo/bot_ebit.jpg" alt="&iquest;Qu&eacute; te pareci&oacute; esta tienda?" /></form-->
+								<br/>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="2" align="right" valign="bottom"></td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+		</table>
+		<table width="700px" border="0" cellspacing="0" cellpadding="0">
+			<tr>
+				<td width="55%" align="right"><a href="javascript:guarda_compra();"><img src="/FO_IMGS/img/estructura/bt_terminar.gif" name="Image43" border="0" id="Image43" /></a></td>
+				<td width="45%" align="left" valign="top"><a href="javascript:modificar_sustitutos();pageTracker._trackPageview('/FO/resumen_compra/links/sustitucion');"><img src="/FO_IMGS/img/estructura/bt_sustitucion.gif" name="Image42" border="0" id="Image42" /></a></td>
+			</tr>
+		</table>
+	</div>
+  <div id="footer">
+    <div class="modulo_footer_2011">
+      <div class="fila_footer_2011"><strong>Servicio al Cliente</strong></div>
+      <div class="fila_footer_2011"><a href="http://www.jumbo.cl/supermercado/preguntas/preguntas.html" title="Preguntas Frecuentes" target="_blank">Preguntas Frecuentes</a></div>
+      <div class="fila_footer_2011"><a href="http://www.jumbo.cl/supermercado/contactenos/index.html" title="Cont&aacute;ctenos" target="_blank">Cont&aacute;ctenos</a></div>
+      <div class="fila_footer_2011"><a href="http://www.jumbo.cl/supermercado/locales/index.html" title="Locales Jumbo" target="_blank">Locales Jumbo</a></div>
+      <div class="fila_footer_2011"><a href="http://www.jumbo.cl/supermercado/ganadores/index.html" title="Ganadores Concursos" target="_blank">Ganadores Concursos</a></div>
+    </div>
+    <div class="modulo_footer_2011">
+      <div class="fila_footer_2011"><strong>Compra Online</strong></div>
+      <div class="fila_footer_2011"><a href="/FO_WebContent/seguridad.html" title="Seguridad y Privacidad" target="_blank">Seguridad y Privacidad</a></div>
+      <div class="fila_footer_2011"><a href="http://www.jumbo.cl/supermercado/preguntas/preguntas.html#7" title="Formas de Pago" target="_blank">Formas de Pago</a></div>
+      <div class="fila_footer_2011"><a href="http://www.jumbo.cl/supermercado/preguntas/preguntas.html#5" title="Zona de Cobertura" target="_blank">Zona de Cobertura</a></div>
+      <div class="fila_footer_2011"><a href="http://www.jumbo.cl/supermercado/preguntas/preguntas.html#13" title="Pol&iacute;ticas de Precio" target="_blank">Pol&iacute;ticas de Precio</a></div>
+    </div>
+    <div class="modulo_footer_2011">
+      <div class="fila_footer_2011"><strong>Nuestros Sitios</strong></div>
+      <div class="fila_footer_2011"><a href="http://www.jumboblog.cl/default.asp?cat=4&amp;buscat=0&amp;tipocat=1" title="Recetas Jumbo Blog" target="_blank">Recetas Jumbo Blog</a></div>
+      <div class="fila_footer_2011"><a href="http://www.productojumbo.cl/" title="Productos Jumbo" target="_blank">Productos Jumbo</a></div>
+<!--FVR   <div class="fila_footer_2011"><a href="http://www.jumbo.cl/supermercado/productos_del_mundo/index.html" title="Productos del Mundo" target="_blank">Productos del Mundo</a></div>-->
+      <div class="fila_footer_2011"><a href="http://www.jumbo.cl/supermercado/mundosjumbo/index.html" title="Mundos Jumbo" target="_blank">Mundos Jumbo</a></div>
+    </div>
+    <div class="modulo_footer_2011_der">
+      <div class="fila_footer_2011"><strong>Jumbo</strong></div>
+      <div class="fila_footer_2011"><a href="http://www.jumbo.cl/supermercado/catalogos/index.html" title="Cat&aacute;logos" target="_blank">Cat&aacute;logos</a></div>
+      <div class="fila_footer_2011"><a href="http://www.jumbo.cl/supermercado/familia_jumbo/index.html" title="Familia Jumbo" target="_blank">Familia Jumbo</a></div>
+      <div class="fila_footer_2011"><a href="http://www.jumbo.cl/supermercado/novedades/index.html" title="Novedades" target="_blank">Novedades</a></div>
+      <div class="fila_footer_2011"><a href="http://www.jumbo.cl/supermercado/jumbo_mobile/index.html" title="Jumbo Mobile" target="_blank">Jumbo Mobile</a></div>
+    </div>
+  </div>
+</div>
+
+<div id="ventana_evento" style="position:absolute;visibility:hidden;">
+	<div id="dragbar3" onmousedown="javascript:initializedrag(event,'ventana_evento','dragbar3');" style="cursor:move;">
+		<table width="400" border="0" cellpadding="0" cellspacing="0">
+			<tr>
+				<td width="8" height="7" valign="top"><img src="/FO_IMGS/img/estructura/layers/esquinaSupIzq.gif" width="8" height="7" alt=""/></td>
+				<td height="7" colspan="2" valign="top" style="background: url(/FO_IMGS/img/estructura/layers/arriba.gif);"><img src="/FO_IMGS/img/estructura/layers/arriba.gif" width="1" height="7" alt=""/></td>
+				<td width="8" height="7" valign="top"><img src="/FO_IMGS/img/estructura/layers/esquinaSupDer.gif" width="8" height="7" alt=""/></td>
+			</tr>
+			<tr>
+				<td height="31" valign="top" style="background: url(/FO_IMGS/img/estructura/layers/izquierdoArriba.gif);"><img src="/FO_IMGS/img/estructura/layers/izquierdoArriba.gif" width="8" height="1" alt=""/></td>
+				<td width="506" height="31" align="center" valign="top" style="background: url(/FO_IMGS/img/estructura/layers/tramafondo.gif);"><span class="titulosLayersEventos">{titulo_evento}</span></td>
+				<td width="14" align="center" valign="top" style="background: url(/FO_IMGS/img/estructura/layers/tramafondo.gif);">
+					<a href="javascript:hideEvento();">
+						<img src="/FO_IMGS/img/estructura/bt_cerrar.gif" alt="cerrar ventana" border="0" width="29" height="23" align="right" />
+					</a>
+				</td>
+				<td width="8" height="31" valign="top" style="background: url(/FO_IMGS/img/estructura/layers/derechoArriba.gif);"><img src="/FO_IMGS/img/estructura/layers/derechoArriba.gif" width="8" height="1" alt=""/></td>
+			</tr>
+		</table>
+	</div>
+	<table width="400" border="0" cellpadding="0" cellspacing="0">
+		<tr>
+			<td height="259" valign="top" style="background: url(/FO_IMGS/img/estructura/layers/bordeIzq.gif);"></td>
+			<td colspan="2" valign="top" bgcolor="#FFFFFF">
+				<table width="95%" border="0" align="center" cellpadding="0" cellspacing="0">
+					<tr>
+						<td height="124" align="center" valign="top" bgcolor="#FFFFFF">{src_flash}</td>
+					</tr>
+				</table>
+			</td>
+			<td width="8" height="259" valign="top" style="background: url(/FO_IMGS/img/estructura/layers/bordeDer.gif);"></td>
+		</tr>
+		<tr>
+			<td width="8" height="7" valign="top"><img src="/FO_IMGS/img/estructura/layers/esquinaInfIzq.gif" width="8" height="7" alt=""/></td>
+			<td height="7" colspan="2" style="background: url(/FO_IMGS/img/estructura/layers/abajo.gif);"><img src="/FO_IMGS/img/estructura/layers/abajo.gif" width="1" height="7" alt=""/></td>
+			<td width="8" height="7" valign="top"><img src="/FO_IMGS/img/estructura/layers/esquinaInfDer.gif" width="8" height="7" alt=""/></td>
+		</tr>
+	</table>
+</div>
+
+<script type="text/javascript">
+
+var fo = new FlashObject("/FO_IMGS/img/banners/bn-resumencompra.swf", "animationName", "630", "50", "8", "#FFFFFF");
+fo.addParam("allowScriptAccess", "sameDomain");
+fo.addParam("quality", "high");
+fo.addParam("scale", "noscale");
+fo.addParam("wmode" ,"transparent");
+fo.write("bn");
+
+if ($("mostrar_evento").value == 'SI') {
+	showEvento();
+}
+</script>
+
+<!-- Tag for Activity Group: Token Id, Activity: Compra Final -->
+
+<!-- Start of DoubleClick Spotlight Tag: Please do not remove-->
+<!-- Activity Name for this tag is:Compra Final -->
+<!-- Web site URL where tag should be placed: http://www.jumbo.cl -->
+<!-- Creation Date:03/28/08 -->
+<IMG SRC="https://ad.doubleclick.net/activity;src=1463301;type=token156;cat=compr026;qty=1;cost={total};ord={order-id}?" WIDTH=1 HEIGHT=1 BORDER=0>
+<!-- End of DoubleClick Spotlight Tag: Please do not remove-->
+
+<!-- Google Code for Compra Conversion Page -->
+<script language="JavaScript" type="text/javascript">
+<!--
+var google_conversion_id = 1036899053;
+var google_conversion_language = "es";
+var google_conversion_format = "3";
+var google_conversion_color = "ffffff";
+if (120000.0) {
+  var google_conversion_value = {total};
+}
+var google_conversion_label = "vE4_CNHsYhDtpbfuAw";
+//-->
+</script>
+    <script language="JavaScript" src="http://www.googleadservices.com/pagead/conversion.js">
+</script>
+<noscript>
+    <img height="1" width="1" border="0" src="http://www.googleadservices.com/pagead/conversion/1036899053/?value={total}&amp;label=vE4_CNHsYhDtpbfuAw&amp;script=0"/>
+</noscript>
+
+<!-- Google Code for Post Compra Remarketing List -->
+<script type="text/javascript">
+<!--
+var google_conversion_id = 1036899053;
+var google_conversion_language = "en";
+var google_conversion_format = "3";
+var google_conversion_color = "666666";
+var google_conversion_label = "Q_MOCO2mqwEQ7aW37gM";
+var google_conversion_value = 0;
+//-->
+</script>
+<script type="text/javascript" src="http://www.googleadservices.com/pagead/conversion.js">
+</script>
+<noscript>
+<div style="display:inline;">
+<img height="1" width="1" style="border-style:none;" alt="" src="http://www.googleadservices.com/pagead/conversion/1036899053/?label=Q_MOCO2mqwEQ7aW37gM&amp;guid=ON&amp;script=0"/>
+</div>
+</noscript>
+
+<!-- BEGIN DYNAMIC: TARJETAS_MAS -->
+<!-- Google Code for Jumbo.cl Remarketing List -->
+<script type="text/javascript">
+/* <![CDATA[ */
+var google_conversion_id = 1040512967;
+var google_conversion_language = "en";
+var google_conversion_format = "3";
+var google_conversion_color = "666666";
+var google_conversion_label = "ZLkqCO_M2AEQx--T8AM";
+var google_conversion_value = 0;
+/* ]]> */
+</script>
+<script type="text/javascript" src="http://www.googleadservices.com/pagead/conversion.js">
+</script>
+<noscript>
+<div style="display:inline;">
+<img height="1" width="1" style="border-style:none;" alt="" src="http://www.googleadservices.com/pagead/conversion/1040512967/?label=ZLkqCO_M2AEQx--T8AM&amp;guid=ON&amp;script=0"/>
+</div>
+</noscript>
+<!-- END DYNAMIC: TARJETAS_MAS -->
+
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+	try{
+		var pageTracker = _gat._getTracker("UA-1529321-1");
+		pageTracker._initData();
+		pageTracker._trackPageview('/FO/OrderDisplay');
+		pageTracker._addTrans("{order-id}","{affiliation}","{total}","{tax}","{shipping}","{city}","{state}","{country}");
+		<!-- BEGIN DYNAMIC: LISTA_PROD -->
+			pageTracker._addItem("{order-id}","{sku/code}","{productname}","{category}","{price}","{quantity}");
+		<!-- END DYNAMIC: LISTA_PROD -->
+			pageTracker._trackTrans();
+	}catch(err){
+		console.error(err);
+	}
+</script>
+
+<!-- 05/10/2012 : INICIO COREMETRICS {MARIO LOAIZA: mario.loaiza@magnotechnology.com} -->
+<script type="text/javascript">
+	try {
+		var count=0;
+		var productos = new Array();
+		orden = new order('{order-id}', '{total}', '{shipping}', '{rutcliente}', '{country}');
+		<!-- BEGIN DYNAMIC: LISTA_PROD -->
+			producto2 = new productoPurchase('{sku/code}', '{productname}', '{quantity}', '{price}', '{rutcliente}', '{order-id}', '{total}', '{category}');
+ 			productos[count] = producto2;
+ 			++count;
+ 	 	<!-- END DYNAMIC: LISTA_PROD -->
+	    var __registro = new registro('{rutcliente}', '{emailcliente}', '{city}','','','');
+		coremetricsTagOrder('Carro de Compra','', productos,orden, __registro );
+	} catch(err) {
+		console.error(err);
+	}
+</script>
+<!-- 05/10/2012 : FIN COREMETRICS -->
+
+
+<script type="text/javascript">
+	var mx_content = '/Compra/Confirmacion';
+	var mx_user = '{ta_mx_user}';
+	var mx_loc = '{ta_mx_loc}';
+	var mx_criterio = '{mx_criterio}';
+	var mx_despacho = '{mx_despacho}';
+	var mx_mediop = '{forma_pago}';
+	var mx_cpago = '{tip_doc}';
+	var mx_idTrans = '{order-id}';
+	var mx_cupon = '{ta_cupon_descuento}';
+	//var totalSinIva = {monto_op}*0.81;
+	var mx_valTrans = '{total_sin_iva}';
+	var mx_taxTrans = '{tax}';
+	var mx_costo = '{shipping}';
+	var mx_item = new Array();
+	var count=0;
+	<!-- BEGIN DYNAMIC: LISTA_PROD -->
+	mx_item[count] = ['{sku/code}', '{productname}','{category}','{price}','{quantity}']; //Agregar por cada producto.
+	++count;
+	<!-- END DYNAMIC: LISTA_PROD -->
+	mx_item[0] = ['none', 'none','none','none','none']; //Agregar por cada tipo de descuento en la compra.
+
+</script>
+</body>
+</html>

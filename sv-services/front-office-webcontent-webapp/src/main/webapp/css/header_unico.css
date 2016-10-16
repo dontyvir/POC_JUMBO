@@ -1,0 +1,48 @@
+/* CSS Document */
+
+
+.contenedor_header_a{
+	width:100%;
+	height:26px;
+	float:none;
+	background-image: url(/FO_IMGS/images/header/fondo.gif);
+	margin-bottom:10px;
+	margin-left:auto;
+	margin-right:auto;
+	clear:both;
+	text-align:center;
+}
+.contenedor_header{
+	width:580px;
+	height:26px;
+	margin-left:auto;
+	margin-right:auto;
+	float:none;
+}
+.label_jumbo{
+	width:106px;
+	height:26px;
+	float:left;
+}
+.label_easy{
+	width:106px;
+	height:26px;
+	float:left;
+}
+.label_paris{
+	width:106px;
+	height:26px;
+	float:left;
+	padding-left:3px;
+}
+.label_tarjetas{
+	width:106px;
+	height:26px;
+	float:left;
+}
+
+.label_texto{
+	width:153px;
+	height:26px;
+	float:left;
+}

@@ -1,0 +1,24 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Jumbo.cl</title>
+</head>
+<body leftMargin=0 topMargin=0 marginheight="0" marginwidth="0">
+<table width="95%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <th width="10%">ID</th>
+	<th width="75%">DESCRIPCI&Oacute;N</th>
+    <th width="15%">PRECIO</th>
+  </tr>
+  <!-- BEGIN DYNAMIC: PRODUCTOS -->
+  <tr id="fila_{id_prod}" onclick="javascript:seleccionaFila('{id_prod}');" onmouseover="javascript:overFila('{id_prod}');" onmouseout="javascript:outFila('{id_prod}');">
+    <td height="18" align="right">{id_prod}&nbsp;</td>
+	<td align="left">{descripcion}&nbsp;<input type="hidden" name="desc_{id_prod}" id="desc_{id_prod}" value="{descripcion}" /></td>
+    <td align="right">{precio}&nbsp;<input type="hidden" name="precio_{id_prod}" id="precio_{id_prod}" value="{precio_sf}" /></td>
+  </tr>
+  <!-- END DYNAMIC: PRODUCTOS -->
+</table>
+
+</body>
+</html>

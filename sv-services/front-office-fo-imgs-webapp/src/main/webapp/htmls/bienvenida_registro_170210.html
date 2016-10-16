@@ -1,0 +1,329 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Jumbo.cl - Bienvenida</title>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<meta name="description" content="Sitio online de la cadena de supermercados e hipermercados Jumbo. Venta online de productos" />
+<meta name="keywords" content="Jumbo, Supermercado, supermercado, supermercado online, Mas Jumbo, Hipermercado, productos, comida, abastecimiento, puntos mas, Cencosud, Almacenes Paris, Paris, Santa Isabel, Easy, Circulo mas, vinos, carnes, frutas, verduras, lacteos, pescados, mariscos, abarrotes, mercaderia a domicilio, marcas propias jumbo, locales, ofertas, promociones, Servicios, Rincon Jumbo, Visitas Guiadas, Servicios Especiales, Jumbo Va, Seguridad, Venta Empresas, nuestros clubes jumbo, Club Madre e Hijo, Club Jumbito, Plug and Play, recetas, consejos utiles, 5 es vida, venta empresas, supercash, cajas de regalo, catalogo online de productos, compra online, jumbo mas, jumbo blog" />
+<meta name="robots" content="index, follow" />
+<meta http-equiv="CACHE-CONTROL" content="NO-CACHE" />
+<meta http-equiv="PRAGMA" content="NO-CACHE" />
+<meta http-equiv="EXPIRES" content="Mon, 22 Jul 2002 11:12:01 GMT" />
+<link rel="shortcut icon" href="/FO_IMGS/img/favicon.ico" />
+<meta name="Jumbo" content="Jumbo: Cadena de Hipermercados de Chile y Argentina, cuya misi�n es satisfacer a sus clientes con la mejor propuesta comercial del mercado. Para ello sus  pilares son: Personal amable y profesional; Excelente servicio; Amplio horario de atenci�n; La m�s amplia variedad y surtido; Locales modernos c�modos y acogedores; Inmejorables precios" />
+
+<script type="text/javascript" src="js/prototype.js"></script>
+<script type="text/javascript" src="js/flashobject.js"></script>
+<script type="text/javascript" src="js/bienvenida.js"></script>
+<script type="text/javascript" src="js/layer.js"></script>
+<script type="text/javascript" src="js/funciones.js"></script>
+
+<link href="estilostextos.css" rel="stylesheet" type="text/css" />
+<link href="css/bienvenida.css" rel="stylesheet" type="text/css" />
+<link href="css/simple.css" rel="stylesheet" type="text/css" />
+<link href="css/luna/tab.css" type="text/css" rel="stylesheet" />
+<script type="text/javascript" src="js/tabpane.js"></script>
+
+</head>
+<body onload="MM_preloadImages('/FO_IMGS/img/estructura/bt_entrarB.gif');" class="tundra">
+<form id="form1" name="form1" method="post" action="UltComprasForm">
+<input type="hidden" name="mostrar_evento" id="mostrar_evento" value="{mostrar_evento}" />
+<input type="hidden" name="loc_id" id="loc_id" value="" />
+<input type="hidden" name="forma_despacho" id="forma_despacho" value="" />
+<input type="hidden" name="tiene_retiro" id="tiene_retiro" value="{tiene_retiro}" />
+
+<div id="contenedor">
+	<div id="header"></div>
+	<div id="contenido">
+		<div class="nombre">{nombre_cliente}</div>
+		<div class="ayuda">
+			<a href="ayuda-bienvenida.html" target="_blank">
+				<img src="/FO_IMGS/img/estructura/bt_ayuda.gif" alt="Ayuda" border="0" align="right" />
+			</a>
+		</div>
+		<div class="tba"><img src="/FO_IMGS/img/estructura/tablasupizq.gif" alt="" /></div>
+		<div class="med_sup"><img src="/FO_IMGS/img/estructura/tablasup.gif" width="1" height="6" alt=""/></div>
+		<div class="tbc"><img src="/FO_IMGS/img/estructura/tablasupder.gif" alt="" /></div>
+		<div class="tb2">
+			<div id="web_normal">
+				<h2>Tu pedido ser� despachado a la siguiente direcci�n:</h2>
+			</div>
+			<div id="web_retiro">
+				<div class="txautojumbo">Ahora puedes elegir  retirar t� mismo el pedido en el local o programar el despacho a tu casa</div>
+				<div class="autojumbo">
+					<a href="/FO/preguntas.html#16" target="_blank"><img src="/FO_IMGS/img/estructura/auto.gif" alt="Compra por internet y retira en tienda." border="0" /></a>
+				</div>
+				<br /><br />
+				<p>
+					<label>
+						<input type="radio" name="tipo_despacho" id="tipo_despacho1" value="D" onclick="javascript:cambioFormaDesapacho()" {checked_dom} />Despacho a domicilio<br />
+					</label>
+					<label>
+						<input type="radio" name="tipo_despacho" id="tipo_despacho2" value="R" onclick="javascript:cambioFormaDesapacho()" {checked_ret} />
+						<span class="naranjo">
+							<strong>Jumbo al auto</strong><i> (Compra por internet y retira en local Jumbo)</i>
+						</span>
+					</label>
+				</p>
+			</div>
+				
+        <div id="combo_direcciones" style="position:relative;"> 
+          <select name="loc_id_des" id="loc_id_des" style="width: 300px" class="campo" onchange="javascript:cambioFormaDesapacho()">
+            <!-- BEGIN DYNAMIC: dir_despachos -->
+            <option value="{dir_valor}" {selected_dir}>{dir_opcion}</option>
+            <!-- END DYNAMIC: dir_despachos -->
+          </select>
+        </div>
+			
+        <div id="combo_locales" style="position:relative;"> 
+          <div id="link_auto_jumbo"> <img src="/FO_IMGS/img/estructura/fl.gif" alt="flechita" border="0" />&nbsp;<a href="javascript:linkJumboAuto();">ver 
+            indicaciones</a> </div>
+          <div id="cmbbox_auto_jumbo"> 
+            <select name="loc_id_ret" id="loc_id_ret" style="width: 300px" class="campo" onchange="javascript:cambioFormaDesapacho()">
+              <!-- BEGIN DYNAMIC: dir_retiro -->
+              <option value="{dir_valor}" {selected_dir}>{dir_opcion}</option>
+              <!-- END DYNAMIC: dir_retiro -->
+            </select>
+          </div>
+        </div>
+
+			<br />
+			<div id="swfcalendario" style="width: 44px; height: 50px; z-index:1; float: left;">
+				<a href="javascript:sel_direccion();"><img src="/FO_IMGS/img/estructura/calendario.gif" alt="calendario de despacho" border="0" /></a>
+			</div>
+            <div id="txcalendario">
+				Ver horarios disponibles<br />
+				para tu despacho <br />
+				<span id="txt_cal_ret"></span>
+			</div>
+	        
+			<div id="menu_bv">
+				<ul>
+					<li><a href="RegisterUpdForm">&iquest;Quieres modificar tus datos personales?</a></li>
+					<li><a href="AddressForm"><strong>&iquest;Quieres agregar o modificar tus direcciones de despacho?</strong></a></li>
+					<!-- BEGIN DYNAMIC: MOSTRAR_CRITERIOS -->
+					<li>
+						<a href="SustitutosForm?from={from}" onclick="javascript:pageTracker._trackPageview('/FO/bienvenida/links/sustitucion')">
+							<strong>&iquest;Quieres modificar tu criterio de sustituci&oacute;n?</strong>
+							<img src="/FO_IMGS/img/estructura/sustitutos/icono.gif" border="0" width="14" height="14" alt="" />
+						</a>
+						
+					</li>
+					<!-- END DYNAMIC: MOSTRAR_CRITERIOS -->
+				</ul>
+			</div>
+		</div>
+		
+		<!-- BEGIN DYNAMIC: existe_carro -->
+		<div class="tb2">
+			<p>
+			<strong>Tenemos productos guardados en tu carro.</strong><br />
+			&iquest;Deseas conservarlos para usarlos en esta compra?
+			<a href="javascript:ver_carro();">ver carro</a> <br /><br />
+			<input name="rbtnelicarro" type="radio" value="1" checked="checked" />Si
+			<input name="rbtnelicarro" type="radio" value="0" />No <span class="chica_italica">(se eliminar&aacute;n los productos del carro)</span>
+			</p>
+		</div>
+		<!-- END DYNAMIC: existe_carro -->
+		<div class="tb4">
+			<a href="javascript:submit_direccion();" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image18','','/FO_IMGS/img/estructura/bienvenida/bt_entrarb.gif',1)">
+				<img src="/FO_IMGS/img/estructura/bienvenida/bt_entrar.gif" alt="ir a paso1: ver tus compras hist&oacute;ricas" name="Image18" border="0" align="left" id="Image18" />
+			</a>
+		</div>
+		<div class="tba"><img src="/FO_IMGS/img/estructura/tablainfizq.gif" width="6" height="6" alt="" /></div>
+		<div class="med_inf">&nbsp;</div>
+		<div class="tbc"><img src="/FO_IMGS/img/estructura/tablainfder.gif" width="6" height="6" alt="" /></div>
+	</div>
+	<div id="footer">
+		<img src="/FO_IMGS/img/estructura/abajo2.gif" width="700" height="14" alt=""/>
+		<div class="footer">
+			<a href="http://www.jumbo.trabajando.com/" target="_blank">Trabaje en Jumbo</a> | <a href="http://www.jumbointernet.cl/qprovee.htm" target="_blank">Sea Proveedor</a> | <a href="http://www.jumbointernet.cl/contacto.htm" target="_blank">Contacto</a> | <a href="http://www.jumbointernet.cl/institucional.htm" target="_blank">Compa&ntilde;&iacute;a</a> | <a href="seguridad.html" target="_blank">Seguridad y Privacidad </a> | <a href="http://www.jumbo.cl/supermercado/terminos/terminos.html" target="_blank">T&eacute;rminos del Servicio</a> | <a href="preguntas.html" target="_blank">Preguntas Frecuentes</a> | <a href="http://www.jumbo.cl/FO/tour.html">Tour Virtual</a>
+		</div>
+		<span class="style1"><br /><br />
+			Servicio de Atenci&oacute;n al Cliente 600 400 3000 | Ayuda Internet 600 400 3000  |  Tarjeta M&aacute;s Jumbo  600 600 0505<br />
+			Copyright&copy; Cencosud 2006 | Sitio Desarrollado para Internet Explorer 6  |  Para ver el sitio necesita el<a href="http://www.macromedia.com/go/getflashplayer" target="_blank"> Plug in de Flash.</a>
+		</span>
+		<p>
+			<a href="http://validator.w3.org/check?uri=referer">
+				<img src="/FO_IMGS/images/nuevojumbo/valid-xhtml10.png" alt="Valid XHTML 1.0 Transitional" title="Valid XHTML 1.0 Transitional" border="0" height="31" width="88" />
+			</a>
+			<a name="down" id="down"></a>
+		</p>
+	</div>
+</div>
+</form>
+
+<div id="ventana"> 
+  <div id="dragbar1" onmousedown="javascript:initializedrag(event,'ventana','dragbar1');" style="cursor:move;"> 
+    <table width="665" border="0" cellpadding="0" cellspacing="0">
+      <tr> 
+        <td width="8" height="7" valign="top"><img src="/FO_IMGS/img/estructura/layers/esquinaSupIzq.gif" width="8" height="7" alt=""/></td>
+        <td height="7" colspan="2" valign="top" style="background: url(/FO_IMGS/img/estructura/layers/arriba.gif);"><img src="/FO_IMGS/img/estructura/layers/arriba.gif" width="1" height="7" alt=""/></td>
+        <td width="8" height="7" valign="top"><img src="/FO_IMGS/img/estructura/layers/esquinaSupDer.gif" width="8" height="7" alt=""/></td>
+      </tr>
+      <tr> 
+        <td height="31" valign="top" style="background: url(/FO_IMGS/img/estructura/layers/izquierdoArriba.gif);"><img src="/FO_IMGS/img/estructura/layers/izquierdoArriba.gif" width="8" height="1" alt=""/></td>
+        <td width="635" height="31" align="center" valign="top" style="background: url(/FO_IMGS/img/estructura/layers/tramafondo.gif);"> 
+          <span class="titulosLayers" id="titulo_calendario">Disponibilidad de 
+          despacho</span> </td>
+        <td width="14" align="center" valign="top" style="background: url(/FO_IMGS/img/estructura/layers/tramafondo.gif);"><a href="javascript:hideCalendario();"> 
+          <img src="/FO_IMGS/img/estructura/bt_cerrar.gif" alt="cerrar ventana" border="0" width="29" height="23" align="right" /></a> 
+        </td>
+        <td width="8" height="31" valign="top" style="background: url(/FO_IMGS/img/estructura/layers/derechoArriba.gif);"><img src="/FO_IMGS/img/estructura/layers/derechoArriba.gif" width="8" height="1" alt=""/></td>
+      </tr>
+    </table>
+  </div>
+  <table width="665" border="0" cellpadding="0" cellspacing="0">
+    <tr> 
+      <td height="259" valign="top" style="background: url(/FO_IMGS/img/estructura/layers/bordeIzq.gif);"></td>
+      <td colspan="2" valign="top" bgcolor="#FFFFFF"> <table width="95%" border="0" align="center" cellpadding="0" cellspacing="0">
+          <tr> 
+            <td height="124" align="left" valign="top" bgcolor="#FFFFFF"> <div align="center"> 
+                <span class="lectura"> <br />
+                La tabla siguiente s&oacute;lo muestra informaci&oacute;n. <br />
+                <span id="msj_calendario">Podr&aacute;s seleccionar el horario 
+                de despacho al final de la compra.</span><br />
+                </span> </div>
+              <div id="jcalendario"></div></td>
+          </tr>
+        </table></td>
+      <td width="8" height="259" valign="top" style="background: url(/FO_IMGS/img/estructura/layers/bordeDer.gif);"></td>
+    </tr>
+    <tr> 
+      <td width="8" height="7" valign="top"><img src="/FO_IMGS/img/estructura/layers/esquinaInfIzq.gif" width="8" height="7" alt=""/></td>
+      <td height="7" colspan="2" style="background: url(/FO_IMGS/img/estructura/layers/abajo.gif);"><img src="/FO_IMGS/img/estructura/layers/abajo.gif" width="1" height="7" alt=""/></td>
+      <td width="8" height="7" valign="top"><img src="/FO_IMGS/img/estructura/layers/esquinaInfDer.gif" width="8" height="7" alt=""/></td>
+    </tr>
+  </table>
+</div>
+
+<div id="carroguardado" style="position:absolute;visibility:hidden;left:500px;top:150px;">
+	<div id="dragbar2" onmousedown="javascript:initializedrag(event,'carroguardado','dragbar2');" style="cursor:move;">
+		<table width="235" border="0" cellpadding="0" cellspacing="0" style="background: url(/FO_IMGS/img/estructura/basecarroguardado-1.gif);">
+			<tr>
+				<td width="27%">&nbsp;</td>
+				<td width="58%" height="44" class="titulo">Carro Guardado</td>
+				<td width="15%" class="titulo">
+					<a href="javascript:top.MM_showHideLayers('carroguardado','','hide')">
+					<img src="/FO_IMGS/img/estructura/bt_cerrar.gif" name="Image10" width="29" height="23" border="0" id="Image10" alt="Cerrar" title="Cerrar"/></a>
+				</td>
+			</tr>
+		</table>
+  <table width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+      <td style="background: url(/FO_IMGS/img/estructura/basecarroguardado-2.gif);">
+        <iframe src="#" name="texto" width="248" height="376" id="carro" scrolling="auto" frameborder="0" allowtransparency></iframe>
+      </td>
+    </tr>
+  </table>
+	</div>
+</div>
+<div id="loading" style="display:none;">
+<table cellpadding="0" cellspacing="0" border="0" style="font: 10px Verdana, Geneva, Arial, Helvetica, sans-serif; z-index: 500;">
+    <tr>
+	  <td><img src="/FO_IMGS/images/nuevojumbo/loading_left.gif" height="50" width="6" alt=""/></td>
+	  <td style="background: url(/FO_IMGS/images/nuevojumbo/loading_center.gif); width:100px; text-align: center;vertical-align: middle;"><strong>Cargando...</strong></td>
+	  <td><img src="/FO_IMGS/images/nuevojumbo/loading_right.gif" height="50" width="6" alt=""/></td>
+	</tr>
+  </table>
+</div>
+<div id="ventana_evento" style="position:absolute;visibility:hidden;">	
+  <div id="dragbar3" onmousedown="javascript:initializedrag(event,'ventana_evento','dragbar3');" style="cursor:move;">
+    <table width="400" border="0" cellpadding="0" cellspacing="0">
+      <tr>
+        <td width="8" height="7" valign="top"><img src="/FO_IMGS/img/estructura/layers/esquinaSupIzq.gif" width="8" height="7" alt=""/></td>
+        <td height="7" colspan="2" valign="top" style="background: url(/FO_IMGS/img/estructura/layers/arriba.gif);"><img src="/FO_IMGS/img/estructura/layers/arriba.gif" width="1" height="7" alt=""/></td>
+        <td width="8" height="7" valign="top"><img src="/FO_IMGS/img/estructura/layers/esquinaSupDer.gif" width="8" height="7" alt=""/></td>
+      </tr>
+      <tr>
+        <td height="31" valign="top" style="background: url(/FO_IMGS/img/estructura/layers/izquierdoArriba.gif);"><img src="/FO_IMGS/img/estructura/layers/izquierdoArriba.gif" width="8" height="1" alt=""/></td>
+        <td width="506" height="31" align="center" valign="top" style="background: url(/FO_IMGS/img/estructura/layers/tramafondo.gif);"><span class="titulosLayersEventos">{titulo_evento}</span></td>
+        <td width="14" align="center" valign="top" style="background: url(/FO_IMGS/img/estructura/layers/tramafondo.gif);"><a href="javascript:hideEvento();">
+          <img src="/FO_IMGS/img/estructura/bt_cerrar.gif" alt="cerrar ventana" border="0" width="29" height="23" align="right" /></a>
+        </td>
+        <td width="8" height="31" valign="top" style="background: url(/FO_IMGS/img/estructura/layers/derechoArriba.gif);"><img src="/FO_IMGS/img/estructura/layers/derechoArriba.gif" width="8" height="1" alt=""/></td>
+      </tr>
+    </table>		
+  </div>
+  <table width="400" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+      <td height="259" valign="top" style="background: url(/FO_IMGS/img/estructura/layers/bordeIzq.gif);"></td>
+      <td colspan="2" valign="top" bgcolor="#FFFFFF">
+        <table width="95%" border="0" align="center" cellpadding="0" cellspacing="0">
+          <tr>
+            <td height="124" align="center" valign="top" bgcolor="#FFFFFF">{src_flash}</td>
+          </tr>
+        </table>
+      </td>
+      <td width="8" height="259" valign="top" style="background: url(/FO_IMGS/img/estructura/layers/bordeDer.gif);"></td>
+    </tr>
+    <tr>
+      <td width="8" height="7" valign="top"><img src="/FO_IMGS/img/estructura/layers/esquinaInfIzq.gif" width="8" height="7" alt=""/></td>
+      <td height="7" colspan="2" style="background: url(/FO_IMGS/img/estructura/layers/abajo.gif);"><img src="/FO_IMGS/img/estructura/layers/abajo.gif" width="1" height="7" alt=""/></td>
+      <td width="8" height="7" valign="top"><img src="/FO_IMGS/img/estructura/layers/esquinaInfDer.gif" width="8" height="7" alt=""/></td>
+    </tr>
+  </table>
+</div>
+
+
+<script type="text/javascript">
+<!--
+var ancho = screen.availWidth;
+var largo = screen.availHeight;
+$("loading").style.position = 'absolute';
+$("loading").style.width = '112px';
+$("loading").style.height = '50px';
+$("loading").style.left = (ancho-112)/2 + 'px';
+$("loading").style.top = (largo)/2 -200 + 'px';
+
+var fo = new FlashObject("/FO_IMGS/img/headerbienvenida.swf", "animationName", "700", "125", "8", "#FFFFFF");
+fo.addParam("allowScriptAccess", "sameDomain");
+fo.addParam("quality", "high");
+fo.addParam("scale", "noscale");
+fo.addParam("wmode" ,"transparent");
+fo.write("header");
+
+if ($("mostrar_evento").value == 'SI') {
+	showEvento();
+}
+cambioFormaDesapacho();
+if ($('loc_id_ret').length == 0) {
+	$('tipo_despacho2').disabled = true;
+}
+if ( $('tiene_retiro').value == 'S' ) {
+	$('web_normal').hide();
+	$('web_retiro').show();
+	$('txt_cal_ret').innerHTML = "o tu retiro en local";
+} else {
+	$('web_normal').show();
+	$('web_retiro').hide();
+	$('txt_cal_ret').innerHTML = "";
+}
+
+//-->
+</script>
+
+<!-- Start of DoubleClick Spotlight Tag: Please do not remove-->
+<!-- Activity Name for this tag is:Confirmacion de Formulario_Jumbo2008 -->
+<!-- Web site URL where tag should be placed: http://www.jumbo.cl -->
+<!-- This tag must be placed within the opening <body> tag, as close to the beginning of it as possible-->
+<!-- Creation Date:4/23/2008 -->
+<script language="JavaScript">
+var axel = Math.random()+"";
+var a = axel * 10000000000000;
+document.write('<img src="http://ad.cl.doubleclick.net/activity;src=1463301;type=jumbo280;cat=confi176;ord=1;num='+ a + '?" width="1" height="1" border="0" />');
+</script>
+<noscript>
+<img src="http://ad.cl.doubleclick.net/activity;src=1463301;type=jumbo280;cat=confi176;ord=1;num=1?" width="1" height="1" border="0" />
+</noscript>
+<!-- End of DoubleClick Spotlight Tag: Please do not remove-->
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-1529321-1");
+pageTracker._trackPageview();
+</script>
+</body>
+</html>

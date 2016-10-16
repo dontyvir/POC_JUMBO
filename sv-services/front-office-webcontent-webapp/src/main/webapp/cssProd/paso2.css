@@ -1,0 +1,243 @@
+BODY {
+	TEXT-ALIGN: center
+}
+.contenedor_ppal {
+	TEXT-ALIGN: left; WIDTH: 960px; FLOAT: none; HEIGHT: auto; MARGIN-LEFT: auto; CLEAR: both; MARGIN-RIGHT: auto
+}
+DIV#izquierda {
+	WIDTH: 740px; FLOAT: left; HEIGHT: auto
+}
+DIV#derecha {
+	BORDER-BOTTOM: #ccc 1px dashed; BORDER-LEFT: #ccc 1px dashed; WIDTH: 210px; FLOAT: right; HEIGHT: auto
+}
+#div_header {
+	HEIGHT: 115px
+}
+#div_pasos {
+	FLOAT: left
+}
+#div_random {
+	FLOAT: right
+}
+#div_header_barra {
+	BACKGROUND-IMAGE: url(/FO_IMGS/img/estructura/paso1/tramaverdeoscura.gif); BACKGROUND-REPEAT: repeat; HEIGHT: 24px
+}
+#div_barra {
+	FLOAT: left
+}
+#div_iconos {
+	FLOAT: right
+}
+#div_main {
+	WIDTH: 100%; FLOAT: left
+}
+A:link {
+	COLOR: #666666; TEXT-DECORATION: none
+}
+A:visited {
+	COLOR: #666666; TEXT-DECORATION: none
+}
+A:hover {
+	COLOR: #fb6e15; TEXT-DECORATION: underline
+}
+#total_carro {
+	WIDTH: 210px; BACKGROUND-REPEAT: no-repeat; FLOAT: left
+}
+DIV#inputtotdesc {
+	BORDER-BOTTOM: #ccc 1px dashed; PADDING-BOTTOM: 5px; PADDING-LEFT: 5px
+}
+#div_main_izq {
+	BORDER-BOTTOM: #ccc 1px solid; BORDER-LEFT: #ccc 1px; WIDTH: 160px !important; FLOAT: left; BORDER-TOP: #ccc 1px; BORDER-RIGHT: #ccc 1px dotted
+}
+#div_productos {
+	TEXT-ALIGN: center; WIDTH: 560px; FLOAT: left
+}
+#mas_vendidos_layer {
+	PADDING-LEFT: 15px; FLOAT: left
+}
+DIV#paginador {
+	TEXT-ALIGN: center; LINE-HEIGHT: 28px; FONT-FAMILY: Arial,Helvetica,sans-serif; HEIGHT: 28px; COLOR: #777777; FONT-SIZE: 0.7em; VERTICAL-ALIGN: middle; FONT-WEIGHT: bold
+}
+#div_categorias {
+	FONT-FAMILY: Arial, Helvetica, sans-serif
+}
+#div_categorias LI {
+	LIST-STYLE-TYPE: none
+}
+#div_categorias DIV {
+	BACKGROUND-COLOR: #f7f6f6
+}
+#div_categorias UL {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+#navigation {
+	
+}
+#navigation LI UL LI {
+	BACKGROUND-IMAGE: url(/FO_IMGS/img/estructura/paso2/menuflechita.gif); BORDER-BOTTOM-STYLE: none; TEXT-ALIGN: left; BORDER-RIGHT-STYLE: none; PADDING-LEFT: 25px; BORDER-TOP-STYLE: none; FONT-SIZE: 8.5pt; BORDER-LEFT-STYLE: none; TEXT-DECORATION: none
+}
+#navigation A.head {
+	MARGIN-TOP: 0px; PADDING-LEFT: 16px; DISPLAY: block; HEIGHT: 20px; COLOR: black; FONT-SIZE: 9.5pt; CURSOR: pointer; TEXT-DECORATION: none
+}
+#navigation A.head:hover {
+	COLOR: white; FONT-WEIGHT: bold
+}
+#navigation A.selected {
+	BACKGROUND-IMAGE: url(/FO_IMGS/img/estructura/paso2/menu-b.gif); COLOR: black; FONT-WEIGHT: bold
+}
+#navigation LI UL LI A:active {
+	COLOR: #1fa22e
+}
+DIV#buscar {
+	BORDER-BOTTOM: #ccc 1px dashed; PADDING-BOTTOM: 1em; PADDING-TOP: 10px
+}
+#lbus {
+	FLOAT: right; COLOR: #99cc33; FONT-SIZE: 8pt
+}
+#div_ayuda {
+	WIDTH: 35px; FLOAT: right; PADDING-TOP: 10px
+}
+#div_titulo {
+	TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-TOP: 10px
+}
+#mensajes {
+	
+}
+DIV#resultado {
+	
+}
+DIV#filtros {
+	TEXT-ALIGN: left; PADDING-BOTTOM: 15px; PADDING-LEFT: 10px
+}
+DIV#lista_productos {
+	WIDTH: auto !important; MARGIN-LEFT: 3px; MARGIN-RIGHT: 5px
+}
+TABLE#tabla_productos {
+	WIDTH: 100%; FONT-FAMILY: Arial, Helvetica, sans-serif; FONT-SIZE: 8.5pt
+}
+.letras {
+	WIDTH: 100%; FONT-FAMILY: Arial, Helvetica, sans-serif; FONT-SIZE: 8.5pt
+}
+#tabla_productos THEAD {
+	BACKGROUND-IMAGE: url(/FO_IMGS/img/estructura/paso2/taba-medio-medio.gif); BACKGROUND-REPEAT: repeat-x; HEIGHT: 29px
+}
+.head_izq {
+	PADDING-BOTTOM: 5px; PADDING-TOP: 5px
+}
+.head_dashed {
+	BORDER-RIGHT: #7abd09 1px dashed
+}
+.body_border {
+	BORDER-LEFT: #d2e2ed 1px solid
+}
+#tabla_productos TBODY TR {
+	BORDER-LEFT: #d2e2ed 1px solid; BORDER-RIGHT: #d2e2ed 1px solid
+}
+#tabla_productos TBODY TR TD {
+	PADDING-BOTTOM: 2px; PADDING-LEFT: 2px; PADDING-RIGHT: 2px; BORDER-COLLAPSE: collapse; BORDER-RIGHT: #d2e2ed 1px solid; PADDING-TOP: 2px
+}
+DIV#carro_de_compras {
+	OVERFLOW-X: hidden; WIDTH: 210px; FLOAT: left; HEIGHT: 500px; OVERFLOW: auto
+}
+DIV#despacho {
+	BORDER-BOTTOM: #ccc 1px solid; BORDER-LEFT: #ccc 1px solid; FLOAT: left; BORDER-TOP: #ccc 1px; BORDER-RIGHT: #ccc 1px solid
+}
+DIV#loading {
+	Z-INDEX: 999; POSITION: fixed !important; MARGIN-TOP: -16px; WIDTH: 112px; HEIGHT: 32px; MARGIN-LEFT: -16px; TOP: 60%; LEFT: 50%
+}
+#desplegar {
+	Z-INDEX: 5; BORDER-BOTTOM: 1px solid; POSITION: absolute; BORDER-LEFT: 1px solid; WIDTH: 0px; HEIGHT: 0px; VISIBILITY: hidden; BORDER-TOP: 1px solid; TOP: 0px; BORDER-RIGHT: 1px solid; LEFT: 0px
+}
+DIV#banner_ppal {
+	PADDING-BOTTOM: 10px; PADDING-LEFT: 10px; DISPLAY: inline
+}
+DIV#banner_fila1 {
+	PADDING-LEFT: 10px
+}
+DIV#banner_fila2 {
+	PADDING-LEFT: 10px
+}
+DIV#banner1 {
+	PADDING-BOTTOM: 10px; DISPLAY: inline
+}
+DIV#banner2 {
+	PADDING-BOTTOM: 10px; PADDING-LEFT: 5px; DISPLAY: inline
+}
+DIV#banner3 {
+	PADDING-BOTTOM: 10px; PADDING-LEFT: 5px; DISPLAY: inline
+}
+DIV#banner4 {
+	PADDING-BOTTOM: 10px; DISPLAY: inline
+}
+DIV#banner5 {
+	PADDING-BOTTOM: 10px; PADDING-LEFT: 5px; DISPLAY: inline
+}
+DIV#banner6 {
+	PADDING-BOTTOM: 10px; PADDING-LEFT: 5px; DISPLAY: inline
+}
+P {
+	MARGIN: 0px
+}
+.estilo_select {
+	TEXT-TRANSFORM: none; FONT: 11px Arial, Helvetica, sans-serif; COLOR: #666666
+}
+TH.headerSortUp {
+	BACKGROUND-COLOR: #3399ff
+}
+#linksug {
+	COLOR: #0000cc; TEXT-DECORATION: underline
+}
+#acerrar {
+	FONT-FAMILY: Arial, Helvetica, sans-serif; FLOAT: right; COLOR: #0000cc; FONT-SIZE: 8pt; TEXT-DECORATION: underline
+}
+DIV#div_sug_max {
+	TEXT-ALIGN: left; FONT-FAMILY: Arial,Helvetica,sans-serif; FONT-SIZE: 8pt
+}
+#div_lsug {
+	WIDTH: 20%; FLOAT: left
+}
+#lsug {
+	COLOR: #0000cc; TEXT-DECORATION: underline
+}
+DIV#div_sugerencias {
+	TEXT-ALIGN: left; PADDING-LEFT: 10px
+}
+.desp_producto {
+	HEIGHT: 60px
+}
+.ac2 {
+	TEXT-ALIGN: left; PADDING-BOTTOM: 2px; PADDING-LEFT: 2px; WIDTH: 110px; PADDING-RIGHT: 2px; FONT-FAMILY: Arial, Helvetica, sans-serif; FLOAT: left; FONT-SIZE: 10px; VERTICAL-ALIGN: middle; PADDING-TOP: 2px
+}
+.ac3 {
+	BORDER-LEFT: #9acc45 1px dashed; PADDING-BOTTOM: 2px; PADDING-LEFT: 2px; WIDTH: 200px; PADDING-RIGHT: 2px; FONT-FAMILY: Arial, Helvetica, sans-serif; FLOAT: left; COLOR: #333333; FONT-SIZE: 10px; FONT-WEIGHT: bold; PADDING-TOP: 2px
+}
+.ac4 {
+	TEXT-ALIGN: left; BORDER-LEFT: #9acc45 1px dashed; PADDING-BOTTOM: 2px; PADDING-LEFT: 2px; WIDTH: 90px; PADDING-RIGHT: 2px; FONT-FAMILY: Arial, Helvetica, sans-serif; FLOAT: left; HEIGHT: 60px; FONT-SIZE: 10px; PADDING-TOP: 2px
+}
+#criteriosustitucion {
+	Z-INDEX: 15; POSITION: absolute; WIDTH: 0px; HEIGHT: 0px; VISIBILITY: hidden; TOP: 0px; LEFT: 0px
+}
+#guardalista {
+	Z-INDEX: 10; POSITION: absolute; WIDTH: 0px; HEIGHT: 0px; VISIBILITY: hidden; TOP: 0px; LEFT: 0px
+}
+#ventana_evento {
+	Z-INDEX: 10; POSITION: absolute; WIDTH: 0px; HEIGHT: 0px; VISIBILITY: hidden; TOP: 0px; LEFT: 0px
+}
+#ventana {
+	Z-INDEX: 10; POSITION: absolute; WIDTH: 0px; HEIGHT: 0px; VISIBILITY: hidden; TOP: 0px; LEFT: 0px
+}
+#comentarioproducto {
+	Z-INDEX: 15; POSITION: absolute; WIDTH: 0px; HEIGHT: 0px; VISIBILITY: hidden; TOP: 0px; LEFT: 0px
+}
+#ventana_ficha {
+	Z-INDEX: 10; POSITION: absolute; WIDTH: 0px; HEIGHT: 0px; VISIBILITY: hidden; TOP: 0px; LEFT: 0px
+}
+#ventanapromoproducto {
+	Z-INDEX: 10; POSITION: absolute; WIDTH: 0px; HEIGHT: 0px; VISIBILITY: hidden; TOP: 0px; LEFT: 0px
+}
+#ventanamispromo {
+	Z-INDEX: 10; POSITION: absolute; WIDTH: 0px; HEIGHT: 0px; VISIBILITY: hidden; TOP: 0px; LEFT: 0px
+}
+#ventanarespromo {
+	Z-INDEX: 10; POSITION: absolute; WIDTH: 0px; HEIGHT: 0px; VISIBILITY: hidden; TOP: 0px; LEFT: 0px
+}

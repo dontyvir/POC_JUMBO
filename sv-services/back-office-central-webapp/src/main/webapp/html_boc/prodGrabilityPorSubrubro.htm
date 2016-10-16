@@ -1,0 +1,449 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+		<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+		<META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+		<META HTTP-EQUIV="EXPIRES" CONTENT="Mon, 22 Jul 2002 11:12:01 GMT">
+		<title>Jumbo.cl Back Office Central</title>
+		<link href="estilos.css" rel="stylesheet" type="text/css">
+		<style type="text/css">
+		<!--
+		.style1 {color: #666666}
+		-->
+		</style>
+		<link rel="stylesheet" href="menu/menu.css" >
+		<script language="JavaScript" src="js/jquery-1.11.3.min.js"></script>
+		<script language="JavaScript" src="js/fileDownload.js"></script>
+		<script>
+			var inH= new Date().getTime();
+			var url = "CategoriasNoMobile?action=";
+			
+			$( document ).ready(function() {
+			
+				$("#loader_CATinGRB").hide();
+				$("#loader_CATnotinGRB").hide();
+				
+				$('#selAllinGRB, #selAllnoGRB').click(function() {
+				    var c = this.checked;
+				    $(':checkbox').prop('checked',c);
+				});
+				
+				$('#ExcelInGRB, #ExcelNoGRB').click(function(e) {
+				    e.preventDefault();
+					inH = new Date().getTime();	
+					var urlExcel="ExcelMobile?action=ExcelInGRB&"+inH;										
+					if(this.id == 'ExcelInGRB'){
+						$("#loader_CATinGRB").show();
+		    			$("#loader_CATnotinGRB").hide();
+		    			$("#tr_CATnotinGRB").hide();
+		    			$("#tr_CATinGRB").hide();		    				    			
+		    			//window.location.href = urlExcel;
+    					//setTimeout(function(){$("#loader_CATinGRB").hide();},5000);
+    					$.fileDownload(urlExcel).done(function(){$("#loader_CATinGRB").hide();document.cookie="fileDownload=false";}).fail(function () {window.location.reload();});
+    					//window.location.reload();
+					}
+					else if(this.id == 'ExcelNoGRB'){
+						$("#loader_CATnotinGRB").show();
+						$("#loader_CATinGRB").hide();	
+						$("#tr_CATnotinGRB").hide();
+		    			$("#tr_CATinGRB").hide();
+		    			urlExcel="ExcelMobile?action=ExcelNoGRB&"+inH;
+						//window.location.href = urlExcel;
+    					//setTimeout(function(){$("#loader_CATnotinGRB").hide();},5000);
+    					$.fileDownload(urlExcel).done(function(){$("#loader_CATnotinGRB").hide();document.cookie="fileDownload=false";}).fail(function () {window.location.reload();});
+    					//window.location.reload();
+					}
+					
+					return false;
+				});
+			
+		    	$("#CATinGRB").click(function(e){//categorias que estan en mobile
+		    		e.preventDefault();
+		    		$("#loader_CATinGRB").show();
+		    		$("#tr_CATnotinGRB").hide();
+		    		$("#tr_CATinGRB").show();
+		    		
+		    		inH = new Date().getTime();
+		    		url = "CategoriasInMobile?action=getSeccionInGRB&"+inH;
+					$.getJSON(url).done(function( data ) {
+						$("#selAllinGRB").removeAttr('checked');
+						$('tbody#table_tbody_GRUPOinGRB').empty();
+						$("#cont_GRUPOinGRB").hide();
+						$('select#cmbSubRubroIn').empty();
+						$('select#cmbSubRubroIn').append("<option value=\"0\">- SELECCIONAR -</option>");
+						$("#cont_SUBRUBROinGRB").hide();
+						$('select#cmbRubroIn').empty();
+						$('select#cmbRubroIn').append("<option value=\"0\">- SELECCIONAR -</option>");
+						$("#cont_RUBROinGRB").hide();
+						$('select#cmbSeccionIn').empty();
+						$('select#cmbSeccionIn').append("<option value=\"0\">- SELECCIONAR -</option>");
+						$.each(data, function(i,item){$('select#cmbSeccionIn').append("<option value="+item.id_cat+">"+item.id_cat+" | "+item.descrip+"</option>");});
+						$("#loader_CATinGRB").hide();
+					}).error(function(jqXHR, textStatus, errorThrown) {alert("("+textStatus+") "+errorThrown);location.reload();});
+				});
+				
+				$("#cmbSeccionIn").change(function(e){//seleccion de una session  en mobile, se deben cargar los rubros			
+					inH = new Date().getTime();
+					url = "CategoriasInMobile?action=getRubroInGRB&seccion="+$("#cmbSeccionIn").val()+"&"+inH;
+					if($("#cmbSeccionIn").val() != '0') {
+						$("#loader_CATinGRB").show();
+						$("#cont_RUBROinGRB").show();
+						$.getJSON(url).done(function( data ) {
+							$("#selAllinGRB").removeAttr('checked');
+							$('tbody#table_tbody_GRUPOinGRB').empty();
+							$('select#cmbSubRubroIn').empty();
+							$('select#cmbSubRubroIn').append("<option value=\"0\">- SELECCIONAR -</option>");				
+							$('select#cmbRubroIn').empty();
+							$('select#cmbRubroIn').append("<option value=\"0\">- SELECCIONAR -</option>");
+							$.each(data, function(i,item){$('select#cmbRubroIn').append("<option value="+item.id_cat+">"+item.id_cat+" | "+item.descrip+"</option>");});
+							$("#loader_CATinGRB").hide();
+						}).error(function(jqXHR, textStatus, errorThrown) {alert("("+textStatus+") "+errorThrown);location.reload();});
+					}
+				});
+				
+				$("#cmbRubroIn").change(function(e){//seleccion de un rubro  en mobile, se deben cargar los subrubros				
+					inH = new Date().getTime();
+					url = "CategoriasInMobile?action=getSubRubroInGRB&rubro="+$("#cmbRubroIn").val()+"&"+inH;
+					if($("#cmbRubroIn").val() != '0') {
+						$("#loader_CATinGRB").show();
+						$("#cont_SUBRUBROinGRB").show();
+						$.getJSON(url).done(function( data ) {
+							$("#selAllinGRB").removeAttr('checked');
+							$('tbody#table_tbody_GRUPOinGRB').empty();
+							$('select#cmbSubRubroIn').empty();
+							$('select#cmbSubRubroIn').append("<option value=\"0\">- SELECCIONAR -</option>");
+							$.each(data, function(i,item){$('select#cmbSubRubroIn').append("<option value="+item.id_cat+">"+item.id_cat+" | "+item.descrip+"</option>");});
+							$("#loader_CATinGRB").hide();
+						}).error(function(jqXHR, textStatus, errorThrown) {alert("("+textStatus+") "+errorThrown);location.reload();});
+					}
+				});
+				
+				$("#cmbSubRubroIn").change(function(e){//(carga la tabla) -- seleccion de un rubro  en mobile, se deben cargar los subrubros
+					inH = new Date().getTime();
+					url = "CategoriasInMobile?action=getGrupoInGRB&subRubro="+$("#cmbSubRubroIn").val()+"&"+inH;
+					if($("#cmbSubRubroIn").val() != '0') {
+						$("#loader_CATinGRB").show();
+						$("#cont_GRUPOinGRB").show();
+						$.getJSON(url).done(function( data ) {		
+							$("#selAllinGRB").removeAttr('checked');
+							$('tbody#table_tbody_GRUPOinGRB').empty();	
+							$.each(data, function(i,item){
+								$('tbody#table_tbody_GRUPOinGRB').append("<tr><td>"+item.id_cat+"</td><td>"+item.descrip+"</td><td align=\"center\"><input type=\"checkbox\" id=\"checkGRUPOinGRB\" name=\"checkGRUPOinGRB\" value='"+item.id_cat+"'></td></tr>");
+							});
+							$("#loader_CATinGRB").hide();
+						}).error(function(jqXHR, textStatus, errorThrown) {alert("("+textStatus+") "+errorThrown);location.reload();});
+					}
+				});
+				
+				$('#remove_cmbSeccionIn, #remove_cmbRubroIn, #remove_cmbSubRubroIn, #remove_checkGRUPOinGRB').click(function (e) {
+					e.preventDefault();
+					$("#loader_CATinGRB").show();
+					var ids=$("#"+(this.id).replace('remove_','')).val();
+					
+					var a="";
+					var q="";
+					var add="";
+					
+					if(this.id == 'remove_cmbSeccionIn'){
+						a="Seleccione una sección para eliminar.";
+						q="Esta seguro de eliminar la sección '"+$("#cmbSeccionIn option:selected").text()+"' de APP móvil?";
+						add="La seccón '"+$("#cmbSeccionIn option:selected").text()+"' ha sido eliminada de APP móvil";
+					}else if(this.id == 'remove_cmbRubroIn'){
+						a="Seleccione un rubro para eliminar.";
+						q="Esta seguro de eliminar el rubro '"+$("#cmbRubroIn option:selected").text()+"' de APP móvil?";
+						add="La seccón '"+$("#cmbRubroIn option:selected").text()+"' ha sido aliminada de APP móvil";
+					}else if(this.id == 'remove_cmbSubRubroIn'){
+						a="Seleccione un sub rubro para eliminar.";
+						q="Esta seguro de eliminar el sub rubro '"+$("#cmbSubRubroIn option:selected").text()+"' de APP móvil?";
+						add="La seccón '"+$("#cmbSubRubroIn option:selected").text()+"' ha sido eliminada de APP móvil";
+					}else if(this.id == 'remove_checkGRUPOinGRB'){
+						a="Seleccione el o los grupos para eliminar.";
+						q="Esta seguro de eliminar los grupos seleccionados de APP móvil?";
+						add="Los grupos seleccionados han sido eliminados de APP móvil";
+						ids = $("input[name=checkGRUPOinGRB]:checked").map(function() {return this.value;}).get().join(",");
+					}
+		
+					inH = new Date().getTime();
+		   			url = "CategoriasInMobile?action="+this.id+"&catId="+ids+"&"+inH;
+		   			if(ids == 0 || ids == '' || ids == undefined || ids.length == 0 || ids == "" || ids == null){ 
+		   				alert(a+"");
+		   				$("#loader_CATinGRB").hide();
+		   				return false;
+		   			}else if(confirm(q+"")){		
+						$.getJSON(url).done(function( data ) {
+							alert(add+" (Grupos eliminados "+data.registros+")");
+							$('#CATinGRB').trigger('click');
+							}).error(function(jqXHR, textStatus, errorThrown) {alert("("+textStatus+") "+errorThrown);location.reload();});
+					}else{
+						$("#loader_CATinGRB").hide();
+					}
+				});
+				
+				//SIDE B
+				
+				$("#CATnotinGRB").click(function(e){//todas las categorias SAP
+		    		e.preventDefault();
+		    		$("#loader_CATnotinGRB").show();
+		    		$("#tr_CATinGRB").hide();
+		    		$("#tr_CATnotinGRB").show();
+		    		
+		    		inH = new Date().getTime();
+		    		url = "CategoriasNoMobile?action=getSeccionNoGRB&"+inH;
+					$.getJSON(url).done(function( data ) {
+						$("#selAllnoGRB").removeAttr('checked');
+						$('tbody#table_tbody_GRUPOnoGRB').empty();
+						$("#cont_GRUPOnoGRB").hide();
+						$('select#cmbSubRubroNo').empty();
+						$('select#cmbSubRubroNo').append("<option value=\"0\">- SELECCIONAR -</option>");
+						$("#cont_SUBRUBROnoGRB").hide();
+						$('select#cmbRubroNo').empty();
+						$('select#cmbRubroNo').append("<option value=\"0\">- SELECCIONAR -</option>");
+						$("#cont_RUBROnoGRB").hide();
+					    $('select#cmbSeccionNo').empty();
+						$('select#cmbSeccionNo').append("<option value=\"0\">- SELECCIONAR -</option>");
+						$.each(data, function(i,item){ $('select#cmbSeccionNo').append("<option value="+item.id_cat+">"+item.id_cat+" | "+item.descrip+"</option>");});
+						$("#loader_CATnotinGRB").hide();
+				 	}).error(function(jqXHR, textStatus, errorThrown) {alert("("+textStatus+") "+errorThrown);location.reload();});
+				});	
+				
+				$("#cmbSeccionNo").change(function(e){//seleccion de una session  no mobile, se deben cargar los rubros
+					inH = new Date().getTime();
+					url = "CategoriasNoMobile?action=getRubroNoGRB&seccion="+$("#cmbSeccionNo").val()+"&"+inH;
+					if($("#cmbSeccionNo").val() != '0') {
+						$("#loader_CATnotinGRB").show();
+						$("#cont_RUBROnoGRB").show();
+						$.getJSON(url).done(function(data){
+							$("#selAllnoGRB").removeAttr('checked');
+							$('tbody#table_tbody_GRUPOnoGRB').empty();
+							$('select#cmbSubRubroNo').empty();
+							$('select#cmbSubRubroNo').append("<option value=\"0\">- SELECCIONAR -</option>");				
+							$('select#cmbRubroNo').empty();
+							$('select#cmbRubroNo').append("<option value=\"0\">- SELECCIONAR -</option>");
+							$.each(data, function(i,item){$('select#cmbRubroNo').append("<option value="+item.id_cat+">"+item.id_cat+" | "+item.descrip+"</option>");});
+							$("#loader_CATnotinGRB").hide();
+						}).error(function(jqXHR, textStatus, errorThrown) {alert("("+textStatus+") "+errorThrown);location.reload();});
+					}
+				});
+				
+				$("#cmbRubroNo").change(function(e){//seleccion de un rubro  en mobile, se deben cargar los subrubros
+					inH = new Date().getTime();
+					url = "CategoriasNoMobile?action=getSubRubroNoGRB&rubro="+$("#cmbRubroNo").val()+"&"+inH;
+					if($("#cmbRubroNo").val() != '0') {
+						$("#loader_CATnotinGRB").show();
+						$("#cont_SUBRUBROnoGRB").show();
+						$.getJSON(url).done(function(data){
+							$("#selAllnoGRB").removeAttr('checked');
+							$('tbody#table_tbody_GRUPOnoGRB').empty();
+							$('select#cmbSubRubroNo').empty();
+							$('select#cmbSubRubroNo').append("<option value=\"0\">- SELECCIONAR -</option>");
+							$.each(data, function(i,item){$('select#cmbSubRubroNo').append("<option value="+item.id_cat+">"+item.id_cat+" | "+item.descrip+"</option>");});
+							$("#loader_CATnotinGRB").hide();
+						}).error(function(jqXHR, textStatus, errorThrown) {alert("("+textStatus+") "+errorThrown);location.reload();});
+					}
+				});
+				
+				$("#cmbSubRubroNo").change(function(e){//(carga la tabla) -- seleccion de un rubro  no mobile, se deben cargar los subrubros
+					inH = new Date().getTime();
+					url = "CategoriasNoMobile?action=getGrupoNoGRB&subRubro="+$("#cmbSubRubroNo").val()+"&"+inH;
+					if($("#cmbSubRubroNo").val() != '0') {
+						$("#loader_CATnotinGRB").show();
+						$("#cont_GRUPOnoGRB").show();
+						$.getJSON(url).done(function(data){		
+							$("#selAllnoGRB").removeAttr('checked');
+							$('tbody#table_tbody_GRUPOnoGRB').empty();	
+							$.each(data, function(i,item){
+								$('tbody#table_tbody_GRUPOnoGRB').append("<tr><td>"+item.id_cat+"</td><td>"+item.descrip+"</td><td align=\"center\"><input type=\"checkbox\" id=\"checkGRUPOnoGRB\" name=\"checkGRUPOnoGRB\" value='"+item.id_cat+"'></td></tr>");
+							});
+							$("#loader_CATnotinGRB").hide();
+						}).error(function(jqXHR, textStatus, errorThrown) {alert("("+textStatus+") "+errorThrown);location.reload();});
+					}
+				});
+				
+				$('#add_cmbSeccionNo, #add_cmbRubroNo, #add_cmbSubRubroNo, #add_checkGRUPOnoGRB').click(function (e) {
+					e.preventDefault();
+					$("#loader_CATnotinGRB").show();
+					var ids=$("#"+(this.id).replace('add_','')).val();
+					var a="";
+					var q="";
+					var add="";
+					
+					if(this.id == 'add_cmbSeccionNo'){
+						a="Seleccione una sección para agregar.";
+						q="Esta seguro de agregar la sección '"+$("#cmbSeccionNo option:selected").text()+"' a APP móvil?";
+						add="La seccón '"+$("#cmbSeccionNo option:selected").text()+"' ha sido agregada a APP móvil";
+					}else if(this.id == 'add_cmbRubroNo'){
+						a="Seleccione un rubro para agregar.";
+						q="Esta seguro de agregar el rubro '"+$("#cmbRubroNo option:selected").text()+"' a APP móvil?";
+						add="La seccón '"+$("#cmbRubroNo option:selected").text()+"' ha sido agregada a APP móvil";
+					}else if(this.id == 'add_cmbSubRubroNo'){
+						a="Seleccione un sub rubro para agregar.";
+						q="Esta seguro de agregar el sub rubro '"+$("#cmbSubRubroNo option:selected").text()+"' a APP móvil?";
+						add="La seccón '"+$("#cmbSubRubroNo option:selected").text()+"' ha sido agregada a APP móvil";
+					}else if(this.id == 'add_checkGRUPOnoGRB'){
+						a="Seleccione el o los grupos para agregar.";
+						q="Esta seguro de agregar los grupos seleccionados a APP móvil?";
+						add="Los grupos seleccionados han sido agregados a APP móvil";
+						ids = $("input[name=checkGRUPOnoGRB]:checked").map(function() {return this.value;}).get().join(",");
+					}
+					inH = new Date().getTime();
+		   			url = "CategoriasNoMobile?action="+this.id+"&catId="+ids+"&"+inH;
+		   			if(ids == 0 || ids == '' || ids == undefined || ids.length == 0 || ids == "" || ids == null){ 
+		   				alert(a+"");
+		   				$("#loader_CATnotinGRB").hide();
+		   				return false;
+		   			}else if(confirm(q+"")){
+						$.getJSON(url).done(function(data){		
+							alert(add+" (Grupos agregados "+data.registros+")");
+							$('#CATnotinGRB').trigger('click');
+						}).error(function(jqXHR, textStatus, errorThrown) {alert("("+textStatus+") "+errorThrown);location.reload();});
+					}else{
+						$("#loader_CATnotinGRB").hide();
+					}
+				});
+				
+		});
+		</script>
+ 	</head>
+	<body>
+		<script language="JavaScript" src="menu/menu.js"></script>
+		<script language="JavaScript" src="menu/menu_tpl.js"></script>
+		<script language="JavaScript" src="menu/menu_items.js"></script>
+		
+		<table width="780" height="100%" border="0" cellpadding="0" cellspacing="0">
+		  <tr>
+		    <td height="78" valign="top">
+			
+			<TABLE width="100%" height=59 border=0 align="center" cellpadding="0" cellspacing="0" bgcolor="#ffffff">
+			  <TR background="img/bg-1.jpg">
+				<TD width=275 height="59" align=left class=user><img src="img/header2.jpg" width="275" height="60"></TD>
+				<TD width=505 align=left valign="bottom" background="img/bg-1.jpg" class=user>
+					<table width="90%"  border="0" align="center" cellpadding="0" cellspacing="2">
+			          <tr> <td>&nbsp;</td> </tr>
+			          <tr> <td><div align="right" class="infoBL">Usuario: {hdr_nombre}&nbsp;&nbsp;| {hdr_fecha}</div></td> </tr>
+			        </table>
+		        </TD>
+			  </TR>
+			</TABLE>
+			<TABLE width="100%" height=19 border=0 align="center" cellpadding="0" cellspacing="0" bgcolor="#f1f0e9" style="border-top:1px solid #ABABAB; border-bottom:1px solid #ABABAB">
+		  <TR>
+			<TD align=left bgcolor="#FFFFFF" class=user></TD>
+			</TR>
+		</TABLE>
+		</td>
+		 </tr>
+		 <tr height="400">
+		   <td valign="top" bgcolor="#FFFFFF">
+		     <table border=0 width="100%" class='ContentTitle'>
+		       <tr>
+		         <td class='HeaderTitle'>Marca APP móvil por categorías SAP</td>
+		   </tr>
+		     </table>
+		  <br>
+		     <table width="100%"  border="0" cellspacing="2" cellpadding="2">
+		       <tr valign="top">
+		         <td width="71%">
+					<fieldset>
+						<legend align="left"><h3>B&uacute;squeda</h3></legend>    
+						<table width="96%"  border="0" align="center" cellpadding="0" cellspacing="0">
+							<tr valign="bottom">
+								<td><h3>&nbsp;>>>>&nbsp;<a href="#" id="CATinGRB">&nbsp;Categorías en APP M&oacute;vil&nbsp;</a>&nbsp;&nbsp;[<a href="#" id="ExcelInGRB" target="_self">Descargar <img src="img/ico_excel.gif"  border="0"></a>]</h3></td>
+								<td><h3>&nbsp;>>>>&nbsp;<a href="#" id="CATnotinGRB">&nbsp;Categorías que no estan en APP M&oacute;vil&nbsp;</a>&nbsp;&nbsp;[<a href="#" id="ExcelNoGRB" target="_self">Descargar <img src="img/ico_excel.gif"  border="0"></a>]</h3></td>
+							</tr>
+						</table>
+					</fieldset>
+					<br/>
+				</td>
+		       </tr>
+		       <tr style="display:none" id="loader_CATinGRB"><td width="71%"><img src="img/loader_progress.gif" border="0" alt=""></td></tr>
+		       <tr valign="top" style="display:none" id="tr_CATinGRB">
+		      <td width="71%">
+		      	<fieldset>
+		<legend align="left"><h3>Categorías en APP M&oacute;vil</h3></legend>   
+		       	<table width="100%" cellspacing="2" cellpadding="2">
+		       	 	<tr valign="top" id="cont_SECCIONinGRB">
+		       			<td width="15%">Secci&oacute;n:</td>
+		       			<td><select name="cmbSeccionIn" id="cmbSeccionIn" class="letracombo"></select>&nbsp;&nbsp;&nbsp;<a href="#" id="remove_cmbSeccionIn">[Eliminar Secci&oacute;n]</a></td>
+		       		</tr>
+		       		<tr valign="top" id="cont_RUBROinGRB" style="display:none">
+		      			<td>Rubro:</td>
+		      			<td><select name="cmbRubroIn" id="cmbRubroIn" class="letracombo"></select>&nbsp;&nbsp;&nbsp;<a href="#" id="remove_cmbRubroIn">[Eliminar Rubro]</a></td>
+		      		</tr>
+		      		<tr valign="top" id="cont_SUBRUBROinGRB" style="display:none">
+		      			<td>Sub Rubro:</td>
+		      			<td><select name="cmbSubRubroIn" id="cmbSubRubroIn" class="letracombo"></select>&nbsp;&nbsp;&nbsp;<a href="#" id="remove_cmbSubRubroIn">[Eliminar Sub Rubro]</a></td>
+		      		</tr>
+		      		<tr valign="top" id="cont_GRUPOinGRB" style="display:none">
+		      			<td colspan="2"><br/>
+		      				<table width="600" id="table_GRUPOinGRB"  border="1" align="center" cellpadding="0" cellspacing="0" class="tabla2">
+		      					<thead>
+					  <tr>
+						<th width="20%">C&oacute;digo</th>
+						<th width="40%">Grupo</th>
+						<th width="10%" align="center">Todos<br/><input type="checkbox" id="selAllinGRB" name="selAllinGRB"></th>
+					  </tr>
+					</thead>
+					<tbody id="table_tbody_GRUPOinGRB"></tbody>
+					<tfoot id="table_tfoot_GRUPOinGRB"><tr><td colspan="3" align="right"><input type="button" id="remove_checkGRUPOinGRB" name="remove_checkGRUPOinGRB"  value="Eliminar grupos selccionados" /></td></tr></tfoot>
+				</table>
+		      			</td>
+		      		</tr>
+		      	</table>
+		      </fieldset>
+		      <br/>
+		     </td>
+		   </tr>
+		   <tr style="display:none" id="loader_CATnotinGRB"><td width="71%"><img src="img/loader_progress.gif" border="0" alt=""></td></tr>
+		   <tr valign="top" style="display:none" id="tr_CATnotinGRB">
+		      <td width="71%">
+		      		<fieldset>
+		<legend align="left"><h3>Categorías que no estan en APP M&oacute;vil</h3></legend>   
+		       	<table width="100%" cellspacing="2" cellpadding="2">
+		       	 	<tr valign="top" id="cont_SECCIONnoGRB">
+		       			<td width="15%">Secci&oacute;n:</td>
+		       			<td><select name="cmbSeccionNo" id="cmbSeccionNo" class="letracombo"></select>&nbsp;&nbsp;&nbsp;<a href="#" id="add_cmbSeccionNo">[Agregar Secci&oacute;n]</a></td>
+		       		</tr>
+		       		<tr valign="top" id="cont_RUBROnoGRB" style="display:none">
+		      			<td>Rubro:</td>
+		      			<td><select name="cmbRubroNo" id="cmbRubroNo" class="letracombo"></select>&nbsp;&nbsp;&nbsp;<a href="#" id="add_cmbRubroNo">[Agregar Rubro]</a></td>
+		      		</tr>
+		      		<tr valign="top" id="cont_SUBRUBROnoGRB" style="display:none">
+		      			<td>Sub Rubro:</td>
+		      			<td><select name="cmbSubRubroNo" id="cmbSubRubroNo" class="letracombo"></select>&nbsp;&nbsp;&nbsp;<a href="#" id="add_cmbSubRubroNo">[Agregar Sub Rubro]</a></td>
+		      		</tr>
+		      		<tr valign="top" id="cont_GRUPOnoGRB" style="display:none">
+		          			<td colspan="2">
+		          				<br/>
+		          				<table width="600" id="table_GRUPOnoGRB"  border="1" align="center" cellpadding="0" cellspacing="0" class="tabla2">
+		          					<thead>
+									  <tr>
+										<th width="20%">C&oacute;digo</th>
+										<th width="40%">Grupo</th>
+										<th width="10%" align="center">Todos<br/><input type="checkbox" id="selAllnoGRB" name="selAllnoGRB"></th>
+									  </tr>
+									</thead>
+									<tbody id="table_tbody_GRUPOnoGRB"></tbody>
+									<tfoot id="table_tfoot_GRUPOnoGRB"><tr><td colspan="3" align="right"><input type="button" id="add_checkGRUPOnoGRB" name="add_checkGRUPOnoGRB"  value="Agregar grupos selccionados" /></td></tr></tfoot>
+								</table>
+		          			</td>
+		          		</tr>
+		          	</table>
+		          </fieldset>
+		         </td>
+		       </tr>
+		     </table>
+		     </td>
+		 </tr>
+		 <tr>
+		   <td>
+		<TABLE width="100%" height=19 border=0 align="center" cellpadding="0" cellspacing="0" bgcolor="#f1f0e9" style="border-top:1px solid #ABABAB; border-bottom:1px solid #ABABAB">
+			 	<TR>
+					<TD align=center bgcolor="#67b01a" class=infoBL><div align="center">Back Office Central - Jumbo.cl</div></TD>
+				</TR>
+			</TABLE>
+		
+			</td>
+		  </tr>
+		</table>
+	</body>
+</html>

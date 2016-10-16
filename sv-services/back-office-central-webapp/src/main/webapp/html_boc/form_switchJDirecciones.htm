@@ -1,0 +1,253 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Jumbo.cl Back Office Central</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+		<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+
+		<script>window.name='wincaldes'</script>
+		<script language="JavaScript" src="CalendarPopup.js"></script>
+		<script language="JavaScript">document.write(getCalendarStyles());</script>
+		<script language="JavaScript" ID="js17">
+			var ayer = new Date(30,4,2006,12,0,0,0);
+			var cal1 = new CalendarPopup("testdiv1");
+			cal1.offsetX = -140;
+			cal1.offsetY = -50;
+			
+			function getCalendario(retiro){
+				$('#action').val('desplCal');
+				
+				if(retiro == 'R' && $('#local_zona_retiro').val() == '0'){
+					$('#local_zona_retiro').focus();
+					return false;
+				}
+				if(retiro == 'C' && $('#local_zona_retiro').val() != '0'){
+					$('input[name=direccionId][value=R]').attr('checked', true); 
+				}
+				if(retiro == 'D' && $('#local_zona_retiro').val() != '0'){
+					$('#local_zona_retiro').val('0');
+				}
+				if(retiro == 'F'){
+					var RegExPattern = "\\d{4}-\\d{2}-\\d{2}";
+					if(!$('#txt_fecha').val().match(RegExPattern)){
+						alert('Fecha invalida.');
+						return false;
+					}
+				}
+				
+		  		var action  = $('#formSdespacho').attr('action');
+		  		var data    = $('#formSdespacho').serialize();
+                var preload = "<img src=\"/JumboBOCentral/img/loader_progress.gif\" alt=\"...\">";
+                $('#ContCalendario').html(preload);
+               
+                var bind = {	
+                    type: "POST",
+                    cache: false,
+                    data:data,
+                    success:function (data, textStatus, jqXHR){  
+                        $('#ContCalendario').html(data);       
+                         $( "#reagendar" ).prop( "disabled", true );                                                      
+                    },
+                    error:function(jqXHR, textStatus, errorThrown){
+                    	$('#ContCalendario').html("");
+                        alert(errorThrown); 
+                    }
+                }
+                $.ajax(action,bind); 
+			}
+			
+			function agregarDireccion(){
+				$('#AgrDireccion').submit();
+			}
+			
+			function validarFormSdespacho(){
+
+				$('#action').val('CambiarLocal');
+
+				if ("{medio_pago}" != "{medio_pago_lc}") {
+					var nombrefechaSel = "#fecha_"
+							+ $('input[name=id_jdespacho]:checked').val();
+					var fecha_sel = parseInt($(nombrefechaSel).val(), 10);
+					var fecha_max = parseInt($('#fecha_max').val(), 10);
+
+					if (fecha_sel > fecha_max) {
+						alert("La fecha seleccionada supera lo permitido, de acuerdo a la fecha de captura.");
+						return false;
+					}
+				}
+				if ( $('#motivo').val() == '0') {
+					alert("Debe seleccionar un motivo de la reprogramación");
+					$('#motivo').focus();
+					return false;
+				}
+				if ( $('#responsable').val() == '0') {
+					alert("Debe seleccionar un responsable de la reprogramación");
+					$('#responsable').focus();
+					return false;
+				}
+				if ( parseInt($('#precioNuevoDesp').val()) < 1) {
+					alert("El costo de despacho no puede ser menor a $1");
+					$('#precioNuevoDesp').focus();
+					return false;
+				}
+			}
+
+			function activarCambio() {
+				$("#reagendar").prop("disabled", false);
+			}
+		</script>
+		<link href="estilos.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+<!--
+body {
+	background-color: #FFFFFF;
+}
+-->
+</style>
+</head>
+<body>
+	<br />
+	<div id="ContDataCab">
+		<table width="100%"  cellspacing="0" cellpadding="0">
+			<tr><th colspan="2">Datos del pedido</th></tr>
+			<tr>
+				<td width="132">N&deg; Pedido</td>
+				<td width="443">{id_pedido}</td>
+			</tr>
+			<tr>
+				<td width="132">Direccion</td>
+				<td width="443">{direccion}</td>
+			</tr>
+			<tr>
+				<td width="200">Estado</td>
+				<td>{estado}</td>
+			</tr>
+			<tr>
+				<td>Local </td>
+				<td>({id_local}) &nbsp; {local}</td>
+			</tr>
+			<tr>
+				<td>Costo Despacho </td>
+				<td>{costo_despacho_formato}</td>
+	  		</tr>
+			<tr>
+				<td>Id Picking</td>
+				<td>{id_picking}</td>
+			</tr>
+			<tr>
+				<td>Id Despacho</td>
+				<td>{id_despacho}</td>
+			</tr>
+			<tr >
+				<td>Capac Picking Pedido </td>
+				<td>{capac_picking}</td>
+			</tr>
+		</table>
+	</div>
+	<br/>
+	<form name="formSdespacho" id="formSdespacho" method="post" action="ViewSwitchJornadaForm" onsubmit="return validarFormSdespacho();">
+		<input type="hidden" name="id_pedido" id="id_pedido" value="{id_pedido}" readonly="readonly"/>
+		<input type="hidden" name="costo_despacho_ant" id="costo_despacho_ant" value="costo_despacho" readonly="readonly"/>
+		<input type="hidden" name="Cambiar" id="Cambiar" value="Cambiar" readonly="readonly"/>
+		<input type="hidden" name="action" id="action" value="desplCal" readonly="readonly"/>
+		<input type="hidden" name="tipoCambio" id="tipoCambio" value="local" readonly="readonly" />
+		<input type="hidden" name="fecha_max" id="fecha_max" value="{fecha_max}" readonly="readonly" />
+		
+		<div id="ContDataDir">
+			<table width="100%"  cellspacing="0" cellpadding="0">
+				<tr valign="top">
+					<th>Direcciones disponibles del cliente
+						<input type="button" name="cerrar" value="Editar Direccion" onclick="javascript:agregarDireccion();" />
+					</th>
+				</tr>
+				<!--  BEGIN DYNAMIC: DIRECCIONES -->
+				<tr valign="top">
+					<td><input type="radio" name="direccionId" value="{id}"  {checkDir} onclick="javascript:getCalendario('D')" />&nbsp;&nbsp;{nombre}</td>
+				</tr> 
+				<!--  END DYNAMIC: DIRECCIONES -->
+				<tr valign="top">
+					<td>
+						<input type="radio" name="direccionId" value="R"  {checkDir} onclick="javascript:getCalendario('R')" {ckeck_retiro}/>&nbsp;&nbsp;Retiro Local&nbsp;
+						<select name="local_zona_retiro" id="local_zona_retiro" onchange="javascript:getCalendario('C')" >
+							<option value="0">Seleccione</option>
+							<!--  BEGIN DYNAMIC: LOCALESRETIRO -->
+							<option value="{id_zona}" {selected_local} >{nombre}</option>
+							<!--  END DYNAMIC: LOCALESRETIRO -->
+						</select>
+					</td>
+				</tr>
+			</table>
+			<br/>
+		</div>
+		
+		<div id="ContFecha">
+			<table width="100%"  cellspacing="0" cellpadding="0">
+				<tr valign="top">
+					<td>
+					Seleccione fecha
+						<input name ="txt_fecha" type="text" id="txt_fecha" value="" readonly="readonly" onClick="cal1.select(document.formSdespacho.txt_fecha,'anchor1','yyyy-MM-dd'); return false;" />
+						<a href="#" onClick="cal1.select(document.formSdespacho.txt_fecha,'anchor1','yyyy-MM-dd'); return false;" name="anchor1" id="anchor1">
+							<img src="img/cal.gif" border="0">
+						</a>
+						<input type="button" class="cmd" value="Buscar Calendario" onclick="javascript:getCalendario('F')"/>	
+					</td>
+				</tr>
+			</table>
+			<br/>
+		</div>
+	
+		<div id="ContCalendario">{strCalendario}</div>
+	
+		<div id="ContMotivo">
+			<table width="100%"  cellspacing="0" cellpadding="0">
+				<tr>
+					<td>Motivo</td>
+					<td>
+						<select name="motivo" id="motivo" style="width:210px;">
+							<option value="0">Motivo Reprogramación</option>
+							<!-- BEGIN DYNAMIC: MOTIVOS -->
+							<option value="{id}">{nombre}</option>
+							<!-- END DYNAMIC: MOTIVOS -->
+						</select>
+					</td>
+					<td>Responsable</td>
+					<td>
+						<select name="responsable" id="responsable" style="width:210px;">
+							<option value="0">Responsable Reprogramación</option>
+							<!-- BEGIN DYNAMIC: RESPONSABLES -->
+							<option value="{id}">{nombre}</option>
+							<!-- END DYNAMIC: RESPONSABLES -->
+						</select>
+					</td>
+			  	</tr>
+			</table>
+			<br/>
+		</div>
+		
+		<div id="ContPrecios">
+			<table width="100%"  cellspacing="0" cellpadding="0">
+				<tr> 
+		      		<td><input name="otroprecio" type="radio" value="0"  />&nbsp;Aplicar precio calendario</td>
+		      	</tr>
+		      	<tr> 	
+		      		<td><input name="otroprecio" type="radio" value="1" checked/>&nbsp;Mantener precio cobrado {costo_despacho_formato}</td>
+		      	</tr>
+		      	<tr> 	
+		      		<td><input name="otroprecio" type="radio" value="2" />&nbsp;Sobreescribir precio $<input type="text" name="precioNuevoDesp" id="precioNuevoDesp" value="" size="10" maxlength="8" /></td>
+		      	</tr>
+		      	<tr> 
+		      		<td align="right"><input type="submit" name="reagendar" id="reagendar" value="Reagendar" disabled="disabled"/></td>
+		    	</tr>
+		    </table>
+		    <br/>
+	    </div>
+	</form>
+	
+	<div id="testdiv1" style="position:absolute;visibility:hidden;background-color:white;layer-background-color:white;"></div>
+	<p>&nbsp;</p>
+	
+	<form name="AgrDireccion" id="AgrDireccion"  action="ViewClientForm" target="winpedido1" onsubmit="window.close();">
+		<input type="hidden" name="id_cliente" value="{id_cliente}" />
+	</form>
+</body>
+</html>

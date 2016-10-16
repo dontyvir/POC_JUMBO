@@ -1,0 +1,101 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Jumbo.cl - Notas del Producto</title>
+<link href="/FO_WebContent/css/estilostextos.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/FO_WebContent/js/funciones.js"></script>
+</head>
+
+<script type="text/javascript">
+function almacena_nota(){
+	var paso = top.ficha_paso;
+	var f1 = document.frm_nota;
+	var id = f1.idaux.value;
+	
+	if (f1.nota.value == '') {
+		alert("Debe ingresar una nota");
+		f1.nota.focus();
+	} else {
+		top.frames['frm_ficha'].document.frm_nota.notaaux.value = document.frm_nota.nota.value;
+		//if (paso == '1') {
+			top.frames['frm_ficha'].document.f_productos_0.nota0.value = f1.nota.value;
+		/*	
+		} else if (paso == '2'){
+			top.nota_txt = f1.nota.value;
+		} else if (paso == '2b'){
+			if (!top.ficha_carro) { //indica que la ficha se abrió desde la gondola)
+				var imagen = top.frames["ifrm_productos"].document.getElementById('ImageComent_' + id);
+				imagen.src = '/FO_IMGS/img/estructura/paso2/notasb.gif';
+				var frame = top.frames["ifrm_productos"];
+				var form = frame.document.forms;
+				if (frame.document.forms['fp' + id]) {
+					if (frame.document.forms['fp' + id].nota) {
+						var auxnota = frame.document.forms['fp' + id].nota;
+						auxnota.value = document.frm_nota.nota.value
+					}
+				}
+			}
+			top.nota_txt = f1.nota.value;
+		} else if (paso == '2s'){
+			if (!top.ficha_carro) { //indica que la ficha se abrió desde la gondola)
+				var imagen = top.frames["ifrm_productos"].document.getElementById('ImageComent_' + id);
+				imagen.src = '/FO_IMGS/img/estructura/paso2/notasb.gif';
+				var frame = top.frames["ifrm_productos"];
+				var form = frame.document.forms;
+				if (frame.document.forms['fp' + id]) {
+					if (frame.document.forms['fp' + id].nota) {
+						var auxnota = frame.document.forms['fp' + id].nota;
+						auxnota.value = document.frm_nota.nota.value;
+					}
+				}
+			}
+			top.nota_txt = f1.nota.value;
+		}
+		*/
+
+
+		top.MM_showHideLayers('comentarioproducto','','hide');
+		alert("Debe presionar el botón para confirmar el cambio en el carro");
+	}
+	return false;
+}
+</script>
+<body onLoad="focus();top.load_nota();top.showComentario();">
+<form name="frm_nota" action="#">
+<table width="100%" border="0" cellpadding="0" cellspacing="3">
+  <tr>
+    <td width="100%" align="center">
+      <table width="238px" border="0" cellpadding="0" cellspacing="0">
+        <tr>
+          <td height="20" colspan="3"><img src="/FO_IMGS/img/ficha/comentarios2.gif" width="238" height="20"/></td>
+        </tr>
+        <tr>
+          <td width="6" height="50" background="/FO_IMGS/img/estructura/tablaizq.gif">&nbsp;</td>
+          <td width="226" height="50" valign="top">
+            <textarea name="nota" cols="47" rows="5" class="campoblanco" onclick="" onkeydown="if(this.value.length >= 250){ alert('Has superado el tamaño máximo permitido'); return false; }"></textarea>
+          </td>
+          <td width="6" background="/FO_IMGS/img/estructura/tablader.gif" height="50">&nbsp;</td>
+        </tr>
+        <tr>
+          <td width="6" height="6"><img src="/FO_IMGS/img/estructura/tablainfizq.gif" width="6" height="6" /></td>
+          <td height="6" background="/FO_IMGS/img/estructura/tablainf.gif"><img src="/FO_IMGS/img/estructura/tablainf.gif" width="1" height="6" /></td>
+          <td width="6" height="6"><img src="/FO_IMGS/img/estructura/tablainfder.gif" width="6" height="6" /></td>
+        </tr>
+		<tr>
+		  <td colspan="3" class="chica">Ej: paltas maduras, jam&oacute;n cortado en pluma.</td>
+		</tr>
+		  <tr>
+    	    <td colspan="3" align="center" height="40px">
+			  <input type="button" name="guardar" value="Guardar" onclick="javascript:almacena_nota();" />
+            </td> 
+		  </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<input type="hidden" NAME="notaaux" value="">
+<input type="hidden" NAME="idaux" value="">
+<input type="hidden" name="pasoaux" value="">	
+</form>
+</body>
+</html>

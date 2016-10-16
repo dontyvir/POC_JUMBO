@@ -1,0 +1,111 @@
+	<!-- BEGIN DYNAMIC: TOTALIZADOR_TMAS -->
+  	<input type="hidden" name="totaltmas" id="totaltmas" value="{total}">
+    <input type="hidden" name="costodespachotmas" id="costodespachotmas" value="{costo_despacho}">
+    <div class="modulo_tmas_pago">
+    	<div class="fila_tmas_pago">
+			<div class="modulo_radio_carro_2012">
+  				<input name="forma_pago" type="radio" value="1" id="ronline" checked="checked"/>
+			</div>
+			<div class="nombre_form_pago">Tarjeta Cencosud</div>
+			<div class="nombre_form_pago"><img src="/FO_IMGS/img/tarjeta_cencosud_mas.gif" width="121" height="19" /></div>
+      	</div>
+	    <div class="fila_tmas_pago">
+	    	<div class="modulo_radio_carro_2012"></div>
+	    	<div class="col_pago_uno_2012">Subtotal a pagar:</div>
+	    	<div class="col_pago_dos_2012">{subtotal}</div>
+	    </div>
+	    <div class="fila_tmas_pago">
+	    	<div class="modulo_radio_carro_2012"></div>
+	    	<div class="col_pago_uno_2012">Costo de Despacho:</div>
+	    	<div class="col_pago_dos_2012">{costo_despacho}</div>
+	    </div>
+    <!-- END DYNAMIC: TOTALIZADOR_TMAS -->
+    
+		<div class="fila_detalle_dcto">
+            <div class="modulo_radio_carro_2012"></div>
+		    <div class="col_pago_uno_2012_detalle_dcto">
+                <div style="float:left; width:120px; text-align:right; padding-bottom:2px; font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#666;">Descuentos:</div>
+               	<div class="ver_detalle_dcto"><a href="javascript:DescuentosPromoTMAS();" class="ver_detalle_dcto">ver detalles</a></div>
+            </div>
+            <!-- BEGIN DYNAMIC: TOTALIZADOR_TMAS -->
+		    <div class="col_pago_dos_2012">{total_desc_sf}</div>
+		    <!-- END DYNAMIC: TOTALIZADOR_TMAS -->
+            <div id="PromocionesTMAS" class="cont_detalles_dctos" style="display:none; height:auto;">
+                <!-- BEGIN DYNAMIC: PROMOCIONES_TMAS -->
+                <!--dcadizm 08032012 se quita div pues se descuadra despliegue-->
+		        <div class="col_pago_uno_2012" style="font-size:10px; color:#1FA22E;">{promo_descripcion}</div>
+		        <div class="col_pago_dos_2012" style="color:#1FA22E; font-size:10px;">- {promo_descuento}</div>
+		        <!-- END DYNAMIC: PROMOCIONES_TMAS -->
+            </div>
+		</div>
+
+	<!-- BEGIN DYNAMIC: TOTALIZADOR_TMAS -->
+	    <div class="fila_total_tmas">
+	    	<div class="modulo_radio_carro_2012"></div>
+	    	<div class="col_pago_uno_2012_red">Total a pagar:</div>
+	    	<div class="col_pago_dos_2012_red">{total}</div>
+	    </div>
+    <!-- END DYNAMIC: TOTALIZADOR_TMAS -->
+	    <div style="float:left; padding-top: 10px; padding-left: 28px; color: #999999; font-family: Arial,Helvetica,sans-serif; font-size: 10px;">Si aún no te has cambiado, puedes usar tu Tarjeta Más</div>
+	    <div class="cont_terminos_cond">
+	      <!-- BEGIN DYNAMIC: MOSTRAR_NO_LOGUEADO -->
+  			<div style="float:left;"><input type="checkbox" name="terminos" id="terminos"></div>
+    		<div class="cont_acepto_info" style="padding-top:0px;">Acepto <a href="http://www.jumbo.cl/supermercado/terminos/terminos.html" target="_blank">Términos y Condiciones</a></div>     
+  		  <!-- END DYNAMIC: MOSTRAR_NO_LOGUEADO -->
+  		  <!-- BEGIN DYNAMIC: MOSTRAR_LOGUEADO -->
+    		<div class="cont_acepto_info" style="padding-top:0px;"><a href="http://www.jumbo.cl/supermercado/terminos/terminos.html" target="_blank">Términos y Condiciones</a></div>     
+          <!-- END DYNAMIC: MOSTRAR_LOGUEADO -->
+  		</div>
+    </div>
+    
+    
+    
+	<!-- BEGIN DYNAMIC: TOTALIZADOR_WEBPAY -->
+	<input type="hidden" name="totalwebpay" id="totalwebpay" value="{total}">
+	<input type="hidden" name="costodespachowebpay" id="costodespachowebpay" value="{costo_despacho}">
+	<div class="modulo_tmas_pago">
+  		<div class="fila_tmas_pago">
+    		<div class="modulo_radio_carro_2012">
+    			<input name="forma_pago" type="radio" value="2" id="tbancaria"/>
+    		</div>
+    		<div class="nombre_form_pago">Tarjeta Bancaria</div>
+    		<div class="nombre_form_pago"><img src="/FO_IMGS/img/webpay_pago.gif" width="172" height="19" /></div>
+  		</div>
+    	<div class="fila_tmas_pago">
+    		<div class="modulo_radio_carro_2012"></div>
+    		<div class="col_pago_uno_2012">Subtotal a pagar:</div>
+    		<div class="col_pago_dos_2012">{subtotal}</div>
+    	</div>
+    	<div class="fila_tmas_pago">
+    		<div class="modulo_radio_carro_2012"></div>
+    		<div class="col_pago_uno_2012">Costo de Despacho:</div>
+    		<div class="col_pago_dos_2012">{costo_despacho}</div>
+    	</div>
+    <!-- END DYNAMIC: TOTALIZADOR_WEBPAY -->
+    
+		<div class="fila_detalle_dcto">
+            <div class="modulo_radio_carro_2012"></div>
+		    <div class="col_pago_uno_2012_detalle_dcto">
+                <div style="float:left; width:120px; text-align:right; padding-bottom:2px; font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#666;">Descuentos:</div>
+               	<div class="ver_detalle_dcto"><a href="javascript:DescuentosPromoWEBPAY();" class="ver_detalle_dcto">ver detalles</a></div>
+            </div>
+            <!-- BEGIN DYNAMIC: TOTALIZADOR_WEBPAY -->
+		    <div class="col_pago_dos_2012">{total_desc_sf}</div>
+		    <!-- END DYNAMIC: TOTALIZADOR_WEBPAY -->
+            <div id="PromocionesWEBPAY" class="cont_detalles_dctos" style="display:none; height:auto;">
+                <!-- BEGIN DYNAMIC: PROMOCIONES_WEBPAY -->
+                <!--dcadizm 08032012 se quita div pues se descuadra despliegue-->
+		        <div class="col_pago_uno_2012" style="font-size:10px; color:#1FA22E;">{promo_descripcion}</div>
+		        <div class="col_pago_dos_2012" style="color:#1FA22E; font-size:10px;">- {promo_descuento}</div>
+		        <!-- END DYNAMIC: PROMOCIONES_WEBPAY -->
+            </div>
+		</div>
+	    
+    <!-- BEGIN DYNAMIC: TOTALIZADOR_WEBPAY -->
+    	<div class="fila_total_tmas">
+        	<div class="modulo_radio_carro_2012"></div>
+           	<div class="col_pago_uno_2012_black">Total a pagar:</div>
+        	<div class="col_pago_dos_2012_black">{total}</div>
+       	</div>
+	</div>
+	<!-- END DYNAMIC: TOTALIZADOR_WEBPAY -->

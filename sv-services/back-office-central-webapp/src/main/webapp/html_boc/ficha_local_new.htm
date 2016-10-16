@@ -1,0 +1,237 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html><!-- InstanceBegin template="/Templates/fullbody.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="EXPIRES" CONTENT="Mon, 22 Jul 2002 11:12:01 GMT">
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>Jumbo.cl Back Office Central</title>
+<!-- InstanceEndEditable -->
+
+<!-- InstanceBeginEditable name="head" --><!-- InstanceEndEditable -->
+
+<link href="estilos.css" rel="stylesheet" type="text/css">
+<!--link href="../default.css" rel="stylesheet" type="text/css"-->
+<style type="text/css">
+<!--
+.style1 {color: #666666}
+-->
+</style>
+</head>
+
+<body>
+<link rel="stylesheet" href="menu/menu.css">
+<script language="JavaScript" src="menu/menu.js"></script>
+<script language="JavaScript" src="menu/menu_tpl.js"></script>
+<script language="JavaScript" src="menu/menu_items.js"></script>
+<script language="JavaScript" src="popup.js"></script>
+<script language="JavaScript" src="funciones.js"></script>
+<script language="JavaScript">
+
+function habilitarComboboxComunas(value){
+			if(value==true){
+				document.getElementById("comuna").disabled=false;
+			}else if(value==false){
+				document.getElementById("comuna").disabled=true;
+			}
+		}
+</script>
+<table width="780" height="100%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+    <td height="78" valign="top">
+	
+	<TABLE width="100%" height=59 border=0 align="center" cellpadding="0" cellspacing="0" bgcolor="#ffffff">
+	  <TR>
+		<TD width=275 height="59" align=left class=user><img src="img/header2.jpg" width="275" height="60"></TD>
+		<TD width=505 align=left valign="bottom" background="img/bg-1.jpg" class=user><table width="90%"  border="0" align="center" cellpadding="0" cellspacing="2">
+          <tr>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td><div align="right" class="infoBL">Usuario: {hdr_nombre}&nbsp;&nbsp;| {hdr_fecha}</div></td>
+          </tr>
+        </table></TD>
+	  </TR>
+	</TABLE>
+	<TABLE width="100%" height=19 border=0 align="center" cellpadding="0" cellspacing="0" bgcolor="#f1f0e9" style="border-top:1px solid #ABABAB; border-bottom:1px solid #ABABAB">
+	  <TR>
+		<TD align=left bgcolor="#FFFFFF" class=user></TD>
+		</TR>
+	</TABLE>
+
+	
+	</td>
+  </tr>
+  <tr height="400">
+    <td valign="top" bgcolor="#FFFFFF">
+      <table border=0 width="100%" class='ContentTitle'>
+        <tr>
+          <td width="53%" height="20" class='HeaderTitle'><!-- InstanceBeginEditable name="Titulo" -->
+				  Nuevo Local <!-- InstanceEndEditable --></td>
+          <td width="47%" class='HeaderTitle'><!-- InstanceBeginEditable name="Botonera" -->
+            <div align="right"></div>
+          <!-- InstanceEndEditable --></td>
+        </tr>
+      </table>
+	  <br>
+      <table width="100%"  border="0" cellspacing="2" cellpadding="2">
+        <tr valign="top">
+          <td width="71%"><!-- InstanceBeginEditable name="Izquierda" -->
+          <script language="JavaScript" src="funciones.js"></script>
+          <script language="JavaScript">
+          	function actualiza(form){
+          	          	
+          		if( validar_obligatorio( form.cod_local, "El codigo local es obligatorio" ) ) return false;
+          		if( form.cod_local.value.length==1 && form.cod_local.value.indexOf(" ")>-1 ){
+          			alert("Debe ingresar un código de marca válido");
+          			return false;
+          		}
+
+          		if( validar_obligatorio( form.nom_local, "El nombre del local es obligatorio" ) ) return false;
+          		if( form.nom_local.value.length==1 && form.nom_local.value.indexOf(" ")>-1 ){
+          			alert("Debe ingresar un nombre del local válido");
+          			return false;
+          		}
+          		
+          		if( validar_obligatorio( form.orden, "El orden del local es obligatorio" ) ) return false;
+          		if( form.orden.value.length==1 && form.orden.value.indexOf(" ")>-1 ){
+          			alert("Debe ingresar un orden del local válido");
+          			return false;
+          		}
+          		
+          		if( validar_obligatorio( form.cod_local_pos, "El código local pos  es obligatorio" ) ) return false;
+          		if( form.cod_local_pos.value.length==1 && form.cod_local_pos.value.indexOf(" ")>-1 ){
+          			alert("Debe ingresar un código local pos válido");
+          			return false;
+          		}
+				if( validar_obligatorio( form.direccion, "La direccion del local es obligatoria" ) ) return false;
+          		if( form.direccion.value.length==1 && form.direccion.value.indexOf(" ")>-1 ){
+          			alert("Debe ingresar un nombre del local válido");
+          			return false;
+          		}
+          		if( validar_obligatorio( form.cod_local_promo, "El local promociones es obligatorio" ) ) return false;
+          		if( form.cod_local_promo.value.length==1 && form.cod_local_promo.value.indexOf(" ")>-1 ){
+          			alert("Debe ingresar un código de local de promociones de marca válido");
+          			return false;
+          		}    
+				return true;
+          	}
+          </script>
+			<div align="center"><font color="red">{msje}</font>&nbsp;<br></div>          
+          <form name="frmAct" method="get" action="AddLocal" onsubmit="return actualiza(this);" >
+          <input type="hidden" name="url" value="ViewMonLocales">
+          <input type="hidden" name="UrlError" value="ViewLocalFormNew">
+          <table width="76%"  border="0" align="center" cellpadding="2" cellspacing="2">
+            <tr>
+              <td width="30%">Código Local</td>
+              <td width="70%">
+              	<input name="cod_local" type="text" value="" size="10" maxlength="10">
+              </td>
+            </tr>
+            <tr>
+              <td>Nombre</td>
+              <td><input name="nom_local" type="text" value="" size="50" maxlength="50">
+              </td>
+            </tr>
+            <td>Direcci&oacute;n (aparecerá para retiro en local)</td>
+              <td><input name="direccion" id="direccion" type="text" value="" size="50" maxlength="">
+              </td>    
+            <tr>
+              <td>Orden</td>
+              <td><input name="orden" type="text" value="" size="5" maxlength="5">
+              </td>
+            </tr>
+            <tr>
+              <td>Cod. Local Pos</td>
+              <td><input name="cod_local_pos" type="text" value="" size="10" maxlength="10">
+              </td>
+            </tr>            
+            <!-- tr>
+              <td>Id Local SAP</td>
+              <td><input name="id_local_sap" type="text" value="{id_local_sap}" size="10" maxlength="10">
+              </td>
+            </tr-->             
+            <tr>
+              <td>Tipo Flujo</td>
+              <td>
+              	<select name="tipo_flujo">
+	              	<option value="N" selected>Normal</option>
+	              	<option value="P" >Parcial</option>              	
+              	</select>
+              </td>
+            </tr>              
+            <tr>
+              <td>Local Promocion</td>
+              <td><input name="cod_local_promo" type="text" value="" size="10" maxlength="10">
+              </td>
+            </tr>    
+            <tr>
+              <td>Tipo Picking</td>
+              <td>
+              	<select name="tipo_picking">
+	              	<option value="N" selected>Normal</option>
+	              	<option value="L">Light</option>              	
+              	</select>
+              </td>
+            </tr>
+                        <tr >
+              <td>Retiro en Tienda (Click &amp; al Auto)</td>
+              <td>
+              	<input type="checkbox" name="retirolocal" value="S" {retiro_local} onchange="habilitarComboboxComunas(this.checked);" >
+              </td>
+            </tr>
+            <tr >
+              <td>Comuna ubicación Local Para Retiro
+</td>
+              <td>
+              <select name="comuna" id="comuna" disabled="disabled">
+              		<option selected>Seleccione Comuna</option>
+              <!-- BEGIN DYNAMIC: COMUNAS -->
+	              	<option value={idComuna} >{nombreComuna}</option>
+	          <!-- END DYNAMIC: COMUNAS -->    	
+              </select>
+              </td>
+            </tr>        
+            <!-- tr>
+              <td>Fecha Carga Precios</td>
+              <td>{fec_carga_prec}</td>
+            </tr-->                       
+            <tr>
+              <td>&nbsp;</td>
+              <td><input type="submit" name="Button" value="Guardar" > 
+              <input type="button" name="Button" value="Cancelar" onclick="javascript:location.href='ViewMonLocales';"></td>
+              
+            </tr>
+          </table>
+          <br>
+          </form>
+		      <br>
+			<script>
+				//document.frmActMarca.mar_nombre.onkeypress = KeyIsTexto;
+				document.frmAct.cod_local.onkeypress = KeyNotCarExt;
+				//document.frmAct.nom_local.onkeypress = KeyIsTexto;
+				document.frmAct.orden.onkeypress = KeyIsNumber;
+				document.frmAct.cod_local_pos.onkeypress = KeyIsNumber;
+				document.frmAct.cod_local_promo.onkeypress = KeyNotCarExt;
+			</script>
+	      <!-- InstanceEndEditable --></td>
+        </tr>
+      </table>
+      </td>
+  </tr>
+  <tr>
+    <td>
+	<TABLE width="100%" height=19 border=0 align="center" cellpadding="0" cellspacing="0" bgcolor="#f1f0e9" style="border-top:1px solid #ABABAB; border-bottom:1px solid #ABABAB">
+	  <TR>
+		<TD align=center bgcolor="#67b01a" class=infoBL><div align="center">Back Office Central - Jumbo.cl</div></TD>
+		</TR>
+	</TABLE>
+
+	
+	</td>
+  </tr>
+</table>
+</body>
+<!-- InstanceEnd --></html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<title>Jumbo Mobile - Calendario</title>
+</head>
+<body>
+<div id="modulo_programar" align="center"> 
+  <div class="dia"> 
+	<select id="fecha_seleccionada" name="fecha_seleccionada" class="camposelect3" onChange="showCalendario();">
+	  <!-- BEGIN DYNAMIC: FECHAS_SELECCION -->
+	  <option value="{dia_value}" {selected}>{dia_nombre}</option>
+	  <!-- END DYNAMIC: FECHAS_SELECCION -->
+	</select>
+  </div>
+  <div class="modulo_horario"> 
+	  <!-- BEGIN DYNAMIC: CALENDARIO -->
+		<div class="{class_hora}"> 
+		  <div class="hora">{h_ini} - {h_fin}</div>
+		  <div class="precio_horario">{img_express} {precio}</div>
+		  <div class="seleccion">
+			<input name="radiobutton" type="{radio}" value="radiobutton" class="checkbox" {disabled} {checked} onClick="send_despacho('{id_jdespacho}','{precio}','{id_jpicking}','{fecha}','{tipo}','{seleccionado}');" />
+		  </div>
+		</div>
+	  <!-- END DYNAMIC: CALENDARIO -->
+	<!-- BEGIN DYNAMIC: SIN_CALENDARIO -->
+		<div class="horario_sh">
+			<div class="sin_horas">No existen horarios de despacho</div>
+		</div>
+	<!-- END DYNAMIC: SIN_CALENDARIO -->		
+  </div>
+  
+  <div>
+	<a href="javascript:irPago();">
+		<img src="/FO_IMGS/images/mobi/paso3/bt_continuar.gif" name="guardar" border="0" id="guardar" /> 
+	</a>
+  </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,196 @@
+@charset "UTF-8";
+/* CSS Document */
+
+.cont_crit_reemp {
+	width: 804px;
+	height: auto;
+	border-bottom:#CCC thin thin;
+	border-left:#CCC thin solid;
+	border-right:#CCC thin solid;
+}
+.cabecera_crit_reemp {
+	/*width: 680px;*/
+	height: 40px;
+	background-color:#009640;
+}
+.tit_01_crit_reemp {
+	float:left;
+	width: 148px;
+	height: 30px;
+	padding-left: 10px;
+	padding-top:10px;
+	text-align:center;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:14px;
+	color:#FFF;
+	border-right-width: thin;
+	border-right-style: solid;
+	border-right-color: #c6ded0;
+}
+.tit_02_crit_reemp {
+	float:left;
+	width: 144px;
+	height: 30px;
+	text-align:center;
+	padding-top:10px;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:14px;
+	color:#FFF;
+	border-right-width: thin;
+	border-right-style: solid;
+	border-right-color: #c6ded0;
+}
+.tit_03_crit_reemp {
+	float:left;
+	width: 160px;
+	height: 30px;
+	text-align:center;
+	padding-top:10px;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:14px;
+	color:#FFF;
+	border-right-width: thin;
+	border-right-style: solid;
+	border-right-color: #c6ded0;
+}
+.tit_04_crit_reemp {
+	float:left;
+	width: 210px;
+	height: 30px;
+	text-align:center;
+	padding-top:10px;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:14px;
+	color:#FFF;
+	border-right-width: thin;
+	border-right-style: solid;
+	border-right-color: #c6ded0;
+}
+.tit_04_ron_crit_reemp {
+	float:left;
+	width: 111px;
+	height: 30px;
+	text-align:center;
+	padding-top:10px;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:14px;
+	color:#FFF;
+	border-right-width: thin;
+	border-right-style: solid;
+	border-right-color: #c6ded0;
+}
+
+.tit_05_crit_reemp {
+	float:left;
+	width: 124px;
+	height: 30px;
+	text-align:center;
+	padding-top:10px;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:14px;
+	color:#FFF;
+}
+.cont_lugar_vinos_crit_reemp {
+	/*width: 680px;*/
+	height: 215px;
+	border-bottom:#CCC solid thin;
+}
+.lugar_01_crit_reemp {
+	float:left;
+	width: 148px;
+	height: 197px;
+	padding-left: 10px;
+	padding-top:18px;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:12px;
+	color:#666;
+	background-color:#ddeae3;
+	/*border-bottom:#afca0b dotted thin;*/
+}
+.lugar_02_crit_reemp {
+	float:left;
+	width: 144px;
+	height: 215px;
+	text-align:center;
+	/*padding-top:10px;*/
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:12px;
+	color:#666;
+	background-color:#f1f7ce;
+	/*border-left:#afca0b dotted thin;*/
+}
+.sublugar_02_crit_reemp {
+	float:left;
+	width: 144px;
+	height: 89px;
+	text-align:center;
+	padding-top:18px;
+	/*border-bottom:#afca0b dotted thin;*/
+}
+.lugar_03_crit_reemp {
+	float:left;
+	width: 160px;
+	text-align:center;
+	height: 215px;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:12px;
+	color:#666;
+	border-left:#afca0b dotted thin;
+}
+.sublugar_03A_crit_reemp {
+	float:left;
+	width: 160px;
+	height: 35px;
+	text-align:center;
+	padding-top:18px;
+	border-bottom:#afca0b dotted thin;
+}
+.sublugar_03B_crit_reemp {
+	float:left;
+	width: 160px;
+	height: 18px;
+	text-align: center;
+	padding-top: 8px;
+}
+.lugar_04_crit_reemp {
+	float:left;
+	width: 210px;
+	height: 215px;
+	text-align:center;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:12px;
+	color:#666;
+	border-left:#afca0b dotted thin;
+}
+.sublugar_04A_crit_reemp {
+	float:left;
+	width: 210px;
+	height: 89px;
+	text-align:center;
+	padding-top:18px;
+}
+.lugar_05_crit_reemp {
+	float:left;
+	width: 124px;
+	height: 215px;
+	text-align:center;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:12px;
+	color:#666;
+	border-left:#afca0b dotted thin;
+}
+.sublugar_05A_crit_reemp {
+	float:left;
+	width: 124px;
+	height: 89px;
+	text-align:center;
+	padding-top:18px;
+	border-bottom:#afca0b dotted thin;
+}
+.sublugar_05B_crit_reemp {
+	float:left;
+	width: 124px;
+	height: 35px;
+	text-align:center;
+	padding-top:18px;
+}

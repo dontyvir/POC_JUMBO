@@ -1,0 +1,631 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html><!-- InstanceBegin template="/Templates/fullbody.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="EXPIRES" CONTENT="Mon, 22 Jul 2002 11:12:01 GMT">
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>Jumbo.cl Back Office Local</title>
+<!-- InstanceEndEditable -->
+
+<!-- InstanceBeginEditable name="head" -->
+<script language="JavaScript" src="funciones.js"></script>
+<!-- InstanceEndEditable -->
+
+<link href="estilos.css" rel="stylesheet" type="text/css">
+<!--link href="../Prototipo/default.css" rel="stylesheet" type="text/css"-->
+<style type="text/css">
+<!--
+.style1 {color: #666666}
+-->
+</style>
+</head>
+
+<body>
+<link rel="stylesheet" href="menu/menu.css">
+<script language="JavaScript" src="menu/menu.js"></script>
+<script language="JavaScript" src="menu/menu_tpl.js"></script>
+<script language="JavaScript" src="menu/menu_items.js"></script>
+<table width="780" height="100%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+    <td height="78" valign="top">
+	
+	<TABLE width="100%" height=59 border=0 align="center" cellpadding="0" cellspacing="0" bgcolor="#ffffff">
+	  <TR>
+		<TD width=275 height="59" align=left class=user><img src="img/header2.jpg" width="275" height="60"></TD>
+		<TD width=505 align=left valign="bottom" background="img/bg-1.jpg" class=user><table width="90%"  border="0" align="center" cellpadding="0" cellspacing="2">
+          <tr>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td><div align="right" class="infoBL">Usuario: {hdr_nombre} | Local: {hdr_local} | {hdr_fecha} </div></td>
+          </tr>
+        </table></TD>
+	  </TR>
+	</TABLE>
+	<TABLE width="100%" height=19 border=0 align="center" cellpadding="0" cellspacing="0" bgcolor="#f1f0e9" style="border-top:1px solid #ABABAB; border-bottom:1px solid #ABABAB">
+	  <TR>
+		<TD align=left bgcolor="#FFFFFF" class=user></TD>
+		</TR>
+	</TABLE>
+
+	
+	</td>
+  </tr>
+  <tr height="400">
+    <td valign="top" bgcolor="#FFFFFF">
+      <table border=0 width="100%" class='ContentTitle'>
+        <tr>
+          <td width="53%" height="20" class='HeaderTitle'><!-- InstanceBeginEditable name="Titulo" -->Nuevo Calendario de Despacho <!-- InstanceEndEditable --></td>
+          <td width="47%" class='HeaderTitle'><!-- InstanceBeginEditable name="Botonera" --><!-- InstanceEndEditable --></td>
+        </tr>
+      </table>
+	  <br>
+      <table width="100%"  border="0" cellspacing="2" cellpadding="2">
+        <tr valign="top">
+          <td width="71%"><!-- InstanceBeginEditable name="Izquierda" --> 
+          <script language="JavaScript">
+
+		function validar_form( form ) {
+			
+			if(document.forma1.h_fin.value <= document.forma1.h_ini.value){
+				alert("la hora de fin debe ser superior que la hora de inicio");
+				form.h_fin.focus();	
+				return false;			
+			}	
+			if( validar_obligatorio( form.capac_desp_lu, "Es Obligación ingresar "+form.capac_desp_lu.label ) ) return false;
+				if(form.capac_desp_lu.value < 0){
+				 alert ("la capacidad debe ser mayor o igual a 0");
+				 return false;
+				 }
+			if( validar_obligatorio( form.capac_desp_ma, "Es Obligación ingresar "+form.capac_desp_ma.label ) ) return false;
+				if(form.capac_desp_ma.value < 0){
+				 alert ("la capacidad debe ser mayor o igual a 0");
+				 return false;
+				 }
+			if( validar_obligatorio( form.capac_desp_mi, "Es Obligación ingresar "+form.capac_desp_mi.label ) ) return false;
+				if(form.capac_desp_mi.value < 0){
+				 alert ("la capacidad debe ser mayor o igual a 0");
+				 return false;
+				 }
+			if( validar_obligatorio( form.capac_desp_ju, "Es Obligación ingresar "+form.capac_desp_ju.label ) ) return false;
+				if(form.capac_desp_ju.value < 0){
+				 alert ("la capacidad debe ser mayor o igual a 0");
+				 return false;
+				 }
+			if( validar_obligatorio( form.capac_desp_vi, "Es Obligación ingresar "+form.capac_desp_vi.label ) ) return false;
+				if(form.capac_desp_vi.value < 0){
+				 alert ("la capacidad debe ser mayor o igual a 0");
+				 return false;
+				 }
+			if( validar_obligatorio( form.capac_desp_sa, "Es Obligación ingresar "+form.capac_desp_sa.label ) ) return false;
+				if(form.capac_desp_sa.value < 0){
+				 alert ("la capacidad debe ser mayor o igual a 0");
+				 return false;
+				 }
+			if( validar_obligatorio( form.capac_desp_do, "Es Obligación ingresar "+form.capac_desp_do.label ) ) return false;
+				if(form.capac_desp_do.value < 0){
+				 alert ("la capacidad debe ser mayor o igual a 0");
+				 return false;
+				 }
+				 
+			if(!validaTarifas(form)){
+				alert ("Las tarifas deben ser un valor numerico.");
+				return false;
+			}
+			
+			return true;
+		}
+
+		function validaTarifas(form){
+		
+			//Lunes
+			if(!validarSiNumero(form.tarifa_economica_lu.value)){
+				form.tarifa_economica_lu.focus();
+				return false;
+			}
+			if(!validarSiNumero(form.tarifa_express_lu.value)){
+				form.tarifa_express_lu.focus();
+				return false;
+			}
+			if(!validarSiNumero(form.tarifa_umbral_lu.value)){
+				form.tarifa_umbral_lu.focus();
+				return false;
+			}
+			
+			//Martes
+			if(!validarSiNumero(form.tarifa_economica_ma.value)){
+				form.tarifa_economica_ma.focus();
+				return false;
+			}
+			if(!validarSiNumero(form.tarifa_express_ma.value)){
+				form.tarifa_express_ma.focus();
+				return false;
+			}
+			if(!validarSiNumero(form.tarifa_umbral_ma.value)){
+				form.tarifa_umbral_ma.focus();
+				return false;
+			}
+			
+			//Miercoles
+			if(!validarSiNumero(form.tarifa_economica_mi.value)){
+				form.tarifa_economica_mi.focus();
+				return false;
+			}
+			if(!validarSiNumero(form.tarifa_express_mi.value)){
+				form.tarifa_express_mi.focus();
+				return false;
+			}
+			if(!validarSiNumero(form.tarifa_umbral_mi.value)){
+				form.tarifa_umbral_mi.focus();
+				return false;
+			}
+			
+			//Jueves
+			if(!validarSiNumero(form.tarifa_economica_ju.value)){
+				form.tarifa_economica_ju.focus();
+				return false;
+			}
+			if(!validarSiNumero(form.tarifa_express_ju.value)){
+				form.tarifa_express_ju.focus();
+				return false;
+			}
+			if(!validarSiNumero(form.tarifa_umbral_ju.value)){
+				form.tarifa_umbral_ju.focus();
+				return false;
+			}
+			
+			//Viernes
+			if(!validarSiNumero(form.tarifa_economica_vi.value)){
+				form.tarifa_economica_vi.focus();
+				return false;
+			}
+			if(!validarSiNumero(form.tarifa_express_vi.value)){
+				form.tarifa_express_vi.focus();
+				return false;
+			}
+			if(!validarSiNumero(form.tarifa_umbral_vi.value)){
+				form.tarifa_umbral_vi.focus();
+				return false;
+			}
+			
+			//Sabado
+			if(!validarSiNumero(form.tarifa_economica_sa.value)){
+				form.tarifa_economica_sa.focus();
+				return false;
+			}
+			if(!validarSiNumero(form.tarifa_express_sa.value)){
+				form.tarifa_express_sa.focus();
+				return false;
+			}
+			if(!validarSiNumero(form.tarifa_umbral_sa.value)){
+				form.tarifa_umbral_sa.focus();
+				return false;
+			}
+			
+			//Domingo
+			if(!validarSiNumero(form.tarifa_economica_do.value)){
+				form.tarifa_economica_do.focus();
+				return false;
+			}
+			if(!validarSiNumero(form.tarifa_express_do.value)){
+				form.tarifa_express_do.focus();
+				return false;
+			}
+			if(!validarSiNumero(form.tarifa_umbral_do.value)){
+				form.tarifa_umbral_do.focus();
+				return false;
+			}
+			return true;
+		}
+		
+		function infoUmbral(){
+			var txt="Tarifa Umbral: Se refiere al costo despacho por compras menor a {tarifa_compra_umbral} \n ";
+			txt +="Para que la ventana de despacho no tenga este tipo, se debe cambiar a 0.";
+		 	alert(txt);
+		}
+		
+		function validarSiNumero(numero){
+			return (!/^([0-9])*$/.test(numero))? false:true;
+		}
+	</script>
+          
+           <form name="forma1" method="post" action="AgregaJornadaDespacho" onSubmit="return validar_form(this);">
+              <input type="hidden" name="id_semana" value="{id_semana}">
+              <input type="hidden" name = "fecha_param" value="{fecha_param}">
+              <input type="hidden" name = "id_zona" value="{id_zona}">
+              <input type="hidden" name="url" value="ViewCalDespacho?fecha={fecha_param}&id_zona={id_zona}">                           
+              <table width="400"  border="0" align="center" cellpadding="2" cellspacing="0" class="tabla2">
+                <tr valign="top">
+                  <td width="134">Zona de Despacho</td>
+                  <td width="515" height="17">{zona_desp}</td>
+                </tr>
+                <tr valign="top">
+                  <td>Semana</td>
+                  <td height="17">{f_ini} al {f_fin}</td>
+                </tr>
+                <tr valign="top">
+                  <td>Hora Inicio </td>
+                  <td height="17"><select name="h_ini">
+                   <!-- BEGIN DYNAMIC: select_hora_inicio -->
+                        <option value = "{h_inicio}:00:00" {sel}>{h_inicio}:00</option>
+                        <option value = "{h_inicio}:30:00" {sel1}>{h_inicio}:30</option>
+                   <!-- END DYNAMIC: select_hora_inicio -->                                         
+                  </select></td>                  
+                </tr>
+                <tr valign="top">
+                  <td>Hora Fin </td>
+                  <td height="17">
+                  <select name="h_fin">
+					 <!-- BEGIN DYNAMIC: select_hora_fin -->
+                        <option value = "{h_fin}:00:00" {sel}>{h_fin}:00</option>
+                        <option value = "{h_fin}:30:00" {sel1}>{h_fin}:30</option>
+                   	<!-- END DYNAMIC: select_hora_fin -->                   
+                  </select></td>
+                </tr>
+                <tr>
+                <td>&nbsp;</td>
+                <td><font color = "Red"><p> {msje_despacho}</p></font></td>
+                </tr>
+            </table>
+              <br>
+              <table width="90%" border="0" align="center" cellpadding="0" cellspacing="0" class="tabla2">
+                <tr>
+                  <th colspan="2">&nbsp;</th>
+                  <th><div align="center">Capacidad <br> Despacho </div></th>
+                  <th>Tarifa Normal</th>
+                  <th>Tarifa <br> Econ&oacute;mica</th>
+                  <th>Tarifa <br> Express</th>
+                  <th>Tarifa Bajo <br> Umbral <a href="javascript:infoUmbral();" title="Info">+Info</a></th>
+                  <th><div align="center">Jornada Picking Relacionada </div></th>
+                </tr>
+                <tr>
+                  <td>Lunes</td>
+                  <td><div align="center">{f_lu}</div></td>
+                  <td><div align="center">
+                      <input name="capac_desp_lu" type="text" value="" size="10" maxlength="6" onKeydown="if (event.ctrlKey && (String.fromCharCode(event.keyCode).toLowerCase() == 'c' || String.fromCharCode(event.keyCode).toLowerCase() == 'v')) { event.keyCode = 0; }">
+                  </div></td>
+                  <td>
+                     <div align="center">
+                        <select name="tarifa_normal_lu">
+                        <!-- BEGIN DYNAMIC: select_precios -->
+                          <option value = "{tarifa_normal_alta_valor}">{tarifa_normal_alta_nombre}</option>
+                          <option value = "{tarifa_normal_media_valor}">{tarifa_normal_media_nombre}</option>
+                          <option value = "{tarifa_normal_baja_valor}">{tarifa_normal_baja_nombre}</option>
+                        <!-- END DYNAMIC: select_precios -->
+                        </select>
+                     </div>
+                  </td>
+                  <td>
+                     <div align="center">
+                        <input name="tarifa_economica_lu" type="text" value="{tarifa_economica_valor}" size="8" maxlength="6" onKeydown="if (event.ctrlKey && (String.fromCharCode(event.keyCode).toLowerCase() == 'c' || String.fromCharCode(event.keyCode).toLowerCase() == 'v')) { event.keyCode = 0; }">
+                     </div>
+                  </td>
+                  <td>
+                     <div align="center">
+                        <input name="tarifa_express_lu" type="text" value="{tarifa_express_valor}" size="8" maxlength="6" onKeydown="if (event.ctrlKey && (String.fromCharCode(event.keyCode).toLowerCase() == 'c' || String.fromCharCode(event.keyCode).toLowerCase() == 'v')) { event.keyCode = 0; }">
+                     </div>
+                  </td>
+                  <td>
+                     <div align="center">
+                        <input name="tarifa_umbral_lu" type="text" value="{tarifa_umbral_valor}" style="font-size: 10px; border-color:#FFFF00;" size="8" maxlength="6" onKeydown="if (event.ctrlKey && (String.fromCharCode(event.keyCode).toLowerCase() == 'c' || String.fromCharCode(event.keyCode).toLowerCase() == 'v')) { event.keyCode = 0; }">
+                     </div>
+                  </td>
+                  <td><div align="center">
+                      <select name="jor_lu">
+                      <!-- BEGIN DYNAMIC: select_jornadas_lunes -->
+                        <option value = "{id_jornada}">{fecha} {h_ini} - {h_fin}</option>
+                      <!-- END DYNAMIC: select_jornadas_lunes -->
+                      </select>
+                  </div></td>
+                </tr>
+                
+                <tr>
+                  <td>Martes</td>
+                  <td><div align="center">{f_ma}</div></td>
+                  <td><div align="center">
+                      <input name="capac_desp_ma" type="text" value="" size="10" maxlength = "6" onKeydown="if (event.ctrlKey && (String.fromCharCode(event.keyCode).toLowerCase() == 'c' || String.fromCharCode(event.keyCode).toLowerCase() == 'v')) { event.keyCode = 0; }">
+                  </div></td>
+                  <td><div align="center">
+                      <select name="tarifa_normal_ma">
+                      <!-- BEGIN DYNAMIC: select_precios -->
+                        <option value = "{tarifa_normal_alta_valor}">{tarifa_normal_alta_nombre}</option>
+                        <option value = "{tarifa_normal_media_valor}">{tarifa_normal_media_nombre}</option>
+                        <option value = "{tarifa_normal_baja_valor}">{tarifa_normal_baja_nombre}</option>
+                      <!-- END DYNAMIC: select_precios -->
+                      </select>
+                  </div>
+                  </td>
+                  <td>
+                     <div align="center">
+                        <input name="tarifa_economica_ma" type="text" value="{tarifa_economica_valor}" size="8" maxlength="6" onKeydown="if (event.ctrlKey && (String.fromCharCode(event.keyCode).toLowerCase() == 'c' || String.fromCharCode(event.keyCode).toLowerCase() == 'v')) { event.keyCode = 0; }">
+                     </div>
+                  </td>
+                  <td>
+                     <div align="center">
+                        <input name="tarifa_express_ma" type="text" value="{tarifa_express_valor}" size="8" maxlength="6" onKeydown="if (event.ctrlKey && (String.fromCharCode(event.keyCode).toLowerCase() == 'c' || String.fromCharCode(event.keyCode).toLowerCase() == 'v')) { event.keyCode = 0; }">
+                     </div>
+                  </td>
+                  <td>
+                     <div align="center">
+                        <input name="tarifa_umbral_ma" type="text" value="{tarifa_umbral_valor}" style="font-size: 10px; border-color:#FFFF00;" size="8" maxlength="6" onKeydown="if (event.ctrlKey && (String.fromCharCode(event.keyCode).toLowerCase() == 'c' || String.fromCharCode(event.keyCode).toLowerCase() == 'v')) { event.keyCode = 0; }">
+                     </div>
+                  </td>
+                  <td><div align="center">
+                      <select name="jor_ma">
+                      <!-- BEGIN DYNAMIC: select_jornadas_martes -->
+                        <option value = "{id_jornada}">{fecha} {h_ini} - {h_fin}</option>
+                      <!-- END DYNAMIC: select_jornadas_martes -->
+                      </select>
+                  </div></td>
+                </tr>
+                
+                <tr>
+                  <td>Mi&eacute;rcoles</td>
+                  <td><div align="center">{f_mi}</div></td>
+                  <td><div align="center">
+                      <input name="capac_desp_mi" type="text" value="" size="10" maxlength = "6" onKeydown="if (event.ctrlKey && (String.fromCharCode(event.keyCode).toLowerCase() == 'c' || String.fromCharCode(event.keyCode).toLowerCase() == 'v')) { event.keyCode = 0; }">
+                  </div></td>                  
+                  <td><div align="center">
+                      <select name="tarifa_normal_mi">
+                      <!-- BEGIN DYNAMIC: select_precios -->
+                        <option value = "{tarifa_normal_alta_valor}">{tarifa_normal_alta_nombre}</option>
+                        <option value = "{tarifa_normal_media_valor}">{tarifa_normal_media_nombre}</option>
+                        <option value = "{tarifa_normal_baja_valor}">{tarifa_normal_baja_nombre}</option>
+                      <!-- END DYNAMIC: select_precios -->
+                      </select>
+                  </div>
+                  </td>
+                  <td>
+                     <div align="center">
+                        <input name="tarifa_economica_mi" type="text" value="{tarifa_economica_valor}" size="8" maxlength="6" onKeydown="if (event.ctrlKey && (String.fromCharCode(event.keyCode).toLowerCase() == 'c' || String.fromCharCode(event.keyCode).toLowerCase() == 'v')) { event.keyCode = 0; }">
+                     </div>
+                  </td>
+                  <td>
+                     <div align="center">
+                        <input name="tarifa_express_mi" type="text" value="{tarifa_express_valor}" size="8" maxlength="6" onKeydown="if (event.ctrlKey && (String.fromCharCode(event.keyCode).toLowerCase() == 'c' || String.fromCharCode(event.keyCode).toLowerCase() == 'v')) { event.keyCode = 0; }">
+                     </div>
+                  </td>
+                   <td>
+                     <div align="center">
+                        <input name="tarifa_umbral_mi" type="text" value="{tarifa_umbral_valor}" style="font-size: 10px; border-color:#FFFF00;" size="8" maxlength="6" onKeydown="if (event.ctrlKey && (String.fromCharCode(event.keyCode).toLowerCase() == 'c' || String.fromCharCode(event.keyCode).toLowerCase() == 'v')) { event.keyCode = 0; }">
+                     </div>
+                  </td>
+                  <td><div align="center">
+                      <select name="jor_mi">
+                      <!-- BEGIN DYNAMIC: select_jornadas_miercoles -->
+                        <option value = "{id_jornada}">{fecha} {h_ini} - {h_fin}</option>
+                      <!-- END DYNAMIC: select_jornadas_miercoles -->
+                      </select>
+                  </div></td>
+                </tr>
+                
+                <tr>
+                  <td>Jueves</td>
+                  <td><div align="center">{f_ju}</div></td>
+                  <td><div align="center">
+                      <input name="capac_desp_ju" type="text" value="" size="10" maxlength = "6" onKeydown="if (event.ctrlKey && (String.fromCharCode(event.keyCode).toLowerCase() == 'c' || String.fromCharCode(event.keyCode).toLowerCase() == 'v')) { event.keyCode = 0; }">
+                  </div></td>
+                  <td><div align="center">
+                      <select name="tarifa_normal_ju">
+                      <!-- BEGIN DYNAMIC: select_precios -->
+                        <option value = "{tarifa_normal_alta_valor}">{tarifa_normal_alta_nombre}</option>
+                        <option value = "{tarifa_normal_media_valor}">{tarifa_normal_media_nombre}</option>
+                        <option value = "{tarifa_normal_baja_valor}">{tarifa_normal_baja_nombre}</option>
+                      <!-- END DYNAMIC: select_precios -->
+                      </select>
+                  </div>
+                  </td>
+                  <td>
+                     <div align="center">
+                        <input name="tarifa_economica_ju" type="text" value="{tarifa_economica_valor}" size="8" maxlength="6" onKeydown="if (event.ctrlKey && (String.fromCharCode(event.keyCode).toLowerCase() == 'c' || String.fromCharCode(event.keyCode).toLowerCase() == 'v')) { event.keyCode = 0; }">
+                     </div>
+                  </td>
+                  <td>
+                     <div align="center">
+                        <input name="tarifa_express_ju" type="text" value="{tarifa_express_valor}" size="8" maxlength="6" onKeydown="if (event.ctrlKey && (String.fromCharCode(event.keyCode).toLowerCase() == 'c' || String.fromCharCode(event.keyCode).toLowerCase() == 'v')) { event.keyCode = 0; }">
+                     </div>
+                  </td>
+                   <td>
+                     <div align="center">
+                        <input name="tarifa_umbral_ju" type="text" value="{tarifa_umbral_valor}" style="font-size: 10px; border-color:#FFFF00;" size="8" maxlength="6" onKeydown="if (event.ctrlKey && (String.fromCharCode(event.keyCode).toLowerCase() == 'c' || String.fromCharCode(event.keyCode).toLowerCase() == 'v')) { event.keyCode = 0; }">
+                     </div>
+                  </td>
+                  <td><div align="center">
+                      <select name="jor_ju">
+                      <!-- BEGIN DYNAMIC: select_jornadas_jueves -->
+                        <option value = "{id_jornada}">{fecha} {h_ini} - {h_fin}</option>
+                      <!-- END DYNAMIC: select_jornadas_jueves -->
+                      </select>
+                  </div></td>
+                </tr>
+                
+                <tr>
+                  <td>Viernes</td>
+                  <td><div align="center">{f_vi}</div></td>
+                  <td><div align="center">
+                      <input name="capac_desp_vi" type="text" value="" size="10" maxlength = "6" onKeydown="if (event.ctrlKey && (String.fromCharCode(event.keyCode).toLowerCase() == 'c' || String.fromCharCode(event.keyCode).toLowerCase() == 'v')) { event.keyCode = 0; }">
+                  </div></td>
+                  <td><div align="center">
+                      <select name="tarifa_normal_vi">
+                      <!-- BEGIN DYNAMIC: select_precios -->
+                        <option value = "{tarifa_normal_alta_valor}">{tarifa_normal_alta_nombre}</option>
+                        <option value = "{tarifa_normal_media_valor}">{tarifa_normal_media_nombre}</option>
+                        <option value = "{tarifa_normal_baja_valor}">{tarifa_normal_baja_nombre}</option>
+                      <!-- END DYNAMIC: select_precios -->
+                      </select>
+                  </div>
+                  </td>
+                  <td>
+                     <div align="center">
+                        <input name="tarifa_economica_vi" type="text" value="{tarifa_economica_valor}" size="8" maxlength="6" onKeydown="if (event.ctrlKey && (String.fromCharCode(event.keyCode).toLowerCase() == 'c' || String.fromCharCode(event.keyCode).toLowerCase() == 'v')) { event.keyCode = 0; }">
+                     </div>
+                  </td>
+                  <td>
+                     <div align="center">
+                        <input name="tarifa_express_vi" type="text" value="{tarifa_express_valor}" size="8" maxlength="6" onKeydown="if (event.ctrlKey && (String.fromCharCode(event.keyCode).toLowerCase() == 'c' || String.fromCharCode(event.keyCode).toLowerCase() == 'v')) { event.keyCode = 0; }">
+                     </div>
+                  </td>
+                   <td>
+                     <div align="center">
+                        <input name="tarifa_umbral_vi" type="text" value="{tarifa_umbral_valor}" style="font-size: 10px; border-color:#FFFF00;" size="8" maxlength="6" onKeydown="if (event.ctrlKey && (String.fromCharCode(event.keyCode).toLowerCase() == 'c' || String.fromCharCode(event.keyCode).toLowerCase() == 'v')) { event.keyCode = 0; }">
+                     </div>
+                  </td>
+                  <td><div align="center">
+                      <select name="jor_vi">
+                      <!-- BEGIN DYNAMIC: select_jornadas_viernes -->
+                        <option value = "{id_jornada}">{fecha} {h_ini} - {h_fin}</option>
+                      <!-- END DYNAMIC: select_jornadas_viernes -->
+                      </select>
+                  </div></td>
+                </tr>
+                
+                <tr>
+                  <td>S&aacute;bado</td>
+                  <td><div align="center">{f_sa}</div></td>
+                  <td><div align="center">
+                      <input name="capac_desp_sa" type="text" value="" size="10" maxlength = "6" onKeydown="if (event.ctrlKey && (String.fromCharCode(event.keyCode).toLowerCase() == 'c' || String.fromCharCode(event.keyCode).toLowerCase() == 'v')) { event.keyCode = 0; }">
+                  </div></td>
+                  <td><div align="center">
+                        <select name="tarifa_normal_sa">
+                      <!-- BEGIN DYNAMIC: select_precios -->
+                        <option value = "{tarifa_normal_alta_valor}">{tarifa_normal_alta_nombre}</option>
+                        <option value = "{tarifa_normal_media_valor}">{tarifa_normal_media_nombre}</option>
+                        <option value = "{tarifa_normal_baja_valor}">{tarifa_normal_baja_nombre}</option>
+                      <!-- END DYNAMIC: select_precios -->
+                      </select>
+                  </div>
+                  </td>
+                  <td>
+                     <div align="center">
+                        <input name="tarifa_economica_sa" type="text" value="{tarifa_economica_valor}" size="8" maxlength="6" onKeydown="if (event.ctrlKey && (String.fromCharCode(event.keyCode).toLowerCase() == 'c' || String.fromCharCode(event.keyCode).toLowerCase() == 'v')) { event.keyCode = 0; }">
+                     </div>
+                  </td>
+                  <td>
+                     <div align="center">
+                        <input name="tarifa_express_sa" type="text" value="{tarifa_express_valor}" size="8" maxlength="6" onKeydown="if (event.ctrlKey && (String.fromCharCode(event.keyCode).toLowerCase() == 'c' || String.fromCharCode(event.keyCode).toLowerCase() == 'v')) { event.keyCode = 0; }">
+                     </div>
+                  </td>
+                   <td>
+                     <div align="center">
+                        <input name="tarifa_umbral_sa" type="text" value="{tarifa_umbral_valor}" style="font-size: 10px; border-color:#FFFF00;" size="8" maxlength="6" onKeydown="if (event.ctrlKey && (String.fromCharCode(event.keyCode).toLowerCase() == 'c' || String.fromCharCode(event.keyCode).toLowerCase() == 'v')) { event.keyCode = 0; }">
+                     </div>
+                  </td>
+                  <td><div align="center">
+                      <select name="jor_sa">
+                      <!-- BEGIN DYNAMIC: select_jornadas_sabado -->
+                        <option value = "{id_jornada}">{fecha} {h_ini} - {h_fin}</option>
+                      <!-- END DYNAMIC: select_jornadas_sabado -->
+                      </select>
+                  </div></td>
+                </tr>
+                
+                <tr>
+                  <td>Domingo</td>
+                  <td><div align="center">{f_do}</div></td>
+                  <td><div align="center">
+                      <input name="capac_desp_do" type="text" value="" size="10" maxlength = "6" onKeydown="if (event.ctrlKey && (String.fromCharCode(event.keyCode).toLowerCase() == 'c' || String.fromCharCode(event.keyCode).toLowerCase() == 'v')) { event.keyCode = 0; }">
+                  </div></td>
+                  <td><div align="center">
+                       <select name="tarifa_normal_do">
+                      <!-- BEGIN DYNAMIC: select_precios -->
+                        <option value = "{tarifa_normal_alta_valor}">{tarifa_normal_alta_nombre}</option>
+                        <option value = "{tarifa_normal_media_valor}">{tarifa_normal_media_nombre}</option>
+                        <option value = "{tarifa_normal_baja_valor}">{tarifa_normal_baja_nombre}</option>
+                      <!-- END DYNAMIC: select_precios -->
+                      </select>
+                  </div>
+                  </td>
+                  <td>
+                     <div align="center">
+                        <input name="tarifa_economica_do" type="text" value="{tarifa_economica_valor}" size="8" maxlength="6" onKeydown="if (event.ctrlKey && (String.fromCharCode(event.keyCode).toLowerCase() == 'c' || String.fromCharCode(event.keyCode).toLowerCase() == 'v')) { event.keyCode = 0; }">
+                     </div>
+                  </td>
+                  <td>
+                     <div align="center">
+                        <input name="tarifa_express_do" type="text" value="{tarifa_express_valor}" size="8" maxlength="6" onKeydown="if (event.ctrlKey && (String.fromCharCode(event.keyCode).toLowerCase() == 'c' || String.fromCharCode(event.keyCode).toLowerCase() == 'v')) { event.keyCode = 0; }">
+                     </div>
+                  </td>
+                   <td>
+                     <div align="center">
+                        <input name="tarifa_umbral_do" type="text" value="{tarifa_umbral_valor}" style="font-size: 10px; border-color:#FFFF00;" size="8" maxlength="6" onKeydown="if (event.ctrlKey && (String.fromCharCode(event.keyCode).toLowerCase() == 'c' || String.fromCharCode(event.keyCode).toLowerCase() == 'v')) { event.keyCode = 0; }">
+                     </div>
+                  </td>
+                  <td><div align="center">
+                      <select name="jor_do">
+                      <!-- BEGIN DYNAMIC: select_jornadas_domingo -->
+                        <option value = "{id_jornada}">{fecha} {h_ini} - {h_fin}</option>
+                      <!-- END DYNAMIC: select_jornadas_domingo -->
+                      </select>
+                  </div></td>
+                </tr>
+            </table>              
+              <br>
+              <table width="343" border="0" align="center" cellpadding="0" cellspacing="2">
+                <tr>
+                  <td width="169"><div align="center">
+                      <input type="button" name="Button" value="Cancelar" onClick="location.href='ViewCalDespacho?fecha={fecha_param}';">
+                  </div></td>
+                  <td width="168"><div align="center">
+                      <input type="submit" name="Submit" value="Grabar" {disabled_button} >
+                  </div></td>
+                </tr>
+                <tr>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                </tr>
+              </table>
+              <br>
+      </form>
+      
+    <script language="JavaScript">
+	document.forma1.capac_desp_lu.numerico=true;	
+	document.forma1.capac_desp_lu.label = 'Capacidad Despacho Lunes';	
+	document.forma1.capac_desp_lu.onkeypress = KeyIsNumber;
+	
+	document.forma1.capac_desp_ma.numerico=true;
+	document.forma1.capac_desp_ma.label = 'Capacidad Despacho Martes';	
+	document.forma1.capac_desp_ma.onkeypress = KeyIsNumber;
+	
+	document.forma1.capac_desp_mi.numerico=true;
+	document.forma1.capac_desp_mi.label = 'Capacidad Despacho Miercoles';	
+	document.forma1.capac_desp_mi.onkeypress = KeyIsNumber;
+	
+	document.forma1.capac_desp_ju.numerico=true;
+	document.forma1.capac_desp_ju.label = 'Capacidad Despacho Jueves';	
+	document.forma1.capac_desp_ju.onkeypress = KeyIsNumber;
+	
+	document.forma1.capac_desp_vi.numerico=true;
+	document.forma1.capac_desp_vi.label = 'Capacidad Despacho Viernes';	
+	document.forma1.capac_desp_vi.onkeypress = KeyIsNumber;
+	
+	document.forma1.capac_desp_sa.numerico=true;
+	document.forma1.capac_desp_sa.label = 'Capacidad Despacho Sabado';	
+	document.forma1.capac_desp_sa.onkeypress = KeyIsNumber;
+	
+	document.forma1.capac_desp_do.numerico=true;
+	document.forma1.capac_desp_do.label = 'Capacidad Despacho Domingo';	
+	document.forma1.capac_desp_do.onkeypress = KeyIsNumber;
+</script>
+      
+    <!-- InstanceEndEditable --></td>
+        </tr>
+      </table>
+      </td>
+  </tr>
+  <tr>
+    <td>
+	<TABLE width="100%" height=19 border=0 align="center" cellpadding="0" cellspacing="0" bgcolor="#f1f0e9" style="border-top:1px solid #ABABAB; border-bottom:1px solid #ABABAB">
+	  <TR>
+		<TD align=center bgcolor="#67b01a" class=infoBL><div align="center">Back Office Local - Jumbo.cl</div></TD>
+		</TR>
+	</TABLE>
+
+	
+	</td>
+  </tr>
+</table>
+</body>
+<!-- InstanceEnd --></html>

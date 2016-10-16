@@ -1,0 +1,186 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Jumbo.cl - Calendario Despacho</title>
+<meta http-equiv="CACHE-CONTROL" content="NO-CACHE" />
+<meta http-equiv="PRAGMA" content="NO-CACHE" />
+<meta http-equiv="EXPIRES" content="Mon, 22 Jul 2002 11:12:01 GMT" />
+<script type="text/JavaScript">
+<!--
+var objectSelected = null;
+var defaultStyle = null;
+
+function cambiarEstilo(element, newStyle) {
+	if( document.t_picking.jsel.value == 1 ) {
+		if (objectSelected != null) {
+			if (element != objectSelected)
+				element.className = newStyle;
+		} else 
+			element.className = newStyle;
+		element.style.cursor="hand";
+	}
+}
+
+function seleccionarElemento(element, newStyle) {
+	if (objectSelected != null) {
+		objectSelected.className = defaultStyle;
+	}
+    if( document.t_picking.jsel.value == 1 ) {
+        element.className = newStyle;
+        objectSelected = element;
+    }
+}
+
+function setEstiloNormal(normalStyle) {
+	defaultStyle = normalStyle;
+}
+//-->
+</script>
+<link href="/FO_WebContent/css/estilostextos.css" rel="stylesheet" type="text/css" />
+<style type="text/css">
+<!--
+body {
+	margin-left: 0px;
+	margin-top: 0px;
+}
+-->
+</style>
+</head>
+<body>
+<BODY onLoad="setEstiloNormal('calendarioactivo');">
+<table width="500" border="0" cellspacing="0" cellpadding="3">
+  <tr>
+    <td colspan="2">
+    <table width="100%" border="0" cellpadding="0" cellspacing="0">
+      <tr>
+        <td height="7"><img src="/FO_IMGS/img/estructura/calendario/esquinasupizqu.gif" width="9" height="7" /></td>
+        <td height="7" colspan="2" background="/FO_IMGS/img/estructura/calendario/superior.gif"><img src="/FO_IMGS/img/estructura/calendario/superior.gif" width="1" height="7" /><img src="/FO_IMGS/img/estructura/calendario/superior.gif" width="1" height="7" /></td>
+        <td height="7"><img src="/FO_IMGS/img/estructura/calendario/esquinasupder.gif" width="9" height="7" /></td>
+      </tr>
+      <tr>
+        <td width="9" height="14" valign="top" background="/FO_IMGS/img/estructura/calendario/ladoizq.gif"><img src="/FO_IMGS/img/estructura/calendario/izquierdaarriba.gif" width="9" height="32" /></td>
+        <td colspan="2" background="/FO_IMGS/img/estructura/calendario/tramaoscura.gif">
+          <table width="100%" border="0" cellpadding="0" cellspacing="0">
+            <tr>
+              <td width="120" rowspan="2" class="titulo">Horario</td>
+              <td width="50" align="center" class="tabla">Lunes</td>
+              <td width="50" align="center" class="tabla">Martes</td>
+              <td width="50" align="center" class="tabla">Mi&eacute;rcoles</td>
+              <td width="50" align="center" class="tabla">Jueves</td>
+              <td width="50" align="center" class="tabla">Viernes</td>
+              <td width="50" align="center" class="tabla">S&aacute;bado</td>
+              <td width="50" align="center" class="tabla">Domingo</td>
+            </tr>
+            <tr>
+              <td align="center" class="tabla">{f_lu}</td>
+              <td align="center" class="tabla">{f_ma}</td>
+              <td align="center" class="tabla">{f_mi}</td>
+              <td align="center" class="tabla">{f_ju}</td>
+              <td align="center" class="tabla">{f_vi}</td>
+              <td align="center" class="tabla">{f_sa}</td>
+              <td align="center" class="tabla">{f_do}</td>
+            </tr>
+<!-- BEGIN DYNAMIC: FILA_SEL -->
+            <tr height="20" style="cursor:default">
+              <td background="/FO_IMGS/img/estructura/calendario/tramaclara.gif" align="center" class="calendario style1" >{h_ini} - {h_fin}</td>
+<!-- BEGIN DYNAMIC: LUNES_CANDADO -->
+              <td align="center" class="calendarioactivo" ><img src="/FO_IMGS/img/estructura/calendario/candado.gif" alt="despacho no disponible" width="11" height="14" /></td>
+<!-- END DYNAMIC: LUNES_CANDADO -->
+<!-- BEGIN DYNAMIC: LUNES_PRECIO -->
+              <td class="calendarioactivo" onclick="send_despacho( '{id_jdespacho_lu}','{precio_lu}', '{id_jpicking_lu}', '{fecha_lu}' ); seleccionarElemento(this, 'calendarioSeleccion')" onmouseover="cambiarEstilo(this, 'calendarioOnMouseOver')" onmouseout="cambiarEstilo(this, 'calendarioactivo')">{precio_lu}</td>
+<!-- END DYNAMIC: LUNES_PRECIO -->
+<!-- BEGIN DYNAMIC: MARTES_CANDADO -->
+              <td align="center" class="calendarioactivo" ><img src="/FO_IMGS/img/estructura/calendario/candado.gif" alt="despacho no disponible" width="11" height="14" /></td>
+<!-- END DYNAMIC: MARTES_CANDADO -->
+<!-- BEGIN DYNAMIC: MARTES_PRECIO -->
+              <td class="calendarioactivo" onclick="send_despacho( '{id_jdespacho_ma}','{precio_ma}', '{id_jpicking_ma}', '{fecha_ma}' ); seleccionarElemento(this, 'calendarioSeleccion')" onmouseover="cambiarEstilo(this, 'calendarioOnMouseOver')" onmouseout="cambiarEstilo(this, 'calendarioactivo')" >{precio_ma}</td>
+<!-- END DYNAMIC: MARTES_PRECIO -->
+<!-- BEGIN DYNAMIC: MIERCOLES_CANDADO -->
+              <td align="center" class="calendarioactivo" ><img src="/FO_IMGS/img/estructura/calendario/candado.gif" alt="despacho no disponible" width="11" height="14" /></td>
+<!-- END DYNAMIC: MIERCOLES_CANDADO -->
+<!-- BEGIN DYNAMIC: MIERCOLES_PRECIO -->
+              <td class="calendarioactivo" onclick="send_despacho( '{id_jdespacho_mi}','{precio_mi}', '{id_jpicking_mi}', '{fecha_mi}' ); seleccionarElemento(this, 'calendarioSeleccion')" onmouseover="cambiarEstilo(this, 'calendarioOnMouseOver')" onmouseout="cambiarEstilo(this, 'calendarioactivo')" >{precio_mi}</td>
+<!-- END DYNAMIC: MIERCOLES_PRECIO -->
+<!-- BEGIN DYNAMIC: JUEVES_CANDADO -->
+              <td align="center" class="calendarioactivo" ><img src="/FO_IMGS/img/estructura/calendario/candado.gif" alt="despacho no disponible" width="11" height="14" /></td>
+<!-- END DYNAMIC: JUEVES_CANDADO -->
+<!-- BEGIN DYNAMIC: JUEVES_PRECIO -->
+              <td class="calendarioactivo" onclick="send_despacho( '{id_jdespacho_ju}','{precio_ju}', '{id_jpicking_ju}', '{fecha_ju}' ); seleccionarElemento(this, 'calendarioSeleccion')" onmouseover="cambiarEstilo(this, 'calendarioOnMouseOver')" onmouseout="cambiarEstilo(this, 'calendarioactivo')" >{precio_ju}</td>
+<!-- END DYNAMIC: JUEVES_PRECIO -->
+<!-- BEGIN DYNAMIC: VIERNES_CANDADO -->
+              <td align="center" class="calendarioactivo" ><img src="/FO_IMGS/img/estructura/calendario/candado.gif" alt="despacho no disponible" width="11" height="14" /></td>
+<!-- END DYNAMIC: VIERNES_CANDADO -->
+<!-- BEGIN DYNAMIC: VIERNES_PRECIO -->
+              <td class="calendarioactivo" onclick="send_despacho( '{id_jdespacho_vi}','{precio_vi}', '{id_jpicking_vi}', '{fecha_vi}' ); seleccionarElemento(this, 'calendarioSeleccion')" onmouseover="cambiarEstilo(this, 'calendarioOnMouseOver')" onmouseout="cambiarEstilo(this, 'calendarioactivo')" >{precio_vi}</td>
+<!-- END DYNAMIC: VIERNES_PRECIO -->
+<!-- BEGIN DYNAMIC: SABADO_CANDADO -->
+              <td align="center" class="calendarioactivo" ><img src="/FO_IMGS/img/estructura/calendario/candado.gif" alt="despacho no disponible" width="11" height="14" /></td>
+<!-- END DYNAMIC: SABADO_CANDADO -->
+<!-- BEGIN DYNAMIC: SABADO_PRECIO -->
+              <td class="calendarioactivo" onclick="send_despacho( '{id_jdespacho_sa}','{precio_sa}', '{id_jpicking_sa}', '{fecha_sa}' ); seleccionarElemento(this, 'calendarioSeleccion')" onmouseover="cambiarEstilo(this, 'calendarioOnMouseOver')" onmouseout="cambiarEstilo(this, 'calendarioactivo')"  >{precio_sa}</td>
+<!-- END DYNAMIC: SABADO_PRECIO -->
+<!-- BEGIN DYNAMIC: DOMINGO_CANDADO -->
+              <td align="center" class="calendarioactivo" ><img src="/FO_IMGS/img/estructura/calendario/candado.gif" alt="despacho no disponible" width="11" height="14" /></td>
+<!-- END DYNAMIC: DOMINGO_CANDADO -->
+<!-- BEGIN DYNAMIC: DOMINGO_PRECIO -->
+              <td class="calendarioactivo" onclick="send_despacho( '{id_jdespacho_do}','{precio_do}', '{id_jpicking_do}', '{fecha_do}' ); seleccionarElemento(this, 'calendarioSeleccion')" onmouseover="cambiarEstilo(this, 'calendarioOnMouseOver')" onmouseout="cambiarEstilo(this, 'calendarioactivo')" >{precio_do}</td>
+<!-- END DYNAMIC: DOMINGO_PRECIO -->
+            </tr>
+<!-- END DYNAMIC: FILA_SEL -->
+          </table>
+        </td>
+        <td width="7" valign="top" background="/FO_IMGS/img/estructura/calendario/ladoder.gif"><img src="/FO_IMGS/img/estructura/calendario/derechaarriba.gif" width="9" height="32" /></td>
+      </tr>
+      <tr>
+        <td valign="top"><img src="/FO_IMGS/img/estructura/calendario/esquinainferiorizq.gif" width="9" height="7" /></td>
+        <td height="7" colspan="2">
+          <table width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+              <td width="107" background="/FO_IMGS/img/estructura/calendario/inferiroscuro.gif"><img src="/FO_IMGS/img/estructura/calendario/inferiroscuro.gif" width="1" height="7" /></td>
+              <td width="" background="/FO_IMGS/img/estructura/calendario/inferior.gif"><img src="/FO_IMGS/img/estructura/calendario/inferior.gif" width="1" height="7" /></td>
+            </tr>
+          </table>
+        </td>
+        <td width="7" valign="top"><img src="/FO_IMGS/img/estructura/calendario/esquinainferiorder.gif" width="9" height="7" align="right" /></td>
+      </tr>
+    </table>
+    </td>
+  </tr>
+  <tr>
+    <td width="47%" height="13">
+      <A HREF="DespachoChart?sel={sel}&pa={atras}&zona_id={zona_id}&cant_prod={cant_prod}"><img src="/FO_IMGS/img/estructura/calendario/{boton_atras}" alt="Retroceder semana" border=0 width="16" height="15" /></A>
+      <span class="tabla">Retroceder semana </span>
+    </td>
+    <td width="53%" align="right"><span class="lectura">Avanzar semana</span>
+      <A HREF="DespachoChart?sel={sel}&pa={siguiente}&zona_id={zona_id}&cant_prod={cant_prod}"><img src="/FO_IMGS/img/estructura/calendario/{boton_adelante}" alt="Avanzar semana" border=0 width="16" height="15" /></A>
+    </td>
+  </tr>
+  <tr>
+    <td height="12" colspan="2">
+      <div align="center" class="lectura">Tu primera compra con Tarjeta M&aacute;s Jumbo tiene DESPACHO GRATIS 
+      (para compras sobre $50.000).  
+        <br />
+        Se descontar&aacute; al momento de validar tu pedido.</div>
+    </td>
+  </tr>
+</table>
+<script>
+function send_despacho( desp, precio, pick, fecha ) {
+	var precio_aux = precio.replace("$","").replace(".","");
+    document.t_picking.jpicking.value = pick ;
+    document.t_picking.jprecio.value = precio_aux;
+    document.t_picking.jdespacho.value = desp;
+    document.t_picking.jfecha.value = fecha;
+}
+</script>
+<form name="t_picking" method="post" action="#">
+<input type="hidden" name="jpicking" value="" />
+<input type="hidden" name="jprecio" value="" />
+<input type="hidden" name="jdespacho" value="" />
+<input type="hidden" name="jfecha" value="" />
+<input type="hidden" name="jclave" value="">
+<input type="hidden" name="jsel" value="{sel}" />
+</form>
+</body>
+</html>

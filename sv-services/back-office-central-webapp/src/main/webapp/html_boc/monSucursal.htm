@@ -1,0 +1,224 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html><!-- InstanceBegin template="/Templates/fullbody.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="EXPIRES" CONTENT="Mon, 22 Jul 2002 11:12:01 GMT">
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>Jumbo.cl Back Office Central</title>
+<!-- InstanceEndEditable -->
+
+<!-- InstanceBeginEditable name="head" --><!-- InstanceEndEditable -->
+
+<link href="estilos.css" rel="stylesheet" type="text/css">
+<!--link href="../default.css" rel="stylesheet" type="text/css"-->
+<style type="text/css">
+<!--
+.style1 {color: #666666}
+-->
+</style>
+</head>
+
+<body>
+<link rel="stylesheet" href="menu/menu.css">
+<script language="JavaScript" src="menu/menu.js"></script>
+<script language="JavaScript" src="menu/menu_tpl.js"></script>
+<script language="JavaScript" src="menu/menu_items.js"></script>
+<script language="JavaScript" src="popup.js"></script>
+<script language="JavaScript" src="funciones.js"></script>
+<table width="780" height="100%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+    <td height="78" valign="top">
+	
+	<TABLE width="100%" height=59 border=0 align="center" cellpadding="0" cellspacing="0" bgcolor="#ffffff">
+	  <TR>
+		<TD width=275 height="59" align=left class=user><img src="img/header2.jpg" width="275" height="60"></TD>
+		<TD width=505 align=left valign="bottom" background="img/bg-1.jpg" class=user><table width="90%"  border="0" align="center" cellpadding="0" cellspacing="2">
+          <tr>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td><div align="right" class="infoBL">Usuario: {hdr_nombre}&nbsp;&nbsp;| {hdr_fecha}</div></td>
+          </tr>
+        </table></TD>
+	  </TR>
+	</TABLE>
+	<TABLE width="100%" height=19 border=0 align="center" cellpadding="0" cellspacing="0" bgcolor="#f1f0e9" style="border-top:1px solid #ABABAB; border-bottom:1px solid #ABABAB">
+	  <TR>
+		<TD align=left bgcolor="#FFFFFF" class=user></TD>
+		</TR>
+	</TABLE>
+
+	
+	</td>
+  </tr>
+  <tr height="400">
+    <td valign="top" bgcolor="#FFFFFF">
+      <table border=0 width="100%" class='ContentTitle'>
+        <tr>
+          <td width="53%" height="20" class='HeaderTitle'><!-- InstanceBeginEditable name="Titulo" --> Administrador de Sucursales<!-- InstanceEndEditable --></td>
+          <td width="47%" class='HeaderTitle'><!-- InstanceBeginEditable name="Botonera" -->
+            <div align="right"><a href="ViewSucursalNewForm">Nueva Sucursal</a> </div>
+          <!-- InstanceEndEditable --></td>
+        </tr>
+      </table>
+	  <br>
+      <table width="100%"  border="0" cellspacing="2" cellpadding="2">
+        <tr valign="top">
+          <td width="71%"><!-- InstanceBeginEditable name="Izquierda" -->
+          	<script language="JavaScript">
+          		function busqueda(form){
+          			//alert("action:"+form.action.value);
+					//var buscapor = new String(form.buscapor.value);
+					if (form.action.value== "bus_suc"){
+						if (validar_letranumero(form.bus_suc, "Este campo permite solo letras y números")) return false
+						if (frmTipBus.buscapor[0].checked) {
+							if (validar_numero(form.bus_suc, "EL Rut sólo acepta números")) return false;
+							form.buscapor.value = frmTipBus.buscapor[0].value;
+						}
+						if (frmTipBus.buscapor[1].checked) form.buscapor.value = frmTipBus.buscapor[1].value;
+						if (frmTipBus.buscapor[2].checked) form.buscapor.value = frmTipBus.buscapor[2].value;
+						//alert("buscapor:"+form.buscapor.value);
+					}
+					return true;
+          		}
+          		
+          		
+          	function abre_popup(){
+				valor="";
+				if ((valor = popUpWindowModalscroll('ViewEmpresasPopUp', 100, 100, 600, 400))> '0') {
+					if (valor != ""){
+						id = valor.split("|");
+						document.frmBusEmp.id_empresa.value = id[0];
+						document.frmBusEmp.empresa.value = id[1];
+					}
+				}
+			}
+          	</script>  
+          	
+			  <table width="750"  border="0" align="center" cellpadding="0" cellspacing="0">
+              <tr>
+                <td>
+                <!-- aqui estaba el form  -->
+				<fieldset>
+                  <legend>Buscar Sucursal </legend>
+                  
+                  <table width="100%"  border="0" cellspacing="2" cellpadding="0">
+                    <tr>
+					  <td width="38%">Empresa
+					  </td>
+				<form name="frmTipBus" method="post" action="">	  
+                      <td width="34%"> <input name="buscapor" type="radio" value="rut" {check_1} > <!-- //onClick="frmBusSuc.buscapor.value = 'rut'"  -->
+                      RUT 
+                      <input name="buscapor" type="radio" value="raz_social" {check_2} >
+                      Razon Social 
+                      <input name="buscapor" type="radio" value="nombre" {check_3} >
+                      Nombre</td>
+                </form>
+                      <td width="28%">Estado</td>
+                      </tr>
+                    <tr>
+				<form name="frmBusEmp" method="post" action="ViewMonSucursal" onsubmit="return busqueda(this);" >
+                  <input type="hidden" name="action" value="bus_emp">
+					  <td>
+				    
+					    <input name="id_empresa" type="hidden" value="{id_empresa}" size="50" >
+					 	<input name="empresa" type="text"  value="{empresa}" size="30" readOnly onclick="javascript:abre_popup();" >
+                     	<a href="javascript:abre_popup();"><img title="Buscar empresa" src="img/magnify.jpg" width="16" height="16" border="0"></a> 
+						<input name="Button1" type="submit" class="cmd" value="Buscar" >
+					  </td>
+				</form>
+				<form name="frmBusSuc" method="post" action="ViewMonSucursal" onsubmit="return busqueda(this);" >
+                  <input type="hidden" name="action" value="bus_suc">
+                  <input type="hidden" name="buscapor" value="">
+                      <td><input name="bus_suc" type="text" size="30" value="{bus_suc}" maxlength="50">
+                          <input name="Button2" type="submit" class="cmd" value="Buscar" >
+					    </td>
+				</form>
+				<form name="frmBusEst" method="post" action="ViewMonSucursal" onsubmit="return busqueda(this);" >
+                  <input type="hidden" name="action" value="bus_est">
+                      <td><select name="estado">
+                          <option value="" selected>Todos</option>
+						<!-- BEGIN DYNAMIC: ESTADOS -->	
+		                  <option value="{id_estado}" {sel1} >{nom_estado}</option>
+			            <!-- END DYNAMIC: ESTADOS -->
+                        </select>
+                        <input name="Button3" type="submit" class="cmd" value="Buscar" >
+						</td>
+				</form>
+                      </tr>
+                  </table>
+                  
+                </fieldset>
+				</td>
+              </tr>
+            </table>
+			
+             <div align="center"><font color=red>{msje}</font>&nbsp;{mje1}&nbsp;
+             <br><br></div>
+		      
+            <table width="750"  border="0" align="center" cellpadding="2" cellspacing="0" class="tabla2">
+              <tr>
+                <th width="20">Id</th>
+                <th width="80">RUT</th>
+                <th width="250">Razon Social</th>
+                <th width="300">Nombre Sucursal</th>
+				<th width="50">Estado</th>
+				<th width="50">Acciones</th>
+              </tr>
+              <!-- BEGIN DYNAMIC: listado_suc -->
+              <tr>
+                <td><div align="center">{suc_id}</div></td>
+                <td>{suc_rut}-{suc_dv}</td>
+                <td><div align="left">{suc_raz_social}</div></td>
+                <td><div align="left">{suc_nombre}</div></td>
+				<td>{suc_estado}</td>
+				<td><div align="left"><a href="ViewSucursalForm?id_sucursal={suc_id}">Editar</a></div></td>
+              </tr>
+              <!-- END DYNAMIC: listado_suc -->
+			</table>
+			<center></center>
+            <FORM name=form3 method=get action="ViewMonSucursal">
+		  	<input type="hidden" name="action" value="{action}">
+		  	<input name=buscapor type=hidden value="{buscapor}">
+		  	<input name=bus_suc type=hidden value="{bus_suc}">
+		  	<input name=id_empresa type=hidden value="{id_empresa}">
+		  	<input name=estado type=hidden value="{estado}">
+		  	<input name=empresa type=hidden value="{empresa}">		  	
+            <table width="715"  border="0" align="center" cellpadding="2" cellspacing="2">
+              <tr>
+                <td width="728"><div align="right">  
+					<a href="ViewMonSucursal?pagina={anterior}&action={action}&bus_suc={bus_suc}&buscapor={buscapor}&id_empresa={id_empresa}&estado={estado}&empresa={empresa}">{anterior_label}&nbsp;</a>
+					Página :<select name="pagina" onchange="submit(this.form);">
+					<!-- BEGIN DYNAMIC: PAGINAS -->						
+						<option value="{pag}" {sel_pag}>{pag}</option>
+					<!-- END DYNAMIC: PAGINAS -->						
+						</select>
+					&nbsp; <a href="ViewMonSucursal?pagina={siguiente}&action={action}&bus_suc={bus_suc}&buscapor={buscapor}&id_empresa={id_empresa}&estado={estado}&empresa={empresa}">{siguiente_label} &nbsp;</a>
+                </div></td>
+              </tr>
+            </table>
+            </FORM>
+            <br>
+			
+          <!-- InstanceEndEditable --></td>
+        </tr>
+      </table>
+      </td>
+  </tr>
+  <tr>
+    <td>
+	<TABLE width="100%" height=19 border=0 align="center" cellpadding="0" cellspacing="0" bgcolor="#f1f0e9" style="border-top:1px solid #ABABAB; border-bottom:1px solid #ABABAB">
+	  <TR>
+		<TD align=center bgcolor="#67b01a" class=infoBL><div align="center">Back Office Central - Jumbo.cl</div></TD>
+		</TR>
+	</TABLE>
+
+	
+	</td>
+  </tr>
+</table>
+</body>
+<!-- InstanceEnd --></html>

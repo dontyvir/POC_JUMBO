@@ -1,0 +1,30 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>cl.jumbo.process</groupId>
+    <artifactId>sv-process</artifactId>
+    <version>2.0.12-SNAPSHOT</version>
+  </parent>
+  <artifactId>process-gatillacaptura-tbk</artifactId>
+  <build>
+		<finalName>${project.artifactId}</finalName>
+		<plugins>
+			<plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <addClasspath>true</addClasspath>
+                            <classpathPrefix>lib/</classpathPrefix>
+                            <mainClass>cl.jumbo.url.Url_TBK</mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
+            </plugin>
+		</plugins>
+	</build>
+	<properties>
+		<process.startupShellScript>run</process.startupShellScript>
+	</properties>
+</project>

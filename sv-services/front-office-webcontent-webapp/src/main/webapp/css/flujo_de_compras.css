@@ -1,0 +1,1646 @@
+.contenedor_carro_2012{
+	float: left;
+	width: 852px;
+	text-align: center;
+	height:auto;
+	padding-left: 50px;
+	font-weight: normal;
+}
+.col_productos_carro_2012{
+	float: left;
+	width: 850px;
+	height:auto;
+	background-color: #FFF;
+}
+
+.fila_producto_carro_2012{
+	float: left;
+	width: 845px;
+	height:auto;
+	padding-left: 5px;
+	border-top: 1px dashed #9DC44E;
+}
+.fila_titulo_intermedia_2012{
+	float: left;
+	width: 825px;
+	height:25px;
+	padding-left: 25px;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:14px;
+	color:#9DC44E;
+	border-top: 1px dashed #9DC44E;
+	padding-top: 5px;
+	background-color: #F0F5E4;
+}
+.fila_criterio_cat_carro_2012{
+	float: left;
+	width: 850px;
+	height:105px;
+	border-top: 1px dashed #9DC44E;
+	background-color: #F0F5E4;
+}
+.fila_criterio_todo_el_carro{
+	float: left;
+	width: 850px;
+	height:40px;
+	border-top: 1px dashed #9DC44E;
+	border-right-width: 1px;
+	border-left-width: 1px;
+	border-right-style: dashed;
+	border-left-style: dashed;
+	border-right-color: #9DC44E;
+	border-left-color: #9DC44E;
+	border-bottom-width: 1px;
+	border-bottom-color: #9DC44E;
+	border-bottom-style: dashed;
+	margin-top: 5px;
+	background: #F0F5E4;
+}
+.fila_recordatorio{
+	float: left;
+	width: 850px;
+	height:35px;
+	border-top: 1px dashed #9DC44E;
+	border-right-width: 1px;
+	border-left-width: 1px;
+	border-right-style: dashed;
+	border-left-style: dashed;
+	border-right-color: #9DC44E;
+	border-left-color: #9DC44E;
+	border-bottom-width: 1px;
+	border-bottom-color: #9DC44E;
+	border-bottom-style: dashed;
+	margin-top: 5px;
+	background: #F0F5E4;
+	padding-top: 10px;
+}
+.fila_listado_carro{
+	float: left;
+	width: 850px;
+	height:auto;
+	border: 1px solid #CCCCCC;
+}
+.fila_totalizador_carro_2012{
+	float: left;
+	width: 845px;
+	padding-left: 5px;
+	height: 120px;
+	padding-top: 15px;
+	padding-bottom: 15px;
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-left-width: 1px;
+	border-right-style: dashed;
+	border-bottom-style: dashed;
+	border-left-style: dashed;
+	border-right-color: #CCC;
+	border-bottom-color: #CCC;
+	border-left-color: #CCC;
+}
+.fila_criterio_jumbo{
+	float: left;
+	width: 850px;
+	height: 55px;
+	padding-top: 10px;
+	padding-bottom: 5px;
+	border: 1px dashed #ccc;
+}
+	.modulo_precio_h_carro_2012{
+	float: left;
+	width: 134px;
+	height:125px;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:11px;
+	line-height: 1,2;
+	padding-top: 7px;
+	border-right-width: 1px;
+	border-right-style: dashed;
+	border-right-color: #e3e1dc;
+	text-align: center;
+	}
+
+.modulo_sustitucion_carro_2012{
+	float: left;
+	width: 120px;
+	height:85px;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:11px;
+	line-height: 1,2;
+	padding-top: 10px;
+	font-weight: normal;
+	}
+.modulo_sustitucion_carro_2012_2{
+	float: left;
+	width: 210px;
+	height:85px;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:11px;
+	/*line-height: 1,2;*/
+	padding-left: 20px;
+	padding-top: 10px;
+	}
+.modulo_prod_sin_criterio_sustitucion{
+	float: right;
+	width: 374px;
+	height:20px;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:11px;
+	padding-top: 10px;
+	font-weight: normal;
+	text-align: center;
+	color: #9DC44E;
+	text-transform:uppercase;
+}
+.txt_criterio_jumbo{
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:12px;
+	color:#666;
+	float: left;
+	height: 20px;
+	text-align: left;
+	width: auto;
+	font-weight: bold;
+}
+.txt_criterio_jumbo_info_titulo{
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:14px;
+	color:#666;
+	font-weight:bold;
+	float: left;
+	height: auto;
+	text-align: left;
+	width: 230px;
+	margin-bottom: 5px;
+	font-weight: bold;
+}
+.txt_criterio_jumbo_info{
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:11px;
+	color:#666;
+	float: left;
+	height: auto;
+	text-align: left;
+	width: 250px;
+	margin-bottom: 5px;
+	font-weight: normal;
+	padding-left: 50px;
+}
+.txt_criterio_jumbo_info p{
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:11px;
+	color:#666;
+	float: left;
+	height: auto;
+	text-align: left;
+	width: 205px;
+	margin-bottom: 5px;
+	font-weight: normal;
+	padding-left: 20px;
+}
+.txt_criterio_jumbo_info_2{
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:14px;
+	color:#666;
+	font-weight:bold;
+	float: left;
+	height: auto;
+	text-align: left;
+	width: 230px;
+	margin-bottom: 5px;
+	font-weight: bold;
+	margin-top: 5px;
+	border-top: 1px dashed #9DC44E;
+	padding-top: 10px;
+}
+
+.txt_criterio_jumbo_info_final{
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:11px;
+	color:#666;
+	float: left;
+	height: auto;
+	text-align: left;
+	width: 205px;
+	margin-bottom: 15px;
+	font-weight: normal;
+	padding-left: 20px;
+}
+.txt_criterio_jumbo_6{
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:11px;
+	color:#666;
+	float: left;
+	height: 20px;
+	text-align: left;
+	width: 60px;
+	padding-top: 4px;
+}
+.txt_criterio_jumbo_5{
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:11px;
+	color:#666;
+	float: left;
+	height: 20px;
+	text-align: left;
+	width: 110px;
+	padding-top: 10px;
+}
+.txt_criterio_jumbo_4{
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:11px;
+	color:#666;
+	float: left;
+	height: 20px;
+	text-align: left;
+	width: 80px;
+	padding-top: 4px;
+}
+.txt_criterio_jumbo_41{
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:11px;
+	color:#666;
+	float: left;
+	height: 20px;
+	text-align: left;
+	padding-top: 10px;
+}
+.txt_criterio_jumbo_2{
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:11px;
+	color:#666;
+	float: left;
+	height: 20px;
+	text-align: left;
+	width: 150px;
+	font-weight: normal;
+}
+.txt_criterio_jumbo_3{
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:14px;
+	color:#666;
+	float: left;
+	height: 20px;
+	text-align: left;
+	width: 205px;
+	font-weight: bold;
+}
+.modulo_criterios_2012{
+	float: left;
+	width: auto;
+	height: 20px;
+	text-align: left;
+}
+.modulo_radio_carro_2012{
+	float: left;
+	width: 20px;
+	height: 20px;
+	text-align: left;
+	/*padding-top: 10px;*/
+}
+.modulo_radio_carro_2012_b{
+	/*float: left;
+	width: 20px;
+	height: 20px;
+	text-align: left;
+	padding-top: 2px;*/
+	float: left;
+	width: 20px;
+	height: 20px;
+	text-align: left;
+	padding-bottom: 2px;
+}
+.barra_categorias_carro_2012{
+	float: left;
+	width: 850px;
+	height:auto;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:12px;
+	color:#666;
+	font-weight: bold;
+	text-align: left;
+	border-right-width: 1px;
+	border-left-width: 1px;
+	border-right-style: dashed;
+	border-left-style: dashed;
+	border-right-color: #9DC44E;
+	border-left-color: #9DC44E;
+	border-bottom-width: 1px;
+	border-bottom-color: #9DC44E;
+	border-bottom-style: dashed;
+	margin-top: 15px;
+}
+.form_criterios_otro{
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:11px;
+	color:#666;
+	text-align: left;
+	width: 110px;
+	border:1px #CCC solid;
+}
+.modulo_eliminar_carro_2012{
+	float: left;
+	height:35px;
+	padding-top: 10px;
+	width: 102px;
+	}
+
+.txt_marca_h_carro{
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:11px;
+	color:#1FA22E;
+	font-weight:bold;
+	float: left;
+	width: 170px;
+	height: 20px;
+	text-align: left;
+	padding-top: 10px;
+}
+.txt_nombre_h_carro{
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:11px;
+	color:#666;
+	float: left;
+	width: 170px;
+	height: auto;/* 30px */
+	text-align: left;
+	line-height: 14px;
+	text-decoration:none;
+	font-weight: normal;
+}
+.txt_nombre_h_carro a{
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:11px;
+	color:#666;
+	line-height: 14px;
+	text-decoration:none;
+}
+
+.txt_nombre_h_carro a:hover{
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:11px;
+	color:#666;
+	line-height: 14px;
+	text-decoration:underline;
+}
+
+.txt_descripcion_h_carro{
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:11px;
+	color:#666;
+	float: left;
+	width: 170px;
+	height: 15px;
+	text-align: left;
+}
+
+.txt_precio_h_carro{
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:16px;
+	color:#B53137 !important;
+	float: left;
+	width: 104px;
+	height: 20px;
+	padding-top: 5px;
+	font-weight: bold;
+	text-align: left;
+}
+.txt_precio_h_carro_sin_stock{
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:16px;
+	color:#666 !important;
+	float: left;
+	width: 100px;
+	height: 20px;
+	padding-top: 5px;
+	font-weight: bold;
+	text-align: left;
+}
+
+.txt_promo_h_carro{
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:11px;
+	color:#1FA22E !important;
+	float: left;
+	width: 170px;
+	height: 45px;
+	padding-top: 5px;
+	text-align: left;
+}
+.modulo_foto_130_carro{
+	float: left;
+	width: 120px;
+	height:100px;
+	text-align: center;
+	padding-top: 10px;
+}
+.modulo_cantidad_h_carro{
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:11px;
+	color:#666;
+	/*float: right;*/
+	float: left;
+	/*width: 60px;*/
+	width: 104px;
+	height: 22px;
+	padding-top: 5px;
+}
+.txt_precio_medida_h_carro{
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:11px;
+	color:#666;
+	float: left;
+	width: 104px;
+	height: 20px;
+	text-align: left;
+	font-weight: normal;
+}
+.modulo_sustitucion_categoria_2012{
+	float: left;
+	width: 830px;
+	height:auto;
+	font-weight:normal;
+	padding-left: 20px;
+	}
+.modulo_sust_todo_el_carro{
+	float: left;
+	width: 240px;
+	height: 210px;
+	padding-left: 15px;
+	padding-top: 10px;
+	margin-left: 595px;
+	background-color: #F7F7F7;
+	position: absolute;
+}
+.modulo_listado_carro{
+	float: left;
+	width: 400px;
+	height:auto;
+	font-weight:normal;
+	padding-top: 17px;
+	padding-bottom: 5px;
+}	
+.modulo_sustitucion_categoria_2012_2{
+	float: left;
+	width: 200px;
+	height:auto;
+	font-weight:normal;
+	padding-left: 460px;
+	}
+.titulos_flujo_2012{
+	float: left;
+	width: 850px;
+	height:30px;
+	margin-top: 20px;
+	font-size:20px;
+	text-align: left;
+	margin-bottom: 5px;
+	padding-top: 10px;
+}
+.titulos_criterios_2012{
+	float: left;
+	width: 110px;
+	height:25px;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:24px;
+	text-align: left;
+	color: #999;
+	font-weight: bold;
+}
+
+.titulo_micarro_2012{
+	float: right;
+	width: auto;
+	height:25px;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:12px;
+	text-align: right;
+	color: #1FA22E;
+	padding-left: 15px;
+	text-decoration:none;
+}
+
+.titulo_micarro_2012 a{
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:12px;
+	color: #1FA22E;
+	text-decoration:none;
+}
+
+.titulo_micarro_2012 a:hover{
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:12px;
+	color: #1FA22E;
+	text-decoration:underline;
+
+}
+.titulos_categorias_carro{
+	float: left;
+	height:24px;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:18px;
+	color:#9DC44E;
+	text-align: left;
+	padding-left: 25px;
+	width: 450px;
+	padding-top: 6px;
+	font-weight: bold;
+	background-color: #F0F5E4;
+}
+.tit_sust_todo_el_carro{
+	float: left;
+	height:20px;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:15px;
+	color:#9DC44E;
+	text-align: left;
+	padding-left: 25px;
+	width: 550px;
+	padding-top: 10px;
+	font-weight: bold;
+	margin-bottom: 5px;
+}
+.tit_criterio_jumbo{
+	float: left;
+	height:20px;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:15px;
+	color:#9DC44E;
+	text-align: left;
+	padding-left: 25px;
+	width: 700px;
+	padding-top: 5px;
+	font-weight: bold;
+	margin-bottom: 5px;
+}
+.tit_listado_carro{
+	float: left;
+	height:24px;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:18px;
+	color:#999;
+	text-align: left;
+	padding-left: 25px;
+	width: 65px;
+	padding-top: 12px;
+	font-weight: bold;
+}
+.titulo_carro_vacio{
+	float: left;
+	height:24px;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:24px;
+	color:#9DC44E;
+	text-align: center;
+	width: 850px;
+	padding-top: 40px;
+	font-weight: bold;
+	background-color: #F0F5E4;
+}
+.linea_categorias_carro{
+	float: left;
+	width: 840px;
+	height:2px;
+	padding-left: 10px;
+	font-weight: normal;
+	background-color: #9DC44E;
+}
+.nombre_categoria_green{
+	background-color: #97B73E;
+	background-position: right -31px;
+	color: white;
+	display: block;
+	float: left;
+	font-size: 0.9em;
+	font-weight: bold;
+	margin: 0 5px 0 0;
+	padding: 4px 10px;
+	width: auto;
+	border-radius: 6px 0 0 0;
+}
+.form_cantidad_style_carro{
+	float: left;
+	width: 32px;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:11px;
+	color:#666;
+	border:1px solid #e3e1dc;
+	height: 18px;
+}
+.modulo_agregar_mas_carro{
+	float: left;
+	width: 27px;
+	height: 22px;
+	padding-left: 8px;
+}
+.modulo_quitar_menos_carro{
+	float: left;
+	width: 27px;
+	height: 22px;
+	padding-left: 6px;
+}
+
+.modulo_mas_menos_carro{
+	float: left;
+	width: 10px;
+	height: 20px;
+}
+
+.agregar_productos_carro {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	color: #1FA22E;
+	text-decoration: underline;
+	float: right;
+	width: 200px;
+	height: 26px;
+	font-weight: bold;
+	text-decoration: underline;
+	padding-top: 5px;
+	text-align: right;
+	padding-right: 15px;
+}
+.agregar_productos_carro a {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	color: #1FA22E;
+	text-decoration: none;
+	
+}
+.agregar_productos_carro a:hover{
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	color: #1FA22E;
+	text-decoration: none;
+	
+}
+.contenedor_botones_carro{
+	float: left;
+	width: 450px;
+	height:50px;
+	/*border-bottom: 1px solid #e3e1dc;*/
+	padding-left: 5px;
+	padding-top: 30px;
+}
+.contenedor_boton_carro_vacio{
+    float: left;
+    width: 850px;
+    height:50px;
+    /*border-bottom: 1px solid #e3e1dc;*/
+    padding-top: 30px;
+}
+.bt_continuar_compra_carro {
+	float: right;
+	width: 169px;
+	height: 29px;
+}
+.titulo_direccion_despacho{
+	float: left;
+	border-bottom: 1px dashed #CCC;
+	width: 850px;
+	padding-bottom: 5px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 16px;
+	color: #1FA22E;
+	font-weight: bold;
+	padding-top: 30px;
+	text-align: left;
+}
+
+.contenedor_obs_despacho{
+	float: left;
+	border-bottom: 1px dashed #CCC;
+	width: 850px;
+	padding-bottom: 5px;
+	padding-top: 5px;
+	text-align: left;
+}
+.contenedor_direccion_2012{
+	float: left;
+	width: 850px;
+	padding-bottom: 5px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #666;
+	text-align: left;
+	height: auto;
+}
+.contenedor_confirmacion_logeado{
+	float: left;
+	width: 850px;
+	padding-bottom: 5px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #666;
+	text-align: left;
+	height: auto;
+}
+
+.fila_direccion_2012{
+	float: left;
+	width: 850px;
+	padding-bottom: 10px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #666;
+	text-align: left;
+	height: auto;
+	padding-top: 15px;
+}
+.fila_registro_facil_2012{
+	float: left;
+	width: 450px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #666;
+	text-align: left;
+	height: 80px;
+}
+.fila_cupon_dcto_2012{
+	float: left;
+	width: 850px;
+	padding-bottom: 10px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #666;
+	text-align: left;
+	height: auto;
+}
+.fila_despacho_obs_2012{
+	float: left;
+	width: 310px;
+	padding-bottom: 10px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #666;
+	text-align: left;
+	height: auto;
+	padding-top: 15px;
+}
+.contenedor_calendario_2012{
+	float: left;
+	width: 820px;
+	padding-bottom: 5px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #666;
+	text-align: left;
+	height: auto;
+	padding-top: 10px;
+}
+.nombre_form_2012{
+	float: left;
+	width: auto;
+	padding-bottom: 5px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #666;
+	padding-right: 1px;
+	text-align: left;
+	height: 20px;
+}
+.nombre_form_2012 a{
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #1FA22E;
+	text-decoration:underline;
+}
+.nombre_form_2012 a:hover{
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #1FA22E;
+		text-decoration:underline;
+}
+.registro_facil_col_1{
+	float: left;
+	width: 50px;
+	padding-bottom: 5px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #666;
+	padding-right: 10px;
+	text-align: right;
+	height: 20px;
+}
+.registro_facil_col_2{
+	float: left;
+	width: 150px;
+	padding-bottom: 5px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #666;
+	padding-right: 10px;
+	text-align: left;
+	height: 20px;
+}
+.nombre_form__dcto_2012{
+	float: left;
+	width: auto;
+	padding-bottom: 5px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #666;
+	padding-right: 5px;
+	text-align: left;
+	height: 20px;
+	padding-top: 15px;
+}
+.txt_codigo_dcto_2012{
+	float: left;
+	width: auto;
+	padding-bottom: 5px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #666;
+	padding-right: 10px;
+	text-align: left;
+	height: 20px;
+	padding-top: 15px;
+}
+.nombre_form_2012_green{
+	float: left;
+	width: auto;
+	padding-bottom: 5px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #1FA22E;
+	padding-right: 10px;
+	text-align: left;
+	height: 20px;
+}
+.modulos_form_2012{
+	float: left;
+	width: auto;
+	padding-bottom: 5px;
+	text-align: left;
+	height: 20px;
+	clear: both;
+}
+.col_form_2012{
+	float: left;
+	padding-bottom: 5px;
+	padding-right: 5px;
+	text-align: left;
+	height: 60px;
+	width: auto;
+}
+.bt_guardar_dir_despacho{
+	float: left;
+	text-align: left;
+	height: 34px;
+	width: 95px;
+	padding-top: 15px;
+}
+.form_direccion_2012 {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-style: normal;
+	line-height: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	color: #666;
+	border-color: #CCC;
+	border-style: solid;
+	border-width: 1px;
+	/*width: 170px;*/
+}
+.tit_calendario {
+	width:80px;
+	height:30px;
+	float:left;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:12px;
+	color:#666;
+	text-align: center;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	border-bottom-width: 2px;
+	border-bottom-style: solid;
+	border-bottom-color: #9DC44E;
+	line-height: 16px;
+	 
+ }
+ .linea_abajo_calendario {
+	width:800px;
+	height:5px;
+	float:left;
+	color:#666;
+	border-top-width: 1px;
+	border-top-style: dashed;
+	border-top-color: #9DC44E;
+	 
+ }
+ .side_calendario {
+	width:90px;
+
+	height:20px;
+	float:left;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:12px;
+	color:#666;
+	text-align: center;
+	padding-top: 10px;
+	border-bottom-width: 1px;
+	border-bottom-style: dotted;
+	border-bottom-color: #9DC44E;
+	padding-bottom: 10px;
+	 
+ }
+  .costo_calendario_2012 {
+	width:80px;
+	height:20px;
+	float:left;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:12px;
+	color:#666;
+	text-align: center;
+	padding-top: 10px;
+	border-bottom-width: 1px;
+	border-bottom-style: dashed;
+	border-bottom-color: #E9F1D9;
+	padding-bottom: 10px;
+	border-right: 1px dashed #9DC44E;
+	background-color:#FFF;
+	 
+ }
+ 
+  a.costo_calendario_2012:link {
+	background-color:#FFF;
+
+ }
+   a.costo_calendario_2012:hover {
+	background-color:#CF6;	
+	
+ }
+   a.costo_calendario_2012:active{
+	background-color:#CF6;
+	
+   }
+   a.costo_calendario_2012:visited{
+	background-color:#FFF;
+	
+   }
+   
+     .costo_calendario_2012_active {
+	width:80px;
+	height:20px;
+	float:left;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:12px;
+	color:#FFF;
+	text-align: center;
+	padding-top: 10px;
+	border-bottom-width: 1px;
+	border-bottom-style: dotted;
+	border-bottom-color: #E9F1D9;
+	padding-bottom: 10px;
+	border-right: 1px dotted #9DC44E;
+	background-color:#9DC44E;
+	 
+ }
+   
+  .side_calendario_green{
+	width:80px;
+	height:20px;
+	float:left;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:12px;
+	color:#8FB726;
+	text-align: center;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	 
+ }
+  .semana_calendario {
+	width:150px;
+	height:34px;
+	float:left;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:12px;
+	color:#666;
+	text-align: center;
+	 
+ }
+ 
+  .semana_calendario a{
+	color:#666;
+	text-decoration:none;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:12px;
+	color:#666;
+	 
+ }
+   .semana_calendario_2 {
+	width:150px;
+	height:34px;
+	float:right;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:12px;
+	color:#666;
+	text-align: center;
+	 
+ }
+ 
+  .semana_calendario_2 a{
+	color:#666;
+	text-decoration:none;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:12px;
+	color:#666;
+	 
+ }
+   .despacho_pro_tit {
+	width:720px;
+	height:25px;
+	float:left;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:14px;
+	color:#666;
+	text-align: center;
+	padding-top: 10px;
+	 
+ }
+ 
+ 	.select_paso{
+	width:960px;
+	height:50px;
+	float: left;
+	font-weight: bold;
+	margin-top: 5px;
+	text-align: left;
+
+	}
+ 
+.cont_main_central_flujo{
+	float: left;
+	width: 960px;
+	margin-bottom: 10px;
+}
+
+.modulo_tmas_pago{
+	float: left;
+	width: 380px;
+	padding-bottom: 10px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #666;
+	text-align: left;
+	height: auto;
+	padding-top: 15px;
+	padding-right: 20px;
+}
+.fila_tmas_pago{
+	float: left;
+	width: 360px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #666;
+	text-align: left;
+	padding-top:8px;
+	padding-bottom:8px;
+	border-bottom: 1px dotted #CCC;
+}
+.nombre_form_pago{
+	float: left;
+	width: auto;
+	padding-bottom: 5px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	color: #666;
+	padding-right: 10px;
+	text-align: left;
+	height: 50px;
+}
+.col_pago_uno_2012{
+	float: left;
+	width: 120px;
+	padding-bottom: 5px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #666;
+	padding-right: 10px;
+	text-align: right;
+	height: 20px;
+}
+.col_pago_uno_2012_red{
+	float: left;
+	width: 120px;
+	padding-bottom: 5px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	color: #C00;
+	padding-right: 10px;
+	text-align: right;
+	height: 20px;
+	font-weight: bold;
+}
+.col_pago_uno_2012_black{
+	float: left;
+	width: 120px;
+	padding-bottom: 5px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	color: #000;
+	padding-right: 10px;
+	text-align: right;
+	height: 20px;
+	font-weight: bold;
+}
+
+.col_pago_dos_2012{
+	float: left;
+	width: 90px;
+	padding-bottom: 5px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #666;
+	padding-right: 10px;
+	text-align: right;
+	height: 20px;
+	font-weight: bold;
+}
+
+.col_pago_dos_2012_red{
+	float: left;
+	width: 90px;
+	padding-bottom: 5px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 16px;
+	color: #C00;
+	padding-right: 10px;
+	text-align: right;
+	height: 20px;
+	font-weight: bold;
+}
+
+.col_pago_dos_2012_black{
+	float: left;
+	width: 90px;
+	padding-bottom: 5px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 16px;
+	color: #000;
+	padding-right: 10px;
+	text-align: right;
+	height: 20px;
+	font-weight: bold;
+}
+
+
+.fila_total_tmas{
+	float: left;
+	width: 360px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #666;
+	text-align: left;
+	padding-top:8px;
+	padding-bottom:8px;
+	background-color: #EEE;
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-left-width: 1px;
+	border-right-style: dotted;
+	border-bottom-style: dotted;
+	border-left-style: dotted;
+	border-right-color: #CCC;
+	border-bottom-color: #CCC;
+	border-left-color: #CCC;
+}
+.menu_superior_flujo_2012{
+	float:left;
+	width:960px;
+	height:150px;
+}
+
+.txt_criterio_categorias{
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:12px;
+	color:#666;
+	float: left;
+	height: 31px;
+	text-align: left;
+	width: 800px;
+	padding-left: 25px;
+	padding-bottom: 5px;
+	font-weight: normal;
+}
+
+.txt_criterio_categorias_info{
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:12px;
+	color:#666;
+	float: left;
+	height: 30px;
+	text-align: left;
+	width: 760px;
+
+}
+
+.check img {
+	float: left;
+}
+
+.txt_criterio_categorias_verde{
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:12px;
+	color:#1FA22E;
+	float: left;
+	text-align: left;
+	font-weight:bold;
+}
+.txt_criterio_verde a{
+	text-decoration:none;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:10px;
+	color:#1FA22E;
+	text-align: left;
+	font-weight: inherit;
+}
+.txt_criterio_categorias_verde_2{
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:15px;
+	color:#1FA22E;
+	float: left;
+	text-align: left;
+	font-weight:bold;
+	margin-bottom: 5px;
+}
+
+.txt_criterio_categorias_sub{
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:14px;
+	color:#666;
+	float: left;
+	height: 20px;
+	text-align: left;
+	width: 550px;
+	padding-left: 25px;
+	padding-bottom: 5px;
+	font-weight: normal;
+}
+
+.cupon_dcto_pago{
+	width:88px;
+	float:left;
+	height:33px;
+	padding-top: 9px;
+}
+
+.bt_continuar_pago{
+	width:147px;
+	float: right;
+	height: 29px;
+	padding-top: 3px;
+}
+.bt_confirmacion_guardar_logeo{
+	width:790px;
+	float:left;
+	height:30px;
+	padding-top: 9px;
+	padding-left: 60px;
+}
+
+
+.linea_totalizador_pago{
+	float: right;
+	width: 520px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #666;
+	text-align: right;
+	padding-top:5px;
+	padding-left: 50px;
+}
+.linea_criterio{
+	float: left;
+	width: 330px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #666;
+	text-align: right;
+	padding-top:5px;
+	padding-left: 45px;
+}
+.linea_criterio_nosutituir{
+	float: left;
+	width: 200px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #666;
+	text-align: right;
+	padding-top:5px;
+	padding-left: 15px;
+}
+.col_carro_dos_2012{
+	float: left;
+	width: 90px;
+	padding-bottom: 5px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 16px;
+	color: #666;
+	padding-right: 10px;
+	text-align: right;
+	height: 20px;
+	font-weight: bold;
+}
+.col_ahorro_dos_2012{
+	float: left;
+	width: 90px;
+	padding-bottom: 5px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #666;
+	padding-right: 10px;
+	text-align: right;
+	height: 20px;
+}
+.col_carro_uno_2012{
+	float: left;
+	width: 130px;
+	padding-bottom: 5px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #666;
+	padding-right: 10px;
+	text-align: right;
+	height: 20px;
+}
+.col_uno_carro_2012_red{
+	float: left;
+	width: 130px;
+	padding-bottom: 5px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #C00;
+	padding-right: 10px;
+	text-align: right;
+	height: 20px;
+}
+.col_carro_dos_2012_red{
+	float: left;
+	width: 90px;
+	padding-bottom: 5px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 16px;
+	color: #C00;
+	padding-right: 10px;
+	text-align: right;
+	height: 20px;
+	font-weight: bold;
+}
+
+.contenedor_confirmacion_2012{
+	float: left;
+	width: 850px;
+	padding-bottom: 5px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #666;
+	text-align: left;
+	height: auto;
+}
+.fila_confirmacion_2012{
+	float: left;
+	width: 850px;
+	padding-bottom: 10px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #666;
+	text-align: left;
+	height: auto;
+	padding-top: 15px;
+}
+.col_confirmacion_2012{
+	float: left;
+	width: 300px;
+	padding-bottom: 5px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #666;
+	text-align: left;
+	height: auto;
+	padding-top: 5px;
+}
+.fila_criterio_resumen_2012{
+	float: left;
+	width: 850px;
+	height:105px;
+	border-top: 1px dashed #9DC44E;
+	background-color: #F0F5E4;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+}
+.fila_botones_confirmacion_2012{
+	float: left;
+	width: 850px;
+	padding-bottom: 10px;
+	text-align: left;
+	height: auto;
+	padding-top: 5px;
+}
+.fila_devolucion_2012{
+	float: right;
+	width: auto;
+	padding-bottom: 10px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #666;
+	text-align: left;
+	height: 20px;
+	padding-top: 15px;
+	padding-left: 15px;
+	right: 5px;
+}
+
+.fila_finalizar_2012{
+	float: left;
+	width: auto;
+	padding-bottom: 10px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	color: #1FA22E;
+	text-align: left;
+	height: 20px;
+	padding-top: 15px;
+	padding-left: 15px;
+	right: 5px;
+	font-weight: bold;
+}
+
+#guardalista {
+	position:absolute;
+	width: 0px;
+	height: 0px;
+	left: 0px;
+	top: 0px;
+	visibility: hidden;
+	border: 1;
+	z-index: 10;
+}
+/* estilos detalle descuentos*/
+.fila_detalle_dcto{
+	float: left;
+	width: 360px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #666;
+	text-align: left;
+	padding-top:8px;
+	padding-bottom:8px;
+	border-bottom: 1px dotted #CCC;
+}
+.col_pago_uno_2012_detalle_dcto{
+	float: left;
+	width: 120px;
+	padding-bottom: 5px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #666;
+	padding-right: 10px;
+	text-align: right;
+	height:auto;
+}
+.ver_detalle_dcto{
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:10px;
+	float:left;
+	width:118px;
+	text-align:right;
+	text-decoration: underline;
+	color:#999;
+}
+.cont_detalles_dctos{
+	float: left;
+	width: 320px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #666;
+	text-align: left;
+	padding-top:8px;
+	padding-bottom:8px;
+}
+.huincha_despacho_gratis{
+	float: left;
+	width: 850px;
+	padding-bottom: 10px;
+	font-weight: bold;
+	padding-top: 20px;
+	height:auto;
+}
+.cont_acepto_info {
+	color: #999999;
+	float: left;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	height: auto;
+	padding-left: 6px;
+	width: 170px;
+}
+.cont_acepto_info_despacho {
+color: #999999;
+font-family: Arial, Helvetica, sans-serif;
+font-size: 10px;
+height: auto;
+padding-left: 80px;
+width: 170px;
+}
+.cont_terminos_cond {
+    float: left;
+    padding-top: 20px;
+    padding-bottom: 15px;
+    text-align: left;
+    width: 850px;
+	height: auto;
+}
+
+.label_compra_lista_2014 {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-style: normal;
+	line-height: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	color: #666;
+	border-color: #CCC;
+	border-style: solid;
+	border-width: 1px;
+	width: 170px;
+}
+
+
+.ModalContent_cal_pago{
+	background: #FFFFFF;
+	float: left;
+	border-radius: 8px 8px 8px 8px;
+	height:350px;
+	width:670px;
+}
+
+.css_cal_pago_titulo{
+	float: left;
+	width: auto;
+	padding: 10px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 17px;
+	text-align: left;
+	height: 20px;
+	color:#DF0101;
+}
+
+.contenedor_calendario_pago{
+	float: left;
+	width: 650px;
+	padding-left: 15px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #666;
+	text-align: left;
+	height: auto;
+}
+
+.fila_direccion_pago {
+	float: left;
+	width: 600px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #666;
+	text-align: left;
+	height: auto;
+}
+
+.linea_abajo_calendario_pago {
+	width:637px;
+	height:5px;
+	float:left;
+	color:#666;
+	border-top-width: 1px;
+	border-top-style: dashed;
+	border-top-color: #9DC44E;
+ }
+ 
+.css_btn_cal_pago {
+	float: right;
+	width: 169px;
+	height: 29px;
+	display:none;
+	padding: 10px;
+}
+
+.select_paso_pago {
+	width: 960px;
+	height: 50px;
+	float: left;
+	font-weight: bold;
+	margin-top: 30px;
+	text-align: left;
+}
+.cargando_cal_pago{
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #000;
+	float: left;
+	padding: 25px;
+	font-weight: bold;
+}

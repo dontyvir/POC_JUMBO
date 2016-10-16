@@ -1,0 +1,359 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html><!-- InstanceBegin template="/Templates/fullbody.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="EXPIRES" CONTENT="Mon, 22 Jul 2002 11:12:01 GMT">
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>Jumbo.cl Back Office Central</title>
+<!-- InstanceEndEditable -->
+
+<!-- InstanceBeginEditable name="head" -->
+
+
+
+
+
+
+
+<!-- InstanceEndEditable -->
+
+<link href="estilos.css" rel="stylesheet" type="text/css">
+<!--link href="../default.css" rel="stylesheet" type="text/css"-->
+<style type="text/css">
+<!--
+.style1 {color: #666666}
+-->
+</style>
+</head>
+
+<body>
+<link rel="stylesheet" href="menu/menu.css">
+<script language="JavaScript" src="menu/menu.js"></script>
+<script language="JavaScript" src="menu/menu_tpl.js"></script>
+<script language="JavaScript" src="menu/menu_items.js"></script>
+<script language="JavaScript" src="popup.js"></script>
+<script language="JavaScript" src="funciones.js"></script>
+<table width="780" height="100%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+    <td height="78" valign="top">
+	
+	<TABLE width="100%" height=59 border=0 align="center" cellpadding="0" cellspacing="0" bgcolor="#ffffff">
+	  <TR>
+		<TD width=275 height="59" align=left class=user><img src="img/header2.jpg" width="275" height="60"></TD>
+		<TD width=505 align=left valign="bottom" background="img/bg-1.jpg" class=user><table width="90%"  border="0" align="center" cellpadding="0" cellspacing="2">
+          <tr>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td><div align="right" class="infoBL">Usuario: {hdr_nombre}&nbsp;&nbsp;| {hdr_fecha}</div></td>
+          </tr>
+        </table></TD>
+	  </TR>
+	</TABLE>
+	<TABLE width="100%" height=19 border=0 align="center" cellpadding="0" cellspacing="0" bgcolor="#f1f0e9" style="border-top:1px solid #ABABAB; border-bottom:1px solid #ABABAB">
+	  <TR>
+		<TD align=left bgcolor="#FFFFFF" class=user></TD>
+		</TR>
+	</TABLE>
+
+	
+	</td>
+  </tr>
+  <tr height="400">
+    <td valign="top" bgcolor="#FFFFFF">
+      <table border=0 width="100%" class='ContentTitle'>
+        <tr>
+          <td width="53%" height="20" class='HeaderTitle'><!-- InstanceBeginEditable name="Titulo" --> Generar Pedidos de Cotización Nº {id_cotizacion}<!-- InstanceEndEditable --></td>
+          <td width="47%" class='HeaderTitle'><!-- InstanceBeginEditable name="Botonera" -->
+            <div align="right"><a href="ViewCotizacionesForm?cot_id={id_cotizacion}&mod={mod}"><img src="img/volver.gif" width="32" height="32" border="0"></a></div>
+          <!-- InstanceEndEditable --></td>
+        </tr>
+      </table>
+ <br>
+      <table width="100%"  border="0" cellspacing="2" cellpadding="2">
+        <tr valign="top">
+          <td width="71%"><!-- InstanceBeginEditable name="Izquierda" --> 
+<SCRIPT LANGUAGE="JavaScript">window.name='winpedido1'</SCRIPT>	
+	<script>
+	
+	
+		function valida_campos(form){
+			if(form.sel_loc_fac[0].selected){
+				alert('Seleccione Local de Facturacion');
+				form.sel_loc_fac.focus();
+				return false;
+			}
+			if(form.sel_loc_desp[0].selected){
+				alert('Seleccione Local de Despacho');
+				form.sel_loc_desp.focus();
+				return false;
+			}
+			if (form.sel_loc_fac.value!=form.sel_loc_desp.value){
+				if (!confirm('Advertencia, el local de facturación es distinto al local de despacho. \nPresione Aceptar si desea continuar o Cancelar si desea realizar modificaciones')){
+				form.sel_loc_fac.focus();				
+				return false;
+				}
+			}
+			
+			
+			costo = parseInt(form.porc_desp.value);
+			if(costo < 0 || costo > {porc_desp_falta} ){
+				alert('El costo de despacho debe ser en porcentaje, mayor que cero y menor o igual a {porc_desp_falta}');
+				form.porc_desp.focus();
+				return false;
+			}
+			if (form.id_jornada.value == ""){
+				alert("Debe ingresar una jornada de despacho.");
+				form.id_jornada.focus();
+				return false;
+			}
+			//revisar si eligio al menos un producto
+			var existe = 0;
+				<!-- BEGIN DYNAMIC: CHECKS -->
+				if(form.{chkb_i}.checked){
+					existe = 1;
+				}
+				<!-- END DYNAMIC: CHECKS -->
+			if (existe == 0){
+				alert('Seleccione al menos un producto para generar el pedido.');
+				return false;
+			}
+			var esMayor = 0;
+			var cantCero = false;
+			<!-- BEGIN DYNAMIC: PRODUCTOS -->
+			
+			var suma = 0;
+			var cant = 0;
+			var enPed = 0;
+			
+			
+			if (form.cant_{i}.value > 0 && form.chkb_{i}.checked){
+				cant = parseInt(form.cant_{i}.value);
+				enPed = parseInt(form.cant_en_pedido_{i}.value);
+				suma =  cant + enPed ;
+				if (suma > form.cant_sol_{i}.value){
+					esMayor++;
+				}
+			}
+			
+			if (form.cant_{i}.value <= 0 && form.chkb_{i}.checked){
+				cantCero = true;
+			}
+			
+			<!-- END DYNAMIC: PRODUCTOS -->
+			if (cantCero){
+				alert("La cantidad a agregar debe ser mayor a cero (0).");
+				return false;
+			}
+			if (esMayor > 0 ){
+				valor ="";
+				if ((valor = popUpWindowModal("ViewIngComGeneraPedido?cot_id="+{id_cotizacion}, 200, 200, 500, 180))> '0'){
+					if (valor != ""){
+						form.comentario.value = valor;
+						form.submit();
+					}
+				}
+			}
+			else{
+				form.submit();
+			}
+		}
+		function abre_popup(form){
+			if(form.sel_loc_desp[0].selected){
+				alert('Seleccione Local de Despacho');
+				form.sel_loc_desp.focus();
+				return false;
+			}
+			var id_loc_desp = form.sel_loc_desp[form.sel_loc_desp.selectedIndex].value;
+			//alert("local:"+id_loc_desp);
+			popUpWindow('ViewCalJorDespCotiz?id_cotizacion={id_cotizacion}&id_local='+id_loc_desp+"&jornada={jorn}&local={loc}", 100, 100, 600, 400);
+			return true;
+			
+		}
+		function anula_pedido(id_pedido){
+			if ( confirm( "Esta seguro que desea anular el pedido?" ) ) {
+				popUpWindowModal("ViewAnulaMotivo?id_pedido="+id_pedido+"&jornada={jorn}&local={loc}", 200, 200, 500, 180);
+				location.reload();
+			}
+		}
+		
+
+	</script>
+
+<form name=frmGeneraPedido method=post action="GeneraPedido">
+<input type="hidden" name="url" value="ViewGeneraPedidos">
+<input type="hidden" name="id_cotizacion" value="{id_cotizacion}">
+<input type="hidden" name="comentario" value="">
+<input type="hidden" name="jornada" value="{jorn}">
+<input type="hidden" name="local" value="{loc}">
+<input type="hidden" name="mod" value="{mod}">
+
+<fieldset><legend>Seleccionar datos del nuevo pedido a generar.</legend>
+<table width=700 align="center" border="0" cellpadding="2" cellspacing="0" >
+	<tr>
+	  <td colspan="4">Fecha de despacho acordada : {fecha_desp_acordada} </td>
+	</tr>
+	<tr>
+       <td colspan="4">{zona_desp}</td>
+	</tr>
+	<tr>
+       <td colspan="4">{local_desp}</td>
+	</tr>		  
+	<tr>
+       <td colspan="4">&nbsp;</td>
+	</tr>
+	  <tr>
+		<td width=35% align=left>Local de Despacho</td>
+		<td width=30% align=left>Jornada de Despacho</td>
+	    <td width=35% align=left>Local de Facturación</td>
+	  </tr>
+	  <tr>
+		<td><select name="sel_loc_desp" class="letracombo" onchange="document.frmGeneraPedido.id_jornada.value='';">
+			  <option value="T">TODOS</option>
+			  <!-- BEGIN DYNAMIC: LOCALES -->
+			  <option value="{loc_id}" {sel} >{loc_nom}</option>
+			  <!-- END DYNAMIC: LOCALES -->
+			</select>
+		</td>
+		<td>
+			Id jornada : <input type="text" name="id_jornada" value="{id_jornada}" size="10" maxlength="10" onclick="javascript:abre_popup(frmGeneraPedido)" readOnly>
+			<a href="#" onClick="javascript:abre_popup(frmGeneraPedido)"><img src="img/magnify.jpg" width="16" height="16" border="0"> </a> 
+			<!-- input type="button" name="verJorDesp" value="Ver Jornadas" onclick="javascript:abre_popup(frmGeneraPedido)"-->
+		</td>
+	    <td><select name="sel_loc_fac" class="letracombo">
+			  <option value="T">TODOS</option>
+			  <!-- BEGIN DYNAMIC: LOCALES_FACT -->
+			  <option value="{loc_id}" {sel} >{loc_nom}</option>
+			  <!-- END DYNAMIC: LOCALES_FACT -->
+			</select></td>
+	  </tr>
+	  <tr>
+		<td colspan="3" align=left>Costo de Despacho: {costo_desp} - asignado({cto_desp_asign}) </td>
+	  </tr>
+	  <tr>
+		<td width=35% ><input type="text" name="porc_desp" size="6" maxlength="6" value="{porc_desp_falta}">(En porcentaje %)</td>
+		<td width=30% >Politica de Sustitución:
+			<select name="sel_politica" class="letracombo">
+				  <!-- BEGIN DYNAMIC: POLITICAS -->
+				  <option value="{pol_id}" {sel} >{pol_desc}</option>
+				  <!-- END DYNAMIC: POLITICAS -->
+			</select>
+		</td>
+		<td width=35% >
+		<select name="sel_tipo_ve" {hab_sel_tipo_ve} >
+			<option value="N" selected >Pedido Normal</option>
+			<option value="S" >Pedido Especial</option>
+		</select>
+		</td>
+	  </tr>
+</table>	
+</fieldset>
+<br>
+<fieldset><legend>Elegir los productos disponibles para el nuevo pedido.</legend>
+<table width=700 border="0" align="center" cellpadding="2" cellspacing="0" class="tabla2" >
+	<tr>
+       <td colspan="9">&nbsp;</td>
+	</tr>
+
+	<tr>
+       <th width="50">Id Prod</th>
+       <th width="50">Cod SAP</th>
+       <th width="30">Unid</th>
+       <th width="300">Descripci&oacute;n</th>
+       <th width="50">Cant Solic.</th>
+       <th width="50">Sel.</th>
+       <th width="50">Cant. a Agregar</th>
+       <th width="50">Cant. en Pedido</th>
+       <th width="100">Pedidos</th>
+	</tr>
+	  <!-- BEGIN DYNAMIC: PRODUCTOS -->	
+      <tr valign="top">
+        <input type="hidden" name="det_prod_id_bo_{i}" value="{det_prod_id_bo}">
+        <input type="hidden" name="det_prod_id_fo_{i}" value="{det_prod_id_fo}">
+        <input type="hidden" name="porc_dscto_{i}" value="{det_porc_dscto}">
+        <input type="hidden" name="precio_lista_{i}" value="{det_precio_lista}">
+        <input type="hidden" name="cant_en_pedido_{i}" value="{cant_en_ped}">
+		<input type="hidden" name="cant_sol_{i}" value="{det_cant_sol}">
+        <td width="50" align="center">{det_prod_id_fo}</td>
+        <td width="50" align="center">{det_cod_sap}</td>
+        <td width="30" align=center>{det_unid}</td>
+        <td width="300" align="left">{det_descrip}</td>
+		<td width="50" align="center">{det_cant_sol}</td>
+		<td width="50" align="center"><input type=checkbox name="chkb_{i}" ></td>
+        <td width="50" align="center"><input type=text name="cant_{i}" size=6 maxlength=6 value="{det_cant_rest}"></td>
+        <td width="50" align="center">{cant_en_ped}</td>
+        <td width="100" align="center">{det_pedidos}</td>
+      </tr>
+      <!-- END DYNAMIC: PRODUCTOS -->	
+</table>
+
+<table width=700 align="center" cellpadding="2" cellspacing="0">
+	  <tr>		
+	    <td align=center colspan=10><br><input type=button name=btn value="Genera Pedido" onClick="javascript:valida_campos(frmGeneraPedido)"></td>
+	  </tr>
+</table>
+</fieldset>
+</form>
+<p height="20"><strong><center><font color=red>{msje}&nbsp;</font></center></strong>
+</p>
+<fieldset><legend>Listado de pedidos generados</legend>
+<table width="700" border="0" align="center" cellpadding="2" cellspacing="0" class="tabla2" >
+	<tr>
+       <td colspan="8">&nbsp;</td>
+	</tr>
+	  <tr>
+		<th width="6%">&nbsp;</th>
+		<th width="6%">Id</th>
+        <th width="14%">Fecha Pedido</th>
+		<th width="15%">Local Facturacion</th>
+		<th width="15%">Local Despacho</th>
+		<th width="15%">Costo Despacho</th>
+        <th width="15%">Estado</th>
+		<th width="6%">&nbsp;</th>
+      </tr>
+	<tr>
+		<td colspan="8" align="center">{msj1}</td>
+	</tr>
+      <!-- BEGIN DYNAMIC: PEDIDOS -->
+	  <tr>
+	    <td width="6%"><a href="javascript:anula_pedido({ped_id})"><img src='img/trash.gif' border=0 ></a></td><!--a href='javascript:validar_eliminar("Esta seguro que desea eliminar?","ViewGeneraPedidos.htm");'><img src='img/trash.gif' border=0 ></a></td-->
+		<td width="6%">{ped_id}</td>
+		<td width="14%">{ped_fec}</td>
+		<td width="15%">{ped_loc_fact}</td>
+		<td width="15%">{ped_loc_desp}</td>
+		<td width="15%">{ped_costo_desp}</td>
+		<td width="15%">{ped_estado}</td>
+		<td width="6%"><a href="ViewOPFormPedido?id_pedido={ped_id}">Ver</a></td>
+	  </tr>
+	  <!-- END DYNAMIC: PEDIDOS -->
+</table>
+</fieldset>
+<br>
+<script>
+				document.frmGeneraPedido.porc_desp.onkeypress = KeyIsSoloNum;
+</script>
+
+<br>
+
+<!-- InstanceEndEditable --></td>
+        </tr>
+      </table>
+      </td>
+  </tr>
+  <tr>
+    <td>
+	<TABLE width="100%" height=19 border=0 align="center" cellpadding="0" cellspacing="0" bgcolor="#f1f0e9" style="border-top:1px solid #ABABAB; border-bottom:1px solid #ABABAB">
+	  <TR>
+		<TD align=center bgcolor="#67b01a" class=infoBL><div align="center">Back Office Central - Jumbo.cl</div></TD>
+		</TR>
+	</TABLE>
+
+	
+	</td>
+  </tr>
+</table>
+</body>
+<!-- InstanceEnd --></html>

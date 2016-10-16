@@ -1,0 +1,22 @@
+#z1, #z2, #z3
+{
+	position:static;
+	background-color:#FFFFFF;
+	left:40;
+	width:166;
+	color:black;
+	text-align:center;
+	font-weight:bold;
+}
+
+#sd1, #sd2, #sd3
+{
+	position:absolute;
+	padding-left:0px;    
+	background-color:#FFFFFF;
+	left:142;
+	width:103;
+	color:black;
+	text-align:left;
+	z-index: 20;
+}

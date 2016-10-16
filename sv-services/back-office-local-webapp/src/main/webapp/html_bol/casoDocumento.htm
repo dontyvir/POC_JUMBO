@@ -1,0 +1,241 @@
+<html>
+<head>
+<title>Documento BOL</title>
+<link rel="stylesheet" type="text/css" media="screen" href="docImpresionView.css" />
+<link rel="stylesheet" type="text/css" media="print" href="docImpresion.css" />
+<script language="JavaScript" src="prototype.js"></script>
+<script language="JavaScript" src="js/casoDocumento.js"></script>
+</head>
+<body>
+<table width="610"  border="0" align="center" cellpadding="0" cellspacing="0" class="tabla">
+  <tr>
+   <td align="center">
+
+		<table width="600"  border="0" align="center" cellpadding="0" cellspacing="0" class="tabla">
+		  <tr>
+			<td width="100%" height="46"><img src="img/header1.jpg" width="600" height="46"></td>
+		  </tr>
+	  </table>
+		<br>
+		<table width="600"  border="1" align="center" cellpadding="1" cellspacing="0" class="tabla">
+		  <tr>
+			<th width="24%" align="left">&nbsp;CLIENTE</th>
+			<td width="76%" bgcolor="#999999">{cliente}&nbsp;</td>
+		  </tr>
+		  <tr>
+			<th align="left">&nbsp;R.U.T.</th>
+			<td>{rut} - {dv}</td>
+		  </tr>
+		  <tr>
+			<th align="left">&nbsp;DIRECCI&Oacute;N</th>
+			<td>{direccion}&nbsp;</td>
+		  </tr>
+		  <tr>
+			<th align="left">&nbsp;COMUNA</th>
+			<td>{comuna}&nbsp;</td>
+		  </tr>
+		  <tr>
+			<th align="left">&nbsp;TEL&Eacute;FONO</th>
+			<td>{telefono}&nbsp;</td>
+		  </tr>
+		  <tr>
+			<th align="left">&nbsp;N&Uacute;MERO O.P. </th>
+			<td>{nro_op}&nbsp;</td>
+		  </tr>
+		  <tr>
+			<th align="left">&nbsp;N&Uacute;MERO DE CASO </th>
+			<td>{nro_caso}&nbsp;</td>
+		  </tr>
+		  <tr>
+			<th align="left">&nbsp;FECHA</th>
+			<td>{fecha}&nbsp;</td>
+		  </tr>
+		  <tr>
+			<th align="left">&nbsp;INDICACIONES</th>
+			<td>{indicaciones}&nbsp;</td>
+		  </tr>
+	  </table>
+	  
+	  <input type="hidden" id="cantProdEnviar" name="cantProdEnviar" value="{cantProdEnviar}" />
+	  <input type="hidden" id="cantProdRetirar" name="cantProdRetirar" value="{cantProdRetirar}" />
+	  <input type="hidden" id="cantDocumentos" name="cantDocumentos" value="{cantDocumentos}" />
+	  <input type="hidden" id="cantEnvioDinero" name="cantEnvioDinero" value="{cantEnvioDinero}" />
+	  
+<br>
+        
+        <table width="600"  border="1" align="center" cellpadding="1" cellspacing="0" class="tabla" id="tabla_retirar">
+          <tr>
+            <th width="40%">PRODUCTOS A RETIRAR </th>
+            <th width="15%">UNIDAD</th>
+            <th width="15%">CANTIDAD</th>
+            <th width="15%">PRECIO UNITARIO </th>
+            <th width="15%">PRECIO TOTAL </th>
+          </tr>
+		   <!-- BEGIN DYNAMIC: PRDS_RETIRAR -->
+		  <tr>
+			<td>{producto}&nbsp;</td>
+			<td>{unidad}&nbsp;</td>
+			<td>{cantidad}&nbsp;</td>
+		    <td align="right">{precio}</td>
+		    <td align="right">{precio_total}</td>
+		  </tr>
+		   <!-- END DYNAMIC: PRDS_RETIRAR -->							   
+		   <tr>
+			<td colspan="4">Total</td>
+			<td align="right">{total_retirar}</td>
+		  </tr>
+        </table>  
+    
+	<br>
+	
+
+    <table width="600"  border="1" align="center" cellpadding="1" cellspacing="0" class="tabla" id="tabla_enviar">
+      <tr>
+        <th width="40%">PRODUCTOS A ENVIAR </th>
+        <th width="15%">UNIDAD</th>
+		<th width="15%">CANTIDAD</th>
+		<th width="15%">PRECIO UNITARIO </th>
+		<th width="15%">PRECIO TOTAL </th>
+      </tr>
+		  <!-- BEGIN DYNAMIC: PRDS_ENVIAR -->
+		  <tr>
+			<td>{producto}&nbsp;</td>
+			<td>{unidad}&nbsp;</td>
+			<td>{cantidad}&nbsp;</td>
+			<td align="right">{precio}</td>
+		    <td align="right">{precio_total}</td>
+		  </tr>
+		  <!-- END DYNAMIC: PRDS_ENVIAR --> 
+		  <tr>
+			<td colspan="4">Total</td>
+			<td align="right">{total_enviar}</td>
+		  </tr>
+    </table>
+	
+		<br>
+	
+    <table width="600"  border="1" align="center" cellpadding="1" cellspacing="0" class="tabla" id="tabla_envio_dinero">
+      <tr>
+        <th width="40%">ENVIO DE DINERO</th>
+        <th width="15%">UNIDAD</th>
+		<th width="15%">CANTIDAD</th>
+		  <th width="15%">VALOR</th>
+		<th width="15%">PRECIO TOTAL </th>
+      </tr>
+		  <!-- BEGIN DYNAMIC: ENVIO_DINERO -->
+		  <tr>
+			<td>{producto}&nbsp;</td>
+			<td>{unidad}&nbsp;</td>
+			<td>{cantidad}&nbsp;</td>
+			<td align="right">{precio}</td>
+		    <td align="right">{precio_total}</td>
+		  </tr>
+		  <!-- END DYNAMIC: ENVIO_DINERO --> 
+		  <tr>
+			<td colspan="4">Total</td>
+			<td align="right">{total_envio_dinero}</td>
+		  </tr>
+    </table>
+	
+		<br>
+
+
+    <table width="600"  border="1" align="center" cellpadding="1" cellspacing="0" class="tabla" id="tabla_resumen">
+		  <tr>
+			<th align="left" width="85%">{mensaje_resumen}</th>
+			<td align="right" width="15%">{total_resumen}</td>
+		  </tr>
+    </table>
+	
+<br>
+
+    <table width="600"  border="1" align="center" cellpadding="1" cellspacing="0" class="tabla" id="tabla_documentos">
+      <tr>
+        <th width="100%">DOCUMENTOS</th>
+        </tr>
+	   <!-- BEGIN DYNAMIC: PRDS_DOCS -->
+	  <tr>
+		<td>{producto}&nbsp;</td>
+	  </tr>
+	   <!-- END DYNAMIC: PRDS_DOCS -->							   
+    </table>
+	
+<br>
+	
+    <table width="600"  border="1" align="center" cellpadding="1" cellspacing="0" class="tabla">
+      <tr>
+        <th width="23%" align="left">
+		&nbsp;&nbsp;COMENTARIO DEL<br>
+		&nbsp;&nbsp;DESPACHO</th>
+        <td width="2%">&nbsp;</td>
+		<td width="75%"><textarea class="nobord" id="texto" name="texto" style="width:100%; height:60px; overflow:visible" onKeyDown="valida_longitud()" onKeyUp="valida_longitud()">{comentario}</textarea></td>
+      </tr>
+    </table>        
+    <br>    <br>
+    <table width="600"  border="1" align="center" cellpadding="1" cellspacing="0" class="tabla">
+      <tr>
+        <th width="23%" rowspan="2" align="left">&nbsp;&nbsp;COOLER</th>
+        <td width="2%" rowspan="2">&nbsp;</td>
+        <td width="25%"><input type="text" name="cooler1" id="cooler1" value="{cooler1}" style="width:100%"></td>
+        <td width="25%"><input type="text" name="cooler2" id="cooler2" value="{cooler2}" style="width:100%"></td>
+        <td width="25%"><input type="text" name="cooler3" id="cooler3" value="{cooler3}" style="width:100%"></td>
+      </tr>
+      <tr>
+        <td><input type="text" name="cooler4" id="cooler4" value="{cooler4}" style="width:100%"></td>
+        <td><input type="text" name="cooler5" id="cooler5" value="{cooler5}" style="width:100%"></td>
+        <td><input type="text" name="cooler6" id="cooler6" value="{cooler6}" style="width:100%"></td>
+      </tr>
+    </table>
+	<br>
+	<table width="600"  border="1" align="center" cellpadding="1" cellspacing="0" class="tabla">
+      <tr>
+        <th width="23%" rowspan="2" align="left">&nbsp;&nbsp;BIN</th>
+        <td width="2%" rowspan="2">&nbsp;</td>
+        <td width="25%"><input type="text" name="bin1" id="bin1" value="{bin1}" style="width:100%"></td>
+        <td width="25%"><input type="text" name="bin2" id="bin2" value="{bin2}" style="width:100%"></td>
+        <td width="25%"><input type="text" name="bin3" id="bin3" value="{bin3}" style="width:100%"></td>
+      </tr>
+      <tr>
+        <td><input type="text" name="bin4" id="bin4" value="{bin4}" style="width:100%"></td>
+        <td><input type="text" name="bin5" id="bin5" value="{bin5}" style="width:100%"></td>
+        <td><input type="text" name="bin6" id="bin6" value="{bin6}" style="width:100%"></td>
+      </tr>
+    </table>	<br>    
+	<table width="600"  border="1" align="center" cellpadding="1" cellspacing="0" class="tabla">
+      <tr>
+        <th width="35%" align="left">&nbsp;&nbsp;OBSERVACIONES CLIENTE </th>
+        <td width="65%">&nbsp;</td>
+      </tr>
+      <tr>
+        <td colspan="2">&nbsp;</td>
+        </tr>
+      <tr>
+        <td colspan="2">&nbsp;</td>
+        </tr>
+    </table>    
+    <br>
+    <table width="600"  border="1" align="center" cellpadding="1" cellspacing="0" class="tabla">
+      <tr>
+        <th width="35%" align="left">&nbsp;&nbsp;FECHA Y HORA SOLUCI&Oacute;N TRANSPORTE</th>
+        <td width="65%">&nbsp;</td>
+      </tr>
+    </table>    <br>
+    <input type="button" id="boton_print" name="Submit" value="Imprimir" onClick="javascript:impresion();">
+	<input type="hidden" id="id_caso" name="id_caso" value="{nro_caso}">
+	</td>
+  </tr>
+</table>
+
+
+<div id="loading" style="display:none">
+<table style="Z-INDEX: 500; LEFT: 0; POSITION: absolute; TOP: 0" cellSpacing="0" cellPadding="0" border="0">
+<tr>
+<td width="75" height="25" bgcolor="#FF0000">&nbsp;&nbsp;&nbsp;<font color="#FFFFFF"><b>Cargando...</b></font></td>
+</tr>
+</table>
+</div>
+</body>
+<script language="javascript">
+mostrarOcultarTablas();
+</script>
+</html>

@@ -1,0 +1,586 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+	<title>Jumbo.cl Back Office Central</title>
+	
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+	<meta HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+	<meta HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+	<meta HTTP-EQUIV="EXPIRES" CONTENT="Mon, 22 Jul 2002 11:12:01 GMT">
+
+	<link rel="stylesheet" type="text/css" href="estilos.css">
+	<link rel="stylesheet" type="text/css" href="menu/menu.css">
+	<link rel="stylesheet" type="text/css" id="luna-tab-style-sheet"  href="js/tabs/tabpane.css" />
+	
+	<script type="text/javascript" src="prototype1.7.1.js"></script>
+	<script type="text/javascript" src="popup.js"></script>
+	<script type="text/javascript" src="funciones.js"></script>
+	<script type="text/javascript" src="validacion.js"></script>
+	<script type="text/javascript" src="js/tabs/tabpane.js"></script>
+	
+	<script type="text/javascript" >
+
+		Event.observe(window, 'load', 
+			function() {
+			
+				//Inicio Ficha
+				$('form_cat').observe('submit', 
+					function(event) {
+						if(isEmpty($('nombre').value)){
+							alert("Debe ingresar un Nombre.");
+							$('nombre').focus();
+							event.stop();
+							return false;
+						}else if (validar_letranumero($('nombre'), "El Nombre solo soporta letras y números.")){
+							event.stop();
+							return false;
+						}
+						
+						if(!isEmpty($('descripcion').value)){
+							if (validar_letranumero($('descripcion'), "La descripción solo soporta letras y números ")) {
+								event.stop();
+								return false;
+							}
+						}
+
+						if(isEmpty($('estado').value) || ($('estado').value != 'A' && $('estado').value != 'D')){
+							alert("Debe seleccionar un estado valido.");
+							$('estado').focus();
+							event.stop();
+							return false;
+						}
+						
+						if(isEmpty($('orden').value)){
+							alert("Debe ingresar Orden.");
+							$('orden').focus();
+							event.stop();
+							return false;
+						}else if (validar_solonumero($('orden'), "El Orden es un campo Numerico ")){
+							event.stop();
+							return false;
+						}
+						
+						if(!isEmpty($('url_banner').value)){
+
+							if(isEmpty($('imagen').value) && isEmpty($('arch').value)){
+								alert("El campo URL solo aplica a una imagen o banner valido.");
+								$('url_banner').focus();
+								event.stop();
+								return false;
+							}
+							if(!validaURL($('url_banner').value)){
+								alert("Debe ingresar una URL valida.");
+								$('url_banner').focus();
+								event.stop();
+								return false;
+							}
+						}	
+						
+					}
+				);
+				
+				$('ButtonBorrar').observe('click', 
+						function(event){
+							$('nombre').value = '';		
+							$('descripcion').value = '';
+							$('estado').value = '';
+							//$('tipo').value = '';
+							$('arch').value = '';
+							$('totem').value = '';
+							$('imagen').value = '';
+							$('orden').value = '';
+						}
+				);
+				
+				$('ButtonEliminar').observe('click', 
+						function(event){
+							validar_eliminar('Esta seguro que desea eliminar?','DelCatWeb?id_categoria={id_cat}&url=ViewMonCatWeb?categoria_id={id_cat}');
+						}
+				);
+				
+				$('link_ulr_banner').observe('click', 
+						function(event){
+							if(!isEmpty($('url_banner').value) && validaURL($('url_banner').value)){
+								open($('url_banner').value, "_blank");
+								return false;
+							}
+						}
+				);
+				//Fin eventos Ficha
+				//_________________________________________________________________
+				
+
+				//Inicio Productos
+				if($('modulo3') != null){
+					$('ButtonEliminarProductos').observe('click', 
+						function(event){
+							if(confirm("¿Está seguro de eliminar todo?")){
+								$('form1').writeAttribute("action","ModSupAllProductCat");   
+								$('form1').submit();
+								return true;
+							} else {
+								event.stop();
+								return false;
+							}
+						}
+					);
+					
+					$('form1').observe('submit', 
+						function(event) {
+							if(validar_prodcat($('form1'))) {
+								if(confirm("¿Esta seguro(a) de guardar los cambios?")){
+									$('form1').writeAttribute("action","AddProdCatWeb");   
+									$('form1').submit();
+									return true ; 
+								} else {
+									event.stop();
+									return false ;
+								}
+							} else {
+								event.stop();
+								return false;
+							}
+						}
+					);
+
+	                 document.form1.orden.numerico=true;
+					 document.form1.orden.label = 'Orden';
+	    			 document.form1.id_prod.onkeypress = KeyIsSoloNum;
+					 document.form1.orden.onkeypress = KeyIsSoloNum;
+
+				}
+				//Fin eventos Productos
+				//_________________________________________________________________
+				
+				if($('modulo4') != null){
+				
+					$('frmAgreSub').observe('submit', 
+						function(event) {
+							if(!agregar(frmAgreSub)){
+								event.stop();
+								return false;
+							}
+						}
+					);
+
+					document.frmAgreSub.sel_cat.onkeypress = KeyIsSoloNum;                
+				}
+					                          				
+				var tabPane1 = new WebFXTabPane( document.getElementById( "modules-cpanel" ), true );
+			}
+		);
+		
+//__________________________________________________________________________________________________________________
+//__________________________________________________________________________________________________________________
+
+				function abre_popup(){
+					valor="";
+					if ((valor = popUpWindowModalscroll('ViewBusqProdForm', 100, 100, 600, 400))> '0') {
+						if (valor != ""){
+							id = valor.split("|");
+							document.form1.id_prod.value = id[0];
+						}	
+					}
+				}
+					
+                    
+                 function validar_prodcat(form){
+                  		form.id_prod.disabled=false;
+                  		form.Button.value = 'Agregar a la Categoría';
+				 		if (form.id_prod.value == "" ){
+				 			alert("Debe ingresar un Código de Producto");
+				 			return false;
+				 		}
+					 	if (form.orden.value == "" ){
+					 		alert("Debe ingresar Orden de Producto");
+					 		return false;
+					 	}
+					 	if (form.tipo.value != "" && form.tipo.value == "I"){
+					 		alert("No se puede asociar un producto a una categoría intermedia");
+					 		return false;
+					 	}
+					 	if (form.tipo.value != "" && form.tipo.value == "C"){
+					 		alert("No se puede asociar un producto a una categoría cabecera");
+					 		return false;
+					 	}
+				 		if (validar_solonumero(form.id_prod, "Id de Producto es un Campo Numerico")) return false;
+				 		if (validar_solonumero(form.orden, "Orden es un Campo Numerico")) return false;	
+				 												 				 	
+				 		return true;			 	
+				 }						 
+						
+				function agregar(form){
+					if (form.tipo.value != "" && form.tipo.value == "T"){
+			 			alert("No se puede asociar una  Subcategoría a una categoría Terminal");
+			 			return false;
+			 		}else{
+			 			if (form.sel_cat.value == ""){
+							alert("Debe Ingresar Código de Categoría");
+							return false;
+						}else{
+							if (!validar_solonumero(form.sel_cat, "Código de Categoría es un Campo Numerico")){
+								var agree=confirm("¿Esta seguro(a) de guardar los cambios?"); 
+								if (agree){
+									form.submit();
+									return true ;  
+								}
+								else{
+									 return false ;
+								}
+							}
+						}
+					}
+				}
+					
+				 function valida_guardar(form){
+				 	if (!verify(form)) return false;
+				 	if (validar_letranumero(form.nombre, "El Nombre solo soporta letras y números ")) return false;
+				 	//if (validar_letranumero(form.descripcion, "La descripción solo soporta letras y números ")) return false;
+				 	if (validar_solonumero(form.orden, "El Orden es un campo Numerico ")) return false;
+				 	return true;
+				 }
+				 
+				 function valida_cambiotipo(form){
+					if (form.asoc.value == "1" && form.tipo.value == "T"){
+						alert("No puede Cambiar el Tipo de Categoría:\n La categoria tiene subcategorías asociadas");
+						return false;
+					}							
+					if (form.asoc.value == "2" && form.tipo.value == "I"){
+						alert("No puede Cambiar el Tipo de Categoría:\n La categoria tiene productos asociados");
+						return false;
+					}
+					return true;				 		 
+				}	
+				
+				function abre_popupCat(tipo){
+					valor= "";
+					if ((valor = popUpWindowModalscroll('ViewNavCatForm?tipo='+tipo, 100, 100, 600, 400))> '0') 
+					{
+						if (valor != ""){
+							id = valor.split("|");
+							document.frmAgreSub.sel_cat.value = id[0];
+						}
+					}
+				}	
+	
+            </script> 
+</head>
+
+<body>
+<script type="text/javascript" src="menu/menu.js"></script>
+<script type="text/javascript" src="menu/menu_tpl.js"></script>
+<script type="text/javascript" src="menu/menu_items.js"></script>
+
+<table width="780" height="100%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+    <td height="78" valign="top">
+	
+	<TABLE width="100%" height=59 border=0 align="center" cellpadding="0" cellspacing="0" bgcolor="#ffffff">
+	  <TR>
+		<TD width=275 height="59" align=left class=user><img src="img/header2.jpg" width="275" height="60"></TD>
+		<TD width=505 align=left valign="bottom" background="img/bg-1.jpg" class=user><table width="90%"  border="0" align="center" cellpadding="0" cellspacing="2">
+          <tr>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td><div align="right" class="infoBL">Usuario: {hdr_nombre}&nbsp;&nbsp;| {hdr_fecha}</div></td>
+          </tr>
+        </table></TD>
+	  </TR>
+	</TABLE>
+	<TABLE width="100%" height=19 border=0 align="center" cellpadding="0" cellspacing="0" bgcolor="#f1f0e9" style="border-top:1px solid #ABABAB; border-bottom:1px solid #ABABAB">
+	  <TR>
+		<TD align=left bgcolor="#FFFFFF" class=user></TD>
+		</TR>
+	</TABLE>
+	</td>
+  </tr>
+  <tr height="400">
+    <td valign="top" bgcolor="#FFFFFF">
+      <table border=0 width="100%" class='ContentTitle'>
+        <tr>
+          <td width="53%" height="20" class='HeaderTitle'> Ficha de Categor&iacute;a </td>
+          <td width="47%" class='HeaderTitle'><div align="right"><a href="javascript:window.history.back()"><img src="img/back.png" width="32" height="32" border="0"></a></div></td>
+        </tr>
+      </table>
+	  <br>
+      <table width="100%"  border="0" cellspacing="2" cellpadding="2">
+        <tr valign="top">
+          <td width="71%">
+            <table width="92%" align="center" border="0">
+              <tr>
+                <td>
+                
+                	<div class="tab-page" id="modules-cpanel">
+	                    <div class="tab-page" id="modulo1">
+							<h2 class="tab">Ficha</h2>
+							<div align="left">
+								<p><strong>Datos de la Categor&iacute;a</strong></p>
+								<form name="form_cat" id="form_cat" method="get" action="ModCatWeb" >
+									<input type="hidden" name="url" value="ViewCatWebForm?categoria_id={id_cat}"/>
+				                   	<input type="hidden" name="accion" value="guardar"/>
+				                   	<input type="hidden" name="id_categoria" value="{id_cat}"/>                          	
+				                   	<input type="hidden" name="asoc" value="{ex_catpro}"/>
+				                   	<input type="hidden" name="tipo" value="{tipo}"/>  
+			                   	                        
+			                   		<table width="80%"  border="0" align="center" cellpadding="0" cellspacing="2">
+                      	
+                            			<tr>
+                              				<td width="18%">Id Categor&iacute;a </td>
+                              				<td width="82%">{id_cat}</td>
+                            			</tr>
+                            			<tr>
+                              				<td>Nombre</td>
+                              				<td><input name="nombre" id="nombre" type="text" value="{desc_corta}" size="50" maxlength="20"/></td>
+                            			</tr>
+			                            <tr>
+			                              <td valign="top">Descripci&oacute;n</td>
+			                              <td><textarea name="descripcion" id="descripcion" cols="50" rows="4" value="{desc}" maxlength="200" onchange="if(this.value.length > 200){ alert('Has superado el tama&ntilde;o m&aacute;ximo permitido (200 Caracteres)'); return false; }" >{desc}</textarea></td>
+			                            </tr>
+			                            <tr>
+			                              <td>Estado</td>
+			                              <td><select name="estado" id="estado">
+			                              <!-- BEGIN DYNAMIC: ESTADO -->
+			                                <option value="{id_estado}" {sel_est}>{nom_estado}</option>
+			                              <!-- END DYNAMIC: ESTADO -->  
+			                              </select></td>
+			                            </tr>
+			                            <tr>
+			                              <td>Tipo</td>
+			                              <td>{tipocat}</td>
+			                            </tr>
+			                            <tr>
+			                              <td>Orden</td>
+			                              <td><input name="orden" id="orden" type="text" value={orden} size="10" maxlength="9"/></td>
+			                            </tr>
+			                            <tr>
+			                              <td>Imagen en Listado</td>
+			                              <td><input type="text" name="imagen" id="imagen" value="{cat_imagen}" maxlength="200" size="50"/>(Solo aplica a categorías Intermedias)</td>
+			                            </tr>
+			                            <tr>
+			                              <td>&nbsp;</td>
+			                              <td>&nbsp;</td>
+			                            </tr>
+			                            <tr>
+			                              <td>Fecha Creaci&oacute;n </td>
+			                              <td>{fec_crea}</td>
+			                            </tr>
+			                            <tr>
+			                              <td>Fecha Ult. Modif. </td>
+			                              <td>{fec_act}</td>
+			                            </tr>
+			                            <tr>
+			                              <td>Usuario Ult. Mod.</td>
+			                              <td>{usu_act}</td>
+			                            </tr>
+			                            <tr>
+			                              <td>Banner</td>
+			                              <td><input type="text" name="arch" id="arch" value="{imagen}" maxlength="200" size="50"/></td>
+			                            </tr>          
+			                            <tr>
+			                              <td>Totem</td>
+			                              <td><input type="text" name="totem" id="totem" value="{totem}" maxlength="200" size="50"/></td>
+			                            </tr>
+										<tr>
+											<td colspan="2">&nbsp;</td>
+										</tr>
+			                           <tr>
+			                              <td>Url</td>
+			                              <td><input type="text" name="url_banner" id="url_banner"  value="{url_banner}" size="60"/>&nbsp;<a id="link_ulr_banner" style="cursor:pointer" target="_blank">Ver</a><br/>(Aplica al banner de la categoria)</td>
+			                           </tr>
+			                            <tr>
+			                              <td>&nbsp;</td>
+			                              <td>&nbsp;</td>
+			                            </tr>
+
+			                            <tr>
+			                              <td>&nbsp;</td>
+			                              <td>
+			                              		<input type="submit" class="cmd" value="Guardar" />
+			                                 	<input name="ButtonBorrar" id="ButtonBorrar" type="button" class="cmd" value="Borrar" />
+			                                  	<input name="ButtonEliminar" id="ButtonEliminar" type="button" class="cmd" value="Eliminar Categoría" />		                               
+					                        </td>
+			                            </tr>
+                          			</table>
+                           		</form> 
+	                          	<br>
+	                        	<br>
+	                      </div>
+	                    </div>
+					
+					
+                    <div class="tab-page" id="modulo2">
+                      <h2 class="tab">Banner</h2>
+					  
+                          <div align="left"> <strong>Banner asociado a la categor&iacute;a </strong><br/>
+                          <br>
+
+                          <table width="80%" border="0" align="center" cellpadding="0" cellspacing="2">
+                            <tr>
+                              <td width="49%">{path_me}{img}</td>
+                            </tr>
+                             <tr>
+                              <td width="49%">&nbsp;</td>
+                            </tr>
+                            <tr>
+                              <td><img name="img_minificha" src="{path_me}{img}" onError="this.src='img/transp.gif'"/></td>
+                            </tr>
+                            <tr>
+                              <td>&nbsp;</td>
+                            </tr>
+                            <tr>
+                              <td width="49%">{path_banner_intermedia}</td>
+                            </tr>
+                             <tr>
+                              <td width="49%">&nbsp;</td>
+                            </tr>
+                            <tr>
+                              <td><img name="img_minifichaBanner" src="{path_banner_intermedia}" onError="this.src='img/transp.gif'"/></td>
+                            </tr>
+                            <tr>
+                              <td>&nbsp;</td>
+                            </tr>
+                            </table>
+                          <br>
+                          <br>
+                      </div>
+                    </div>
+                    
+                    
+                    {icom_i}
+
+                    <div class="tab-page" id="modulo3">
+                      <h2 class="tab">Productos</h2>
+					  
+                         <div align="left"> <strong>Listado de Productos de la Categor&iacute;a </strong><br/><br/>
+
+                          <form name="form1" id="form1" action="AddProdCatWeb" target="catprod">
+                         	<input type="hidden" name="url" value="ViewCatProdIframe?categoria_id={id_cat}"/>
+							<input type="hidden" name="id_cat" value="{id_cat}"/>
+							<input type="hidden" name="nom_cat" value="{desc_corta}"/>
+							<input type="hidden" name="tipo" value="{tipo}"/>
+							<input type="hidden" name="origen" value="CAT"/>									
+							<input type="hidden" name="procat_id" value=""/>									
+							<input type="hidden" name="action" value="{action}"/>							
+                          	<table width="570"  border="0" align="center" cellpadding="0" cellspacing="2">
+	                            <tr>
+	                              <td>Id Producto </td>
+	                              <td>Orden</td>
+	                              <td>Con pago</td>
+								  <td>&nbsp;</td>
+	                            </tr>
+                            	<tr>                          
+	                              <td>
+	                              	<input type="text" name="id_prod" maxlength="9" size="9"/>
+	                                <a href="javascript:abre_popup();"><img src="img/magnify.jpg" width="16" height="16" border="0" ALT="Muestra Productos"/></a>
+	                              </td>
+                              
+                              		<td><input type="text" name="orden"  value=1000 maxlength="9" size="9"/></td>   
+                              
+	                              <td>
+	                              		Si<input type="radio" name="rad_pago" value="S"/>
+	                              	  	No<input type="radio" name="rad_pago" value="N" checked/>
+	                              </td>   
+
+                              		<td>
+                              			<input name="Button" type="submit" class="cmd" value="Agregar a la Categoría"/>&nbsp;
+                              			<input name="ButtonEliminarProductos" id="ButtonEliminarProductos" type="button" class="cmd" value="Eliminar Todo"/>
+                           			</td>                          
+                           		</tr>
+                          	</table>
+                          </form>
+                          <br/>
+                          <table width="572" border="1" align="center" cellpadding="2" cellspacing="0" class="tabla2">
+	                            <tr>
+	                              <th width="74"  align ="left">Id Prod </th>
+	                              <th width="330" align ="left">Nombre</th>
+	                              <th width="60"  align ="left">Orden</th>
+	                              <th width="58"  align ="left">Con pago</th>
+	                              <th width="50"  align ="left">Acciones </th>
+	                            </tr>
+	                         	<tr>
+	                         		<td colspan="5"><iframe src="ViewCatProdIframe?categoria_id={id_cat}" name="catprod" height="194" width="572" border="0"></iframe></td>
+	                         	</tr>                          
+                           </table>
+                          <br/>
+                      </div>
+                    </div>
+                    
+					{fcom_i}
+					
+					{icom_t}
+			
+                    <div class="tab-page" id="modulo4">
+                      <h2 class="tab">&nbsp;SubCategor&iacute;as&nbsp;</h2>
+					  
+                         <div align="left"> <strong>Listado de subcategorías de la Categor&iacute;a </strong><br />
+                          <br>
+                          <form name="frmAgreSub" id="frmAgreSub" action="ModSubCatWeb" target="catsub" >
+							<input type="hidden" name="url" value="ViewCatSubIframe?categoria_id={id_cat}">
+							<input type="hidden" name="action" value="agregar">
+							<input type="hidden" name="id_cat" value="{id_cat}">
+							<input type="hidden" name="tipo" value="{tipo}">
+                          
+                          <table width="66%"  border="0" align="center" cellpadding="0" cellspacing="2">
+                            <tr>
+                              <td width="68%">Cod Subcategoría </td>
+							  <td width="32%">&nbsp;</td>
+                            </tr>
+                            <tr>
+                            	<td colspan="2">
+                              		<input type="text" name="sel_cat" maxlength="9">
+                              		<a href="javascript:abre_popupCat('{tipo_sub}');"><img src="img/magnify.jpg" width="16" height="16" border="0" ALT="Muestra Categorías"></a>
+                              		<input name="Button" type="submit" class="cmd" value="Agregar"/>
+                              </td>
+                            </tr>
+                          </table>
+                          
+                          </form>
+                          <br>
+                          <table width="459" border="0" align="center" cellpadding="2" cellspacing="0" class="tabla2">
+							   <tr>
+							     <th width="74">Cod Sub </th>
+							     <th width="325">Nombre</th>
+							     <th width="48">&nbsp;</th>
+							   </tr>
+								<tr>
+							 		<td colspan="3"><iframe src="ViewCatSubIframe?categoria_id={id_cat}" name="catsub" height="194" width="459" border="0" ></iframe></td>
+							 	</tr>
+                            </table>
+                          <br/>
+                      </div>
+                    </div>
+
+                   </div>
+                  
+                   {fcom_t}
+                   </td>
+              </tr>
+            </table>
+                       <div align="center"><br>
+                         <br>
+                         <br>
+                         <br>
+                       </div>
+                       {mns}                    
+                       
+                       
+         </td>
+        </tr>
+      </table>
+      </td>
+  </tr>
+  <tr>
+    <td>
+	<TABLE width="100%" height=19 border=0 align="center" cellpadding="0" cellspacing="0" bgcolor="#f1f0e9" style="border-top:1px solid #ABABAB; border-bottom:1px solid #ABABAB">
+	  <TR>
+		<TD align=center bgcolor="#67b01a" class=infoBL><div align="center">Back Office Central - Jumbo.cl</div></TD>
+		</TR>
+	</TABLE>
+
+	
+	</td>
+  </tr>
+</table>
+</body>
+</html>

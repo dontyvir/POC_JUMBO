@@ -1,0 +1,144 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html><!-- InstanceBegin template="/Templates/fullbody.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="EXPIRES" CONTENT="Mon, 22 Jul 2002 11:12:01 GMT">
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>Jumbo.cl Back Office Central</title>
+<!-- InstanceEndEditable -->
+
+<!-- InstanceBeginEditable name="head" -->
+
+<link rel="stylesheet" type="text/css" href="js/themes/default.css" />
+<script language="JavaScript" src="prototype.js"></script>
+<script language="JavaScript" src="js/admMailsSustitutosFaltantes.js"></script>
+<script type="text/javascript" src="js/window.js"></script>
+
+<!-- InstanceEndEditable -->
+
+<link href="estilos.css" rel="stylesheet" type="text/css">
+<!--link href="../default.css" rel="stylesheet" type="text/css"-->
+<style type="text/css">
+<!--
+.style1 {color: #666666}
+-->
+</style>
+</head>
+
+<body>
+<link rel="stylesheet" href="menu/menu.css">
+<script language="JavaScript" src="menu/menu.js"></script>
+<script language="JavaScript" src="menu/menu_tpl.js"></script>
+<script language="JavaScript" src="menu/menu_items.js"></script>
+<script language="JavaScript" src="popup.js"></script>
+<script language="JavaScript" src="funciones.js"></script>
+<table width="780" height="100%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+    <td height="78" valign="top">
+	
+	<TABLE width="100%" height=59 border=0 align="center" cellpadding="0" cellspacing="0" bgcolor="#ffffff">
+	  <TR>
+		<TD width=275 height="59" align=left class=user><img src="img/header2.jpg" width="275" height="60"></TD>
+		<TD width=505 align=left valign="bottom" background="img/bg-1.jpg" class=user><table width="90%"  border="0" align="center" cellpadding="0" cellspacing="2">
+          <tr>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td><div align="right" class="infoBL">Usuario: {hdr_nombre}&nbsp;&nbsp;| {hdr_fecha}</div></td>
+          </tr>
+        </table></TD>
+	  </TR>
+	</TABLE>
+	<TABLE width="100%" height=19 border=0 align="center" cellpadding="0" cellspacing="0" bgcolor="#f1f0e9" style="border-top:1px solid #ABABAB; border-bottom:1px solid #ABABAB">
+	  <TR>
+		<TD align=left bgcolor="#FFFFFF" class=user></TD>
+		</TR>
+	</TABLE>
+
+	
+	</td>
+  </tr>
+  <tr height="400">
+    <td valign="top" bgcolor="#FFFFFF">
+      <table border=0 width="100%" class='ContentTitle'>
+        <tr>
+          <td width="53%" height="20" class='HeaderTitle'><!-- InstanceBeginEditable name="Titulo" --> 
+            Administrador de Mail's para Sustitutos Faltantes<!-- InstanceEndEditable --></td>
+          <td width="47%" class='HeaderTitle'><!-- InstanceBeginEditable name="Botonera" -->
+          <div align="right"><a href="javascript:ventanaObjeto('Nuevo Mail','','','','0','0');">NUEVO</a></div>
+          <!-- InstanceEndEditable --></td>
+        </tr>
+      </table>
+	  <br>
+      <table width="100%"  border="0" cellspacing="2" cellpadding="2">
+        <tr valign="top">
+          <td width="71%"><!-- InstanceBeginEditable name="Izquierda" --> 
+		  <center>
+		  <font color=red id="mensaje1"><b>{mensaje_error}</b></font><font color=blue id="mensaje2"><b>{mensaje}</b></font>
+		  </center>
+		  <input type="hidden" id="cant_mails" name="cant_mails" value="{cant_mails}">
+		  <BR>
+            <table width="740" border="0" align="center" cellpadding="2" cellspacing="0" class="tabla2">
+              <tr>
+                <th width="6%">ID</th>
+                <th width="32%" height="30">Nombre Completo</th>
+                <th width="22%">Mail</th>
+                <th width="10%">Activado</th>
+                <th width="10%">Fecha Creaci&oacute;n</th>
+                <th width="10%">Fecha Modificaci&oacute;n</th>
+                <th width="10%">Acciones</th>
+              </tr>
+			  <tbody id="tabla_mails"></tbody>
+              <!-- BEGIN DYNAMIC: MAILS_SYF -->
+			  <tbody id="mail_{id}">
+               <tr>
+                <td height="30" align="left">{id}</td>
+                <td align="left">{nombre_completo}</td>
+                <td align="left">{mail}</td>
+                <td align="center">{estado}</td>
+                <td align="center">{fc_creacion}</td>
+                <td align="center">{fc_modificacion}</td>
+                <td align="center" nowrap><a href="javascript:ventanaObjeto('Modificar Mail','{nombres}','{apellidos}','{mail}','{id}',{est_activado});"><img src="img/editicon.gif" border="0" height="17" width="19" title="Editar Mail"></a>&nbsp;<a href="javascript:aEliminar('{id}');"><img src="img/trash.gif" border="0" height="16" width="16" title="Eliminar Mail"></a></td>
+               </tr>
+			  </tbody>
+              <!-- END DYNAMIC: MAILS_SYF -->
+            </table>
+      <br>
+	  <center><span id="msj_mails">{mje1}</span></center>
+      <p>&nbsp;</p>
+	  
+<div id="loading" style="display:none">
+<table style="Z-INDEX: 500; LEFT: 0; POSITION: absolute; TOP: 0" cellSpacing="0" cellPadding="0" border="0" id="tabla_loading">
+<tr>
+<td width="75" height="25" bgcolor="#FF0000">&nbsp;&nbsp;&nbsp;<font color="#FFFFFF"><b>Cargando...</b></font></td>
+</tr>
+</table>
+</div>
+
+      <!-- InstanceEndEditable --></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td>
+	<TABLE width="100%" height=19 border=0 align="center" cellpadding="0" cellspacing="0" bgcolor="#f1f0e9" style="border-top:1px solid #ABABAB; border-bottom:1px solid #ABABAB">
+	  <TR>
+		<TD align=center bgcolor="#67b01a" class=infoBL><div align="center">Back Office Central - Jumbo.cl</div></TD>
+		</TR>
+	</TABLE>
+
+	
+	</td>
+  </tr>
+</table>
+</body>
+<!-- InstanceEnd --></html>
+
+<script>
+var cantMails = $("cant_mails").value;
+limpiarMsjAndWin();
+</script>

@@ -1,0 +1,42 @@
+<assembly>
+    <id>bin</id>
+    <!-- Genera un archivo .zip con los archivos generados -->
+    <formats>
+        <format>dir</format>
+    </formats>
+
+    <!-- Añade las dependencias al zip en la carpeta lib -->
+    <dependencySets>
+        <dependencySet>
+            <!--
+                El artefacto del proyecto no es copiado en la carpeta lib.
+                Este se copia en la raíz del directorio.
+            -->
+            <useProjectArtifact>false</useProjectArtifact>
+            <outputDirectory>lib</outputDirectory>
+            <unpack>false</unpack>
+        </dependencySet>
+    </dependencySets>
+
+    <fileSets>
+        <!--
+        	Agrega los scripts a la raíz del zip. 
+        	Los scripts están localizados en src/main/scripts según las convenciones de maven.
+        -->
+        <fileSet>
+            <directory>${project.build.scriptSourceDirectory}</directory>
+            <outputDirectory>bin</outputDirectory>
+            <includes>
+            	<include>process-chaordic.sh</include>
+            </includes>
+        </fileSet>
+        <!-- Añade el jar principal a la raíz del zip -->
+        <fileSet>
+            <directory>${project.build.directory}</directory>
+            <outputDirectory>bin</outputDirectory>
+            <includes>
+                <include>*.jar</include>
+            </includes>
+        </fileSet>
+    </fileSets>
+</assembly>

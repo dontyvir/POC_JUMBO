@@ -1,0 +1,48 @@
+<!-- Use this file to deploy some handlers/chains and services      -->
+<!-- Two ways to do this:                                           -->
+<!--   java org.apache.axis.client.AdminClient deploy.wsdd          -->
+<!--      after the axis server is running                          -->
+<!-- or                                                             -->
+<!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   -->
+<!--      from the same directory that the Axis engine runs         -->
+
+<deployment
+    xmlns="http://xml.apache.org/axis/wsdd/"
+    xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from NotificaPago WSDL service -->
+
+  <service name="NotificaPagoSoapPort" provider="java:RPC" style="document">
+      <parameter name="wsdlTargetNamespace" value="http://tempuri.org/action/"/>
+      <parameter name="wsdlServiceElement" value="NotificaPago"/>
+      <parameter name="wsdlServicePort" value="NotificaPagoSoapPort"/>
+      <parameter name="className" value="org.tempuri.NotificaPagoSoapBindingSkeleton"/>
+      <parameter name="wsdlPortType" value="NotificaPagoSoapPort"/>
+      <parameter name="allowedMethods" value="*"/>
+
+      <typeMapping
+        xmlns:ns="http://botonpago.cencosud.cl"
+        qname="ns:NotificaPagoRep"
+        type="java:cl.cencosud.botonpago.NotificaPagoRep"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://tempuri.org/action/"
+        qname="ns:>NotificaPago.Execute"
+        type="java:org.tempuri.NotificaPagoExecute"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://tempuri.org/action/"
+        qname="ns:>NotificaPago.ExecuteResponse"
+        type="java:org.tempuri.NotificaPagoExecuteResponse"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+  </service>
+</deployment>

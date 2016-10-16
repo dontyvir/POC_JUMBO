@@ -1,0 +1,21 @@
+.dbanner {
+	height: 15px;
+	width: 50em;
+	border:1px solid #FFFFFF
+}
+
+.dinput {
+	width: 50em;
+	border: 0;
+	color: #222222;
+	background-color: #FFFFFF;
+	border: 1px solid #FFCDA9;
+}
+
+#activo{
+	float: left;
+}
+
+#multi1{
+	float: left;
+}

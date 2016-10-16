@@ -1,0 +1,44 @@
+ul.acord1, ul.acord1 ul { list-style-type:none; margin: 0; padding: 0; width: 675px; }
+ul.acord1 a { display: block; text-decoration: none; width: 675px; }
+ul.acord1 li { margin-top: 1px;  width: 675px; }
+
+.acordActivo { 
+	background-image: url(/FO_IMGS/img/estructura/paso1/abierto.gif);
+	background-repeat: no-repeat;
+	background-position: left bottom;
+	text-indent: 30px;
+	height: 20px;
+	width: 675px;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:12px;
+	/*font-color:#FFFFFF;*/
+	font-weight: bold;
+	vertical-align: text-bottom;
+	margin-top: 0px;
+	margin-bottom: 0px;
+	line-height: 20px;
+	/*
+	display: block;
+	cursor: pointer;
+	*/
+}
+.acordDesactivo { 
+	background-image: url(/FO_IMGS/img/estructura/paso1/cerrado.gif);
+	background-repeat: no-repeat;
+	background-position: left bottom;
+	text-indent: 30px;
+	height: 20px;
+	width: 675px;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:12px;
+	/*font-color:#666666;*/
+	font-weight: bold;
+	vertical-align: text-bottom;
+	margin-top: 0px;
+	margin-bottom: 0px;	
+	line-height: 20px;
+	/*
+	display: block;
+	cursor: pointer;
+	*/
+}

@@ -1,0 +1,145 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html><!-- InstanceBegin template="/Templates/print.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="EXPIRES" CONTENT="Mon, 22 Jul 2002 11:12:01 GMT">
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>Jumbo.cl Back Office Central</title>
+<!-- InstanceEndEditable -->
+<!-- InstanceBeginEditable name="head" --><!-- InstanceEndEditable -->
+<link href="estilos.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+<!--
+body {
+	background-color: #FFFFFF;
+}
+-->
+</style></head>
+
+<body>
+<!-- InstanceBeginEditable name="Body" --><br>		
+
+		<script>
+			function rev_des(form){
+				if (form.descrip.value == "" ){
+					alert("Debe ingresar una descripción antes de buscar");
+				}else{
+					if (!validar_obligatorio(form.descrip, "Descripción debe contener datos")){
+						//form.action.value="bus_desc";
+						form.submit();
+					}
+				}
+			}
+			
+			function validar_navegacion(form){
+				if (form.categoria.value == "-"){
+					alert("Selección no valida, seleccione una categoría");
+					return false;
+				}
+				return true;
+			}
+			
+			
+		</script>	
+<script language="JavaScript" src="funciones.js"></script>		
+<SCRIPT LANGUAGE="JavaScript">window.name='winmodal'</SCRIPT>				
+            <table width="95%"  border="0" align="center" cellpadding="0" cellspacing="2">
+              <tr>
+                <td><fieldset>
+                <legend>Buscar Productos</legend>
+                <table width="100%"  border="0" align="center" cellpadding="0" cellspacing="0">
+                        <form name="form_sap" method="get" action="ViewBusqProdForm" TARGET='winmodal' >                
+		                  <tr>
+        		            <td width="40%">C&oacute;digo:
+                		        <input type="radio" name="buscapor" value="prod" {check1} >
+                        		Producto
+		                        <input type="radio" name="buscapor" value="sap" {check2} >
+        		                SAP</td>
+        		            <td width="35%">Descripción del producto</td>
+                		    <td width="25%">Navegar Arbol Categor&iacute;as Web </td>
+                  		</tr>
+                  
+                  <tr>
+                    <td>&nbsp;
+
+	                        <input name="buscar" type="text" size="20" maxlength="20">
+
+                        <input type="submit" class="cmd" value="Buscar"></td>
+                    
+	                    </form>  
+	                    
+	                <td>
+                    <form name="frmDesc" method="get" action="ViewBusqProdForm" TARGET='winmodal' >
+					<input name="action" type="hidden" value="bus_desc">      
+                    <input name="descrip" type="text" size="20" maxlength="40" value="{descrip}" >
+                        <input name="Envdes" type="button" class="cmd" value="Buscar" onClick="javascript:rev_des(frmDesc)">
+                    </td>       
+	                <td>
+					<form name="nav_cat" method=get action="ViewBusqProdForm" TARGET='winmodal' onsubmit="return validar_navegacion(this);">	                               
+                   <select name="categoria">
+                   <option value="">-- Seleccionar --</option>
+                    <!-- BEGIN DYNAMIC: CATEGORIA -->
+                    	<OPTION value="{cat_id}" {sel_cat}>{cat_nombre}</OPTION>
+                    <!-- END DYNAMIC: CATEGORIA -->
+                        <option value="-">------------------------</option>
+                        <option value=-1>SUBIR UN NIVEL</option>
+                    </select>
+                      <input type="submit" class="cmd" value="Buscar"></td>
+                  </tr>
+                  </form>
+                </table>
+                </fieldset></td>
+              </tr>
+			</table>
+			<br>
+			<table width="95%"  border="1" align="center" cellpadding="0" cellspacing="0" class="tabla2">
+			  <tr align="left">
+				<th width="11%">Id Prod</th>
+				<th width="43%">Descripción</th>
+				<th width="14%">Tipo                
+				<th width="15%">Estado
+				<th width="9%">Sel
+			  </tr>
+			  <!-- BEGIN DYNAMIC: INF_PROD -->
+			  <tr>
+				<td>{cod_prod}</td>
+				<td>{prod_desc}</td>
+				<td>{tipo}</td>
+				<td>{est_prod}</td>
+				<td> <div align="center"><img src="img/forward.gif" width="16" height="16" onclick="javascript: valor='{valor}'; window.returnValue = valor; window.close();"  onmouseover="javascript:style.cursor='hand'" ></div></td>
+			  </tr>
+			  <!-- END DYNAMIC: INF_PROD -->
+			</table>
+
+			<table width="95%"  border="0" align="center" cellpadding="0" cellspacing="0">
+			<form name="form" action="ViewBusqProdForm" method=get TARGET='winmodal'>
+			<input type="hidden" name="categoria" value="{categoria}">
+			<input type="hidden" name="action" value="{action}">
+			<input type="hidden" name="descrip" value="{descrip}">
+			  <tr>
+				<td align="right">P&aacute;ginas : 
+				<select name="pagina" onchange="submit(this.form);">
+				<!-- BEGIN DYNAMIC: PAGINA -->
+				<option value="{pag}" {sel_pag} >{pag}</option>
+				<!-- END DYNAMIC: PAGINA -->
+				</select>
+				</td>
+			  </tr>
+			  </form>
+			  </table>
+			  <tr>
+				<td align="right">	
+				<div align="center">
+				  <input name="Button" type="button" class="cmd" value="  Cerrar  " onClick="valor=''; window.returnValue = valor; window.close();">
+				</div></td>
+			  </tr>
+			</table>
+<script>
+		document.form_sap.buscar.onkeypress = KeyNotCarExt;		
+
+</script>
+<!-- InstanceEndEditable --></body>
+<!-- InstanceEnd --></html>

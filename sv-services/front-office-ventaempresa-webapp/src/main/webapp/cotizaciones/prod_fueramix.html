@@ -1,0 +1,69 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>Venta Empresas - Producto</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="EXPIRES" CONTENT="Mon, 22 Jul 2002 11:12:01 GMT">
+<script language="javascript" src="/WebFOVE/funciones.js"></script>
+<link href="/WebFOVE/style.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+<!--
+body {
+	margin-left: 5px;
+	margin-top: 5px;
+	margin-right: 5px;
+	margin-bottom: 5px;
+}
+-->
+</style>
+<SCRIPT LANGUAGE="JavaScript">
+
+function add_producto() {
+
+	var form = window.document.f_producto;
+
+	window.opener.insRow( form.descripcion.value, format_number(form.precio.value), format_number(form.cantidad.value) );
+	window.opener.document.form_topaso3.prod_mix.value+=form.descripcion.value+"--"+form.precio.value+"--"+form.cantidad.value+"##";
+	window.close();
+
+}
+
+</SCRIPT>
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript"></script>
+<script type="text/javascript">
+   _uacct = "UA-1529321-3";
+   urchinTracker();
+</script>
+</head>
+<body onLoad="window.focus();window.document.f_producto.cantidad.focus();">
+<form action="#" method="post" name="f_producto" id="f_producto">
+  <table width="80%"  border="1" align="center" cellpadding="0" cellspacing="0" bordercolor="#CAE68A" class="tabla_generica">
+    <tr class="fila_tabla_titulos">
+      <td width="60">Cantidad</td>
+      <td>Descripci&oacute;n</td>
+      <td width="100">Precio sugerido</td>
+      <td width="100" align="center">Acci&oacute;n</td>
+    </tr>
+    <tr>
+      <td width="60"><input name="cantidad" type="text" id="cantidad" size="10" maxlength="10"></td>
+      <td><input name="descripcion" type="text" id="descripcion" size="30" maxlength="30"></td>
+      <td width="100" align="right"><div align="center">
+        <input name="precio" type="text" id="precio" size="10" maxlength="10">
+      </div></td>
+      <td width="100" align="center"><input name="Button" type="button" class="botonChico" value="Agregar" onClick="add_producto();"></td>
+    </tr>
+  </table>
+</form>
+
+
+
+<SCRIPT LANGUAGE="JavaScript">
+window.document.f_producto.cantidad.onkeypress= KeyIsCantidad;
+window.document.f_producto.descripcion.onkeypress= KeyIsTexto;
+window.document.f_producto.precio.onkeypress= KeyIsNumber;
+</SCRIPT>
+
+</body></html>

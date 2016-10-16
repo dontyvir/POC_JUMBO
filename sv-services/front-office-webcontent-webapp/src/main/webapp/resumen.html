@@ -1,0 +1,305 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Resumen de Compra</title>
+<link href="/FO_WebContent/css/flujo_de_compras.css" rel="stylesheet" type="text/css" />
+<link href="/FO_WebContent/css/3niveles.css" rel="stylesheet" type="text/css" />
+
+<script>
+	function chaordicConfirmacion(	ses_cli_id		,	
+									ses_cli_nombre	,
+									ses_cli_email	,
+									id_transaccion	,
+									detalleItems 	){
+		var items = '';
+		var i = 0;
+		var arr = new Array();
+		
+		if(null != detalleItems.length){
+			for( i = 0 ; i < detalleItems.length ; i++){
+				if(i != 0){
+					items += ',';
+				}
+				items += '{"product":{"id":"'+detalleItems[i][0]+'","price":'+detalleItems[i][1]+'},"quantity":'+detalleItems[i][2]+'}';
+			}
+			arr = JSON.parse('['+items+']');
+		}
+	
+		window.chaordic_meta = {
+			"page"		: {
+				"name"		: "confirmation"
+			},
+			"transaction": {
+				"id": id_transaccion	,
+				"items": arr
+			}
+			,
+			"user": {
+				"id"					: ses_cli_id			, 
+				"name"					: ses_cli_nombre     	, 
+				"email"					: ses_cli_email       	, 
+				"allow_mail_marketing"	: false                 
+			}
+		};
+		
+		return false;
+	}
+</script>
+<script type="text/javascript" src="/FO_WebContent/js/resumencompra.js"></script>
+<style type="text/css">
+.footer {	font-family: Arial, Helvetica, sans-serif;s
+	font-size: 9px;
+	font-style: normal;
+	line-height: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	color: #666666;
+	text-decoration: none;
+}
+</style>
+
+<script async defer src="//static.chaordicsystems.com/static/loader.js" data-initialize="true" data-apikey="jumbochile"> </script>
+</head>
+
+<body>
+<!-- INICIO Adwords AJARA 06/11/2014 -->
+<!-- Google Code for Compra - Jumbo.cl Conversion Page -->
+<script type="text/javascript">
+/* <![CDATA[ */
+var google_conversion_id = 1036899053;
+var google_conversion_language = "es";
+var google_conversion_format = "1";
+var google_conversion_color = "ffffff";
+var google_conversion_label = "lhLfCPHCt1cQ7aW37gM";
+var google_conversion_value = 90000.00;
+var google_conversion_currency = "CLP";
+var google_remarketing_only = false;
+/* ]]> */
+</script>
+<script type="text/javascript" src="http://www.googleadservices.com/pagead/conversion.js">
+</script>
+<noscript>
+<div style="display:inline;">
+<img height="1" width="1" style="border-style:none;" alt="" src="http://www.googleadservices.com/pagead/conversion/1036899053/?value=90000.00&amp;currency_code=CLP&amp;label=lhLfCPHCt1cQ7aW37gM&amp;guid=ON&amp;script=0"/>
+</div>
+</noscript>
+<!-- FIN Adwords AJARA 06/11/2014 -->
+<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-PWPZN" 
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script type="text/javascript">
+var mx_content = '/Compra/Confirmacion';
+var mx_user = '{ta_mx_user}';
+var mx_loc = '{ta_mx_loc}';
+var mx_criterio = '{mx_criterio}';
+var mx_despacho = '{mx_despacho}';
+var mx_mediop = '{forma_pago}';
+var mx_cpago = '{tip_doc}';
+var mx_idTrans = '{order-id}';
+var mx_cupon = '{ta_cupon_descuento}';
+var mx_valTrans = '{total_sin_iva}';
+var mx_taxTrans = '{tax}';
+var mx_costo = '{shipping}';
+
+
+
+var mx_item = new Array();
+var count=0;
+var countDesc=0;
+<!-- BEGIN DYNAMIC: LISTA_PROD -->
+mx_item[count] = ['{sku/code}', "{productname}","{categoryComplete}",'{price}','{quantity}']; //Productos
+++count;
+<!-- END DYNAMIC: LISTA_PROD -->
+<!-- BEGIN DYNAMIC: LISTA_DESC -->
+mx_item[count] = ['{cod_promo}', '{promo_descripcion}','Descuentos','{promo_descuento}','{cant_prod_desc}']; //Descuentos
+++count;
+<!-- END DYNAMIC: LISTA_DESC -->
+
+(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PWPZN');</script>
+
+<div style="width:960px; height:auto; margin-left:auto; margin-right:auto; float:none; clear:both;">
+  <div class="menu_superior_flujo_2012">
+    <div class="logo_jumbo_2011"><img src="/FO_IMGS/images/header/logo_wht_bg.jpg" alt="" width="150" height="111" border="0" /></div>
+    <div class="menu_arriba_2011">
+      <div class="linea_menu_arriba_2011">
+        <div class="menu_arriba_necesitas_ayuda">Necesitas Ayuda? <span style="color:#1FA22E"> 600 400 3000</span></div>
+      </div>
+      <div class="linea_menu_arriba_2011">
+        <div class="menu_arriba_cerrar_sesion"><a href="Logoff">Cerrar Sesi&oacute;n</a></div>
+        <div class="menu_arriba_nombre_cliente">{nombre_cliente_header}</div>
+      </div>
+      <div class="select_paso"><img src="/FO_IMGS/img/confirmacion_pasos.gif" width="960" height="49" /></div>
+    </div>
+  </div>
+  <div class="cont_main_central_flujo">
+  <div class="contenedor_carro_2012">
+    <div class="titulo_direccion_despacho"> {nombre_cliente_gracias}, gracias por comprar en Jumbo.cl</div>
+    <div class="contenedor_confirmacion_logeado">
+      <div class="fila_confirmacion_2012">Esta compra ser&aacute; guardada como lista base con la fecha de la compra. 
+        <form id="form1" name="frmGuardaCompra" method="post" action="#" style="margin-top:20px;" onsubmit="guarda_compra();">
+          <input type="hidden" name="mostrar_evento" id="mostrar_evento" value="{mostrar_evento}" />
+          <input type="hidden" name="from" id="from" value="RESUMEN" />
+          <input type="hidden" name="unidades" value="{cantidad}" />
+          <input type="hidden" name="opcionradio" value="1" />
+          <label for="textfield"></label>
+          <input name="txtNewNombre" type="text" class="label_compra_lista_2014" id="txtNewNombre" maxlength="63" value="compra del d&iacute;a {fecha_lista}" onclick="this.value=''"/>
+        </form>
+        <a class="fila_finalizar_2012" href="javascript:guarda_compra();" style="color:#1FA22E; padding-left: 0px !important;">Guardar y volver al Home </a>
+      </div>
+      <!-- BEGIN DYNAMIC: SIN_GENTE_RETIRO -->
+      <div style="padding-top: 30px; width: 850px"><a href="http://www.jumbo.cl/supermercado/click-auto/index.html" onclick="_gaq.push(['_trackEvent', 'Auto_Jumbo', 'Confirmacion_Compra_Retiro', 'Banner_Indicaciones']);" target="_blank"><img src="http://www.jumbo.cl/supermercado/click-auto/img/click_auto_flujo_confirmacion_compra.jpg" width="850" alt="Auto Jumbo" /></a></div>
+      <!-- END DYNAMIC: SIN_GENTE_RETIRO -->
+      
+	  <div class="titulo_direccion_despacho"> Resumen de tu compra</div>
+      <div class="fila_confirmacion_2012">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tbody>
+          <tr>
+              <td><div class="col_confirmacion_2012"><strong>Cliente</strong></div></td>
+              <td>{nombre_cliente}</td>
+            </tr>
+            <tr>
+              <td><div class="col_confirmacion_2012"><strong>N&#186; de pedido</strong></div></td>
+              <td>{idped}</td>
+            </tr>
+            <tr>
+              <td><div class="col_confirmacion_2012"><strong> {fc_hr_despacho}</strong></div></td>
+              <td>{fecha_tramo}</td>
+            </tr>
+           
+           
+            <tr>
+              <td><div class="col_confirmacion_2012"> <strong>{forma_despacho}</strong></div></td>
+              <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tbody>
+                  <tr>
+                     <td valign="top">{lugar_despacho}<!-- BEGIN DYNAMIC: LUGAR_RETIRO --> {dir_retiro_pedido} <a href="http://www.jumbo.cl/supermercado/click-auto/index.html" target="_blank" style="color:#666;">{ver_mas}</a><!-- END DYNAMIC: LUGAR_RETIRO --></td>
+                    </tr>
+                </tbody>
+              </table></td>
+            </tr>
+            
+             <!-- BEGIN DYNAMIC: SIN_GENTE_DESPACHO -->
+            <tr>
+              <td width="205"><div class="col_confirmacion_2012"><strong>Persona autorizada a recibir el despacho</strong></div></td>
+              <td>{sin_gente_txt}</td>
+            </tr>
+            <!-- END DYNAMIC: SIN_GENTE_DESPACHO -->
+            <!-- BEGIN DYNAMIC: SIN_GENTE_RETIRO -->
+            <tr>
+              <td><div class="col_confirmacion_2012"><strong> Persona autorizada a retirar el pedido</div></td>
+              <td>{sin_gente_txt}</td>
+            </tr>
+            <tr>
+              <td width="205"><div class="col_confirmacion_2012"><strong> RUT persona autorizada a retirar el pedido</strong></div></td>
+              <td>{sin_gente_rut}</td>
+            </tr>
+            <!-- END DYNAMIC: SIN_GENTE_RETIRO -->
+            <tr>
+              <td><div class="col_confirmacion_2012"><strong> Cantidad de productos</strong></div></td>
+              <td>{cantidad}</td>
+            </tr>
+            <tr>
+              <td><div class="col_confirmacion_2012"><strong> Monto del pedido</strong></div></td>
+              <td>{monto_op}</td>
+            </tr>
+            <tr>
+              <td><div class="col_confirmacion_2012"><strong> Costo Servicio</strong></div></td>
+              <td>{monto_desp}</td>
+            </tr>
+            <tr>
+              <td><div class="col_confirmacion_2012"><strong> Monto total reservado*</strong></div></td>
+              <td>{monto_res}</td>
+            </tr>
+            
+            <tr>
+              <td><div class="col_confirmacion_2012">Comercio</div></td>
+              <td>Jumbo.cl</td>
+            </tr>
+            <tr>
+              <td><div class="col_confirmacion_2012">Tipo de transacci&oacute;n</div></td>
+              <td>Venta</td>
+            </tr>
+            <tr>
+              <td><div class="col_confirmacion_2012">URL el comercio</div></td>
+              <td>http://www.jumbo.cl</td>
+            </tr>
+            <tr>
+              <td><div class="col_confirmacion_2012">Fecha de ingreso del Pedido</div></td>
+              <td>{fecha_hoy}</td>
+            </tr>
+            <tr>
+              <td><div class="col_confirmacion_2012"> Forma de pago</div></td>
+              <td>{forma_pago}</td>
+            </tr>
+            <tr>
+              <td><div class="col_confirmacion_2012"> Tipo documento</div></td>
+              <td>{tip_doc}</td>
+            </tr>
+            
+            <tr>
+              <td><div class="col_confirmacion_2012">Tarjeta de Cr&eacute;dito</div></td>
+              <td>{4_ultimos}</td>
+            </tr>
+            <tr>
+              <td><div class="col_confirmacion_2012"> C&oacute;digo de autorizaci&oacute;n de la transacci&oacute;n </div></td>
+              <td>{cod_aut_trx}</td>
+            </tr>
+            <tr>
+              <td><div class="col_confirmacion_2012"> N&deg; de Cuotas</div></td>
+              <td>{nro_cuotas}</td>
+            </tr>
+            <tr>
+              <td><div class="col_confirmacion_2012"> Tipo de cuotas</div></td>
+              <td>{tipo_cuotas}</td>
+            </tr>
+            <tr>
+              <td><div class="col_confirmacion_2012"> Descripci&oacute;n de bienes</div></td>
+              <td>Productos de supermercado</td>
+            </tr>
+            
+            
+            
+            
+           
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="fila_confirmacion_2012">Para compras con factura, se agrega en la reserva el recargo por los impuestos adicionales al IVA que pudieran gravar los productos en el carro de compra ( impuestos ICA, ILA, IHA).<br />
+      
+      * Es el monto reservado en tu tarjeta, el cu&aacute;l corresponde al Monto del Pedido m&aacute;s el Costo del Servicio. El monto final cobrado puede ser menor al monto reservado debido a los productos sustituidos o faltantes.<br/>
+      ** Los puntos ganados en esta compra estar&aacute;n disponibles dentro de las pr&oacute;ximas 72 hrs.<br />
+      *** Valores expresados en pesos chilenos.</div>
+    <!--div class="fila_botones_confirmacion_2012"><a href="/FO/preguntas.html#17"><img src="/FO_IMGS/img/estado_pedido.gif" width="187" height="34" border="0" /></a></div-->
+    <!--div class="titulo_direccion_despacho"> Sustituci&oacute;n</div-->
+    <br />
+    <!-- BEGIN DYNAMIC: MSG_SUSTITUTOS_OLD_CON -->
+    <!--div class="fila_confirmacion_2012">Tienes {cant_productos_nuevos} productos nuevos a los cuales no les ha definido un criterio de sustituci&oacute;n. <strong><a href="/FO/sustitucion.html" style="color:#666;">Ver pol&iacute;tica de sustituci&oacute;n</a></strong></div-->
+    <!-- END DYNAMIC: MSG_SUSTITUTOS_OLD_CON -->
+    <!--div class="fila_botones_confirmacion_2012"><a href="javascript:modificar_sustitutos();pageTracker._trackPageview('/FO/resumen_compra/links/sustitucion');"><img src="/FO_IMGS/img/asignar_criterio.gif" width="233" height="34" border="0" /></a></div-->
+    <div class="fila_confirmacion_2012">
+      <div class="fila_botones_confirmacion_2012">
+      <div class="fila_devolucion_2012"><!-- <a href="..http://www.jumbo.cl/supermercado/preguntas/preguntas.html#12" style="color:#666;" target="_blank">Ver pol&iacute;tica de devoluci&oacute;n de Productos</a> --></div>
+        <div class="fila_finalizar_2012"><a href="javascript:guarda_compra();" style="color:#1FA22E">Guardar y volver al Home </a></div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+<script>
+//Arreglo para generaci�n de chaordic_meta 
+var chaordic_item = new Array();
+var cant=0;
+<!-- BEGIN DYNAMIC: CHAORDIC_PROD -->
+chaordic_item[cant] = ['{id_prod}','{precio}','{cantidad}'];
+++cant;
+<!-- END DYNAMIC: CHAORDIC_PROD -->
+chaordicConfirmacion("{ses_cli_id}","{ses_cli_nombre}","{ses_cli_email}",mx_idTrans,chaordic_item);
+</script>
+</html>

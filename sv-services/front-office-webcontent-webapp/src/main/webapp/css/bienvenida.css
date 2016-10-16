@@ -1,0 +1,173 @@
+.footer {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 9px;
+	font-style: normal;
+	line-height: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	color: #666666;
+	text-decoration: none;
+}
+.style1 {color: #000000}
+a:link {
+	color: #333333;
+}
+a:visited {
+	color: #669900;
+}
+a:hover {
+	color: #333333;
+}
+a:active {
+	color: #669900;
+}
+.lectura {	
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-style: normal;
+	line-height: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	color: #333333;
+	text-decoration: none;
+}
+.titulosVerdes {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 18px;
+	font-style: normal;
+	line-height: normal;
+	font-weight: bold;
+	font-variant: normal;
+	text-transform: none;
+	color: #93BE2E;
+	text-decoration: none;
+}
+.style4 {
+	font-size: 10px;
+	font-style: italic;
+	color: #333333;
+}
+#txcalendario{
+	width:200px;
+	height: 63px;
+	float:left;
+	margin-left: 5px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+}
+
+/*#bann_tracking {
+	width:180px;
+}*/
+
+#carroguardado{
+	position:absolute;
+	left:350px;
+	top:-70px;
+	width:248px;
+	height:400px;
+	z-index:4;
+	visibility: hidden;
+}
+.autojumbo{
+	width:130px;
+	height: 39px;
+	float:left;
+}
+.txautojumbo{
+	width:650px;
+	height: 25px;
+	float:left;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #666;
+}
+.titulolectura {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	font-style: normal;
+	font-weight: bold;
+	font-variant: normal;
+	text-transform: none;
+	color: #333333;
+	text-decoration: none;
+}
+.style7 {font-style: normal; line-height: normal; font-weight: bold; font-variant: normal; text-transform: none; color: #333333; text-decoration: none; 	font-family: Arial, Helvetica, sans-serif;}
+a:link {
+	color: #669900;
+}
+
+#ventana {
+	position:absolute;
+	width: 0px;
+	height: 0px;
+	left: 0px;
+	top: 0px;
+	visibility: hidden;
+	border: 1px solid #CCC;
+	z-index: 10;
+	background-color: #FFF;
+ border-radius: 6px 6px 6px 6px;
+}
+
+#ventana_evento {
+	position:absolute;
+	width: 0px;
+	height: 0px;
+	left: 0px;
+	top: 0px;
+	visibility: hidden;
+	border: 1;
+	z-index: 10;
+}
+
+#ventana_mapa {
+	position:absolute;
+	width: 0px;
+	height: 0px;
+	left: 0px;
+	top: 0px;
+	visibility: hidden;
+	border: 1;
+	z-index: 10;
+}
+.lecturabv {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	text-transform: none;
+	color: #333333;
+	float:left;
+	clear: both;
+	width:100%;
+}
+#link_auto_jumbo {
+	position:absolute;
+	left: 320px;
+	top: 0px;
+	color:#333333;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size:12px;
+	line-height:14px;
+}
+#cmbbox_auto_jumbo {
+	width: 320px;
+}
+#reconfirmar_mapa {
+	position:absolute;
+	left: 320px;
+	top: 0px;
+	color:#333333;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size:12px;
+	line-height:14px;
+}
+#Direcciones {
+	left: 320px;
+	top: 0px;
+	color:#333333;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size:12px;
+	line-height:14px;
+}

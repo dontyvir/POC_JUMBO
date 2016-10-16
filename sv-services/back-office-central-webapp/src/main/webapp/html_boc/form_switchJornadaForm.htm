@@ -1,0 +1,96 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<link rel="stylesheet" href="../theme/Master.css" type="text/css">
+		<title>form_switchJornadaForm</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+		<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+		<script>
+				$(document).ready(
+					function(){
+					   $("#formSdespacho").submit(function(e) {
+  							
+  							var cmb = $('input[name=tipoCambio]:checked').val();
+  							if(cmb == 'local'){
+  								return;							
+  							}else if(cmb == 'jornada'){
+  								return;
+  								//$("#formSdespacho").submit();
+  							}
+  							e.preventDefault();
+  						});
+					}
+				);
+		</script>
+		<link href="estilos.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+<!--
+body {
+	background-color: #FFFFFF;
+}
+-->
+</style>
+	</head>
+<body>
+<br/>
+<table width="575"  border="0" align="center" cellpadding="0" cellspacing="0" class="tabla3">
+
+	<tr><th colspan="2">Datos del pedido</th></tr>
+  
+  <tr>
+	<td width="132">N&deg; Pedido</td>
+	<td width="443">{id_pedido}</td>
+  </tr>
+   <tr>
+	<td width="200">Estado</td>
+	<td>{estado}</td>
+  </tr>
+  <tr>
+	<td>Local </td>
+	<td>({id_local}) &nbsp; {local}</td>
+  </tr>
+  <tr>
+	<td>Costo Despacho </td>
+	<td>{costo_despacho}</td>
+  </tr>
+  <tr>
+	<td>Id Picking</td>
+	<td>{id_picking}</td>
+  </tr>
+  <tr>
+	<td>Id Despacho</td>
+	<td>{id_despacho}</td>
+  </tr>
+  <tr >
+	<td>Capac Picking Pedido </td>
+	<td>{capac_picking}</td>
+  </tr>
+</table>
+
+<br/>
+<form name="formSdespacho" id="formSdespacho" method="post" action="ViewSwitchJornadaForm">
+	<input type="hidden" name="idLocal" id="idLocal" value="{id_local}" readonly="readonly"/>
+	<input type="hidden" name="id_pedido" id="id_pedido" value="{id_pedido}" readonly="readonly"/>
+	<table width="575"  border="0" align="center" cellpadding="0" cellspacing="0" class="tabla3">
+	
+		<tr valign="top">
+			<th>Cambio Jornada Despacho </th>
+		</tr>
+		
+		<tr valign="top">
+			<td><input type="radio" name="tipoCambio" value="local" checked />&nbsp;&nbsp;Cambiar Local</td>
+		</tr> 
+		
+		<tr valign="top">
+			<td><input type="radio" name="tipoCambio" value="jornada" />&nbsp;&nbsp;Cambiar Jornada</td>
+		</tr>
+	
+		<tr valign="top" align="right">
+			<td><input type="submit" name="Cambiar" value="Cambiar"></td>
+		</tr>
+		
+	</table>
+</form>
+
+</body>
+</html>

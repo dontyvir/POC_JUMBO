@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<url_partes>
+		<botonera>swf/menu.swf</botonera>	
+		<hora_fecha>swf/hora_fecha.swf</hora_fecha>
+		<menu_superior>swf/menu_superior.swf</menu_superior>	
+		<inicio>swf/cont_ini_mundial_futbol.swf</inicio>
+		<logo_izq>swf/cont_logo_institucional.swf</logo_izq>
+	</url_partes>
+</config>

@@ -1,0 +1,159 @@
+<html>
+<head>
+<title>Success</title>
+<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.12.0.min.js"></script>
+<style type="text/css">
+.example{
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 10px;
+	font-style: normal;
+	font-variant: normal;
+	background-color:gainsboro;
+	padding:0px 0px 0px 0px;
+	text-indent:3px;
+}
+p {
+  font-family: Verdana, Geneva, sans-serif;
+  font-size: 11px;
+  font-style: normal;
+  font-variant: normal;	
+}
+</style>
+</head>
+
+<body>
+<p id="links">
+<a id="local" name="local" href="#">Token-Local</a>&nbsp;|&nbsp;
+<a id="interna" name="interna" href="#">Token-Almedro-DMZ</a>&nbsp;|&nbsp;
+<a id="externa" name="externa" href="#">Token-Publica</a>
+</p>
+
+<p><a href="/VentaMasiva/app/test.html">Volver</a></p>
+
+<div id="response" class="example" style="background-color:#D0D0D0"></div>
+<div id="resumenPedido" class="example" style="background-color:#D0D0D0"></div>
+<div id="detallePedido" class="example" style="background-color:#D0D0D0"></div>
+<div id="detalleProductos" class="example"  style="background-color:#D0D0D0"></div>
+</body>
+
+<script type="text/javascript">
+$(document).ready(function(){
+  var token = getUrlVar("token");   	
+  
+  $("p#links a").click(function(e){
+    $("#response").empty();
+    $("#resumenPedido").empty();
+    $("#detallePedido").empty();
+    $("#detalleProductos").empty();
+    var name = $(this).attr('name');   
+    validatejSON( token,getName(name) );
+  });
+	
+  function getUrlVar(key){
+    var result = new RegExp(key + "=([^&]*)", "i").exec(window.location.search); 
+    return result && unescape(result[1]) || ""; 
+  }
+      
+  function validatejSON(token, ambiente){
+    try{
+      $.ajax({
+        type: "get",
+	    url: getUrl(ambiente),
+	    data: "token="+encodeURIComponent(token),
+	    error: callback_error,
+	    success: recuperarJson_callback
+      });
+    }catch(ex){
+      alert(ex.description);
+    }
+  }
+  
+  function getUrl(ambiente){
+    var utl;	  
+    if(ambiente=="local"){
+      url = "http://10.95.6.125:9080/VentaMasiva/PurchaseValidate";
+    
+    }else if(ambiente=="interna"){
+      url = "http://172.18.145.62/VentaMasiva/PurchaseValidate";
+    
+    }else if(ambiente=="externa"){
+      url = "http://200.1.131.54/VentaMasiva/PurchaseValidate";
+    }
+    return url;
+  } 
+  
+  function getName(name){
+    var retorno;	  
+    if(name=="local"){
+      retorno = "local";
+    }else if(name=="interna"){
+      retorno = "interna";	        
+    }else if(name=="externa"){
+      retorno = "externa";	        
+    }
+    return retorno;
+  }
+  
+  function callback_error(XMLHttpRequest, textStatus, errorThrown) {
+    alert("ERROR: " + errorThrown);
+  }
+   
+  function recuperarJson_callback(ajaxResponse, textStatus){	   
+    var data = procesarRespuesta(ajaxResponse);           
+    var response = document.getElementById("response");
+    var resumenPedido = document.getElementById("resumenPedido");
+    var detallePedido = document.getElementById("detallePedido");
+    var detalleProductos = document.getElementById("detalleProductos");
+     
+    var html0 = "<p>Code:" + data.Header.Response.Code+"</p>";
+    html0 = html0 + "<p>Message:" + data.Header.Response.Message+"</p>";
+    html0 = html0 + "<p>AppId:" + data.Header.Response.AppId+"</p>";
+    response.innerHTML = html0;
+     
+    var html1 = "<p>id_pedido:" + data.Header.Response.resumenPedido.id_pedido+"</p>";
+    html1 = html1 + "<p>nombre_cliente:" + data.Header.Response.resumenPedido.nombre_cliente+"</p>";
+    html1 = html1 + "<p>rut:" + data.Header.Response.resumenPedido.rut+"</p>";
+    html1 = html1 + "<p>fecha_tramo:" + data.Header.Response.resumenPedido.fecha_tramo+"</p>";
+    html1 = html1 + "<p>lugar_despacho:" + data.Header.Response.resumenPedido.lugar_despacho+"</p>";
+    html1 = html1 + "<p>cantidad:" + data.Header.Response.resumenPedido.cantidad+"</p>";
+    html1 = html1 + "<p>monto:" + data.Header.Response.resumenPedido.monto+"</p>";
+    html1 = html1 + "<p>monto_despacho:" + data.Header.Response.resumenPedido.monto_despacho+"</p>";
+    html1 = html1 + "<p>mmonto_reservado:" + data.Header.Response.resumenPedido.monto_reservado+"</p>";
+    resumenPedido.innerHTML = html1;
+     
+    var html2 = "<p>medio_pago:" + data.Header.Response.detallePedido.medio_pago+"</p>";
+    html2 = html2 + "<p>fecha_ingresoe:" + data.Header.Response.detallePedido.fecha_ingreso+"</p>";
+    html2 = html2 + "<p>tipo_transaccion:" + data.Header.Response.detallePedido.tipo_trans+"</p>";
+    detallePedido.innerHTML = html2;
+    
+    var html3="";     
+    $.each(data.Header.Response.detalleProductos,function(i,v){
+      html3 = html3 + "<p>";
+      $.each(v,function(field, value){
+        html3= html3 + field + ": "+value + "<br />";  		
+      });
+      html3= html3 + "</p>";
+    })         
+    detalleProductos.innerHTML = html3;
+  }
+	
+  function procesarRespuesta(ajaxResponse){ 
+     /*
+	 var response;
+     try { 
+        eval( 'response=' + ajaxResponse ); 
+     }catch(ex) { 
+       response = null; 
+     }
+     return response;
+     */
+     return ajaxResponse;
+   }
+
+
+});
+  
+  
+  
+</script>
+</html>

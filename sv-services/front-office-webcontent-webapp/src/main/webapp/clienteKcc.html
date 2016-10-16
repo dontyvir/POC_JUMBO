@@ -1,0 +1,426 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//ES" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="CACHE-CONTROL" content="NO-CACHE" />
+<meta http-equiv="PRAGMA" content="NO-CACHE" />
+<meta http-equiv="EXPIRES" content="Mon, 22 Jul 2002 11:12:01 GMT" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Formulario KCC</title>
+<link rel="shortcut icon" href="/FO_IMGS/img/favicon.ico" />
+
+<script type="text/javascript" src="/FO_WebContent/js/jquery.min.js"></script>
+<script type="text/javascript" src="/FO_WebContent/js/funciones.js"></script>
+<script type="text/javascript" src="/FO_WebContent/js/clienteKcc.js"></script>
+<script type="text/javascript" src="/FO_WebContent/js/checkrut.js"></script>
+<script src="/FO_WebContent/js/SpryValidationSelect.js" type="text/javascript"></script>
+<script src="/FO_WebContent/js/SpryEffects.js" type="text/javascript"></script>
+<link href="/FO_WebContent/css/SpryValidationSelect.css" rel="stylesheet" type="text/css" />
+
+<style type="text/css">
+
+body {
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+}
+#form01 {
+	text-align: center;
+}
+#form_todo {
+	vertical-align: top;
+	padding-top: 300px;
+}
+#form2_der {
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 9px;
+	font-weight: lighter;
+	color: #F90;
+}
+#form1 table {
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 12px;
+	color: #0063be;
+	text-align: center;
+	font-weight: bold;
+}
+.text_der_form_02 {
+	font-family: "VAG Rounded Black";
+	font-size: 9px;
+	color: #402F76;
+}
+#form_rojo {
+	color: #FF0000;
+}
+.aste_rojo {
+	color: #FF0000;
+}
+.boton_enviar {
+	border: 0px;
+	border-image-source: initial;
+	border-image-slice: initial;
+	border-image-width: initial;
+	border-image-outset: initial;
+	border-image-repeat: initial;
+	color: rgb(255, 255, 255);
+	float: right;
+	padding: 5px;
+	cursor: pointer;
+	width: 108px;
+	height: 22px;
+	font-weight: bold;
+	text-align: center;
+	background-image: url(/FO_IMGS/images/kcc/btn_03.png);
+	background-repeat: no-repeat;
+	background-position: 0% 0%;
+}
+.for2 {
+	font-weight: normal;
+}
+.form_txt {
+	background-repeat: no-repeat;
+	padding: 3px;
+	clear: right;
+	float: left;
+	height: 20px;
+	width: 220px;
+	position: static;
+	border: 2px solid #00388a;
+	border-radius: 12px;
+}
+.tabla_02 {
+	padding-right: 70px;
+	width: 420px;
+}
+.Img_txt_03 {
+	background-image: none;
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+.punto {
+	color: #FF0000;
+	font-size: 9px;
+}
+.cuadro_aviso {
+	position: fixed;
+	background-repeat: no-repeat;
+	vertical-align: middle;
+}
+.rojo_02 {
+	font-size: 10px;
+	vertical-align: top;
+	height: 2px;
+	font-family: Verdana, Geneva, sans-serif;
+}
+
+#apDiv1 {
+	position: absolute;
+	width: 457px;
+	height: 445px;
+	z-index: 1;
+	top: 127px;
+	visibility: hidden;
+	background-image: url(/FO_IMGS/images/kcc/cuadro_02.png);
+}
+.coco_01 {
+	color: #FFFFFF;
+	font-family: Arial;
+	font-size: 16px;
+	font-weight: bold;
+	padding-right: 10px;
+	padding-left: 10px;
+}
+.form_txt_02 {
+	background-repeat: no-repeat;
+	padding: 3px;
+	clear: right;
+	float: left;
+	height: 26px;
+	width: 200px;
+	position: static;
+	border: 2px solid #00388a;
+	border-radius: 12px;
+}
+.fondo_02 {
+	background-image: url(/FO_IMGS/images/kcc/fondo_03.jpg);
+	background-repeat: no-repeat;
+	background-position: center top;
+}
+.seleccionar {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 9px;
+	font-weight: normal;
+	color: #009;
+	text-align: left;
+}
+.bases_02 {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #009;
+	text-decoration: underline;
+}
+a:link {
+	text-decoration: none;
+}
+a:visited {
+	text-decoration: none;
+}
+a:hover {
+	text-decoration: none;
+	color: #09F;
+}
+a:active {
+	text-decoration: none;
+}
+.form_txt_022 {
+	background-repeat: no-repeat;
+	padding: 3px;
+	clear: right;
+	float: left;
+	height: 26px;
+	width: 220px;
+	position: static;
+	border: 2px solid #00388a;
+	border-radius: 12px;
+}
+</style>
+</head>
+
+<body onload="MM_preloadImages('/FO_IMGS/images/kcc/pdf_02.png','/FO_IMGS/images/kcc/btn_03_B.png')"> 
+
+<div class="fondo_02" style="width:1000px; height:auto; margin-left:auto; margin-right:auto; float:none; clear:both;">
+	
+	<div class="cont_main_central">
+
+
+<table width="960" height="725" border="0" align="center" cellspacing="5" style="">
+  <tr>
+    <td width="450">&nbsp;</td>
+    <td valign="top">
+    <form action="#" method="post"  name="form1" class="form_todo" id="form1" style="background-image: url( url(/FO_IMGS/images/kcc/fondo_02.jpg)); background-position: top; background-repeat: no-repeat; text-align: center;"  onsubmit="javascript:return false;">
+      <div class="Img_txt_03">
+      <div class="cuadro_aviso" id="apDiv1">
+        <table width="480" height="373" border="0" align="center" cellpadding="0" cellspacing="0">
+          <tr>
+            <td width="115" height="74">&nbsp;</td>
+            <td>&nbsp;</td>
+            <td width="82" align="left" valign="bottom"><img src="/FO_IMGS/images/kcc/bot_cerrar.png" width="32" height="31"  border="0" id="btnCerrar"/></td>
+          </tr>
+          <tr>
+            <td height="260">&nbsp;</td>
+            <td width="269" class="coco_01" id="coco_01"></td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+          </tr>
+        </table>
+      </div>
+        <table width="420" border="0" align="right" cellspacing="5" class="tabla_02">
+          <tr>
+            <td colspan="3" align="left" id="form8">&nbsp;</td>
+          </tr>
+          <tr>
+            <td colspan="3" align="left" id="form6">&nbsp;</td>
+          </tr>
+          <tr>
+            <td colspan="3" align="left" id="form16">&nbsp;</td>
+          </tr>
+          <tr>
+            <td colspan="3" align="left" id="form12">&nbsp;</td>
+          </tr>
+          <tr>
+            <td width="443" colspan="2" align="right" valign="middle" id="form5">Nombre</td>
+            <td width="231" valign="middle" id="form5">
+            <input name="nombres" type="text" class="form_txt" id="nombres" style="color: #999; padding-left: 5px;" onfocus="if (this.value=='Nombre y Apellido') this.value='';" onblur="if (this.value=='') this.value='Nombre y Apellido';" value="Nombre y Apellido" size="30" maxlength="60" vspace="4";/></td>
+          </tr>
+          <tr>
+            <td colspan="2" align="right" valign="middle" id="form24">Rut</td>
+            <td valign="middle" id="form24">
+            <input name="rut" type="text" class="form_txt" id="rut" style="color: #999; padding-left: 5px;" onfocus="if (this.value=='12345678-9') this.value='';" onblur="if (this.value=='') this.value='12345678-9';" value="12345678-9" size="30" maxlength="10" vspace="4" /></td>
+           </tr>
+          <tr>
+            <td colspan="2" align="right" valign="middle" id="form26">Email</td>
+            <td valign="middle" id="form26">
+            <input name="email" type="text" class="form_txt" id="email" style="color: #999; padding-left: 5px;" onfocus="if (this.value=='sucorreo@dominio.com') this.value='';" onblur="if (this.value=='') this.value='sucorreo@dominio.com';" value="sucorreo@dominio.com" size="30" maxlength="100" vspace="4" /></td>
+            </tr>
+          <tr>
+            <td colspan="2" align="right" valign="middle" id="form10"> Direcci&oacute;n</td>
+            <td valign="middle" id="form10">
+            <input name="direccion" type="text" class="form_txt" id="direccion" style="color: #999; padding-left: 5px;" onfocus="if (this.value=='Calle, N&uacute;mero') this.value='';" onblur="if (this.value=='') this.value='Calle, N&uacute;mero';" value="Calle, N&uacute;mero" size="30" maxlength="60" vspace="4" /></td>
+          </tr>
+          <tr>
+          	<td colspan="2" align="right" valign="middle" id="form10">Comuna</td>
+          	<td valign="middle" id="form11">
+          	<select name="comuna" type="text" class="form_txt_022" id="comuna" />
+				<option  value="Seleccione">Seleccione Comuna</option>
+				<option  value="Santiago">Santiago</option>
+				<option  value="Pudahuel">Pudahuel</option>
+				<option  value="La Granja">La Granja</option>
+				<option  value="Macul">Macul</option>
+				<option  value="Lo Barnechea">Lo Barnechea</option>
+				<option  value="La Reina">La Reina</option>
+				<option  value="Penalolen">Penalolen</option>
+				<option  value="Pedro Aguirre Cerda">Pedro Aguirre Cerda</option>
+				<option  value="Colina">Colina</option>
+				<option  value="Providencia">Providencia</option>
+				<option  value="Renca">Renca</option>
+				<option  value="San Ramon">San Ramon</option>
+				<option  value="San Joaquin">San Joaquin</option>
+				<option  value="Quilicura">Quilicura</option>
+				<option  value="La Pintana">La Pintana</option>
+				<option  value="Lo Espejo">Lo Espejo</option>
+				<option  value="Nunoa">Nunoa</option>
+				<option  value="La Cisterna">La Cisterna</option>
+				<option  value="Lo Prado">Lo Prado</option>
+				<option  value="El Bosque">El Bosque</option>
+				<option  value="Puente Alto">Puente Alto</option>
+				<option  value="San Miguel">San Miguel</option>
+				<option  value="Cerro Navia">Cerro Navia</option>
+				<option  value="Cerrillos">Cerrillos</option>
+				<option  value="Quinta Normal">Quinta Normal</option>
+				<option  value="Conchali">Conchali</option>
+				<option  value="Estacion Central">Estacion Central</option>
+				<option  value="Independencia">Independencia</option>
+				<option  value="Las Condes">Las Condes</option>
+				<option  value="La Florida">La Florida</option>
+				<option  value="Huechuraba">Huechuraba</option>
+				<option  value="San Bernardo">San Bernardo</option>
+				<option  value="Maipu">Maipu</option>
+				<option  value="Recoleta">Recoleta</option>
+				</select> </td>
+          	 <tr>
+            <td height="3" colspan="2" align="right" valign="top" id="form7"></td>
+            <td height="3" align="left" valign="top" class="rojo_02" id="form7"><span class="punto"> Despacho s&oacute;lo en estas comunas</span></td>
+          </tr>
+             <tr>
+            <td colspan="2" align="right" valign="middle" id="form24">Boleta N&#176;</td>
+            <td valign="middle" id="form24">
+            <input name="boleta" type="text" class="form_txt" id="boleta" style="color: #999; padding-left: 5px;" onfocus="if (this.value=='N&uacute;mero boleta') this.value='';" onblur="if (this.value=='') this.value='N&uacute;mero boleta';" value="N&uacute;mero boleta" size="30" maxlength="14" vspace="4" /></td>
+            </tr>
+          <tr>
+          <tr>
+            <td colspan="2" align="right" valign="middle" id="form4">Mi Bebe es</td>
+            <td align="left" valign="middle" id="form4">
+	            <input type="radio"  name="sexo" id="nino" value="M"/>
+	            <label for="nino">Ni&ntilde;o</label>
+			    <input type="radio" name="sexo" id="nina" value="F" />
+			    <label for="nina">Ni&ntilde;a</label>
+		    </td>
+          </tr>
+          <tr>
+            <td colspan="2" align="right" valign="middle" id="form3">Talla pa&ntilde;al</td>
+            <td align="left" valign="middle" id="form3">
+            	<input type="radio" name="panal" id="M" value="M" />
+                <label for="M">M</label>
+                <input type="radio" name="panal" id="G" value="G" />
+                <label for="G">G</label>
+                <input type="radio" name="panal" id="XG" value="XG" />
+                <label for="XG">XG</label>
+                <input type="radio" name="panal" id="XXG" value="XXG" />
+                <label for="XXG">XXG</label>
+              </td>
+          </tr>
+           <tr>
+            <td colspan="2" align="right" valign="middle" id="form24">Edad Bebe</td>
+            <td align="left" valign="middle" id="form24">
+            <select name="annos" class="border_02" id="annos">
+              <option value="0">A&ntilde;o</option>
+              <option value="1">1 a&ntilde;o</option>
+              <option value="2">2 a&ntilde;os</option>
+              <option value="3">3 a&ntilde;os</option>
+              <option value="4">4 a&ntilde;os</option>
+            </select> 
+            <select name="meses" class="border_02" id="meses">
+              <option value="0">Meses</option>
+              <option value="1">1 mes</option>
+              <option value="2">2 meses</option>
+              <option value="3">3 meses</option>
+              <option value="4">4 meses</option>
+              <option value="5">5 meses</option>
+              <option value="6">6 meses</option>
+              <option value="7">7 meses</option>
+              <option value="8">8 meses</option>
+              <option value="9">9 meses</option>
+              <option value="10">10 meses</option>
+              <option value="11">11  meses</option>
+              <option value="12">12 meses</option>
+            </select></td>
+            </tr>
+         <tr>
+          <td colspan="2" align="right" valign="middle" id="form7"></td>
+           <td colspan="2" align="left" valign="middle" id="form7"><img src="/FO/GifCaptcha" alt="" /></td>
+         </tr>
+          
+          <tr>
+<!--             <td colspan="2" align="right" valign="middle" id="form7"><img src="/FO/GifCaptcha" alt="" /></td> -->
+			<td colspan="2" align="right" valign="middle" id="form7"></td>
+            <td valign="middle" id="form11">
+            <input name="gif_captcha" type="text" class="form_txt" id="gif_captcha" style="color: #999; padding-left: 5px; text-transform:uppercase;" onfocus="if (this.value=='Captcha') this.value='';" onblur="if (this.value=='') this.value='Captcha';" value="Captcha" size="30" height="30 px" maxlength="10" vspace="4" /></td>
+          </tr>
+		  <tr>
+		    <td colspan="2" align="right" valign="middle" id="form2">&nbsp;</td>
+		    <td colspan="2" align="left" valign="middle" class="seleccionar" id="form2">
+		    <input type="checkbox" id="informacion" name="informacion" value="S" />
+		      Me gustar&iacute;a recibir informaci&oacute;n del Club Huggies</td>
+		    </tr>
+		  <tr>
+		    <td colspan="2" align="right" valign="middle" id="form7">&nbsp;</td>
+		    <td colspan="2" align="left" valign="middle" class="seleccionar" id="form7">
+		    <input type="checkbox" id="acepta" name="acepta" value="aceptabases" />Acepta Bases Legales</td>
+		    </tr>
+          <tr>
+            <td height="44" colspan="3" align="center" id="form01">
+<!--             <a href="#" ><img src="/FO_IMGS/images/kcc/btn_03.png"  style="border:0" width="108" height="22" id="enviar" onclick="javascript:validarCaptcha();" /> -->
+                 <span id="btnContinuar"><a href="#" id="continuarFormKCC" class="boton_enviar"></a></span>
+                 <span id="btnContinuarloader"><img src="/FO_IMGS/images/kcc/ajaxloader.gif"  border="0" /></span>
+                 <span id="spryselect1"><span class="selectRequiredMsg">Seleccione un elemento.</span></span>
+            
+            </a></td>
+          </tr>
+          <tr>
+            <td colspan="3" align="center" ><a href="http://www.jumbo.cl/supermercado/bases_huggies/bases_legales_huggies_kcc.pdf" target="_blank" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image3','','/FO_IMGS/images/kcc/pdf_02.png',1)"><img src="/FO_IMGS/images/kcc/pdf.png" name="Image3" width="10" height="10" id="Image3" style="border:0" src="Bases_Legales.pdf"/></a><a href="http://www.jumbo.cl/supermercado/bases_huggies/bases_legales_huggies_kcc.pdf" target="_blank" class="seleccionar"> Ver Bases Legales</a></td>
+          </tr>
+          <tr>
+            <td colspan="3" align="left" >&nbsp;</td>
+          </tr>
+          <tr>
+            <td colspan="3" align="center" >&nbsp;</td>
+            </tr>
+        </table>
+      </div>
+    </form></td>
+  </tr>
+</table>
+<map name="Map" id="Map">
+  <area shape="rect" coords="430,31,464,62" href="#" onclick="MM_effectAppearFade('apDiv1', 1000, 100, 0, false)" />
+</map>
+<map name="Map2" id="Map2">
+  <area shape="rect" coords="-1,0,30,29" href="#" onclick="MM_effectAppearFade('apDiv1', 1000, 100, 0, false)" />
+</map>
+</div>
+</div>
+
+<form name="clienteKccForm" id="clienteKccForm">
+	<input type="hidden" name="rutHdn" id="rutHdn" value="" />
+	<input type="hidden" name="dvHdn" id="dvHdn" value="" />
+	<input type="hidden" name="nombreHdn" id="nombreHdn" value="" />
+	<input type="hidden" name="emailHdn" id="emailHdn" value="" />
+	<input type="hidden" name="direccionHdn" id="direccionHdn" value="nulo" />
+	<input type="hidden" name="comunaHdn" id="comunaHdn" value="" />
+	<input type="hidden" name="sexoHdn" id="sexoHdn" value="" />
+	<input type="hidden" name="tallaHdn" id="tallaHdn" value="" />
+	<input type="hidden" name="anno_bebeHdn" id="anno_bebeHdn" value="nulo" />
+	<input type="hidden" name="meses_bebeHdn" id="meses_bebeHdn" value="nulo" />
+	<input type="hidden" name="numero_boletaHdn" id="numero_boletaHdn" value="nulo" />
+	<input type="hidden" name="acepta_basesHdn" id="acepta_basesHdn" value="nulo" />
+	<input type="hidden" name="acepta_informacionHdn" id="acepta_informacionHdn" value="nulo" />
+	<input type="hidden" name="captcha_Hdn" id="captcha_Hdn" value="nulo" />
+</form>
+
+</body>
+</html>
+

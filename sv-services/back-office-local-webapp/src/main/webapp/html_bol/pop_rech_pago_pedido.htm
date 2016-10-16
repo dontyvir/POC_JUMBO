@@ -1,0 +1,66 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html><!-- InstanceBegin template="/Templates/print.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="EXPIRES" CONTENT="Mon, 22 Jul 2002 11:12:01 GMT">
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>Rechazo de pago de Pedido</title>
+<!-- InstanceEndEditable -->
+<!-- InstanceBeginEditable name="head" -->
+<!-- InstanceEndEditable -->
+<link href="estilos.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+<!--
+body {
+	background-color: #FFFFFF;
+}
+-->
+</style></head>
+
+<body>
+<!-- InstanceBeginEditable name="Body" -->
+<script src="validacion.js"></script>
+<SCRIPT LANGUAGE="JavaScript">window.name='winmodal'</SCRIPT>
+<br>
+<form name="form1" method="POST" action="RechazoPagoOP" target="winpedido">
+	<input type="hidden" name="url" value="ViewMonitorPedidos?id_pedido={id_pedido}">
+	<input type="hidden" name="id_pedido" value="{id_pedido}">
+	<fieldset><legend>Rechazo de pago del Pedido #{id_pedido}</legend>
+	<table width="500" border="0" align="center" cellpadding="2" cellspacing="2" class="textonormal">
+		<tr height="30">
+		<td colspan="3" align="center"></td>
+		</tr>
+		<tr valign="top">
+			<td>Observaci&oacute;n</td>
+			<td><textarea {hab} name="obs" value="" rows="3" cols="40" onchange="if(this.value.length > 240){ alert('Has superado el tama&ntilde;o m&aacute;ximo permitido (240 Caracteres)'); return false; }"></textarea></td>
+			<td valign="bottom"></td>
+		</tr>
+		<tr valign="top">		
+			<td colspan=3 align =center><input {hab} type="button" name="Button" value="Ingresar" onClick="if(verify(1,document.form1)){
+					 form1.submit();			         
+			         //window.opener.location.reload();
+			         window.close();
+			         }">
+			         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			    <input name="cancelar" type="button" class="cmd" value="Cerrar" onClick="window.close();">
+			</td>
+		</tr>
+	</table>
+	</fieldset>
+
+</form>
+ <SCRIPT LANGUAGE="JavaScript">
+<!--
+ document.form1.obs.obligatorio=true;
+ document.form1.obs.label = 'Observación';
+//-->
+</SCRIPT>
+<br>
+<br>
+<br>
+<br>
+<!-- InstanceEndEditable --></body>
+<!-- InstanceEnd --></html>

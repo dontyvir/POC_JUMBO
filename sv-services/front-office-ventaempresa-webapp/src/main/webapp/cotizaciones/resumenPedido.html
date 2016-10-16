@@ -1,0 +1,323 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>Venta Empresas</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<meta HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE" />
+<meta HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE" />
+<meta HTTP-EQUIV="EXPIRES" CONTENT="Mon, 22 Jul 2002 11:12:01 GMT" />
+<script language="javascript" src="/WebFOVE/js/prototype.js"></script>
+<script language="javascript" src="/WebFOVE/js/checkout.js"></script>
+<script language="javascript" src="/WebFOVE/funciones.js"></script>
+<script type="text/javascript" src="/WebFOVE/flashobject.js"></script>
+<link href="/WebFOVE/style.css" rel="stylesheet" type="text/css" />
+<style type="text/css">
+<!--
+body {
+	margin-left: 10px;
+	margin-top: 0px;
+	margin-right: 10px;
+	margin-bottom: 0px;
+}
+.resumencompraobscuro {
+  height: 17px;
+}
+-->
+</style>
+</head>
+<body bgcolor="#ffffff">
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+    <td>
+      <table width="100%" border="0" cellpadding="0" cellspacing="0">
+        <tr>
+          <td width="315" align="left" valign="bottom"><img src="/WebFOVE/img/logove.gif" border="0" usemap="#Map"></td>
+          <td>&nbsp;</td>
+          <td width="21%" align="left" valign="bottom"><img src="/WebFOVE/img/lego.jpg" width="224" height="86"></td>
+        </tr>
+        <tr>
+          <td colspan="3" valign="middle" >
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+              <tr>
+                <td align="left" background="/WebFOVE/img/bg-header.gif"><img src="/WebFOVE/img/header-bd-izq.gif" width="9" height="11"></td>
+                <td align="right" background="/WebFOVE/img/bg-header.gif"><img src="/WebFOVE/img/header-bd-der.gif" width="11" height="11"></td>
+              </tr>
+              <tr>
+                <td align="left" background="/WebFOVE/img/bk-izq-header.gif">
+                  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                    <tr>
+                      <td><img src="/WebFOVE/img/header-bd-izq-izq.gif" width="1" height="20"></td>
+                      <td class="user">Usuario: {nombre_comprador} </td>
+                    </tr>
+                  </table>
+                </td>
+                <td width="421" align="right">
+                  <table width="421" border="0" cellspacing="0" cellpadding="0">
+                    <tr>
+                      <td width="15"><img src="/WebFOVE/img/borde-med-header.gif"></td>
+                      <td align="left" bgcolor="#419f27"><div class="texto_menu" id="myMenuID"></div></td>
+                      <td width="120" align="right" bgcolor="#419f27"><div id="iconos" style="width: 120px; height: 19px"></div></td>
+                      <td width="11" align="right"><img src="/WebFOVE/img/borde-der-header.gif"></td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+      <table width="100%" height="400" border="0" cellpadding="0" cellspacing="0" class="tabla_marco">
+        <tr>
+          <td valign="top">
+            <table width="100%" border="0" cellspacing="0" cellpadding="10">
+              <tr>
+                <td><span class="titulo">RESUMEN DE COMPRA</span></td>
+              </tr>
+            </table>
+            <br/>
+            <table width="80%" border="0" cellspacing="0" cellpadding="0" align="center">
+                <tr>
+					<td class="resumencompraobscuro">N&uacute;mero de pedido</td>
+					<td class="resumencompra">{idped}</td>
+				</tr>
+				<tr>
+					<td class="resumencompraobscuro">Comercio</td>
+					<td class="resumencompra">Jumbo.cl</td>
+				</tr>
+				<tr>
+					<td class="resumencompraobscuro">URL del comercio</td>
+					<td class="resumencompra">http://www.jumboempresas.cl</td>
+				</tr>
+				<tr>
+					<td class="resumencompraobscuro">Cliente</td>
+					<td class="resumencompra">{nombre_comprador}</td>
+				</tr>
+				<tr>
+					<td class="resumencompraobscuro">Tipo de transacción</td>
+					<td class="resumencompra">Venta</td>
+				</tr>
+                <!-- BEGIN DYNAMIC: PAGO_TRANSBANK -->
+				<tr>
+					<td class="resumencompraobscuro">Tarjeta de Cr&eacute;dito</td>
+					<td class="resumencompra">{4_ultimos}</td>
+				</tr>
+                <tr>
+					<td class="resumencompraobscuro">C&oacute;digo de autorización de la transacción</td>
+					<td class="resumencompra">{cod_aut_trx}</td>
+				</tr>
+                <tr>
+					<td class="resumencompraobscuro">N° de cuotas</td>
+					<td class="resumencompra">{nro_cuotas}</td>
+				</tr>
+                <tr>
+					<td class="resumencompraobscuro">Tipo de cuotas</td>
+					<td class="resumencompra">{tipo_cuotas}</td>
+				</tr>
+                <!-- END DYNAMIC: PAGO_TRANSBANK -->
+                <tr>
+					<td class="resumencompraobscuro">Descripción de los bienes</td>
+					<td class="resumencompra">Productos de supermercado</td>
+				</tr>
+                <tr>
+					<td class="resumencompraobscuro">Fecha de compra</td>
+					<td class="resumencompra">{fecha_compra}</td>
+				</tr>
+                <tr>
+					<td class="resumencompraobscuro">Cantidad de productos</td>
+					<td class="resumencompra">{cantidad}</td>
+				</tr>
+				<tr>
+					<td class="resumencompraobscuro">Monto del pedido</td>
+					<td class="resumencompra">{monto_op}</td>
+				</tr>
+				<tr>
+					<td class="resumencompraobscuro">Monto del despacho</td>
+					<td class="resumencompra">{monto_desp}</td>
+				</tr>
+				<tr>
+					<td class="resumencompraobscuro">Monto total reservado</td>
+					<td class="resumencompra">{monto_res}</td>
+				</tr>
+				<tr>
+					<td class="resumencompraobscuro">Forma de pago</td>
+					<td class="resumencompra">{forma_pago}</td>
+				</tr>
+				<tr>
+					<td class="resumencompraobscuro">Tipo documento</td>
+					<td class="resumencompra">{tip_doc}</td>
+				</tr>
+				<!-- BEGIN DYNAMIC: LUGAR_DESPACHO -->
+				<tr>
+					<td class="resumencompraobscuro">Lugar de despacho</td>
+					<td class="resumencompra">{lugar_despacho}</td>
+				</tr>
+				<!-- END DYNAMIC: LUGAR_DESPACHO -->
+				<!-- BEGIN DYNAMIC: LUGAR_RETIRO -->
+				<tr>
+					<td class="resumencompraobscuro">Forma de despacho</td>
+					<td class="resumencompra">{lugar_despacho}<br/>{dir_retiro_pedido}</td>
+				</tr>
+				<!-- END DYNAMIC: LUGAR_RETIRO -->
+				<tr>
+					<td class="resumencompraobscuro">{fc_hr_despacho}</td>
+					<td class="resumencompra">{fecha_tramo}</td>
+				</tr>
+				<!-- BEGIN DYNAMIC: SIN_GENTE_DESPACHO -->
+				<tr>
+					<td width="205" class="resumencompraobscuro">Persona autorizada a recibir el despacho.</td>
+					<td class="resumencompra">{sin_gente_txt}</td>
+				</tr>
+				<!-- END DYNAMIC: SIN_GENTE_DESPACHO -->
+				<!-- BEGIN DYNAMIC: SIN_GENTE_RETIRO -->
+				<tr>
+					<td class="resumencompraobscuro">Persona autorizada a retirar el despacho</td>
+					<td class="resumencompra">{sin_gente_txt}</td>
+				</tr>
+				<tr>
+					<td width="205" class="resumencompraobscuro">RUT persona autorizada a retirar el despacho</td>
+					<td class="resumencompra">{sin_gente_rut}</td>
+				</tr>
+				<!-- END DYNAMIC: SIN_GENTE_RETIRO --> 
+              
+              
+              <tr>
+                <td colspan="2">
+                
+                <br/><br/>
+                
+                
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+	<tr>
+		<td height="18" valign="top">
+			<table width="100%" height="35" border="0" cellpadding="0" cellspacing="0" class="imprimirobscurob" >
+				<tr>
+					<td width="8%" height="35"><b>Cantidad</b></td>
+					<td width="40%" height="35"><b>Producto</b></td>
+					<td width="20%" height="35"><b>Comentario</b></td>
+					<td width="14%" height="35"><b>C&oacute;digo</b></td>
+					<td width="8%" height="35"><b>*Precio<br />Unitario</b></td>
+					<td width="10%" height="35" align="right"><b>Monto <br />Total </b></td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top">
+			<table width="100%" border="0" cellpadding="0" cellspacing="0" class="TablaFicha">
+				<tr>
+					<td valign="top">
+						<table width="100%" border="0" cellpadding="0" cellspacing="0">
+							<tr>
+								<td>
+									<!-- BEGIN DYNAMIC: CATEGORIAS -->
+									<table width="100%" border="0" cellpadding="0" cellspacing="0">
+										<tr>
+											<td width="100%" height="20" valign="bottom" background="/WebFOVE/img/fondocategorias.gif"><font color="white">{categoria}</font></td>
+										</tr>
+										<!-- BEGIN DYNAMIC: PRODUCTOS -->       		         
+										<tr id="fila{contador}">
+											<td>
+												<table width="100%" border="0" cellpadding="0" cellspacing="0" class="{CLASE_TABLA}">
+													<tr>
+														<td width="8%">
+															<table border="0" cellpadding="0" cellspacing="0">
+																<tr>
+																	<td>
+																		<!-- BEGIN DYNAMIC: INPUT_SEL -->
+																		<table border="0" cellspacing="0" cellpadding="0">
+																			<tr>
+																				<td class="NoDisponible"></td><td rowspan="2" class="NoDisponible">
+																					{valor}
+																				</td>
+																			</tr>
+																			<tr>
+																				<td></td>
+																			</tr>
+																		</table>
+																		<!-- END DYNAMIC: INPUT_SEL -->
+																	</td>
+																</tr>
+															</table>
+														</td>
+														<td width="40%" class="{CLASE_CELDA}">{descripcion} - <span class="Marca">{marca}</span> {NO_DISPONIBLE}</td>
+														<td width="20%" class="{CLASE_CELDA}">
+															<!-- BEGIN DYNAMIC: NOTA -->
+																<div class="cc">{nota}</div>
+															<!-- END DYNAMIC: NOTA -->
+														</td>
+														<td width="14%" class="{CLASE_CELDA}"><div align="center">{cod_sap}</div></td>
+														<td width="8%" class="{CLASE_CELDA}"><div align="right">{precio_unitario}</div></td>
+														<td width="10%" align="right" class="{CLASE_CELDA}">{precio_total}</td>
+													</tr>
+												</table>
+											</td>
+										</tr>
+										<!-- END DYNAMIC: PRODUCTOS -->
+									</table>
+									<!-- END DYNAMIC: CATEGORIAS -->
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+
+<br/><br/>
+							<span class="lectura"><img src="http://www.jumbo.cl/FO_IMGS/img/estructura/fl.gif" width="6" height="7" border="0" alt="" />&nbsp;<a href="http://www.jumbo.cl/supermercado/preguntas/preguntas.html#12" target="_blank">Ver pol&iacute;ticas de devoluci&oacute;n de productos</a></span>
+							<br/><br/>
+                </td>                
+              </tr>
+              <tr>
+                <td colspan="2" align="right"><a href="javascript:window.print();"><img src="/WebFOVE/img/ico_print.gif" border="0" alt="Imprimir resumen" /><br/></a></td>
+              </tr>
+            </table>
+                 <br/><br/>       
+		  </td>
+		</tr>
+	  </table>
+	  <map name="Map"><area shape="rect" coords="7,0,314,43" href="http://www.jumboempresas.cl" target="_blank"></map>
+	</td>
+  </tr>
+  <tr>
+    <td>
+      <table width="100%" height="28" border="0" cellpadding="2" cellspacing="0">
+        <tr>
+          <td height="10" background="/WebFOVE/img/bk-izq-header.gif"><img src="/WebFOVE/img/bk-izq-header.gif" width="1" height="10"></td>
+        </tr>
+        <tr>
+          <td class="footer">
+            <a href="http://www.jumbointernet.cl/contacto6.htm" target="_blank" class="footer">Contacto</a> | <a href="http://www.jumbo.cl/FO/LogonForm" target="_blank" class="footer">Compa&ntilde;&iacute;a</a> | <a href="http://www.jumbointernet.cl/preguntas_frecuentes.html" target="_blank" class="footer">Preguntas Frecuentes</a> | <a href="http://www.jumbointernet.cl/preguntas_frecuentes.html#1" target="_blank" class="footer"> C&oacute;mo Cotizar </a>|<a href="http://www.jumbointernet.cl/preguntas_frecuentes.html#b4" target="_blank" class="footer">Medios de Pago</a> | <a href="http://www.jumbointernet.cl/preguntas_frecuentes.html#5" target="_blank" class="footer">Costos de Despacho</a><br /><br/>
+          </td>
+        </tr>
+        <tr>
+          <td class="footer">Servicio de Atenci&oacute;n al Cliente 600 400 3000 | Fono Tarjeta Jumbo M&aacute;s: 600 600 0505<br />Copyright&copy; Cencosud 2007, Santiago Chile | Sitio Desarrollado para Internet Explorer 6 o superior,<br />Resoluci&oacute;n de pantalla 800x600 | Para ver el sitio necesita el plug in de Flash.</td>
+        </tr>
+      </table>
+	</td>
+  </tr>
+</table>
+
+</body>
+<!-- INI menu -->
+<script>var tipo_usuario = '{tipo_usuario}';</script>
+<script type="text/javascript" src="/WebFOVE/menuJs/JSCookMenu.js"></script>
+<link rel="stylesheet" href="/WebFOVE/menuJs/ThemeGray/theme.css" type="text/css">
+<script type="text/javascript" src="/WebFOVE/menuJs/ThemeGray/theme.js"></script>
+<script type="text/javascript" src="/WebFOVE/menuJs/menuContent.js"></script>
+<script type="text/javascript">
+cmDraw ('myMenuID', myMenu, 'hbr', cmThemeGray);
+</script>
+<script type="text/javascript">
+var fo = new FlashObject("/WebFOVE/img/banner/{bt_inicio}", "animationName", "120", "19", "7", "#FFFFFF");
+fo.addParam("allowScriptAccess", "sameDomain");
+fo.addParam("quality", "high");
+fo.addParam("scale", "noscale");
+fo.write("iconos");
+</script>
+
+<!-- FIN menu -->
+
+</html>

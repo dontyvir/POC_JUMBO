@@ -1,0 +1,296 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="EXPIRES" CONTENT="Mon, 22 Jul 2002 11:12:01 GMT">
+<title>Jumbo.cl Back Office Central</title>
+<script language="JavaScript" type="text/javascript" src="CalendarPopup.js"></SCRIPT>
+<script language="JavaScript" type="text/javascript" src="validacion.js"></SCRIPT>
+<script language="JavaScript" type="text/javascript">document.write(getCalendarStyles());</SCRIPT>
+<script language="JavaScript" type="text/javascript">window.name='winpedido'</SCRIPT>
+<script language="JavaScript" type="text/javascript" src="calendario.js"></script>
+<script language="JavaScript" type="text/javascript" src="funciones.js"></script>
+<script language="JavaScript" type="text/javascript" id="js17">
+var ayer = new Date(30,4,2006,12,0,0,0);
+var cal1 = new CalendarPopup("testdiv1");
+cal1.offsetX = 20;
+cal1.offsetY = 0;
+</script>
+<script language="JavaScript" type="text/javascript" src="prototype.js"></script>
+<script language="JavaScript" type="text/javascript" src="js/casoAdd.js"></script>
+<script language="JavaScript" type="text/javascript" src="popup.js"></script>
+<script language="JavaScript" src="js/jquery-1.6.2.min.js"></script>
+<script language="JavaScript" src="js/aphanumeric.js"></script>
+<script language="JavaScript" src="js/codigosTelefonicos.js"></script>
+
+<link rel="stylesheet" href="menu/menu.css" />
+<link href="estilos.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+<script language="JavaScript" type="text/javascript" src="menu/menu.js"></script>
+<script language="JavaScript" type="text/javascript" src="menu/menu_tpl.js"></script>
+<script language="JavaScript" type="text/javascript" src="menu/menu_items.js"></script>
+
+<table width="780" height="100%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+    <td height="78" valign="top">
+
+	<TABLE width="100%" height=59 border=0 align="center" cellpadding="0" cellspacing="0" bgcolor="#ffffff">
+	  <TR>
+		<TD width=275 height="59" align=left class=user><img src="img/header2.jpg" width="275" height="60"></TD>
+		<TD width=505 align=left valign="bottom" background="img/bg-1.jpg" class=user><table width="90%"  border="0" align="center" cellpadding="0" cellspacing="2">
+          <tr>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td><div align="right" class="infoBL">Usuario: {hdr_nombre}&nbsp;&nbsp;| {hdr_fecha}</div></td>
+          </tr>
+        </table></TD>
+	  </TR>
+	</TABLE>
+	<TABLE width="100%" height=19 border=0 align="center" cellpadding="0" cellspacing="0" bgcolor="#f1f0e9" style="border-top:1px solid #ABABAB; border-bottom:1px solid #ABABAB">
+	  <TR>
+		<TD align=left bgcolor="#FFFFFF" class=user></TD>
+		</TR>
+	</TABLE>
+
+
+	</td>
+  </tr>
+  <tr height="400">
+    <td valign="top" bgcolor="#FFFFFF">
+      <table border=0 width="100%" class='ContentTitle'>
+        <tr>
+          <td width="53%" height="20" class='HeaderTitle'>Crear un Nuevo Caso</td>
+          <td width="47%" class='HeaderTitle'>
+            <div align="right"><a href="ViewMonCasos"><img src="img/volver.gif" width="32" height="32" border="0"></a></div>
+          </td>
+        </tr>
+      </table>
+	  <br>
+      <table width="100%"  border="0" cellspacing="2" cellpadding="2">
+        <tr valign="top">
+          <td width="71%">
+
+	<font color=red>{mensaje1}<br></font>
+	<form name="frm_add_caso" method="post" action="AddCaso">
+	          <table width="98%"  border="0" align="center" cellpadding="0" cellspacing="0">
+                <tr bgcolor="#F5F5F5"> 
+                  <td width="22%" height="25" align="left">N&deg; de Orden de 
+                    Pedido (OP) </td>
+                  <td width="2%">:</td>
+                  <td width="76%" align="left"> <input type="text" name="num_pedido" id="num_pedido" value="{nro_pedido}" style="width:90px"> 
+                    <input type="hidden" name="num_pedido_old" id="num_pedido_old" value="{nro_pedido}" style="width:90px"> 
+                    <input name="Button" type="button" class="cmd" id="buscar" value=" Buscar " onClick="javascript:traerDatosPedido();"> 
+                    &nbsp; <font color=red><span id="mensaje_pedido"></span></font> 
+                  </td>
+                </tr>
+                <tr bgcolor="#F5F5F5"> 
+                  <td height="25" align="left">Direcci&oacute;n</td>
+                  <td>:</td>
+                  <td align="left"><input type="text" name="direccion" id="direccion" value="{direccion}" style="width:390px" maxlength="255"></td>
+                </tr>
+                <tr bgcolor="#F5F5F5"> 
+                  <td height="25" align="left">Comuna</td>
+                  <td>:</td>
+                  <td align="left"><input type="text" name="comuna" id="comuna" value="{comuna}" style="width:120px" maxlength="255"></td>
+                </tr>
+                <tr bgcolor="#F5F5F5"> 
+                  <td height="25" align="left">Fecha Pedido </td>
+                  <td>:</td>
+                  <td align="left"><input type="text" name="fecha_pedido" id="fecha_pedido" value="{fecha_pedido}" style="width:120px" readonly="true"></td>
+                </tr>
+                <tr bgcolor="#F5F5F5"> 
+                  <td height="25" align="left">Fecha Despacho</td>
+                  <td>:</td>
+                  <td align="left"><input type="text" name="fecha_despacho" id="fecha_despacho" value="{fecha_despacho}" style="width:120px" readonly="true"></td>
+                </tr>
+                <tr bgcolor="#F5F5F5"> 
+                  <td height="25" align="left">RUT Cliente </td>
+                  <td>:</td>
+                  <td align="left"><input type="text" name="cli_rut" id="cli_rut" value="{cli_rut}" style="width:100px" readonly="true">
+                    -
+                    <input type="text" name="cli_dv" id="cli_dv" value="{cli_dv}" style="width:20px" readonly="true"></td>
+                </tr>
+                <tr bgcolor="#F5F5F5"> 
+                  <td height="25" align="left">Nombre Cliente</td>
+                  <td>:</td>
+                  <td align="left"><input type="text" name="cli_nombre" id="cli_nombre" value="{cli_nombre}" style="width:390px" maxlength="255"></td>
+                </tr>
+                <tr bgcolor="#F5F5F5"> 
+                  <td height="25" align="left">Tel&eacute;fono 1 </td>
+                  <td>:</td>
+                  <td align="left"><select name="cli_fon_cod1" class="campos" id="cli_fon_cod1" style="width:50px"></select>
+				              <input name="cli_fon_num1" type="text"  class="campo" id="cli_fon_num1" size="8" maxlength="8" style="margin-top:5px;" />
+				              <div class="cont_acepto_info" id="fon_num_1_info"></div>
+				              <div class="cont_alerta_error" id="fon_num_1_error"></div></td>
+                </tr>
+                <tr bgcolor="#F5F5F5"> 
+                  <td height="25" align="left">Tel&eacute;fono 2</td>
+                  <td>:</td>
+                  <td align="left"><select name="cli_fon_cod2" class="campos" id="cli_fon_cod2" style="width:50px"></select>
+				              <input name="cli_fon_num2" type="text"  class="campo" id="cli_fon_num2" size="8" maxlength="8" style="margin-top:5px;" />
+				              <div class="cont_acepto_info" id="fon_num_2_info"></div>
+				              <div class="cont_alerta_error" id="fon_num_2_error"></div></td>
+                </tr>
+                <tr bgcolor="#F5F5F5"> 
+                  <td height="25" align="left">Tel&eacute;fono 3 </td>
+                  <td>:</td>
+                  <td align="left"><select name="cli_fon_cod3" class="campos" id="cli_fon_cod3" style="width:50px"></select>
+				              <input name="cli_fon_num3" type="text"  class="campo" id="cli_fon_num3" size="8" maxlength="8" style="margin-top:5px;" />
+				              <div class="cont_acepto_info" id="fon_num_3_info"></div>
+				              <div class="cont_alerta_error" id="fon_num_3_error"></div></td>
+                </tr>
+                <tr bgcolor="#F5F5F5"> 
+                  <td height="25" align="left">Local</td>
+                  <td>:</td>
+                  <td align="left"> <select name="sel_local" id="sel_local" class="letracombo">
+                      <option value="0">Seleccione</option>
+                      <!-- BEGIN DYNAMIC: LOCALES -->
+                      <option value="{id_local}" {sel_loc}>{local}</option>
+                      <!-- END DYNAMIC: LOCALES -->
+                    </select> </td>
+                </tr>
+                <tr bgcolor="#F5F5F5"> 
+                  <td height="25" align="left" bgcolor="#F5F5F5">N&deg; de Compras 
+                    del Cliente </td>
+                  <td>:</td>
+                  <td align="left"><input type="text" name="cli_num_compras" id="cli_num_compras" value="{cli_num_compras}" style="width:120px" readonly="true" maxlength="18"></td>
+                </tr>
+                <tr bgcolor="#F5F5F5"> 
+                  <td height="25" align="left" bgcolor="#F5F5F5">N&deg; de Casos 
+                    del Cliente </td>
+                  <td>:</td>
+                  <td align="left"><input type="text" name="cli_num_casos" id="cli_num_casos" value="{cli_num_casos}" style="width:120px" readonly="true" maxlength="18"></td>
+                </tr>
+                <tr bgcolor="#F5F5F5"> 
+                  <td height="25" align="left">Canal de Compra </td>
+                  <td>:</td>
+                  <td align="left"> <select name="sel_teleoperador" id="sel_teleoperador" class="letracombo">
+                      <option value="0">Seleccione</option>
+                      <option value="W">Web</option>
+                      <option value="F">Fono Compra</option>
+                    </select> &nbsp; <input type="text" name="usu_fono_nombre" id="usu_fono_nombre" value="" style="width:298px" maxlength="255"> 
+                    &nbsp;&nbsp; <input type="hidden" name="id_usu_fono" id="id_usu_fono" value="" style="width:10px" maxlength="255"> 
+                  </td>
+                </tr>
+                <tr> 
+                  <td height="25" align="left">&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td align="left">&nbsp;</td>
+                </tr>
+                <tr> 
+                  <td height="25" align="left">Indicaciones</td>
+                  <td>&nbsp;</td>
+                  <td align="left"><textarea name="indicaciones" id="indicaciones" cols="65" rows="3" 	  
+                  onkeyup="limitText(this, 2000, 'divCharDisp3');"></textarea>
+                  <div id="divCharDisp3"><p>2000 Caracteres Disponibles</p></div>
+                  </td>
+                </tr>
+                <tr> 
+                  <td height="25" align="left">Estado del caso</td>
+                  <td>:</td>
+                  <td align="left"> <select name="sel_estados" id="sel_estados" class="letracombo">
+                      <!-- BEGIN DYNAMIC: ESTADOS_CASOS -->
+                      <option value="{id_estado}" {sel_est}>{estado}</option>
+                      <!-- END DYNAMIC: ESTADOS_CASOS -->
+                    </select> </td>
+                </tr>
+                <tr> 
+                  <td height="25" align="left">Fecha de Compromiso Soluci&oacute;n 
+                  </td>
+                  <td>:</td>
+                  <td align="left"> <input type="text" name="fecha_resolucion" id="fecha_resolucion" value="{fecha_resolucion}" style="width:120px" readonly
+								onClick="cal1.select(document.frm_add_caso.fecha_resolucion,'anchor1','dd/MM/yyyy'); return false;" title="Fecha de Resolución"> 
+                    <a href="#" onClick="cal1.select(document.frm_add_caso.fecha_resolucion,'anchor1','dd/MM/yyyy'); return false;" name="anchor1" id="anchor1"> 
+                    <img src="img/cal.gif" width="16" height="16" border="0" alt="Fecha de Resolución" > 
+                    </a> <input type="hidden" name="fecha_minima" id="fecha_minima" value="{fecha_resolucion_minima}"> 
+                  </td>
+                </tr>
+                <tr> 
+                  <td height="25" align="left">Jornada de Compromiso Soluci&oacute;n 
+                  </td>
+                  <td>:</td>
+                  <td align="left"> <select name="sel_jornada" id="sel_jornada" class="letracombo" >
+                      <option value="0">Seleccione</option>
+                      <!-- BEGIN DYNAMIC: JORNADAS_CASOS -->
+                      <option value="{id_jornada}" {sel_jorn}>{jornada}</option>
+                      <!-- END DYNAMIC: JORNADAS_CASOS -->
+                    </select> </td>
+                </tr>
+                <tr>
+                  <td height="25">&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                </tr>
+				 <!-- BEGIN DYNAMIC: CALL_CENTER -->
+                <tr> 
+                  <td height="25" valign="top">Comentario Call Center</td>
+                  <td valign="top">:</td>
+                  <td><textarea name="comentario_call" id="comentario_call" cols="65" rows="3"></textarea></td>
+                </tr>
+				 <!-- END DYNAMIC: CALL_CENTER -->
+                <tr> 
+                  <td height="25">&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td align="left"><input name="Button2" type="button" class="cmd" id="Button" value=" Aceptar " onClick="javascript:crearCaso();"> 
+                    &nbsp;&nbsp; <input name="Button3" type="button" class="cmd" id="Button2" value=" Cancelar " onClick="javascript:cancelarCreacion();"></td>
+                </tr>
+              </table>
+
+	</form>
+
+
+  </td>
+        </tr>
+      </table>
+      </td>
+  </tr>
+  <tr>
+    <td>
+	<TABLE width="100%" height=19 border=0 align="center" cellpadding="0" cellspacing="0" bgcolor="#f1f0e9" style="border-top:1px solid #ABABAB; border-bottom:1px solid #ABABAB">
+	  <TR>
+		<TD align=center bgcolor="#67b01a" class=infoBL><div align="center">Back Office Central - Jumbo.cl</div></TD>
+		</TR>
+	</TABLE>
+
+
+	</td>
+  </tr>
+</table>
+
+
+<div id="testdiv1" style="position:absolute;visibility:hidden;background-color:white;layer-background-color:white;"></div>
+<script type="text/javascript">
+document.frm_add_caso.num_pedido.onkeypress = KeyIsSoloNum;
+</script>
+<script type="text/javascript">
+				jQuery('#cli_fon_cod1').append(getAllCodPhones());
+				jQuery('#cli_fon_cod2').append(getAllCodPhones());
+				jQuery('#cli_fon_cod3').append(getAllCodPhones());
+
+				initialize('cli_fon_cod1', 'cli_fon_num1');
+				initialize('cli_fon_cod2', 'cli_fon_num2');
+				initialize('cli_fon_cod3', 'cli_fon_num3');
+				
+				onChange('cli_fon_cod1','cli_fon_num1','fon_num_1_info');
+				onChange('cli_fon_cod2','cli_fon_num2','fon_num_2_info');
+				onChange('cli_fon_cod3','cli_fon_num3','fon_num_3_info');
+</script>
+
+<div id="loading" style="display:none">
+<table style="Z-INDEX: 500; LEFT: 0; POSITION: absolute; TOP: 0" cellSpacing="0" cellPadding="0" border="0" id="tabla_loading">
+<tr>
+<td width="75" height="25" bgcolor="#FF0000">&nbsp;&nbsp;&nbsp;<font color="#FFFFFF"><b>Cargando...</b></font></td>
+</tr>
+</table>
+</div>
+
+</body>
+
+
+</html>

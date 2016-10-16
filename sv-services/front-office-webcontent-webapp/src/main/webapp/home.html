@@ -1,0 +1,15 @@
+<html>
+<script type="text/javascript">
+var agent = navigator.userAgent.toLowerCase();
+var is_iphone = (agent.indexOf('iphone') != -1);
+var is_android = (agent.indexOf('android') != -1);
+var is_symbian = (agent.indexOf('symbianos') != -1);
+var is_blackberry = (agent.indexOf('blackberry') != -1);
+
+if ( is_iphone || is_android || is_symbian || is_blackberry ) {
+	location.href = "http://www.jumbomobile.cl";
+} else {
+	location.href = "./LogonForm";
+}
+</script>
+</html>

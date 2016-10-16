@@ -1,0 +1,253 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+		<meta http-equiv="CACHE-CONTROL" content="NO-CACHE">
+		<meta http-equiv="PRAGMA" content="NO-CACHE">
+		<meta http-equiv="EXPIRES" content="Mon, 22 Jul 2002 11:12:01 GMT">
+		<title>Jumbo.cl Back Office Central</title>
+		
+		<link rel="stylesheet" type="text/css" href="estilos.css">
+		<link rel="stylesheet" type="text/css" href="menu/menu.css">
+		<link rel="stylesheet" type="text/css" id="luna-tab-style-sheet"  href="js/tabs/tabpane.css" />
+			
+		<script type="text/javascript" src="prototype1.7.1.js"></script>
+		<script type="text/javascript" src="funciones.js"></script>
+        <script type="text/javascript" src="js/tabs/tabpane.js"></script>
+				
+		<script type="text/javascript">
+		
+				Event.observe(window, 'load', 
+					function() {
+					
+						$('form_ing_cat').observe('submit', 
+							function(event) {
+								if(isEmpty($('nombre').value)){
+									alert("Debe ingresar un Nombre.");
+									$('nombre').focus();
+									event.stop();
+									return false;
+								}else if (validar_letranumero($('nombre'), "El Nombre solo soporta letras y números.")){
+									event.stop();
+									return false;
+								}
+								
+								if(!isEmpty($('desc').value)){
+									if (validar_letranumero($('desc'), "La descripción solo soporta letras y números ")) {
+										event.stop();
+										return false;
+									}
+								}
+
+								if(isEmpty($('estado').value) || ($('estado').value != 'A' && $('estado').value != 'D')){
+									alert("Debe seleccionar un estado valido.");
+									$('estado').focus();
+									event.stop();
+									return false;
+								}
+								
+								if(isEmpty($('tipo').value) || ($('tipo').value != 'C' && $('tipo').value != 'I' && $('tipo').value != 'T')){
+									alert("Debe seleccionar un tipo valido.");
+									$('tipo').focus();
+									event.stop();
+									return false;
+								}
+								
+								if(isEmpty($('orden').value)){
+									alert("Debe ingresar Orden.");
+									$('orden').focus();
+									event.stop();
+									return false;
+								}else if (validar_solonumero($('orden'), "El Orden es un campo Numerico ")){
+									event.stop();
+									return false;
+								}
+								
+								if(!isEmpty($('url_banner').value)){
+									/*if($('tipo').value != 'I' && $('tipo').value != 'T'){
+										alert("El campo URL solo aplica a categorias Intermedia o Terminal");
+										$('url_banner').focus();
+										event.stop();
+										return false;
+									}*/
+									if(isEmpty($('imagen').value) && isEmpty($('arch').value)){
+										alert("El campo URL solo aplica a una imagen o banner valido.");
+										$('url_banner').focus();
+										event.stop();
+										return false;
+									}
+									if(!validaURL($('url_banner').value)){
+										alert("Debe ingresar una URL valida.");
+										$('url_banner').focus();
+										event.stop();
+										return false;
+									}
+								}																
+							}
+						);
+						
+						$('ButtonCancelar').observe('click', 
+							function(event){
+								location.href='ViewMonCatWeb';
+							}
+						);
+						
+						$('link_ulr_banner').observe('click', 
+							function(event){
+								if(!isEmpty($('url_banner').value) && validaURL($('url_banner').value)){
+									open($('url_banner').value, "_blank");
+									return false;
+								}
+							}
+						);
+						
+				   		var tabPane1 = new WebFXTabPane( document.getElementById( "modules-cpanel" ), 0 );
+					}
+				);
+			</script>
+	</head>
+
+<body>
+<script type="text/javascript" src="menu/menu.js"></script>
+<script type="text/javascript" src="menu/menu_tpl.js"></script>
+<script type="text/javascript" src="menu/menu_items.js"></script>
+
+<table width="780" height="100%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+    <td height="78" valign="top">
+	
+	<TABLE width="100%" height=59 border=0 align="center" cellpadding="0" cellspacing="0" bgcolor="#ffffff">
+	  <TR>
+		<TD width=275 height="59" align=left class=user><img src="img/header2.jpg" width="275" height="60"></TD>
+		<TD width=505 align=left valign="bottom" background="img/bg-1.jpg" class=user><table width="90%"  border="0" align="center" cellpadding="0" cellspacing="2">
+          <tr>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td><div align="right" class="infoBL">Usuario: {hdr_nombre}&nbsp;&nbsp;| {hdr_fecha}</div></td>
+          </tr>
+        </table></TD>
+	  </TR>
+	</TABLE>
+	<TABLE width="100%" height=19 border=0 align="center" cellpadding="0" cellspacing="0" bgcolor="#f1f0e9" style="border-top:1px solid #ABABAB; border-bottom:1px solid #ABABAB">
+	  <TR>
+		<TD align=left bgcolor="#FFFFFF" class=user></TD>
+		</TR>
+	</TABLE>
+	</td>
+  </tr>
+  <tr height="400">
+    <td valign="top" bgcolor="#FFFFFF">
+      <table border=0 width="100%" class='ContentTitle'>
+        <tr>
+          <td width="53%" height="20" class='HeaderTitle'> Ficha de Categor&iacute;a</td>
+          <td width="47%" class='HeaderTitle'>
+            <div align="right"><a href="ViewMonCatWeb"><img src="img/back.png" width="32" height="32" border="0"></a></div>
+          </td>
+        </tr>
+      </table>
+	  <br>
+      <table width="100%"  border="0" cellspacing="2" cellpadding="2">
+        <tr valign="top">
+          <td width="71%">
+            <table width="92%" align="center" border="0">
+              <tr>
+                <td><div class="tab-page" id="modules-cpanel">
+                    <div class="tab-page" id="modulo1">
+                      <h2 class="tab">Ficha</h2>
+                      <div align="left">
+                      
+					   <form name="form_ing_cat" id="form_ing_cat" method="get" action="AddCatWeb">
+					   <input type="hidden" name="url" value="ViewMonCatWeb">
+					     <input type="hidden" name="accion" value="Ingreso">
+                          <p><strong>Datos de la Categor&iacute;a</strong></p>
+                          <table width="80%"  border="0" align="center" cellpadding="0" cellspacing="2">
+                            <tr>
+                              <td>Nombre</td>
+                              <td><input name="nombre" id="nombre" type="text"  size="50" maxlength="20"/></td>
+                            </tr>
+                            <tr>
+                              <td valign="top">Descripci&oacute;n</td>
+                              <td><textarea name="desc" id="desc" cols="50" rows="4" maxlength="200" onchange="if(this.value.length > 200){ alert('Has superado el tama&ntilde;o m&aacute;ximo permitido (200 Caracteres)'); return false; }"></textarea></td>
+                            </tr>
+                            <tr>
+                              <td>Estado</td>
+                              <td><select name="estado"  id="estado">
+                              <!-- BEGIN DYNAMIC: ESTADO -->
+                                <option value={id_estado} {sel_est}>{nom_estado}</option>
+                              <!-- END DYNAMIC: ESTADO -->  
+                              </select></td>
+                            </tr>
+                            <tr>
+                              <td>Tipo</td>
+                              <td><select name="tipo"  id="tipo">
+                              <!-- BEGIN DYNAMIC: TIPO -->
+                                <option value={id_tipo} {sel_tip}>{nom_tipo}</option>
+                              <!-- END DYNAMIC: TIPO -->  
+                              </select></td>
+                            </tr>
+                            <tr>
+                              <td>Orden</td>
+                              <td><input name="orden" id="orden" type="text" value="" size="10" maxlength="9"/></td>
+                            </tr>
+                            <tr>
+                              <td>Imagen en Listado</td>
+                              <td><input name="imagen" id="imagen" type="text" value="" size="50" maxlength="200"/>(Solo aplica a categorías Intermedias)</td>
+                            </tr>
+                            <tr>
+                              <td>Banner</td>
+                              <td><input type="text" name="arch" id="arch" maxlength="199" size="50"/></td>
+                            </tr>
+                            <tr>
+                              <td>Totem</td>
+                              <td><input type="text" name="totem" id="totem" value="" maxlength="200" size="50"/></td>
+                            </tr>
+                                <tr>
+                              <td colspan="2">&nbsp;</td>
+                            </tr>
+                           <tr>
+                              <td>Url</td>
+                              <td><input type="text" name="url_banner" id="url_banner"  value="" size="60"/>&nbsp;<a id="link_ulr_banner" style="cursor:pointer" target="_blank">Ver</a><br/>(Aplica al banner de la categoria)</td>
+                            </tr>
+                            <tr>
+                              <td>&nbsp;</td>
+                              <td>&nbsp;</td>
+                            </tr>                                                                       
+                            <tr>
+                              <td>&nbsp;</td>
+                              <td>
+                              <input name="ButtonSubmit" id="ButtonSubmit" type="submit" class="cmd" value="Guardar" />
+                              <input name="ButtonCancelar" id="ButtonCancelar" type="button" class="cmd" value="Cancelar" /></td>
+                            </tr>
+                          </table>
+                          <br>
+                        <br>
+                        </form>
+                      </div>
+                    </div>
+					
+				</div></td>
+              </tr>
+            </table>
+                       <div align="center"><br>
+                         <br>
+                         <br>
+                         <br>
+                       </div>                     
+          </td>
+        </tr>
+      </table>
+      </td>
+  </tr>
+  <tr>
+    <td>
+	<TABLE width="100%" height=19 border=0 align="center" cellpadding="0" cellspacing="0" bgcolor="#f1f0e9" style="border-top:1px solid #ABABAB; border-bottom:1px solid #ABABAB">
+	  <TR>
+		<TD align=center bgcolor="#67b01a" class=infoBL><div align="center">Back Office Central - Jumbo.cl</div></TD>
+		</TR>
+	</TABLE>	
+	</td>
+  </tr>
+</table>
+</body>
+</html>

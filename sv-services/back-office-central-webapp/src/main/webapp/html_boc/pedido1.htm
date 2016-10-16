@@ -1,0 +1,1177 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="EXPIRES" CONTENT="Mon, 22 Jul 2002 11:12:01 GMT">
+<title>Jumbo.cl Back Office Central</title>
+<link href="estilos.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="menu/menu.css">
+<link rel="stylesheet" type="text/css" href="js/themes/default.css" />
+<link id="luna-tab-style-sheet" type="text/css" rel="stylesheet" href="js/tabs/tabpane.css" />
+<style type="text/css">
+<!--
+.style1 {color: #666666}
+.boton {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	background-color: #67b51b;
+	border: thin solid #339900;
+	font-weight: bold;
+	font-variant: normal;
+	color: #000000;
+	word-spacing: normal;
+	margin: auto;
+	padding: 1px;
+	float: none;
+	height: 22px;
+	width: 160px;
+	font-style: normal;
+	line-height: normal;
+	left: auto;
+	top: auto;
+	right: auto;
+	bottom: auto;
+}
+.cmd {
+    font-family:verdana;
+    font-size:10px;
+    color:#333366;
+    letter-spacing:0;
+    cursor:pointer;
+    cursor:hand;
+    background-image:url('img/bk_button.gif');
+    background-color:#FFFFFF;
+    border-width:1px;
+    border-color:#CCCCCC;
+   	width: 160px;
+}
+.cmd_100 {
+    font-family:verdana;
+    font-size:10px;
+    color:#333366;
+    letter-spacing:0;
+    cursor:pointer;
+    cursor:hand;
+    background-image:url('img/bk_button.gif');
+    background-color:#FFFFFF;
+    border-width:1px;
+    border-color:#CCCCCC;
+   	width: 100px;
+}
+-->
+</style>
+
+<script language="JavaScript">window.name='winpedido1'</script>	
+<script language="JavaScript" src="funciones.js"></script>
+<script language="JavaScript" src="prototype.js"></script>
+<script language="JavaScript" src="popup.js"></script>
+<script type="text/javascript" src="js/window.js"></script>
+<script language="JavaScript" src="js/pedidos.js"></script>
+<script language="JavaScript" src="validacion.js"></script>
+<script type="text/javascript" src="js/tabs/tabpane.js"></script>
+<script type="text/javascript">
+function  valida_log(form){
+	if (form.id_motivo_nuevo.value == "" || form.obs.value ==""){
+		alert("Debe ingresar Motivo y Observación");
+		return false;
+	}
+	if (validar_letranumero(form.obs, "Observaciones solo permite el uso de letras y números"))	return false;
+	return true;
+}
+function anularBoleta(idPedido) {
+  if (confirm("El local fue informado de la anulación de la boleta?")) {
+    requestOptions = {
+      'method': 'post',
+      'parameters': "id_pedido=" + idPedido,
+      'onComplete': function(REQUEST) {
+        if (REQUEST.responseXML.getElementsByTagName("mensaje")[0] == null) {
+          alert("Existe un problema con el servicio 'DatosPedidoParaCaso', o tal vez usted no tiene permisos para realizar esta acción.");
+          return;
+        }
+        var message = REQUEST.responseXML.getElementsByTagName("mensaje")[0].childNodes[0].nodeValue;
+        if ( message == "OK" ) {
+          alert("Se confirmó la anulación de la boleta en local");
+          window.location.reload();
+        } else {
+          alert(message);
+        }
+      }
+    };
+    new Ajax.Request('LiberaAnularBoleta', requestOptions);
+  }
+}
+function noSustituir(idPedido) {
+  if (confirm("Está seguro que desea cambiar el criterio de sustitución?")) {
+    requestOptions = {
+      'method': 'post',
+      'parameters': "id_pedido=" + idPedido,
+      'onComplete': function(REQUEST) {
+        if (REQUEST.responseXML.getElementsByTagName("mensaje")[0] == null) {
+          alert("Existe un problema con el servicio 'CriterioSustitucion', o tal vez usted no tiene permisos para realizar esta acción.");
+          return;
+        }
+        var message = REQUEST.responseXML.getElementsByTagName("mensaje")[0].childNodes[0].nodeValue;
+        if ( message == "OK" ) {
+          alert("Se cambió el criterio de sustitución a 'No Sustituir' ");
+          window.location.reload();
+        } else {
+          alert(message);
+        }
+      }
+    };
+    new Ajax.Request('CriterioSustitucion', requestOptions);
+  }
+}
+
+function aValidado(idPedido) {
+  if (confirm("Está seguro que desea retroceder OP a estado 'Validado'?")) {
+    requestOptions = {
+      'method': 'post',
+      'parameters': "id_pedido=" + idPedido,
+      'onComplete': function(REQUEST) {
+        if (REQUEST.responseXML.getElementsByTagName("mensaje")[0] == null) {
+          alert("Error: Existe un problema con el servicio, o tal vez usted no tiene permisos para realizar esta acción.");
+          return;
+        }
+        var message = REQUEST.responseXML.getElementsByTagName("mensaje")[0].childNodes[0].nodeValue;
+        if ( message == "OK" ) {
+          alert("¡Se ha retrocedido OP a estado 'Validado' en forma satisfactoria !");
+          window.location.reload();
+        } else {
+          alert(message);
+        }
+      }
+    };
+    new Ajax.Request('CambiaEstadoValidado', requestOptions);
+    
+  }
+}
+</script>
+
+</head>
+
+<body>
+<script language="JavaScript" src="menu/menu.js"></script>
+<script language="JavaScript" src="menu/menu_tpl.js"></script>
+<script language="JavaScript" src="menu/menu_items.js"></script>
+
+<table width="780" height="100%" border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td height="78" valign="top">		
+			<table width="100%" height="59" border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#ffffff">
+				<tr>
+					<td width="275" height="59" align="left" class="user"><img src="img/header2.jpg" width="275" height="60" alt=""></td>
+					<td width="505" align="left" valign="bottom" background="img/bg-1.jpg" class="user">
+						<table width="90%" border="0" align="center" cellpadding="0" cellspacing="2">
+							<tr>
+								<td>&nbsp;</td>
+							</tr>
+							<tr>
+								<td><div align="right" class="infoBL">Usuario: {hdr_nombre}&nbsp;&nbsp;| {hdr_fecha}</div></td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+			</table>
+			<table width="100%" height="19" border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#f1f0e9" style="border-top:1px solid #ABABAB; border-bottom:1px solid #ABABAB">
+				<tr>
+					<td align="left" bgcolor="#FFFFFF" class="user"></td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+	<tr height="400">
+		<td valign="top" bgcolor="#FFFFFF">
+			<table border="0" width="100%" class="ContentTitle">
+				<tr>
+					<td width="53%" height="20" class="HeaderTitle">Detalle del Pedido Nº {id_ped}</td>
+					<td width="47%" class="HeaderTitle">
+						<div align="right">
+							<a href="{link_volver}"><img src="img/volver.gif" width="32" height="32" border="0" alt=""></a>
+						</div>
+					</td>
+				</tr>
+			</table>
+			<br/>
+			<table width="100%" border="0" cellspacing="2" cellpadding="2">
+				<tr valign="top">
+					<td width="71%">
+						<center><font color="red">{mensaje1}</font></center>
+						
+						<table width="95%" align="center" border="0">
+							<tr>
+								<td>
+								
+									<div class="tab-page" id="modules-cpanel">
+										<script type="text/javascript">
+											var tabPane1 = new WebFXTabPane( document.getElementById( "modules-cpanel" ), true );
+										</script>
+										<div class="tab-page" id="modulo1">
+											<h2 class="tab">General</h2>
+											<div align="left">
+												<p><strong>Datos del Pedido</strong></p>
+												
+												
+                        <table width="660" border="0" align="center" cellpadding="2" cellspacing="2">
+                          <tr> 
+                            <td width="139">N&deg; Pedido</td>
+                            <td width="507">{id_ped} {info_pedido}</td>
+                          </tr>
+                          <tr> 
+                            <td>Local</td>
+                            <td>{local}</td>
+                          </tr>
+                          <tr> 
+                            <td>Fecha de Ingreso </td>
+                            <td>{f_ingreso}&nbsp;&nbsp;{h_ingreso}</td>
+                          </tr>
+                          <tr> 
+                            <td>Fecha Despacho</td>
+                            <td>{fec_desp} {img}</td>
+                          </tr>
+                          <tr> 
+							<!-- Indra -->
+                            <td>Estado</td>
+                            <td class="infoVd"><strong>{estado} {imgEstado}</strong></td>
+                          </tr>
+							<!-- Indra -->	
+                          <tr> 
+                            <td>Subestado</td>
+                            <td>{subest}</td>
+                          </tr>
+                          <tr> 
+                            <td>Monto del Pedido</td>
+                            <td>{mon_ped}</td>
+                          </tr>
+                          <tr> 
+                            <td>Tipo de Despacho</td>
+                            <td>{tipo_despacho} 
+                              <input type="hidden" name="char_tipo_despacho" id="char_tipo_despacho" value="{char_tipo_despacho}"/></td>
+                          </tr>
+                          <tr> 
+                            <td>Costo de Despacho</td>
+                            <td>{costo_desp}</td>
+                          </tr>
+                          <tr> 
+                            <td>Total</td>
+                            <td>{total}</td>
+                          </tr>
+                          <tr> 
+                            <td>Total Productos Pedido</td>
+                            <td>{tot_prod}</td>
+                          </tr>
+                          <tr> 
+                            <td>Tipo Doc.</td>
+                            <td>{tipo_doc}</td>
+                          </tr>
+						  <tr> 
+                            <td>Monto Reservado</td>
+                            <td>{monto_reservado}</td>
+                          </tr>
+                          <tr> 
+                            <td>Fecha liberación de reserva</td>
+                            <td class="infoRj">{f_liberacion}</td>
+                          </tr>
+							<!-- Indra -->
+                          <!-- Umbrales -->
+                          <tr> 
+                            <td>Completitud Monto </td>
+                            <td>{negritaRojo}{porcent_monto}%</b><font></td>
+                          </tr>
+                          <tr> 
+                            <td>Completitud Unidades </td>
+                            <td>{negritaRojo}{porcent_unidad}%</b><font></td>
+                          </tr>
+                          <tr> 
+                          <!-- Umbrales -->
+                          <tr> 
+						<!-- Indra -->
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                          </tr>
+                          <tr> 
+                            <td>Local Facturador</td>
+                            <td>{local_facturador}</td>
+                          </tr>
+                          <tr> 
+                            <td>Origen</td>
+                            <td>{origen}</td>
+                          </tr>
+                          <tr> 
+                            <td>Tipo</td>
+                            <td>{tipo_ve}</td>
+                          </tr>
+                          <tr> 
+                            <td>OP está siendo editada por:</td>
+                            <td class="infoRj">{usuario_boc}</td>
+                          </tr>
+                          <tr> 
+                            <td>Reprogramada</td>
+                            <td>{reprogramada}</td>
+                          </tr>
+						  <!-- BEGIN DYNAMIC: VIEW_REPROGRAMACIONES -->
+                          <tr> 
+                            <td colspan="2">
+							
+								<table width="600" border="0" align="center" cellpadding="2" cellspacing="0" class="tabla2">
+									<tr>
+										<th width="30%">Jornada de Despacho</th>
+										<th width="20%">Motivo</th>
+										<th width="20%">Responsable</th>
+										<th width="10%">Usuario</th>
+										<th width="20%">Fecha Reprogramación</th>
+									</tr>
+									<!-- BEGIN DYNAMIC: REPROGRAMACIONES -->
+									<tr>
+										<td>{jornada}</td>
+										<td>{motivo}</td>
+										<td>{responsable}</td>
+										<td>{user}</td>
+										<td>{fecha}</td>
+									</tr>
+									<!-- END DYNAMIC: REPROGRAMACIONES -->
+								</table>
+							
+							</td>
+                          </tr>
+						   <!-- END DYNAMIC: VIEW_REPROGRAMACIONES -->
+                        </table>
+												
+												<p><strong>Datos del Despacho</strong></p>
+												
+												
+                        <table width="660"  border="0" align="center" cellpadding="2" cellspacing="2">
+                          <tr> 
+                            <td width="139">&nbsp;</td>
+                            <td width="507">&nbsp;</td>
+                          </tr>
+                          <tr> 
+                            <td>Nombre</td>
+                            <td>{nom_cli}</td>
+                          </tr>
+                          <tr> 
+                            <td>Direcci&oacute;n</td>
+                            <td>{direccion}</td>
+                          </tr>
+                          <tr id="fila_comuna"> 
+                            <td>Comuna</td>
+                            <td>{comuna}</td>
+                          </tr>
+                          <tr> 
+                            <td>Telefonos</td>
+                            <td>{fonos}</td>
+                          </tr>
+                          <tr> 
+                            <td>Indicaci&oacute;n</td>
+                            <td>{indicacion}</td>
+                          </tr>
+                          <tr> 
+                            <td>Fecha Despacho </td>
+                            <td>{fec_desp}</td>
+                          </tr>
+                          <tr> 
+                            <td>Sustitución </td>
+                            <td>{pol_sust}</td>
+                          </tr>
+                          <tr> 
+                            <td height="18">Persona a <span id="accion_despacho">recibir</span> 
+                              el despacho </td>
+                            <td>{sin_gente_txt}&nbsp;&nbsp;{sin_gente_rut}</td>
+                          </tr>
+                          <tr> 
+                            <td height="18">Ruta</td>
+                            <td>{id_ruta}</td>
+                          </tr>
+                          <tr> 
+                            <td height="18">Fono Contacto M&oacute;vil</td>
+                            <td>{fono_trans}</td>
+                          </tr>
+                          <tr> 
+                            <td height="18">Chofer</td>
+                            <td>{chofer_trans}</td>
+                          </tr>
+                          <tr> 
+                            <td height="18">M&oacute;vil</td>
+                            <td>{patente_trans}</td>
+                          </tr>
+                          <tr> 
+                            <td height="18">Hora Salida Local</td>
+                            <td>{hr_out_local}</td>
+                          </tr>
+                          <tr>
+                            <td height="18">Hora Llegada Domicilio </td>
+                            <td>{hr_in_dom}</td>
+                          </tr>
+                          <tr> 
+                            <td height="18">Hora Salida Domicilio</td>
+                            <td>{hr_out_dom}</td>
+                          </tr>
+                        </table>
+												
+												<script language="JavaScript">
+												if ( $('char_tipo_despacho').value == 'R' ) {
+													$('fila_comuna').hide();
+													$('accion_despacho').innerHTML = 'retirar';
+												} else {
+													$('fila_comuna').show();
+													$('accion_despacho').innerHTML = 'recibir';
+												}
+												</script>
+												
+												<p><strong>Datos del Medio de Pago</strong></p>
+												
+												<table width="660" border="0" align="center" cellpadding="2" cellspacing="2">
+													<tr>
+														<td width="139">&nbsp;</td>
+														<td width="507">&nbsp;</td>
+													</tr>
+													<tr>
+														<td>Canal</td>
+														<!-- <td>{usuario_fono}</td> -->
+														<td>{canal}</td>
+													</tr>
+													<tr>
+														<td>Medio de Pago </td>
+														<td>{med_pago}</td>
+													</tr>
+													{cat_autenticado}
+													<tr>
+														<td>N&deg; Tarjeta</td>
+														<td>{num_tarj}</td>
+													</tr>
+													<tr>
+														<td>Codigo autorizacion</td>
+														<td>{cod_auth}</td>
+													</tr>
+													<tr>
+														<td>Nº de cuotas</td>
+														<td>{num_cuotas}</td>
+													</tr>
+													<!-- tr>
+														<td>Banco</td>
+														<td>{banco}</td>
+													</tr>
+													<tr>
+														<td>Tipo de Tarjeta</td>
+														<td>{nom_tarj}</td>
+													</tr -->
+													<!-- tr>
+														<td>Fecha de expiración</td>
+														<td>{fec_venc}</td>
+													</tr -->
+													<tr>
+														<td>Observaciones</td>
+														<td>{observaciones}</td>
+													</tr>                      
+												</table>
+												
+												<p><strong>Acciones sobre el Pedido</strong></p>
+												
+												<table width="92%" border="0" align="center" cellpadding="0" cellspacing="2">
+													<tr>
+														<td width="24%">
+															<div align="center"><input {hab_dir} name="lib_dir" type="button" style="width:150px;" value="Libreta de Direcciones" onClick="popUpWindowModalscroll('{pop_cambio_direccion}?id_pedido={id_pedido}&mod={mod}', 100, 100, 500, 400);"></div>
+														</td>
+														<td width="26%">
+															<div align="center"><input {hab_ind}  name="ed_ind" type="button" style="width:150px;" value="Editar Indicación Despacho" onClick="popUpWindowModal('{pop_editar_indicacion}?id_pedido={id_pedido}&mod={mod}', 150, 100, 400, 350);"></div>
+														</td>
+														<td width="26%">
+															<div align="center"><input {hab_desp}  name="reprg" type="button" style="width:150px;" value="Reprogramar Despacho" onClick="javascript:aReprogramar({alertar},'{estado}','{id_pedido}')"></div>
+														</td>
+														<td width="24%">
+															<div align="center"><input {hab_mpago_cre}  name="cam_medio_cre" type="button" style="width:150px;" value="Cambiar M. Pago CRE" onClick="popUpWindowModal2('{pop_cambio_mp_cre}?id_pedido={id_pedido}&PagErr=2', 150, 100, 350, 350); "><!--input {hab_polsust} name="polsust" type="button" style="width:150px;" value="Cambiar Pol. Sustitución" onClick="popUpWindow('ViewPolSustitOPForm?id_pedido={id_pedido}', 150, 100, 400, 150);"--></div>
+														</td>
+													</tr>
+													<tr>
+														<td><div align="center">Utilizar otra direcci&oacute;n de la Libreta <br><br></div></td>
+														<td><div align="center">Editar Indicaci&oacute;n de despacho de la OP <br><br></div></td>
+														<td><div align="center">lo debe solicitar al Coordinador BOL <br><br></div></td>
+														<td><div align="center">(s&oacute;lo hasta antes de cursar medio de pago) igual que en FO<!--Modifica la política de sustitución--><br><br></div></td>
+													</tr>
+													<tr>
+														<td width="24%"><div align="center"><input {hab_mpago}  name="cam_medio" type="button" style="width:150px;" value="Cambiar Medio Pago" onClick="popUpWindowModal2('{pop_cambio_mp}?id_pedido={id_pedido}', 150, 100, 500,540); "></div></td>
+														<td width="26%"><div align="center"><input {hab_dpago} name="lib_dir" type="button" style="width:150px;" value="Modificar Doc. de Pago" onClick="popUpWindowModal('{pop_modif_factura}?id_pedido={id_pedido}&mod={mod}', 100, 100, 420, 400);"></div></td>
+														<td width="26%">
+															<div align="center"><br>
+																<form name="f_genera" method="POST" action="CambiaEnPagoOP" target="winpedido1">
+																	<input type="hidden" name="id_pedido" value="{id_pedido}">
+																	<input type="hidden" name="url" value="ViewOPFormPedido?id_pedido={id_pedido}&mod=1">
+																	<input {hab_enpago} type="submit" style="width:150px;" name="b_gtrx" value="Cambiar a 'En Pago'" onclick='var agree=confirm("¿Esta seguro(a) de guardar los cambios?"); if (agree){return true ; } else {return false ;}'>
+																</form>
+															</div>
+														</td>
+														<td width="24%"><div align="center"><input {hab_cdesp}  name="actcostdesp" type="button" style="width:150px;" value="Actualizar Costo Despacho" onClick="popUpWindow('ViewCostDespForm?id_pedido={id_pedido}', 200, 150, 350, 310);"></div></td>
+													</tr>
+													<tr>
+														<td align="center" valign="top">(s&oacute;lo hasta antes de cursar medio de pago) igual que en FO<br><br></td>
+														<td align="center" valign="top">Permite modificar los datos de la Boleta / Factura<br><br></td>
+														<td align="center" valign="top">Cambia el estado del pedido a 'En Pago'<br><br></td>
+														<td align="center" valign="top">Cambia el Costo de Despacho de una OP.<br><br></td>
+													</tr>
+													<tr>
+														<td><div align="center"><input {hab} name="actualizaop" type="button" style="width:150px;" value=" Actualizar OP " onClick="javascript: location.reload()"></div></td>
+														<td><div align="center"><input {hab} name="liberaop" type="button" style="width:150px;" value="  Libera OP  " onClick="popUpWindowModal('{pop_libera_motivo}?id_pedido={id_pedido}&origen=1', 200, 200, 500, 180);"></div></td>
+														<td><div align="center"><input {hab_anul} name="anulaop" type="button" style="width:150px;" value="  Anular OP  " onClick="popUpWindowModal('{pop_anula_motivo}?id_pedido={id_pedido}', 200, 200, 500, 180);"></div></td>
+														<td><div align="center"><input {hab_cambest} name="CambiaEstadoOP" type="button" style="width:150px;" value="Cambia Estado OP" onClick="popUpWindowModal('{pop_cambia_estado_op}?id_pedido={id_pedido}', 200, 200, 500, 180);"></div></td>
+													</tr>
+													<tr>
+														<td><div align="center"><br><br></div></td>
+														<td><div align="center"><br><br></div></td>
+														<td><div align="center"><br><br></div></td>
+														<td><div align="center">Cambiar una OP a <br>en Bodega (Elim. Trx.)<br></div></td>
+													</tr>
+													<tr>
+														<td><div align="center"></div></td>
+														<td><div align="center"></div></td>
+														<td><div align="center"></div></td>
+														<td><div align="center"></div></td>
+													</tr>
+													<tr>
+															<td>
+																<div align="center">
+																	<input {hab_mod_prods} name="modifica_pedido"
+																		type="button" style="width: 150px;"
+																		value=" Modificar Productos "
+																		onclick="javascript:modificarPrecios('{id_pedido}');" />
+																	<br />Modifica los productos de<br />un pedido con monto excedido
+																</div></td>
+															<td><div align="center">
+																	<input {hab_anular_boleta} name="anular_boleta"
+																		type="button" style="width: 150px;"
+																		value=" Anular Boleta OK "
+																		onclick="javascript:anularBoleta('{id_pedido}');" />
+																	<br />Presionar cuando se haya anulado<br />la boleta en el local
+																</div>
+															</td>
+															<td><div align="center">
+																	<input {hab_no_sustituir} name="no_sustituir"
+																		type="button" style="width: 150px;"
+																		value=" No Sustituir Productos "
+																		onclick="javascript:noSustituir('{id_pedido}');" /> <br />Cambiar Criterio de Pedido a 
+																		<br /> "No Sustituir"
+																</div>
+															</td>
+															<td><div align="center">
+																	<input {hab_a_validado} name="a_validado"
+																		type="button" style="width: 150px;"
+																		value=" Retroceder OP a Validado"
+																		onclick="javascript:aValidado('{id_pedido}');" /> <br />Cambiar una OP a 
+																		<br /> estado Validado
+																</div>
+															</td>
+														</tr>
+													<tr>
+														<td><div align="center"></div></td>
+														<td><div align="center"></div></td>
+														<td><div align="center"></div></td>
+														<td><div align="center"></div></td>
+													</tr>
+													<tr>
+															<td>
+																<div align="center">
+																	<input {hab_mod_fec_op} name="modifica_fec_op"
+																		type="button" style="width: 150px;"
+																		value=" Modificar Fecha Creaci&oacute;n "
+																		onClick="javascript:modFechCreacion({alertar},'{estado}','{id_pedido}')" />
+																	<br />Modifica fecha de creaci&oacute;n<br/> de un pedido
+																</div>
+																</td>
+															<td><div align="center"></td>
+															<td><div align="center"></td>
+															<td><div align="center"></td>
+														</tr>														
+													</table>
+												<br /><br />
+											</div>
+										</div>
+										
+										<div class="tab-page" id="modulo1">
+											<h2 class="tab">Cliente</h2>
+											<div align="left">
+												<p><strong>Datos del Cliente</strong></p>
+												<table width="80%" border="0" align="center" cellpadding="0" cellspacing="2">
+													<tr>
+														<td>Rut</td>
+														<td>{rut}-{dv}</td>
+													</tr>
+													<tr>
+														<td width="18%">Nombre</td>
+														<td width="82%">{nombre}</td>
+													</tr>
+													<tr>
+														<td>Apellido Paterno </td>
+														<td>{paterno}</td>
+													</tr>
+													<tr>
+														<td>Apellido Materno </td>
+														<td>{materno} </td>
+													</tr>
+													<tr>
+														<td>Fecha Nacimiento </td>
+														<td>{fec_nac}</td>
+													</tr>
+													<tr>
+														<td>G&eacute;nero</td>
+														<td>{genero}</td>
+													</tr>
+													<tr>
+														<td>&nbsp;</td>
+														<td>&nbsp;</td>
+													</tr>
+													<tr>
+														<td>E-mail</td>
+														<td>{mail}</td>
+													</tr>
+													<tr>
+														<td>Fono 1 </td>
+														<td>{fono1}</td>
+													</tr>
+													<tr>
+														<td>Fono 2 </td>
+														<td>{fono2}</td>
+													</tr>
+													<tr>
+														<td>Fono 3 </td>
+														<td>{fono3}</td>
+													</tr>
+													<tr>
+														<td>&nbsp;</td>
+														<td>&nbsp;</td>
+													</tr>
+													<tr>
+														<td>F.Creaci&oacute;n</td>
+														<td>{fec_crea}</td>
+													</tr>
+													<tr>
+														<td>&nbsp;</td>
+														<td>&nbsp;</td>
+													</tr>
+													<tr>
+														<td>&nbsp;</td>
+														<td><input name="Button" type="button" class="cmd" value="   Ir a Ficha    " onClick="location.href='ViewClientForm?id_cliente={id_cli}'" {hab_cli}></td>
+													</tr>
+												</table>
+												<br>
+											</div>
+										</div>
+										
+										<div class="tab-page" id="modulo1">
+											<h2 class="tab">Validacion</h2>
+											<div align="left"><strong>Listado de alertas de validacion de la OP</strong><br/><br/>
+												<table width="542" border="0" align="center" cellpadding="2" cellspacing="0" class="tabla2">
+													<tr>
+														<th width="35">Tipo&nbsp;</th>
+														<th width="97">Alerta</th>
+														<th width="400">Descripcion</th>
+													</tr>
+												</table>
+												<center><iframe SRC="ViewPedidoAlertIframe?id_pedido={id_ped}" NAME="val_prod" HEIGHT="194" WIDTH="542" border="0" ></iframe></center>
+											</div>
+											<div align="center">
+												<table align="center" width="300" height="5">
+													<tr>
+														<td align="center" width="50%">
+															<form name="validar" method="post" action="ValidarOP?id_pedido={id_pedido}">
+																<input type="hidden" name="url" value="ViewOPFormPedido?id_pedido={id_pedido}&mod=1">
+																<input type="hidden" name="id_pedido" value="{id_pedido}">
+																<input type="hidden" name="accion" value="{accion}">
+																<input align="top" {hab_v} type="submit" value="Validar OP" class="cmd_100" {bot_disabl} >
+															</form>
+														</td>
+														<td align="center" width="50%">
+															<form name="confirmar" method="post" action="ConfirmarOP">
+																<input type="hidden" name="url" value="ViewOPFormPedido?id_pedido={id_pedido}&mod=1">
+																<input type="hidden" name="id_pedido" value="{id_pedido}">
+																<input align="top" {hab_c} type="button" value="Confirmar OP" class="cmd_100" {bot_disabl} onClick="javascript:confirmar.submit();">
+															</form>
+														</td>
+													</tr>
+												</table>
+												<center><font color="red">{mensaje_confirm}</font></center>
+											</div>
+										</div>
+										
+										
+										
+										<div class="tab-page" id="modulo1">
+											<h2 class="tab">Productos</h2>
+											<div align="left"><strong>Listado de Productos del Pedido</strong><br/><br/><br/>
+												
+												<!-- form name="form1" method="post" action="ModPedidoProduct" target="prod_ifr">
+													<input type="hidden" name="action" value="agregar" />
+													<input type="hidden" name="url" value="ViewPedidoProdIframe?id_pedido={id_ped}&mod=1" />
+													<input type="hidden" name="id_pedido" id="id_pedido" value="{id_ped}" />
+													<input type="hidden" name="id_cliente" id="id_cliente" value="{id_cliente_pedido}" />
+													<input type="hidden" name="id_criterio_seleccionado" id="id_criterio_seleccionado" value="1" />
+													<input type="hidden" name="desc_criterio_seleccionado" id="desc_criterio_seleccionado" value="" />
+													<input type="hidden" name="intervalo" id="intervalo" value="1" />
+													<input type="hidden" name="maximo" id="maximo" value="1" />
+													<table width="100%"  border="0" align="center" cellpadding="0" cellspacing="2">
+														<tr>
+															<td width="24%">Id Producto Web</td>
+															<td width="11%">Cantidad</td>
+															<td width="41%">Observaci&oacute;n</td>
+															<td width="24%">&nbsp;</td>
+														</tr>
+														<tr>
+															<td valign="top"><input name="id_prod" id="id_prod" type="text" disabled size="20" maxlength="9">{a_ini} <img src="img/magnify.jpg" width="16" height="16" border="0"> {a_fin} </td>
+															<td valign="top"><input name="cant" id="cant" type="text" size="10" maxlength="7" onblur="javascript:valida_cantidad(this,document.form1.intervalo.value,document.form1.maximo.value);"></td>
+															<td valign="top"><textarea name="obs" id="obs" cols="45" onchange="if(this.value.length > 254){ this.value=this.value.substring(0,255); window.event.keyCode=0; alert('Se permite un máximo de 255 caracteres en la descripción, se eliminaran los caracteres sobrantes.                               Presione Agregar para insertar el Producto.'); }" ></textarea></td>
+															<td valign="top"><input {hab_prod} name="Button" type="button" class="cmd" style="width: 100px" value="Agregar" {bot_agreg_prod} onclick="javascript:agregarProducto();" ></td>
+														</tr>
+													</table>
+												</form>
+												<script language="JavaScript">
+													document.form1.id_prod.onkeypress = KeyIsSoloNum;
+													//document.form1.cant.onkeypress = KeyIsSoloNum;
+													document.form1.cant.onkeypress = KeyIsDecimal;
+												</script -->
+												
+												<br/>
+												<table width="700" border="0" align="center" cellpadding="1" cellspacing="0" class="tabla2">
+													<tr>
+														<th width="23">&nbsp;</th>
+														<th width="53">Id Prod</th>
+														<th width="53">Cod SAP</th>
+														<th width="53">Unid</th>
+														<th width="53">Sección<br>SAP</th>
+														<th width="53">Sección<br>Picking</th>
+														<th width="99">Descripci&oacute;n</th>
+														<th width="53">Cant Ped.</th>
+														<th width="53">Cant Pick.</th>
+														<th width="53">Cant Falt.</th>
+														<th width="53">Cant S/Pick.</th>
+														<th width="53">Precio Unitario </th>
+														<th width="48">Obs</th>
+													</tr>
+												</table>
+												<center><iframe src="ViewPedidoProdIframe?id_pedido={id_ped}&mod={mod}&id_est={id_est}" name="prod_ifr" height="194" width="700" border="0"></iframe></center>
+												<br><br><br>
+											</div>
+										</div>
+										
+										<div class="tab-page" id="modulo5">
+											<h2 class="tab">Promociones</h2>
+											<div align="left">
+												<strong>Listado de Promociones</strong>
+												<br /><br />
+												<table width="691" border="0" align="center" cellpadding="2" cellspacing="0" class="tabla2">
+													<tr>
+														<th width="5%">Cod Prom</th>
+														<th width="8%">Tipo</th>
+														<th width="20%">Descripcion</th>
+														<th width="8%">Fec Inicio</th>
+														<th width="8%">Fec Fin</th>
+														<th width="36%">Productos relacionados</th>
+														<!--  <th width="10%">Dscto Tot(%)</th> -->
+														<th width="10%">Monto Dscto Total</th>
+														<th width="5%">&nbsp;</th>
+													</tr>
+													<!-- BEGIN DYNAMIC: PROMOS -->
+													<tr>
+														<td>{cod}</td>
+														<td>{tipo}</td>
+														<td>{descr}</td>
+														<td>{fini}</td>
+														<td>{ffin}</td>
+														<td>{desc_prod}</td>
+														<!-- <td>{dscto_total}</td> -->
+														<td>{monto_descto_total}</td>
+														<td><a href="{url_promo}">ver</a></td>
+														<!-- <td><a href="ViewPromoForm?codigo={cod}">ver</a></td-->
+													</tr>
+													<!-- END DYNAMIC: PROMOS -->                      
+													<tr>
+														<td></td>
+														<td></td>
+														<td></td>
+														<td></td>
+														<td></td>
+														<td colspan="2" align="right"><b>TOTAL DESCUENTO:</b>&nbsp;</td>
+														<td>{total_promo}</td>
+														<td></td>
+													</tr>
+												</table>
+												<br />
+												<div align="center">
+													<form name="frmRecalcular" method="post">
+														<input type="button" name="btnRecalcular" value="Previsualizar Recálculo" class="cmd" onClick="popUpWindow('ViewRecalculoForm?id_pedido={id_pedido}&id_local={id_local}&monto_dscto_ped={monto_dscto_ped}&mod={mod}', 100, 100,700, 350);">
+													</form>
+												</div>
+											</div>
+										</div>
+										<div class="tab-page" id="modulo1">
+											<h2 class="tab">S&amp;F</h2>
+											<div align="left">
+												<strong>Sustitutos</strong>
+												<br /><br />
+												<table width="690" border="0" align="center" cellpadding="2" cellspacing="0" class="tabla2">
+												  <tr>
+													<th width="63" align="center">Cod. Producto</th>
+													<th width="142">Descripci&oacute;n</th>
+													<th width="50" align="center">Cant.</th>
+													<th width="50" align="center">Precio Unit.</th>
+													<th width="10">&nbsp;</th>
+													<th width="63" align="center">Cod. Sustituto</th>
+													<th width="142">Descripci&oacute;n</th>
+													<th width="50" align="center">Cant.</th>
+													<th width="50" align="center">Precio Unit.</th>
+													<th width="70" align="center">Criterio de Sustituci&oacute;n</th>
+												  </tr>
+												  <!-- BEGIN DYNAMIC: SUSTITUTOS -->
+												  <tr valign="top">
+													<td width="63"><div align="center">{cod_prod1}</div></td>
+													<td width="142"><div align="left">{desc_prod1}</div></td>
+													<td width="50"><div align="center">{cant_prod}</div></td>
+													<td width="50">{pr_unit_prod}</td>
+													<td width="10"><div align="center">&rarr;</div></td>
+													<td width="63"><div align="center">{cod_sust}</div></td>
+													<td width="142">{desc_sust}</td>
+													<td width="50"><div align="center">{cant_sust}</div></td>
+													<td width="50">{pr_unit_sust}</td>
+													<td width="70">{cri_susti}</td>
+												  </tr>
+												  <!-- END DYNAMIC: SUSTITUTOS -->
+												</table>
+												<p><strong>Faltantes</strong><br /></p>
+												<table width="496" border="0" align="center" cellpadding="2" cellspacing="0" class="tabla2">
+													<tr>
+														<th width="63" align="center">Cod. Producto</th>
+														<th width="293">Descripci&oacute;n</th>
+														<th width="70" align="center">Cant. Faltante</th>
+														<th width="70" align="center">Criterio de Sustituci&oacute;n</th>
+													</tr>
+													<!-- BEGIN DYNAMIC: FALTANTES -->
+													<tr valign="top">
+														<td width="63"><div align="center">{cod_prodfal}</div></td>
+														<td width="293"><div align="left">{desc_fal}</div></td>
+														<td width="70"><div align="center">{cant_falt}</div></td>
+														<td width="70">{cri_susti}</td>
+													</tr>
+													<!-- END DYNAMIC: FALTANTES -->
+												</table>
+												<br /><br />
+											</div>
+										</div>			  
+									
+										<div class="tab-page" id="modulo1">
+											<h2 class="tab">Bodega</h2>
+											<div align="left">
+												<strong>Datos Ubicaci&oacute;n Bodega </strong>
+												<br /><br />
+												<table width="600" border="0" align="center" cellpadding="2" cellspacing="0" class="tabla2">
+												  <tr align=center>
+													 <th width="70">Cod Bin</th>
+													 <th width="75">Visualizado</th>
+													 <th width="80">Cant. Prod. Auditados</th>
+													 <th width="150">Auditor</th>
+													 <th width="88">Tipo</th>
+													 <th width="88">&nbsp;</th>
+												  </tr>
+													<!-- BEGIN DYNAMIC: BODEGA -->
+												  <tr valign="top">
+													<td><div align="center">{cod_bin}</div></td>
+													<td><div align="center">{visualizado}</div></td>
+													<td><div align="center">{cant_prod_audit}</div></td>
+													<td><div align="center">{auditor}</div></td>
+													<td><div align="center">{tipo}</div></td>
+													<td><div align="center"><a href="javascript:popUpWindow('ViewPrint?url='+escape('ViewProductosBin?id_bp={id_bp}'), 100, 100, 700, 500)">Ver Contenido</a> </div></td>
+													</tr>
+													<!-- END DYNAMIC: BODEGA -->
+												</table>
+												<br /><br /><br /><br />
+											</div>
+										</div>
+										<div class="tab-page" id="modulo1">
+											<h2 class="tab">Trx. Pago</h2>
+											<div align="left">
+												<strong>Datos de Transacción </strong>
+												<br /><br />
+												<table width="750" border="0" align="center" cellpadding="2" cellspacing="0" class="tabla2">
+													<tr>
+														<th width="70">Nº Trx</th>
+														<th width="70">Monto</th>
+														<th width="70">Cant. Productos</th>
+														<th width="70">Estado</th>
+														<th width="70">Tipo Doc.</th>
+														<th width="70">Nº Doc.</th>
+														<th width="50">Nº Caja</th>
+														<th width="50">Monto POS</th>
+														<th width="50">Fecha POS</th>
+														<th width="50">Hora POS</th>
+														<th width="50">FP</th>
+														<th width="25">&nbsp;</th>
+														<th width="25">&nbsp;</th>
+													</tr>
+													<!-- BEGIN DYNAMIC: listado_trxmp -->
+													<tr valign="top">
+														<td>
+														<div align="center">{trxmp_nro}</div>
+														</td>
+														<td>
+														<div align="center">{trxmp_monto}</div>
+														</td>
+														<td>
+														<div align="center">{trxmp_qtyprods}</div>
+														</td>
+														<td>
+														<div align="center">{trxmp_estado}</div>
+														</td>
+														<td>
+														<div align="center">{trxmp_tipo_doc}</div>
+														</td>
+														<td>
+														<div align="center">{trxmp_num_doc}</div>
+														</td>
+														<td>
+														<div align="center">{trxmp_num_caja}</div>
+														</td>
+														<td>
+														<div align="center">{trxmp_pos_monto_fp}</div>
+														</td>
+														<td>
+														<div align="center">{trxmp_pos_fecha}</div>
+														</td>
+														<td>
+														<div align="center">{trxmp_pos_hora}</div>
+														</td>
+														<td>
+														<div align="center">{trxmp_pos_fp}</div>
+														</td>
+														<td>
+														<div align="center">
+														  <a href="javascript:popUpWindow('ViewPrint?url='+escape('ViewTrxMp?id_trx_mp={trxmp_nro}&id_pedido={id_pedido}'), 100, 100, 700, 500)"><img
+															src='img/ico_print.gif' border='0' width="20" height="20" alt='Imprimir'/></a></div>
+														</td>
+														<td>
+														<div align="center">
+															<img src="img/clear.bmp" border="0" width="20" height="20" alt='Reset' onClick="popUpWindowModal('ViewReseteaTrxMp?id_pedido={id_pedido}&id_trx_mp={trxmp_nro}&origen=1&PagErr=2', 200, 200, 350, 130);"/></div>
+														</td>
+													</tr>
+													<!-- END DYNAMIC: listado_trxmp -->
+												</table>
+												<br />
+											</div>
+										</div>
+										<!--
+										<div class="tab-page" id="modulo1">
+										<h2 class="tab">Despacho</h2>
+										<div align="left"> <strong>Listado Ordenes de Despacho para el Pedido </strong><br />
+										Pendiente para etapa 2<br>
+										<table width="698" border="0" align="center" cellpadding="2" cellspacing="0" class="tabla2">
+										<tr>
+										<th width="61">N&deg; O/D</th>
+										<th width="225">??</th>
+										<th width="117">??</th>
+										<th width="109">Estado</th>
+										<th width="166">Acciones</th>
+										</tr>
+										BEGIN DYNAMIC: OD
+										<tr valign="top">
+										<td><div align="center">{num_od}</div></td>
+										<td>&nbsp;</td>
+										<td>&nbsp;</td>
+										<td>{estado_od} </td>
+										<td><div align="center">{accion_od}</div></td>
+										</tr>
+										END DYNAMIC: OD
+										<tr valign="top">
+										<td><div align="center">3457</div></td>
+										<td>&nbsp;</td>
+										<td>&nbsp;</td>
+										<td>En Ruta </td>
+										<td><div align="center">Ver</div></td>
+										</tr>
+										</table>
+										<br><br><br><BR>
+										</div>
+										</div>		
+										-->	  			  
+										<div class="tab-page" id="modulo1">
+											<h2 class="tab">Log</h2>
+											<div align="left">
+												<strong>Log del Pedido </strong>
+												<br /><br />
+												<table width="700" border="0" align="center" cellpadding="2" cellspacing="0" class="tabla2">
+													<tr>
+														<th width="95">Fecha </th>
+														<th width="84">Usuario</th>
+														<th width="340">Descripci&oacute;n</th>
+														<th width="95">SubEstado<br/>actual</th>
+														<th width="84">SubEstado<br/>anterior</th>
+													</tr>
+													<tr>
+														<td colspan="5">
+															<iframe name="logiframe" width="700" height="150" src="ViewLogPedidoBoc?id_pedido={id_pedido}" scrolling="auto" frameborder="0">
+															</iframe>
+														</td>
+													</tr>
+													<form name="frmLog" method=post action="ViewLogPedidoBoc"  target="logiframe">
+														<input type="hidden" name="id_pedido" value="{id_pedido}">
+													</form>
+													<tr>
+														<td colspan="5" align="right"><input name="Button" type="button" class="cmd_100" value="Actualizar" onClick="frmLog.submit();"></td>
+													</tr>                      
+												</table>
+												<br />
+												<strong>Agregar Registro </strong>
+												<br/>
+												<form name="nuevo_log" method="POST" action="RegLogOP" target="logiframe" onsubmit="return valida_log(this);">   
+													<input type="hidden" name="url" value="ViewLogPedidoBoc?id_pedido={id_pedido}" />
+													<input type="hidden" name="id_pedido" value="{id_pedido}" />
+													<table width="485" border="0" align="center" cellpadding="2" cellspacing="2" class="textonormal">
+													  <tr valign="top">
+														<td>Motivo</td>
+														<td>
+														<select name="id_motivo_nuevo">
+														<!-- BEGIN DYNAMIC: MOTIVOS -->
+														  <option value="{id_motivo}" {sel}>{nom_motivo}</option>
+														<!-- END DYNAMIC: MOTIVOS -->
+														</select>
+														</td>
+														<td valign="bottom">&nbsp;</td>
+													  </tr>
+													  <tr valign="top">
+														<td width="87">Observaci&oacute;n</td>
+														<td width="315"><textarea name="obs" cols="60" onchange="if(this.value.length > 254){ this.value=this.value.substring(0,255); window.event.keyCode=0; alert('Se permite un máximo de 255 caracteres en la descripción, se eliminaran los caracteres sobrantes.                               Presione Ingresar para agregar registro al Log.'); }"></textarea></td>
+														<td width="63" valign="bottom">
+															<input {hab} type="submit" name="Button" value="Ingresar" class="cmd_100">
+														</td>
+													  </tr>
+													</table>
+												</form>
+												<br /><br /><br /><br /><br /><br />
+											</div>
+										</div> 
+										<!-- 
+										<div class="tab-page" id="modulo1">
+										<h2 class="tab">Acciones</h2>
+										<div align="left"> <strong>Acciones Disponibles</strong><br />
+										<br>
+										<table width="51%"  border="0" align="center" cellpadding="2" cellspacing="2">
+										<tr>
+										<td><div align="center">
+										<input name="Button" type="button" class="cmd" style="color:#009900" onClick="javascript:popUpWindow('pop_compra_pe.htm', 100, 100, 400, 300);" value="Imprimir OP">
+										</div></td>
+										<td><div align="center">
+										<input name="Button" type="button" class="cmd" style="color:#FF0000" value="Anular">
+										</div></td>
+										<td><div align="center">
+										<input name="Button" type="button" class="cmd" value="     Imprimir     "> 
+										</div></td>
+										</tr>
+										<tr>
+										<td width="43%"><div align="center">Imprimir Orden de Pago </div></td>
+										<td width="21%"><div align="center">Anular</div></td>
+										<td width="36%"><div align="center"></div></td>
+										</tr>
+										</table>
+										<br>
+										<table width="63%"  border="0" align="center" cellpadding="0" cellspacing="2">
+										<tr>
+										<td width="27%" align="center"><img src="img/forward.gif" width="16" height="16"></td>
+										<td width="27%" align="center"><img src="img/forward.gif" width="16" height="16"></td>
+										<td width="32%" align="center"><img src="img/forward.gif" width="16" height="16"></td>
+										<td width="26%" align="center"><img src="img/forward.gif" width="16" height="16"></td>
+										</tr>
+										<tr>
+										<td align="center">Validar Bloqueo del Cliente </td>
+										<td align="center">Validar Cupo del Medio de Pago </td>
+										<td align="center">Validar Bloqueo del Medio de Pago </td>
+										<td align="center">Validar Contrase&ntilde;a del Medio de Pago</td>
+										</tr>
+										</table>					
+										<br>
+										<table width="63%"  border="0" align="center" cellpadding="0" cellspacing="2">
+										<tr>
+										<td width="27%" align="center"><img src="img/check.gif" width="17" height="17"></td>
+										<td width="27%" align="center"><img src="img/atencion.jpg" width="22" height="22"></td>
+										<td width="27%" align="center"><img src="img/atencion.jpg" width="22" height="22"></td>
+										<td width="27%" align="center"><img src="img/forward.gif" width="16" height="16"></td>
+										</tr>
+										<tr>
+										<td align="center">Validar la OP </td>
+										<td align="center">Anular la OP </td>
+										<td align="center">Alerta Local </td>
+										<td align="center">Nueva Direcci&oacute;n </td>
+										</tr>
+										</table>
+										</div>
+										</div>
+										-->			  
+										<div class="tab-page" id="modulo1">
+											<h2 class="tab">Eventos</h2>
+											<div align="left">
+												<strong>Eventos del cliente</strong>
+												<br /><br />
+												<table width="733" border="0" align="center" cellpadding="2" cellspacing="0" class="tabla2">
+													<tr>
+													  <th width="4%" height="30"> ID</th>
+													  <th width="13%">Nombre</th>
+													  <th width="20%">Descripci&oacute;n</th>
+													  <th width="11%">Tipo Evento </th>
+													  <th width="10%">Fecha Creación</th>
+													  <th width="10%">Fecha Inicio </th>
+													  <th width="8%">Fecha Fin </th>
+													  <th width="7%">Orden</th>
+													  <th width="7%">Estado</th>
+													</tr>
+													<!-- BEGIN DYNAMIC: EVENTOS -->
+													<tr>
+													  <td height="30" align="center">{id_evento}</td>
+													  <td>{nombre}</td>
+													  <td>{descripcion}</td>
+													  <td>{tipo_evento}</td>
+													  <td align="center">{fecha_creacion}</td>
+													  <td align="center">{fecha_inicio}</td>
+													  <td align="center">{fecha_fin}</td>
+													  <td>{orden}</td>
+													  <td>{estado}</td>
+													</tr>
+													<!-- END DYNAMIC: EVENTOS -->
+												</table>
+												<center>{msj_eventos}</center>
+												<br /><br /><br /><br />
+											</div>
+										</div>
+									</div>
+									
+								</td>
+							</tr>
+						</table>
+						<p>&nbsp;</p>
+						{mns}
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<table width="100%" height="19" border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#f1f0e9" style="border-top:1px solid #ABABAB; border-bottom:1px solid #ABABAB">
+				<tr>
+					<td align="center" bgcolor="#67b01a" class="infoBL">
+						<div align="center">Back Office Central - Jumbo.cl</div>
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+<div id="loading" style="display:none">
+	<table style="Z-INDEX: 500; LEFT: 0; POSITION: absolute; TOP: 0" cellSpacing="0" cellPadding="0" border="0">
+		<tr>
+			<td width="75" height="25" bgcolor="#FF0000">&nbsp;&nbsp;&nbsp;<font color="#FFFFFF"><b>Cargando...</b></font></td>
+		</tr>
+	</table>
+</div>
+</body>
+<script type="text/javascript" >
+if ( "{msj_anulacion_acelerada}" != "" ) {
+  alert("{msj_anulacion_acelerada}");
+}
+</script>
+</html>

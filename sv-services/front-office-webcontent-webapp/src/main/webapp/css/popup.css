@@ -1,0 +1,131 @@
+.ui-widget-content a {
+color: #666/*{fcContent}*/;
+}
+a:hover {
+color: #1FA22E;
+text-decoration: none;
+}
+
+#TB_window {
+	color: #000000;
+}
+#TB_ajaxContent .cont_inputs_close { text-align: right; margin-right: -5px;  }
+
+.menu_list {	
+	width: 150px;
+}
+a img{
+	border:none;
+}
+.contenedor_lightbox_popup{
+	text-align:center;
+	padding:20px 20px 20px 20px;
+	border:1px solid #CCC;
+	background:#FFFFFF;
+	width: 550px;
+	-moz-border-radius-bottomleft: 8px;
+	-webkit-border-bottom-left-radius: 8px;
+	-webkit-border-top-left-radius: 8px;
+	-webkit-border-top-right-radius: 8px;
+	border-bottom-left-radius: 8px;
+	-moz-border-radius-bottomright: 8px;
+	-webkit-border-bottom-right-radius: 8px;
+	border-bottom-right-radius: 8px;
+	-moz-box-shadow: 0px 4px 10px #CCC;
+	-webkit-box-shadow: 0px 4px 10px #CCC;
+	box-shadow: 0px 4px 10px #CCC;
+	/*INDRA 2012-11-13*/
+	height: 300px;
+	/*INDRA 2012-11-13*/
+}
+
+.fila_registro_2012_name{
+	height: 20px;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:14px;
+	color:#1FA22E;
+}
+
+.fila_registro_2012_name_b{
+	height: 20px;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:14px;
+	color:#1FA22E;
+	padding-left:3px;
+}
+.fila_registro_2012_name_c{
+	height: 20px;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:14px;
+	color:#1FA22E;
+	padding-left:10px;
+}
+.Estilo2 {
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:20px;
+	font-weight:bold;
+	color:#009A46;
+}
+.form_registro_2012 {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-style: normal;
+	line-height: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	color: #666;
+	border-color: #CCC;
+	border-style: solid;
+	border-width: 1px;
+	height: 15px;
+	width: 20px;
+}
+.form_registro_2012_b {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-style: normal;
+	line-height: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	color: #666;
+	border-color: #CCC;
+	border-style: solid;
+	border-width: 1px;
+	height: 15px;
+	width: 35px;
+}
+.form_registro_2012_c {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-style: normal;
+	line-height: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	color: #666;
+	border-color: #CCC;
+	border-style: solid;
+	border-width: 1px;
+	height: 100px;
+	width: 400px;
+}
+.newsletter {
+	text-decoration:none;
+	margin:0;
+	padding-left: 4px;;
+	width: 10px;
+	height: 10px;
+}
+.newsletter .bot_enviar {
+	background:url(http://static.jumbo.cl/FO_IMGS/images/html/bot_enviar.gif?Lo0P=90152583cb244a061eeac362c681cde7292) no-repeat;
+	margin:0;
+	padding:0;
+	cursor:pointer;
+	border:none;
+	text-decoration:none;
+	width: 29px;
+	height: 23px;
+	font-size: 1px;
+}

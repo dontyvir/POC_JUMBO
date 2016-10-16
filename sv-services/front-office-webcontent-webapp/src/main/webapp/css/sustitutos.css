@@ -1,0 +1,301 @@
+@charset "utf-8";
+/* CSS Document */
+
+body{
+	margin:0px;
+}
+
+
+#contenedor{
+	width:960px;
+	clear:both;
+	margin-top:10px;
+	margin-right: auto;
+	margin-bottom: 0px;
+	margin-left: auto;
+}
+
+#header{
+	width:700px;
+	height: 125px;
+}
+.contenido_sustitutos{
+	width:680px;
+	height:100%;
+	padding:10px;
+	float: left;
+	padding-left: 100px;
+	/*overflow: hidden;*/
+}
+#footer{
+	width:700px;
+	height:150px;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size: 9px;
+	color:#666666;
+	text-align: center;
+	clear: both;
+}
+.footer {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 9px;
+	font-style: normal;
+	line-height: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	color: #666666;
+	text-decoration: none;
+}
+a:link {
+	color: #666666;
+}
+a:visited {
+	color: #333333;
+}
+a:hover {
+	color: #333333;
+}
+a:active {
+	color: #666666;
+}
+#despliegue_sustitutos{
+
+
+}
+#sustitutos{
+	width:675px;
+	height: 100%;
+	/*overflow: hidden;*/
+}
+.cabecera_sustitutos{
+	background-repeat: repeat-x;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size:12px;
+	color:#1FA22E;
+	font-weight: bold;
+	height: 26px;
+	
+
+}
+.cb_sus_iz{
+	background-repeat: no-repeat;
+	background-position: left;
+	height:26px;
+	float: left;
+	line-height: 26px;
+	width:230px;
+	text-align: center;
+}
+.cb_sus_der{
+	background-repeat: no-repeat;
+	background-position: right bottom;
+	height:26px;
+	display: block;
+	float: right;
+	text-align:center;
+	line-height: 26px;
+	border-left: 1px dashed #FFFFFF;
+	width:428px;
+}
+
+.cont_sust{
+	border: 1px solid #9acc45;
+	height: 100%;
+}
+
+p {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size:12px;
+	color:#666;
+}
+h7{
+margin:0px;
+}
+.margen_verde{
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:14px;
+	font-weight:bold;
+	color:#1FA22E;
+	height:20px;
+	text-indent:10px;
+	float: left;
+	}
+
+.accordion_toggle {
+	background-image: url(/FO_IMGS/img/estructura/paso1/cerrado.gif);
+	background-repeat: no-repeat;
+	background-position: left bottom;
+	text-indent: 30px;
+	display: block;
+	height: 20px;
+	width: 100%;
+	margin-top: 0px;
+	margin-bottom: 0px;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:11px;
+	color:#666666;
+	line-height: 20px;
+	cursor: pointer;
+}
+.accordion_toggle_active {
+	background-image: url(/FO_IMGS/img/estructura/paso1/abierto.gif);
+	background-repeat: no-repeat;
+	background-position: left bottom;
+	text-indent: 30px;
+	display: block;
+	height: 20px;
+	width: 100%;
+	margin-top: 0px;
+	margin-bottom: 0px;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:11px;
+	color:#FFFFFF;
+	line-height: 20px;
+	cursor: pointer;
+}
+.opciones{
+	background-image: url(/FO_IMGS/img/estructura/sustitutos/fn_opciones.gif);
+	background-repeat: repeat-x;
+	background-position: left bottom;
+	height:41px;
+	width:673px;
+}
+.op1{
+	width:245px;
+	float:left;
+	display:block;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	font-weight: bold;
+}
+.op2{
+	width:125px;
+	float:left;
+	border-left: 1px dashed #FFFFFF;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	font-weight: bold;
+	color: #333333;
+	height:40px;
+	}
+.op3{
+	width:200px;
+	float:left;
+	border-left: 1px dashed #FFFFFF;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	font-weight: bold;
+	color: #333333;
+	height:40px;
+	}
+.op4{
+	width:100px;
+	float:right;
+	border-left: 1px dashed #FFFFFF;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	font-weight: bold;
+	color: #333333;
+	height:40px;
+	}
+.acordion_content{
+	height:100%;
+	}
+.ac1{
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	font-weight: bold;
+	color: #333333;
+	float:left;
+	width:242px;
+	height:76px;
+	padding: 2px;
+	}
+.ac2{
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	border-left: 1px dashed #ccc;
+	float:left;
+	height:76px;
+	width: 120px;
+	padding: 2px;
+	vertical-align: middle;
+	text-align: left;
+}
+.ac3{
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	font-weight: bold;
+	color: #333333;
+	border-left: 1px dashed #ccc;
+	float:left;
+	height:76px;
+	width: 196px;
+	padding: 2px;
+	}
+.ac4{
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	border-left: 1px dashed #ccc;
+	float:left;
+	height:76px;
+	width: 96px;
+	padding: 2px;
+	text-align: left;
+}
+.marca{
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color:#1FA22E !important;
+	float:left;
+}
+.desp_producto{
+	border-bottom:1px dashed #ccc;
+	height:80px;
+}
+.bt_volver{
+	width:100px;
+	float:left;
+	}
+.bt_guardar{
+	width:100px;
+	float:right;
+	}
+.bts{
+	display:block;
+	margin-top: 20px;
+	height: 40px;
+}
+#ventana_layer {
+	position:absolute;
+	width: 0px;
+	height: 0px;
+	left: 0px;
+	top: 0px;
+	visibility: hidden;
+	border: 1;
+	z-index: 10;
+}
+.titulosLayers {
+	font-family: "Trebuchet MS";
+	font-size: 18px;
+	font-style: normal;
+	line-height: normal;
+	font-weight: bold;
+	font-variant: normal;
+	text-transform: none;
+	color: #779A25;
+	text-decoration: none;
+}
+.campo {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #FF6600;
+	height: 11px;
+}
+.intro {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size:12px;
+	color:#666666;
+}

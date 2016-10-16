@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://beans.ws.bbr.cl" xmlns:impl="http://beans.ws.bbr.cl" xmlns:intf="http://beans.ws.bbr.cl" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsi="http://ws-i.org/profiles/basic/1.1/xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+ <wsdl:types>
+  <schema targetNamespace="http://beans.ws.bbr.cl" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="getCargaRondaResponse">
+    <complexType>
+     <sequence>
+      <element name="getCargaRondaReturn" nillable="true" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getDescargaRonda">
+    <complexType>
+     <sequence>
+      <element name="TablaDetalle_PedidoXML" nillable="true" type="xsd:string"/>
+      <element name="TablaDetalle_PickingXML" nillable="true" type="xsd:string"/>
+      <element name="TablaBin_OpXML" nillable="true" type="xsd:string"/>
+      <element name="TablaRegistro_PickingXML" nillable="true" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getDescargaRondaResponse">
+    <complexType>
+     <sequence>
+      <element name="getDescargaRondaReturn" nillable="true" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getCargaRondaLdap">
+    <complexType>
+     <sequence>
+      <element name="NRonda" nillable="true" type="xsd:string"/>
+      <element name="login" nillable="true" type="xsd:string"/>
+      <element name="password" nillable="true" type="xsd:string"/>
+      <element name="tipo_aut" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getCargaRondaLdapResponse">
+    <complexType>
+     <sequence>
+      <element name="getCargaRondaLdapReturn" nillable="true" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getCargaRonda">
+    <complexType>
+     <sequence>
+      <element name="NRonda" nillable="true" type="xsd:string"/>
+      <element name="login" nillable="true" type="xsd:string"/>
+      <element name="password" nillable="true" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="getDescargaRondaRequest">
+     <wsdl:part element="impl:getDescargaRonda" name="parameters"/>
+
+  </wsdl:message>
+
+   <wsdl:message name="getCargaRondaRequest">
+     <wsdl:part element="impl:getCargaRonda" name="parameters"/>
+
+  </wsdl:message>
+
+   <wsdl:message name="getCargaRondaLdapRequest">
+     <wsdl:part element="impl:getCargaRondaLdap" name="parameters"/>
+
+  </wsdl:message>
+
+   <wsdl:message name="getCargaRondaLdapResponse">
+     <wsdl:part element="impl:getCargaRondaLdapResponse" name="parameters"/>
+
+  </wsdl:message>
+
+   <wsdl:message name="getCargaRondaResponse">
+     <wsdl:part element="impl:getCargaRondaResponse" name="parameters"/>
+
+  </wsdl:message>
+
+   <wsdl:message name="getDescargaRondaResponse">
+     <wsdl:part element="impl:getDescargaRondaResponse" name="parameters"/>
+
+  </wsdl:message>
+
+   <wsdl:portType name="RondaBean">
+     <wsdl:operation name="getCargaRonda">
+       <wsdl:input message="impl:getCargaRondaRequest" name="getCargaRondaRequest"/>
+
+       <wsdl:output message="impl:getCargaRondaResponse" name="getCargaRondaResponse"/>
+
+    </wsdl:operation>
+
+     <wsdl:operation name="getDescargaRonda">
+       <wsdl:input message="impl:getDescargaRondaRequest" name="getDescargaRondaRequest"/>
+
+       <wsdl:output message="impl:getDescargaRondaResponse" name="getDescargaRondaResponse"/>
+
+    </wsdl:operation>
+
+     <wsdl:operation name="getCargaRondaLdap">
+       <wsdl:input message="impl:getCargaRondaLdapRequest" name="getCargaRondaLdapRequest"/>
+
+       <wsdl:output message="impl:getCargaRondaLdapResponse" name="getCargaRondaLdapResponse"/>
+
+    </wsdl:operation>
+
+  </wsdl:portType>
+
+   <wsdl:binding name="RondaBeanSoapBinding" type="impl:RondaBean">
+     <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+     <wsdl:operation name="getCargaRonda">
+       <wsdlsoap:operation soapAction=""/>
+
+       <wsdl:input name="getCargaRondaRequest">
+         <wsdlsoap:body use="literal"/>
+
+      </wsdl:input>
+
+       <wsdl:output name="getCargaRondaResponse">
+         <wsdlsoap:body use="literal"/>
+
+      </wsdl:output>
+
+    </wsdl:operation>
+
+     <wsdl:operation name="getDescargaRonda">
+       <wsdlsoap:operation soapAction=""/>
+
+       <wsdl:input name="getDescargaRondaRequest">
+         <wsdlsoap:body use="literal"/>
+
+      </wsdl:input>
+
+       <wsdl:output name="getDescargaRondaResponse">
+         <wsdlsoap:body use="literal"/>
+
+      </wsdl:output>
+
+    </wsdl:operation>
+
+     <wsdl:operation name="getCargaRondaLdap">
+       <wsdlsoap:operation soapAction=""/>
+
+       <wsdl:input name="getCargaRondaLdapRequest">
+         <wsdlsoap:body use="literal"/>
+
+      </wsdl:input>
+
+       <wsdl:output name="getCargaRondaLdapResponse">
+         <wsdlsoap:body use="literal"/>
+
+      </wsdl:output>
+
+    </wsdl:operation>
+
+  </wsdl:binding>
+
+   <wsdl:service name="RondaBeanService">
+     <wsdl:port binding="impl:RondaBeanSoapBinding" name="RondaBean">
+       <wsdlsoap:address location="http://localhost:9080/WS_BOL/services/RondaBean"/>
+
+    </wsdl:port>
+
+  </wsdl:service>
+
+</wsdl:definitions>

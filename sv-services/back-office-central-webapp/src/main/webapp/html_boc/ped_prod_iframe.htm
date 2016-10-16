@@ -1,0 +1,54 @@
+<html>
+<head>
+<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="EXPIRES" CONTENT="Mon, 22 Jul 2002 11:12:01 GMT">
+<script language="JavaScript" src="funciones.js"></script>
+<script language="JavaScript" src=popup.js"></script>
+<link href="estilos.css" rel="stylesheet" type="text/css"/>
+</head>
+<body bgcolor="white">
+<SCRIPT language="JavaScript" type="text/javascript">
+ListProdCant = new Array ();  
+
+<!-- BEGIN DYNAMIC: LST_PROD -->
+    ListProdCant['{id_prod_fo}'] = {cant_ped}; 
+<!-- END DYNAMIC: LST_PROD -->
+
+
+function modificarProductos(id_pedido,id_detalle,id_prod,cant_ped) {
+  var url = "ViewModCantidadProductos?id_pedido="+id_pedido+"&id_detalle="+id_detalle+"&id_prod="+id_prod+"&cant_ped="+cant_ped;
+  open(url, 'popUpWin', 'toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=no,copyhistory=yes,width=400,height=200,left=400, top=400,screenX=400,screenY=400');
+}
+
+</SCRIPT>
+<table border="0" align="center" cellpadding="2" cellspacing="0" class="tabla2" >
+	{mensaje}
+	<!-- BEGIN DYNAMIC: LST_PROD -->
+	<tr valign="top"> 
+		<!-- td width="23">{com1}<a href='javascript:validar_eliminar("{msg_promociones}Esta seguro que desea eliminar?","ModPedidoProduct?action=eliminar&id_pedido={id_pedido}&id_detalle={id_detalle}&id_prod={id_prod}&cant={cant_ped}&url="+escape("ViewPedidoProdIframe?id_pedido={id_pedido}&mod={mod}"));'><img src='img/trash.gif' border=0 ></a>{com2}</td-->
+		<td width="23">{com1}<a href="javascript:modificarProductos('{id_pedido}','{id_detalle}','{id_prod_fo}','{cant_ped}');"><img src='img/trash.gif' border=0 ></a>{com2}</td>
+		<td width="53">{id_prod}</td>
+		<td width="53">{cod_prod}</td>
+		<td width="53" align=center>{u_med}</td>
+		<td width="53">{seccion}</td>
+		<td width="53">{sec_pick}</td>
+		<td width="99">{descripcion}</td>
+		<td width="53">{cant_ped}</td>
+		<td width="53">{cant_pick}</td>
+		<td width="53">{cant_faltan}</td>
+		<td width="53">{cant_spick}</td>
+		<td width="53" align="right">{precio}</td>
+		<td width="48" align="center"><p>{obs}<br/>{sustituto}</p></td>
+	</tr>
+	<!-- END DYNAMIC: LST_PROD -->
+	<tr valign="top"> 
+		<td colspan="10"></td>
+		<td align="center">TOTAL</td>
+		<td align="right">{precio_tot}</td>
+		<td></td>
+	</tr>
+</table>
+{mns}
+</body>
+</html>                           

@@ -1,0 +1,100 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" 
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+		<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+		<META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+		<META HTTP-EQUIV="EXPIRES" CONTENT="Mon, 22 Jul 2002 11:12:01 GMT">
+		<title>Jumbo.cl Back Office Central</title>
+	</head>
+
+	<body>
+		<table width="780" height="100%" border="0" cellpadding="0" cellspacing="0">
+			<tr height="400">
+				<td valign="top" bgcolor="#FFFFFF">
+					<table border=0 width="100%" class='ContentTitle'>
+						<tr><td width="53%" height="20" class='HeaderTitle'>Modificar destacado</td></tr>
+					</table>
+					
+					<br>
+					<table width="100%"  border="0" cellspacing="2" cellpadding="2">
+						<tr valign="top">
+							<td width="71%">
+								<table width="92%" align="center" border="0">
+	              	<tr>
+										<td>
+											<h2 class="tab">Ficha</h2>
+											<div align="left" id="div_ficha">
+												<form id="updDestacado" name="updDestacado" enctype='multipart/form-data' method="post" action="UpdDestacado">
+													<INPUT type="hidden" id="destacado_id" name="destacado_id" value="{destacado_id}">
+													<fieldset>
+														<legend>Datos de destacado</legend>
+									          <div>
+															<div>
+																<LABEL for="locales">Locales:</LABEL>
+																<!-- BEGIN DYNAMIC: LOCALES -->
+																	<input type="checkbox" name="local" value="{local_id}" {local_checked}>{local_codigo}
+																<!-- END DYNAMIC: LOCALES -->
+															</div>
+		
+															<div>
+																<LABEL for="descripcion">Descripci&oacute;n:</LABEL>
+																<input id="descripcion" name="descripcion" type="text" value="{descripcion}" size="30" maxlength="128">
+															</div>
+		
+															<div id="multi1">
+																<LABEL for="fecha_ini">Fecha Inicio:</LABEL>
+									              <input id="fecha_ini" name="fecha_ini" type="text" value="{fecha_ini}" >
+									              <button type="button">
+									              	<img width="16" height="16" border="0" alt="Debe ingresar Fecha de Inicio y Fecha de Fin" src="img/cal.gif"/>
+									              </button>
+									            </div>
+															<div>	
+																<LABEL for="hora_ini">Hora Inicio:</LABEL>
+								              	<input id="hora_ini" name="hora_ini" type="text" value="{hora_ini}" >
+								              </div>
+		
+															<div id="multi2">
+								              	<LABEL for="fecha_fin">Fecha Fin:</LABEL>
+								              	<input id="fecha_fin" name="fecha_fin" type="text" value="{fecha_fin}" >
+									            	<button type="button">
+									            		<img width="16" height="16" border="0" alt="Debe ingresar Fecha de Inicio y Fecha de Fin" src="img/cal.gif"/>
+																</button>
+															</div>
+															
+									            <div>  	
+								              	<LABEL for="hora_fin">Hora Fin</LABEL> 
+								              	<input id="hora_fin" name="hora_fin" type="text" value="{hora_fin}" >
+								            	</div>
+		
+															<div id="div_imagen">
+									            	<img src="http://www.jumbo.cl/FO_IMGS/img/destacados/{imagen}" border="0"  />
+									          	</div>
+									            <div>  	
+								              	<LABEL for="imagen">Imagen</LABEL> 
+								              	<input id="imagen" name="imagen" type="text" value="{imagen}" size="64" maxlength="128">
+								            	</div>
+								            	<div>  	
+								              	<LABEL for="archivo">Archivo</LABEL> 
+									            	<input id="archivo" name="archivo" type="file">
+									            </div>
+									           </div>
+													</fieldset>	                            
+													<input name="Button" type="submit" value="Guardar" id="guardar">
+												</form>
+												<a href="ViewMonDestacados">Volver</a>
+	                  <br>
+	                	<br>
+	              	</div>
+										</td>
+									</tr>
+								</table>
+		     			</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+		</table>
+	</body>
+</html>

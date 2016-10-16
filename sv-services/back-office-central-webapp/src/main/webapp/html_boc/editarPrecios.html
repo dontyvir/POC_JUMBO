@@ -1,0 +1,251 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="EXPIRES" CONTENT="Mon, 22 Jul 2002 11:12:01 GMT">
+<title>Jumbo.cl Back Office Central</title>
+<script language="JavaScript" type="text/javascript" src="prototype1.7.1.js"></script>
+
+<link rel="stylesheet" href="menu/menu.css" />
+<link href="estilos.css" rel="stylesheet" type="text/css" />
+
+<script>
+	Event.observe(window, 'load', function(){		
+
+		if({isOpConExceso} == 1)
+			info('ini_msg');
+		
+		$('verPicking').observe('click', function(event) {
+			$('divBufferoutHtml').update("<h3>&nbsp;&nbsp;&nbsp;<img src=\"img/miniloader.gif\" border=\"0\" alt=\"\">&nbsp;Obteniendo picking del pedido, espere....</h3>");
+			new Ajax.Updater('divBufferoutHtml', 'ViewFormCambiaPrecio?accion=verPicking&id_pedido='+$F('id_pedido'),{evalScripts:true});
+		});
+		
+		$('verReporte').observe('click', function(event) {
+			$('divBufferoutHtml').update("<h3>&nbsp;&nbsp;&nbsp;<img src=\"img/miniloader.gif\" border=\"0\" alt=\"\">&nbsp;Obteniendo reporte, espere....</h3>");
+			new Ajax.Updater('divBufferoutHtml', 'ViewFormCambiaPrecio?accion=verReporte&id_pedido='+$F('id_pedido'),{evalScripts:true});
+		});
+		
+		$('verExcesos').observe('click', function(event) {
+			$('divBufferoutHtml').update("<h3>&nbsp;&nbsp;&nbsp;<img src=\"img/miniloader.gif\" border=\"0\" alt=\"\">&nbsp;Obteniendo productos con excesos, espere....</h3>");
+			new Ajax.Updater('divBufferoutHtml', 'ViewFormCambiaPrecio?accion=verExcesos&id_pedido='+$F('id_pedido'),{evalScripts:true});
+		});
+	
+	}); 		
+
+	function setAction(accion, idDetalle){
+	
+		var IdDpickingValue = 0;
+		try{IdDpickingValue = $$('input:checked[name="radio_'+idDetalle+'"]')[0].value;}catch(e){}
+
+		var IdDpicking = (accion == "EPK") ? IdDpickingValue:null;		
+		
+		if(accion == "EPK" && (IdDpicking == null || IdDpickingValue == 0)){
+			alert('Debe seleccionar un registro.');
+			return false;
+		}
+		
+		var uri ="CorreccionExcesosBOC?accion="+accion+"&idDetalle="+idDetalle+"&id_pedido="+$F('id_pedido')+"&IdDpicking="+IdDpicking;
+		
+		if(!confirm("\u00bfEsta seguro de realizar esta acci\u00f3n?"))
+			return false;	
+		$('divBufferoutHtmlProgress').show();
+		$('divBufferoutHtmlProgress').update("<h3>Eliminando exceso, espere....</h3> <img src=\"img/loader_progress.gif\" border=\"0\" alt=\"\">");
+		$('divBufferoutHtml').hide();
+		new Ajax.Request(uri, {
+  			onSuccess: function(transport) {
+  				jsonResponse = transport.responseText.evalJSON(true);
+  				var sts = parseInt(jsonResponse.status);
+  				$('divBufferoutHtmlProgress').hide();
+				if(sts == 200){
+					$('divBufferoutHtml').show();
+					$('divBufferoutHtml').update("<h3>&nbsp;&nbsp;&nbsp;<img src=\"img/miniloader.gif\" border=\"0\" alt=\"\">&nbsp;Obteniendo productos con excesos, espere....</h3>");
+					new Ajax.Updater('divBufferoutHtml', 'ViewFormCambiaPrecio?accion=verExcesos&id_pedido='+$F('id_pedido'),{evalScripts:true});
+				}else{
+					alert('Error al procesar la respuesta.');
+					location.href="ViewFormCambiaPrecio?id_pedido="+$F('id_pedido');
+				}		
+  			},
+  			onFailure: function() { 
+  				alert('No es posible procesar su solicitud.'); 
+  				location.href="ViewFormCambiaPrecio?id_pedido="+$F('id_pedido');
+  			}
+		});
+	}
+	
+	function info(inf){
+		var info="";
+		
+		if(inf == 'Sugerencia_btn'){
+			info +=" Sugerencia: Comuníquese con el local para saber que acci\u00f3n realizo el pickeador.\n\n";
+			info +=" Si el pickeador se equivoc\u00f3 en la cantidad presione \"Ajustar A Cantidad Solicitada\" y solicite que retiren los productos que no correspondan de la bolsa.\n\n";
+			info +=" Si realizaron un cambio de formato, por ejemplo el cliente solicito 1 bebida de 1 litro y pickearon 2 bebidas de 1/2 litro para hacer la cantidad solicitada, presione \"Ajustar Precio Según Cantidad\".\n\n";
+			info +=" ___________________________________________________\n";
+			info +=" ___________________________________________________\n\n";
+		}
+		
+		if(inf == 'ini_msg'){
+			info +="Formulario correcci\u00f3n de excesos:\n\n";
+			info +=" La OP {id_pedido} se encuentra en esta instancia debido a que se realiz\u00f3  un picking de mayor cantidad a la solicitada";
+			info +=" o productos de mayor precio a los pagados por el cliente en www.jumbo.cl.\n\n";
+			info +=" Recuerde revisar, corregir y notificar al local las acciones realizadas a trav\u00e9s de este formulario para que el personal del local revise";
+			info +=" los productos y eviten enviar el pedido al cliente con productos que no corresponden. \n\n";
+			info +=" ___________________________________________________\n";
+			info +=" ___________________________________________________\n\n";
+		}
+		
+		alert(info);
+	}
+</script>
+
+<style type="text/css">
+
+.valorExceso{
+	color:red;
+	font-weight: bold;
+}
+.thead_tr1{
+	 background-color:#FFF; 
+	 color:#000000;
+}
+.thead_tr{
+	 background-color:#BADB8A; 
+	 color:#000000;
+}
+.thead_td1{
+	text-align: left;
+}
+.thead_td{
+	width: 50px;
+	text-align:center;
+}
+
+.tbody_tr{
+	background-color:#F4F4F4;
+}
+.tbody_td1{
+
+}
+.tbody_td{
+	width: 50px;
+	text-align:center;
+}
+
+.tfoot_tr{
+	background-color:#EEEEEE;
+}
+.tfoot_tr1{
+	background-color:#CCCCCC;
+}
+.div_th{
+	background-color:#BADB8A;
+	width: 120px;
+	color:#000000;
+}
+.div_tb{
+	background-color:#F4F4F4;
+	width: 100px;
+}
+#divBufferoutHtmlProgress{
+	width: 350px;
+	margin-left: 250px;
+}
+
+#divBufferoutHtml {
+  width: auto ;
+  margin-left: auto ;
+  margin-right: auto ;
+}
+
+#Sugerencia_btn{
+	color: #C00000;
+	font-weight: bold;
+	cursor: pointer;
+}
+
+</style>
+
+</head>
+
+<body>
+<script language="JavaScript" type="text/javascript" src="menu/menu.js"></script>
+<script language="JavaScript" type="text/javascript" src="menu/menu_tpl.js"></script>
+<script language="JavaScript" type="text/javascript" src="menu/menu_items.js"></script>
+
+
+<table width="780" height="100%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+    <td height="78" valign="top">
+      <TABLE width="100%" height=59 border=0 align="center" cellpadding="0" cellspacing="0" bgcolor="#ffffff">
+        <TR>
+          <TD width=275 height="59" align=left class=user><img src="img/header2.jpg" width="275" height="60"></TD>
+          <TD width=505 align=left valign="bottom" background="img/bg-1.jpg" class=user>
+            <table width="90%"  border="0" align="center" cellpadding="0" cellspacing="2">
+              <tr>
+                <td>&nbsp;</td>
+              </tr>
+              <tr>
+                <td><div align="right" class="infoBL">Usuario: {hdr_nombre}&nbsp;&nbsp;| {hdr_fecha}</div></td>
+              </tr>
+            </table>
+          </TD>
+        </TR>
+      </TABLE>
+      <TABLE width="100%" height=19 border=0 align="center" cellpadding="0" cellspacing="0" bgcolor="#f1f0e9" style="border-top:1px solid #ABABAB; border-bottom:1px solid #ABABAB">
+        <TR>
+          <TD align=left bgcolor="#FFFFFF" class=user></TD>
+        </TR>
+      </TABLE>
+    </td>
+  </tr>
+  
+  <tr height="400">
+    <td valign="top" bgcolor="#FFFFFF">
+      <table width="100%" class='ContentTitle'>
+        <tr>
+          <td width="53%" height="20" class='HeaderTitle'>Corregir precios productos pickeados con excesos.<br>Pedido: {id_pedido}</td>
+          <td width="47%" class='HeaderTitle'><div align="right"><a href="ViewOPFormPedido?id_pedido={id_pedido}&mod=1"><img src="img/volver.gif" width="32" height="32" border="0"></a></div></td>
+        </tr>
+      </table>
+		
+      <noscript><h1>Esta pagina funciona con JavaScript habilitado</h1></noscript>
+		<form name="form_editarPrecios" id="form_editarPrecios" action="#"  method="post">
+			<table>
+				<tr>
+					<td><div class="div_th">&nbsp;&nbsp;Producto Solicitado</div></td>
+					<td><div class="div_tb">&nbsp;&nbsp;Producto Pickeado</div></td>
+					<td><div class="valorExceso">&nbsp;&nbsp;Exceso Generado</div></td>
+					<td width="430" align="right">
+						<a href="#" id="verExcesos" title="Ver Excesos."> <img src="img/envio_dinero.gif" border="0">&nbsp;Ver Excesos.</a>
+						&nbsp;|&nbsp;
+						<a href="#" id="verPicking" title="Ver Picking Realizado."> <img src="img/info.gif" border="0">&nbsp;Ver Picking.</a>
+						&nbsp;|&nbsp;
+						<a href="#" id="verReporte" title="Ver Reporte Excesos."> <img src="img/ver.gif" border="0">&nbsp;Ver Reporte.</a>
+						&nbsp;|&nbsp;					
+					</td>
+				</tr>
+			</table>
+			<hr><hr>		
+			<input type="hidden" name="id_pedido" id="id_pedido" value="{id_pedido}" readonly="readonly"/>
+			<div id="divBufferoutHtmlProgress"></div>
+			<div id="divBufferoutHtml">{bufferoutHtml}</div>
+		</form>
+    </td>
+  </tr>
+  
+  <tr>
+    <td>
+      <TABLE width="100%" height=19 border=0 align="center" cellpadding="0" cellspacing="0" bgcolor="#f1f0e9" style="border-top:1px solid #ABABAB; border-bottom:1px solid #ABABAB">
+        <TR>
+          <TD align=center bgcolor="#67b01a" class=infoBL><div align="center">Back Office Central - Jumbo.cl</div></TD>
+        </TR>
+      </TABLE>
+    </td>
+  </tr>
+  
+</table>
+</body>
+
+</html>

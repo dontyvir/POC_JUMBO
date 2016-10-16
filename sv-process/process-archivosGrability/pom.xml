@@ -1,0 +1,50 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>cl.jumbo.process</groupId>
+    <artifactId>sv-process</artifactId>
+    <version>2.0.12-SNAPSHOT</version>
+  </parent>
+  <artifactId>process-archivosGrability</artifactId>
+  
+    <build>
+		<finalName>${project.artifactId}</finalName>
+		<plugins>
+			<plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <addClasspath>true</addClasspath>
+                            <classpathPrefix>lib/</classpathPrefix>
+                            <mainClass>cl.cencosud.procesos.GeneraInterfaces</mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
+            </plugin>
+		</plugins>
+	</build>
+      <properties>
+        <process.startupShellScript>archivosGrability.sh</process.startupShellScript>
+    </properties>
+    
+  <dependencies>
+     
+        
+
+<dependency>
+       <groupId>com.ibatis</groupId>
+       <artifactId>ibatis2-sqlmap</artifactId>
+       <version>2.1.7.597</version>
+</dependency> 
+     <!--
+<dependency>
+       <groupId>com.ibatis</groupId>
+       <artifactId>ibatis-common</artifactId>
+       <version>1.3.1</version>
+</dependency>
+-->
+
+  </dependencies>
+</project>

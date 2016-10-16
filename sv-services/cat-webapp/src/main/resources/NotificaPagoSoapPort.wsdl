@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://tempuri.org/action/" xmlns:tns1="http://botonpago.cencosud.cl" xmlns:wsdlns="http://tempuri.org/action/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="NotificaPago" targetNamespace="http://tempuri.org/action/">
+    <types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" elementFormDefault="qualified" targetNamespace="http://botonpago.cencosud.cl">
+            <complexType name="NotificaPagoRep">
+                <all>
+                    <element name="codigoResp" type="xsd:int">
+                    </element>
+                    <element name="glosaResp" type="xsd:string">
+                    </element>
+                </all>
+            </complexType>
+        </schema>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/action/">
+            <import namespace="http://botonpago.cencosud.cl"/>
+            <element name="NotificaPago.Execute">
+                <complexType>
+                    <sequence>
+                        <element maxOccurs="1" minOccurs="1" name="Idcarrocompra" type="xsd:string"/>
+                        <element maxOccurs="1" minOccurs="1" name="Tipoautorizacion" type="xsd:string"/>
+                        <element maxOccurs="1" minOccurs="1" name="Codigoautorizacion" type="xsd:string"/>
+                        <element maxOccurs="1" minOccurs="1" name="Fechahoraautorizacion" type="xsd:dateTime"/>
+                        <element maxOccurs="1" minOccurs="1" name="Numerocuotas" type="xsd:string"/>
+                        <element maxOccurs="1" minOccurs="1" name="Montocuota" type="xsd:string"/>
+                        <element maxOccurs="1" minOccurs="1" name="Montooperacion" type="xsd:string"/>
+                        <element maxOccurs="1" minOccurs="1" name="Notificapago" type="tns1:NotificaPagoRep"/>
+                   </sequence>
+                </complexType>
+            </element>
+            <element name="NotificaPago.ExecuteResponse">
+                <complexType>
+                   <sequence>
+                        <element maxOccurs="1" minOccurs="1" name="Idcarrocompra" type="xsd:string"/>
+                        <element maxOccurs="1" minOccurs="1" name="Tipoautorizacion" type="xsd:string"/>
+                        <element maxOccurs="1" minOccurs="1" name="Codigoautorizacion" type="xsd:string"/>
+                        <element maxOccurs="1" minOccurs="1" name="Fechahoraautorizacion" type="xsd:dateTime"/>
+                        <element maxOccurs="1" minOccurs="1" name="Numerocuotas" type="xsd:string"/>
+                        <element maxOccurs="1" minOccurs="1" name="Montocuota" type="xsd:string"/>
+                        <element maxOccurs="1" minOccurs="1" name="Montooperacion" type="xsd:string"/>
+                        <element maxOccurs="1" minOccurs="1" name="Notificapago" type="tns1:NotificaPagoRep"/>
+                   </sequence>
+                </complexType>
+            </element>
+        </schema>
+    </types>
+    <message name="NotificaPago.ExecuteSoapIn">
+        <part element="tns:NotificaPago.Execute" name="parameters"/>
+    </message>
+    <message name="NotificaPago.ExecuteSoapOut">
+        <part element="tns:NotificaPago.ExecuteResponse" name="parameters"/>
+    </message>
+    <portType name="NotificaPagoSoapPort">
+        <operation name="Execute">
+            <input message="wsdlns:NotificaPago.ExecuteSoapIn"/>
+            <output message="wsdlns:NotificaPago.ExecuteSoapOut"/>
+        </operation>
+    </portType>
+    <binding name="NotificaPagoSoapBinding" type="wsdlns:NotificaPagoSoapPort">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="Execute">
+            <soap:operation soapAction="http://tempuri.org/action/action/ANOTIFICAPAGO.Execute"/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+    </binding>
+    <service name="NotificaPago">
+        <port binding="wsdlns:NotificaPagoSoapBinding" name="NotificaPagoSoapPort">
+            <soap:address location="http://localhost:9080/WS_CAT/services/NotificaPagoSoapPort"/>
+        </port>
+    </service>
+</definitions>

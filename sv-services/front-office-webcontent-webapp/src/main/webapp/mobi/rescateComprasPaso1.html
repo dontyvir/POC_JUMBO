@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<meta name="viewport" content="width=320;initial-scale=1.0; maximum-scale=1.0; user-scalable=false;"/>
+<title>Jumbo Mobile - Paso 1</title>
+</head>
+<body leftMargin=0 topMargin=0 marginheight="0" marginwidth="0">
+<form name="fp" method="post" action="OrderItemAddMobi">
+<div id="productos_listas">
+	<div class="cuadrado_verde">
+		<div class="cantidad">Cantidad</div>
+		<div class="producto">Producto</div>
+		<div class="precio">Precio</div>
+		<div class="agregar"><input type="checkbox" name="todos" id="todos" value="checkbox" class="checkbox" onclick="selectall();" checked /></div>
+	</div>
+	<!-- BEGIN DYNAMIC: CATEGORIAS -->
+		<div id="despliegue_cat_listas">{categoria}</div>
+		<!-- BEGIN DYNAMIC: PRODUCTOS -->
+		<input type="hidden" name="lugar_compra{contador}" value="U" />
+		<div id="despliegue_prod_listas">
+			<div class="dp_cantidad">
+				<!-- BEGIN DYNAMIC: LISTA_SEL -->
+				<select name="cantidad_l{contador}" class="formularios">
+					<!-- BEGIN DYNAMIC: CANTIDADES -->
+					<option value="{valor}" {selected}>{opcion}</option>
+					<!-- END DYNAMIC: CANTIDADES -->
+				</select>
+				<!-- END DYNAMIC: LISTA_SEL -->
+				{valor} {unidad}
+			</div>
+			<div class="dp_producto">{descripcion} - <span class="tx_marca">{marca}</span>&nbsp; {NO_DISPONIBLE}</div>
+			<div class="dp_precio">{precio}</div>
+			<div class="dp_agregar">
+				<!-- BEGIN DYNAMIC: CHECKBOX -->
+				<input class="checkbox" type="checkbox" name="id_prod_{contador}" value="{id_prod}" {checked}/>
+				<!-- END DYNAMIC: CHECKBOX -->
+				<!-- BEGIN DYNAMIC: IMAGEN -->
+				<img src="/FO_IMGS/img/estructura/agregado.gif" alt="Producto Agregado" title="Producto Agregado">
+				<!-- END DYNAMIC: IMAGEN -->
+				<!-- BEGIN DYNAMIC: IMAGEN_NODISP -->
+				<img src="/FO_IMGS/img/estructura/paso1/checkboxNodisponible.gif" width="13" height="13" alt="Producto no disponible" title="Producto no disponible"/>
+				<!-- END DYNAMIC: IMAGEN_NODISP -->
+			</div>
+		</div>
+		<!-- END DYNAMIC: PRODUCTOS -->
+	<!-- END DYNAMIC: CATEGORIAS -->
+</div>
+<input type="hidden" name="max_productos" value="{max_productos}">
+</form>
+</body>
+</html>

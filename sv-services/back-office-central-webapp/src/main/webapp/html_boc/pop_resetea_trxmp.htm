@@ -1,0 +1,96 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html><!-- InstanceBegin template="/Templates/print.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="EXPIRES" CONTENT="Mon, 22 Jul 2002 11:12:01 GMT">
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>Resetea TrxMp y OP asociada</title>
+<!-- InstanceEndEditable -->
+<!-- InstanceBeginEditable name="head" -->
+<!-- InstanceEndEditable -->
+<link href="estilos.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+<!--
+body {
+	background-color: #FFFFFF;
+}
+-->
+</style>
+<script language="JavaScript">
+   function confirmChange(form) {
+      if (confirm("Estas seguro que deseas realizar el cambio de estado?")) {
+          form.submit();
+          window.close();
+      }else{
+          window.close();
+      }
+   }
+  
+</script>
+</head>
+
+<body>
+<!-- InstanceBeginEditable name="Body" -->
+<script src="validacion.js"></script>
+<SCRIPT LANGUAGE="JavaScript">window.name='winmodal'</SCRIPT>
+<br>
+<form name="form1" method="POST" action="ReseteaTrxMp" target="{nom_target}" onSubmit="javascript:confirmChange(this);">
+	<input type="hidden" name="url" value="{url}">
+	<input type="hidden" name="id_pedido" value="{id_pedido}">
+	<input type="hidden" name="id_trx_mp" value="{id_trx_mp}">
+	<input type="hidden" name="id_usuario" value="{id_usuario}">
+	<input type="hidden" name="origen" value="{origen}">
+	<fieldset><legend>Resetear TrxMp</legend>
+<table width="340" border="0" align="center" cellpadding="2"
+	cellspacing="2" class="textonormal">
+	<tr height="30">
+		<td colspan="4" align="center"><font color="FF0000">{mensaje}</font></td>
+	</tr>
+	<tr valign="top">
+		<td width="57">Id. Pedido</td>
+		<td width="75">#<font color="FF0000">{id_pedido}</font></td>
+		<td valign="bottom" width="72">Estado Actual</td>
+		<td valign="bottom" width="130"><font color="FF0000">"{NomEstPedido}"</font></td>
+	</tr>
+	<tr valign="top">
+		<td width="57">Id. TrxMp</td>
+		<td width="75">#<font color="FF0000">{id_trx_mp}</font></td>
+		<td valign="bottom" width="72">Estado Actual</td>
+		<td valign="bottom" width="130"><font color="FF0000">"{NomEstTrxMp}"</font></td>
+	</tr>
+	<tr valign="top" align="center">
+		<td colspan="4"><input type="{type}" name="Button" value="Modificar"
+			onClick="confirmChange(document.form1)">
+		&nbsp;&nbsp;&nbsp; <input name="cancelar" type="button" class="cmd"
+			value="Cerrar" onClick="window.close();"></td>
+		<!-- td colspan="4"><input type="{type}" name="Button" value="Modificar"
+			onClick="if(verify(document.form1)){
+					 form1.submit();			         
+			         //window.opener.location.reload();
+			         window.close();
+			         }">
+		&nbsp;&nbsp;&nbsp; <input name="cancelar" type="button" class="cmd"
+			value="Cerrar" onClick="window.close();"></td-->
+	
+	</tr>
+</table>
+</fieldset>
+
+</form>
+ <SCRIPT LANGUAGE="JavaScript">
+<!--
+ //document.form1.id_motivo.obligatorio=true;
+ //document.form1.id_motivo.label = 'Motivo';
+ //document.form1.obs.obligatorio=true;
+ //document.form1.obs.label = 'Observación';
+//-->
+</SCRIPT>
+<br>
+<br>
+<br>
+<br>
+<!-- InstanceEndEditable --></body>
+<!-- InstanceEnd --></html>

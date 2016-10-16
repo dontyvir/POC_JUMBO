@@ -1,0 +1,431 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html><!-- InstanceBegin template="/Templates/interior1.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>Venta Empresas</title>
+<!-- InstanceEndEditable -->
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="EXPIRES" CONTENT="Mon, 22 Jul 2002 11:12:01 GMT">
+<script language="javascript" src="/WebFOVE/funciones.js"></script>
+<!-- InstanceBeginEditable name="head" -->
+
+<script language="javascript" src="/WebFOVE/checkrut.js"></script>
+<script language="JavaScript" src="/WebFOVE/registro_val.js"></script>
+
+<SCRIPT LANGUAGE="JavaScript">
+
+if ("{msg_error}" == 1){
+	alert("{desc_msg_error}");
+}
+
+var emp_selected = '{empresa}';
+
+function selecciona_empresa() {
+
+	var formulario = document.form1;
+	objeto = formulario.empresas;
+	cant = objeto.options.length;
+	for( var i = 0; i < cant; i++ ) {
+		if( objeto.options[i].value == emp_selected ) {
+			objeto.selectedIndex = i;
+			break;
+		}
+	}
+}
+
+function validar_form(){
+	var formulario = document.form1;
+
+	if (formulario.empresas.value == ''){
+		alert("Debe selecionar una empresa ");
+		formulario.empresas.focus();
+		return false;
+	}
+
+    if(!checkRutField( formulario.rut.value+"-"+formulario.dv.value, formulario.rut) ) {
+        formulario.rut.focus();
+        return false;
+    }
+
+	if (formulario.nombre.value == ''){
+		alert("Debe ingresar el nombre de la sucursal ");
+		formulario.nombre.focus();
+		return false;
+	}
+
+	if (formulario.rsocial.value == ''){
+		alert("Debe ingresar la razón social de la sucursal ");
+		formulario.rsocial.focus();
+		return false;
+	}
+
+	if (formulario.estados.value == ''){
+		alert("Debe seleccionar un estado de la sucursal");
+		formulario.estados.focus();
+		return false;
+	}
+
+	if (formulario.fono1.value == ''){
+		alert('Debes ingresar el campo Telefono1');
+		formulario.fono1.focus();
+		return false;
+	}
+
+	if (formulario.mail.value == ''){
+		alert('Debes ingresar el campo e-mail');
+		formulario.mail.focus();
+		return false;
+	}
+
+	if(!validarEmail(formulario.mail)){
+		return false;
+	}
+
+	if (formulario.encargado.value == ''){
+		alert('Debes ingresar el campo encargado de recepción');
+		formulario.encargado.focus();
+		return false;
+	}	
+	
+}
+
+var com = new Array(2);
+com[0] = new Array();    // Id empresa
+com[1] = new Array();    //  RUT empresa
+com[2] = new Array();    //  DV empresa
+com[3] = new Array();    //  Razón social empresa
+
+var i = 0;
+
+<!-- BEGIN DYNAMIC: LIST_EMPRESAS_DATOS-->
+com[0][i] = '{emp_id}';
+com[1][i] = '{emp_rut}';
+com[2][i] = '{emp_dv}';
+com[3][i++] = '{emp_razon}';
+<!-- END DYNAMIC: LIST_EMPRESAS_DATOS-->
+
+function datos_empresa() {
+
+	var formulario = document.form1;
+	
+	var reg_sel = formulario.empresas.options[formulario.empresas.selectedIndex].value;
+
+	for( j = 0; j < com[0].length; j++ ) {
+		if( reg_sel == com[0][j] ) {
+			formulario.rut.value = com[1][j];
+			formulario.dv.value = com[2][j];
+			formulario.rsocial.value = com[3][j];
+			break;
+		}
+	}	
+	
+	/*
+	objeto = formulario.empresas;
+	cant = objeto.options.length;
+	for( var i = 0; i < cant; i++ ) {
+		if( objeto.options[i].value == emp_selected ) {
+			objeto.selectedIndex = i;
+			break;
+		}
+	}
+	*/
+}
+
+function carga_codigos_fono() {
+	var formulario = document.form1;
+
+	objeto = formulario.fon_cod_1;
+	cant = objeto.options.length;
+	for( var i = 0; i < cant; i++ ) {
+		if( objeto.options[i].value == formulario.auxcodfon1.value ) {
+			objeto.selectedIndex = i;
+			break;
+		}
+	}	
+
+	objeto = formulario.fon_cod_2;
+	cant = objeto.options.length;
+	for( var i = 0; i < cant; i++ ) {
+		if( objeto.options[i].value == formulario.auxcodfon2.value ) {
+			objeto.selectedIndex = i;
+			break;
+		}
+	}	
+}
+
+</SCRIPT>
+
+<!-- InstanceEndEditable -->
+<link href="/WebFOVE/style.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+<!--
+body {
+	margin-left: 10px;
+	margin-top: 0px;
+	margin-right: 10px;
+	margin-bottom: 0px;
+}
+
+-->
+</style>
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript"></script>
+<script type="text/javascript">
+   _uacct = "UA-1529321-3";
+   urchinTracker();
+</script>
+</head>
+
+<body bgcolor="#ffffff">
+
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td>
+  <table width="100%" border="0" cellpadding="0" cellspacing="0">
+	  <tr>
+		<td width="315" align="left" valign="bottom"><img src="../WebFOVE/img/logove.gif" border="0" usemap="#Map"></td>
+	    <td>&nbsp;</td>
+	    <td width="21%" align="left" valign="bottom"><img src="../WebFOVE/img/lego.jpg" width="224" height="86"></td>
+	  </tr>
+	  <tr>
+		<td colspan="3" valign="middle" ><table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td align="left" background="../WebFOVE/img/bg-header.gif"><img src="../WebFOVE/img/header-bd-izq.gif" width="9" height="11"></td>
+            <td align="right" background="../WebFOVE/img/bg-header.gif"><img src="../WebFOVE/img/header-bd-der.gif" width="11" height="11"></td>
+          </tr>
+          <tr>
+            <td align="left" background="../WebFOVE/img/bk-izq-header.gif"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                  <tr>
+                    <td><img src="../WebFOVE/img/header-bd-izq-izq.gif" width="1" height="20"></td>
+                    <td class="user">Usuario: {nombre_comprador} </td>
+                  </tr>
+                          </table></td>
+            <td width="421" align="right"><table width="421" border="0" cellspacing="0" cellpadding="0">
+              <tr>
+                <td width="15"><img src="../WebFOVE/img/borde-med-header.gif"></td>
+                <td align="left" bgcolor="#419f27"><div class="texto_menu" id="myMenuID"></div>
+				<!--<div id="menu_nuevo" style="position:relative; left:0px; top:0px; width:0px; height:0px; z-index:1">MENU</div>--></td>
+                <td width="120" align="right" bgcolor="#419f27">
+								
+				<script type="text/javascript" src="/WebFOVE/flashobject.js"></script>
+              <div id="iconos" style="width: 120px; height: 19px"></div>
+          <script type="text/javascript">
+var fo = new FlashObject("/WebFOVE/img/banner/{bt_inicio}", "animationName", "120", "19", "7", "#FFFFFF");
+fo.addParam("allowScriptAccess", "sameDomain");
+fo.addParam("quality", "high");
+fo.addParam("scale", "noscale");
+fo.write("iconos");
+  </script>				</td>
+                <td width="11" align="right"><img src="../WebFOVE/img/borde-der-header.gif"></td>
+              </tr>
+            </table></td>
+          </tr>
+        </table></td>
+	  </tr>
+	  </table>
+	
+	<table width="100%" height="400" border="0" cellpadding="0" cellspacing="0" class="tabla_marco">
+	  <tr>
+		<td valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="10">
+	  <tr>
+		<td><!-- InstanceBeginEditable name="EditRegionTitulo" -->
+		  <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+            <tr>
+              <td valign="top" class="titulo">Datos sucursal </td>
+              <!--<td width="150" align="right"> <a href="ViewListSucursales" title="Volver"><img src="/WebFOVE/img/back.png" alt="Volver" width="48" height="48" border="0"></a></td>-->
+            </tr>
+          </table>
+		<!-- InstanceEndEditable --></td>
+	  </tr>
+	</table><!-- InstanceBeginEditable name="EditRegionContenido" -->
+		  <form name="form1" method="post" ACTION="{pagina}" onsubmit="return validar_form();">
+		  <input type="hidden" name="idsuc" value="{idsuc}"  >
+          <input name="auxcodfon1" value="{codfon1}" type="hidden">
+          <input name="auxcodfon2" value="{codfon2}" type="hidden">
+<table width="340" border="0" align="center" cellpadding="3" cellspacing="0">
+              <tr>
+                <td><table width="100%" border="1" cellpadding="3" cellspacing="0" bordercolor="#CAE68A">
+                  <tr>
+                    <td><table width="100%"  border="0" align="center" cellpadding="3" cellspacing="0">
+			  <!-- BEGIN DYNAMIC: BLOQ_MODIFICA -->
+              <tr>
+                <td width="140" class="texto_formularios">ID Sucursal</td>
+                <td width="156" class="texto_formularios">{idsucbloque}</td>
+              </tr>
+			  <!-- END DYNAMIC: BLOQ_MODIFICA -->
+              <tr>
+                <td class="texto_formularios">Empresa * </td>
+                <td><select name="empresas" onFocus="cambiar_color_on(this);" onBlur="cambiar_color_off(this);" onChange="datos_empresa();">
+					 <!-- BEGIN DYNAMIC: LIST_EMPRESAS -->
+					 <option value="{emp_id}" {emp_selected}>{emp_nombre}</option>
+					 <!-- END DYNAMIC: LIST_EMPRESAS -->
+					</select></td>
+              </tr>
+              <tr>
+                <td class="texto_formularios">RUT * </td>
+                <td><input name="rut" type="text" size="12" maxlength="10" value="{rut}" onFocus="cambiar_color_on(this);" onBlur="cambiar_color_off(this);" readonly>-
+                  <input name="dv" type="text" size="2" maxlength="1" value="{dv}" onFocus="cambiar_color_on(this);" onBlur="cambiar_color_off(this);" readonly></td>
+              </tr>
+              <tr>
+                <td class="texto_formularios">Nombre * </td>
+                <td><input name="nombre" type="text" size="30" maxlength="30" value="{nombre}" onFocus="cambiar_color_on(this);" onBlur="cambiar_color_off(this);"></td>
+              </tr>
+              <tr>
+                <td class="texto_formularios">Raz&oacute;n social * </td>
+                <td><input name="rsocial" type="text" size="30" maxlength="30" value="{razon}" onFocus="cambiar_color_on(this);" onBlur="cambiar_color_off(this);" readonly></td>
+              </tr>
+              <tr>
+                <td class="texto_formularios">Descripci&oacute;n * </td>
+                <td><input name="desc" type="text" size="30" maxlength="100" value="{desc}" onFocus="cambiar_color_on(this);" onBlur="cambiar_color_off(this);"></td>
+              </tr>
+              <tr>
+                <td class="texto_formularios">Estado * </td>
+                <td>
+					<select name="estados" onFocus="cambiar_color_on(this);" onBlur="cambiar_color_off(this);">
+					 <option value="">Seleccionar</option>
+					 <!-- BEGIN DYNAMIC: LIST_ESTADOS -->
+					 <option value="{est_id}" {est_selected} >{est_nombre}</option>
+					 <!-- END DYNAMIC: LIST_ESTADOS -->
+					</select>
+				</td>
+              </tr>
+			  <!-- BEGIN DYNAMIC: BLOQ_MODIFICA -->
+              <tr>
+                <td class="texto_formularios">Fecha de modificaci&oacute;n</td>
+                <td class="texto_formularios">{fmodi}</td>
+              </tr>
+			  <!-- END DYNAMIC: BLOQ_MODIFICA -->
+              <tr>
+                <td class="texto_formularios">Tel&eacute;fono1 * </td>
+                <td><select name="fon_cod_1" class="campo" id="fon_cod_1">
+					<option value='02' >02</option>
+					<option value='32' >32</option>
+					<option value='33' >33</option>
+					<option value='34' >34</option>
+					<option value='35' >35</option>
+					<option value='41' >41</option>
+					<option value='42' >42</option>
+					<option value='43' >43</option>
+					<option value='45' >45</option>
+					<option value='51' >51</option>
+					<option value='52' >52</option>
+					<option value='53' >53</option>
+					<option value='55' >55</option>
+					<option value='57' >57</option>
+					<option value='58' >58</option>
+					<option value='61' >61</option>
+					<option value='63' >63</option>
+					<option value='64' >64</option>
+					<option value='65' >65</option>
+					<option value='67' >67</option>
+					<option value='71' >71</option>
+					<option value='72' >72</option>
+					<option value='73' >73</option>
+					<option value='75' >75</option>
+                  </select>&nbsp;<input name="fono1" type="text" size="8	" maxlength="7" value="{fono1}" onFocus="cambiar_color_on(this);" onBlur="cambiar_color_off(this);"></td>
+              </tr>
+              <tr>
+                <td class="texto_formularios">Tel&eacute;fono2</td>
+                <td><select name="fon_cod_2" class="campo" id="fon_cod_2">
+					<option value='02' >02</option>
+					<option value='32' >32</option>
+					<option value='33' >33</option>
+					<option value='34' >34</option>
+					<option value='35' >35</option>
+					<option value='41' >41</option>
+					<option value='42' >42</option>
+					<option value='43' >43</option>
+					<option value='45' >45</option>
+					<option value='51' >51</option>
+					<option value='52' >52</option>
+					<option value='53' >53</option>
+					<option value='55' >55</option>
+					<option value='57' >57</option>
+					<option value='58' >58</option>
+					<option value='61' >61</option>
+					<option value='63' >63</option>
+					<option value='64' >64</option>
+					<option value='65' >65</option>
+					<option value='67' >67</option>
+					<option value='71' >71</option>
+					<option value='72' >72</option>
+					<option value='73' >73</option>
+					<option value='75' >75</option>
+                  </select>&nbsp;<input name="fono2" type="text" size="8" maxlength="7" value="{fono2}" onFocus="cambiar_color_on(this);" onBlur="cambiar_color_off(this);"></td>
+              </tr>
+              <tr>
+                <td class="texto_formularios">Mail de contacto * </td>
+                <td><input name="mail" type="text" size="30" maxlength="30" value="{mail}" onFocus="cambiar_color_on(this);" onBlur="cambiar_color_off(this);"></td>
+              </tr>
+              <tr>
+                <td class="texto_formularios">Encargado de recepci&oacute;n * </td>
+                <td><input name="encargado" type="text" size="30" maxlength="30" value="{encargado}" onFocus="cambiar_color_on(this);" onBlur="cambiar_color_off(this);"></td>
+              </tr>			  
+
+              <tr>
+                <td colspan="2" align="center"></td>
+                </tr>
+            </table></td>
+                  </tr>
+                </table></td>
+              </tr>
+              <tr>
+                <td><input name="Button" type="button" class="botonChico" value="Volver" onclick="go_page('ViewListSucursales');"> <input name="Submit" type="submit" class="botonChico" value="{accion_btn}"></td>
+              </tr>
+            </table>
+		    
+		    </form>
+			<SCRIPT LANGUAGE="JavaScript">
+			  selecciona_empresa();
+			  datos_empresa();
+			  carga_codigos_fono();
+			  window.document.form1.rut.onkeypress 		  = KeyIsRut; 
+			  window.document.form1.dv.onkeypress 		  = KeyIsRut; 
+			  window.document.form1.nombre.onkeypress 	  = KeyIsTexto; 
+			  window.document.form1.rsocial.onkeypress	  = KeyIsTexto;
+			  window.document.form1.desc.onkeypress	  	  = KeyIsTexto;
+			  window.document.form1.fono1.onkeypress	  = KeyIsTelefono;
+			  window.document.form1.fono2.onkeypress	  = KeyIsTelefono;
+			  window.document.form1.mail.onkeypress	  	  = KeyIsTexto_R;
+			  window.document.form1.encargado.onkeypress	  	  = KeyIsTexto;
+			</SCRIPT>
+		  <!-- InstanceEndEditable --></td>
+	  </tr>
+	</table>
+	<table width="100%" height="28" border="0" cellpadding="2" cellspacing="0">
+      <tr>
+        <td height="10" background="../WebFOVE/img/bk-izq-header.gif"><img src="../WebFOVE/img/bk-izq-header.gif" width="1" height="10"></td>
+      </tr>
+      <tr>
+        <td class="footer"><a href="http://www.jumbointernet.cl/contacto6.htm" target="_blank" class="footer">Contacto</a> | <a href="http://www.jumbo.cl/FO/LogonForm" target="_blank" class="footer">Compa&ntilde;&iacute;a</a> | <a href="http://www.jumbointernet.cl/preguntas_frecuentes.html" target="_blank" class="footer">Preguntas Frecuentes</a> | <a href="http://www.jumbointernet.cl/preguntas_frecuentes.html#1" target="_blank" class="footer"> C&oacute;mo Cotizar </a>|<a href="http://www.jumbointernet.cl/preguntas_frecuentes.html#b4" target="_blank" class="footer">Medios de Pago</a> | <a href="http://www.jumbointernet.cl/preguntas_frecuentes.html#5" target="_blank" class="footer">Costos de Despacho</a><br>
+          <br></td>
+      </tr>
+      <tr>
+        <td class="footer">Servicio de Atenci&oacute;n al Cliente 600 400 3000 | Fono Tarjeta Jumbo M&aacute;s: 600 600 0505<br>
+Copyright&copy; Cencosud 2007, Santiago Chile | Sitio Desarrollado para Internet Explorer 6 o superior,<br>
+Resoluci&oacute;n de pantalla 800x600 | Para ver el sitio necesita el plug in de Flash.</td>
+      </tr>
+    </table></td>
+</tr>	
+</table>
+	
+    <!--<link rel="stylesheet" href="/WebFOVE/menu/menu.css">
+	<script language="JavaScript" src="/WebFOVE/menu/menu.js"></script>
+    <script language="JavaScript" src="/WebFOVE/menu/menu_tpl.js"></script>
+    <script language="JavaScript" src="/WebFOVE/menu/menu_items.js"></script>	-->
+<script>var tipo_usuario = '{tipo_usuario}';</script>
+<map name="Map"><area shape="rect" coords="7,0,314,43" href="http://www.jumboempresas.cl" target="_blank">
+</map></body>
+<!-- INI menu -->
+<script type="text/javascript" src="/WebFOVE/menuJs/JSCookMenu.js"></script>
+<link rel="stylesheet" href="/WebFOVE/menuJs/ThemeGray/theme.css" type="text/css">
+<script type="text/javascript" src="/WebFOVE/menuJs/ThemeGray/theme.js"></script>
+<script type="text/javascript" src="/WebFOVE/menuJs/menuContent.js"></script>
+<script type="text/javascript">
+	cmDraw ('myMenuID', myMenu, 'hbr', cmThemeGray);
+</script>
+<!-- FIN menu -->
+
+
+<!-- InstanceEnd --></html>

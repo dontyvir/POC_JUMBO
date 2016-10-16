@@ -1,0 +1,154 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="EXPIRES" CONTENT="Mon, 22 Jul 2002 11:12:01 GMT">
+<title>Jumbo.cl Back Office Central</title>
+<script language="JavaScript" type="text/javascript" src="prototype.js"></script>
+<script language="JavaScript" type="text/javascript" src="js/editPrecios.js"></script>
+<link rel="stylesheet" href="menu/menu.css" />
+<link href="estilos.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+<script language="JavaScript" type="text/javascript" src="menu/menu.js"></script>
+<script language="JavaScript" type="text/javascript" src="menu/menu_tpl.js"></script>
+<script language="JavaScript" type="text/javascript" src="menu/menu_items.js"></script>
+
+<table width="780" height="100%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+    <td height="78" valign="top">
+      <TABLE width="100%" height=59 border=0 align="center" cellpadding="0" cellspacing="0" bgcolor="#ffffff">
+        <TR>
+          <TD width=275 height="59" align=left class=user><img src="img/header2.jpg" width="275" height="60"></TD>
+          <TD width=505 align=left valign="bottom" background="img/bg-1.jpg" class=user>
+            <table width="90%"  border="0" align="center" cellpadding="0" cellspacing="2">
+              <tr>
+                <td>&nbsp;</td>
+              </tr>
+              <tr>
+                <td><div align="right" class="infoBL">Usuario: {hdr_nombre}&nbsp;&nbsp;| {hdr_fecha}</div></td>
+              </tr>
+            </table>
+          </TD>
+        </TR>
+      </TABLE>
+      <TABLE width="100%" height=19 border=0 align="center" cellpadding="0" cellspacing="0" bgcolor="#f1f0e9" style="border-top:1px solid #ABABAB; border-bottom:1px solid #ABABAB">
+        <TR>
+          <TD align=left bgcolor="#FFFFFF" class=user></TD>
+        </TR>
+      </TABLE>
+    </td>
+  </tr>
+  <tr height="400">
+    <td valign="top" bgcolor="#FFFFFF">
+      <table border=0 width="100%" class='ContentTitle'>
+        <tr>
+          <td width="53%" height="20" class='HeaderTitle'>Cambiar precios del pedido {id_pedido}</td>
+          <td width="47%" class='HeaderTitle'><div align="right"><a href="ViewOPFormPedido?id_pedido={id_pedido}&mod=1"><img src="img/volver.gif" width="32" height="32" border="0"></a></div></td>
+        </tr>
+      </table>
+      <br />
+      <table width="100%"  border="0" cellspacing="2" cellpadding="2">
+        <tr valign="top">
+          <td width="71%">
+          
+            <table width="500" border="0" align="center" cellpadding="2" cellspacing="0">
+              <tr>
+                <td width="20%">MONTO TOTAL DEL PEDIDO:</td>
+                <td width="13%">$ <SPAN id="total_str">{total}</SPAN><input type="hidden" name="total" id="total" value="{total}" /></td>
+                <td width="1%"></td>
+                <td width="20%">MONTO RESERVADO:</td>
+                <td width="14%">$ <SPAN id="total_reserv_str">{total_reservado}</SPAN><input type="hidden" name="total_reservado" id="total_reservado" value="{total_reservado}" /></td>
+                <td width="1%"></td>
+                <td width="20%">MONTO EXCEDIDO:</td>
+                <td width="13%">$ <SPAN id="excedido_str" style="font-weight: bolder; color: {color};">{excedido}</SPAN><input type="hidden" name="excedido" id="excedido" value="{excedido}" /> </td>
+              </tr>
+              <tr>
+                <td colspan="8" align="center">
+                  <form name="f1" method="post" action="CambiarMontosEnOP">
+                    <input type="hidden" name="datos_cambiados" id="datos_cambiados" value="" />
+                    <input type="hidden" name="id_pedido" id="id_pedido" value="{id_pedido}" />
+                    <input type="button" name="btn" value="CAMBIAR PRECIOS" onclick="javascript:cambiarPrecios();" {disabled}/>
+                  </form>
+                </td>
+              </tr>
+            </table>
+          
+           
+           <table width="770" border="0" align="center" cellpadding="2" cellspacing="0" class="tabla2">
+             <tr>
+               <th width="60" align="center">Producto solicitado</th>
+               <th width="167">Descripci&oacute;n</th>
+               <th width="50" align="center">Cant.</th>
+               <th width="50" align="center">Precio Unit.</th>
+               <th width="10">&nbsp;</th>
+               <th width="60" align="center">Producto pickeado</th>
+               <th width="167">Descripci&oacute;n</th>
+               <th width="50" align="center">Cant.</th>
+               <th width="70" align="center">Precio Unit.</th>
+               <th width="71" align="center">Precio a cobrar</th>               
+             </tr>
+             <!-- BEGIN DYNAMIC: SUSTITUTOS -->
+             <tr valign="top">
+               <td align="center">{cod_prod1}</td>
+               <td>{desc_prod1}</td>
+               <td align="right">{cant_prod1}</td>
+               <td align="right">${precio1}</td>
+               <td align="center">&rarr;</td>
+               <td align="center">{cod_prod2}</td>
+               <td>{desc_prod2}</td>
+               <td align="right">{cant_prod2}</td>
+               <td align="right">$<span id="nvo_precio_{i}">{precio2}</span></td>
+               <td align="right"><input type="text" name="precio_{i}" id="precio_{i}" value="{precio_tot}" style="width:50px" onchange="javascript:cambio('{i}',this.value)" onkeypress="return validar(event)" /></td>
+             </tr>
+             <!-- END DYNAMIC: SUSTITUTOS -->
+           </table>
+           
+           <br/><br/>
+           
+           
+          
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <TABLE width="100%" height=19 border=0 align="center" cellpadding="0" cellspacing="0" bgcolor="#f1f0e9" style="border-top:1px solid #ABABAB; border-bottom:1px solid #ABABAB">
+        <TR>
+          <TD align=center bgcolor="#67b01a" class=infoBL><div align="center">Back Office Central - Jumbo.cl</div></TD>
+        </TR>
+      </TABLE>
+    </td>
+  </tr>
+</table>
+</body>
+<script language="JavaScript" type="text/javascript">
+
+var productos = new Array();
+var count = 0;
+<!-- BEGIN DYNAMIC: SUSTITUTOS -->
+productoObj=new Object();
+productoObj.id_picking={id_picking};
+productoObj.cantidad={cant_prod2};
+productoObj.precio_old={precio2};
+productoObj.precio_original={precio_tot};
+productoObj.precio_nuevo={precio_tot};
+productoObj.id_producto={cod_prod1};
+productoObj.desc_producto="{desc_prod1}";
+
+productos[count] = productoObj;
+count = ( count + 1 );
+<!-- END DYNAMIC: SUSTITUTOS -->
+
+if ( '{msg}' != "" ) {
+  alert("{msg}");
+}
+
+</script>
+</html>

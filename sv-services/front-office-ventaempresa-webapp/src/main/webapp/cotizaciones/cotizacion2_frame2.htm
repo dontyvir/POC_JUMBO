@@ -1,0 +1,133 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>Venta Empresas</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="EXPIRES" CONTENT="Mon, 22 Jul 2002 11:12:01 GMT">
+
+<script language="javascript" src="/WebFOVE/funciones.js"></script>
+<link href="/WebFOVE/style.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+<!--
+html {
+
+   overflow-y:show
+   overflow-x:hidden
+
+}
+-->
+</style>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function del(id ) {
+
+	if(confirm("Este producto será eliminado del carro de compra\n ¿Esta seguro de realizar la operación?")){
+		var d = new Date();
+		window.location = "DelProdCotizacion?id="+id+"&tm="+d.getTime();
+		// Si existe categorias con productos => recarga
+		if( top.frames['ifrm_productos'] != 'undefined' && top.frames['ifrm_productos'] != null ) {	
+			top.frames['ifrm_productos'].location.reload();
+		}
+	}else{
+		document.fc.reset();
+	}
+
+}
+
+
+function mc(id, campo, intervalo){
+	var d = new Date();
+
+	if( campo.value == "" || campo.value == "." )
+		campo.value = 0;
+	
+	// Revisa si es multiplo del incremtento definido para el producto
+	campo.value = setCantidad( campo, intervalo );
+	
+	cantidadaux = campo.value; 
+
+	if (cantidadaux == 0){
+		del(id);
+		return false;
+	}
+	
+	top.frames['ifrm_bolsa'].location.href="UpdProdCotizacion?id="+id+"&cantidad="+cantidadaux+"&tm="+d.getTime();
+
+	return true;
+}
+
+/*function validaTeclado(e, id, intervalo) {
+    var keyChar = String.fromCharCode(e.which);
+    alert("keyChar: " + keyChar);
+    if (keyChar == 13){
+        mc(id, e, intervalo);
+    }
+    //if (keyChar == 'A' || keyChar == 'a')
+    //    self.scrollBy(10,10);
+    //else if(keyChar == 'Z' || keyChar == 'z')
+    //    self.scrollBy(-10,-10);
+    //else return false;
+}*/
+
+
+function set_total_display( total ) {
+
+	top.document.ftotal._total.value=total;
+}
+
+function push_enter( evt, id, campo, intervalo ) {
+
+    if (KeyIsCantidad(evt)){
+	    var isNav = (navigator.appName.indexOf("Netscape") != -1)
+	    var isIE = (navigator.appName.indexOf("Microsoft") != -1)
+
+	
+	    if (isNav) {
+	        //alert('Key: ' + evt.which);
+		    if( evt.which == 13 ) {
+			    mc( id, campo, intervalo );
+		    }	
+	    }else if (isIE) {
+		    evt = window.event;
+	        //alert('Key: ' + evt.keyCode);
+		    if ( evt.keyCode == 13 ) {
+			    mc( id, campo, intervalo );
+		    }
+        }
+    }
+	
+}
+
+//-->
+</SCRIPT>
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript"></script>
+<script type="text/javascript">
+   _uacct = "UA-1529321-3";
+   urchinTracker();
+</script>
+</head>
+
+<body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" onload="set_total_display( '{total}' )">
+
+<FORM METHOD=POST ACTION="" name="fc">
+<INPUT TYPE="hidden" NAME="cant_reg" value="{lista_carro}">
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="tabla_carro">
+  <!-- BEGIN DYNAMIC: ListaProductos -->
+  <tr>
+    <td class="texto_minificha" style="cursor:pointer" title="{nommarca}" onclick="winficha({pro_id})">{descrip}</td>
+    <td width="60" align="left"><input name="cantidad_l{contador}" value="{cantidad}" type="text" class="cc" size="4" maxlength="4" onkeypress="push_enter(this,{id},this,{intervalo});" onChange="mc({id},this,{intervalo});" onFocus="cambiar_color_on(this);" onBlur="cambiar_color_off(this);" onpaste="return false;">&nbsp;<span class="texto_minificha">{unidad}</span></td>
+    <td width="50" align="right" class="texto_minificha">{precio}</td>	
+    <td width="9" align="center"><A HREF="javascript:del({id})" title="Eliminar de la cotización"><img src="/WebFOVE/img/d.gif" width="9" height="6"  border="0"></a></td>
+  </tr>
+  <SCRIPT LANGUAGE="JavaScript">
+  //window.document.fc.cantidad_l{contador}.onkeypress= KeyIsCantidad;
+  </SCRIPT>
+  <!-- END DYNAMIC: ListaProductos -->
+</table>
+</FORM>
+
+</body>
+</html>

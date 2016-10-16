@@ -1,0 +1,2 @@
+cd /home/was/kettle_sh/programas_consola/envio_mails/bin
+java -Xmx512m -cp ../lib/activation-1.1.jar:../lib/commons-io-1.4.jar:../lib/db2jcc_license_cisuz-8.1.jar:../lib/log4j-1.2.13.jar:../lib/commons-fileupload-1.2.jar:../lib/db2jcc-8.1.jar:../lib/db2jcc_license_cu-8.1.jar:../lib/mail-1.4.2.jar:process-mails.jar cl.jumbo.process.EnvioMailsProcess >> logs.txt

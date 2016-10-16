@@ -1,0 +1,150 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.12.0.min.js"></script>
+<title>Venta Masiva - Externa</title>
+</head>
+<body>
+http://200.1.131.54/VentaMasiva/PurchaseOrder
+<form action="http://200.1.131.54:9080/VentaMasiva/PurchaseOrder" method="post" id="PurchaseOrder" name="PurchaseOrder">
+<table width="732" border="0">
+  <tr>
+    <td width="316" valign="top">
+      Tarjeta Cencosud         
+      <input type="radio" checked="checked" id="ronline" value="CAT" name="forma_pago">
+      Tarjeta Bancaria
+      <input type="radio" id="tbancaria" value="TBK" name="forma_pago" />
+			<input type="hidden" id="id_pedido_cat" value="1650471" name="id_pedido_cat">
+			<input type="hidden" id="id_pedido_tbk" value="1627815" name="id_pedido_tbk">
+		</td>
+    <td width="406"><table width="376" border="0">
+        <tr>
+          <td width="155"><input type="hidden" id="tienecook" value="1" name="tienecook" />
+            ID PEDIDO</td>
+          <td width="211"><input type="text" id="id_pedido" value="" name="id_pedido" /></td>
+        </tr>
+        <tr>
+          <td>RUT</td>
+          <td><input type="text" id="RUT" value="16745550-6" name="RUT" /></td>
+        </tr>
+        <tr>
+          <td>NAME</td>
+          <td> <input type="text" id="NAME" value="Tania" name="NAME" /></td>
+        </tr>
+        <tr>
+          <td>LAST_NAME</td>
+          <td><input type="text" id="LAST_NAME" value="Quilen" name="LAST_NAME" /></td>
+        </tr>
+        <tr>
+          <td>EMAIL</td>
+          <td><input type="text" id="EMAIL" value="florencio.maturanailabaca@externos-cl.cencosud.com" name="EMAIL" /></td>
+        </tr>
+        <tr>
+          <td>TYPE_STREET</td>
+          <td><input type="text" id="TYPE_STREET" value="1" name="TYPE_STREET" /></td>
+        </tr>
+        <tr>
+          <td>STREET_NAME</td>
+          <td><input type="text" id="STREET_NAME" value="Jose miguel carrera" name="STREET_NAME" /></td>
+        </tr>
+        <tr>
+          <td>NUMBER_STREET</td>
+          <td><input type="text" id="NUMBER_STREET" value="1340" name="NUMBER_STREET" /></td>
+        </tr>
+        <tr>
+          <td>APARTMENT</td>
+          <td><input type="text" id="APARTMENT" value="casa 31" name="APARTMENT" /></td>
+        </tr>
+        <tr>
+          <td>REGION_ID</td>
+          <td><input type="text" id="REGION_ID" value="13" name="REGION_ID" /></td>
+        </tr>
+        <tr>
+          <td>OBSERVATION</td>
+          <td><input type="text" id="OBSERVATION" value="sin observacion" name="OBSERVATION" /></td>
+        </tr>
+        <tr>
+          <td>COMUNA_ID</td>
+          <td><input type="text" id="COMUNA_ID" value="1" name="COMUNA_ID" /></td>
+        </tr>
+        <tr>
+          <td>PHONE_NUMBER</td>
+          <td><input type="text" id="PHONE_NUMBER" value="68317589" name="PHONE_NUMBER" /></td>
+        </tr>
+        <tr>
+          <td>DATE</td>
+          <td><input type="text" id="DATE" value="2016-07-01" name="DATE" /></td>
+        </tr>
+        <tr>
+          <td>DELIVERY_PRICE</td>
+          <td><input type="text" id="DELIVERY_PRICE" value="1990" name="DELIVERY_PRICE" /></td>
+        </tr>
+        <tr>
+          <td>PRODUCTS</td>
+          <td><input type="text" id="PRODUCTS" value='[{"PRODUCT_ID": "79785","QUANTITY": "1"}]' name="PRODUCTS" /></td>
+        </tr>
+        <tr>
+          <td>WINDOW</td>
+          <td><input type="text" id="WINDOW" value="AM" name="WINDOW" /></td>
+        </tr>
+        <tr>
+          <td>PAYMENT_METHOD</td>
+          <td><input type="text" id="PAYMENT_METHOD" value="TBK" name="PAYMENT_METHOD" /></td>
+        </tr>
+      </table>
+			</td>
+   <input type="submit" id="boton">
+  </tr>
+  <tr>
+    <td colspan="3">
+      <a id="confirmar" href="javascript:orderprocess();">PAGO</a></td>
+    </tr>
+ 
+</table>
+
+</form>
+	
+<script type="text/javascript">
+  $(document).ready(function(){
+  	var d = new Date(),
+    month = '' + (d.getMonth() + 1),
+    day = '' + (d.getDate()+1),
+    year = d.getFullYear();
+
+    if (month.length < 2) month = '0' + month;
+    if (day.length < 2) day = '0' + day;
+            
+    $("#date").val( [year, month, day].join('-') );	
+  });
+   
+  $("input[name='forma_pago']").change(function(){
+    var name = $(this).attr('id'); 
+		if(name==""){
+      alert("CAT o TBK");
+		  return;
+		}
+		$("#payment_method").val($(this).val());    	
+  });
+
+  function orderprocess() {
+    if($('#payment_method').val()==""){
+      alert("CAT o TBK");
+		  return;
+		}
+    /*
+		var id = "";    
+		if(medio_pago=="CAT"){
+		  id = $("#id_pedido_cat").val();
+    }else{
+	    id = $("#id_pedido_tbk").val();
+	  }
+    $("#id_pedido").val(id);
+    $("#payment_method").val(medio_pago);
+		*/
+		
+     document.PurchaseOrder.submit();
+  }				
+</script>
+</body>
+</html>

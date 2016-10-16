@@ -1,0 +1,34 @@
+<div>
+	<div align="right">
+		<a class="HeaderTitle" id="bancat_volver" href="#">Volver</a>
+	</div>
+</div>
+<div id="contenedor">
+	<ul class="tabs-nav">
+		<li class="tabs-selected"><a href="#div_bancat"><span>Agregar Categor&iacute;a para MiniHome</span></a></li>
+	</ul>
+	<div id="div_bancat" class="tabs-container">
+		<div>
+			<div id="activo">
+				<br/><br/>
+				<table width="700">
+					<tr>
+						<td style="text-align:center;">
+							Categor&iacute;a:
+							<select id="bca_cat_id" name="bca_cat_id">
+								<!-- BEGIN DYNAMIC: CATEGORIAS -->
+        						<option value={cat_id}>{cat_nombre}</option>
+						    	<!-- END DYNAMIC: CATEGORIAS --> 
+						    </select>
+						</td>
+					</tr>
+					<tr>
+						<td style="text-align:center;">
+							<input type="button" value="Agregar" id="agregar">
+						</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>

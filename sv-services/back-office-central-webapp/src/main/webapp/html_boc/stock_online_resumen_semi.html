@@ -1,0 +1,312 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta http-equiv="CACHE-CONTROL" content="NO-CACHE">
+	<meta http-equiv="PRAGMA" content="NO-CACHE">
+	<meta http-equiv="EXPIRES" content="Mon, 22 Jul 2002 11:12:01 GMT">
+	<title>Jumbo.cl Back Office Central</title>
+
+	<link href="estilos.css" rel="stylesheet" type="text/css">
+	<script type="text/javascript" src="js/jquery/jquery-1.3.1.js"></script>
+	<script type="text/javascript" src="js/pubMasiva.js"></script>
+    
+	<script type="text/javascript">
+
+		function verDetalle() {
+ 	 
+			document.getElementById('resumen').style.display = 'none';
+       	 	document.getElementById('btnEjecutaDetalle').style.display = 'none';
+       		document.getElementById('mensaje').style.display = 'none';
+       	
+			cargandoData();
+			
+			var valorSeleccionado = 0;
+				
+				for(i=0;i<document.form2.local_check.length;i++) {
+				
+					if(document.form2.local_check[i].checked) {
+					
+						valorSeleccionado=i;
+					}
+				}
+				
+			document.forms["form2"].action = "ViewStockOnlineDetalleSemiautomaticoForm";
+        	document.forms["form2"].submit();
+     
+		}
+	 
+	 	function ejecutar() {
+		
+			if(confirm("Va a ejecutar todas las acciones del resumen que est\u00e1 consultando. " + String.fromCharCode( 191 ) + "confirmar?")) {
+		 
+				document.forms["form2"].action = "StockOnlineEjecutaSemiautomaticoSKU";
+				document.forms["form2"].submit();
+		 
+			}
+        }
+	
+		function calcularDatos( local ) {
+	
+			seleccionado( local );
+			
+			document.getElementById('resumen').style.display = 'none';
+       	 	document.getElementById('btnEjecutaDetalle').style.display = 'none';
+       		document.getElementById('mensaje').style.display = 'none';
+       	
+       		cargandoData();
+				
+			document.forms["form2"].submit();
+		
+		}
+		
+		function cargandoData() {
+		
+			var objetoSPAN = document.getElementById('span_esperar_validacion'); 			
+			objetoSPAN.innerHTML = '<font color="ff0000" style="font-size:170%"><b>CARGANDO DATOS</b>...<br>espere unos instantes</font><br><img id="img_cargando" src="img/cargando.gif" />';
+			objetoSPAN.style.display = 'block';
+       	
+		}
+		
+		function seleccionado( local ){
+				
+				var locales = ['1','2','3','4','5','6','7','8'];
+				
+				for ( i=0; i < locales.length; i++ ) {
+					
+					if (locales[i] == local){
+						
+						document.getElementById(local).style.fontWeight = 'bold'; 
+						document.getElementById(local).style.fontSize = '150%'; 
+						document.getElementById(local).style.textDecoration = 'underline'; 
+					
+					}
+					else {
+					
+						document.getElementById(locales[i]).style.fontWeight = 'normal'; 
+						document.getElementById(locales[i]).style.fontSize = '100%'; 
+						document.getElementById(locales[i]).style.textDecoration = 'none'; 
+					
+					}
+					
+				}
+					
+			}
+		
+	</script>
+</head>
+
+<body onload="seleccionado({loc})">
+<link rel="stylesheet" href="menu/menu.css">
+<script language="JavaScript" src="menu/menu.js"></script>
+<script language="JavaScript" src="menu/menu_tpl.js"></script>
+<script language="JavaScript" src="menu/menu_items.js"></script>
+<script language="JavaScript" src="popup.js"></script>
+<script language="JavaScript" src="funciones.js"></script>
+<a id="e0_0o" class="m0l0oout" href="http://172.18.145.62/JumboBOCentral/ViewHome" style="position: absolute; top: 61px; left: 0px; width: 90px; height: 15px; visibility: visible; z-index: 10000;" onclick="return TMA[0].onclick(0);" onmouseout="TMA[0].onmouseout(0);" onmouseover="TMA[0].onmouseover(0);" onmousedown="TMA[0].onmousedown(0);"><div id="e0_0i" class="m0l0iout"> Inicio</div></a>
+<a id="e0_1o" class="m0l0oout" href="http://172.18.145.62/JumboBOCentral/null" style="position: absolute; top: 61px; left: 86px; width: 90px; height: 15px; visibility: visible; z-index: 10000;" onclick="return TMA[0].onclick(1);" onmouseout="TMA[0].onmouseout(1);" onmouseover="TMA[0].onmouseover(1);" onmousedown="TMA[0].onmousedown(1);"><div id="e0_1i" class="m0l0iout"> Catalogo</div></a>
+<a id="e0_2o" class="m0l1oout" href="http://172.18.145.62/JumboBOCentral/ViewMonCatWeb" style="position: absolute; top: 77px; left: 86px; width: 180px; height: 18px; visibility: hidden; z-index: 110000;" onclick="return TMA[0].onclick(2);" onmouseout="TMA[0].onmouseout(2);" onmouseover="TMA[0].onmouseover(2);" onmousedown="TMA[0].onmousedown(2);"><div id="e0_2i" class="m0l1iout"> Categorías Web</div></a>
+<a id="e0_3o" class="m0l1oout" href="http://172.18.145.62/JumboBOCentral/ViewMonProducts" style="position: absolute; top: 95px; left: 86px; width: 180px; height: 18px; visibility: hidden; z-index: 110000;" onclick="return TMA[0].onclick(3);" onmouseout="TMA[0].onmouseout(3);" onmouseover="TMA[0].onmouseover(3);" onmousedown="TMA[0].onmousedown(3);"><div id="e0_3i" class="m0l1iout"> Productos</div></a>
+<a id="e0_4o" class="m0l1oout" href="http://172.18.145.62/JumboBOCentral/ViewMonMPV" style="position: absolute; top: 113px; left: 86px; width: 180px; height: 18px; visibility: hidden; z-index: 110000;" onclick="return TMA[0].onclick(4);" onmouseout="TMA[0].onmouseout(4);" onmouseover="TMA[0].onmouseover(4);" onmousedown="TMA[0].onmousedown(4);"><div id="e0_4i" class="m0l1iout"> Mix</div></a>
+<a id="e0_5o" class="m0l1oout" href="http://172.18.145.62/JumboBOCentral/PreciosIndex" style="position: absolute; top: 131px; left: 86px; width: 180px; height: 18px; visibility: hidden; z-index: 110000;" onclick="return TMA[0].onclick(5);" onmouseout="TMA[0].onmouseout(5);" onmouseover="TMA[0].onmouseover(5);" onmousedown="TMA[0].onmousedown(5);"><div id="e0_5i" class="m0l1iout"> Precios y Bloqueos</div></a>
+<a id="e0_6o" class="m0l0oout" href="http://172.18.145.62/JumboBOCentral/null" style="position: absolute; top: 61px; left: 172px; width: 90px; height: 15px; visibility: visible; z-index: 10000;" onclick="return TMA[0].onclick(6);" onmouseout="TMA[0].onmouseout(6);" onmouseover="TMA[0].onmouseover(6);" onmousedown="TMA[0].onmousedown(6);"><div id="e0_6i" class="m0l0iout"> Marketing</div></a>
+<a id="e0_7o" class="m0l1oout" href="http://172.18.145.62/JumboBOCentral/ViewMonEventos" style="position: absolute; top: 77px; left: 172px; width: 180px; height: 18px; visibility: hidden; z-index: 110000;" onclick="return TMA[0].onclick(7);" onmouseout="TMA[0].onmouseout(7);" onmouseover="TMA[0].onmouseover(7);" onmousedown="TMA[0].onmousedown(7);"><div id="e0_7i" class="m0l1iout"> Monitor de Eventos</div></a>
+<a id="e0_8o" class="m0l1oout" href="http://172.18.145.62/JumboBOCentral/ViewMonPromos" style="position: absolute; top: 95px; left: 172px; width: 180px; height: 18px; visibility: hidden; z-index: 110000;" onclick="return TMA[0].onclick(8);" onmouseout="TMA[0].onmouseout(8);" onmouseover="TMA[0].onmouseover(8);" onmousedown="TMA[0].onmousedown(8);"><div id="e0_8i" class="m0l1iout"> Monitor de Promociones</div></a>
+<a id="e0_9o" class="m0l1oout" href="http://172.18.145.62/JumboBOCentral/ViewMonCampanas" style="position: absolute; top: 113px; left: 172px; width: 180px; height: 18px; visibility: hidden; z-index: 110000;" onclick="return TMA[0].onclick(9);" onmouseout="TMA[0].onmouseout(9);" onmouseover="TMA[0].onmouseover(9);" onmousedown="TMA[0].onmousedown(9);"><div id="e0_9i" class="m0l1iout"> Monitor de Campañas</div></a>
+<a id="e0_10o" class="m0l1oout" href="http://172.18.145.62/JumboBOCentral/ViewMonElementos" style="position: absolute; top: 131px; left: 172px; width: 180px; height: 18px; visibility: hidden; z-index: 110000;" onclick="return TMA[0].onclick(10);" onmouseout="TMA[0].onmouseout(10);" onmouseover="TMA[0].onmouseover(10);" onmousedown="TMA[0].onmousedown(10);"><div id="e0_10i" class="m0l1iout"> Monitor de Elementos</div></a>
+<a id="e0_11o" class="m0l1oout" href="http://172.18.145.62/JumboBOCentral/ViewMonDestacados" style="position: absolute; top: 149px; left: 172px; width: 180px; height: 18px; visibility: hidden; z-index: 110000;" onclick="return TMA[0].onclick(11);" onmouseout="TMA[0].onmouseout(11);" onmouseover="TMA[0].onmouseover(11);" onmousedown="TMA[0].onmousedown(11);"><div id="e0_11i" class="m0l1iout"> Monitor de Destacados</div></a>
+<a id="e0_12o" class="m0l1oout" href="http://172.18.145.62/JumboBOCentral/ViewMonitorBolsas" style="position: absolute; top: 167px; left: 172px; width: 180px; height: 18px; visibility: hidden; z-index: 110000;" onclick="return TMA[0].onclick(12);" onmouseout="TMA[0].onmouseout(12);" onmouseover="TMA[0].onmouseover(12);" onmousedown="TMA[0].onmousedown(12);"><div id="e0_12i" class="m0l1iout"> Monitor de Bolsas</div></a>
+<a id="e0_13o" class="m0l1oout" href="http://172.18.145.62/JumboBOCentral/ViewAdmHome" style="position: absolute; top: 185px; left: 172px; width: 180px; height: 18px; visibility: hidden; z-index: 110000;" onclick="return TMA[0].onclick(13);" onmouseout="TMA[0].onmouseout(13);" onmouseover="TMA[0].onmouseover(13);" onmousedown="TMA[0].onmousedown(13);"><div id="e0_13i" class="m0l1iout"> Administrador Home</div></a>
+<a id="e0_14o" class="m0l1oout" href="http://172.18.145.62/JumboBOCentral/ViewCuponDescuentos" style="position: absolute; top: 203px; left: 172px; width: 180px; height: 18px; visibility: hidden; z-index: 110000;" onclick="return TMA[0].onclick(14);" onmouseout="TMA[0].onmouseout(14);" onmouseover="TMA[0].onmouseover(14);" onmousedown="TMA[0].onmousedown(14);"><div id="e0_14i" class="m0l1iout"> Cupones de Descuentos</div></a>
+<a id="e0_15o" class="m0l0oout" href="http://172.18.145.62/JumboBOCentral/null" style="position: absolute; top: 61px; left: 258px; width: 90px; height: 15px; visibility: visible; z-index: 10000;" onclick="return TMA[0].onclick(15);" onmouseout="TMA[0].onmouseout(15);" onmouseover="TMA[0].onmouseover(15);" onmousedown="TMA[0].onmousedown(15);"><div id="e0_15i" class="m0l0iout"> Clientes</div></a>
+<a id="e0_16o" class="m0l1oout" href="http://172.18.145.62/JumboBOCentral/ViewMonClient" style="position: absolute; top: 77px; left: 258px; width: 180px; height: 18px; visibility: hidden; z-index: 110000;" onclick="return TMA[0].onclick(16);" onmouseout="TMA[0].onmouseout(16);" onmouseover="TMA[0].onmouseover(16);" onmousedown="TMA[0].onmousedown(16);"><div id="e0_16i" class="m0l1iout"> Monitor de Clientes</div></a>
+<a id="e0_17o" class="m0l1oout" href="http://172.18.145.62/JumboBOCentral/ViewReclamosClientes" style="position: absolute; top: 95px; left: 258px; width: 180px; height: 18px; visibility: hidden; z-index: 110000;" onclick="return TMA[0].onclick(17);" onmouseout="TMA[0].onmouseout(17);" onmouseover="TMA[0].onmouseover(17);" onmousedown="TMA[0].onmousedown(17);"><div id="e0_17i" class="m0l1iout"> Puntajes de Reclamo</div></a>
+<a id="e0_18o" class="m0l1oout" href="http://172.18.145.62/JumboBOCentral/ViewRutsConfiablesForm" style="position: absolute; top: 113px; left: 258px; width: 180px; height: 18px; visibility: hidden; z-index: 110000;" onclick="return TMA[0].onclick(18);" onmouseout="TMA[0].onmouseout(18);" onmouseover="TMA[0].onmouseover(18);" onmousedown="TMA[0].onmousedown(18);"><div id="e0_18i" class="m0l1iout"> Lista blanca de Clientes</div></a>
+<a id="e0_19o" class="m0l1oout" href="http://172.18.145.62/JumboBOCentral/ViewListaNegraProductos" style="position: absolute; top: 131px; left: 258px; width: 180px; height: 18px; visibility: hidden; z-index: 110000;" onclick="return TMA[0].onclick(19);" onmouseout="TMA[0].onmouseout(19);" onmouseover="TMA[0].onmouseover(19);" onmousedown="TMA[0].onmousedown(19);"><div id="e0_19i" class="m0l1iout"> Lista negra de Productos</div></a>
+<a id="e0_20o" class="m0l0oout" href="http://172.18.145.62/JumboBOCentral/null" style="position: absolute; top: 61px; left: 344px; width: 90px; height: 15px; visibility: visible; z-index: 10000;" onclick="return TMA[0].onclick(20);" onmouseout="TMA[0].onmouseout(20);" onmouseover="TMA[0].onmouseover(20);" onmousedown="TMA[0].onmousedown(20);"><div id="e0_20i" class="m0l0iout"> Pedidos</div></a>
+<a id="e0_21o" class="m0l1oout" href="http://172.18.145.62/JumboBOCentral/ViewMonOP" style="position: absolute; top: 77px; left: 344px; width: 180px; height: 18px; visibility: hidden; z-index: 110000;" onclick="return TMA[0].onclick(21);" onmouseout="TMA[0].onmouseout(21);" onmouseover="TMA[0].onmouseover(21);" onmousedown="TMA[0].onmousedown(21);"><div id="e0_21i" class="m0l1iout"> Monitor de OP</div></a>
+<a id="e0_22o" class="m0l1oout" href="http://172.18.145.62/JumboBOCentral/ViewMonCasos" style="position: absolute; top: 95px; left: 344px; width: 180px; height: 18px; visibility: hidden; z-index: 110000;" onclick="return TMA[0].onclick(22);" onmouseout="TMA[0].onmouseout(22);" onmouseover="TMA[0].onmouseover(22);" onmousedown="TMA[0].onmousedown(22);"><div id="e0_22i" class="m0l1iout"> Monitor de Casos</div></a>
+<a id="e0_23o" class="m0l1oout" href="http://172.18.145.62/JumboBOCentral/ViewSustitutosNoReconocidos" style="position: absolute; top: 113px; left: 344px; width: 180px; height: 18px; visibility: hidden; z-index: 110000;" onclick="return TMA[0].onclick(23);" onmouseout="TMA[0].onmouseout(23);" onmouseover="TMA[0].onmouseover(23);" onmousedown="TMA[0].onmousedown(23);"><div id="e0_23i" class="m0l1iout"> Sustitutos no reconocidos</div></a>
+<a id="e0_24o" class="m0l1oout" href="http://172.18.145.62/JumboBOCentral/ViewMonDespacho" style="position: absolute; top: 131px; left: 344px; width: 180px; height: 18px; visibility: hidden; z-index: 110000;" onclick="return TMA[0].onclick(24);" onmouseout="TMA[0].onmouseout(24);" onmouseover="TMA[0].onmouseover(24);" onmousedown="TMA[0].onmousedown(24);"><div id="e0_24i" class="m0l1iout"> Monitor de Despacho</div></a>
+<a id="e0_25o" class="m0l1oout" href="http://172.18.145.62/JumboBOCentral/ViewMonOpPendientes" style="position: absolute; top: 149px; left: 344px; width: 180px; height: 18px; visibility: hidden; z-index: 110000;" onclick="return TMA[0].onclick(25);" onmouseout="TMA[0].onmouseout(25);" onmouseover="TMA[0].onmouseover(25);" onmousedown="TMA[0].onmousedown(25);"><div id="e0_25i" class="m0l1iout"> OP Pendientes</div></a>
+<a id="e0_26o" class="m0l1oout" href="http://172.18.145.62/JumboBOCentral/ViewLiberarOP" style="position: absolute; top: 167px; left: 344px; width: 180px; height: 18px; visibility: hidden; z-index: 110000;" onclick="return TMA[0].onclick(26);" onmouseout="TMA[0].onmouseout(26);" onmouseover="TMA[0].onmouseover(26);" onmousedown="TMA[0].onmousedown(26);"><div id="e0_26i" class="m0l1iout"> Liberar OP</div></a>
+<a id="e0_27o" class="m0l0oout" href="http://172.18.145.62/JumboBOCentral/null" style="position: absolute; top: 61px; left: 430px; width: 90px; height: 15px; visibility: visible; z-index: 10000;" onclick="return TMA[0].onclick(27);" onmouseout="TMA[0].onmouseout(27);" onmouseover="TMA[0].onmouseover(27);" onmousedown="TMA[0].onmousedown(27);"><div id="e0_27i" class="m0l0iout"> Cotizaciones</div></a>
+<a id="e0_28o" class="m0l1oout" href="http://172.18.145.62/JumboBOCentral/ViewMonCotizaciones" style="position: absolute; top: 77px; left: 430px; width: 180px; height: 18px; visibility: hidden; z-index: 110000;" onclick="return TMA[0].onclick(28);" onmouseout="TMA[0].onmouseout(28);" onmouseover="TMA[0].onmouseover(28);" onmousedown="TMA[0].onmousedown(28);"><div id="e0_28i" class="m0l1iout">Monitor Cotizaciones</div></a>
+<a id="e0_29o" class="m0l0oout" href="http://172.18.145.62/JumboBOCentral/null" style="position: absolute; top: 61px; left: 516px; width: 90px; height: 15px; visibility: visible; z-index: 10000;" onclick="return TMA[0].onclick(29);" onmouseout="TMA[0].onmouseout(29);" onmouseover="TMA[0].onmouseover(29);" onmousedown="TMA[0].onmousedown(29);"><div id="e0_29i" class="m0l0iout"> Sistema</div></a>
+<a id="e0_30o" class="m0l1oout" href="http://172.18.145.62/JumboBOCentral/ViewMonUsers" style="position: absolute; top: 77px; left: 516px; width: 180px; height: 18px; visibility: hidden; z-index: 110000;" onclick="return TMA[0].onclick(30);" onmouseout="TMA[0].onmouseout(30);" onmouseover="TMA[0].onmouseover(30);" onmousedown="TMA[0].onmousedown(30);"><div id="e0_30i" class="m0l1iout"> Adm. Usuarios</div></a>
+<a id="e0_31o" class="m0l1oout" href="http://172.18.145.62/JumboBOCentral/ViewMonPerfiles" style="position: absolute; top: 95px; left: 516px; width: 180px; height: 18px; visibility: hidden; z-index: 110000;" onclick="return TMA[0].onclick(31);" onmouseout="TMA[0].onmouseout(31);" onmouseover="TMA[0].onmouseover(31);" onmousedown="TMA[0].onmousedown(31);"><div id="e0_31i" class="m0l1iout"> Adm. Perfiles</div></a>
+<a id="e0_32o" class="m0l1oout" href="http://172.18.145.62/JumboBOCentral/ViewListComunas" style="position: absolute; top: 113px; left: 516px; width: 180px; height: 18px; visibility: hidden; z-index: 110000;" onclick="return TMA[0].onclick(32);" onmouseout="TMA[0].onmouseout(32);" onmouseover="TMA[0].onmouseover(32);" onmousedown="TMA[0].onmousedown(32);"><div id="e0_32i" class="m0l1iout"> Adm. Comunas</div></a>
+<a id="e0_33o" class="m0l1oout" href="http://172.18.145.62/JumboBOCentral/ViewMonMarcas" style="position: absolute; top: 131px; left: 516px; width: 180px; height: 18px; visibility: hidden; z-index: 110000;" onclick="return TMA[0].onclick(33);" onmouseout="TMA[0].onmouseout(33);" onmouseover="TMA[0].onmouseover(33);" onmousedown="TMA[0].onmousedown(33);"><div id="e0_33i" class="m0l1iout"> Adm. Marcas</div></a>
+<a id="e0_34o" class="m0l1oout" href="http://172.18.145.62/JumboBOCentral/ViewMonEmpresa" style="position: absolute; top: 149px; left: 516px; width: 180px; height: 18px; visibility: hidden; z-index: 110000;" onclick="return TMA[0].onclick(34);" onmouseout="TMA[0].onmouseout(34);" onmouseover="TMA[0].onmouseover(34);" onmousedown="TMA[0].onmousedown(34);"><div id="e0_34i" class="m0l1iout"> Adm. Empresas</div></a>
+<a id="e0_35o" class="m0l1oout" href="http://172.18.145.62/JumboBOCentral/ViewMonSucursal" style="position: absolute; top: 167px; left: 516px; width: 180px; height: 18px; visibility: hidden; z-index: 110000;" onclick="return TMA[0].onclick(35);" onmouseout="TMA[0].onmouseout(35);" onmouseover="TMA[0].onmouseover(35);" onmousedown="TMA[0].onmousedown(35);"><div id="e0_35i" class="m0l1iout"> Adm. Sucursales</div></a>
+<a id="e0_36o" class="m0l1oout" href="http://172.18.145.62/JumboBOCentral/ViewMonComprador" style="position: absolute; top: 185px; left: 516px; width: 180px; height: 18px; visibility: hidden; z-index: 110000;" onclick="return TMA[0].onclick(36);" onmouseout="TMA[0].onmouseout(36);" onmouseover="TMA[0].onmouseover(36);" onmousedown="TMA[0].onmousedown(36);"><div id="e0_36i" class="m0l1iout"> Adm. Compradores</div></a>
+<a id="e0_37o" class="m0l1oout" href="http://172.18.145.62/JumboBOCentral/ViewWizardEmpInicio0" style="position: absolute; top: 203px; left: 516px; width: 180px; height: 18px; visibility: hidden; z-index: 110000;" onclick="return TMA[0].onclick(37);" onmouseout="TMA[0].onmouseout(37);" onmouseover="TMA[0].onmouseover(37);" onmousedown="TMA[0].onmousedown(37);"><div id="e0_37i" class="m0l1iout"> Wizard Empresas</div></a>
+<a id="e0_38o" class="m0l1oout" href="http://172.18.145.62/JumboBOCentral/ViewMonLocales" style="position: absolute; top: 221px; left: 516px; width: 180px; height: 18px; visibility: hidden; z-index: 110000;" onclick="return TMA[0].onclick(38);" onmouseout="TMA[0].onmouseout(38);" onmouseover="TMA[0].onmouseover(38);" onmousedown="TMA[0].onmousedown(38);"><div id="e0_38i" class="m0l1iout"> Adm. Locales</div></a>
+<a id="e0_39o" class="m0l1oout" href="http://172.18.145.62/JumboBOCentral/ViewDatosConfigCasos" style="position: absolute; top: 239px; left: 516px; width: 180px; height: 18px; visibility: hidden; z-index: 110000;" onclick="return TMA[0].onclick(39);" onmouseout="TMA[0].onmouseout(39);" onmouseover="TMA[0].onmouseover(39);" onmousedown="TMA[0].onmousedown(39);"><div id="e0_39i" class="m0l1iout"> Adm. Casos</div></a>
+<a id="e0_40o" class="m0l1oout" href="http://172.18.145.62/JumboBOCentral/ViewAdmMailFaltantes" style="position: absolute; top: 257px; left: 516px; width: 180px; height: 18px; visibility: hidden; z-index: 110000;" onclick="return TMA[0].onclick(40);" onmouseout="TMA[0].onmouseout(40);" onmouseover="TMA[0].onmouseover(40);" onmousedown="TMA[0].onmousedown(40);"><div id="e0_40i" class="m0l1iout"> Adm. Mail S&amp;F</div></a>
+<a id="e0_41o" class="m0l1oout" href="http://172.18.145.62/JumboBOCentral/ViewSustitutosYFaltantesForm" style="position: absolute; top: 275px; left: 516px; width: 180px; height: 18px; visibility: hidden; z-index: 110000;" onclick="return TMA[0].onclick(41);" onmouseout="TMA[0].onmouseout(41);" onmouseover="TMA[0].onmouseover(41);" onmousedown="TMA[0].onmousedown(41);"><div id="e0_41i" class="m0l1iout"> Adm. S&amp;F</div></a>
+<a id="e0_42o" class="m0l1oout" href="http://172.18.145.62/JumboBOCentral/ViewConfigListasEspeciales" style="position: absolute; top: 293px; left: 516px; width: 180px; height: 18px; visibility: hidden; z-index: 110000;" onclick="return TMA[0].onclick(42);" onmouseout="TMA[0].onmouseout(42);" onmouseover="TMA[0].onmouseover(42);" onmousedown="TMA[0].onmousedown(42);"><div id="e0_42i" class="m0l1iout"> Adm. Listas</div></a>
+<a id="e0_43o" class="m0l1oout" href="http://172.18.145.62/JumboBOCentral/ViewMantenedorDespacho" style="position: absolute; top: 311px; left: 516px; width: 180px; height: 18px; visibility: hidden; z-index: 110000;" onclick="return TMA[0].onclick(43);" onmouseout="TMA[0].onmouseout(43);" onmouseover="TMA[0].onmouseover(43);" onmousedown="TMA[0].onmousedown(43);"><div id="e0_43i" class="m0l1iout"> Adm. Despacho</div></a>
+<a id="e0_44o" class="m0l1oout" href="http://172.18.145.62/JumboBOCentral/ViewMantenedorParametros" style="position: absolute; top: 329px; left: 516px; width: 180px; height: 18px; visibility: hidden; z-index: 110000;" onclick="return TMA[0].onclick(44);" onmouseout="TMA[0].onmouseout(44);" onmouseover="TMA[0].onmouseover(44);" onmousedown="TMA[0].onmousedown(44);"><div id="e0_44i" class="m0l1iout"> Adm. Parametros</div></a>
+<a id="e0_45o" class="m0l0oout" href="http://172.18.145.62/JumboBOCentral/null" style="position: absolute; top: 61px; left: 602px; width: 90px; height: 15px; visibility: visible; z-index: 10000;" onclick="return TMA[0].onclick(45);" onmouseout="TMA[0].onmouseout(45);" onmouseover="TMA[0].onmouseover(45);" onmousedown="TMA[0].onmousedown(45);"><div id="e0_45i" class="m0l0iout"> Informes</div></a>
+<a id="e0_46o" class="m0l1oout" href="http://172.18.145.62/JumboBOCentral/InformeManualProductividad" style="position: absolute; top: 77px; left: 602px; width: 180px; height: 18px; visibility: hidden; z-index: 110000;" onclick="return TMA[0].onclick(46);" onmouseout="TMA[0].onmouseout(46);" onmouseover="TMA[0].onmouseover(46);" onmousedown="TMA[0].onmousedown(46);"><div id="e0_46i" class="m0l1iout"> Informes Productividad</div></a>
+<a id="e0_47o" class="m0l1oout" href="http://172.18.145.62/JumboBOCentral/ViewGeneraPlanillaTracking" style="position: absolute; top: 95px; left: 602px; width: 180px; height: 18px; visibility: hidden; z-index: 110000;" onclick="return TMA[0].onclick(47);" onmouseout="TMA[0].onmouseout(47);" onmouseover="TMA[0].onmouseover(47);" onmousedown="TMA[0].onmousedown(47);"><div id="e0_47i" class="m0l1iout"> Planilla Transporte</div></a>
+<a id="e0_48o" class="m0l1oout" href="http://172.18.145.62/JumboBOCentral/ViewInformeModPrecios" style="position: absolute; top: 113px; left: 602px; width: 180px; height: 18px; visibility: hidden; z-index: 110000;" onclick="return TMA[0].onclick(48);" onmouseout="TMA[0].onmouseout(48);" onmouseover="TMA[0].onmouseover(48);" onmousedown="TMA[0].onmousedown(48);"><div id="e0_48i" class="m0l1iout"> Modificación de Precios</div></a>
+<a id="e0_49o" class="m0l1oout" href="http://172.18.145.62/JumboBOCentral/ViewInformeProdSinStock" style="position: absolute; top: 131px; left: 602px; width: 180px; height: 18px; visibility: hidden; z-index: 110000;" onclick="return TMA[0].onclick(49);" onmouseout="TMA[0].onmouseout(49);" onmouseover="TMA[0].onmouseover(49);" onmousedown="TMA[0].onmousedown(49);"><div id="e0_49i" class="m0l1iout"> Informe Prod Sin Stock</div></a>
+<a id="e0_50o" class="m0l0oout" href="http://172.18.145.62/JumboBOCentral/Logoff?url=ViewLogonForm" style="position: absolute; top: 61px; left: 688px; width: 90px; height: 15px; visibility: visible; z-index: 10000;" onclick="return TMA[0].onclick(50);" onmouseout="TMA[0].onmouseout(50);" onmouseover="TMA[0].onmouseover(50);" onmousedown="TMA[0].onmousedown(50);"><div id="e0_50i" class="m0l0iout"> Salir</div></a>
+
+
+<table border="0" cellpadding="0" cellspacing="0" height="100%" width="780">
+	<tbody>
+		<tr>
+			<td height="78" valign="top">
+				<table align="center" bgcolor="#ffffff" border="0" cellpadding="0" cellspacing="0" height="59" width="100%">
+					<tbody>
+						<tr>
+							<td class="user" align="left" height="59" width="275"><img src="img/header2.jpg" height="60" width="275"></td>
+							<td class="user" align="left" background="img/bg-1.jpg" valign="bottom" width="505">
+								<table align="center" border="0" cellpadding="0" cellspacing="2" width="90%">
+									<tbody>
+										<tr>
+											<td>&nbsp;</td>
+										</tr>
+										<tr>
+											<td><div class="infoBL" align="right">Usuario: user user&nbsp;&nbsp;| Tue Feb 04 09:10:26 CLST 2014</div></td>
+										</tr>
+									</tbody>
+								</table>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<table style="border-top:1px solid #ABABAB; border-bottom:1px solid #ABABAB" align="center" bgcolor="#f1f0e9" border="0" cellpadding="0" cellspacing="0" height="19" width="100%">
+					<tbody>
+						<tr>
+							<td class="user" align="left" bgcolor="#FFFFFF"></td>
+						</tr>
+					</tbody>
+				</table>
+			</td>
+		</tr>
+		<tr height="400">
+			<td bgcolor="#FFFFFF" valign="top">
+				<div id="div_form">
+					<table border="0" cellpadding="0" cellspacing="0" height="100%" width="780">
+						<tbody>
+							<tr height="400">
+								<td bgcolor="#FFFFFF" valign="top">
+									<table class="ContentTitle" border="0" width="100%">
+										<tbody>
+											<tr>
+												<td class="HeaderTitle" height="20" width="53%">Stock Online / Resumen SemiAutom&aacute;tico</td>
+												<td align="right"><a href="ViewStockOnlineSKUForm"><img src="img/volver.gif" width="32" height="32" border="0"></a></td>
+											</tr>
+										</tbody>
+									</table>
+									<br>
+									<table border="0" cellpadding="2" cellspacing="2" width="100%">
+										<tbody>
+											<tr valign="top">
+												<td width="71%">
+													<table align="center" border="0" width="92%">
+														<tbody>
+															<tr>
+																<td>
+																	<h2 class="tab"></h2>
+																	<div id="div_ficha" align="left">
+																		<fieldset>
+																			<legend>Locales</legend>
+																				<div>
+																					<form name="form2" method="post" action="ViewStockOnlineResumenSemiautomaticoForm">
+																						<br>
+																							<label for="locales">Santiago:</label>
+																								<br>&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;
+																								<input name="local_check" value="1" type="radio" onclick="calcularDatos( '1' )" {loc_1}><font id="1">La Reina</font>
+																								<input name="local_check" value="2" type="radio" onclick="calcularDatos( '2' )" {loc_2}><font id="2">La Dehesa</font>
+																								<input name="local_check" value="4" type="radio" onclick="calcularDatos( '4' )" {loc_4}><font id="4">La Florida</font>
+																								<input name="local_check" value="5" type="radio" onclick="calcularDatos( '5' )" {loc_5}><font id="5">Dominicos</font>
+																								<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+																								<br>
+																							<label for="locales">Regiones:</label>
+																								<br>&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;
+																								<input name="local_check" value="3" type="radio" onclick="calcularDatos( '3' )" {loc_3}><font id="3">Vi&ntilde;a del Mar</font>
+																								<input name="local_check" value="6" type="radio" onclick="calcularDatos( '6' )" {loc_6}><font id="6">La Serena</font>
+																								<input name="local_check" value="7" type="radio" onclick="calcularDatos( '7' )" {loc_7}><font id="7">Temuco</font>
+																								<input name="local_check" value="8" type="radio" onclick="calcularDatos( '8' )" {loc_8}><font id="8">Puerto Montt</font>
+																								<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+																						</form>
+																				 </div>
+																		</fieldset>	
+																	</div>
+																		<div>
+																			<br>
+																				<label for="productos"></label>
+																					<div style="width:100%;align:center;">
+																						<table width="100%" align="center">
+																							<tr><td align="center"><font id="mensaje" color="ff0000"><h1>{ejecutaSemiautomatico}</h1></font></td></tr>
+																							<tr><td align="center"><span id="span_esperar_validacion" Style="Display:none;"></span></td></tr>
+																						</table>															
+																					</div>
+																					<fieldset id="resumen" style="width: 70%; margin: 0 auto; display:{resumen};">
+																						<legend>Resumen</legend>
+																							<br>
+																							<table width="50%" align="center" style="border: 1px solid #434D67; cellpadding="0" cellspacing="0"> 
+																								<tr>
+																									<th style="border-top-style: 1px solid #434D67; border-bottom: 1px solid #434D67;" height="20" valign="bottom" align="left">&nbsp;&nbsp;Publicados Con Stock</th>																	
+																									<td style="border-top-style: 1px solid #434D67; border-bottom: 1px solid #434D67; border-left: 1px solid #434D67; border-right-style: 1px solid #434D67;" valign="bottom" align="right">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{publicadosConStock}</td>
+																									<td style="border-top-style: 1px solid #434D67; border-bottom: 1px solid #434D67; border-left: 1px solid #434D67; border-right-style: 1px solid #434D67;" valign="bottom" align="right"><b>{cambioConStock}</b></td>
+																								</tr>
+																								<tr>
+																									<th style="border-bottom: 1px solid #434D67;" height="20" valign="bottom" align="left">&nbsp;&nbsp;Publicados Sin Stock</th>																	
+																									<td style="border-bottom: 1px solid #434D67; border-left: 1px solid #434D67; border-right-style: 1px solid #434D67;" valign="bottom" align="right">&nbsp;&nbsp;{publicadosSinStock}</td>
+																									<td style="border-bottom: 1px solid #434D67; border-left: 1px solid #434D67; border-right-style: 1px solid #434D67;" valign="bottom" align="right"><b>{cambioSinStock}</b></td>
+																								</tr>
+																								<tr>
+																									<th style="border-bottom: 1px solid #434D67;" height="20" valign="bottom" align="left">&nbsp;&nbsp;Despublicados</th>																	
+																									<td style="border-left: 1px solid #434D67" valign="bottom" align="right" colspan="2">&nbsp;&nbsp;{despublicados}</td>
+																								</tr>
+																								<tr>
+																									<th style="border-right-style: 1px solid #434D67;" height="20" valign="bottom" align="left">&nbsp;&nbsp;Total Maestra</th>																	
+																									<td style="border-left: 1px solid #434D67" valign="bottom" align="right" colspan="2">&nbsp;&nbsp;<b>{maestra}</b></td>
+																								</tr>
+																							</table>
+																							<br>
+																					</fieldset>
+																		</div>
+																</td>
+															</tr>
+															<tr>
+																<td id="btnEjecutaDetalle" height="40" align="center" style="display:{btnEjecutaDetalle}">
+																	<input id="ejecutar" onclick="ejecutar();" name="ejecutar" value="Ejecutar" type="button">&nbsp;&nbsp;
+																	<input id="verDetalle" onclick="javascript:verDetalle();" name="verDetalle" value="Ver Detalle" type="button">
+																</td>															
+															</tr>
+														</tbody>
+													</table>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<table style="border-top:1px solid #ABABAB; border-bottom:1px solid #ABABAB" align="center" bgcolor="#f1f0e9" border="0" cellpadding="0" cellspacing="0" height="19" width="100%">
+					<tbody>
+						<tr>
+							<td class="infoBL" align="center" bgcolor="#67b01a"><div align="center">Back Office Central - Jumbo.cl</div></td>
+						</tr>
+					</tbody>
+				</table>
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+</body>
+</html>

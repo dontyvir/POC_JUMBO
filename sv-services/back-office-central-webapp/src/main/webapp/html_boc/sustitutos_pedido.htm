@@ -1,0 +1,42 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+	<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+	<META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+	<META HTTP-EQUIV="EXPIRES" CONTENT="Mon, 22 Jul 2002 11:12:01 GMT">
+	<title>Jumbo.cl Back Office Central</title>
+</head>
+
+<body>
+		<FORM id="f2">
+		<table border="1">
+			<tr>
+				<th>Producto</th> <th>descripción sustituto</th> <th>cant_pick</th> <th>precio</th> <th>cbarra</th> 
+			</tr>
+			<!-- BEGIN DYNAMIC: DETALLE -->
+			<tr>
+				<td>{descripcion_producto}</td>
+				<td>{descripcion}</td>
+				<td align="right">{cantidad}</td>		
+				<td align="right">{precio}</td>
+				<!-- BEGIN DYNAMIC: BARRA_EDIT -->
+				<td>
+					<input type="hidden" id='descripcion_{detalle_id}' value= '{descripcion}'/>
+					<input type="hidden" id='local_{detalle_id}' value= '{local_id}'/>
+					<input id='text_{detalle_id}' type="text" value="{barra}">
+				</td>
+				<td><button id='barra_{detalle_id}'>buscar</button></td>
+				<!-- END DYNAMIC: BARRA_EDIT -->
+				
+				<!-- BEGIN DYNAMIC: BARRA_NOEDIT -->
+				<td>{barra}</td>
+				<td></td>
+				<!-- END DYNAMIC: BARRA_NOEDIT -->
+			</tr>
+			<!-- END DYNAMIC: DETALLE -->
+		</table>
+		</FORM>
+		<br /><br /><br />
+</body>
+</html>

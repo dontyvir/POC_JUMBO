@@ -1,0 +1,83 @@
+.banner_superior{
+	width:960px;
+	height:150px;
+}
+.arriba_2011_b{
+	float:right;
+	width:600px;
+	height:40px;
+	padding-left: 10px;
+	text-align: right;
+}
+.logo_jumbo_2011{
+	float:left;
+	width:150px;
+	height:111px;
+	padding-top: 10px;
+}
+.necesitas_ayuda_num{
+	text-align: right;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	height: 20px;
+	color: #666;
+	width: 500px;
+	float: right;
+	padding-top: 50px;
+	padding-right: 30px;
+}
+.franja_verde{
+	width:960px;
+	height:50px;
+	float: left;
+	font-weight: bold;
+	margin-top: 5px;
+	text-align: left;
+
+}
+.bt_continuar{
+	width:790px;
+	float:left;
+	height:30px;
+	padding-top: 10px;
+	padding-left: 60px;
+}
+
+.contenedor_2012_flujo{
+	float: left;
+	width: 960px;
+	margin-bottom: 10px;
+}
+.contenedor_2012{
+	float: left;
+	width: 852px;
+	text-align: center;
+	height:auto;
+	padding-left: 50px;
+	font-weight: normal;
+}
+.titulo_principal{
+	float: left;
+	border-bottom: 1px dashed #CCC;
+	width: 850px;
+	padding-bottom: 5px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 16px;
+	color: #1FA22E;
+	font-weight: bold;
+	padding-top: 5px;
+	text-align: left;
+}
+.info_clave{
+	border-top:1px dashed #CCC;
+	float: left;
+	width: 850px;
+	padding-bottom: 5px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #666;
+	font-weight: lighter;
+	padding-top: 10px;
+	text-align: left;
+	margin-top: 5px;
+}

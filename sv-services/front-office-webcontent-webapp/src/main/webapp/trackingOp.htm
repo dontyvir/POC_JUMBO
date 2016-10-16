@@ -1,0 +1,245 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>Jumbo.cl - Compra por Internet y retira en tienda</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<meta name="description" content="Sitio online de la cadena de supermercados e hipermercados Jumbo. Venta online de productos" />
+	<meta name="keywords" content="Jumbo, Supermercado, supermercado, supermercado online, Mas Jumbo, Hipermercado, productos, comida, abastecimiento, puntos mas, Cencosud, Almacenes Paris, Paris, Santa Isabel, Easy, Circulo mas, organicos, vinos, carnes, frutas, verduras, lacteos, pescados, mariscos, abarrotes, mercaderia a domicilio, marcas propias jumbo, locales, ofertas, promociones, Servicios, Rincon Jumbo, Visitas Guiadas, Servicios Especiales, Jumbo Va, Seguridad, Venta Empresas, recetas, consejos utiles, 5 es vida, venta empresas, gift card, cajas de regalo, catalogo online de productos, compra online, jumbo mas, jumbo blog" />
+	<meta name="robots" content="index, follow" />
+	<meta http-equiv="CACHE-CONTROL" content="NO-CACHE" />
+	<meta http-equiv="PRAGMA" content="NO-CACHE" />
+	<meta http-equiv="EXPIRES" content="Mon, 22 Jul 2002 11:12:01 GMT" />
+	<meta http-equiv="X-UA-Compatible" content="IE=8" />
+	<link rel="shortcut icon" href="/FO_IMGS/img/favicon.ico" />
+	<meta name="Jumbo" content="Jumbo: Cadena de Hipermercados de Chile y Argentina, cuya misi�n es satisfacer a sus clientes con la mejor propuesta comercial del mercado. Para ello sus  pilares son: Personal amable y profesional; Excelente servicio; Amplio horario de atenci�n; La m�s amplia variedad y surtido; Locales modernos c�modos y acogedores; Inmejorables precios" />
+
+	<!--CSS-->
+	<link href="/FO_WebContent/css/estilostextos.css" rel="stylesheet" type="text/css" />
+	<link href="/FO_WebContent/css/bienvenida.css" rel="stylesheet" type="text/css" />
+	<link href="/FO_WebContent/css/simple.css" rel="stylesheet" type="text/css" />
+	<link href="/FO_WebContent/css/listas.css" rel="stylesheet" type="text/css" />
+	<link href="/FO_WebContent/css/footer_standar_ie.css" rel="stylesheet" type="text/css" />
+	
+	<script type="text/javascript" src="/FO_WebContent/js/flashobject.js"></script>
+	<script type="text/javascript" src="/FO_WebContent/js/jquery.min.js"></script>
+	<script type="text/javascript" src="/FO_WebContent/js/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="/FO_WebContent/js/trackingOp.js"></script>
+	<script type="text/javascript" src="/FO_WebContent/js/pasos.js"></script>
+	<script type="text/javascript" src="//libs.coremetrics.com/eluminate.js"></script>
+	<script type="text/javascript" src="js/CencoCoremetricsTags.js"></script>
+</head>
+<body onload="init();">
+<div id="contenedor">
+	<div class="menu_superior_flujo_2012">
+	  <div class="logo_jumbo_2011" style="height:111px;"><a href="http://www.jumbo.cl/FO/LogonForm" target="_self"><img src="/FO_IMGS/images/header/logo_wht_bg.jpg" width="150" height="111" border="0" /></a></div>
+	  <div class="menu_arriba_2011">
+	    <div class="linea_menu_arriba_2011">
+	      <div class="menu_arriba_necesitas_ayuda"><a href="/FO_WebContent/preguntas.html" target="_blank">Preguntas Frecuentes</a></div>
+	      <div class="menu_arriba_necesitas_ayuda">Necesitas Ayuda? <span style="color:#1FA22E"> 600 400 3000</span></div>
+	    </div>
+	    <div class="linea_menu_arriba_2011">
+	      <div class="menu_arriba_cerrar_sesion"><a href="Logoff">Cerrar Sesi&oacute;n</a></div>
+	      <div class="menu_arriba_nombre_cliente">{nombre_cliente}</div>
+	    </div>
+	  </div>
+		<div class="menu_links_jumbo_2011">
+			<ul id="menunew">
+				<li class="micuenta"><a id="opcMiCuenta" href="UltComprasForm?opcion=1">Mi Cuenta</a></li>
+				<li class="mislistas"><a id="opcMisListas" href="UltComprasForm?opcion=2">Mis Listas</a></li>
+			  <li class="productos"><a href="CategoryDisplay">Agregar Productos</a></li><!-- javascript:ir_supermercado() -->
+				<li class="pagar"><a href="MiCarro">Pagar</a></li><!-- javascript:ir_pagar() -->
+			</ul>
+		</div>
+	</div>
+<!-- ----------------------------------------------------------------------------------------------- -->		
+  <div id="contenido">
+
+<div style="float:left; width:920px; height:auto; padding-bottom:20px;">
+			<span class="titulolectura">Estado de tu pedido</span>
+			<br /><br />
+			<span class="lectura">Jumbo.cl pone a tu disposici&oacute;n un nuevo gran servicio; desde ahora podr&aacute;s saber en qu&eacute; etapa est&aacute; tu pedido.<br />
+			Selecciona desde el recuadro el pedido que quieres consultar.<br />
+			M&aacute;s abajo se desplegar&aacute;  la gr&aacute;fica con la informaci&oacute;n.</span>
+    </div>
+
+	<table width="99%" border="0" cellspacing="0" cellpadding="0" align="center">
+			<tr>
+				<td width="6" height="28" align="left"><img src="/FO_IMGS/img/estructura/paso1/tb_izq.gif" width="4" height="28" alt=""/></td>
+				<td width="100%" height="28" style="background-image: url(/FO_IMGS/img/estructura/paso1/fn_tb.gif)" class="tit_listas">
+
+					<table width="100%" border="0" cellpadding="0" cellspacing="0">
+						<tr>
+							<th width="20%" class="tabla_blanco">N&deg; Pedido</th>
+							<th width="20%" class="tabla_blanco">Fecha de la compra</th>
+							<th width="20%" class="tabla_blanco">Fecha de la entrega</th>
+							<th width="20%" class="tabla_blanco">Estado</th>
+							<th width="20%" class="tabla_blanco">Ver Descripci&oacute;n</th>
+						</tr>
+					</table>
+
+				</td>
+				<td width="4" height="28" align="right"><img src="/FO_IMGS/img/estructura/paso1/tb_der.gif" width="4" height="28" alt=""/></td>
+			</tr>
+			<tr>
+				<td colspan="3">
+
+					<table width="100%" border="0" cellpadding="0" cellspacing="0" class="tablaTracking">
+						<!-- BEGIN DYNAMIC: OP_TRACKING -->
+						<tr>
+							<td width="20%" class="celda_p1_izq">&nbsp;&nbsp;{id_op}</td>
+							<td width="20%" class="celda_p1" align="center">{fecha_compra}</td>
+							<td width="20%" class="celda_p1" align="center">{fecha_entrega}</td>
+							<td width="20%" class="celda_p1">&nbsp;&nbsp;<font color="{color}">{estado}</font></td>
+							<td width="20%" class="celda_p1" align="center">&nbsp;<a href="#" onclick='javascript:filaSelect("{estado}","{id_op}");'>{img}</a>&nbsp;</td>
+						</tr>
+						<!-- END DYNAMIC: OP_TRACKING -->
+					</table>
+				</td>
+			</tr>
+			<tr>
+				<td width="6" height="7"><img src="/FO_IMGS/img/estructura/paso1/tb_izq_ab.gif" width="4" height="7" alt=""/></td>
+				<td height="7" style="background: url(/FO_IMGS/img/estructura/paso1/fn_tb_ab.gif);"></td>
+				<td width="54" height="7"><img src="/FO_IMGS/img/estructura/paso1/tb_der_ab.gif" width="4" height="7" alt=""/></td>
+			</tr>
+		</table>
+		<div style="float:left; width:830px; height:auto; padding-left: 100px; padding-bottom:15px; padding-top:20px;">
+	  <div style="padding-bottom:20px;">
+      	<!-- BEGIN DYNAMIC: ESTADO_PEDIDO -->
+      	<p>Tu pedido N&deg;<b><span id="nombre_lista"></span></b>&nbsp;se encuentra: <b><span id="estado"></span></b></p>
+        <!-- END DYNAMIC: ESTADO_PEDIDO -->	
+      	<!-- BEGIN DYNAMIC: TRACKING_VACIO -->
+      	<p>{tracking_vacio}</p>
+      	<!-- END DYNAMIC: TRACKING_VACIO -->
+      </div>
+    <div id="jumbito"><img id="img_jumbito" src="/FO_IMGS/img/estructura/tracking_op/jumbito.gif"/></div>
+	<div id="solapas">
+      <div class="solapa1" id="solapa1"><img src="/FO_IMGS/img/estructura/tracking_op/ingresado.gif"/></div>
+      <div class="solapa2" id="solapa2"><img src="/FO_IMGS/img/estructura/tracking_op/validado.gif"/></div>
+      <div class="solapa3" id="solapa3"><img src="/FO_IMGS/img/estructura/tracking_op/picking.gif"/></div>
+      <div class="solapa4" id="solapa4"><img src="/FO_IMGS/img/estructura/tracking_op/bodega.gif"/></div>
+      <div class="solapa5" id="solapa5"><img src="/FO_IMGS/img/estructura/tracking_op/camino.gif"/></div>
+      <div class="solapa6" id="solapa6"><img src="/FO_IMGS/img/estructura/tracking_op/terminado.gif"/></div>
+    </div>
+
+    <div id="line"><img src="/FO_IMGS/img/estructura/tracking_op/linea.gif" /></div>
+
+    <div class="descripciones_todas">
+      <div class="descripciones"><strong>Ingresado</strong> <br />
+        Tu pedido ya ingres&oacute; a nuestro sistema y estamos validando tus
+        datos personales y de medio de pago.</div>
+      <div class="descripciones"> <strong>Validado</strong><br />
+        Los datos de tu pedido han sido verificados exitosamente. <br />
+        <br />
+        Nota: Nuestras ejecutivas nunca te pedir&aacute;n datos personales.<br />
+        S&oacute;lo corroborar&aacute;n los que ya tienen. </div>
+      <div class="descripciones"><strong>En Picking </strong><br />
+        Los productos de tu pedido est&aacute;n siendo recolectados por nuestros
+        agentes.<br/>
+        Una vez que ingresaste a este estado, no podr&aacute;s pedir cambios en
+        tu pedido. </div>
+      <div class="descripciones"><strong>En Bodega</strong><br />
+        Tu pedido est&aacute; listo.<br />
+        Se encuentra almacenado con los m&aacute;s altos est&aacute;ndares de
+        higiene y aquellos productos que lo ameriten se encuentran en c&aacute;maras
+        especiales de refrigeraci&oacute;n.</div>
+      <div class="descripciones"><strong>En Camino</strong> <br />
+        Tu pedido va en nuestros camiones hacia la direcci&oacute;n de despacho.<br />
+        Nuestros camiones cuentan con sistemas de refrigeraci&oacute;n que garantizan
+        el buen estado de tus productos.</div>
+      <div class="descripciones"><strong>Finalizado</strong><br />
+        Tu pedido ha sido entregado exitosamente.</div>
+    </div>
+
+      <a href="/FO/CategoryDisplay"><img src="/FO_IMGS/img/estructura/bt-volver.gif" alt="Volver" name="bt_inicio" border="0" id="bt_inicio" /></a>
+      <!--dcadiz 03082012 se dirige volver al category display, generaba error direcionamiento anterior-->
+    </div>
+</div>
+<!-- BEGIN DYNAMIC: ESTADO_PEDIDO -->
+<input type="hidden" name="id_op_txt" id="id_op_txt" value="{id_op}" />
+<input type="hidden" name="estado_txt" id="estado_txt" value="{estado}" />
+<!-- END DYNAMIC: ESTADO_PEDIDO -->
+
+<!-- Footer -->
+
+<div style="background-color: #EEE; clear: both; color: #666; float: none; font-family: Arial,Helvetica,sans-serif; font-size: 11px; height: 180px; margin-left: auto; margin-right: auto; margin-top: 10px; padding-left: 20px; padding-top: 10px;">
+
+    <div style="font-family: Arial, Helvetica, sans-serif;font-size: 11px;color: #666; float: left; width: 170px; height: 170px; border-right: 1px dashed #CCC;">
+	    <div class="fila_footer_2011"><strong>Nuestra Empresa</strong></div>
+	    <div class="fila_footer_2011"><a href="http://www.cencosud.cl/" title="Cencosud" target="_blank">Cencosud</a></div>
+        <div class="fila_footer_2011"><a href="http://www.jumbo.cl/supermercado/locales/index.html" title="Locales Jumbo" target="_blank">Locales Jumbo</a></div>
+        <div class="fila_footer_2011"><a href="http://www.puntoscencosud.cl" title="Puntos Cencosud" target="_blank">Puntos Cencosud</a></div>
+	    <div class="fila_footer_2011"><a href="http://www.tarjetamas.cl/TarjetaMasWEB/inicio.do" title="Tarjeta Mas y Cencosud" target="_blank">Tarjeta M&aacute;s y Cencosud</a></div>
+	    <div class="fila_footer_2011"><a href="https://www.segurosparis.cl/vseg-paris/index.jsp" title="Seguros Cencosud" target="_blank">Seguros Cencosud</a></div>
+	    <div class="fila_footer_2011"><a href="http://cencosud.trabajando.com" title="Trabaja en Jumbo" target="_blank">Trabaja en Jumbo</a></div>
+        <div class="fila_footer_2011"><a href="http://www.jumbo.cl/supermercado/contactenos/informacion_proveedores.html" title="Proveedores" target="_blank">Proveedores</a></div>
+    </div>
+    
+    <div style="font-family: Arial, Helvetica, sans-serif;font-size: 11px;color: #666; float: left; width: 170px; height: 170px; border-right: 1px dashed #CCC;">
+	    <div class="fila_footer_2011"><strong> Jumbo</strong></div>
+	    <div class="fila_footer_2011"><a href="http://www.jumbo.cl/supermercado/compromisos_jumbo/index.html" title="Compromisos" target="_blank">Compromisos</a></div>
+	    <div class="fila_footer_2011"><a href="http://www.jumbo.cl/supermercado/catalogos/index.html" title="Cat&aacute;logos" target="_blank">Cat&aacute;logos</a></div>
+	    <div class="fila_footer_2011"><a href="http://www.jumbo.cl/supermercado/mundosjumbo/index.html" title="Mundos Jumbo" target="_blank">Mundos Jumbo</a></div>
+	    <div class="fila_footer_2011"><a href="http://www.productojumbo.cl/" title="Productos Jumbo" target="_blank">Productos Jumbo</a></div>
+<!--FVR     <div class="fila_footer_2011"><a href="http://www.jumbo.cl/supermercado/productos_del_mundo/index.html" title="Productos del mundo" target="_blank">Productos del Mundo</a></div>-->
+        <div class="fila_footer_2011"><a href="http://www.jumbo.cl/supermercado/novedades/index.html" title="Novedades" target="_blank">Novedades</a></div>
+        <div class="fila_footer_2011"><a href="http://www.jumbo.cl/supermercado/familia_jumbo/index.html" title="Familia Jumbo" target="_blank">Familia Jumbo</a></div>
+        <div class="fila_footer_2011"><a href="http://www.ventaempresascencosud.cl" title="Venta Empresas" target="_blank">Venta Empresas</a></div>
+	</div>
+      
+	<div style="font-family: Arial, Helvetica, sans-serif;font-size: 11px;color: #666; float: left; width: 170px; height: 170px; border-right: 1px dashed #CCC;">
+	    <div class="fila_footer_2011"><strong>Nuestros Servicios</strong></div>
+	    <div class="fila_footer_2011"><a href="/FO_WebContent/preguntas.html" title="Recetas Jumbo Blog" target="_blank">Preguntas Frecuentes</a></div>
+	    <div class="fila_footer_2011"><a href="http://www.jumbo.cl/supermercado/seguridad_y_privacidad/index.html" title="Seguridad y privacidad" target="_blank">Seguridad y Privacidad</a></div>
+	    <div class="fila_footer_2011"><a href="/FO_WebContent/preguntas.html#7" title="Formas de Pago" target="_blank">Formas de Pago</a></div>
+	    <div class="fila_footer_2011"><a href="/FO_WebContent/preguntas.html#5" title="Zonas de coberturas" target="_blank">Zonas de Cobertura</a></div>
+        <div class="fila_footer_2011"><a href="/FO_WebContent/preguntas.html#13" title="Pol&iacute;ticas de Precio" target="_blank">Pol&iacute;ticas de Precio</a></div>
+                <div class="fila_footer_2011"><a href="/FO_WebContent/terminos.html" title="T&eacute;rminos y Condiciones" target="_blank">T&eacute;rminos y Condiciones</a></div>
+        <div class="fila_footer_2011"><a href="http://www.giftcard.cl/" title="Consultas Gift Card" target="_blank">Consultas Gift Card</a></div>
+        <div class="fila_footer_2011"><a href="http://litev2.custodium.com/PortalBoleta/Boleta.do" title="Consulta tu Boleta" target="_blank">Consulta tu Boleta</a></div>
+	</div>
+    
+    <div style="font-family: Arial, Helvetica, sans-serif;font-size: 11px;color: #666; float: left; width: 170px; height: 170px; border-right: 1px dashed #CCC;">
+    	<div class="fila_footer_2011"><strong>Contacto</strong></div>
+	    <div class="fila_footer_2011"><a href="http://www.jumbo.cl/supermercado/contactenos/index.html" title="Cat�logos" target="_blank">Escr&iacute;benos</a></div>
+	    <div class="fila_footer_2011"><a href="http://www.jumbo.cl/supermercado/telefonos/index.html" title="Familia Jumbo" target="_blank">Tel&eacute;fonos</a></div>
+	    <div class="fila_footer_2011"><a href="http://www.jumbo.cl/supermercado/ganadores/index.html" title="Bases de Concursos" target="_blank">Concursos</a></div>
+		<div class="fila_footer_2011"><a href="http://www.jumbo.cl/supermercado/telefonos/index.html" title="Fono compras" target="_blank">Fono Compras<br/>600 400 3000</a></div>
+    </div>
+    
+    <div style="font-family: Arial, Helvetica, sans-serif;font-size: 11px;color: #666; float: left; width: 230px; height: 170px;">
+      <div class="fila_footer_2011" style="width:240px !important; padding-left:14px;">
+       			<script>
+					function popupBalance(){
+						littleWindow = window.open("https://www.puntoscencosud.cl/portal/faces/consultar-puntos", "littleWindow", "location=no,width=390,height=350,scrollbars=no,resizable=NO,titlebar=no");
+					}
+				</script>
+       		 	<a href="javascript:popupBalance();" onclick="_gaq.push(['_trackEvent', 'trackingOP', 'Footer', 'Consulta_Puntos_Cencosud']);" title="Consulta aquí tus Puntos Cencosud"><img src="http://www.jumbo.cl/FO_IMGS/img/btn_consulta_puntos_cencosud.png" alt="Consulta aqu&iacute; tus Puntos Cencosud" border="0" /></a>
+      		</div>
+            <div class="fila_footer_2011" id="canalRedSocial" style="margin-top:40px; padding-left: 8px; text-align:right;width: 230px;">S&iacute;guenos en
+     		<a href="https://www.facebook.com/jumbochile?fref=ts" target="_blank"><img src="http://www.jumbo.cl/FO_IMGS/img/facebook.jpg" /></a>
+      		<a href="https://twitter.com/jumbochile" target="_blank"><img src="http://www.jumbo.cl/FO_IMGS/img/twitter.jpg" /></a>
+      		<a href="http://www.youtube.com/user/SupermercadoJumbo" target="_blank"><img src="http://www.jumbo.cl/FO_IMGS/img/youtube.jpg" /></a>
+		</div>
+        
+		<div class="fila_footer_2011" style=" width:200px; padding-top:15px; height:60px;">
+			
+		</div>
+    </div>
+	<p>&nbsp;</p>
+    </div>
+<!-- // fin Footer -->
+  </div>
+
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-1529321-1");
+pageTracker._trackPageview('/FO/TrackingOP');
+</script>
+<script type="text/javascript">
+	coremetricsTagView(getPageName(),'');
+</script>
+</body>
+</html>

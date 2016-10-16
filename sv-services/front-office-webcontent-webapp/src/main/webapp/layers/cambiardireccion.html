@@ -1,0 +1,101 @@
+<!-- BEGIN DYNAMIC: MOSTRAR_DESPACHO -->
+<table width="283" border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td height="124" valign="top" background="/FO_IMGS/img/estructura/layers/bordeIzq.gif"></td>
+		<td width="267" valign="top" bgcolor="#FFFFFF">
+			<table width="97%" border="0" align="center" cellpadding="0" cellspacing="0">
+				<tr>
+					<td valign="top" bgcolor="#FFFFFF" align="center">
+						<p>
+							<span class="lectura">Elige la direcci&oacute;n de despacho<br/></span>
+						</p>
+						<p>
+							<select name="cmbDireccionDespacho" id="cmbDireccionDespacho" class="campoblanco">
+								<!-- BEGIN DYNAMIC: dir_despachos -->
+								<option value="{dir_valor}--{dir_local}--{dir_zona}" {selectdirec}>{dir_opcion}</option>
+								<!-- END DYNAMIC: dir_despachos -->
+							</select>							
+						</p>
+						<p>
+							<table width="80%" border="0" align="center" cellpadding="0" cellspacing="0">
+								<tr>
+									<td width="45%">
+										<a href="javascript:modificarFormaDespacho('{nueva_forma_despacho}');" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('continuar1','','/FO_IMGS/img/estructura/bt_continuarB.gif',1)">
+											<img src="/FO_IMGS/img/estructura/bt_continuar.gif" name="continuar1" width="90" height="30" border="0" id="continuar1" onclick="top.MM_showHideLayers('#','','hide')" />
+										</a>
+									</td>
+									<td width="55%">
+										<div align="right">
+											<a href="javascript:hideModificarDireccionLayer();reestableceChecks();" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image10','','/FO_IMGS/img/estructura/bt_cancelarnaranjob.gif',1)">
+												<img src="/FO_IMGS/img/estructura/bt_cancelarnaranjo.gif" name="Image10" width="90" height="30" border="0" id="Image10" />
+											</a>
+										</div>
+									</td>
+								</tr>
+							</table>
+						</p>
+						<div align="center">
+							<a href="AddressForm" onclick="javascript:top.urchinTracker('FO/layers/cambio_direccion');" target="_top" class="NoDisponible"><u>&iquest;Quieres agregar una nueva direcci&oacute;n?</u></a>
+						</div>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td width="8" height="124" valign="top" background="/FO_IMGS/img/estructura/layers/bordeDer.gif"></td>
+	</tr>
+	<tr>
+		<td width="8" height="7"><img src="/FO_IMGS/img/estructura/layers/esquinaInfIzq.gif" width="8" height="7" /></td>
+		<td height="7" background="/FO_IMGS/img/estructura/layers/abajo.gif"><img src="/FO_IMGS/img/estructura/layers/abajo.gif" width="1" height="7" /></td>
+		<td width="8" height="7"><img src="/FO_IMGS/img/estructura/layers/esquinaInfDer.gif" width="8" height="7" /></td>
+	</tr>
+</table>
+<!-- END DYNAMIC: MOSTRAR_DESPACHO -->
+<!-- BEGIN DYNAMIC: MOSTRAR_RETIRO -->
+<table width="283" border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td height="124" valign="top" background="/FO_IMGS/img/estructura/layers/bordeIzq.gif"></td>
+		<td width="267" valign="top" bgcolor="#FFFFFF">
+			<table width="97%" border="0" align="center" cellpadding="0" cellspacing="0">
+				<tr>
+					<td valign="top" bgcolor="#FFFFFF" align="center">
+						<p> <span class="lectura">Elige el local para retirar<br/>
+              </span>
+						</p>
+						<p>
+							<select name="cmbDireccionDespacho" id="cmbDireccionDespacho" class="campoblanco">
+								<!-- BEGIN DYNAMIC: dir_despachos -->
+								<option value="{dir_valor}--{dir_local}--{dir_zona}" {selectdirec}>{dir_opcion}</option>
+								<!-- END DYNAMIC: dir_despachos -->
+							</select>							
+						</p>
+						<p>
+							<table width="80%" border="0" align="center" cellpadding="0" cellspacing="0">
+								<tr>
+									<td width="45%">
+										<a href="javascript:modificarFormaDespacho('{nueva_forma_despacho}');" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('continuar1','','/FO_IMGS/img/estructura/bt_continuarB.gif',1)">
+											<img src="/FO_IMGS/img/estructura/bt_continuar.gif" name="continuar1" width="90" height="30" border="0" id="continuar1" onclick="top.MM_showHideLayers('#','','hide')" />
+										</a>
+									</td>
+									<td width="55%">
+										<div align="right">
+											<a href="javascript:hideModificarDireccionLayer();reestableceChecks();" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image10','','/FO_IMGS/img/estructura/bt_cancelarnaranjob.gif',1)">
+												<img src="/FO_IMGS/img/estructura/bt_cancelarnaranjo.gif" name="Image10" width="90" height="30" border="0" id="Image10" />
+											</a>
+										</div>
+									</td>
+								</tr>
+							</table>
+						</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td width="8" height="124" valign="top" background="/FO_IMGS/img/estructura/layers/bordeDer.gif"></td>
+	</tr>
+	<tr>
+		<td width="8" height="7"><img src="/FO_IMGS/img/estructura/layers/esquinaInfIzq.gif" width="8" height="7" /></td>
+		<td height="7" background="/FO_IMGS/img/estructura/layers/abajo.gif"><img src="/FO_IMGS/img/estructura/layers/abajo.gif" width="1" height="7" /></td>
+		<td width="8" height="7"><img src="/FO_IMGS/img/estructura/layers/esquinaInfDer.gif" width="8" height="7" /></td>
+	</tr>
+</table>
+<!-- END DYNAMIC: MOSTRAR_RETIRO -->

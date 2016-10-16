@@ -1,0 +1,3 @@
+respadar la tabla antigua
+
+db2 export to FO_PRODUCTOS_COMPRA.IXF of IXF select * from fodba.FO_PRODUCTOS_COMPRA

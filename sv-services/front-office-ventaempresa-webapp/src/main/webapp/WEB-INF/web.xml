@@ -1,0 +1,1563 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app id="WebApp_ID" version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+	<display-name>WebFOVE</display-name>
+	<servlet>
+		<servlet-name>log4j-init</servlet-name>
+		<servlet-class>cl.bbr.vte.log.Log4jInit</servlet-class>
+		<init-param>
+			<param-name>log4j-init-file</param-name>
+			<param-value>/WEB-INF/classes/log4j.properties</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet>
+		<description>Formulario de logon de un cliente</description>
+		<display-name>ViewLogonForm</display-name>
+		<servlet-name>ViewLogonForm</servlet-name>
+		<servlet-class>cl.bbr.vte.view.ViewLogonForm</servlet-class>
+		<init-param>
+			<description>Template para el registro de clientes</description>
+			<param-name>pag_form</param-name>
+			<param-value>login.html</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Controler para el registro de cliente</description>
+		<display-name>ViewRegisterForm</display-name>
+		<servlet-name>ViewRegisterForm</servlet-name>
+		<servlet-class>cl.bbr.vte.view.ViewRegisterForm</servlet-class>
+		<init-param>
+			<description>Template para el registro de clientes</description>
+			<param-name>pag_form</param-name>
+			<param-value>registro.html</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Controler para el menu venta empresa</description>
+		<display-name>ViewMenu</display-name>
+		<servlet-name>ViewMenu</servlet-name>
+		<servlet-class>cl.bbr.vte.view.ViewMenu</servlet-class>
+		<init-param>
+			<description>Template para el menu venta empresa</description>
+			<param-name>pag_form</param-name>
+			<param-value>home/home.html</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Controler para el listado de compradores</description>
+		<display-name>ViewListCompradores</display-name>
+		<servlet-name>ViewListCompradores</servlet-name>
+		<servlet-class>cl.bbr.vte.view.ViewListCompradores</servlet-class>
+		<init-param>
+			<description>Template para el listado de compradores</description>
+			<param-name>pag_form</param-name>
+			<param-value>adm_com/listado.html</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Controler para el formulario de compradores</description>
+		<display-name>ViewCompradoresForm</display-name>
+		<servlet-name>ViewCompradoresForm</servlet-name>
+		<servlet-class>cl.bbr.vte.view.ViewCompradoresForm</servlet-class>
+		<init-param>
+			<description>Template para el formulario de comnpradores</description>
+			<param-name>pag_form</param-name>
+			<param-value>adm_com/datos_comprador.html</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Test ORM</description>
+		<display-name>TestDB</display-name>
+		<servlet-name>TestDB</servlet-name>
+		<servlet-class>cl.bbr.vte.command.TestDB</servlet-class>
+	</servlet>
+	<servlet>
+		<description>Controler para el listado de direcciones de despacho</description>
+		<display-name>ViewListDirecDespacho</display-name>
+		<servlet-name>ViewListDirecDespacho</servlet-name>
+		<servlet-class>cl.bbr.vte.view.ViewListDirecDespacho</servlet-class>
+		<init-param>
+			<description>Template para el listado de direcciones de despacho</description>
+			<param-name>pag_form</param-name>
+			<param-value>adm_suc/listado_dir.html</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Controler para el formulario de direccion de despacho</description>
+		<display-name>ViewDirecDespachoForm</display-name>
+		<servlet-name>ViewDirecDespachoForm</servlet-name>
+		<servlet-class>cl.bbr.vte.view.ViewDirecDespachoForm</servlet-class>
+		<init-param>
+			<description>Template para el formulario de direccion de despacho</description>
+			<param-name>pag_form</param-name>
+			<param-value>adm_suc/datos_dir_despacho.html</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Logon de un comprador</description>
+		<display-name>Logon</display-name>
+		<servlet-name>Logon</servlet-name>
+		<servlet-class>cl.bbr.common.command.Logon</servlet-class>
+		<init-param>
+			<description>Redireccion OK por defecto</description>
+			<param-name>dis_ok</param-name>
+			<param-value>ViewNewCotizacionP1</param-value>
+		</init-param>
+		<init-param>
+			<description>Redireccion Error</description>
+			<param-name>dis_er</param-name>
+			<param-value>/ViewLogonForm</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Controler para el formulario que busca cotizaciones</description>
+		<display-name>ViewSearchCotizaciones</display-name>
+		<servlet-name>ViewSearchCotizaciones</servlet-name>
+		<servlet-class>cl.bbr.vte.view.ViewSearchCotizaciones</servlet-class>
+		<init-param>
+			<description>Template para el listado de cotizaciones</description>
+			<param-name>pag_form</param-name>
+			<param-value>cotizaciones/monitor.html</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Busqueda del rut de la Empresa</description>
+		<display-name>RegisterCheck</display-name>
+		<servlet-name>RegisterCheck</servlet-name>
+		<servlet-class>cl.bbr.vte.command.RegisterCheck</servlet-class>
+	</servlet>
+	<servlet>
+		<description>Envia un mail al ejecutivo</description>
+		<display-name>SendMail</display-name>
+		<servlet-name>SendMail</servlet-name>
+		<servlet-class>cl.bbr.vte.command.SendMail</servlet-class>
+		<init-param>
+			<description>Template para mail ejecutivo</description>
+			<param-name>arc_mail</param-name>
+			<param-value>mail/mailejecutivo.html</param-value>
+		</init-param>
+		<init-param>
+			<description>Template para mail cliente</description>
+			<param-name>arc_mail_cli</param-name>
+			<param-value>mail/mailcliente.html</param-value>
+		</init-param>
+		<init-param>
+			<description>Redireccion exito</description>
+			<param-name>dis_ok</param-name>
+			<param-value>mail/respmailejecutivo.html</param-value>
+		</init-param>
+		<init-param>
+			<description>Redireccion Error</description>
+			<param-name>dis_er</param-name>
+			<param-value>/ViewRegisterForm</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Logoff de un cliente</description>
+		<display-name>Logoff</display-name>
+		<servlet-name>Logoff</servlet-name>
+		<servlet-class>cl.bbr.common.command.Logoff</servlet-class>
+		<init-param>
+			<description>Redireccion OK</description>
+			<param-name>dis_ok</param-name>
+			<param-value>ViewLogonForm</param-value>
+		</init-param>
+		<init-param>
+			<description>Redireccion OK Fono</description>
+			<param-name>dis_ok_fono</param-name>
+			<param-value>ViewFonoLogonForm</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Nueva Cotizacion</description>
+		<display-name>ViewNewCotizacion</display-name>
+		<servlet-name>ViewNewCotizacion</servlet-name>
+		<servlet-class>cl.bbr.vte.view.ViewNewCotizacion</servlet-class>
+		<init-param>
+			<description>Template para la nueva cotizacion</description>
+			<param-name>pag_form</param-name>
+			<param-value>cotizaciones/direccion.html</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Monitor de pedidos</description>
+		<display-name>ViewListPedidos</display-name>
+		<servlet-name>ViewListPedidos</servlet-name>
+		<servlet-class>cl.bbr.vte.view.ViewListPedidos</servlet-class>
+		<init-param>
+			<description>Template para el monitor de pedidos</description>
+			<param-name>pag_form</param-name>
+			<param-value>pedidos/monitor.html</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Detalle de pedidos</description>
+		<display-name>ViewDetallePedido</display-name>
+		<servlet-name>ViewDetallePedido</servlet-name>
+		<servlet-class>cl.bbr.vte.view.ViewDetallePedido</servlet-class>
+		<init-param>
+			<description>Template para el detalle del pedido</description>
+			<param-name>pag_form</param-name>
+			<param-value>pedidos/confirmar.html</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Adicionar comprador</description>
+		<display-name>AddNewComprador</display-name>
+		<servlet-name>AddNewComprador</servlet-name>
+		<servlet-class>cl.bbr.vte.command.AddNewComprador</servlet-class>
+		<init-param>
+			<description>Redireccion OK por defecto</description>
+			<param-name>dis_ok</param-name>
+			<param-value>ViewListCompradores</param-value>
+		</init-param>
+		<init-param>
+			<description>Redireccion Error</description>
+			<param-name>dis_er</param-name>
+			<param-value>/ViewCompradoresForm</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Modificar comprador</description>
+		<display-name>UpdComprador</display-name>
+		<servlet-name>UpdComprador</servlet-name>
+		<servlet-class>cl.bbr.vte.command.UpdComprador</servlet-class>
+		<init-param>
+			<description>Redireccion OK por defecto</description>
+			<param-name>dis_ok</param-name>
+			<param-value>ViewListCompradores</param-value>
+		</init-param>
+		<init-param>
+			<description>Redireccion Error</description>
+			<param-name>dis_er</param-name>
+			<param-value>/ViewCompradoresForm</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Elimina comprador</description>
+		<display-name>DelComprador</display-name>
+		<servlet-name>DelComprador</servlet-name>
+		<servlet-class>cl.bbr.vte.command.DelComprador</servlet-class>
+		<init-param>
+			<description>Redireccion OK por defecto</description>
+			<param-name>dis_ok</param-name>
+			<param-value>ViewListCompradores</param-value>
+		</init-param>
+		<init-param>
+			<description>Redireccion Error</description>
+			<param-name>dis_er</param-name>
+			<param-value>/TaskError</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Elimina direccion</description>
+		<display-name>DelDireccionDesp</display-name>
+		<servlet-name>DelDireccionDesp</servlet-name>
+		<servlet-class>cl.bbr.vte.command.DelDireccionDesp</servlet-class>
+		<init-param>
+			<description>Redireccion OK por defecto</description>
+			<param-name>dis_ok</param-name>
+			<param-value>ViewListDirecDespacho</param-value>
+		</init-param>
+		<init-param>
+			<description>Redireccion Error</description>
+			<param-name>dis_er</param-name>
+			<param-value>/ViewListDirecDespacho</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Comunas de las regiones</description>
+		<display-name>ComunasList</display-name>
+		<servlet-name>ComunasList</servlet-name>
+		<servlet-class>cl.bbr.vte.command.ComunasList</servlet-class>
+	</servlet>
+	<servlet>
+		<description>Adicionar direccion</description>
+		<display-name>AddNewDireccionDesp</display-name>
+		<servlet-name>AddNewDireccionDesp</servlet-name>
+		<servlet-class>cl.bbr.vte.command.AddNewDireccionDesp</servlet-class>
+		<init-param>
+			<description>Redireccion OK por defecto</description>
+			<param-name>dis_ok</param-name>
+			<param-value>ViewListDirecDespacho</param-value>
+		</init-param>
+		<init-param>
+			<description>Redireccion Error</description>
+			<param-name>dis_er</param-name>
+			<param-value>/ViewDirecDespachoForm</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Modificar direccion de despacho</description>
+		<display-name>UpdDireccionDesp</display-name>
+		<servlet-name>UpdDireccionDesp</servlet-name>
+		<servlet-class>cl.bbr.vte.command.UpdDireccionDesp</servlet-class>
+		<init-param>
+			<description>Redireccion OK por defecto</description>
+			<param-name>dis_ok</param-name>
+			<param-value>ViewListDirecDespacho</param-value>
+		</init-param>
+		<init-param>
+			<description>Redireccion Error</description>
+			<param-name>dis_er</param-name>
+			<param-value>/ViewDirecDespachoForm</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Despliega error</description>
+		<display-name>ViewError</display-name>
+		<servlet-name>ViewError</servlet-name>
+		<servlet-class>cl.bbr.common.view.ViewError</servlet-class>
+		<init-param>
+			<description>Template</description>
+			<param-name>TplFile</param-name>
+			<param-value>err_error.html</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Controler para el listado de direcciones de facturacion</description>
+		<display-name>ViewListDirecFact</display-name>
+		<servlet-name>ViewListDirecFact</servlet-name>
+		<servlet-class>cl.bbr.vte.view.ViewListDirecFact</servlet-class>
+		<init-param>
+			<description>Template para el listado de direcciones de facturacion</description>
+			<param-name>pag_form</param-name>
+			<param-value>adm_suc/listado_dir_fact.html</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Elimina direccion de facturacion</description>
+		<display-name>DelDireccionFact</display-name>
+		<servlet-name>DelDireccionFact</servlet-name>
+		<servlet-class>cl.bbr.vte.command.DelDireccionFact</servlet-class>
+		<init-param>
+			<description>Redireccion OK por defecto</description>
+			<param-name>dis_ok</param-name>
+			<param-value>ViewListDirecFact</param-value>
+		</init-param>
+		<init-param>
+			<description>Redireccion Error</description>
+			<param-name>dis_er</param-name>
+			<param-value>/ViewDirecFactForm</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Controler para el formulario de direccion de facturacion</description>
+		<display-name>ViewDirecFactForm</display-name>
+		<servlet-name>ViewDirecFactForm</servlet-name>
+		<servlet-class>cl.bbr.vte.view.ViewDirecFactForm</servlet-class>
+		<init-param>
+			<description>Template para el formulario de direccion de facturacion</description>
+			<param-name>pag_form</param-name>
+			<param-value>adm_suc/datos_dir_facturacion.html
+			</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Adicionar direccion de facturacion</description>
+		<display-name>AddNewDireccionFact</display-name>
+		<servlet-name>AddNewDireccionFact</servlet-name>
+		<servlet-class>cl.bbr.vte.command.AddNewDireccionFact</servlet-class>
+		<init-param>
+			<description>Redireccion OK por defecto</description>
+			<param-name>dis_ok</param-name>
+			<param-value>ViewListDirecFact</param-value>
+		</init-param>
+		<init-param>
+			<description>Redireccion Error</description>
+			<param-name>dis_er</param-name>
+			<param-value>/ViewDirecFactForm</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Modificar direccion de facturacion</description>
+		<display-name>UpdDireccionFact</display-name>
+		<servlet-name>UpdDireccionFact</servlet-name>
+		<servlet-class>cl.bbr.vte.command.UpdDireccionFact</servlet-class>
+		<init-param>
+			<description>Redireccion OK por defecto</description>
+			<param-name>dis_ok</param-name>
+			<param-value>ViewListDirecFact</param-value>
+		</init-param>
+		<init-param>
+			<description>Redireccion Error</description>
+			<param-name>dis_er</param-name>
+			<param-value>/TaskError</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Controler para el listado de sucursales por comprador</description>
+		<display-name>ViewListSucCom</display-name>
+		<servlet-name>ViewListSucCom</servlet-name>
+		<servlet-class>cl.bbr.vte.view.ViewListSucCom</servlet-class>
+		<init-param>
+			<description>Template para el listado de sucursales</description>
+			<param-name>pag_form</param-name>
+			<param-value>adm_com/list_sucursales.html</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Adicionar una nueva sucursal a un comprador</description>
+		<display-name>AddNewSucCom</display-name>
+		<servlet-name>AddNewSucCom</servlet-name>
+		<servlet-class>cl.bbr.vte.command.AddNewSucCom</servlet-class>
+		<init-param>
+			<description>Redireccion OK por defecto</description>
+			<param-name>dis_ok</param-name>
+			<param-value>ViewListSucCom</param-value>
+		</init-param>
+		<init-param>
+			<description>Redireccion Error</description>
+			<param-name>dis_er</param-name>
+			<param-value>/ViewListComSuc</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Elimina la relacion sucursal comprador</description>
+		<display-name>DelSucCom</display-name>
+		<servlet-name>DelSucCom</servlet-name>
+		<servlet-class>cl.bbr.vte.command.DelSucCom</servlet-class>
+		<init-param>
+			<description>Redireccion OK por defecto</description>
+			<param-name>dis_ok</param-name>
+			<param-value>ViewListSucCom</param-value>
+		</init-param>
+		<init-param>
+			<description>Redireccion Error</description>
+			<param-name>dis_er</param-name>
+			<param-value>/TaskError</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Controler para el listado de cotizaciones</description>
+		<display-name>ViewListCotizaciones</display-name>
+		<servlet-name>ViewListCotizaciones</servlet-name>
+		<servlet-class>cl.bbr.vte.view.ViewListCotizaciones</servlet-class>
+		<init-param>
+			<description>Template para el listado de cotizaciones</description>
+			<param-name>pag_form</param-name>
+			<param-value>cotizaciones/t_cotizaciones.html</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Pagina que entrega mensaje de respuesta a la solicitud de registro</description>
+		<display-name>ViewRespSol</display-name>
+		<servlet-name>ViewRespSol</servlet-name>
+		<servlet-class>cl.bbr.vte.view.ViewRespSol</servlet-class>
+		<init-param>
+			<description>Template para la respuesta a la solicitud de registro</description>
+			<param-name>pag_form</param-name>
+			<param-value>mail/respmailejecutivo.html</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Nueva Cotizacion PASO1</description>
+		<display-name>ViewNewCotizacionP1</display-name>
+		<servlet-name>ViewNewCotizacionP1</servlet-name>
+		<servlet-class>cl.bbr.vte.view.ViewNewCotizacionP1</servlet-class>
+		<init-param>
+			<description>Template para la nueva cotizacion PASO1</description>
+			<param-name>pag_form</param-name>
+			<param-value>cotizaciones/cotizacion1.html</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Nueva Cotizacion PASO3</description>
+		<display-name>ViewNewCotizacionP3</display-name>
+		<servlet-name>ViewNewCotizacionP3</servlet-name>
+		<servlet-class>cl.bbr.vte.view.ViewNewCotizacionP3</servlet-class>
+		<init-param>
+			<description>Template para la nueva cotizacion PASO3</description>
+			<param-name>pag_form</param-name>
+			<param-value>cotizaciones/cotizacion3.html</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Paso 2 Listado de categorias</description>
+		<display-name>ViewNewCotizacionP2</display-name>
+		<servlet-name>ViewNewCotizacionP2</servlet-name>
+		<servlet-class>cl.bbr.vte.view.ViewNewCotizacionP2</servlet-class>
+		<init-param>
+			<description>Template para el listado de cotizaciones</description>
+			<param-name>pag_form</param-name>
+			<param-value>cotizaciones/cotizacion2.html</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Paso 2 Listado de productos</description>
+		<display-name>ViewListCatProductos</display-name>
+		<servlet-name>ViewListCatProductos</servlet-name>
+		<servlet-class>cl.bbr.vte.view.ViewListCatProductos</servlet-class>
+		<init-param>
+			<description>Template para el listado de productos</description>
+			<param-name>pag_form</param-name>
+			<param-value>cotizaciones/cotizacion2_frame1.htm</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Resumen de la cotizacion</description>
+		<display-name>ViewResumCotizacion</display-name>
+		<servlet-name>ViewResumCotizacion</servlet-name>
+		<servlet-class>cl.bbr.vte.view.ViewResumCotizacion</servlet-class>
+		<init-param>
+			<description>Template para el resumen de la cotizacion</description>
+			<param-name>pag_form</param-name>
+			<param-value>cotizaciones/cotizacion_resumen.html</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Ingresa un encabezado de cotizacion</description>
+		<display-name>AddNewCotizacion</display-name>
+		<servlet-name>AddNewCotizacion</servlet-name>
+		<servlet-class>cl.bbr.vte.command.AddNewCotizacion</servlet-class>
+		<init-param>
+			<description>Redireccion OK por defecto</description>
+			<param-name>dis_ok</param-name>
+			<param-value>ViewNewCotizacionP2</param-value>
+		</init-param>
+		<init-param>
+			<description>Redireccion Error</description>
+			<param-name>dis_er</param-name>
+			<param-value>/ViewNewCotizacionP1</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Ingresa un detalle de cotizacion</description>
+		<display-name>AddNewDetalle</display-name>
+		<servlet-name>AddNewDetalle</servlet-name>
+		<servlet-class>cl.bbr.vte.command.AddNewDetalle</servlet-class>
+		<init-param>
+			<description>Redireccion OK por defecto</description>
+			<param-name>dis_ok</param-name>
+			<param-value>ViewListCotProd</param-value>
+		</init-param>
+		<init-param>
+			<description>Redireccion Error</description>
+			<param-name>dis_er</param-name>
+			<param-value>ViewListCotProd</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Carro de compra</description>
+		<display-name>ViewListCotProd</display-name>
+		<servlet-name>ViewListCotProd</servlet-name>
+		<servlet-class>cl.bbr.vte.view.ViewListCotProd</servlet-class>
+		<init-param>
+			<description>Template para el carro de compra</description>
+			<param-name>pag_form</param-name>
+			<param-value>cotizaciones/cotizacion2_frame2.htm</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Elimina producto del carro de compra</description>
+		<display-name>DelProdCotizacion</display-name>
+		<servlet-name>DelProdCotizacion</servlet-name>
+		<servlet-class>cl.bbr.vte.command.DelProdCotizacion</servlet-class>
+		<init-param>
+			<description>Redireccion OK por defecto</description>
+			<param-name>dis_ok</param-name>
+			<param-value>ViewListCotProd</param-value>
+		</init-param>
+		<init-param>
+			<description>Redireccion Error</description>
+			<param-name>dis_er</param-name>
+			<param-value>/TaskError</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Modifica un producto del carro de compra</description>
+		<display-name>UpdProdCotizacion</display-name>
+		<servlet-name>UpdProdCotizacion</servlet-name>
+		<servlet-class>cl.bbr.vte.command.UpdProdCotizacion</servlet-class>
+		<init-param>
+			<description id="Description_1221083908395">Redireccion OK por defecto</description>
+			<param-name>dis_ok</param-name>
+			<param-value>ViewListCotProd</param-value>
+		</init-param>
+		<init-param>
+			<description>Redireccion Error</description>
+			<param-name>dis_er</param-name>
+			<param-value>/TaskError</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>
+			Modifica estado de la cotizacion y descripcion, precio,
+			cantidad del detalle de cotizacion
+		</description>
+		<display-name>SendCotizacion</display-name>
+		<servlet-name>SendCotizacion</servlet-name>
+		<servlet-class>cl.bbr.vte.command.SendCotizacion</servlet-class>
+		<init-param>
+			<description>Redireccion OK por defecto</description>
+			<param-name>dis_ok</param-name>
+			<param-value>ViewResumCotizacion</param-value>
+		</init-param>
+		<init-param>
+			<description>Redireccion Error</description>
+			<param-name>dis_er</param-name>
+			<param-value>ViewNewCotizacionP2</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Despliega la ficha del producto</description>
+		<display-name>ViewProductDisplay</display-name>
+		<servlet-name>ViewProductDisplay</servlet-name>
+		<servlet-class>cl.bbr.vte.view.ViewProductDisplay	</servlet-class>
+		<init-param>
+			<description>Template para la ficha del producto</description>
+			<param-name>pag_form</param-name>
+			<param-value>cotizaciones/ficha.html</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Anular Cotizacion</description>
+		<display-name>AnulaCotizacion</display-name>
+		<servlet-name>AnulaCotizacion</servlet-name>
+		<servlet-class>cl.bbr.vte.command.AnulaCotizacion</servlet-class>
+		<init-param>
+			<description>Redireccion OK por defecto</description>
+			<param-name>dis_ok</param-name>
+			<param-value>ViewResumCotizacion</param-value>
+		</init-param>
+		<init-param>
+			<description>Redireccion Error</description>
+			<param-name>dis_er</param-name>
+			<param-value>/TaskError</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Busqueda de productos</description>
+		<display-name>ViewSearchProductos</display-name>
+		<servlet-name>ViewSearchProductos</servlet-name>
+		<servlet-class>cl.bbr.vte.view.ViewSearchProductos
+		</servlet-class>
+		<init-param>
+			<description>Template para la busqueda de productos</description>
+			<param-name>pag_form</param-name>
+			<param-value>cotizaciones/busqueda.html</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Busqueda de productos por seccion</description>
+		<display-name>ViewListProductosSeccion</display-name>
+		<servlet-name>ViewListProductosSeccion</servlet-name>
+		<servlet-class>cl.bbr.vte.view.ViewListProductosSeccion</servlet-class>
+		<init-param>
+			<description>Template para la busqueda de productos</description>
+			<param-name>pag_form</param-name>
+			<param-value>cotizaciones/cotizacion2_frame1.htm</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Formulario de logon de un cliente fono compra</description>
+		<display-name>ViewFonoLogonForm</display-name>
+		<servlet-name>ViewFonoLogonForm</servlet-name>
+		<servlet-class>cl.bbr.vte.view.ViewFonoLogonForm</servlet-class>
+		<init-param>
+			<description>Template para la conexion usuario fono compra</description>
+			<param-name>pag_form</param-name>
+			<param-value>login_fono.html</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Logon del ejecutivo</description>
+		<display-name>FonoLogon</display-name>
+		<servlet-name>FonoLogon</servlet-name>
+		<servlet-class>cl.bbr.common.command.FonoLogon</servlet-class>
+		<init-param>
+			<description>Redireccion OK por defecto</description>
+			<param-name>dis_ok</param-name>
+			<param-value>ViewNewCotizacionP1</param-value>
+		</init-param>
+		<init-param>
+			<description>Redireccion Error</description>
+			<param-name>dis_er</param-name>
+			<param-value>/ViewFonoLogonForm</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Acepta cotizacion</description>
+		<display-name>AceptaCotizacion</display-name>
+		<servlet-name>AceptaCotizacion</servlet-name>
+		<servlet-class>cl.bbr.vte.command.AceptaCotizacion</servlet-class>
+		<init-param>
+			<description>Redireccion OK por defecto</description>
+			<param-name>dis_ok</param-name>
+			<param-value>ViewResumCotizacion</param-value>
+		</init-param>
+		<init-param>
+			<description>Redireccion Error</description>
+			<param-name>dis_er</param-name>
+			<param-value>/ViewResumCotizacion</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>
+			Controler para el listado de sucursales
+		</description>
+		<display-name>ViewListSucursales</display-name>
+		<servlet-name>ViewListSucursales</servlet-name>
+		<servlet-class>cl.bbr.vte.view.ViewListSucursales</servlet-class>
+		<init-param>
+			<description>Template para el listado de sucursales</description>
+			<param-name>pag_form</param-name>
+			<param-value>adm_suc/listado.html</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Elimina una sucursal</description>
+		<display-name>DelSucursal</display-name>
+		<servlet-name>DelSucursal</servlet-name>
+		<servlet-class>cl.bbr.vte.command.DelSucursal</servlet-class>
+		<init-param>
+			<description>Redireccion OK por defecto</description>
+			<param-name>dis_ok</param-name>
+			<param-value>ViewListSucursales</param-value>
+		</init-param>
+		<init-param>
+			<description>Redireccion Error</description>
+			<param-name>dis_er</param-name>
+			<param-value>/TaskError</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Controler para el formulario de sucursales</description>
+		<display-name>ViewSucursalesForm</display-name>
+		<servlet-name>ViewSucursalesForm</servlet-name>
+		<servlet-class>cl.bbr.vte.view.ViewSucursalesForm</servlet-class>
+		<init-param>
+			<description>Template para el listado de sucursales</description>
+			<param-name>pag_form</param-name>
+			<param-value>adm_suc/form_suc.html</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Ingresa una sucursal</description>
+		<display-name>AddNewSucursal</display-name>
+		<servlet-name>AddNewSucursal</servlet-name>
+		<servlet-class>cl.bbr.vte.command.AddNewSucursal</servlet-class>
+		<init-param>
+			<description>Redireccion OK por defecto</description>
+			<param-name>dis_ok</param-name>
+			<param-value>ViewListSucursales</param-value>
+		</init-param>
+		<init-param>
+			<description>Redireccion Error</description>
+			<param-name>dis_er</param-name>
+			<param-value>ViewListSucursales</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Modifica una sucursal</description>
+		<display-name>UpdSucursales</display-name>
+		<servlet-name>UpdSucursales</servlet-name>
+		<servlet-class>cl.bbr.vte.command.UpdSucursales</servlet-class>
+		<init-param>
+			<description>Redireccion OK por defecto</description>
+			<param-name>dis_ok</param-name>
+			<param-value>ViewListSucursales</param-value>
+		</init-param>
+		<init-param>
+			<description>Redireccion Error</description>
+			<param-name>dis_er</param-name>
+			<param-value>ViewListSucursales</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Controler para el listado de compradores por sucursal</description>
+		<display-name>ViewListComSuc</display-name>
+		<servlet-name>ViewListComSuc</servlet-name>
+		<servlet-class>cl.bbr.vte.view.ViewListComSuc</servlet-class>
+		<init-param>
+			<description>Template para el listado de sucursales</description>
+			<param-name>pag_form</param-name>
+			<param-value>adm_suc/listado_com.html</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Adicionar una nueva sucursal a un comprador</description>
+		<display-name>AddNewComSuc</display-name>
+		<servlet-name>AddNewComSuc</servlet-name>
+		<servlet-class>cl.bbr.vte.command.AddNewComSuc</servlet-class>
+		<init-param>
+		    <description>Redireccion OK por defecto</description>
+			<param-name>dis_ok</param-name>
+			<param-value>ViewListComSuc</param-value>
+		</init-param>
+		<init-param>
+			<description>Redireccion Error</description>
+			<param-name>dis_er</param-name>
+			<param-value>/ViewListComSuc</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Elimina un comprador de la sucursal</description>
+		<display-name>DelComSuc</display-name>
+		<servlet-name>DelComSuc</servlet-name>
+		<servlet-class>cl.bbr.vte.command.DelComSuc</servlet-class>
+		<init-param>
+			<description>Redireccion OK por defecto</description>
+			<param-name>dis_ok</param-name>
+			<param-value>ViewListComSuc</param-value>
+		</init-param>
+		<init-param>
+			<description>Redireccion Error</description>
+			<param-name>dis_er</param-name>
+			<param-value>/TaskError</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Controler para el formulario que busca cotizaciones anteriores</description>
+		<display-name>ViewSearchCotiAnt</display-name>
+		<servlet-name>ViewSearchCotiAnt</servlet-name>
+		<servlet-class>cl.bbr.vte.view.ViewSearchCotiAnt</servlet-class>
+		<init-param>
+			<description>Template para el listado de cotizaciones anteriores</description>
+			<param-name>pag_form</param-name>
+			<param-value>cotizaciones/ant1.html</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Entrega la lista de productos de una cotizacion</description>
+		<display-name>ViewProdCotiAnt</display-name>
+		<servlet-name>ViewProdCotiAnt</servlet-name>
+		<servlet-class>cl.bbr.vte.view.ViewProdCotiAnt</servlet-class>
+		<init-param>
+			<description>Template para la lista de productos de una cotizacion</description>
+			<param-name>pag_form</param-name>
+			<param-value>cotizaciones/ant2.html</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Controler para el listado empresas que administra el comprador</description>
+		<display-name>ViewListEmpCom</display-name>
+		<servlet-name>ViewListEmpCom</servlet-name>
+		<servlet-class>cl.bbr.vte.view.ViewListEmpCom</servlet-class>
+		<init-param>
+			<description>Template para el listado de empresas</description>
+			<param-name>pag_form</param-name>
+			<param-value>adm_com/list_empcom.html</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Elimina la relacion empresa comprador</description>
+		<display-name>DelEmpCom</display-name>
+		<servlet-name>DelEmpCom</servlet-name>
+		<servlet-class>cl.bbr.vte.command.DelEmpCom</servlet-class>
+		<init-param>
+			<description>Redireccion OK por defecto</description>
+			<param-name>dis_ok</param-name>
+			<param-value>ViewListEmpCom</param-value>
+		</init-param>
+		<init-param>
+			<description>Redireccion Error</description>
+			<param-name>dis_er</param-name>
+			<param-value>/TaskError</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Adicionar una nueva empresa a un comprador</description>
+		<display-name>AddNewEmpCom</display-name>
+		<servlet-name>AddNewEmpCom</servlet-name>
+		<servlet-class>cl.bbr.vte.command.AddNewEmpCom</servlet-class>
+		<init-param>
+			<description>Redireccion OK por defecto</description>
+			<param-name>dis_ok</param-name>
+			<param-value>ViewListEmpCom</param-value>
+		</init-param>
+		<init-param>
+			<description>Redireccion Error</description>
+			<param-name>dis_er</param-name>
+			<param-value>/ViewListEmpCom</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Recupera la pregunta secreta</description>
+		<display-name>ViewRespuestaForm</display-name>
+		<servlet-name>ViewRespuestaForm</servlet-name>
+		<servlet-class>cl.bbr.vte.view.ViewRespuestaForm</servlet-class>
+		<init-param>
+			<description>Template para la reuperacion de la pregunta secreta</description>
+			<param-name>pag_form</param-name>
+			<param-value>recupera_pregunta.html</param-value>
+		</init-param>
+		<init-param>
+			<description>Redireccion Error</description>
+			<param-name>dis_er</param-name>
+			<param-value>/ViewOlvidoClaveForm</param-value>
+		</init-param>	
+	</servlet>
+	<servlet>
+		<description>Comando para modificar la clave</description>
+		<display-name>ResetPassword</display-name>
+		<servlet-name>ResetPassword</servlet-name>
+		<servlet-class>cl.bbr.vte.command.ResetPassword</servlet-class>
+		<init-param>
+			<description>Template para formulario</description>
+			<param-name>pag_form</param-name>
+			<param-value>nuevaclaveExito.html</param-value>
+		</init-param>
+		<init-param>
+			<description>Template para mail</description>
+			<param-name>arc_mail</param-name>
+			<param-value>mail/mailrecuperaclave.html</param-value>
+		</init-param>
+		<init-param>
+			<description>Redireccion Error</description>
+			<param-name>dis_er</param-name>
+			<param-value>/TaskError</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Cambio de clave</description>
+		<display-name>ChangePasswordForm</display-name>
+		<servlet-name>ChangePasswordForm</servlet-name>
+		<servlet-class>cl.bbr.vte.command.ChangePasswordForm</servlet-class>
+		<init-param>
+			<description>Template para formulario</description>
+			<param-name>pag_form</param-name>
+			<param-value>cambiar_clave.html</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Cambio de clave</description>
+		<display-name>ChangePassword</display-name>
+		<servlet-name>ChangePassword</servlet-name>
+		<servlet-class>cl.bbr.vte.command.ChangePassword</servlet-class>
+		<init-param>
+			<description>Template para formulario</description>
+			<param-name>dis_ok</param-name>
+			<param-value>ViewNewCotizacionP1</param-value>
+		</init-param>
+		<init-param>
+			<description>Template para formulario</description>
+			<param-name>dis_er_para</param-name>
+			<param-value>ChangePasswordForm</param-value>
+		</init-param>
+		<init-param>
+			<description>Template para formulario</description>
+			<param-name>dis_er</param-name>
+			<param-value>ChangePasswordForm</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Formulario Olvido Clave</description>
+		<display-name>ViewOlvidoClaveForm</display-name>
+		<servlet-name>ViewOlvidoClaveForm</servlet-name>
+		<servlet-class>cl.bbr.vte.view.ViewOlvidoClaveForm</servlet-class>
+		<init-param>
+			<description>Template para el formulario Olvido Clave</description>
+			<param-name>pag_form</param-name>
+			<param-value>olvido_clave.html</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Controler para el formulario de compradores para Wizard</description>
+		<display-name>ViewWizardCompradores</display-name>
+		<servlet-name>ViewWizardCompradores</servlet-name>
+		<servlet-class>cl.bbr.vte.view.ViewWizardCompradores</servlet-class>
+		<init-param>
+			<description>Template para el formulario de compradores Wizard</description>
+			<param-name>pag_form</param-name>
+			<param-value>wizard/datos_comprador.html</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Controler para el formulario de sucursales para Wizard</description>
+		<display-name>ViewWizardSucursales</display-name>
+		<servlet-name>ViewWizardSucursales</servlet-name>
+		<servlet-class>cl.bbr.vte.view.ViewWizardSucursales</servlet-class>
+		<init-param>
+			<description>Template para el formulario de sucursales Wizard</description>
+			<param-name>pag_form</param-name>
+			<param-value>wizard/list_sucursales.html</param-value>
+		</init-param>
+		<init-param>
+			<description>Template para formulario</description>
+			<param-name>dis_er</param-name>
+			<param-value>/ViewWizardCompradores</param-value>
+		</init-param>	
+	</servlet>	
+	<servlet>
+		<description>Controler para el formulario de Empresas para Wizard</description>
+		<display-name>ViewWizardEmpresas</display-name>
+		<servlet-name>ViewWizardEmpresas</servlet-name>
+		<servlet-class>cl.bbr.vte.view.ViewWizardEmpresas</servlet-class>
+		<init-param>
+			<description>Template para el formulario de empresas Wizard</description>
+			<param-name>pag_form</param-name>
+			<param-value>wizard/list_empcom.html</param-value>
+		</init-param>
+		<init-param>
+			<description>Template para formulario</description>
+			<param-name>dis_er_com</param-name>
+			<param-value>/ViewWizardCompradores</param-value>
+		</init-param>		
+		<init-param>
+			<description>Template para formulario</description>
+			<param-name>dis_er_suc</param-name>
+			<param-value>/ViewWizardSucursales</param-value>
+		</init-param>		
+	</servlet>	
+	<servlet>
+		<description>Crea compradores a traves del WIZARD</description>
+		<display-name>SetExecWizard</display-name>
+		<servlet-name>SetExecWizard</servlet-name>
+		<servlet-class>cl.bbr.vte.command.SetExecWizard</servlet-class>
+		<init-param>
+			<description>Redireccion OK por defecto</description>
+			<param-name>dis_ok</param-name>
+			<param-value>ViewListCompradores</param-value>
+		</init-param>
+		<init-param>
+			<description>Redireccion Error</description>
+			<param-name>dis_er</param-name>
+			<param-value>/TaskError</param-value>
+		</init-param>
+	</servlet>	
+	<servlet>
+		<description>Ingresa Comprador Wizard</description>
+		<display-name>AddWizardCompradores</display-name>
+		<servlet-name>AddWizardCompradores</servlet-name>
+		<servlet-class>cl.bbr.vte.command.AddWizardCompradores</servlet-class>
+		<init-param>
+			<description>Redireccion OK por defecto</description>
+			<param-name>dis_ok</param-name>
+			<param-value>ViewWizardSucursales</param-value>
+		</init-param>		
+		<init-param>
+			<description>Redireccion en caso de error</description>
+			<param-name>dis_er</param-name>
+			<param-value>/ViewWizardCompradores</param-value>
+		</init-param>		
+	</servlet>	
+	<servlet>
+		<description>Ingresa Sucursales Wizard</description>
+		<display-name>AddWizardSucursales</display-name>
+		<servlet-name>AddWizardSucursales</servlet-name>
+		<servlet-class>cl.bbr.vte.command.AddWizardSucursales</servlet-class>
+		<init-param>
+			<description>Redireccion OK por defecto</description>
+			<param-name>dis_ok</param-name>
+			<param-value>ViewWizardSucursales</param-value>
+		</init-param>
+			<init-param>
+			<description>Redireccion en caso de error</description>
+			<param-name>dis_er</param-name>
+			<param-value>/ViewWizardSucursales</param-value>
+		</init-param>		
+	</servlet>
+	<servlet>
+		<description>Ingresa Empresas Wizard</description>
+		<display-name>AddWizardEmpresas</display-name>
+		<servlet-name>AddWizardEmpresas</servlet-name>
+		<servlet-class>cl.bbr.vte.command.AddWizardEmpresas</servlet-class>
+		<init-param>
+			<description>Redireccion OK por defecto</description>
+			<param-name>dis_ok</param-name>
+			<param-value>ViewWizardEmpresas</param-value>
+		</init-param>
+		<init-param>
+			<description>Redireccion en caso de error</description>
+			<param-name>dis_er</param-name>
+			<param-value>/ViewWizardEmpresas</param-value>
+		</init-param>		
+	</servlet>		
+	<servlet>
+		<description>Elimina una Sucursal Wizard</description>
+		<display-name>DelWizardSucursales</display-name>
+		<servlet-name>DelWizardSucursales</servlet-name>
+		<servlet-class>cl.bbr.vte.command.DelWizardSucursales</servlet-class>
+		<init-param>
+			<description>Redireccion OK por defecto</description>
+			<param-name>dis_ok</param-name>
+			<param-value>ViewWizardSucursales</param-value>
+		</init-param>	
+		<init-param>
+			<description>Redireccion en caso de error</description>
+			<param-name>dis_er</param-name>
+			<param-value>/ViewWizardSucursales</param-value>
+		</init-param>		
+	</servlet>	
+	<servlet>
+		<description>Elimina una Empresa Wizard</description>
+		<display-name>DelWizardEmpresas</display-name>
+		<servlet-name>DelWizardEmpresas</servlet-name>
+		<servlet-class>cl.bbr.vte.command.DelWizardEmpresas</servlet-class>
+		<init-param>
+			<description>Redireccion OK por defecto</description>
+			<param-name>dis_ok</param-name>
+			<param-value>ViewWizardEmpresas</param-value>
+		</init-param>
+		<init-param>
+			<description>Redireccion en caso de error</description>
+			<param-name>dis_er</param-name>
+			<param-value>/ViewWizardEmpresas</param-value>
+		</init-param>		
+	</servlet>		
+	<servlet>
+		<description>Wizard Sucursales - Formulario Sucursal</description>
+		<display-name>ViewFormSucursal</display-name>
+		<servlet-name>ViewFormSucursal</servlet-name>
+		<servlet-class>cl.bbr.vte.view.ViewFormSucursal</servlet-class>
+		<init-param>
+			<description>Template para el formulario</description>
+			<param-name>pag_form</param-name>
+			<param-value>wizard_suc/form_sucursal.html</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Wizard Sucursales - Formulario Dir Despacho</description>
+		<display-name>ViewFormDirDespacho</display-name>
+		<servlet-name>ViewFormDirDespacho</servlet-name>
+		<servlet-class>cl.bbr.vte.view.ViewFormDirDespacho</servlet-class>
+		<init-param>
+			<description>Template para el formulario</description>
+			<param-name>pag_form</param-name>
+			<param-value>wizard_suc/datos_dir_despacho.html</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Wizard Sucursales - Formulario Dir Facturacion</description>
+		<display-name>ViewFormDirFacturacion</display-name>
+		<servlet-name>ViewFormDirFacturacion</servlet-name>
+		<servlet-class>cl.bbr.vte.view.ViewFormDirFacturacion</servlet-class>
+		<init-param>
+			<description>Template para el formulario</description>
+			<param-name>pag_form</param-name>
+			<param-value>wizard_suc/datos_dir_facturacion.html</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Pedidos para pagar</description>
+		<display-name>ViewPedidosPorPagar</display-name>
+		<servlet-name>ViewPedidosPorPagar</servlet-name>
+		<servlet-class>cl.bbr.vte.view.ViewPedidosPorPagar</servlet-class>
+		<init-param>
+			<description>Template para el listado de cotizaciones</description>
+			<param-name>pag_form</param-name>
+			<param-value>cotizaciones/pedidos.html</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Detalle de pedido para pagar</description>
+		<display-name>ViewDetallePedidoPorPagar</display-name>
+		<servlet-name>ViewDetallePedidoPorPagar</servlet-name>
+		<servlet-class>cl.bbr.vte.view.ViewDetallePedidoPorPagar</servlet-class>
+		<init-param>
+			<description>Template para el listado de cotizaciones</description>
+			<param-name>pag_form</param-name>
+			<param-value>cotizaciones/detallePedido.html</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Resumen</description>
+		<display-name>OrderDisplay</display-name>
+		<servlet-name>OrderDisplay</servlet-name>
+		<servlet-class>cl.bbr.vte.command.OrderDisplay</servlet-class>
+		<init-param>
+			<description>Template para formulario</description>
+			<param-name>pag_form</param-name>
+			<param-value>cotizaciones/resumenPedido.html</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Pre ingresar una orden</description>
+		<display-name>OrderCreate</display-name>
+		<servlet-name>OrderCreate</servlet-name>
+		<servlet-class>cl.bbr.vte.command.OrderCreate</servlet-class>		
+	</servlet>
+	<servlet>
+		<description>Ingresar una orden preingresada</description>
+		<display-name>OrderComplete</display-name>
+		<servlet-name>OrderComplete</servlet-name>
+		<servlet-class>cl.bbr.vte.command.OrderComplete</servlet-class>
+		<init-param>
+			<description>Redireccion OK</description>
+			<param-name>dis_ok</param-name>
+			<param-value>OrderDisplay</param-value>
+		</init-param>
+		<init-param>
+			<description>Template para mail</description>
+			<param-name>arc_mail</param-name>
+			<param-value>mail/mailresumen.html</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Webpay Create</description>
+		<display-name>WebpayCreate</display-name>
+		<servlet-name>WebpayCreate</servlet-name>
+		<servlet-class>cl.bbr.vte.command.WebpayCreate</servlet-class>		
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>ViewLogonForm</servlet-name>
+		<url-pattern>/ViewLogonForm</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ViewRegisterForm</servlet-name>
+		<url-pattern>/ViewRegisterForm</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ViewMenu</servlet-name>
+		<url-pattern>/ViewMenu</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ViewListCompradores</servlet-name>
+		<url-pattern>/ViewListCompradores</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ViewCompradoresForm</servlet-name>
+		<url-pattern>/ViewCompradoresForm</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>TestDB</servlet-name>
+		<url-pattern>/TestDB</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ViewListDirecDespacho</servlet-name>
+		<url-pattern>/ViewListDirecDespacho</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ViewDirecDespachoForm</servlet-name>
+		<url-pattern>/ViewDirecDespachoForm</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>Logon</servlet-name>
+		<url-pattern>/Logon</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ViewSearchCotizaciones</servlet-name>
+		<url-pattern>/ViewSearchCotizaciones</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>RegisterCheck</servlet-name>
+		<url-pattern>/RegisterCheck</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>SendMail</servlet-name>
+		<url-pattern>/SendMail</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>Logoff</servlet-name>
+		<url-pattern>/Logoff</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ViewNewCotizacion</servlet-name>
+		<url-pattern>/ViewNewCotizacion</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ViewListPedidos</servlet-name>
+		<url-pattern>/ViewListPedidos</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ViewDetallePedido</servlet-name>
+		<url-pattern>/ViewDetallePedido</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>AddNewComprador</servlet-name>
+		<url-pattern>/AddNewComprador</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>UpdComprador</servlet-name>
+		<url-pattern>/UpdComprador</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>DelComprador</servlet-name>
+		<url-pattern>/DelComprador</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>DelDireccionDesp</servlet-name>
+		<url-pattern>/DelDireccionDesp</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ComunasList</servlet-name>
+		<url-pattern>/ComunasList</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>AddNewDireccionDesp</servlet-name>
+		<url-pattern>/AddNewDireccionDesp</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>UpdDireccionDesp</servlet-name>
+		<url-pattern>/UpdDireccionDesp</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ViewError</servlet-name>
+		<url-pattern>/ViewError</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ViewListDirecFact</servlet-name>
+		<url-pattern>/ViewListDirecFact</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>DelDireccionFact</servlet-name>
+		<url-pattern>/DelDireccionFact</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ViewDirecFactForm</servlet-name>
+		<url-pattern>/ViewDirecFactForm</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>AddNewDireccionFact</servlet-name>
+		<url-pattern>/AddNewDireccionFact</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>UpdDireccionFact</servlet-name>
+		<url-pattern>/UpdDireccionFact</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ViewListSucCom</servlet-name>
+		<url-pattern>/ViewListSucCom</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>AddNewSucCom</servlet-name>
+		<url-pattern>/AddNewSucCom</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>DelSucCom</servlet-name>
+		<url-pattern>/DelSucCom</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ViewListCotizaciones</servlet-name>
+		<url-pattern>/ViewListCotizaciones</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ViewRespSol</servlet-name>
+		<url-pattern>/ViewRespSol</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ViewNewCotizacionP1</servlet-name>
+		<url-pattern>/ViewNewCotizacionP1</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ViewNewCotizacionP3</servlet-name>
+		<url-pattern>/ViewNewCotizacionP3</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ViewNewCotizacionP2</servlet-name>
+		<url-pattern>/ViewNewCotizacionP2</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ViewListCatProductos</servlet-name>
+		<url-pattern>/ViewListCatProductos</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ViewResumCotizacion</servlet-name>
+		<url-pattern>/ViewResumCotizacion</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>AddNewCotizacion</servlet-name>
+		<url-pattern>/AddNewCotizacion</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>AddNewDetalle</servlet-name>
+		<url-pattern>/AddNewDetalle</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ViewListCotProd</servlet-name>
+		<url-pattern>/ViewListCotProd</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>DelProdCotizacion</servlet-name>
+		<url-pattern>/DelProdCotizacion</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>UpdProdCotizacion</servlet-name>
+		<url-pattern>/UpdProdCotizacion</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>SendCotizacion</servlet-name>
+		<url-pattern>/SendCotizacion</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ViewProductDisplay</servlet-name>
+		<url-pattern>/ViewProductDisplay</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>AnulaCotizacion</servlet-name>
+		<url-pattern>/AnulaCotizacion</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ViewSearchProductos</servlet-name>
+		<url-pattern>/ViewSearchProductos</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ViewListProductosSeccion</servlet-name>
+		<url-pattern>/ViewListProductosSeccion</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ViewFonoLogonForm</servlet-name>
+		<url-pattern>/ViewFonoLogonForm</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>FonoLogon</servlet-name>
+		<url-pattern>/FonoLogon</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>AceptaCotizacion</servlet-name>
+		<url-pattern>/AceptaCotizacion</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ViewListSucursales</servlet-name>
+		<url-pattern>/ViewListSucursales</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>DelSucursal</servlet-name>
+		<url-pattern>/DelSucursal</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ViewSucursalesForm</servlet-name>
+		<url-pattern>/ViewSucursalesForm</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>AddNewSucursal</servlet-name>
+		<url-pattern>/AddNewSucursal</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>UpdSucursales</servlet-name>
+		<url-pattern>/UpdSucursales</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ViewListComSuc</servlet-name>
+		<url-pattern>/ViewListComSuc</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>AddNewComSuc</servlet-name>
+		<url-pattern>/AddNewComSuc</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>DelComSuc</servlet-name>
+		<url-pattern>/DelComSuc</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ViewSearchCotiAnt</servlet-name>
+		<url-pattern>/ViewSearchCotiAnt</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ViewProdCotiAnt</servlet-name>
+		<url-pattern>/ViewProdCotiAnt</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ViewListEmpCom</servlet-name>
+		<url-pattern>/ViewListEmpCom</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>DelEmpCom</servlet-name>
+		<url-pattern>/DelEmpCom</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>AddNewEmpCom</servlet-name>
+		<url-pattern>/AddNewEmpCom</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ViewRespuestaForm</servlet-name>
+		<url-pattern>/ViewRespuestaForm</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ResetPassword</servlet-name>
+		<url-pattern>/ResetPassword</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ChangePasswordForm</servlet-name>
+		<url-pattern>/ChangePasswordForm</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ChangePassword</servlet-name>
+		<url-pattern>/ChangePassword</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ViewOlvidoClaveForm</servlet-name>
+		<url-pattern>/ViewOlvidoClaveForm</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ViewWizardCompradores</servlet-name>
+		<url-pattern>/ViewWizardCompradores</url-pattern>
+	</servlet-mapping>	
+	<servlet-mapping>
+		<servlet-name>ViewWizardSucursales</servlet-name>
+		<url-pattern>/ViewWizardSucursales</url-pattern>
+	</servlet-mapping>		
+	<servlet-mapping>
+		<servlet-name>ViewWizardEmpresas</servlet-name>
+		<url-pattern>/ViewWizardEmpresas</url-pattern>
+	</servlet-mapping>	
+	<servlet-mapping>
+		<servlet-name>SetExecWizard</servlet-name>
+		<url-pattern>/SetExecWizard</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>AddWizardCompradores</servlet-name>
+		<url-pattern>/AddWizardCompradores</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>AddWizardSucursales</servlet-name>
+		<url-pattern>/AddWizardSucursales</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>AddWizardEmpresas</servlet-name>
+		<url-pattern>/AddWizardEmpresas</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>DelWizardSucursales</servlet-name>
+		<url-pattern>/DelWizardSucursales</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>DelWizardEmpresas</servlet-name>
+		<url-pattern>/DelWizardEmpresas</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ViewFormSucursal</servlet-name>
+		<url-pattern>/ViewFormSucursal</url-pattern>
+	</servlet-mapping>	
+	<servlet-mapping>
+		<servlet-name>ViewFormDirDespacho</servlet-name>
+		<url-pattern>/ViewFormDirDespacho</url-pattern>
+	</servlet-mapping>	
+	<servlet-mapping>
+		<servlet-name>ViewFormDirFacturacion</servlet-name>
+		<url-pattern>/ViewFormDirFacturacion</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ViewPedidosPorPagar</servlet-name>
+		<url-pattern>/ViewPedidosPorPagar</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ViewDetallePedidoPorPagar</servlet-name>
+		<url-pattern>/ViewDetallePedidoPorPagar</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>OrderDisplay</servlet-name>
+		<url-pattern>/OrderDisplay</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>OrderCreate</servlet-name>
+		<url-pattern>/OrderCreate</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>OrderComplete</servlet-name>
+		<url-pattern>/OrderComplete</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>WebpayCreate</servlet-name>
+		<url-pattern>/WebpayCreate</url-pattern>
+	</servlet-mapping>
+	
+	<resource-ref id="ResourceRef_1184795292046">
+		<description>DB Connection DB2</description>
+		<res-ref-name>jdbc/bodbaVE</res-ref-name>
+		<res-type>javax.sql.DataSource</res-type>
+		<res-auth>Container</res-auth>
+		<res-sharing-scope>Shareable</res-sharing-scope>
+	</resource-ref>
+	
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+		<welcome-file>index.htm</welcome-file>
+		<welcome-file>index.jsp</welcome-file>
+		<welcome-file>default.html</welcome-file>
+		<welcome-file>default.htm</welcome-file>
+		<welcome-file>default.jsp</welcome-file>
+	</welcome-file-list>
+</web-app>

@@ -1,0 +1,319 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html><!-- InstanceBegin template="/Templates/barrader.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="EXPIRES" CONTENT="Mon, 22 Jul 2002 11:12:01 GMT">
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>Jumbo.cl Back Office Local</title>
+<!-- InstanceEndEditable -->
+
+<!-- InstanceBeginEditable name="head" -->
+
+
+
+
+
+<!-- InstanceEndEditable -->
+
+<link href="estilos.css" rel="stylesheet" type="text/css">
+<!--link href="../Prototipo/default.css" rel="stylesheet" type="text/css"-->
+<style type="text/css">
+<!--
+.style1 {color: #666666}
+-->
+</style>
+</head>
+
+<body>
+<link rel="stylesheet" href="menu/menu.css">
+<script language="JavaScript" src="menu/menu.js"></script>
+<script language="JavaScript" src="menu/menu_tpl.js"></script>
+<script language="JavaScript" src="menu/menu_items.js"></script>
+<table width="780" height="100%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+    <td height="78" valign="top">
+	
+	<TABLE width="100%" height=59 border=0 align="center" cellpadding="0" cellspacing="0" bgcolor="#ffffff">
+	  <TR>
+		<TD width=275 height="59" align=left class=user><img src="img/header2.jpg" width="275" height="60"></TD>
+		<TD width=505 align=left valign="bottom" background="img/bg-1.jpg" class=user><table width="90%"  border="0" align="center" cellpadding="0" cellspacing="2">
+          <tr>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td><div align="right" class="infoBL">Usuario: {hdr_nombre} | Local: {hdr_local} | {hdr_fecha} </div></td>
+          </tr>
+        </table></TD>
+	  </TR>
+	</TABLE>
+	<TABLE width="100%" height=19 border=0 align="center" cellpadding="0" cellspacing="0" bgcolor="#f1f0e9" style="border-top:1px solid #ABABAB; border-bottom:1px solid #ABABAB">
+	  <TR>
+		<TD align=left bgcolor="#FFFFFF" class=user></TD>
+		</TR>
+	</TABLE>
+
+	
+	</td>
+  </tr>
+  <tr height="400">
+    <td valign="top" bgcolor="#FFFFFF">
+      <table width="100%"  border="0" cellspacing="2" cellpadding="2">
+        <tr valign="top">
+          <td width="71%">
+		  <table border=0 width="100%" class='ContentTitle'>
+			<tr>
+			  <td height="20" class='HeaderTitle'><!-- InstanceBeginEditable name="Titulo" -->
+						B&uacute;squeda de Contenidos <!-- InstanceEndEditable --></td>
+			</tr>
+		  </table>
+		  <!-- InstanceBeginEditable name="Izquierda" --><br>
+				<table width="100%" align="center" bgcolor="#328FD4"
+					class="SectionTable">
+					<tr>
+						<td width="14%" height="30" bgcolor="#FFFFFF"
+							class="FeatureHeadTD"><strong>Buscador</strong></td>
+					</tr>
+					<tr>
+						<td height="40" bgcolor="#FFFFFF">
+						<div align="center">Buscar: <input name="textfield" type="text"
+							class="small"> en <select name="select">
+							<!-- BEGIN DYNAMIC: select_criterio_busqueda -->
+							<option selected>{criterio}</option>
+							<!-- END DYNAMIC: select_criterio_busqueda -->
+							<option selected>Novedades</option>
+							<option>Documentos</option>
+							<option>Reportes</option>
+						</select> en el mes: <select name="select">
+							<!-- BEGIN DYNAMIC: select_mes_busqueda -->
+							<option selected>{mes}</option>
+							<!-- END DYNAMIC: select_mes_busqueda -->
+							<option selected>Enero</option>
+							<option>Febrero</option>
+							<option>Marzo</option>
+						</select> y el a&ntilde;o: <select name="select">
+							<!-- BEGIN DYNAMIC: select_anio_busqueda -->
+							<option selected>{anio}</option>
+							<!-- END DYNAMIC: select_anio_busqueda -->
+							<option selected>2006</option>
+							<option>2007</option>
+							<option>2008</option>
+						</select> <input name="Button" type="button" class="cmd"
+							value="Buscar"></div>
+						</td>
+					</tr>
+				</table>
+				<br>
+				<br>
+				<table width="85%" border="0" align="center" cellpadding="0"
+					cellspacing="2">
+
+					<tr valign="top">
+						<td width="5%">{cont}</td>
+						<td width="95%">
+						<p><img src="img/Imagen4.jpg" width="40" height="34" align="left"><strong><a
+							href="contenido.htm">{titulo}</a></strong><br>
+						{fecha}<br>
+						{contenido}</p>
+						</td>
+					</tr>
+
+					<tr valign="top">
+						<td width="5%">1.</td>
+						<td width="95%">
+						<p><img src="img/Imagen4.jpg" width="40" height="34" align="left"><strong><a
+							href="contenido.htm">Nuevo pack Carrete</a></strong><br>
+						05-12-2005<br>
+						Disponible una nueva promoci&oacute;n en todos los Pronto Urbano
+						con venta de alcohol...</p>
+						</td>
+					</tr>
+					<tr valign="top">
+						<td>2.</td>
+						<td>
+						<p><img src="img/Imagen5.jpg" width="40" height="34" align="left"><strong><a
+							href="contenido.htm">Nuevo Servicio</a></strong><br>
+						08-12-2005<br>
+						Se ha habilitado servicio Wi-Fi en los principales Pronto
+						Carretera de Arica a Punta Arenas...</p>
+						</td>
+					</tr>
+					<tr valign="top">
+						<td>3.</td>
+						<td width="95%">
+						<p><img src="img/Imagen4.jpg" width="40" height="34" align="left"><strong><a
+							href="contenido.htm">Nuevo pack Carrete</a></strong><br>
+						05-12-2005<br>
+						Disponible una nueva promoci&oacute;n en todos los Pronto Urbano
+						con venta de alcohol...</p>
+						</td>
+					</tr>
+					<tr valign="top">
+						<td>4.</td>
+						<td width="95%">
+						<p><img src="img/Imagen4.jpg" width="40" height="34" align="left"><strong><a
+							href="contenido.htm">Nuevo pack Carrete</a></strong><br>
+						05-12-2005<br>
+						Disponible una nueva promoci&oacute;n en todos los Pronto Urbano
+						con venta de alcohol...</p>
+						</td>
+					</tr>
+					<tr valign="top">
+						<td>5.</td>
+						<td width="95%">
+						<p><img src="img/Imagen4.jpg" width="40" height="34" align="left"><strong><a
+							href="contenido.htm">Nuevo pack Carrete</a></strong><br>
+						05-12-2005<br>
+						Disponible una nueva promoci&oacute;n en todos los Pronto Urbano
+						con venta de alcohol...</p>
+						</td>
+					</tr>
+					<tr valign="top">
+						<td>6.</td>
+						<td width="95%">
+						<p><img src="img/Imagen4.jpg" width="40" height="34" align="left"><strong><a
+							href="contenido.htm">Nuevo pack Carrete</a></strong><br>
+						05-12-2005<br>
+						Disponible una nueva promoci&oacute;n en todos los Pronto Urbano
+						con venta de alcohol...</p>
+						</td>
+					</tr>
+					<tr valign="top">
+						<td>7.</td>
+						<td width="95%">
+						<p><img src="img/Imagen4.jpg" width="40" height="34" align="left"><strong>Nuevo
+						pack Carrete</strong><br>
+						05-12-2005<br>
+						Disponible una nueva promoci&oacute;n en todos los Pronto Urbano
+						con venta de alcohol...</p>
+						</td>
+					</tr>
+					<tr valign="top">
+						<td>8.</td>
+						<td width="95%">
+						<p><img src="img/Imagen4.jpg" width="40" height="34" align="left"><strong>Nuevo
+						pack Carrete</strong><br>
+						05-12-2005<br>
+						Disponible una nueva promoci&oacute;n en todos los Pronto Urbano
+						con venta de alcohol...</p>
+						</td>
+					</tr>
+					<tr valign="top">
+						<td>9.</td>
+						<td>
+						<p><strong>Nuevo Servicio</strong><br>
+						08-12-2005<br>
+						Se ha habilitado servicio Wi-Fi en los principales Pronto
+						Carretera de Arica a Punta Arenas...</p>
+						</td>
+					</tr>
+					<tr valign="top">
+						<td>10.</td>
+						<td>
+						<p><strong>Nuevo Servicio</strong><br>
+						08-12-2005<br>
+						Se ha habilitado servicio Wi-Fi en los principales Pronto
+						Carretera de Arica a Punta Arenas...</p>
+						</td>
+					</tr>
+				</table>
+				<br>
+				<table width="88%" border="0" align="center" cellpadding="2"
+					cellspacing="2">
+					<tr>
+						<td width="14%"><strong>Ir a p&aacute;gina</strong>:</td>
+						<!-- BEGIN DYNAMIC: select_paginador -->
+						<td width="86%">{pag}1 2 3 4 5 6 7 8</td>
+						<!-- END DYNAMIC: select_paginador -->
+					</tr>
+				</table>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<!-- InstanceEndEditable --></td>
+          <td width="25%" style="border-left:dashed 0px #009933"><!-- InstanceBeginEditable name="Derecha" -->
+				<table class='FeatureTable'>
+					<!-- BEGIN DYNAMIC: select_titulo_box -->
+					<tr>
+						<td class='FeatureHeadTD'>{titulo_box}</td>
+					</tr>
+					<tr>
+						<td class='FeatureTD'>{info_box}</td>
+					</tr>
+					<!-- END DYNAMIC: select_titulo_box -->
+					<tr>
+						<td class='FeatureHeadTD'>Noticias</td>
+					</tr>
+					<tr>
+						<td class='FeatureTD'>Disponible nuevo n&uacute;mero del
+						informativo pronto. Click <a href="gdoc1.htm">aqu&iacute; </a>para
+						descargarlo.</td>
+					</tr>
+					<tr>
+						<td class='FeatureTD'>A partir del 01/02/2006, el reporte de
+						gastos debe realizarse a trav&eacute;s de la intranet. Para eso,
+						se debe ir al men&uacute; Rep. Gatos / Reportar.</td>
+					</tr>
+				</table>
+				<br>
+				<TABLE class='SectionTable'>
+					<tr>
+						<td class='FeatureHeadTD'>Box</td>
+					</tr>
+					<tr>
+						<td class='FeatureTD'>Este es un Box con informaci&oacute;n
+						destacada de cualquier tipo. Puede apuntar a un contenido
+						almacenado o a cualquier otra secci&oacute;n de la intranet.</td>
+					</tr>
+				</table>
+				<TABLE class='SectionTable'>
+					<tr>
+						<td class='FeatureHeadTD'>Otro Box</td>
+					</tr>
+					<tr>
+						<td class='FeatureTD'>Este es otro Box con informaci&oacute;n
+						destacada similar al anterior. La idea es pone lo que sea
+						ac&aacute;...</td>
+					</tr>
+				</table>
+				<TABLE class='SectionTable'>
+					<tr>
+						<td class='FeatureHeadTD'>Indicadores Financieros</td>
+					</tr>
+					<!-- BEGIN DYNAMIC: select_indicadores -->
+					<tr>
+						<td class='FeatureTD'>
+							{ind_econom}: {valor}
+						</td>
+					</tr>
+					<!-- END DYNAMIC: select_indicadores -->
+					<tr>
+						<td class='FeatureTD'>Valor UF: 18.000<br>
+						Valor Dolar: 530<br>
+						Valor IPC: 0.9%<br>
+						Valor UTM: 30.000</td>
+					</tr>
+				</table>
+				<p>&nbsp;</p>
+				<!-- InstanceEndEditable --></td>
+        </tr>
+      </table>
+      </td>
+  </tr>
+  <tr>
+    <td>
+	<TABLE width="100%" height=19 border=0 align="center" cellpadding="0" cellspacing="0" bgcolor="#f1f0e9" style="border-top:1px solid #ABABAB; border-bottom:1px solid #ABABAB">
+	  <TR>
+		<TD align=center bgcolor="#67b01a" class=infoBL><div align="center">Back Office Local - Jumbo.cl</div></TD>
+		</TR>
+	</TABLE>
+
+	
+	</td>
+  </tr>
+</table>
+</body>
+<!-- InstanceEnd --></html>

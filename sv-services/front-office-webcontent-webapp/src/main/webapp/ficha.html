@@ -1,0 +1,776 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<meta http-equiv="CACHE-CONTROL" content="NO-CACHE" />
+<meta http-equiv="PRAGMA" content="NO-CACHE" />
+<meta http-equiv="EXPIRES" content="Mon, 22 Jul 2002 11:12:01 GMT" />
+<title>Jumbo.cl - Ficha de Producto</title>
+<link href="/FO_WebContent/css/estilostextos.css" rel="stylesheet" type="text/css" />
+<link href="/FO_WebContent/css/pila.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/FO_WebContent/js/chaordic.js"></script>
+<script type="text/javascript" src="/FO_WebContent/js/prototype.js"></script>
+<script type="text/javascript" src="/FO_WebContent/js/funciones.js"></script>
+<script type="text/javascript" src="/FO_WebContent/js/funciones_teclado.js"></script>
+<script type="text/javascript" src="/FO_WebContent/js/jquery.min.js"></script>
+<script src="//static.chaordicsystems.com/static/loader.js" data-initialize="true" data-apikey="jumbochile"> </script>
+
+<style type="text/css">
+<!--
+body {
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+}
+.lectura1 {
+    font-family: "Trebuchet MS";
+	font-size: 12px;
+	font-style: normal;
+	line-height: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	color: #333333;
+	text-decoration: none;
+}
+.style4 {
+	font-size: 10px;
+	font-style: italic;
+	color: #333333;
+}
+#calendario {
+	position:absolute;
+	left:200px;
+	top:80px;
+	width:539px;
+	height:318px;
+	z-index:3;
+	visibility: visible;
+}
+#carroguardado {
+	position:absolute;
+	left:350px;
+	top:-70px;
+	width:248px;
+	height:400px;
+	z-index:4;
+	visibility: hidden;
+}
+/*.table-wrapper
+{       
+    overflow: auto;
+}*/
+hr.style-one {
+    border: 0;
+    height: 1px;
+    background: #333;
+    background-image: -webkit-linear-gradient(left, #ccc, #333, #ccc); 
+    background-image:    -moz-linear-gradient(left, #ccc, #333, #ccc); 
+    background-image:     -ms-linear-gradient(left, #ccc, #333, #ccc); 
+    background-image:      -o-linear-gradient(left, #ccc, #333, #ccc); 
+}
+.trFichaTec {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-family: Tahoma, Geneva, sans-serif;
+	font-size: 12px;
+	color: #666;
+}
+.tbodyFichaTec {
+	display: table-row-group;
+	vertical-align: middle;
+	border-color: inherit;
+}
+.tdFichaTec {
+	/*border: 1px solid #e7e7e7;*/
+	border-top: 1px solid #e7e7e7; 
+	line-height: 1.6; 
+	padding: 3px; 
+	border-right:0px;
+	border-left:0px;
+	word-break: break-all;
+	/*width:30%;*/
+}
+
+/* NUevo */
+#table-wrapper {
+  position:relative;
+}
+#table-scroll {
+  height:150px;
+  overflow:auto;  
+  margin-top:20px;
+  width: 440px;
+}
+#table-wrapper table {
+  width:100%;
+  /*border: 1px solid gray;*/
+  padding-left: 20px;
+  padding-right: 20px;
+}
+#table-wrapper table thead th .text {
+  position:absolute;   
+  top:-20px;
+  z-index:2;
+  height:20px;
+  width:35%;
+  border:1px solid red;
+}
+.tituloFichaTec {
+	margin-left: 20px;
+	display: inline-block;
+	margin-top: 20px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	font-style: normal;
+	line-height: normal;
+	font-weight: bold;
+	font-variant: normal;
+	text-transform: none;
+	color: #666;
+	text-decoration: none;
+}
+.textoFichaTec {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px; /*Este puede ser a lo mas 11px */
+	font-style: normal;
+	line-height: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	color: #666;
+	text-decoration: none;
+}
+#div-scroll {
+	width:440px;
+ 	height:130px;
+ 	overflow:auto;  
+ 	margin-top:0px;
+ 	margin-left:10px;
+ 	margin-right:10px;
+}
+
+
+-->
+</style>
+<script type="text/javascript">
+var pro_tipo_=0;
+var pro_desc_=0;
+var pro_id_=0;
+var pro_marca_=0;
+
+function guardaProducto( form ) {
+	var longitudFormulario = form.elements.length;
+	var cadenaFormulario = "";
+	var sepCampos = "";
+	for ( var i=0; i <= form.elements.length-1; i++ ) {
+		if( form.elements["maximo_l"+i] != 'undefined' && form.elements["maximo_l"+i] != null && validar_cantidad(form.elements["cantidad_l"+i], form.elements["maximo_l"+i].value) == false ) {
+			return;
+		}
+		cadenaFormulario += sepCampos + form.elements[i].name + '=' + encodeURI(form.elements[i].value);
+		sepCampos="&";
+	}
+
+	var requestOptions 	= {
+		'method': 'post',
+		'parameters': cadenaFormulario,
+		'onSuccess': function (REQUEST) {
+			if (REQUEST.responseXML.getElementsByTagName("respuesta")[0] == null) {
+				alert("Error al guardar el producto.");
+				return;
+			}
+			var message = REQUEST.responseXML.getElementsByTagName("respuesta")[0].childNodes[0].nodeValue;
+			if (message == 'OK') {
+				setTimeout(function() {
+					if (top.document.getElementById('carro_de_compras')) {
+						top.llenarCarroCompras();
+					}
+					top.actualizaListaProductos();
+					top.hideFichaProducto();
+				}, 100);
+			} else {
+				alert(message);
+			}
+		}
+	};
+	new Ajax.Request('AddProductosCarroPaso1', requestOptions);
+}
+
+function submit_form( form ) {
+  //alert("comuna_user_id: " + top.document.getElementById('comuna_user_id').value);
+  //alert("HTML: " + window.top.document.body.innerHTML);
+  //alert("comuna_user_id: " + window.top.document.getElementById('comuna_user_id').value);
+  //alert("comuna_user_id: " + $j("#comuna_user_id", top.document));
+  if ( top.document.getElementById('comuna_user_id').value == 0 && top.PASO_ACTUAL == 2 ) {
+    top.XACT_CARRO 		= "ADD_CARRO_FICHA";
+	top.XFORM			= form;
+
+    for ( var i=0; i <= form.elements.length-1; i++ ) {
+      if ( form.elements[i].name == 'id_prod_0' ) {
+        top.XID_PRODUCTO = encodeURI(form.elements[i].value);
+      }
+      if ( form.elements[i].name == 'cantidad_l0' ) {
+        top.XCANTIDAD = encodeURI(form.elements[i].value);
+      }
+      if ( form.elements[i].name == 'nota0' ) {
+        top.XNOTACAMPO = encodeURI(form.elements[i].value);
+      }
+	}
+    top.showClienteSinRegistro();
+    return;
+  }
+  guardaProducto( form );
+}
+
+function submit_form2( form, tipo ) {
+	guardaProducto( form );
+	top.MM_showHideLayers('fichaproducto','','hide');
+}
+
+function comentario(){
+	if (top.ficha_carro)
+		top.nota_txt = document.f_productos_0.nota0.value;
+	top.frames['frm_comentarios'].location.href="comentarios_ficha.html";
+}
+
+// Presenta layer con promociones
+function vp( idprod ) {
+	top.frames['frm_promoprod'].location.href="ViewPromociones?idprod="+idprod;
+}
+</script>
+</head>
+<body onLoad="focus();top.showVentanaFichaProducto();">
+<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-PWPZN" 
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>
+var mx_user ='{ta_mx_user}';
+var mx_loc ='{ta_mx_loc}';
+var mx_content = "{mx_content}";
+
+(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PWPZN');</script>
+
+<table width="450" border="0" cellspacing="0" cellpadding="0">
+	<tr>
+		<td>
+        	<table width="100%" border="0" cellspacing="0" cellpadding="0">
+            	<tr>
+                	<td>
+                		<!-- Se comenta por requerimiento de la ficha tecnica -->
+						<!-- <div style="overflow:auto; width:100%; height:416px" > -->
+						<div width:100%; height:450px" >
+						<table width="100%" border="0" cellpadding="0" cellspacing="0">
+							<tr>
+								<td valign="top">
+									<table width="100%" height="100%" border="0" cellpadding="0" cellspacing="0">
+                      <tr>
+                        <!-- BEGIN DYNAMIC: PRODUCTOS -->
+                        <td width="46%" valign="top"><div style=" padding-left:10px;"><img src="/FO_IMGS/gr/{pro_imagen}" width="180" onError="this.src='/FO_IMGS/img/gr/fotopreparacion.gif'" /></div><br/>
+                         <div style="width:100px; float:left; padding-left: 10px;"> <span class="chica">* Foto Referencial</span></div></td>
+                        <td width="54%" valign="top">
+                          <form id="f_productos_{contador_form}" name="f_productos_{contador_form}" method="post" target="ifrm_carro" action="OrderItemAdd">
+                            <input type="hidden" name="nota{contador}" id="nota{contador}" value="{nota}" />
+                            <table width="300" border="0" cellpadding="0" cellspacing="0">
+                              <tr>
+                                <td><img src="/FO_IMGS/img/estructura/ficha/descripcion_ficha.gif" border="0" /></td>
+                              </tr>
+                            </table>
+                            <table width="220" border="0" cellpadding="0" cellspacing="2" >
+                              <tr>
+                                <td valign="top" class="ficha_separador">
+                                <script type="text/javascript">
+                                 pro_tipo_='{pro_tipo}';
+								pro_desc_='{pro_desc}';
+								
+								pro_marca_='{pro_marca}';
+								 pro_id_='{pro_id}';
+                                </script>                             
+                                  <span class="lectura">{pro_tipo}</span>, <span class="Marca">{pro_marca}</span><br />
+                                  <span class="lectura">{pro_desc}</span>
+				                  <br/> <br/>
+                                  <!-- BEGIN DYNAMIC: CON_PROMOCION -->
+                                  <!-- <div align="left"><img src="/FO_IMGS/img/promociones/{promo_img}" border="0" onError="this.src='/FO_IMGS/img/promociones/promocion.gif'" /><span class="lectura">{promo_desc}</span></div> -->
+                                  <div style="width: 250px; height:40px;">
+                                  		<div style="width:40px; float: left; margin-right:10px;"><img src="/FO_IMGS/img/promociones/{promo_img}" border="0" onError="this.src='/FO_IMGS/img/promociones/promocion.gif'" /></div>
+                                  		<div style="width:auto; float: left; margin-top:5px;"><span style="color:{promo_color_bann}" class="lectura">{promo_desc}</span></div>
+                                  </div>
+                                  <!-- END DYNAMIC: CON_PROMOCION -->
+                                  <!-- BEGIN DYNAMIC: CON_N_PROMOCION -->
+                                  <a href="javascript:vp('{pro_id}')">+ promociones</a>
+                                  <!-- END DYNAMIC: CON_N_PROMOCION -->
+                                  
+								  <table width="85%" border="0" cellspacing="0" cellpadding="0">
+                                    <tr>
+                                      <td width="6" height="6"></td>
+                                      <td width="245" height="6"></td>
+                                      <td width="1" height="6"></td>
+                                    </tr>
+                                    <tr>
+                                      <td width="6"></td>
+                                      <td valign="top"> <table width="70px" border="0" align="center" cellpadding="0" cellspacing="2">
+                                          <tr>
+                                            <td width="35%"><div align="center" class="tabla"><strong>Precio</strong></div></td>
+                                            <td width="25%"><div align="center" class="tabla"><strong>Cantidad</strong></div></td>                                            
+                                            <td width="40%"><div align="center" class="tabla"><strong></strong></div></td>                                            
+                                          </tr>
+                                          <tr>
+                                            <td colspan="2" background="/FO_IMGS/img/estructura/separacionhorizontal.gif"><img src="/FO_IMGS/img/estructura/separacionhorizontal.gif" width="4" height="1" /></td>
+                                          </tr>
+                                          <tr>
+                                            <td width="35%" align="right" valign="top">
+                                              <div align="center" class="tabla" style="margin-top: 4px;">
+                                                <!-- BEGIN DYNAMIC: SIN_ITEMS -->
+                                                <span class="lectura"  style="color:#B53137 !important; font-weight:bold; font-size: 16px;">{precio}
+                                                <!-- END DYNAMIC: SIN_ITEMS -->
+                                                <!-- BEGIN DYNAMIC: ITEMS -->
+                                                {precio}</span><br/>
+                                                 <div align="center" class="tabla" style="margin-top: 4px; width:100px;"><span class="chica">$x{pro_uni_med_ppum}:{pro_ppum}</span></div><br />
+                                                <br/>
+                                                <!-- END DYNAMIC: ITEMS -->
+                                                
+                                                <!-- BEGIN DYNAMIC: SIN_ITEMS_UNI -->
+                                                	<div align="center" class="tabla" style="margin-top: 4px; width:100px;">
+													<span class="chica"><br />
+														$x{pro_uni_med_ppum}:{pro_ppum}</span>
+													</div>
+  												<!-- END DYNAMIC: SIN_ITEMS_UNI -->
+                                                
+                                              </div>
+                                            </td>
+                                            <td width="25%" valign="top">
+												<div align="right" class="tabla">
+													<input type="hidden" name="id_prod_{contador}" value="{pro_id}" />
+													<table width="100%" border="0" cellspacing="0" cellpadding="1">
+														<!-- BEGIN DYNAMIC: ITEMS_SEL -->
+														<tr>
+															<td class="chica" width="50%" align="right">{dif}</td>
+															<td valign="top" width="30%">
+															   <!-- BEGIN DYNAMIC: LISTA_SEL -->
+															   <select name="cantidad_l{contador}" class="campo">
+															   	<!-- BEGIN DYNAMIC: CANTIDADES -->
+																<option value="{valor}" {selected}>{opcion}</option>
+																<!-- END DYNAMIC: CANTIDADES -->
+																</select>
+																<!-- END DYNAMIC: LISTA_SEL -->
+																<!-- BEGIN DYNAMIC: INPUT_SEL -->
+																<table border="0" cellspacing="0" cellpadding="1">
+																	<tr>
+																		
+																		<td rowspan="2">
+																			<input name="maximo_l{contador}" value="{maximo}" type="hidden" />
+																			<input name="cantidad_l{contador}" id="f_productos_{contador_form_aux}_cantidad_l{contador}" value="{valor}" type="text" class="cc" size="1" maxlength="4" onKeyPress="javascript:return bloqueaCaracteres(event,/[0-9.\b]/);" onChange="javascript:valida_cantidad('f_productos_{contador_form_aux}_cantidad_l{contador}',{intervalo},{maximo});" />
+																		</td>
+																		<!-- END DYNAMIC: INPUT_SEL -->
+																		<td class="chica" width="20%">{unidad}</td>
+																		<!-- BEGIN DYNAMIC: INPUT_SEL -->
+																		<td><a href="javascript:up(document.f_productos_{contador_form_aux}.cantidad_l{contador},{intervalo},{maximo});"><img src="/FO_IMGS/img/estructura/ficha/bt_mas.gif" border="0" /></a></td>
+																		<td><a href="javascript:down(document.f_productos_{contador_form_aux}.cantidad_l{contador},{intervalo},{maximo})"><img src="/FO_IMGS/img/estructura/ficha/bt_menos.gif" border="0" /></a></td>
+																	</tr>
+																</table>
+																<!-- END DYNAMIC: INPUT_SEL -->
+															</td>
+														</tr>
+														<tr>
+															<td height="3px" colspan="3"></td>
+														</tr>
+														<!-- END DYNAMIC: ITEMS_SEL -->
+													</table>
+                                              	</div>
+                                              </td>
+                                              
+                                              <td width="25%" valign="top">
+                                              
+                                             	 <div align="right" class="tabla">
+													<table width="59%" border="0" align="right" cellpadding="0" cellspacing="2">
+                                                        <tr>
+                                                        	<td>
+                                                        	<div align="right" class="tabla">
+												  			<!-- BEGIN DYNAMIC: IMG_AGREGAR -->
+												  				<div align="right" style="width: 58px;"><a href="javascript:submit_form( document.f_productos_{contador_form} )"><img src="/FO_IMGS/img/estructura/ficha/bt_agregar_carro_ficha.gif" alt="agregar o quitar unidades" border="0" border="0" width="58" height="22" /></a></div>
+												 			<!-- END DYNAMIC: IMG_AGREGAR -->
+												  			<!-- BEGIN DYNAMIC: IMG_MODIFICAR -->
+												  				<div align="right" style="width: 58px;"><a href="javascript:submit_form( document.f_productos_{contador_form} )"><img src="/FO_IMGS/img/estructura/ficha/bt_actualizar_carro.gif" alt="agregar o quitar unidades" border="0" width="58" height="22" /></a></div>
+												  			<!-- END DYNAMIC: IMG_MODIFICAR -->
+												 		    <!-- BEGIN DYNAMIC: IMG_SINSTOCK -->
+            									 				<div align="right" style="width: 58px;"><img src="/FO_IMGS/img/estructura/paso2/sinstock.gif" alt="Producto sin Stock" border="0"  /></div>
+            									  			<!-- END DYNAMIC: IMG_SINSTOCK -->
+															</div>
+															</td>
+                                                        </tr>
+													</table>
+                                                 </div>
+                                              </td>
+                                          </tr>
+                                        </table>
+				
+										</td>
+                                      <td width="10"></td>
+                                    </tr>
+                                    <tr>
+                                      <td width="6" height="6"></td>
+                                      <td height="6" ></td>
+                                      <td width="10" height="6"></td>
+                                    </tr>
+                                    <tr>
+                                      <td colspan="3">
+                                      </td>
+                                    </tr>
+                                  </table>
+                                </td>
+                              </tr>
+                            </table>
+                            <input type="hidden" name="max_productos" value="{total_productos}" />
+                          </form>
+                          <div id="divlogos" style="margin-top: 0px !important;margin-left: 10px; margin-right: 10px; display:none">
+                          <table width="85%" border="0" cellspacing="0" cellpadding="0">
+							<tr>
+								<td>
+									<div id="aa_on" style="display: none;">
+										<img width="61" height="61" alt="Alto en Az&uacute;cares" title="Alto en Az&uacute;cares" src="/FO_IMGS/img/azucar_on.png" />
+									</div>
+									<div id="aa_off" style="display: inline;">
+										<img width="61" height="61" alt="Alto en Az&uacute;cares" title="Alto en Az&uacute;cares" src="/FO_IMGS/img/azucar_off.png" />
+									</div>
+									<div id="ac_on" style="display: none;">
+										<img width="61" height="61" alt="Alto en Calor&iacute;as" title="Alto en Calor&iacute;as" src="/FO_IMGS/img/calorias_on.png" />
+									</div>
+									<div id="ac_off" style="display: inline;">
+										<img width="61" height="61" alt="Alto en Calor&iacute;as" title="Alto en Calor&iacute;as" src="/FO_IMGS/img/calorias_off.png" />
+									</div>
+									<div id="ags_on" style="display: none;">
+										<img width="61" height="61" alt="Alto en Grasas Saturadas" title="Alto en Grasas Saturadas" src="/FO_IMGS/img/grasas_on.png" />
+									</div>
+									<div id="ags_off" style="display: inline;">
+										<img width="61" height="61" alt="Alto en Grasas Saturadas" title="Alto en Grasas Saturadas" src="/FO_IMGS/img/grasas_off.png" />
+									</div>
+									<div id="as_on" style="display: none;">
+										<img width="61" height="61" alt="Alto en Sodio" title="Alto en Sodio" src="/FO_IMGS/img/sodio_on.png" />
+									</div>
+									<div id="as_off" style="display: inline;">
+										<img width="61" height="61" alt="Alto en Sodio" title="Alto en Sodio" src="/FO_IMGS/img/sodio_off.png" />
+									</div>
+                              	</td>
+                              </tr>
+                          </table>
+                          </div>
+                          <!-- BEGIN DYNAMIC: IMG_COMEN -->
+                          <table width="220" border="0" cellspacing="0" cellpadding="0">
+                            <tr>
+                              <td align="center"><a href="javascript:comentario();" ><img src="/FO_IMGS/img/ficha/agreganota.gif" alt="Escribir una nota para este producto" name="Image21" width="126" height="39" border="0" /></a>
+                              </td>
+                            </tr>
+                          </table>
+                          <!-- END DYNAMIC: IMG_COMEN -->
+                          <form name="frm_nota"><input type="hidden" NAME="notaaux" value="{nota}" /></form>
+                          <!-- END DYNAMIC: PRODUCTOS -->
+
+                        </td>
+                      </tr>
+					  <tr>
+                        <td colspan="2" valign="top" width="400">
+							<!-- Chaordic Compra Conjunta -->
+							<div style="clear: both" class="chaordic frequentlyboughttogether" ></div>
+                        </td>
+                      </tr>
+                      <!-- BEGIN DYNAMIC: MOSTRAR_PILA -->
+                      <tr>
+                        <td colspan="2" valign="top" width="400">
+							  <span class="pilatx">Cada porci&oacute;n de {porcion_nutriente} {unidad} contiene:</span><br />
+							  <!-- BEGIN DYNAMIC: PILAS -->
+							  <div class="pila">
+								<table width="63" border="0" cellspacing="0" cellpadding="0">
+								  <tr>
+									<td><img src="/FO_IMGS/img/estructura/pila/arriba.gif" width="63" height="9" /></td>
+								  </tr>
+								  <tr>
+									<td height="25" valign="top" background="/FO_IMGS/img/estructura/pila/fondo.gif">
+									  <div align="center" class="pilatx">{nutriente}</div>
+									</td>
+								  </tr>
+								  <tr>
+									<td valign="middle" background="/FO_IMGS/img/estructura/pila/fondo.gif" class="pilatx2">
+									  <div align="center">{nutriente_porcion} {unidad}</div>
+									</td>
+								  </tr>
+								  <tr>
+									<td height="22" valign="middle" background="/FO_IMGS/img/estructura/pila/porcentage.gif" class="porcentage_pila">
+									  <div align="center">{porcentaje}%</div>
+									</td>
+								  </tr>
+								  <tr>
+									<td><img src="/FO_IMGS/img/estructura/pila/abajo.gif" width="63" height="9" /></td>
+								  </tr>
+								</table>
+							  </div>
+							  <!-- END DYNAMIC: PILAS -->
+							  <div class="dosis">De la dosis diaria recomendada para un adulto.</div>
+						</td>
+                      </tr>
+                      <!-- END DYNAMIC: MOSTRAR_PILA -->
+                      <tr>
+                        <td valign="top"></td>
+                        <td valign="top">
+						<!-- BEGIN DYNAMIC: TITULOSUG -->
+                          <table width="220" border="0" cellpadding="0" cellspacing="0">
+                            <tr>
+                             <td><img src="/FO_IMGS/img/estructura/ficha/sugerencias.gif" border="0" /></td>
+                            </tr>
+                          </table>
+                          <!-- END DYNAMIC: TITULOSUG -->
+                          <!-- BEGIN DYNAMIC: PRODUCTOSSUG -->
+                          <table width="220" border="0" cellpadding="0" cellspacing="0">
+                              <tr>
+                                <td width="6" height="6"><img src="/FO_IMGS/img/estructura/tablasupizq.gif" width="6" height="6" /></td>
+                                <td height="6" background="/FO_IMGS/img/estructura/tablasup.gif"><img src="/FO_IMGS/img/estructura/tablasup.gif" width="1" height="6" /></td>
+                                <td width="6" height="6"><img src="/FO_IMGS/img/estructura/tablasupder.gif" width="6" height="6" /></td>
+                              </tr>
+                              <tr>
+                                <td width="6" background="/FO_IMGS/img/estructura/tablaizq.gif"><img src="/FO_IMGS/img/estructura/tablaizq.gif" width="6" height="1" /></td>
+                                <td>
+
+								<form id="f_sugerido_{contador_formSug}" name="f_sugerido_{contador_formSug}" method="post" target="ifrm_carro" action="OrderItemAdd">
+								 <input type="hidden" name="nota" value="{nota}" />
+								 <input type="hidden" name="max_productos" value="{total_productosSug}" />
+
+								<table width="100%" border="0" cellpadding="0" cellspacing="2">
+                                    <tr>
+                                      <td width="28%" valign="top"><img src="/FO_IMGS/ch/{pro_imagenSug}" width="50" height="50" onError="this.src='/FO_IMGS/img/ch/fotopreparacion-chica.gif'" /></td>
+                                      <td width="72%" valign="top"><span class="lectura">{pro_tipoSug}
+                                        </span><span class="Marca">{pro_marcaSug}
+                                        </span><span class="lectura">{pro_descSug}<br />
+                                        <!-- BEGIN DYNAMIC: SIN_ITEMSSUG -->
+                                        {precioSug} {unidadSug}
+                                        <!-- END DYNAMIC: SIN_ITEMSSUG -->
+                                        <!-- BEGIN DYNAMIC: ITEMSSUG -->
+                                        {precioSug} {unidadSug}</span><span class="chica">$x{pro_uni_med_ppumSug}:{pro_ppumSug}</span>
+                                        <!-- END DYNAMIC: ITEMSSUG -->
+                                        <br/>
+                                        <!-- BEGIN DYNAMIC: ITEMS_SELSUG -->
+                                        <input type="hidden" name="id_prod_{contadorSug}" value="{pro_idSug}" />
+                                        <table border="0" cellspacing="0" cellpadding="1">
+                                          <tr>
+                                            <td class="chica">{difSug}</td>
+                                            <td>
+                                              <!-- BEGIN DYNAMIC: LISTA_SELSUG -->
+                                              <select name="cantidad_l{contadorSug}" class="campo">
+                                                <!-- BEGIN DYNAMIC: CANTIDADESSUG -->
+                                                <option value="{valorSug}" {selectedSug}>{opcionSug}</option>
+                                                <!-- END DYNAMIC: CANTIDADESSUG -->
+                                              </select>
+                                              <!-- END DYNAMIC: LISTA_SELSUG -->
+                                              <!-- BEGIN DYNAMIC: INPUT_SELSUG -->
+                                              <table border="0" cellspacing="0" cellpadding="1">
+                                                <tr>
+                                                  <td><A HREF="javascript:up(document.f_sugerido_{contador_form_auxSug}.cantidad_l{contadorSug},{intervaloSug},{maximoSug});"><img src="/FO_IMGS/img/estructura/carro/flechasuperior.gif" border="0" /></A></td>
+                                                  <td rowspan="2"> <input name="maximo_l{contadorSug}" value="{maximoSug}" type="hidden" />
+                                                    <input name="cantidad_l{contadorSug}" value="{valorSug}" type="text" class="cc" size="4" maxlength="4" readonly onKeyDown="if(event.keyCode==13) submit_form(document.f_sugerido_{contador_form_auxSug},'{contador_form_auxSug}');" onChange= "if(event.keyCode==13) submit_form(document.f_sugerido_{contador_form_auxSug},'{contador_form_auxSug}');" onPaste="return false;" />
+                                                  </td>
+                                                </tr>
+                                                <tr>
+                                                  <td><A HREF="javascript:down(document.f_sugerido_{contador_form_auxSug}.cantidad_l{contadorSug},{intervaloSug},{maximoSug})"><img src="/FO_IMGS/img/estructura/carro/flechainferior.gif" border="0" /></A></td>
+                                                </tr>
+                                              </table>
+                                              <SCRIPT>document.f_sugerido_{contador_form_auxSug}.cantidad_l{contadorSug}.onkeypress=KeyIsNumber;</script>
+                                              <!-- END DYNAMIC: INPUT_SELSUG -->
+                                            </td>
+                                            <td class="chica">{unidadSug}</td>
+                                          </tr>
+                                        </table>
+                                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                          <tr>
+                                            <td align="right">
+                                              <!-- END DYNAMIC: ITEMS_SELSUG -->
+                                              <!-- BEGIN DYNAMIC: IMG_AGREGARSUG -->
+                                              <a href="javascript:submit_form2( document.f_sugerido_{contador_formSug}, 'A' )"><img src="/FO_IMGS/img/estructura/paso2/agregar.gif" alt="agregar o quitar unidades" border="0" width="31" height="32" vspace="0"/></a>
+                                              <!-- END DYNAMIC: IMG_AGREGARSUG -->
+                                              <!-- BEGIN DYNAMIC: IMG_MODIFICARSUG -->
+                                              <a href="javascript:submit_form2( document.f_sugerido_{contador_formSug}, 'M' )"><img src="/FO_IMGS/img/estructura/paso2/modificar.gif" alt="agregar o quitar unidades" border="0" width="39" height="38" vspace="0"/></a>
+                                              <!-- END DYNAMIC: IMG_MODIFICARSUG -->
+                                            </td>
+                                          </tr>
+                                        </table></td>
+                                    </tr>
+                                  </table>
+
+								 </form>
+
+								</td>
+                                <td width="10" background="/FO_IMGS/img/estructura/tablader.gif"><img src="/FO_IMGS/img/estructura/tablader.gif" width="6" height="1" /></td>
+                              </tr>
+                              <tr>
+                                <td width="6" height="6"><img src="/FO_IMGS/img/estructura/tablainfizq.gif" width="6" height="6" /></td>
+                                <td height="6" background="/FO_IMGS/img/estructura/tablainf.gif"><img src="/FO_IMGS/img/estructura/tablainf.gif" width="1" height="6" /></td>
+                                <td width="10" height="6"><img src="/FO_IMGS/img/estructura/tablainfder.gif" width="6" height="6" /></td>
+                              </tr>
+                            </table>
+                          <!-- END DYNAMIC: PRODUCTOSSUG -->
+						</td>
+                      </tr>
+                      <tr valign="top">
+                      	<td colspan="2">
+                      	<div id="table-wrapper">
+                      		
+                      	<!-- Titulo Ficha Tecnica --> 
+                        <div style=" margin-top: 0px !important;margin-left: 10px; margin-right: 10px; {ocultarFichaTecFO}"> <span class="tituloFichaTec" style="{ocultarFichaTecFO}"><img src="/FO_IMGS/img/estructura/ficha/ficha_tecnica.gif" width="420" height="27" alt="Ficha T&eacute;cnica" /></span></div>	  					
+  						<div id="table-scroll" style=" margin-top: 0px !important;margin-left: 10px; margin-right: 10px; {ocultarFichaTecFO}">
+  						  			  				  					
+								<table border="0" width="80%" style="margin: 25px 0px" cellspacing="0" cellpadding="0">
+									<tbody class="tbodyFichaTec">
+										
+										<!-- BEGIN DYNAMIC: MOSTRAR_FICHA -->
+                   						<tr class="trFichaTec">
+                                    		<td class="tdFichaTec">
+                                    			<span class="textoFichaTec">{item}</span>
+                                    		</td>
+                                      		<td class="tdFichaTec">
+                                      			<span class="textoFichaTec">{itemDescripcion}</span>
+                                      		</td>
+                                    	</tr>
+                                    	<!-- END DYNAMIC: MOSTRAR_FICHA -->
+                                    	
+                                    	<!-- Fila para marcar cierre de campos de Ficha Tecnica -->
+                                    	<tr class="trFichaTec" style="{ocultarFichaTecFO}">
+                                    		<td class="tdFichaTec" colspan="2"></td>
+                                    	</tr>
+                                    </tbody>
+								</table>
+								
+							</div>
+							</div>
+                      	 </td> 
+                      </tr>
+					<!-- TABLA CON FICHA NUTRICIONAL -->
+                      <tr valign="top">
+                      	<td colspan="2">
+                      	<div id="table-wrapper" style="{mostrarFichaNutri}">
+                      	<!-- Titulo Ficha Nutricional --> 
+                        <div style=" margin-top: 0px !important; margin-left: 10px; margin-right: 10px;"><span class="tituloFichaTec"><img src="/FO_IMGS/img/estructura/ficha/informacion_nutricional.gif" width="420" height="27" alt="Informaci&oacute;n Nutricional" /></span></div>
+  							<div style="width: 440px; height: 130px; overflow-y: auto; margin-top:0px; margin-left:10px; margin-right:10px; ">
+								<table border="0" width="80%" style="margin: 5px 0px" cellspacing="0" cellpadding="0" >
+									<thead class="tbodyFichaTec">
+									<tr class="trFichaTec">
+										<td colspan="3" style=" padding: 3px; "><span class="textoFichaTec">{cabecera}</span></td>
+									</tr>
+									</thead>
+									<tbody class="tbodyFichaTec">
+               						<tr class="trFichaTec">
+                                		<td width="40%" style=" padding: 3px; ">
+                                			<span class="textoFichaTec">&nbsp;</span>
+                                		</td>
+                                  		<td width="30%" style=" padding: 3px; ">
+                                  			<span class="textoFichaTec">100 g</span>
+                                  		</td>
+                                  		<td width="30%" style=" padding: 3px; ">
+                                  			<span class="textoFichaTec">1 porci&oacute;n</span>
+                                  		</td>
+                                   	</tr>
+									<!-- BEGIN DYNAMIC: MOSTRAR_FICHA_NUTRICIONAL -->
+                  					<tr class="trFichaTec">
+                                   		<td class="tdFichaTec">
+                                   			<span class="textoFichaTec">{item}</span>
+                                   		</td>
+                                   		<td class="tdFichaTec">
+                                   			<span class="textoFichaTec">{itemDescripcion}</span>
+                                   		</td>
+                                   		<td class="tdFichaTec">
+                                   			<span class="textoFichaTec">{itemDescripcion2}</span>
+                                   		</td>
+                                   	</tr>
+                                   	<!-- END DYNAMIC: MOSTRAR_FICHA_NUTRICIONAL -->
+                                   	
+                                   	<!-- Fila para marcar cierre de campos de Ficha Tecnica -->
+                                   	<tr class="trFichaTec" style="display: inline">
+                                   		<td colspan="3"></td>
+                                   	</tr>
+                                   	</tbody>
+								</table>
+							</div>
+							</div>
+                      	</td> 
+                      </tr>
+					<!-- FIN TABLA CON FICHA NUTRICIONAL -->
+                    </table>
+						</td>
+					</tr>
+				</table>
+				</div>
+			</td>
+		</tr>
+	</table>
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+		<tr>
+			<td>
+				<!-- Chaordic Similares --> 
+				<div style="clear: both" class="chaordic similaritems" > </div>
+			</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+		</tr>
+			<tr>
+			<td>
+				<!-- Chaordic Ultimos comprados --> 
+				<div style="clear: both" class="chaordic ultimatebuy"></div>
+			</td>
+		</tr>
+	</table>
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+		<tr>
+        	<td width="5" height="5" align="left" valign="bottom"></td>
+            <td></td>
+            <td></td>
+            <td width="6" height="5" align="right" valign="bottom"></td>
+        </tr>
+    </table>
+</td>
+</tr>
+</table>
+<script>
+var mostrar_aa = '{imagen_aa}';
+var mostrar_ac = '{imagen_ac}';
+var mostrar_ags = '{imagen_ags}';
+var mostrar_as = '{imagen_as}';
+if('{mostrarAltoEn}' == 'display:inline;'){
+	if(mostrar_aa == 'on'){
+		document.getElementById("aa_on").style.display = "inline";
+		document.getElementById("aa_off").style.display = "none";
+	}
+	if(mostrar_ac == 'on'){
+		document.getElementById("ac_on").style.display = "inline";
+		document.getElementById("ac_off").style.display = "none";
+	}
+	if(mostrar_ags == 'on'){
+		document.getElementById("ags_on").style.display = "inline";
+		document.getElementById("ags_off").style.display = "none";
+	}
+	if(mostrar_as == 'on'){
+		document.getElementById("as_on").style.display = "inline";
+		document.getElementById("as_off").style.display = "none";
+	}
+	document.getElementById("divlogos").style.display = "inline";
+}else{
+	document.getElementById("divlogos").style.display = "none";
+}
+</script>
+<script>
+var cabacera = '{cabecera_nombre}';
+var categoria = '{categoria_nombre}';
+var subcategoria = '{subcategoria_nombre}';
+
+var id_producto = '{id_prod}';
+
+var id_cliente = '{ses_cli_id}';
+var nombre_cliente = '{ses_cli_nombre}';
+var email_cliente = '{ses_cli_email}';
+
+chaordicFichaProducto(	subcategoria,categoria,cabacera,
+						id_producto,
+						id_cliente,nombre_cliente,email_cliente);
+</script>
+</body>
+</html>

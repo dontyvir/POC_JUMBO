@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+ <globalConfiguration>
+  <parameter name="adminPassword" value="admin"/>
+  <parameter name="attachments.Directory" value="d:\Proyectos\Jumbo_v2\WS_CAT\WebContent\WEB-INF\attachments"/>
+  <parameter name="attachments.implementation" value="org.apache.axis.attachments.AttachmentsImpl"/>
+  <parameter name="sendXsiTypes" value="true"/>
+  <parameter name="sendMultiRefs" value="true"/>
+  <parameter name="sendXMLDeclaration" value="true"/>
+  <requestFlow>
+   <handler type="java:org.apache.axis.handlers.JWSHandler">
+    <parameter name="scope" value="session"/>
+   </handler>
+   <handler type="java:org.apache.axis.handlers.JWSHandler">
+    <parameter name="scope" value="request"/>
+    <parameter name="extension" value=".jwr"/>
+   </handler>
+  </requestFlow>
+ </globalConfiguration>
+ <handler name="LocalResponder" type="java:org.apache.axis.transport.local.LocalResponder"/>
+ <handler name="URLMapper" type="java:org.apache.axis.handlers.http.URLMapper"/>
+ <handler name="RPCDispatcher" type="java:org.apache.axis.providers.java.RPCProvider"/>
+ <handler name="Authenticate" type="java:org.apache.axis.handlers.SimpleAuthenticationHandler"/>
+ <handler name="MsgDispatcher" type="java:org.apache.axis.providers.java.MsgProvider"/>
+ <service name="AdminService" provider="java:MSG">
+  <parameter name="allowedMethods" value="AdminService"/>
+  <parameter name="enableRemoteAdmin" value="true"/>
+  <parameter name="className" value="org.apache.axis.utils.Admin"/>
+  <namespace>http://xml.apache.org/axis/wsdd/</namespace>
+ </service>
+ <service name="NotificaPagoSoapPort" provider="java:RPC" style="document">
+  <parameter name="allowedMethods" value="*"/>
+  <parameter name="wsdlPortType" value="NotificaPagoSoapPort"/>
+  <parameter name="className" value="org.tempuri.NotificaPagoSoapBindingSkeleton"/>
+  <parameter name="wsdlServicePort" value="NotificaPagoSoapPort"/>
+  <parameter name="wsdlTargetNamespace" value="http://tempuri.org/action/"/>
+  <parameter name="wsdlServiceElement" value="NotificaPago"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns1:NotificaPagoRep" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:cl.cencosud.botonpago.NotificaPagoRep" xmlns:ns1="http://botonpago.cencosud.cl"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns2:&gt;NotificaPago.Execute" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:org.tempuri.NotificaPagoExecute" xmlns:ns2="http://tempuri.org/action/"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns3:&gt;NotificaPago.ExecuteResponse" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:org.tempuri.NotificaPagoExecuteResponse" xmlns:ns3="http://tempuri.org/action/"/>
+ </service>
+ <service name="Version" provider="java:RPC">
+  <parameter name="allowedMethods" value="getVersion"/>
+  <parameter name="className" value="org.apache.axis.Version"/>
+ </service>
+ <service name="ConsultaCarroCompraSoapPort" provider="java:RPC" style="document">
+  <parameter name="allowedMethods" value="*"/>
+  <parameter name="wsdlPortType" value="ConsultaCarroCompraSoapPort"/>
+  <parameter name="className" value="org.tempuri.ConsultaCarroCompraSoapBindingSkeleton"/>
+  <parameter name="wsdlServicePort" value="ConsultaCarroCompraSoapPort"/>
+  <parameter name="wsdlTargetNamespace" value="http://tempuri.org/action/"/>
+  <parameter name="sendXsiTypes" value="false"/>
+  <parameter name="sendMultiRefs" value="false"/>
+  <parameter name="wsdlServiceElement" value="ConsultaCarroCompra"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns4:ConsultaCarroCompraRep" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:cl.cencosud.botonpago.ConsultaCarroCompraRep" xmlns:ns4="http://botonpago.cencosud.cl"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns5:ArrayOfConsultaCarroCompraDet" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:cl.cencosud.botonpago.ArrayOfConsultaCarroCompraDet" xmlns:ns5="http://botonpago.cencosud.cl"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns6:ConsultaCarroCompraDet" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:cl.cencosud.botonpago.ConsultaCarroCompraDet" xmlns:ns6="http://botonpago.cencosud.cl"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns7:&gt;ConsultaCarroCompra.Execute" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:org.tempuri.ConsultaCarroCompraExecute" xmlns:ns7="http://tempuri.org/action/"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns8:&gt;ConsultaCarroCompra.ExecuteResponse" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:org.tempuri.ConsultaCarroCompraExecuteResponse" xmlns:ns8="http://tempuri.org/action/"/>
+ </service>
+ <transport name="http">
+  <requestFlow>
+   <handler type="URLMapper"/>
+   <handler type="java:org.apache.axis.handlers.http.HTTPAuthHandler"/>
+  </requestFlow>
+ </transport>
+ <transport name="local">
+  <responseFlow>
+   <handler type="java:org.apache.axis.transport.local.LocalResponder"/>
+  </responseFlow>
+ </transport>
+</deployment>

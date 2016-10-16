@@ -1,0 +1,128 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html><!-- InstanceBegin template="/Templates/print.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="EXPIRES" CONTENT="Mon, 22 Jul 2002 11:12:01 GMT">
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>Jumbo.cl Back Office Central</title>
+<!-- InstanceEndEditable -->
+<!-- InstanceBeginEditable name="head" -->
+<!-- SCRIPT LANGUAGE="JavaScript" SRC="CalendarPopup.js"></SCRIPT-->
+<!-- SCRIPT LANGUAGE="JavaScript">document.write(getCalendarStyles());</SCRIPT-->
+<!-- InstanceEndEditable -->
+<link href="estilos.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+<!--
+body {
+	background-color: #FFFFFF;
+}
+-->
+</style></head>
+
+<body>
+<!-- InstanceBeginEditable name="Body" -->
+			
+			<script>window.name='wincaldes'</script>
+			 <br>
+            <table border="0" align="center" cellpadding="0" cellspacing="0" width="295">
+              <tr valign="top">
+                <td height="17" width="323"><div align="center">Cambiar Costo de Despacho </div></td>
+              </tr>
+			  <tr valign="top"></tr>
+			  <br><br>				
+			</table>
+			   <DIV ID="testdiv1" STYLE="position:absolute;visibility:hidden;background-color:white;layer-background-color:white;"></DIV>
+                <table width="291" height="22" border="0" align="center" cellpadding="0" cellspacing="0">
+                    <tr class="tabla2">
+                      <td width="113">Id Semana</td>
+                      <td width="178">{id_semana}</td>
+                    </tr>
+                    <tr class="tabla2">
+                      <td width="113">N&deg; semana </td>
+                      <td width="178">{n_semana}</td>
+                    </tr>
+                    <tr class="tabla2">
+                      <td width="113">A&ntilde;o</td>
+                      <td width="178">{ano}</td>
+                    </tr>
+                    <tr class="tabla2">
+                      <td width="113">Fecha</td>
+                      <td width="178">{fecha}</td>
+                    </tr>
+                    <tr class="tabla2">
+                      <td width="113">N&deg; Pedido</td>
+                      <td width="178">{id_pedido}</td>
+                    </tr>
+                    <tr class="tabla2">
+                      <td width="113">Zona</td>
+                      <td width="178">{zona} - {nom_zona}</td>
+                    </tr>
+                    <tr class="tabla2">
+                      <td width="113">Capac Picking Pedido </td>
+                      <td width="178">{capac_picking}</td>
+                    </tr>
+                  </table>
+			   <div align="center">
+			   <SCRIPT language="JavaScript" src="funciones.js"></SCRIPT>
+			   <SCRIPT language="JavaScript">
+			      function valida_form(form){
+				     if(form.precio.value==""){
+                        form.precio.value=0;
+                        form.precio.focus();
+                        return false;
+                     }else{
+                        var precio = parseFloat(form.precio.value);
+                        if(precio==0){
+                           alert("El precio debe ser mayor a cero");
+                           form.precio.focus();
+                           return false;
+                        }else{
+                           return true;
+                        }
+                     }
+                  }
+               </SCRIPT>
+            </div>
+					
+			<form name="forma1" method="post" action="ModCostoDespacho" target="wincaldes" onSubmit="return valida_form(forma1)">
+              <input type="hidden" name="url" value="ViewCostDespForm?id_pedido={id_pedido}">
+              <input type="hidden" name="id_pedido" value="{id_pedido}">
+            <br>
+<TABLE width="47%" border="0" align="center" cellpadding="0"
+	cellspacing="2">
+	<TR align="center">
+		<TD colspan="3" width="315">$ <INPUT type="text" name="precio"
+			value="{precio}" size="10" maxlength="8"><BR>
+		<BR>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+		<DIV align="center"><INPUT type="submit" name="ModCostoDespacho"
+			value="Cambiar Costo Despacho"><!-- disabled -->
+		 </FORM>
+		</DIV>
+		</TD>
+		<TD>
+		   <FORM name="cerrar" action="ViewOPFormPedido" target="winpedido1" onsubmit="window.close();">
+		      <INPUT type="hidden" name="id_pedido" value="{id_pedido}"> 
+		      <INPUT type="hidden" name="mod" value="1">
+		      <INPUT type="submit" name="cerrar" value="Cerrar">
+		   </FORM>
+		</TD>
+		
+	</TR>
+	<TR>
+		<TD colspan="2" align="center"><FONT color="red"><B>{msg}</B></FONT></TD>
+	</TR>
+</TABLE>
+<br>
+{mns}
+<script>
+	document.forma1.precio.onkeypress = KeyIsSoloNum;
+</script>
+<!-- InstanceEndEditable --></body>
+<!-- InstanceEnd --></html>

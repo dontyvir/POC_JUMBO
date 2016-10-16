@@ -1,0 +1,337 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="EXPIRES" CONTENT="Mon, 22 Jul 2002 11:12:01 GMT">
+<title>Jumbo.cl Back Office Central</title>
+<script language="JavaScript">window.name='winruta'</script>
+<script language="JavaScript" src="prototype.js"></script>
+<script type="text/javascript" src="js/tabs/tabpane.js"></script>
+<script type="text/javascript" src="popup.js"></script>
+
+<script language="JavaScript" src="CalendarPopup.js"></script>
+<script language="JavaScript">document.write(getCalendarStyles());</script>
+<script language="JavaScript">
+var ayer = new Date(30,4,2006,12,0,0,0);
+var cal1 = new CalendarPopup("testdiv1");
+cal1.offsetX = 240;
+cal1.offsetY = 0;
+</script>
+<script type="text/javascript" src="js/ruta.js"></script>
+
+<link rel="stylesheet" type="text/css" href="js/tabs/tabpane.css" id="luna-tab-style-sheet"  />
+<link href="estilos.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+<!--
+.style1 {color: #666666}
+-->
+</style>
+</head>
+
+<body>
+<link rel="stylesheet" href="menu/menu.css">
+<script language="JavaScript" src="menu/menu.js"></script>
+<script language="JavaScript" src="menu/menu_tpl.js"></script>
+<script language="JavaScript" src="menu/menu_items.js"></script>
+<table width="780" height="100%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+    <td height="78" valign="top">
+
+	<TABLE width="100%" height=59 border=0 align="center" cellpadding="0" cellspacing="0" bgcolor="#ffffff">
+	  <TR>
+		<TD width=275 height="59" align=left class=user><img src="img/header2.jpg" width="275" height="60"></TD>
+		<TD width=505 align=left valign="bottom" background="img/bg-1.jpg" class=user><table width="90%"  border="0" align="center" cellpadding="0" cellspacing="2">
+          <tr>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td><div align="right" class="infoBL">Usuario: {hdr_nombre}&nbsp;&nbsp;| {hdr_fecha}</div></td>
+          </tr>
+        </table></TD>
+	  </TR>
+	</TABLE>
+	<TABLE width="100%" height=19 border=0 align="center" cellpadding="0" cellspacing="0" bgcolor="#f1f0e9" style="border-top:1px solid #ABABAB; border-bottom:1px solid #ABABAB">
+	  <TR>
+		<TD align=left bgcolor="#FFFFFF" class=user></TD>
+		</TR>
+	</TABLE>
+	</td>
+  </tr>
+  <tr>
+    <td valign="top" bgcolor="#FFFFFF">
+      <table border=0 width="100%" class='ContentTitle'>
+        <tr>
+          <td width="53%" height="20" class='HeaderTitle'> Detalle de Ruta {id_ruta}</td>
+          <td width="47%" class='HeaderTitle'><div align="right"><a href="ViewMonDespacho"><img src="img/volver.gif" width="32" height="32" border="0"></a></div></td>
+        </tr>
+      </table>	  
+      <br />
+	  
+	  <table width="100%"  border="0" cellspacing="2" cellpadding="2">
+				<tr valign="top">
+					<td width="71%">
+					
+					<div class="tab-page" id="modules-cpanel">
+						<script type="text/javascript">
+						var tabPane1 = new WebFXTabPane( document.getElementById( "modules-cpanel" ), true )
+						</script>
+						<div class="tab-page" id="modulo1">
+							<h2 class="tab" id="ruta_001">General</h2>
+							<div align="left"> 
+								<p id="gral">
+									<strong>Datos de la Ruta</strong>
+									<br/>
+									<br/>
+									
+                  <table width="90%" border="0" align="center" cellpadding="0" cellspacing="2">
+                    <tr> 
+                      <td width="21%">ID de Ruta</td>
+                      <td width="4%">:</td>
+                      <td width="75%">{id_ruta} <input type="hidden" name="id_ruta" id="id_ruta" value="{id_ruta}" /></td>
+                    </tr>
+                    <tr>
+                      <td>Local</td>
+                      <td>:</td>
+                      <td>{local}</td>
+                    </tr>
+                    <tr> 
+                      <td>Estado Ruta</td>
+                      <td>:</td>
+                      <td>{estado}</td>
+                    </tr>
+                    <tr> 
+                      <td>Fono contacto m&oacute;vil</td>
+                      <td>:</td>
+                      <td>{fono}</td>
+                    </tr>
+                    <tr> 
+                      <td>Chofer</td>
+                      <td>:</td>
+                      <td>{chofer}</td>
+                    </tr>
+                    <tr> 
+                      <td>Patente</td>
+                      <td>:</td>
+                      <td>{patente}</td>
+                    </tr>
+                    <tr> 
+                      <td>Fecha/Hora salida Local</td>
+                      <td>:</td>
+                      <td>{fecha_hora_out}</td>
+                    </tr>
+                    <tr> 
+                      <td>Zonas de Despacho</td>
+                      <td>:</td>
+                      <td>{zonas}</td>
+                    </tr>
+                    <tr> 
+                      <td>Fecha</td>
+                      <td>:</td>
+                      <td>{fecha}</td>
+                    </tr>
+                    <tr> 
+                      <td>Jornada de Despacho</td>
+                      <td>:</td>
+                      <td>{jornadas}</td>
+                    </tr>
+                    <tr> 
+                      <td>N&uacute;mero de Bins</td>
+                      <td>:</td>
+                      <td>{bins}</td>
+                    </tr>
+                  </table>
+
+								</p>
+							</div>
+						</div>
+						<div class="tab-page" id="modulo1">
+							<h2 class="tab" id="ruta_002">OP</h2>
+							<div align="left"> 
+								<p id="op">
+									
+                  <table width="99%" border="0" cellspacing="0" cellpadding="0">
+                    <tr> 
+                      <td align="left" width="20%">&nbsp;</td>
+                      <td align="center" width="50%"><font color="#FF0000"><strong>{msj}</strong></font></td>
+                      <td align="right" width="30%">{usr_pedido}</td>
+                    </tr>
+                  </table>
+				<strong>Pedidos</strong>
+									
+				<form action="" name="f_grilla">		 
+                  <table width="99%" border="0" align="center" cellpadding="0" cellspacing="0" class="tabla2">
+                    <tr> 
+                      <th width="8%" align="center">N&deg; OP</th>
+                      <th width="8%" align="center">Tipo Pedido</th>
+                      <th width="4%" align="center">&iquest;Reprog.?</th>
+                      <th width="14%" align="center">Direcci&oacute;n despacho</th>
+                      <th width="9%" align="center">Comuna despacho</th>
+                      <th width="9%" align="center">Zona Despacho</th>
+                      <th width="10%" align="center">Jornada Despacho</th>
+                      <th width="8%" align="center">Estado</th>
+                      <th width="9%" align="center">Fecha/Hora Llegada Domi</th>
+                      <th width="9%" align="center">Fecha/Hora Salida Domi</th>
+					  <th width="4%" align="center">Doc</th>
+					  <th width="8%" align="center">Acciones</th>
+                    </tr>
+                    <!-- BEGIN DYNAMIC: OPS -->
+                    <tr> 
+                      <td>{op}&nbsp;</td>
+                      <td>{tipo}&nbsp;</td>
+                      <td>{repr}&nbsp;</td>
+                      <td>{direc}&nbsp;</td>
+                      <td>{comuna}&nbsp;</td>
+                      <td>{zona}&nbsp;</td>
+                      <td>{jornada}&nbsp;</td>
+                      <td>{estado}&nbsp;</td>
+                      <td>{llegada}&nbsp;</td>
+                      <td>{salida}&nbsp;</td>
+					  <td align="center">{doc}&nbsp;</td>
+					  <td align="center"><a href="ViewDetPedidoRuta?id_pedido={id_pedido_real}">ver</a> {edit}</td>
+                    </tr>
+                    <!-- END DYNAMIC: OPS -->
+                  </table>
+				  <center>{msj_peds}</center>
+				  <br />
+                  </form>
+				  
+								</p>
+							</div>
+						</div>
+						<div class="tab-page" id="modulo1">
+							<h2 class="tab" id="ruta_003">Log</h2>
+							<div align="left"> 
+								<p id="log">
+									<strong>Detalles de la Ruta</strong>
+									
+                  <table width="99%"  border="0" align="center" cellpadding="0" cellspacing="0" class="tabla2">
+                    <tr> 
+                      <th width="18%">Fecha</th>
+                      <th width="15%">Usuario</th>
+                      <th width="14%">Estado</th>
+                      <th width="53%">Detalle del Cambio</th>
+                    </tr>
+                    <!-- BEGIN DYNAMIC: LOG_RUTA -->
+                    <tr> 
+                      <td>{fecha}&nbsp;</td>
+                      <td>{usuario}&nbsp;</td>
+                      <td>{estado}&nbsp;</td>
+                      <td>{detalle}&nbsp;</td>
+                    </tr>
+                    <!-- END DYNAMIC: LOG_RUTA -->
+                  </table>
+                  <center>
+                    {msj_log}
+                  </center>
+							</p>
+							</div>
+						</div>
+						
+						<div class="tab-page" id="modulo1">
+							<h2 class="tab" id="ruta_003">Finalizar OPs</h2>
+							<div align="left"> 
+								<p id="log">
+									<strong>Pedidos para finalizar</strong>
+									
+                  <table width="99%" border="0" align="center" cellpadding="0" cellspacing="0">
+                    <tr bgcolor="#BADB8A"> 
+                      <th width="6%" align="center" height="30">OP</th>
+                      <th width="21%" align="center">Jornada Despacho</th>
+                      <th width="14%" align="center">Fecha<br />
+                        Llegada domicilio</th>
+                      <th width="13%" align="center">Hora<br />
+                        Llegada domicilio</th>
+                      <th width="13%" align="center">Hora<br />
+                        Salida domicilio</th>
+                      <th width="26%" align="center">Con observaci&oacute;n</th>
+                      <th width="7%" align="center">Acci&oacute;n</th>
+                    </tr>
+                    <!-- BEGIN DYNAMIC: OPS_PARA_FINALIZAR -->
+                    <tr bgcolor="{bg_color}"> 
+                      <td rowspan="3">{op}&nbsp;<input type="hidden" name="{id_pedido_real}" id="{id_pedido_real}" value="{id_pedido_real}" /></td>
+                      <td height="25">{jornada}&nbsp; <input type="hidden" name="fc_despacho_{id_pedido_real}" id="fc_despacho_{id_pedido_real}" value="{fc_despacho}" />
+					  <input type="hidden" name="hini_despacho_{id_pedido_real}" id="hini_despacho_{id_pedido_real}" value="{hini_despacho}" />
+					  <input type="hidden" name="hfin_despacho_{id_pedido_real}" id="hfin_despacho_{id_pedido_real}" value="{hfin_despacho}" />
+					  </td>
+                      <td align="center"><input name="fc_in_dom_{id_pedido_real}" type="text" id="fc_in_dom_{id_pedido_real}" value="" readOnly onClick="cal1.select(document.getElementById('fc_in_dom_{id_pedido_real}'),'anchorin{id_pedido_real}','dd/MM/yyyy'); opSel('{id_pedido_real}'); return false;" style="width:60px" /> 
+                        <a href="#" onClick="cal1.select(document.getElementById('fc_in_dom_{id_pedido_real}'),'anchorin{id_pedido_real}','dd/MM/yyyy'); opSel('{id_pedido_real}'); return false;" name="anchorin{id_pedido_real}" id="anchorin{id_pedido_real}"> 
+                        <img src="img/cal.gif" width="16" height="16" border="0"> 
+                        </a></td>
+                      <td align="center"><input type="text" name="hr_in_dom_{id_pedido_real}" id="hr_in_dom_{id_pedido_real}" value="hh:mm" maxlength="5" style="width:40px" onClick="javascript:inHora('{id_pedido_real}');" onBlur="javascript:llenoHora('{id_pedido_real}')"/> 
+                      </td>
+                      <td align="center"><input type="text" name="hr_out_dom_{id_pedido_real}" id="hr_out_dom_{id_pedido_real}" value="hh:mm" maxlength="5" style="width:40px" onClick="javascript:outHora('{id_pedido_real}');" onBlur="javascript:llenoHora('{id_pedido_real}')"/> 
+                      </td>
+                      <td rowspan="3" valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                          <tr> 
+                            <td width="9%" valign="top"><input type="checkbox" name="check_{id_pedido_real}" id="check_{id_pedido_real}" value="checkbox" onClick="javascript:cambioDevolucion({id_pedido_real})" /></td>
+                            <td width="91%"><textarea name="devolucion_{id_pedido_real}" id="devolucion_{id_pedido_real}" style="width:160px;height:66px;font-size:11px;font-family:Arial,Helvetica,sans-serif;" disabled></textarea></td>
+                          </tr>
+                        </table> </td>
+                      <td rowspan="3"> <input type="button" name="btn{id_pedido_real}" value="Finalizar" onClick="javascript:finalizarOp({id_pedido_real});" /> 
+                      </td>
+                    </tr>
+                    <tr> 
+                      <td colspan="4" bgcolor="{bg_color}" height="25">
+					  <select name="motivo_{id_pedido_real}" id="motivo_{id_pedido_real}" style="width:210px;" disabled>
+                          <option value="0">Motivo no cumplimiento</option>
+						  <!-- BEGIN DYNAMIC: MOTIVOS -->
+						  <option value="{id}">{nombre}</option>
+						  <!-- END DYNAMIC: MOTIVOS -->
+                        </select> &nbsp;
+						<select name="responsable_{id_pedido_real}" id="responsable_{id_pedido_real}" style="width:210px;" disabled>
+                          <option value="0">Responsable no cumplimiento</option>
+						  <!-- BEGIN DYNAMIC: RESPONSABLES -->
+						  <option value="{id}">{nombre}</option>
+						  <!-- END DYNAMIC: RESPONSABLES -->
+                        </select>                         
+                      </td>
+                    </tr>
+                    <tr> 
+                      <td colspan="4" bgcolor="{bg_color}" height="25">
+					  Comentarios: <input type="text" name="observacion_{id_pedido_real}" id="observacion_{id_pedido_real}" value="" style="width:370px;" maxlength="230" />
+					  </td>
+                    </tr>
+                    <tr> 
+                      <td height="10" colspan="7"></td>
+                    </tr>
+                    <!-- END DYNAMIC: OPS_PARA_FINALIZAR -->
+                  </table>
+                  <center>
+                    {msj_peds_finalizar}
+                  </center>
+							</p>
+							</div>
+						</div>
+						
+					</div>
+					
+					
+					
+					</td>
+				</tr>
+			</table>
+	  
+	   </td>
+  </tr>
+</table>
+<table width="780" height=19 border=0 align="left" cellpadding="0" cellspacing="0" bgcolor="#f1f0e9" style="border-top:1px solid #ABABAB; border-bottom:1px solid #ABABAB">
+	  <tr>
+		<td align=center bgcolor="#67b01a" class=infoBL><div align="center">Back Office Central - Jumbo.cl</div></td>
+		</tr>
+	</table>
+	
+	
+<div id="loading" style="display:none">
+	<table style="Z-INDEX: 500; LEFT: 0; POSITION: absolute; TOP: 0" cellSpacing="0" cellPadding="0" border="0" id="tabla_loading">
+		<tr>
+			<td width="75" height="25" bgcolor="#FF0000">&nbsp;&nbsp;&nbsp;<font color="#FFFFFF"><b>Cargando...</b></font></td>
+		</tr>
+	</table>
+</div>
+<div id="testdiv1" style="Z-INDEX: 500;position:absolute;visibility:hidden;background-color:white;layer-background-color:white;"></div>
+
+</body>
+</html>

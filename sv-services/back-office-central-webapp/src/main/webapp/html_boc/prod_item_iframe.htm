@@ -1,0 +1,25 @@
+<html>
+<head>
+<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="EXPIRES" CONTENT="Mon, 22 Jul 2002 11:12:01 GMT">
+
+<script language="JavaScript" src="funciones.js"></script>
+</head>
+<body bgcolor="white">
+
+<link href="estilos.css" rel="stylesheet" type="text/css">
+<table border="0" align="center" cellpadding="2" cellspacing="0" class="tabla2" >
+{mensaje}
+  <!-- BEGIN DYNAMIC: ITEMS -->
+  <tr valign="top">
+  	<td width="69">{item_id}</td>
+  	<td width="227"><div align="left">{item_des}</div></td>
+  	<td width="94"><div align="left">{item_atr_ver}</div></td>
+	<td width="57"><a href='javascript:validar_eliminar("Esta seguro que desea eliminar?","ModGenericItem?action=desasociar&id_prod_gen={id_prod}&id_prod_item={item_id}&atrdiff_val={atrdiff_val}&url=ViewProdItemIframe?id_prod={id_prod}");'><img src='img/trash.gif' border=0></a></td>
+  </tr>
+<!-- END DYNAMIC: ITEMS -->
+</table>
+{mns}
+</body>
+</html>                           

@@ -1,0 +1,75 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>Untitled Document</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="EXPIRES" CONTENT="Mon, 22 Jul 2002 11:12:01 GMT">
+
+<style type="text/css">
+<!--
+body {
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	background-color: #ECE9D8;
+}
+-->
+</style>
+<script>
+	if(navigator.appName == "Microsoft Internet Explorer") { 
+function printURL(sHref) { 
+	alert("document.getElementById:  "+document.getElementById);
+	alert("document.all:  "+document.all);
+	alert("sHref:  "+sHref);	
+  if(document.getElementById && document.all && sHref){ 
+	alert("1");  
+    if(!self.oPrintElm){ 
+    alert("2");
+      var aHeads = document.getElementsByTagName('HEAD'); 
+      if(!aHeads || !aHeads.length) 
+        return false; 
+      if(!self.oPrintElm) 
+        self.oPrintElm = document.createElement('LINK'); 
+      self.oPrintElm.rel = 'alternate'; 
+      self.oPrintElm.media = 'print'; 
+      aHeads[0].appendChild(self.oPrintElm); 
+      } 
+      self.oPrintElm.href = sHref; 
+      self.focus(); 
+      alert("imprimiendo");
+      self.print(); 
+      return true;     }
+     
+  else 
+return false; 
+  } 
+} 
+
+function imprimir2(){ 
+var url = "http://localhost:8080/BO/BOL/ViewProductosBin?id_pedido=6&cod_bin=B1111"; 
+alert ("url: "+url);
+printURL(url) 
+} 
+
+function imprimir(){
+	parent['mainFrame'].focus();
+	parent['mainFrame'].print();
+}
+
+
+</script>
+
+</head>
+<body>
+<table width="100%"  border="0" cellpadding="0" cellspacing="0" bgcolor="#ECE9D8">
+  <tr>
+    <td width="4%"><a href = "javascript:imprimir();"><img src="img/print.gif" width="73" height="29" border="0"><a href="javascript:parent.close();"><img src="img/cerrar.gif" width="73" height="29" border="0"></a></td>
+    <td width="17%">&nbsp;</td>
+  </tr>
+</table>
+</body>
+</html>

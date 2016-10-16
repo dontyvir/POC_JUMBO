@@ -1,0 +1,82 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<meta http-equiv="CACHE-CONTROL" content="NO-CACHE">
+<meta http-equiv="PRAGMA" content="NO-CACHE">
+<meta http-equiv="EXPIRES" content="Mon, 22 Jul 2002 11:12:01 GMT">
+<title>Mis Promociones</title>
+<link href="/FO_WebContent/css/estilostextos.css" rel="stylesheet" type="text/css" />
+<script language="JavaScript" src="/FO_WebContent/js/funciones.js"></script>
+<style type="text/css">
+<!--
+body {
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+}
+.style1 {color: #FFFFFF}
+.style2 {font-size: 8pt}
+-->
+</style>
+</head>
+<body onLoad="focus();top.showPromoProducto();" bgcolor="#ffffff">
+<table width="395px" height="300px" border="0" cellspacing="0" cellpadding="0">
+	<tr>
+		<td>
+			<table width="100%" height="100%" border="0" cellspacing="0" cellpadding="0" class="TablaFicha">
+				<tr>
+					<td>
+						<div style="overflow:auto; width:100%; height:304px">
+							<table width="100%" border="0" cellpadding="0" cellspacing="0">
+								<tr>
+									<td valign="top" width="100%">
+										<table width="394" border="0" cellspacing="0" cellpadding="0">
+											<tr>
+            									<th width="75%" bgcolor="#def7ad" class="titulolectura" scope="col">&nbsp;</th>
+            									<th width="25%" bgcolor="#def7ad" class="titulolectura style2" scope="col">AHORRO</th>
+          									</tr>
+        								</table>
+		  								<table id="t_promociones">
+											<tr>
+												<td width="70%"></td>
+												<td width="30%"></td>
+											</tr>
+											<!-- BEGIN DYNAMIC: L_PROMOCIONES -->
+											<tr>
+												<td>{descripcion}</td>
+												<td>{descuento}</td>
+											<tr>
+											<!-- END DYNAMIC: L_PROMOCIONES -->
+										</table>
+										<table id="total_promociones">
+											<tr>	
+												<td>
+													<div align="right">TOTAL AHORRO</div>
+												</td>
+		    									<td width="100px" background="/FO_IMGS/img/estructura/fondo_total_ahorro.gif">
+		    										<div id="total_descuentos" align="center">$0</div>
+												</td>
+											</tr>
+										</table>
+										<br>
+									</td>
+								</tr>
+							</table>
+						</div>
+					</td>
+  				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+	<tr>
+		<td width="5" height="5" align="left" valign="bottom"><img src="/FO_IMGS/img/ficha/tabla-inf-izq.gif" width="5" height="5" /></td>
+		<td background="/FO_IMGS/img/ficha/tabla-inferior.gif"><img src="/FO_IMGS/img/ficha/tabla-inferior.gif" width="1" height="5" /></td>
+		<td background="/FO_IMGS/img/ficha/tabla-inferior.gif"><img src="/FO_IMGS/img/ficha/tabla-inferior.gif" width="1" height="5" /></td>
+		<td width="6" height="5" align="right" valign="bottom"><img src="/FO_IMGS/img/ficha/tabla-inf-der.gif" width="6" height="5" /></td>
+	</tr>
+</table>
+</body>
+</html>

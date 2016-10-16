@@ -1,0 +1,12 @@
+<html>
+<script type="text/javascript">
+var agent = navigator.userAgent.toLowerCase();
+var is_iphone = (agent.indexOf('iphone') != -1);
+var is_android = (agent.indexOf('android') != -1);
+if ( is_iphone || is_android ) {
+	location.href = "./LogonFormMobi";
+} else {
+	location.href = "./LogonForm";
+}
+</script>
+</html>

@@ -1,0 +1,672 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="https://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<meta http-equiv="CACHE-CONTROL" content="NO-CACHE" />
+<meta http-equiv="PRAGMA" content="NO-CACHE" />
+<meta http-equiv="EXPIRES" content="Mon, 22 Jul 2002 11:12:01 GMT" />
+<title>Jumbo.cl - Formulario de Registro</title>
+<link rel="shortcut icon" href="/FO_IMGS/img/favicon.ico" />
+<meta name="Jumbo" content="Jumbo: Cadena de Hipermercados de Chile y Argentina, cuya misi�n es satisfacer a sus clientes con la mejor propuesta comercial del mercado. Para ello sus  pilares son: Personal amable y profesional; Excelente servicio; Amplio horario de atenci�n; La m�s amplia variedad y surtido; Locales modernos c�modos y acogedores; Inmejorables precios." />
+<meta name="keywords" content="Jumbo, Supermercado, supermercado,  Jumbo m�s, Hipermercado, productos, puntos,  Cencosud, Circulo m�s, vinos, carnes, frutas, verduras, l�cteos, pescados, mariscos, abarrotes, comprar, compra por internet" />
+<meta name="description" content="Registro en Jumbo.cl, registro de clientes para compra en linea" />
+<style type="text/css">
+<!--
+body {
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+}
+
+.footer {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 9px;
+	font-style: normal;
+	line-height: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	color: #666666;
+	text-decoration: none;
+}
+
+.style1 {
+	color: #000000
+}
+
+a:link {
+	color: #333333;
+}
+
+a:visited {
+	color: #669900;
+}
+
+a:hover {
+	color: #333333;
+}
+
+a:active {
+	color: #669900;
+}
+-->
+</style>
+<style type="text/css">
+<!--
+@import url("estilostextos.css");
+.style3 {font-size: 8.5pt; font-style: normal; line-height: normal; font-variant: normal; text-transform: none; color: #333333; text-decoration: none; font-family: "Trebuchet MS";}
+-->
+</style>
+<script type="text/javascript" src="js/prototype.js"></script>
+<script type="text/javascript" src="js/funciones.js"></script>
+<script type="text/javascript" src="js/funciones_teclado.js"></script>
+<script type="text/javascript" src="js/checkrut.js"></script>
+<script type="text/javascript" src="js/registro_val.js"></script>
+<script type="text/javascript" src="js/registro.js"></script>
+<script type="text/javascript" src="js/registerupdform.js"></script>
+<script type="text/javascript" src="js/flashobject.js"></script>
+<script type="text/JavaScript">
+<!--
+function MM_swapImgRestore() { //v3.0
+  var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
+}
+
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];
+	}
+	}
+}
+
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+
+function MM_swapImage() { //v3.0
+  var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3)
+   if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
+}
+
+function MM_jumpMenu(targ,selObj,restore){ //v3.0
+  eval(targ+".location='"+selObj.options[selObj.selectedIndex].value+"'");
+  if (restore) selObj.selectedIndex=0;
+}
+//-->
+</script>
+
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/effects.core.js"></script>
+<script type="text/javascript" src="js/password.js"></script>
+<script type="text/javascript">
+	var $j = jQuery.noConflict();
+	jQuery(document).ready(function(){		
+		$j('#clave').keyup(
+			function() { 
+				var res = passwordStrength($j('#clave').val());
+				$j('#result_clave').width("90%");
+				$j('#result_clave').html( res );
+				if ( res == shortPass ) {
+					$j('#result_clave').animate({ color: "#FFFFFF", backgroundColor: "#cf0003" }, 200);
+				} else if ( res == badPass ) {
+					$j('#result_clave').animate({ color: "#FFFFFF", backgroundColor: "#cf0003" }, 200);
+				} else if ( res == goodPass ) {
+					$j('#result_clave').animate({ color: "#FFFFFF", backgroundColor: "#676767" }, 200);
+				} else {
+					$j('#result_clave').animate({ color: "#FFFFFF", backgroundColor: "#7db900" }, 200);
+				}
+			}
+		);
+		
+	});
+</script>
+
+</head>
+<body onload="MM_preloadImages('/FO_IMGS/img/estructura/bt_volverb.gif','/FO_IMGS/img/estructura/bt-volverb.gif')">
+
+<form name="cliente" id="cliente" action="{send_action}" method="post" >
+<div style="width:960px; height:auto; margin-left:auto; margin-right:auto; float:none; clear:both;">
+<table width="700" border="0" align="center" cellpadding="0" cellspacing="0">
+	<tr>
+		<td height="125" colspan="3">
+			<div class="menu_superior_2011" style="margin-bottom:26px;">
+  				<div class="logo_jumbo_2011" style="width:150px; height:111px;"> <a href="http://www.jumbo.cl/FO/LogonForm" target="_self"><img src="/FO_IMGS/images/header/logo_wht_bg.jpg" alt="JUMBO" width="150" height="111" border="0" /></a></div>
+  <div class="menu_arriba_2011">
+    <div class="linea_menu_arriba_2011">
+      <div class="menu_arriba_necesitas_ayuda"><a href="/FO/preguntas.html" target="_blank">Preguntas Frecuentes</a></div>
+      <div class="menu_arriba_necesitas_ayuda">Necesitas Ayuda? <span style="color:#1FA22E"> 600 400 3000</span></div>
+    </div>
+    <div class="linea_menu_arriba_2011">
+    </div>
+  </div>
+  <div class="menu_links_jumbo_2011">
+  </div>
+</div>
+		</td>
+	</tr>
+	<tr>
+		<td width="2" height="240"></td>
+		<td width="693" height="240" valign="top">
+        <div style="width:958px; height:auto; float:left; border: 1px solid #CCC;">
+			<table width="691" border="0" align="center" cellpadding="0" cellspacing="5">
+				<tr> 
+					<td width="681" height="1" colspan="5" valign="top">
+						
+						<table width="681" border="0" cellpadding="0" cellspacing="0">
+							<!--tr>
+							  <td colspan="3" align="right" valign="top"><a href="ayuda-registro.html" target="_blank"><img src="/FO_IMGS/img/estructura/bt_ayuda.gif" width="28" height="40" border="0" alt="Ayuda Registro" title="Ayuda Registro"/></a></td>
+						  </tr-->
+							<tr>
+							  <td colspan="3" valign="top">
+                              <div style="width:800px; float: left; height:auto; padding-right: 15px;">
+								<table width="77%" border="0" cellspacing="0" cellpadding="2">
+								  <tr>
+								    <td height="18" colspan="2" valign="top">
+                                    <div style="float:left; border-bottom:1px dashed #CCC; width:800px; padding-bottom:5px;">
+                                    <span class="titulo">Datos Personales</span></div>
+                                    </td>
+							      </tr>
+								  <tr>
+								    <td width="200" height="18" valign="top">&nbsp;</td>
+								    <td valign="top" class="lectura">&nbsp;</td>
+							      </tr>
+								  <tr> 
+									<td height="18" valign="top"><div align="right" class="formularios_registro_2011">* 
+										RUT: </div></td>
+									<td width="420" valign="top" class="lectura">
+                                    <div class="campos_registro_2011">
+                                     <input name="rut" type="text" class="campo" id="rut" value="{rut}" size="10" maxlength="8" onkeypress="javascript:return bloqueaCaracteres(event,/[0-9\b]/);" onblur="buscar_rut();" />
+									  - 
+									  <input name="dv" value="{dv}" type="text" class="campo" size="1" maxlength="1" onkeypress="javascript:return bloqueaCaracteres(event,/[0-9kK\b]/);"/> </div>
+									</td>
+								  </tr>
+								  <tr> 
+									<td height="19" valign="top"><div align="right" class="formularios_registro_2011">* 
+										Nombre: </div></td>
+									<td valign="top" class="lectura"> 
+                                    <div class="campos_registro_2011">
+                                    <input name="nombre" type="text" value="{nombre}" class="campo" id="nombre" maxlength="20" size="10" /> </div>
+									</td>
+								  </tr>
+								  <tr> 
+									<td height="18" valign="top"><div align="right" class="formularios_registro_2011">* 
+										Apellido Paterno:</div></td>
+									<td valign="top" class="lectura">
+                                    <div class="campos_registro_2011">
+                                     <input name="ape_pat" type="text" value="{ape_pat}" class="campo" id="ape_pat" maxlength="20"  size="10" /> </div>
+									</td>
+								  </tr>
+								  <tr> 
+									<td height="10" valign="top"><div align="right" class="formularios_registro_2011">* 
+										Apellido Materno:</div></td>
+									<td valign="top" class="lectura"> 
+                                    <div class="campos_registro_2011">
+                                    <input name="ape_mat" type="text" value="{ape_mat}" class="campo" id="ape_mat" maxlength="20"  size="10" /> </div>
+									</td>
+								  </tr>
+								  <tr> 
+									<td height="5" valign="top" class="lectura"><div align="right" class="formularios_registro_2011">* 
+										Fecha de Nacimiento: </div></td>
+									<td valign="top" nowrap="nowrap"> 
+                                    <div class="campos_registro_2011">
+                                    <select name="dia" class="campo" >
+										<option value="">...</option>
+										<!-- BEGIN DYNAMIC: select_dias -->
+										<option value="{option_dia}" {selectdia}>{option_dia}</option>
+										<!-- END DYNAMIC: select_dias -->
+									  </select> <select name="mes" class="campo" onchange="calendar_dias(ano.value, this.value)">
+										<option value="">...</option>
+										<option value="1" {mes1}>Enero</option>
+										<option value="2" {mes2}>Febrero</option>
+										<option value="3" {mes3}>Marzo</option>
+										<option value="4" {mes4}>Abril</option>
+										<option value="5" {mes5}>Mayo</option>
+										<option value="6" {mes6}>Junio</option>
+										<option value="7" {mes7}>Julio</option>
+										<option value="8" {mes8}>Agosto</option>
+										<option value="9" {mes9}>Septiembre</option>
+										<option value="10" {mes10}>Octubre</option>
+										<option value="11" {mes11}>Noviembre</option>
+										<option value="12" {mes12}>Diciembre</option>
+									  </select> <select name="ano" class="campo" onchange="calendar_dias(this.value, mes.value)">
+										<option value="">...</option>
+										<!-- BEGIN DYNAMIC: select_anos -->
+										<option value="{option_ano}" {selectano}>{option_ano}</option>
+										<!-- END DYNAMIC: select_anos -->
+									  </select> </div></td>
+								  </tr>
+								  <tr> 
+									<td height="0" valign="top" class="lectura"><div align="right" class="formularios_registro_2011"><span class="formularios">* 
+										Sexo</span>:</div></td>
+									<td height="0" valign="top"> 
+                                    <div class="campos_registro_2011">
+                                    <input name="genero" type="radio" value="F" {checkedF} /> 
+									  <label class="lectura">Femenino</label> <input name="genero" type="radio" value="M" {checkedM} /> 
+									  <label class="lectura">Masculino</label></div></td>
+								  </tr>
+								</table></div>
+                              </td>
+						  </tr>
+							<tr>
+							  <td valign="top">&nbsp;</td>
+							  <td></td>
+							  <td valign="top">&nbsp;</td>
+						  </tr>
+							<tr>
+							  <td colspan="3" valign="top">
+                              <div style="width:800px; float: left; height:auto;">	  
+                          <table width="100%" border="0" cellspacing="0" cellpadding="2">
+                            <tr> 
+                              <td colspan="2" valign="top">
+                              <div style="float:left; border-bottom:1px dashed #CCC; width:800px; padding-bottom:5px;">
+                              <span class="titulo">&nbsp;Forma 
+                                de contacto </span></div></td>
+                            </tr>
+                            <tr>
+                              <td valign="top" class="lectura">&nbsp;</td>
+                              <td valign="top" class="lectura">&nbsp;</td>
+                            </tr>
+                            <tr> 
+                              <td valign="top" class="lectura"> <div align="right" class="formularios_registro_2011">* 
+                                  E-mail: </div></td>
+                              <td valign="top" class="lectura"> 
+                              <div class="campos_registro_2011">
+                              <input name="email1" type="text" value="{email1}" class="campo" id="email1" size="15" maxlength="25" />                                <span class="formularios">@</span>                                <input name="dominio1" type="text" value="{dominio1}" class="campo" id="dominio1" size="10" maxlength="25" onkeypress="javascript:return bloqueaCaracteres(event,/[0-9a-zA-Z._\-\b]/);"/>
+                              </div>
+                              </td>
+                            </tr>
+                            <tr> 
+                              <td valign="top" class="lectura"> <div align="right" class="formularios_registro_2011">* 
+                                  Confirmar E-mail: </div></td>
+                              <td valign="top" class="lectura"> 
+                              <div class="campos_registro_2011">
+                              <input name="email2" type="text" value="{email2}" class="campo" id="email2" size="15" maxlength="25" />                                <span class="formularios">@</span>                                <input name="dominio2" type="text" value="{dominio2}" class="campo" id="dominio22" size="10" maxlength="25" onkeypress="javascript:return bloqueaCaracteres(event,/[0-9a-zA-Z._\-\b]/);"/></div></td>
+                            </tr>
+                            <tr> 
+                              <td valign="top" class="lectura"> <div align="right" class="formularios_registro_2011">* 
+                                  Tel&eacute;fono 1:</div></td>
+                              <td valign="top" class="lectura"> 
+                              <div class="campos_registro_2011">
+                              <select name="fon_cod_1" class="campo" id="fon_cod_1" style="width:45px">
+                                  <option value='02' {selectfono02}>02</option>
+                                  <option value='32' {selectfono32}>32</option>
+                                  <option value='33' {selectfono33}>33</option>
+                                  <option value='34' {selectfono34}>34</option>
+                                  <option value='35' {selectfono35}>35</option>
+                                  <option value='41' {selectfono41}>41</option>
+                                  <option value='42' {selectfono42}>42</option>
+                                  <option value='43' {selectfono43}>43</option>
+                                  <option value='45' {selectfono45}>45</option>
+                                  <option value='51' {selectfono51}>51</option>
+                                  <option value='52' {selectfono52}>52</option>
+                                  <option value='53' {selectfono53}>53</option>
+                                  <option value='55' {selectfono55}>55</option>
+                                  <option value='57' {selectfono57}>57</option>
+                                  <option value='58' {selectfono58}>58</option>
+                                  <option value='61' {selectfono61}>61</option>
+                                  <option value='63' {selectfono63}>63</option>
+                                  <option value='64' {selectfono64}>64</option>
+                                  <option value='65' {selectfono65}>65</option>
+                                  <option value='67' {selectfono67}>67</option>
+                                  <option value='71' {selectfono71}>71</option>
+                                  <option value='72' {selectfono72}>72</option>
+                                  <option value='73' {selectfono73}>73</option>
+                                  <option value='75' {selectfono75}>75</option>
+                                </select> <input name="fon_num_1" type="text" value="{fon_num_1}" class="campo" id="fon_num_1" size="7" maxlength="7" /></div> 
+                              </td>
+                            </tr>
+                            <tr> 
+                              <td valign="top" class="lectura"> <div align="right"><span class="formularios_registro_2011">Tel&eacute;fono 
+                                  2: </span><br />
+                                  <span class="footer"><em>(celular)</em></span> 
+                                </div></td>
+                              <td valign="top" class="lectura"> 
+                              <div class="campos_registro_2011">
+                              <select name="fon_cod_2" class="campo" id="fon_cod_2" style="width:45px">
+                                  <option value="6">6</option>
+                                  <option value="7">7</option>
+                                  <option value="8">8</option>
+                                  <option value="9" selected="selected">9</option>
+                                </select> <input name="fon_num_2" type="text" value="{fon_num_2}" class="campo" id="fon_num_2" size="7" maxlength="8" /> </div>
+                              </td>
+                            </tr>
+                            <tr> 
+                              <td valign="top" class="lectura"> <div align="right"><span class="formularios_registro_2011">Tel&eacute;fono 
+                                  3: </span><br />
+                                  <span class="footer"><em>(oficina)</em></span> 
+                                </div></td>
+                              <td valign="top" class="lectura">
+                              
+                              <div class="campos_registro_2011">
+<select name="fon_cod_3" class="campo" id="fon_cod_3" style="width:45px">
+                                  <option value='02' {selectfono02}>02</option>
+                                  <option value='32' {selectfono32}>32</option>
+                                  <option value='33' {selectfono33}>33</option>
+                                  <option value='34' {selectfono34}>34</option>
+                                  <option value='35' {selectfono35}>35</option>
+                                  <option value='41' {selectfono41}>41</option>
+                                  <option value='42' {selectfono42}>42</option>
+                                  <option value='43' {selectfono43}>43</option>
+                                  <option value='45' {selectfono45}>45</option>
+                                  <option value='51' {selectfono51}>51</option>
+                                  <option value='52' {selectfono52}>52</option>
+                                  <option value='53' {selectfono53}>53</option>
+                                  <option value='55' {selectfono55}>55</option>
+                                  <option value='57' {selectfono57}>57</option>
+                                  <option value='58' {selectfono58}>58</option>
+                                  <option value='61' {selectfono61}>61</option>
+                                  <option value='63' {selectfono63}>63</option>
+                                  <option value='64' {selectfono64}>64</option>
+                                  <option value='65' {selectfono65}>65</option>
+                                  <option value='67' {selectfono67}>67</option>
+                                  <option value='71' {selectfono71}>71</option>
+                                  <option value='72' {selectfono72}>72</option>
+                                  <option value='73' {selectfono73}>73</option>
+                                  <option value='75' {selectfono75}>75</option>
+                                </select> <input name="fon_num_3" type="text" value="{fon_num_3}" class="campo" id="fon_num_3" size="7" maxlength="7" /></div>
+                              </td>
+                            </tr>
+                            <tr> 
+                              <td valign="top" class="lectura"><div align="right" class="formularios_registro_2011"><span class="formularios_registro_2011">Acepta 
+                                  SMS:</span></div></td>
+                              <td valign="top" class="lectura"><input type="checkbox" name="sms" checked="checked"/></td>
+                            </tr>
+                          </table></div>
+                              </td>
+						  </tr>
+							<tr>
+							  <td valign="top">&nbsp;</td>
+							  <td></td>
+							  <td valign="top">&nbsp;</td>
+						  </tr>
+							<tr>
+								<td width="340" valign="top"> 
+								
+								<!-- INI DATOS PERSONALES -->
+								 
+                                
+								<!-- FIN DATOS PERSONALES -->								
+								
+								</td>
+								<td width="1"></td>
+								<td width="340" valign="top">
+									<table width="100%" border="0" cellspacing="0" cellpadding="0">
+										<tr> 
+											<td> 
+											
+											 <!-- INI FORMA CONTACTO -->
+										
+											  <!-- FIN FORMA CONTACTO  -->
+											
+											</td>
+										</tr>
+										<tr> 
+											<td height="1"></td>
+										</tr>
+										<tr> 
+											<td> 
+											
+												  <!-- INI CLAVE --><!-- FIN CLAVE -->											
+											
+											</td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+							<tr>
+							  <td colspan="3" valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="4">
+							    <tr>
+							      <td colspan="3" class="lectura">
+                                   <div style="float:left; border-bottom:1px dashed #CCC; width:800px; padding-bottom:5px;">
+                                  <span class="titulo">Clave Segura</span></div>
+                                  </td>
+						        </tr>
+							    <tr>
+							      <td colspan="3" class="lectura">
+                                 
+							        Tu clave debe tener m&iacute;nimo 6 caracteres. Una clave segura mezcla letras con n&uacute;meros, y evita usar los n&uacute;meros de tu direcci&oacute;n o cumplea&ntilde;os. <br />
+							        <span class="NoDisponible">{Mensaje_clave}&nbsp;</span> <br/></td>
+						        </tr>
+							    <tr>
+							      <td width="203"><div align="right" class="formularios_registro_2011">* 
+							        Crear Clave:</div></td>
+							      <td width="72"><input name="clave" type="password" class="campo" id="clave" size="14" maxlength="12" {readonly} /></td>
+							      <td width="516"><div id="result_clave"></div></td>
+						        </tr>
+							    <tr>
+							      <td><div align="right" class="formularios_registro_2011">* Repetir 
+							        Clave:</div></td>
+							      <td><input name="clave1" type="password" class="campo" id="clave1" size="14" maxlength="12" {readonly} /></td>
+							      <td>&nbsp;</td>
+						        </tr>
+							    <tr>
+							      <td>&nbsp;</td>
+							      <td>&nbsp;</td>
+							      <td>&nbsp;</td>
+						        </tr>
+						      </table></td>
+						  </tr>
+						</table>
+                        
+					
+					</td>
+				</tr>
+				<tr>
+					<td height="1" colspan="5" valign="top"></td>
+				</tr>
+				<tr>
+				  <td height="" colspan="5" valign="top" class="lectura">
+                     <div style="float:left; border-bottom:1px dashed #CCC; width:800px; padding-bottom:5px;">
+                    <span class="titulo">Pregunta 
+              Secreta Internet
+              </span></div>
+                  </td>
+			  </tr>
+				<tr> 
+					<td height="88" colspan="5" valign="top" class="lectura"> 
+ <span class="lectura">En caso de que olvides tu clave secreta, 
+              deber&aacute;s responder una pregunta para poder recuparla.<br />
+              </span><br /> <table width="100%" border="0" cellspacing="0" cellpadding="2">
+                <tr> 
+                  <td width="16%"><div align="right" class="formularios_registro_2011"><span class="lectura">* 
+                      Pregunta secreta </span><span class="lectura">: </span></div></td>
+                  <td width="84%"> 
+                  <div class="campos_registro_2011">
+                  <span class="lectura"> 
+                    <input name="pregunta" value="{pregunta}" type="text" class="campo" id="pregunta" size="30" maxlength="50" />
+                    <span class="NoDisponible">(ej: &iquest;nombre de mi perro?)</span></span> </div>
+                  </td>
+                </tr>
+                <tr> 
+                  <td><div align="right" class="formularios_registro_2011"><span class="lectura">* Respuesta </span><span class="lectura">:</span></div></td>
+                  <td> 
+                  <div class="campos_registro_2011">
+                  <span class="lectura"> 
+                    <input name="respuesta" value="{respuesta}" type="text" class="campo" id="respuesta" size="30" maxlength="50" />
+                    <span class="NoDisponible">(ej: Lyca)</span></span></div> </td>
+                </tr>
+                <tr>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                </tr>
+              </table></td>
+          </tr>
+          <tr> 
+            <td height="1" colspan="5" valign="top"></td>
+          </tr>
+          <tr> 
+             <td height="" colspan="5" valign="top" class="lectura">
+                     <div style="float:left; border-bottom:1px dashed #CCC; width:800px; padding-bottom:5px;">
+                    <span class="titulo">Ingresa tu direcci&oacute;n de despacho</span></div>
+                  </td>
+          </tr>
+          <tr> 
+            <td height="8" colspan="5" valign="top"> <table width="100%" border="0" cellpadding="2" cellspacing="0" class="lectura">
+                <tr> 
+                  <td width="70" valign="top">* Tipo </td>
+                  <td width="160" valign="top">* Calle</td>
+                  <td width="36" valign="top">* N&deg;</td>
+                  <td width="60" valign="top">Dpto./Casa</td>
+                  <td valign="top" width="100">* Regi&oacute;n</td>
+                  <td width="120" valign="top">* Comuna</td>
+                  <td valign="top">* Guardar como <br /><span class="footer"><em>(ej:casa 
+                    mam&aacute;)</em></span> </td>
+                </tr>
+                <tr> 
+                  <td width="70" height="30"> <select name="tipo_calle" class="campo" id="tipo_calle">
+                      <option value="" selected="selected">--</option>
+                      <!-- BEGIN DYNAMIC: select_tipocalle -->
+                      <option value="{option_calle_id}" {selectcalle}>{option_calle_nombre}</option>
+                      <!-- END DYNAMIC: select_tipocalle -->
+                    </select> </td>
+                  <td width="160"> <label> 
+                    <input name="calle" type="text" value="{calle}" class="campo" size="25" maxlength="50" />
+                    </label> </td>
+                  <td> <label> 
+                    <input name="numero" type="text" value="{numero}" class="campo" size="7" maxlength="20" />
+                    </label> </td>
+                  <td width="60"> <label> 
+                    <input name="departamento" type="text" value="{departamento}" class="campo" size="7" maxlength="20" />
+                    </label> </td>
+                  <td> <select name="region" class="campo" id="region" onchange="buscar_comunas()">
+                      <option {selectregionaux} value="0">Seleccionar</option>
+                      <!-- BEGIN DYNAMIC: select_regiones -->
+                      <option value="{option_reg_id}" {selectregion}>{option_reg_nombre}</option>
+                      <!-- END DYNAMIC: select_regiones -->
+                    </select> </td>
+                  <td> <select name="comuna" class="campo" id="comuna" >
+                      <option value="0">Seleccionar</option>
+                    </select> </td>
+                  <td><input name="alias" type="text" value="{alias}" class="campo" size="12" maxlength="20" /></td>
+                </tr>
+              </table></td>
+          </tr>
+          <tr> 
+            <td colspan="5" valign="top"> <table width="318" border="0" cellpadding="0" cellspacing="0">
+                <tr> 
+                  <td height="6" colspan="2" style="l"><span class="lectura">Observaciones para el despacho</span></td>
+                </tr>
+                <tr> 
+                  <td height="50" colspan="2"> <textarea name="comentario" cols="43" rows="4" class="campoblanco" id="comentario" onfocus="vaciar_comentario()" onkeydown="javascript:checklength(this)">{comentario}</textarea>                  </td>
+                  </tr>
+                <tr> 
+                  <td width="6" height="6"></td>
+                  <td width="212" height="6"></td>
+                  </tr>
+              </table>
+              </td>
+          </tr>
+          <tr> 
+            <td height="1" colspan="5" valign="top"></td>
+          </tr>
+          <tr>
+            <td height="" colspan="5" valign="top" class="lectura">
+                     <div style="float:left; border-bottom:1px dashed #CCC; width:800px; padding-bottom:5px;">
+                    <span class="titulo">T&eacute;rminos y Condiciones del Servicio</span></div>
+                  </td>
+          </tr>
+          <tr> 
+            <td height="2" colspan="5" valign="top"><span class="lectura">Para registrarte en Jumbo.cl y poder 
+              comprar debes aceptar los T&eacute;rminos y Condiciones de Jumbo.cl<br />
+              <br />
+              <a href="http://www.jumbo.cl/supermercado/terminos/terminos.html" target="_blank">Leer los T&eacute;rminos 
+              y Condiciones del Servicio</a><br />
+              </span> <input type="checkbox" name="terminos" /> <span class="lectura"> 
+              <label>Acepto</label>
+              </span> <span class="lectura"><br />
+              <br />
+              </span> </td>
+          </tr>
+          <tr> 
+            <td height="30" colspan="5" align="center" valign="top"> <table width="124" border="0" cellspacing="5" cellpadding="0">
+                <tr> 
+                  <td valign="bottom"><a href="javascript:volver();"><img src="/FO_IMGS/img/estructura/bt-volver.gif" alt="Volver" name="Image16" width="98" height="29" border="0" id="Image16" title="Volver"/></a></td>
+                  <td valign="bottom"><div align="right"><a href="javascript:submit_registro();" id="btn_register"><img src="/FO_IMGS/img/estructura/bt-guardar-datos.gif" alt="Guardar Datos" name="bt_entrar" width="142" height="29" border="0" id="bt_entrar" title="Guardar Datos"/></a></div></td>
+                </tr>
+              </table></td>
+          </tr>
+        </table></div>
+		</td>
+		<td width="5" height="240" align="right"></td>
+	</tr>
+	</table>
+
+</div>
+
+</form>
+
+<iframe name="ifcomuna" id="ifcomuna" src="/FO/blank.html" frameborder="0" width="0" height="0" scrolling="yes"></iframe>
+<script type="text/javascript">
+<!--
+	buscar_comunas();
+	window.document.cliente.rut.focus();
+	window.document.cliente.nombre.onkeypress 	= KeyIsApellido;
+	window.document.cliente.ape_pat.onkeypress 	= KeyIsApellido;
+	window.document.cliente.ape_mat.onkeypress 	= KeyIsApellido;
+    window.document.cliente.clave.onkeypress 	= KeyIsClave;
+    window.document.cliente.clave1.onkeypress 	= KeyIsClave;
+    window.document.cliente.fon_num_1.onkeypress= KeyIsTelefono;
+    window.document.cliente.fon_num_2.onkeypress= KeyIsTelefono;
+	window.document.cliente.fon_num_3.onkeypress= KeyIsTelefono;
+    window.document.cliente.pregunta.onkeypress	= KeyIsTexto;
+    window.document.cliente.respuesta.onkeypress= KeyIsTexto;
+	window.document.cliente.alias.onkeypress	= KeyIsTexto; 
+	window.document.cliente.numero.onkeypress	= KeyIsNumber; 
+	window.document.cliente.departamento.onkeypress = KeyIsTexto;
+	window.document.cliente.calle.onkeypress        = KeyIsTexto;
+	window.document.cliente.comentario.onkeypress   = KeyIsTexto;        
+	window.document.cliente.pregunta.onkeypress   	= KeyIsTexto;        
+	window.document.cliente.respuesta.onkeypress   	= KeyIsTexto;        
+	if( {error} == 1 ) {
+		alert( "{mensaje_error}" );
+	}
+
+    function fsel_com(idcom){
+    	for( var i = 0; i < document.cliente.comuna.length ; i++ ) {
+    		if( document.cliente.comuna.options[i].value == "{fsel_com}" ) {
+    			document.cliente.comuna.selectedIndex = i;
+    			break;
+    		}
+    	}
+    }
+-->
+</script>
+<script type="text/javascript">
+var fo = new FlashObject("/FO_IMGS/img/headerregistro.swf", "animationName", "700", "125", "8", "#FFFFFF");
+fo.addParam("allowScriptAccess", "sameDomain");
+fo.addParam("quality", "high");
+fo.addParam("scale", "noscale");
+fo.write("header");
+</script>
+
+<!-- Start of DoubleClick Spotlight Tag: Please do not remove-->
+<!-- Activity Name for this tag is:Formulario HTML -->
+<!-- Web site URL where tag should be placed: https://www.jumbo.cl/FO/RegisterForm -->
+<!-- This tag must be placed within the opening <body> tag, as close to the beginning of it as possible-->
+<!-- Creation Date:07/27/09 -->
+<SCRIPT language="JavaScript">
+var axel = Math.random()+"";
+var a = axel * 10000000000000;
+document.write('<IMG SRC="https://ad.doubleclick.net/activity;src=1463301;type=formu800;cat=formu701;ord=1;num='+ a + '?" WIDTH=1 HEIGHT=1 BORDER=0>');
+</SCRIPT>
+<NOSCRIPT>
+<IMG SRC="https://ad.doubleclick.net/activity;src=1463301;type=formu800;cat=formu701;ord=1;num=1?" WIDTH=1 HEIGHT=1 BORDER=0>
+</NOSCRIPT>
+<!-- End of DoubleClick Spotlight Tag: Please do not remove-->
+
+
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-1529321-1");
+pageTracker._trackPageview();
+</script>
+</body>
+</html>

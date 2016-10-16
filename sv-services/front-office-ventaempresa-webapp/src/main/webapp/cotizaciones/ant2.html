@@ -1,0 +1,114 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>Venta Empresas - Producto</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="EXPIRES" CONTENT="Mon, 22 Jul 2002 11:12:01 GMT">
+<script language="javascript" src="/WebFOVE/funciones.js"></script>
+<link href="/WebFOVE/style.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+<!--
+body {
+	margin-left: 5px;
+	margin-top: 5px;
+	margin-right: 5px;
+	margin-bottom: 5px;
+}
+-->
+</style>
+<SCRIPT LANGUAGE="JavaScript">
+
+function validaForm(){//Valida que por lo menos debe existir un productos chequeado para continuar
+
+    var form = document.form1;
+
+	max_productos = form.tot_reg.value;
+	cont = 0;
+
+	for ( i = 0 ; i < max_productos; ++i){
+		if (form.elements["pro_id"+i].checked == true){
+			cont=1;
+			if(form.elements["valor"+i].value == '' || form.elements["valor"+i].value == '0'){
+				alert("Debe ingresar la cantidad del producto");
+				form.elements["valor"+i].focus();
+				return false;
+			}
+		}
+	}
+
+	if (cont==0){
+		alert("Debes seleccionar al menos un producto");
+		return false;
+	}
+	
+	//form.submit();
+	window.close();
+}
+
+function chk_all(){//Chequea o deschequea todos los productos 
+    var form = document.form1;
+
+	max_productos = form.tot_reg.value;
+
+	for ( i = 0 ; i < max_productos; ++i){
+		if(form.todos.checked == true)
+			form.elements["pro_id"+i].checked = true;
+		else
+			form.elements["pro_id"+i].checked = false;
+	}
+
+}
+
+</SCRIPT>
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript"></script>
+<script type="text/javascript">
+   _uacct = "UA-1529321-3";
+   urchinTracker();
+</script>
+</head>
+<body onLoad="window.focus();">
+<form name="form1" method="post" action="AddNewDetalle" onSubmit="return validaForm();" TARGET="ifrm_bolsa">
+<INPUT TYPE="hidden" NAME="tot_reg" value="{tot_reg}">
+  <table width="100%"  border="0" cellpadding="0" cellspacing="0" class="tabla_marco">
+	<tr><td>&nbsp;</td><tr>
+	<tr><td class="texto_formularios">Empresa  : {nom_emp}</td>
+	<tr>
+	<tr><td class="texto_formularios">Sucursal : {nom_suc}</td>
+	<tr>
+	<tr><td class="texto_formularios">Nº Cotizacion : {cot_id}</td>
+	<tr>
+	<tr><td>&nbsp;</td><tr>
+    <tr>
+      <td><table width="100%"  border="0" align="center" cellpadding="0" cellspacing="0" class="tabla_generica" >
+        <tr class="fila_tabla_titulos">
+          <td width="100">Producto</td>
+          <td>Descripci&oacute;n</td>
+          <td width="120">Precio</td>
+          <td width="70">Cantidad</td>
+          <td width="70">Todas
+              <input type="checkbox" name="todos" value="" onclick="chk_all();"></td>
+        </tr>
+		<!-- BEGIN DYNAMIC: ListaProductos -->
+        <tr onMouseOver="cambiar_color_fila_on(this);" onMouseOut="cambiar_color_fila_off(this);">
+          <td width="100">{codigo}</td>
+          <td>{descrip}</td>
+          <td width="120" align="right">{precio}</td>
+          <td width="70" align="right"><input name="valor{ite}" type="text" id="cantidad2" value="{cantidad}" size="4" maxlength="4"></td>
+          <td width="70" align="center"><input type="checkbox" name="pro_id{ite}" value="{codigo}"></td>
+        </tr>
+		<SCRIPT>document.form1.valor{ite}.onkeypress=KeyIsCantidad;</script>
+		<!-- END DYNAMIC: ListaProductos -->
+      </table>
+        <table width="100%"  border="0" align="center" cellpadding="2" cellspacing="0">
+          <tr>
+            <td align="right"><input name="Submit" type="submit" class="botonChico" value="Agregar"></td>
+          </tr>
+        </table></td>
+    </tr>
+  </table>
+</form>
+<p>&nbsp;</p>
+</body></html>

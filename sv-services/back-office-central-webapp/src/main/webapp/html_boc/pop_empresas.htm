@@ -1,0 +1,109 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html><!-- InstanceBegin template="/Templates/print.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="EXPIRES" CONTENT="Mon, 22 Jul 2002 11:12:01 GMT">
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>Jumbo.cl Back Office Central</title>
+<!-- InstanceEndEditable -->
+<!-- InstanceBeginEditable name="head" --><!-- InstanceEndEditable -->
+<link href="estilos.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+<!--
+body {
+	background-color: #FFFFFF;
+}
+-->
+</style></head>
+
+<body>
+<!-- InstanceBeginEditable name="Body" --><br>		
+	
+<script language="JavaScript" src="funciones.js"></script>		
+<SCRIPT LANGUAGE="JavaScript">window.name='winmodal'</SCRIPT>	
+
+<script>
+	function validar_form(form){
+		if(form.buscapor[0].checked){
+			if (validar_numero(form.buscar,"El rut es numerico, debe ingresarlo sin puntos ni digito verificador."))return false;
+		}
+		return true;
+	}
+
+</script>			
+            <table width="95%"  border="0" align="center" cellpadding="0" cellspacing="2">
+              <tr>
+                <td><fieldset>
+                <legend>Buscar Empresas</legend>
+                <table width="100%"  border="0" align="center" cellpadding="0" cellspacing="0">
+                        <form name="form_busq" method="get" action="ViewEmpresasPopUp" TARGET='winmodal' onsubmit="return validar_form(this);" >                
+		                  <tr>
+        		            <td width="40%">
+                		        <input type="radio" name="buscapor" value="rut" {check1} >
+                        		Rut (Sin puntos ni digito verificador)
+		                        <input type="radio" name="buscapor" value="raz_soc" {check2} >
+        		                Razón Social</td>
+                  		</tr>
+                  
+                  <tr>
+                    <td>&nbsp;
+
+	                        <input name="buscar" type="text" size="40" maxlength="30" value="{buscar}" ALT="Si busca por rut, ingreselo sin puntos ni digito verificador." > 
+
+                        <input type="submit" class="cmd" value="Buscar"></td>
+                    
+	                    </form>  
+	                    
+	                <td>
+                </table>
+                </fieldset></td>
+              </tr>
+			</table>
+			<br>
+			<table width="95%"  border="1" align="center" cellpadding="0" cellspacing="0" class="tabla2">
+			  <tr align="left">
+				<th width="11%">Rut Empresa</th>
+				<th width="75%">Razón Social</th>
+				<th width="9%">Sel
+			  </tr>
+			  <!-- BEGIN DYNAMIC: EMPRESAS -->	
+			  <tr>
+				<td>{rut_emp}</td>
+				<td>{emp_raz_social}</td>
+				<td> <div align="center"><img src="img/forward.gif" width="16" height="16" onclick="javascript: valor='{valor}'; window.returnValue = valor; window.close();"  onmouseover="javascript:style.cursor='hand'" ></div></td>
+			  </tr>
+			  <!-- END DYNAMIC: EMPRESAS -->
+
+			</table>
+
+			<table width="95%"  border="0" align="center" cellpadding="0" cellspacing="0">
+			<form name="form_pag" action="ViewEmpresasPopUp" method=get TARGET='winmodal'>
+			<input type="hidden" name="buscapor" value="{buscapor}">
+			<input type="hidden" name="buscar" value="{buscar}">
+			  <tr>
+				<td align="right">P&aacute;ginas : 
+				<select name="pagina" onchange="submit(this.form);">
+				<!-- BEGIN DYNAMIC: PAGINA -->
+				<option value="{pag}" {sel_pag} >{pag}</option>
+				<!-- END DYNAMIC: PAGINA -->
+				</select>
+				</td>
+			  </tr>
+			  </form>
+			  </table>
+			  <tr>
+				<td align="right">	
+				<div align="center">
+				  <input name="Button" type="button" class="cmd" value="  Cerrar  " onClick="valor=''; window.returnValue = valor; window.close();">
+				</div></td>
+			  </tr>
+			</table>
+<script>
+
+
+</script>
+<!-- InstanceEndEditable --></body>
+<!-- InstanceEnd --></html>

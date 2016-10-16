@@ -1,0 +1,639 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html><!-- InstanceBegin template="/Templates/fullbody.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="EXPIRES" CONTENT="Mon, 22 Jul 2002 11:12:01 GMT">
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>Jumbo.cl Back Office Central</title>
+<!-- InstanceEndEditable -->
+
+<!-- InstanceBeginEditable name="head" --><!-- InstanceEndEditable -->
+
+<link href="estilos.css" rel="stylesheet" type="text/css">
+<!--link href="../default.css" rel="stylesheet" type="text/css"-->
+<style type="text/css">
+<!--
+.style1 {color: #666666}
+-->
+</style>
+
+</head>
+
+<body>
+<link rel="stylesheet" href="menu/menu.css">
+<script language="JavaScript" src="menu/menu.js"></script>
+<script language="JavaScript" src="menu/menu_tpl.js"></script>
+<script language="JavaScript" src="menu/menu_items.js"></script>
+<script language="JavaScript" src="popup.js"></script>
+<script language="JavaScript" src="funciones.js"></script>
+<script language="JavaScript" src="js/jquery-1.6.2.min.js"></script>
+<script language="JavaScript" src="js/aphanumeric.js"></script>
+<script language="JavaScript" src="js/codigosTelefonicos.js"></script>
+
+<SCRIPT LANGUAGE="JavaScript">window.name='padre'</SCRIPT>		
+
+<table width="780" height="100%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+    <td height="78" valign="top">
+	
+	<TABLE width="100%" height=59 border=0 align="center" cellpadding="0" cellspacing="0" bgcolor="#ffffff">
+	  <TR>
+		<TD width=275 height="59" align=left class=user><img src="img/header2.jpg" width="275" height="60"></TD>
+		<TD width=505 align=left valign="bottom" background="img/bg-1.jpg" class=user><table width="90%"  border="0" align="center" cellpadding="0" cellspacing="2">
+          <tr>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td><div align="right" class="infoBL">Usuario: {hdr_nombre}&nbsp;&nbsp;| {hdr_fecha}</div></td>
+          </tr>
+        </table></TD>
+	  </TR>
+	</TABLE>
+	<TABLE width="100%" height=19 border=0 align="center" cellpadding="0" cellspacing="0" bgcolor="#f1f0e9" style="border-top:1px solid #ABABAB; border-bottom:1px solid #ABABAB">
+	  <TR>
+		<TD align=left bgcolor="#FFFFFF" class=user></TD>
+		</TR>
+	</TABLE>
+
+	
+	</td>
+  </tr>
+  <tr height="400">
+    <td valign="top" bgcolor="#FFFFFF">
+      <table border=0 width="100%" class='ContentTitle'>
+        <tr>
+          <td width="53%" height="20" class='HeaderTitle'><!-- InstanceBeginEditable name="Titulo" -->
+				  Administraci&oacute;n de Compradores <!-- InstanceEndEditable --></td>
+          <td width="47%" class='HeaderTitle'><!-- InstanceBeginEditable name="Botonera" -->
+            <div align="right"></div>
+          <!-- InstanceEndEditable --></td>
+        </tr>
+      </table>
+	  <br>
+      <table width="100%"  border="0" cellspacing="2" cellpadding="2">
+        <tr valign="top">
+          <td width="71%"><!-- InstanceBeginEditable name="Izquierda" -->
+          <script language="JavaScript" src="funciones.js"></script>
+          <script language="JavaScript">
+          	function validaFono(cod,num,campo){
+          		var codigo1 = cod;
+				var numero1 = num;
+				var tipofono;
+				if (codigo1==9){//si es celular
+					numero = numero1.slice(- 8);
+					codigo = numero1.substr(0,1);
+					if (codigo<5){
+						alert("El primer numero de un celular debe ser entre 5 y 9.");
+						campo.value="";
+						campo.focus();
+						return false;
+					}	
+					tipofono="celular";
+				}else if (codigo1==2){//si es telefono santiago
+					numero = numero1.slice (- 8);
+					codigo = codigo1;
+					tipofono="santiago";
+				}else{//si es telefono regiones
+					numero = numero1;
+					codigo = codigo1;
+					tipofono="region";
+				}
+          		if ((Trim(numero)).length <7 &&(tipofono=="region")){
+					alert("Debe ingresar el número de fono correctamente.");
+					campo.focus();
+					return false;
+				}else if((Trim(numero1)).length <8 &&(tipofono!="region")){
+					alert("Debe ingresar el número de fono correctamente.");
+					campo.focus();
+					return false;
+				}
+				return true;
+          	}
+            function guardar(form){
+	            if (form.fon_cod_1.value==9){
+	            	form.telf_1.value=form.fon_num_1.value;
+	            }else{
+	            	form.telf_1.value=form.fon_cod_1.value+form.fon_num_1.value;
+	            }
+				if (form.fon_cod_2.value==9){
+	            	form.telf_2.value=form.fon_num_2.value;
+	            }else{
+	            	form.telf_2.value=form.fon_cod_2.value+form.fon_num_2.value;
+	            }
+				if (form.fon_cod_3.value==9){
+	            	form.telf_3.value=form.fon_num_3.value;
+	            }else{
+	            	form.telf_3.value=form.fon_cod_3.value+form.fon_num_3.value;
+	            }
+            	
+				
+				if( validar_obligatorio( form.rut, "El Rut es obligatorio" ) ) return false;          		
+				if( validar_obligatorio( form.dv, "El Digito Verificador es obligatorio" ) ) return false;          		
+          		if( validar_obligatorio( form.nombre, "El Nombre es obligatorio" ) ) return false;          		
+          		if( validar_obligatorio( form.paterno, "El Apellido Paterno es obligatorio" ) ) return false;
+          		if( validar_obligatorio( form.materno, "El Apellido Materno es obligatorio" ) ) return false;
+          		if( validar_obligatorio( form.telf_1, "El telefono 1 es obligatorio" ) ) return false;
+          		if( validar_obligatorio( form.telf_2, "El telefono 2 es obligatorio" ) ) return false;
+          		if( validar_obligatorio( form.email, 	"El email es obligatorio")) return false;
+          		if(!(validaFono(form.fon_cod_1.value,form.fon_num_1.value,form.fon_num_1))) 
+          			return false;
+          		if(!(validaFono(form.fon_cod_2.value,form.fon_num_2.value,form.fon_num_2))) 
+          			return false;
+				if (form.fon_cod_1.value==""){
+          			alert ("Debe ingresar el codigo telefonico del telefono 1")
+          			form.fon_cod_1.focus();
+          			return false;
+          		}
+          		if (form.fon_cod_2.value==""){
+          			alert ("Debe ingresar el codigo telefonico del telefono 2")
+          			form.fon_cod_2.focus();
+          			return false;
+          		}
+          		if (!(form.fon_num_3.value=="")){
+	          		if (form.fon_cod_3.value==""){
+	          			alert ("Debe ingresar el codigo telefonico del telefono 3")
+	          			form.fon_cod_3.focus();
+	          			return false;
+	          		}
+	          		if(!(validaFono(form.fon_cod_3.value,form.fon_num_3.value,form.fon_num_3))) 
+          				return false;		
+          		}
+
+          		
+          			
+				if (form.clave.value !=""){
+	          		//if( validar_obligatorio( form.clave, 	"La clave es obligatoria")) return false;
+	          		if( validar_obligatorio( form.repite_clave, 	"La Repetición de Clave es obligatoria")) return false;
+	          		if (form.clave.value != form.repite_clave.value){
+	          			alert("La confirmación de la clave no es coincidente.")
+	          			return false;
+	          		}
+          		}
+          		
+          		if(form.email.value !=""){
+          			if( validar_email( form.email, "La dirección de email es incorrecta") ) return false;
+          		}
+				
+				//validar rut
+				var dv = getDV(form.rut.value);
+				//alert("getDV:"+dv)
+				if( dv != form.dv.value) {
+					alert("El Rut ingresado no es válido");
+					form.rut.focus();
+					return false;
+				}
+
+				
+				return true;
+			}
+		</script>
+          
+          
+          <script src="validacion.js"></script>
+            
+            <link id="luna-tab-style-sheet" type="text/css" rel="stylesheet" href="js/tabs/tabpane.css" />
+            <script type="text/javascript" src="js/tabs/tabpane.js"></script>
+            <table width="92%" align="center" border="0">
+              <tr>
+	              <div align="center"><font color="red">{msje}</font>&nbsp;<br>
+		 	      </div>
+                <td><div class="tab-page" id="modules-cpanel">
+                    <script type="text/javascript">
+				   		var tabPane1 = new WebFXTabPane( document.getElementById( "modules-cpanel" ), 0 )
+				    </script>
+                
+                    <div class="tab-page" id="modulo1">
+                      <h2 class="tab">Ficha</h2>
+                      <div align="left">
+					  
+                          <p><strong>Datos del Comprador</strong></p>
+				          <form name="frmCompGuardar" method="post" action="ModComprador" onsubmit="return guardar(this);">
+				          <input name=url type=hidden value="ViewCompradorForm">
+				          <input name="id_comprador" type="hidden" value="{id_comprador}">
+
+                          <table width="100%"  border="0" align="center" cellpadding="0" cellspacing="2">
+				            <tr>
+				              <td width="25%">Id Comprador</td>
+				              <td width="75%">{id_comprador}</td>
+				            </tr>
+				            <tr>
+				              <td>RUT</td>
+				              <td><input name="rut" type="text" value="{comp_rut}" size="9" maxlength="9">-<input name="dv" type="text" value="{comp_dv}" size="1" maxlength="1"></td>
+				            </tr>
+				            <tr>
+				              <td>Nombre</td>
+				              <td><input name="nombre" type="text" value="{comp_nombre}" size="50" maxlength="50"></td>
+				            </tr>
+				            <tr>
+				              <td>Apellido Paterno</td>
+				              <td><input name="paterno" type="text" value="{comp_paterno}" size="50" maxlength="50"></td>
+				            </tr>
+				            <tr>
+				              <td>Apellido Materno</td>
+				              <td><input name="materno" type="text" value="{comp_materno}" size="50" maxlength="50"></td>
+				            </tr>
+				            <tr>
+				              <td>Genero</td>
+				              <td><select name="sel_gen">
+				              	<!-- BEGIN DYNAMIC: GENEROS -->
+								<option value="{gen_id}" {sel_gen} >{gen_nom}</option>
+								<!-- END DYNAMIC: GENEROS -->
+							  </select></td>
+				            </tr>
+				            <tr>
+				              <td>Fecha de creación</td>
+				              <td>{comp_fec_crea}</td>
+				            </tr>
+				            <tr>
+				              <td>Telefono 1</td>
+				              <td><select name="fon_cod_1" class="campos" id="fon_cod_1" style="width:50px"></select>
+				              <input name="fon_num_1" type="text"  class="campo" id="fon_num_1" size="8" maxlength="8" style="margin-top:5px;" />
+				              <div class="cont_acepto_info" id="fon_num_1_info"></div>
+				              <div class="cont_alerta_error" id="fon_num_1_error"></div>
+				              </td>
+				              <input id="telf_1" name="telf_1" type="hidden" value="{comp_fono1}" size="20" maxlength="20">
+				            </tr>
+				            <tr>
+				              <td>Telefono 2</td>
+				              <td><select name="fon_cod_2" class="campos" id="fon_cod_2" style="width:50px"></select>
+				              <input name="fon_num_2" type="text"  class="campo" id="fon_num_2" size="8" maxlength="8" style="margin-top:5px;" />
+				              <div class="cont_acepto_info" id="fon_num_2_info"></div>
+				              <div class="cont_alerta_error" id="fon_num_2_error"></div>
+				              </td>
+				              <input id="telf_2" name="telf_2" type="hidden" value="{comp_fono2}" size="20" maxlength="20">
+				            </tr>
+				            <tr>
+				              <td>Telefono 3</td>
+				              <td><select name="fon_cod_3" class="campos" id="fon_cod_3" style="width:50px"></select>
+				              <input name="fon_num_3" type="text"  class="campo" id="fon_num_3" size="8" maxlength="8" style="margin-top:5px;" />
+				              <div class="cont_acepto_info" id="fon_num_3_info"></div>
+				              <div class="cont_alerta_error" id="fon_num_3_error"></div>
+				              </td>
+				              <input id="telf_3" name="telf_3" type="hidden" value="{comp_fono3}" size="20" maxlength="20">
+				            </tr>
+				            <tr>
+				              <td>Mail de Contacto</td>
+				              <td><input name="email" type="text" value="{comp_mail}" size="50" maxlength="100"></td>
+				            </tr>
+				            <tr>
+				              <td><br></td>
+				              <td><br></td>
+				            </tr>
+				            <tr>
+				              <td>Estado</td>
+				              <td><select name="sel_est">
+				                <!-- BEGIN DYNAMIC: ESTADOS -->
+								<option value="{id_estado}" {sel_est} >{nom_estado}</option>
+								<!-- END DYNAMIC: ESTADOS -->
+				              </select></td>
+				            </tr>
+				            <tr> 
+				              <td>Clave</td>
+				              <td><input name="clave" type="password" value="" ></td>
+				            </tr>				  
+				            <tr> 
+				              <td>Confirme Clave</td>
+				              <td><input name="repite_clave" type="password" value="" ></td>
+				            </tr>
+				            <tr> 
+				              <td>Pregunta Secreta</td>
+				              <td><input name="preg_secreta" type="text" value="{preg_secreta}" size="50" maxlenght="100"></td>
+				            </tr>				  
+				            <tr> 
+				              <td>Respuesta Secreta</td>
+				              <td><input name="resp_secreta" type="text" value="{resp_secreta}" size="50" maxlenght="100"></td>
+				            </tr>				            
+				            <tr>
+				              <td>Fecha de modificación</td>
+				              <td>{fecha}</td>
+				            </tr>
+				            <tr>
+				              <td><br></td>
+				              <td><br></td>
+				            </tr>
+                            <tr>
+                              <td>&nbsp;</td>
+                              <td><input name="Button" type="submit" class="cmd" value="    Guardar    " >
+                                  <input name="Button" type="button" class="cmd" value="    Cancelar     " 
+    	                          onclick="javascript:location.href='ViewMonComprador';">
+		                          </td>
+                            </tr>
+                          </table>
+	                     </form>      
+                          <br>
+                        <br>
+                      </div>
+                    </div>
+					
+			<script language="JavaScript">
+			
+				function addOption(text,value,sel) {
+				   var oOpt=new Option(text,value);
+				   var oSelect=sel;
+				   oSelect.options[oSelect.options.length]=oOpt;
+				}
+				function removeOption(index,sel) {
+					   var oSelect=sel;
+					   oSelect.options[index]=null;
+				} 
+			
+				function procesaResp(texto) {
+					var response = texto.split("#");
+					var larcampo = document.frmModSucComp.id_sucursal.length;
+					
+			
+					for (i = 0; i < larcampo; i++ ){
+						removeOption(0, document.getElementById("id_sucursal"));
+					}
+					for (a = 0 ; a < response.length; a++){
+						resp = response[a].split("|");
+						addOption((resp[1])?resp[1]:'',(resp[0])?resp[0]:'',document.getElementById("id_sucursal") );
+					}
+					
+				}
+				
+				 function invocaAjax(){
+				 	var id_empresa= document.frmModSucComp.id_empresa.value;
+					exec_AJAXRPC('GET', 'ViewComboEmpSucursalesAjax?id_empresa='+id_empresa, 'procesaResp');
+				 }	
+				 	
+				function abre_popup_emp(){
+					valor="";
+					if ((valor = popUpWindowModalscroll('ViewEmpresasPopUp', 100, 100, 600, 400))> '0') {
+						if (valor != ""){
+							id = valor.split("|");
+							document.frmModEmpComp.id_empresa.value = id[0];
+							document.frmModEmpComp.empresa.value = id[1];
+						}
+					}
+				}		
+				
+				function abre_popup_emp1(){
+					valor="";
+					if ((valor = popUpWindowModalscroll('ViewEmpresasPopUp', 100, 100, 600, 400))> '0') {
+						if (valor != ""){
+							id = valor.split("|");
+							document.frmModSucComp.id_empresa.value = id[0];
+							document.frmModSucComp.empresa.value = id[1];
+							document.frmModSucComp.id_sucursal.value = "";
+							document.frmModSucComp.sucursal.value = "";
+							
+						}
+					}
+				}	
+				
+				
+				function abre_popup_suc(emp_id){
+					if (emp_id == null || emp_id == ""){
+						alert("Primero debe seleccionar una empresa.");
+					}else{
+						valor="";
+						if ((valor = popUpWindowModalscroll('ViewSucursalesEmpPopUp?emp_id='+emp_id, 100, 100, 600, 400))> '0') {
+							if (valor != ""){
+								id = valor.split("|");
+								document.frmModSucComp.id_sucursal.value = id[0];
+								document.frmModSucComp.sucursal.value = id[1];
+							}
+						}
+					}
+				}					 	
+				 		
+				function valida_empresa(form){
+					if (form.id_empresa.value == ""){
+						alert("Debe seleccionar Empresa.");
+						return false;
+					}
+					return true;
+				}		
+				
+				
+				function valida_sucursal(form){
+					if (form.id_empresa.value == "" ||form.id_sucursal.value == "" ){
+						alert("Debe seleccionar Empresa y Sucursal.");
+						return false;
+					}
+					return true;
+				}
+				 			
+          	</script>
+                    <div class="tab-page" id="modulo2">
+                      <h2 class="tab">Empresas</h2>
+                         <div align="left"> <strong>Listado de Empresas que puede administrar</strong><br />
+							
+						 <form name="frmModEmpComp" action="AddEmpComprador" target="empComprador" onsubmit="return valida_empresa(this);">
+						 <input name="url" type="hidden" value="ViewCompEmpresasIframe">
+						 <input name="id_comprador" type="hidden" value="{id_comprador}">
+						  <table width="550" border="0" align="center" cellpadding="2" cellspacing="0">
+                            <tr>
+							  <td width="60%">Seleccione Empresa</td>
+                              <td width="*">&nbsp;</td>
+                            </tr>
+                            <tr>
+							  <td>
+							    <input name="id_empresa" type="hidden" value=""  >
+							  <input name="empresa" type="text"  value="" size="40" readOnly onclick="javascript:abre_popup_emp();" >
+                                <a href="javascript:abre_popup_emp();"><img src="img/magnify.jpg" width="16" height="16" border="0" alt="Seleccionar Empresa"></a> 
+							    
+							</td>
+							<td><input type=submit name=btn_agregar value="Agregar"></td>
+                            </tr>
+                          </table>
+
+                        <table width="500"  border="0" align="center" cellpadding="2" cellspacing="0" class="tabla2">
+						  <tr>
+							<td colspan=6 align=right></td>
+						  </tr>
+                          <tr>
+						    <th width="5%">&nbsp;</th>
+                            <th width="30%">Empresa</th>
+                          </tr>
+                          </table>
+						  <CENTER><IFRAME SRC="ViewCompEmpresasIframe?id_comprador={id_comprador}" NAME="empComprador" HEIGHT="194" WIDTH="500" border=0 > 
+							</IFRAME></CENTER>
+
+                          <table width="63%"  border="0" align="center" cellpadding="0" cellspacing="2">
+                            <tr>
+                              <td width="50%"><div align="right">
+                            </div></td>
+                            </tr>
+                          </table>
+                          <br>
+                       </form>
+                      </div>
+                    </div>
+                    
+                    <div class="tab-page" id="modulo3">
+                      <h2 class="tab">Sucursales</h2>
+                         <div align="left"> <strong>Listado de Sucursales donde puede Cotizar</strong><br />
+                          	<div align=right>
+                          	<a href="ViewSucursalNewForm">Nueva Sucursal  </a>
+                          	</div>
+						 <form name="frmModSucComp" action="AddSucComprador" target="sucComprador" onsubmit="return valida_sucursal(this);">
+						 <input name="url" type="hidden" value="ViewCompEmprSucursalIframe">
+						 <input name="id_comprador" type="hidden" value="{id_comprador}">
+						  <table width="550" border="0" align="center" cellpadding="2" cellspacing="0">
+                            <tr>
+							  <td width="40%">Seleccione Empresa</td>
+							  <td width="40%">Seleccione Sucursal</td>							  
+                              <td width="*">&nbsp;</td>
+                            </tr>
+                            <tr>
+							  <td>
+							     <input name="id_empresa" type="hidden" value=""  >
+							  <input name="empresa" type="text"  value="" size="32"  readOnly onclick="javascript:abre_popup_emp1();" >
+                                <a href="javascript:abre_popup_emp1();"><img src="img/magnify.jpg" width="16" height="16" border="0" alt="Seleccionar Empresa"></a> 
+							</td>
+							<td>
+						      <input name="id_sucursal" type="hidden" value=""  >
+							  <input name="sucursal" type="text"  value="" size="32" readOnly onclick="javascript:abre_popup_suc(document.frmModSucComp.id_empresa.value);">
+                                <a href="javascript:abre_popup_suc(document.frmModSucComp.id_empresa.value);"><img src="img/magnify.jpg" width="16" height="16" border="0" alt="Seleccionar Sucursal"></a> 
+							</td>					
+									  
+							<td><input type=submit name=btn_agregar value="Agregar"></td>
+                            </tr>
+                          </table>
+
+                        <table width="500"  border="0" align="center" cellpadding="2" cellspacing="0" class="tabla2">
+						  <tr>
+							<td colspan=6 align=right></td>
+						  </tr>
+                          <tr>
+						    <th width="5%">&nbsp;</th>
+                            <th width="30%">Empresa</th>
+                            <th width="30%">Sucursal</th>							
+                          </tr>
+                          </table>
+						  <CENTER><IFRAME SRC="ViewCompEmprSucursalIframe?id_comprador={id_comprador}" NAME="sucComprador" HEIGHT="194" WIDTH="500" border=0 > 
+							</IFRAME></CENTER>
+
+                          <table width="63%"  border="0" align="center" cellpadding="0" cellspacing="2">
+                            <tr>
+                              <td width="50%"><div align="right">
+                            </div></td>
+                            </tr>
+                          </table>
+                          <br>
+                       </form>
+                      </div>
+                    </div>
+
+				   </div></td>
+              </tr>
+            </table>
+          
+          <br>
+
+		      <br>
+			<script>
+				document.frmCompGuardar.dv.onkeypress 		= KeyIsRut;
+				document.frmCompGuardar.rut.onkeypress 		= KeyIsNumber;
+				document.frmCompGuardar.nombre.onkeypress 	= KeyIsTexto;
+				document.frmCompGuardar.paterno.onkeypress 	= KeyIsTexto;
+				document.frmCompGuardar.materno.onkeypress 	= KeyIsTexto;
+			</script>
+	      <!-- InstanceEndEditable --></td>
+        </tr>
+      </table>
+      </td>
+  </tr>
+  <tr>
+    <td>
+	<TABLE width="100%" height=19 border=0 align="center" cellpadding="0" cellspacing="0" bgcolor="#f1f0e9" style="border-top:1px solid #ABABAB; border-bottom:1px solid #ABABAB">
+	  <TR>
+		<TD align=center bgcolor="#67b01a" class=infoBL><div align="center">Back Office Central - Jumbo.cl</div></TD>
+		</TR>
+	</TABLE>
+
+	
+	</td>
+  </tr>
+</table>
+<script type="text/javascript">
+function rellenaCamposFono(numero1,campoCodigo,campoNumero,campoError,campoInfo){
+	numero1=numero1.replace(/\D/g,"");
+	numero1=Number(numero1);
+	numero1 = numero1.toString();
+	var numtel1= numero1; //donde dejaremos el numero sin codigo de area o numero sin normalizar
+	var codtel1 = numero1.substr(0,1); //donde dejaremos el codigo de area
+	if (codtel1==9){//si es celular
+		numtel1=numero1.slice(-8);
+		
+		
+	}else if (numero1.length==9){//si es telefono fijo
+		if(codtel1==2){//si es stgo
+			numtel1=numero1.slice(-8);
+		}else{//si no, regiones
+			codtel1 = numero1.substr(0,2);
+			numtel1=numero1.slice(-7);
+		}
+	}else{
+		numtel1=numero1;
+	}
+	if(!validateCorrectNumber(codtel1,numtel1,campoCodigo,campoNumero)){
+		jQuery('#'+campoError).html("Debe actualizar n&uacute;mero de contacto ");
+		jQuery('#'+campoCodigo).removeClass('campos').addClass('error_campos');
+		jQuery('#'+campoNumero).val(numero1);
+		jQuery('#'+campoCodigo).append("<option value='' selected>-</option>");//si no cumple formato se le saca codigo de area
+	    jQuery('#'+campoNumero).focus(); 
+	} else {
+		jQuery('#'+campoNumero).numeric({allowThouSep:false , allowDecSep:false, allowMinus:false});
+		if(isLongNumber(jQuery('#'+campoCodigo).val())){
+			jQuery('#'+campoNumero).attr("maxlength",8);
+		}else{
+			jQuery('#'+campoNumero).attr("maxlength",7);
+			
+		}
+		
+			if(jQuery('#'+campoCodigo).val() == "9" || jQuery('#'+campoCodigo).val() == "2"){ //si es celular o fijo metropilitano, campo número debe ser de 8
+				jQuery('#'+campoInfo).html("Ingrese 8 d&iacute;gitos");
+			}else{
+				jQuery('#'+campoInfo).html("Ingrese 7 d&iacute;gitos");
+			}
+		
+	}
+}
+		jQuery("#fon_cod_1").append(getAllCodPhones());
+		jQuery("#fon_cod_2").append(getAllCodPhones());
+		jQuery("#fon_cod_3").append(getAllCodPhones());
+		//var codigo1 = jQuery("#codigo").val();
+		
+		//sacamos todos los caracteres que no sean numeros del telefono 1
+		var numero1 = document.getElementById("telf_1").value.replace(/\D/g,"");
+		rellenaCamposFono(numero1, "fon_cod_1", "fon_num_1", "fon_num_1_error","fon_num_1_info");
+		var numero2 = document.getElementById("telf_2").value.replace(/\D/g,"");
+		rellenaCamposFono(numero2, "fon_cod_2", "fon_num_2", "fon_num_2_error","fon_num_2_info");
+		var numero3 = document.getElementById("telf_3").value.replace(/\D/g,"");
+		rellenaCamposFono(numero3, "fon_cod_3", "fon_num_3", "fon_num_3_error","fon_num_3_info");
+		
+		/*
+		var numtel1 = numero1; //donde dejaremos el numero sin codigo de area o numero sin normalizar
+		var codtel1 = numero1.substr(0,1); //donde dejaremos el codigo de area
+		if (codtel1==9 || codtel1==2){
+			numtel1=numero1.slice(-8);
+			rellenaCamposFono(numero1, "fon_cod_1", "fon_num_1", "fon_num_1_error","fon_num_1_info");
+		}else {
+			codtel1=numero1.substr(0,2);
+			numtel1=numero1.slice(-7);
+			rellenaCamposFono(numero1, "fon_cod_1", "fon_num_1", "fon_num_1_error","fon_num_1_info");
+		}*/
+		
+	
+
+		
+
+		
+		
+		
+		initialize("fon_cod_1","fon_num_1");
+		initialize("fon_cod_2","fon_num_2");
+		initialize("fon_cod_3","fon_num_3");
+		
+		onChange("fon_cod_1","fon_num_1","fon_num_1_info");
+        onChange("fon_cod_2","fon_num_2","fon_num_2_info"); 
+        onChange("fon_cod_3","fon_num_3","fon_num_3_info"); 
+</script>
+</body>
+<!-- InstanceEnd --></html>

@@ -1,0 +1,95 @@
+.TablaSuperior{
+border-style: none none dashed none ;
+border-width: 1px;
+border-color: #999999;
+}
+
+
+.menuactivo{
+width:160px;
+height:20px;
+font-family: "Trebuchet MS";
+font-size: 9.5pt;
+text-decoration: none;
+text-align:left;
+color:#333333;
+padding-left: 16px;
+background-image:url('/FO_IMGS/img/estructura/paso2/menu-a.gif');
+
+}
+.menuactivob{
+width:160px;
+height:20px;
+font-family: "Trebuchet MS";
+font-size: 9.5pt;
+text-decoration: none;
+text-align:left;
+color:#333333;
+padding-left: 16px;
+background-image:url('/FO_IMGS/img/estructura/paso2/menu-b.gif');
+
+}
+
+.menuOnMouseOver {
+width:160px;
+height:20px;
+font-family: "Trebuchet MS";
+font-size: 9.5pt;
+font-weight:bold;
+text-decoration: none;
+text-align:left;
+color:#ffffff;
+padding-left: 16px;
+background-image:url('/FO_IMGS/img/estructura/paso2/menu-c.gif');
+
+}
+
+.menuSeleccionado{
+width:160px;
+height:20px;
+font-family: "Trebuchet MS";
+font-size: 9.5pt;
+font-weight:bold;
+text-decoration: none;
+text-align:left;
+color:#ffffff;
+padding-left: 16px;
+background-image:url('/FO_IMGS/img/estructura/paso2/menu-c.gif')
+}
+
+.menuDesplegado{
+height:20px;
+padding-left: 25px;
+font-family: "Trebuchet MS";
+font-size: 8.5pt;
+text-decoration: none;
+text-align:left;
+color:#333333;
+background-image:url('/FO_IMGS/img/estructura/paso2/menuflechita.gif')
+}
+.menuDesplegadoOnMouseOver{
+height:20px;
+padding-left: 25px;
+font-family: "Trebuchet MS";
+font-size: 8.5pt;
+text-decoration: none;
+text-align:left;
+color:#FF860C;
+background-image:url('/FO_IMGS/img/estructura/paso2/menuflechitab.gif')
+}
+.menuDesplegadoSeleccion{
+height:20px;
+padding-left: 25px;
+font-family: "Trebuchet MS";
+font-size: 8.5pt;
+text-decoration: none;
+text-align:left;
+color:#FF860C;
+background-image:url('/FO_IMGS/img/estructura/paso2/menuflechitab.gif')
+}
+
+.margenDesplegable{
+
+
+
+}

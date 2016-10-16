@@ -1,0 +1,99 @@
+@charset "UTF-8";
+/* CSS Document */
+
+.cont {
+	width: 804px;
+	height: auto;
+	border-bottom:#CCC thin thin;
+	border-left:#CCC thin solid;
+	border-right:#CCC thin solid;
+}
+.cabecera {
+	/*width: 680px;*/
+	height: 40px;
+	background-color:#009640;
+}
+.tit_01 {
+	float:left;
+	width: 380px;
+	padding-left: 10px;
+	padding-top:10px;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:14px;
+	color:#FFF;
+}
+.tit_02 {
+	float:left;
+	width: 150px;
+	text-align:center;
+	padding-top:10px;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:14px;
+	color:#FFF;
+}
+.tit_03 {
+	float:left;
+	width: 160px;
+	text-align:center;
+	padding-top:10px;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:14px;
+	color:#FFF;
+}
+.tit_04 {
+	float:left;
+	width: 100px;
+	text-align:center;
+	padding-top:4px;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:14px;
+	color:#FFF;
+}
+.cont_zona {
+	/*width: 680px;*/
+	height: 662px;
+	border-bottom:#CCC dotted thin;
+}
+.zona_01 {
+	float:left;
+	width: 380px;
+	padding-left: 10px;
+	padding-top:10px;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:12px;
+	color:#666;
+	border-bottom:#afca0b dotted thin;
+}
+.zona_02 {
+	float:left;
+	width: 150px;
+	text-align:center;
+	padding-top:10px;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:12px;
+	color:#666;
+	border-bottom:#afca0b dotted thin;
+	border-left:#afca0b dotted thin;
+}
+.zona_03 {
+	float:left;
+	width: 160px;
+	text-align:center;
+	padding-top:10px;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:12px;
+	color:#666;
+	border-bottom:#afca0b dotted thin;
+	border-left:#afca0b dotted thin;
+}
+.zona_04 {
+	float:left;
+	width: 99px;
+	text-align:center;
+	padding-top:10px;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:12px;
+	color:#666;
+	border-bottom:#afca0b dotted thin;
+	border-left:#afca0b dotted thin;
+}

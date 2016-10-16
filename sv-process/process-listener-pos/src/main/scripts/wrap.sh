@@ -1,0 +1,1 @@
+nohup ./cont.pos.sh &

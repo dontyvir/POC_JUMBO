@@ -1,0 +1,295 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="EXPIRES" CONTENT="Mon, 22 Jul 2002 11:12:01 GMT">
+<title>Jumbo.cl Back Office Central</title>
+<script language="JavaScript" src="js/tabs/tabpane.js"></script>
+<script language="JavaScript" src="prototype.js"></script>
+<script language="JavaScript" src="js/admHome.js"></script>
+
+<script language="JavaScript" src="CalendarPopup.js"></script>
+<script language="JavaScript">document.write(getCalendarStyles());</script>
+<script language="JavaScript">
+	var ayer = new Date(30,4,2006,12,0,0,0);
+	var cal1 = new CalendarPopup("testdiv1");
+	cal1.offsetX = 0;
+	cal1.offsetY = 0;
+</script>
+
+
+<link rel="stylesheet" type="text/css" href="js/tabs/tabpane.css" id="luna-tab-style-sheet" />
+<link rel="stylesheet" type="text/css" href="estilos.css" />
+<link rel="stylesheet" type="text/css" href="menu/menu.css">
+<style type="text/css">
+<!--
+.style1 {color: #666666}
+-->
+</style>
+</head>
+
+<body>
+<script language="JavaScript" src="menu/menu.js"></script>
+<script language="JavaScript" src="menu/menu_tpl.js"></script>
+<script language="JavaScript" src="menu/menu_items.js"></script>
+
+<table width="780" border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td height="60" valign="top">
+			<table width="100%" height="59" border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#ffffff" id="cabecera_001">
+				<tr>
+					<td width="275" height="59" align="left" class="user"><img src="img/header2.jpg" width="275" height="60" /></td>
+					<td width="505" align="left" valign="bottom" background="img/bg-1.jpg" class="user">
+						<table width="90%" border="0" align="center" cellpadding="0" cellspacing="2">
+							<tr>
+								<td>&nbsp;</td>
+							</tr>
+							<tr>
+								<td><div align="right" class="infoBL">Usuario: {hdr_nombre}&nbsp;&nbsp;| {hdr_fecha}</div></td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+	<tr height="400">
+		<td valign="top" bgcolor="#FFFFFF">
+			<br />
+			<table border="0" width="100%" class="ContentTitle" id="cabecera_002">
+				<tr>
+					<td width="53%" height="20" class="HeaderTitle">Administrador de Home</td>
+					<td width="47%" class="HeaderTitle"></td>
+				</tr>
+			</table>
+			<br />
+			<table width="100%" border="0" cellspacing="2" cellpadding="2">
+				<tr valign="top">
+					<td width="71%">
+						<center><font color="blue"><b><span id="mensaje1">{msj}</span></b></font></center>
+						<table width="95%" align="center" border="0">
+							<tr>
+								<td>
+									<div class="tab-page" id="modules-cpanel">
+										<script type="text/javascript">
+											var tabPane1 = new WebFXTabPane( document.getElementById( "modules-cpanel" ), true );
+										</script>
+										<div class="tab-page" id="modulo1">
+											<h2 class="tab" id="listas_001">Carrusel</h2>
+											<div align="left">
+												<table width="90%"  border="0" align="center" cellpadding="0" cellspacing="0">
+													<tr>
+														<td>
+															<fieldset>
+															<legend align="left">B&uacute;squeda de Productos</legend>
+															<form name="frm_filtro" method="post" action="ViewAdmHome">
+															<table width="96%" border="0" align="center" cellpadding="0" cellspacing="0">
+																<tr>
+																	<td width="25%">
+																	Fecha Inicio <br /> 
+																	<input type="text" name="fc_ini" id="fc_ini" value="{fc_ini}" style="width:65px" readonly onClick="cal1.select(document.frm_filtro.fc_ini,'anchor1','dd/MM/yyyy'); return false;" title="Fecha Inicial de búsqueda" />
+																	<a href="#" onClick="cal1.select(document.frm_filtro.fc_ini,'anchor1','dd/MM/yyyy'); return false;" name="anchor1" id="anchor1"  title="Fecha Inicial de búsqueda"> 
+																	<img src="img/cal.gif" width="16" height="16" border="0" />
+																	</a>
+																	</td>
+																	<td width="25%"> 
+																	Fecha T&eacute;rmino <br />
+																	<input type="text" name="fc_fin" id="fc_fin" value="{fc_fin}" style="width:65px" readonly onClick="cal1.select(document.frm_filtro.fc_fin,'anchor2','dd/MM/yyyy'); return false;" title="Fecha Final de búsqueda" /> 
+																	<a href="#" onClick="cal1.select(document.frm_filtro.fc_fin,'anchor2','dd/MM/yyyy'); return false;" name="anchor2" id="anchor2" title="Fecha Final de búsqueda"> 
+																	<img src="img/cal.gif" width="16" height="16" border="0" /> 
+																	</a>
+																	</td>
+																	<td width="25%"> 
+																	Fecha Creaci&oacute;n <br />
+																	<input type="text" name="fc_creacion" id="fc_creacion" value="{fc_creacion}" style="width:65px" readonly onClick="cal1.select(document.frm_filtro.fc_creacion,'anchor3','dd/MM/yyyy'); return false;" title="Fecha Creación de búsqueda" /> 
+																	<a href="#" onClick="cal1.select(document.frm_filtro.fc_creacion,'anchor3','dd/MM/yyyy'); return false;" name="anchor3" id="anchor3" title="Fecha Creación de búsqueda"> 
+																	<img src="img/cal.gif" width="16" height="16" border="0" /> 
+																	</a>
+																	</td>										
+																	<td width="25%">
+																	<input name="Button" type="submit" class="cmd" id="buscar" value=" Buscar " />
+																	</td>
+																</tr>
+															</table>
+															</form>
+															</fieldset>
+														</td>
+													</tr>
+												</table>
+												<br/>
+												<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
+													<tr height="25" valign="middle">
+														<td align="left"><b>Contenido del Carrusel</b></td>
+														<td align="right"><a href="ViewFormCarrusel">NUEVO</a></td>
+													</tr>
+												</table>
+												<form name="f1" action="AddEditCarrusel" method="POST">
+													<input type="hidden" name="accion" id="accion" value="DEL" />
+													<input type="hidden" name="id_prod_carrusel" id="id_prod_carrusel" value="" />
+												</form>
+<!-- +20120322coh -->
+												<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" class="tabla2 sortable">
+													<tr> 
+														<th width="5%" align="center">ID</th>
+														<th width="30%" align="center">Texto Promoci&oacute;n</th>
+														<th width="10%" align="center">SAP</th>
+														<th width="18%" align="center">Tipo producto</th>
+														<th width="10%" align="center">Precio</th>
+														<th width="9%" align="center">Fecha Inicio</th>
+														<th width="9%" align="center">Fecha T&eacute;rmino</th>
+														<th width="9%" align="center">Estado</th>
+														<th width="10%" align="center">Acci&oacute;n</th>
+
+<!-- 
+														<th width="5%" align="center">ID</th>
+														<th width="15%" align="center">Nombre</th>
+														<th width="25%" align="center">Descripción</th>
+														<th width="10%" align="center">Precio</th>
+														<th width="9%" align="center">Fecha Inicio</th>
+														<th width="9%" align="center">Fecha T&eacute;rmino</th>
+														<th width="9%" align="center">Fecha Creaci&oacute;n</th>
+														<th width="8%" align="center">Con Tarjetas M&aacute;s</th>
+														<th width="10%" align="center">Acci&oacute;n</th>
+-->
+													</tr>
+													<!-- BEGIN DYNAMIC: PRODUCTOS -->
+													<tr> 
+														<td align="left">{id_producto_carrusel}&nbsp;</td>
+														<td align="left">{descripcion}&nbsp;</td>
+														<td align="center">{sap}&nbsp;</td>
+														<td align="center">{tipo_producto}&nbsp;</td>
+														<td align="left">{precio}&nbsp;</td>
+														<td align="center">{fecha_inicio}&nbsp;</td>
+														<td align="center">{fecha_termino}&nbsp;</td>
+														<td align="center">{estado}&nbsp;</td>
+														<td align="center" nowrap><a href="ViewFormCarrusel?id_prod_carrusel={id_producto_carrusel}"><img src="img/editicon.gif" border="0" height="17" width="19" title="Editar Producto Carrusel"></a>&nbsp;<a href="javascript:eliminarProd('{id_producto_carrusel}');"><img src="img/trash.gif" border="0" height="16" width="16" title="Eliminar Producto"></a></td>
+<!-- 
+														<td align="left">{id_producto_carrusel}&nbsp;</td>
+														<td align="left">{nombre}&nbsp;</td>
+														<td align="left">{descripcion}&nbsp;</td>
+														<td align="left">{precio}&nbsp;</td>
+														<td align="center">{fecha_inicio}&nbsp;</td>
+														<td align="center">{fecha_termino}&nbsp;</td>
+														<td align="center">{fecha_creacion}&nbsp;</td>
+														<td align="center">{con_criterio}&nbsp;</td>
+														<td align="center" nowrap><a href="ViewFormCarrusel?id_prod_carrusel={id_producto_carrusel}"><img src="img/editicon.gif" border="0" height="17" width="19" title="Editar Producto Carrusel"></a>&nbsp;<a href="javascript:eliminarProd('{id_producto_carrusel}');"><img src="img/trash.gif" border="0" height="16" width="16" title="Eliminar Producto"></a></td>
+
+ -->
+													</tr>
+													<!-- END DYNAMIC: PRODUCTOS -->
+												</table>
+<!-- -20120322coh -->
+
+												<center><span id="msj_carrusel">{msj_carrusel}</span></center>
+												<br /><br /><br />
+												
+												<form name="frm_pag" method="get" action="ViewAdmHome" >
+												<input name="fc_ini" type="hidden" value="{fc_ini}" />
+												<input name="fc_fin" type="hidden" value="{fc_fin}" />
+												<input name="fc_creacion" type="hidden" value="{fc_creacion}" />
+												<table width="100%"  border="0" align="center" cellpadding="2" cellspacing="2">												
+													<tr>
+														<td>
+															<div align="right">
+																<a href="ViewAdmHome?pagina={anterior}&fc_ini={fc_ini}&fc_fin={fc_fin}&fc_creacion={fc_creacion}">{anterior_label}&nbsp;</a>
+																Páginas
+																<select name="pagina" onchange="submit(this.form);" {dis} >
+																<!-- BEGIN DYNAMIC: PAGINAS -->
+																<option value="{pag}" {sel}>{pag}</option>
+																<!-- END DYNAMIC: PAGINAS -->
+																</select>
+																<a href="ViewAdmHome?pagina={siguiente}&fc_ini={fc_ini}&fc_fin={fc_fin}&fc_creacion={fc_creacion}">{siguiente_label}&nbsp;</a>
+															</div>
+														</td>
+													</tr>												
+												</table>
+												</form>
+											</div>
+										</div>
+										<div class="tab-page" id="modulo1">
+											<h2 class="tab" id="listas_001">LOG's</h2>
+											<div align="left">	
+												
+												<div class="tab-page" id="modules-cpanel2">
+													<script type="text/javascript">
+														var tabPane12 = new WebFXTabPane( document.getElementById( "modules-cpanel2" ), true );
+													</script>
+													<div class="tab-page" id="modulo2">
+														<h2 class="tab" id="listas_002">Carrusel</h2>
+														<div align="left">
+															<form name="frm_log_carrusel" method="post" action="ViewAdmHome">
+																<input name="fc_ini" type="hidden" value="{fc_ini}" />
+																<input name="fc_fin" type="hidden" value="{fc_fin}" />
+																<input name="fc_creacion" type="hidden" value="{fc_creacion}" />
+																<table width="35%" border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#CCCCCC">
+																	<tr>
+																		<td align="center" height="40">																		
+																			<input type="text" name="fc_log_carrusel" id="fc_log_carrusel" value="{fc_log_carrusel}" style="width:65px" readonly onClick="cal1.select(document.frm_log_carrusel.fc_log_carrusel,'anchor4','dd/MM/yyyy'); return false;" title="Fecha log carrusel" />
+																			<a href="#" onClick="cal1.select(document.frm_log_carrusel.fc_log_carrusel,'anchor4','dd/MM/yyyy'); return false;" name="anchor4" id="anchor4"  title="Fecha log carrusel"> 
+																			<img src="img/cal.gif" width="16" height="16" border="0" />
+																			</a>																		
+																		</td>
+																		<td align="center">
+																			<input type="button" name="b1" value="Buscar" onClick="javascript:if(document.frm_log_carrusel.fc_log_carrusel.value!='') { document.frm_log_carrusel.submit();} else { alert('Seleccione una fecha');}"/>
+																		</td>																		
+																	</tr>
+																</table>
+															</form>
+															<br />
+															<table width="90%" border="0" align="center" cellpadding="0" cellspacing="0" class="tabla2">
+																<tr>
+																	<th width="20%">Usuario</th>
+																	<th width="20%">Fecha</th>
+																	<th width="60%">Descripción</th>
+																</tr>
+																<!-- BEGIN DYNAMIC: LOG_CARRUSEL -->
+																<tr>
+																	<td>{usuario}&nbsp;</td>
+																	<td>{fecha}&nbsp;</td>
+																	<td>{descripcion}&nbsp;</td>
+																</tr>
+																<!-- END DYNAMIC: LOG_CARRUSEL -->
+															</table>
+															<center>{msj_log_carrusel}</center>
+															<br /><br />
+															<br /><br />
+														</div>
+													</div>
+												</div>
+												<br /><br />
+												
+											</div>
+										</div>
+									</div>
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+	<tr id="footer">
+		<td>
+			<table width="100%" height="19" border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#f1f0e9" style="border-top:1px solid #ABABAB; border-bottom:1px solid #ABABAB">
+				<tr>
+					<td align="center" bgcolor="#67b01a" class="infoBL"><div align="center">Back Office Central - Jumbo.cl</div></td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+
+<div id="loading" style="display:none">
+<table style="Z-INDEX: 500; LEFT: 0; POSITION: absolute; TOP: 0" cellSpacing="0" cellPadding="0" border="0">
+	<tr>
+		<td width="75" height="25" bgcolor="#FF0000">&nbsp;&nbsp;&nbsp;<font color="#FFFFFF"><b>Cargando...</b></font></td>
+	</tr>
+</table>
+</div>
+<div id="testdiv1" style="position:absolute;visibility:hidden;background-color:white;layer-background-color:white;z-index: 500;"></div>
+</body>
+</html>

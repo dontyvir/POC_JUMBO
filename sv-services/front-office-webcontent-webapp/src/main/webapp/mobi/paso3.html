@@ -1,0 +1,237 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<meta name="viewport" content="width=320;initial-scale=1.0; maximum-scale=1.0; user-scalable=false;" />
+<title>Jumbo Mobile - Paso 3</title>
+<link rel="stylesheet" href="/FO_WebContent/mobi/css/paso3.css" type="text/css"/>
+<link rel="stylesheet" href="/FO_WebContent/mobi/css/carropermanente.css" type="text/css"/>
+<script type="text/javascript" src="/FO_WebContent/mobi/js/fx/dw_event.js"></script>
+<script type="text/javascript" src="/FO_WebContent/mobi/js/fx/dw_scroll.js"></script>
+<script type="text/javascript" src="/FO_WebContent/mobi/js/fx/scroll_controls.js"></script>
+<script type="text/javascript" src="/FO_WebContent/mobi/js/paso3.js"></script>
+<style type="text/css">
+div#wn	{ 
+	position:relative; 
+	overflow:hidden;
+	width:100%; 
+	height:770px;
+}
+.img_trans {
+	width:300px; 
+	height:1px;
+}
+</style>
+</head>
+<body onload="if(document.frmPedido.tipo_documento[1].checked == true) datosFactura('visible'); else datosFactura('hidden');actualizaCarro();showCalendario();$('confirmar_mail').hide();">
+	<form name="frmPedido" id="frmPedido" method="post" action="">
+		<div id="contenedor_b">
+			<div id="encabezado_b">
+			  <h2>Jumbo.cl mobile, mas tiempo para ti</h2>
+			</div>
+			<div id="boton_b">
+			  <a href="BienvenidaFormMobi"><img src="/FO_IMGS/images/mobi/bt_1_b.gif" alt="Bienvenida" border="0" /></a>
+			  <a href="UltComprasFormMobi"><img src="/FO_IMGS/images/mobi/bt_2_b.gif" alt="Paso1" border="0" /></a>
+			  <a href="PasoDosFormMobi"><img src="/FO_IMGS/images/mobi/bt_3_b.gif" alt="Paso2" border="0" /></a>
+			  <a href="PasoTresFormMobi"><img src="/FO_IMGS/images/mobi/bt_4.gif" alt="Paso3" border="0" /></a>
+			  <a href="OrderItemDisplayMobi"><img src="/FO_IMGS/images/mobi/bt_5_b.gif" alt="Carro" border="0" /></a>
+			</div>
+			<div id="margen_verde">
+				<h3>Termina tu compra  </h3>  
+			</div>
+			<div id="contenido" align="center">
+				<div class="tx_nombre">{nombre_cliente}</div>
+				<div id="scroll_links" class="botonera_paso3">
+					<img id="img_confirmar" src="/FO_IMGS/images/mobi/paso3/confirmarOn.gif" alt="confirmar datos personales"  height="46" border="0" />
+					<img src="/FO_IMGS/images/mobi/paso3/fl_paso3.gif" alt="" />
+					<img id="img_despacho" src="/FO_IMGS/images/mobi/paso3/despachoOff.gif" alt="programa la fecha de entrega de tu pedido " width="101" height="46" border="0"/>
+					<img src="/FO_IMGS/images/mobi/paso3/fl_paso3.gif" alt="" />
+					<img id="img_pago" src="/FO_IMGS/images/mobi/paso3/pagoOff.gif" alt="Elige tu forma de pago" width="56" height="46" border="0" />
+				</div>
+      <div id="wn"> 
+        <div id="lyr1"> 
+          <table id="imgTbl" border="0" cellpadding="10" cellspacing="0">
+            <tr> 
+              <td id="confirmar" valign="top"> <img src="/FO_IMGS/img/1x1trans.gif" class="img_trans" alt="" border="0" /> 
+                <!-- INI Contenido de solapa confirmar -->
+                <div id="modulo_confirmar"> 
+                  <div class="ver_carro" align="left"> 
+                    <div class="bt_ver_carro"> <a href="OrderItemDisplayMobi"> 
+                      <img src="/FO_IMGS/images/mobi/paso3/ver_carro.gif" alt="ver carro" width="27" height="20" border="0" /> 
+                      </a> </div>
+                    <div>Si quieres modificar alg&uacute;n producto <br />
+                      revisa tu carro aqu&iacute;</div>
+                  </div>
+                  <div class="ver_carro" align="left"> E-mail:<br/>
+                    <input name="email1" id="email1" type="text" value="{mail_nombre}" size="16" maxlength="25" onChange="cambioMail();" />
+                    @ 
+                    <input name="dominio1" id="dominio1"  type="text" value="{mail_dominio}" size="16" maxlength="25" onChange="cambioMail();" />
+                  </div>
+                  <div id="confirmar_mail" class="ver_carro" align="left"> Confirmar 
+                    E-mail:<br/>
+                    <input name="email2" id="email2" type="text" value="" size="16" maxlength="25" />
+                    @ 
+                    <input name="dominio2" id="dominio2" type="text" value="" size="16" maxlength="25" />
+                  </div>
+                  <div class="ver_carro" align="left">Teléfono celular: 
+                    <select name="fon_cod_2" class="campo" id="fon_cod_2" onChange="cambioDatos();">
+                      <!-- BEGIN DYNAMIC: SEL_COD_CEL -->
+                      <option value="{cod_cel}" {sel_cod_cel}>{cod_cel}</option>
+                      <!-- END DYNAMIC: SEL_COD_CEL -->
+                    </select>
+                    <input name="fon_num_2" id="fon_num_2" type="text" value="{num_fono}" size="16" maxlength="7" onChange="cambioDatos();"/>
+                  </div>
+                  <div class="ver_carro" align="left"> 
+                    <div>Si no estas en casa al momento de la entrega:</div>
+                    <div> 
+                      <input name="sin_gente_op" type="radio" value="0" {chknadie1} />
+                      Autorizas a recibir a: 
+                      <input name="sin_gente_txt" id="sin_gente_txt" type="text" size="10" maxlength="250" value="{sin_gente_txt}" />
+                    </div>
+                    <div> 
+                      <input name="sin_gente_op" type="radio" value="1" {chknadie2} />
+                      Quieres que reprogramemos tu despacho </div>
+                  </div>
+                  <div class="ultima_fila"> <a href="javascript:irDespacho();"> 
+                    <img src="/FO_IMGS/images/mobi/paso3/bt_continuar.gif" border="0" id="guardar" alt="" /> 
+                    </a> </div>
+                </div>
+                <!-- FIN Contenido de solapa confirmar -->
+              </td>
+              <td id="despacho" valign="top"> <img src="/FO_IMGS/img/1x1trans.gif" class="img_trans" alt="" border="0" /> 
+                <!-- INI Contenido de solapa del despacho -->
+                <div id="frm_despacho"></div>
+                <input type="hidden" value="" name="jpicking" id="jpicking"/> 
+                <input type="hidden" value="" name="jprecio" id="jprecio"/> <input type="hidden" value="" name="jdespacho" id="jdespacho"/> 
+                <input type="hidden" value="" name="jfecha" id="jfecha"/> <input type="hidden" value="1" name="jsel" id="jsel"/> 
+                <input type="hidden" value="" name="tipo_despacho" id="tipo_despacho"/> 
+                <input type="hidden" value="" name="horas_economico" id="horas_economico"/> 
+                <input type="hidden" value="{zona_despacho}" name="zona_despacho" id="zona_despacho"/> 
+                <input type="hidden" value="" name="radio_seleccionado" id="radio_seleccionado"/> 
+                <!-- FIN Contenido de solapa del despacho -->
+              </td>
+              <td id="pago" valign="top"> <img src="/FO_IMGS/img/1x1trans.gif" class="img_trans" alt="" border="0" /> 
+                <!-- INI Contenido de solapa del pago -->
+                <input type="hidden" name="total_compra" id="total_compra" value="0" /> 
+                <input type="hidden" name="num_tja" value="" /> <input type="hidden" name="num_cuotas" value="" /> 
+                <input type="hidden" name="cant_prod" id="cant_prod" value="" /> 
+                <input type="hidden" name="t_auxano" value="{t_auxano}" /> <input type="hidden" name="t_auxmes" value="{t_auxmes}" /> 
+                <input type="hidden" name="t_auxcuotas" value="{t_auxcuotas}" /> 
+                <input type="hidden" name="pol_sustitucion" value="1--Sí" /> <input type="hidden" name="rut_cli" value="{rut_cli}" /> 
+                <input type="hidden" name="dv_cli" value="{dv_cli}" /> <input type="hidden" name="empleado" value="{empleado}" /> 
+                <input type="hidden" name="flag_valcta" value="0" /> <input type="hidden" name="cod_valcta" value="0" /> 
+                <input type="hidden" name="tipo_paris" value="" /> <input type="hidden" name="dispositivo" value="I" /> 
+                <div id="modulo_pago">
+                  <div align="left">
+                    <select name="forma_pago" id="forma_pago">
+                      <option value="0" selected="selected">Seleccione</option>
+                      <option value="1" {select_fpago}>Tarjeta Más</option>
+                      <option value="2" {select_fpago}>Tarjeta Bancaria</option>
+                    </select>
+                  </div>
+                  <div class="boleta_factura">Vas a querer: 
+                    <input name="tipo_documento" type="radio" value="B" checked="checked" onclick="datosFactura('none')"/>
+                    Boleta 
+                    <input name="tipo_documento" type="radio" value="F" onclick="datosFactura('')"/>
+                    Factura 
+                  </div>
+                  <div id="div_factura" style="display:none;">
+                      <div class="campos" align="left">Datos Facturaci&oacute;n:</div>
+                      <div class="campos"><label>Rut:</label><input name="fac_rut" type="text" class="campo" size="8" maxlength="10" value="{fac_rut}" />
+                        &nbsp;-&nbsp;<input name="fac_dv" type="text" class="campo" size="1" maxlength="1" value="{fac_dv}" />
+                      </div>
+                      <div class="campos">Raz&oacute;n Social: <input name="fac_razon" type="text" class="campo" size="25" maxlength="100" value="{fac_razon}" /></div>
+                      <div class="campos">Giro: <input name="fac_giro" type="text" class="campo" size="25" maxlength="50" value="{fac_giro}" /></div>
+                      <div class="campos">Direcci&oacute;n: <input name="fac_direccion" type="text" class="campo" size="25" maxlength="50" value="{fac_direccion}" /></div>
+                      <div class="campos"> Tel&eacute;fono: 
+                        <select name="fac_cod_1" class="campo" id="fon_cod_1">
+                          <option value='02'>02</option>
+                          <option value='32'>32</option>
+                          <option value='33'>33</option>
+                          <option value='34'>34</option>
+                          <option value='35'>35</option>
+                          <option value='41'>41</option>
+                          <option value='42'>42</option>
+                          <option value='43'>43</option>
+                          <option value='45'>45</option>
+                          <option value='51'>51</option>
+                          <option value='52'>52</option>
+                          <option value='53'>53</option>
+                          <option value='55'>55</option>
+                          <option value='57'>57</option>
+                          <option value='58'>58</option>
+                          <option value='61'>61</option>
+                          <option value='63'>63</option>
+                          <option value='64'>64</option>
+                          <option value='65'>65</option>
+                          <option value='67'>67</option>
+                          <option value='71'>71</option>
+                          <option value='72'>72</option>
+                          <option value='73'>73</option>
+                          <option value='75'>75</option>
+                        </select>
+                        <input name="fac_fono" type="text" class="campo" size="9" maxlength="9" value="{fac_fono}" />
+                      </div>
+                      <div class="campos">Comuna: <input type="text" name="fac_comuna" value="" maxlength="100" class="campo" size="20" /></div>
+                      <div class="campo_final">Ciudad: <input type="text" name="fac_ciudad" value="" maxlength="100" class="campo" size="20" /></div>
+                  </div>
+                  <div class="guardar3"><a id="confirmar_link" href="javascript:preOrderProcess();"><img src="/FO_IMGS/images/mobi/paso3/bt_fin_comp.gif" border="0" id="guardar3" alt="" /></a></div>
+                  <div class="verysign">Sitio 100% seguro <img src="/FO_IMGS/images/mobi/paso3/verysign.gif" alt="sitio 100% seguro" /></div>
+                </div>
+              <!-- FIN Contenido de solapa del pago -->
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+			</div>
+		</div>
+	</form>
+<div id="carro">
+	<div class="total"> 
+		<div class="carrito"><img src="/FO_IMGS/images/mobi/carrito.gif" /></div>
+		<div class="totalizador"><label><input name="total_carro_compra" id="total_carro_compra" type="text" size="13" readonly="readonly" /> Total</label></div>
+		<div class="bt_paso3"></div>
+	</div>
+	<div class="carrito_abajo">
+		<div class="links_abajo">
+			<a href="/FO_WebContent/mobi/faq.html" target="_blank"><img src="/FO_IMGS/images/mobi/faq.gif" width="39" height="40" border="0" /></a>
+			<a href="AddressFormMobi"><img src="/FO_IMGS/images/mobi/cam-dir.gif" width="101" height="40" border="0" /></a>
+			<a href="javascript:salirDelSitio();"><img src="/FO_IMGS/images/mobi/guardar.gif" width="115" height="40" border="0" /></a>
+		</div>
+	</div>
+</div>
+
+<!-- WEBPAY -->
+<form id="webpay" name="webpay" method="post" action="{webpay_url_kit}">
+<input type="hidden" id="TBK_TIPO_TRANSACCION"	name="TBK_TIPO_TRANSACCION"	value="TR_NORMAL" size="50" />
+<input type="hidden" id="TBK_URL_EXITO" 		name="TBK_URL_EXITO" 		value="{webpay_url}/FO/OrderComplete" size="50" />
+<input type="hidden" id="TBK_URL_FRACASO" 		name="TBK_URL_FRACASO" 		value="{webpay_url}/FO/PasoTresFormMobi?err=1" size="50" />
+<input type="hidden" id="TBK_ID_SESION" 		name="TBK_ID_SESION" 		value="1" size="50" />
+<input type="hidden" id="TBK_ORDEN_COMPRA" 		name="TBK_ORDEN_COMPRA" 	value="0" size="50" />
+<input type="hidden" id="TBK_MONTO" 			name="TBK_MONTO" 			value="0" size="50" />
+</form>
+<!-- PAGOS CAT -->
+<form id="cat" name="cat" method="post" action="{boton_url_kit}">
+<input type="hidden" name="numeroEmpresa" value="{numero_empresa}" size="50" />
+<input type="hidden" name="numeroTransaccion" id="numeroTransaccion" value="" size="50" />
+<input type="hidden" name="idCarroCompra" id="idCarroCompra" value="" size="50" />
+<input type="hidden" name="montoOperacion" id="montoOperacion" value="0" size="50" />
+<input type="hidden" name="urlNotificacion" value="{boton_url}/FO/OrderComplete" size="50" />
+<input type="hidden" name="tiempoSesion" value="60" size="50" />
+<input type="hidden" name="tiempoNotificacion" value="60" size="50" />
+</form>
+
+<br/><br/><br/>
+<script type="text/javascript">
+if ( {error} == 1 ) {
+  alert( "{mensaje_error}" );
+}
+</script>
+<script type="text/javascript" src="/FO_WebContent/mobi/js/prototype.js"></script>
+<script type="text/javascript" src="/FO_WebContent/mobi/js/global.js"></script>
+<script type="text/javascript" src="/FO_WebContent/mobi/js/checkout.js"></script>
+<script type="text/javascript" src="/FO_WebContent/mobi/js/validaciones.js"></script>
+<script type="text/javascript" src="/FO_WebContent/mobi/js/flotante.js"></script>
+</body>
+</html>

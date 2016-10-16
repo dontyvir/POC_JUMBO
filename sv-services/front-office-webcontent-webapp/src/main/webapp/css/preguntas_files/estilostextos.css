@@ -1,0 +1,1149 @@
+notas {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 7pt;
+	font-style: normal;
+	line-height: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	color: #333333;
+	text-decoration: none;
+}
+.titulosVerdesCopy {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 18px;
+	font-style: normal;
+	line-height: normal;
+	font-weight: bold;
+	font-variant: normal;
+	text-transform: none;
+	color: #1FA22E;
+	text-decoration: none;
+}
+.titulosLayers {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 18px;
+	font-style: normal;
+	line-height: normal;
+	font-weight: bold;
+	font-variant: normal;
+	text-transform: none;
+	color: #1FA22E;
+	text-decoration: none;
+}
+.titulosLayersEventos {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	font-style: normal;
+	line-height: normal;
+	font-weight: bold;
+	font-variant: normal;
+	text-transform: none;
+	color: #1FA22E;
+	text-decoration: none;
+	vertical-align: top;
+}
+.lectura {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-style: normal;
+	line-height: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	color: #666;
+	text-decoration: none;
+}
+.nota_mobile {	font-family: Arial, Helvetica, sans-serif; font-size: 8.5pt; font-style: normal; line-height: normal; font-weight: normal; font-variant: normal; text-transform: none; color: #333333; text-decoration: none; width: 670px; height: 80px; }
+.nota_mobile div { float:left; }
+
+.error {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 8.5pt;
+	font-style: normal;
+	line-height: normal;
+	font-weight: bold;
+	font-variant: normal;
+	text-transform: none;
+	color: #C70505;
+	text-decoration: none;
+}
+.footer {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 9px;
+	font-style: normal;
+	line-height: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	color: #666666;
+	text-decoration: none;
+}
+.NoDisponible {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	line-height: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	color: #666;
+	text-decoration: none;
+	
+}	/* tabla: tiene una separación de los  bordes de 3 px */
+.tabla {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 8.5pt;
+	font-style: normal;
+	line-height: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	color: #666;
+	text-decoration: none;
+	padding-left: 3px;
+	padding-right: 3px;
+}	
+
+.formularios {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-style: normal;
+	line-height: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	color: #666;
+	text-decoration: none;
+	padding-left: 3px;
+	
+}
+.formularios_registro_2011 {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	color: #666;
+	text-decoration: none;
+	padding-left: 3px;
+	width: 200px;
+	height:25px;
+}
+.campos_registro_2011 {
+	text-decoration: none;
+	padding-left: 5px;	
+	width: 600px;
+	height:25px;
+}
+
+.arriba {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	font-style: normal;
+	line-height: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	color:#333333;
+	text-decoration: none;
+	padding-left: 3px;
+	
+}
+.arriba:link{
+color:#333333;
+}
+.arriba:visited{
+color:#333333;
+text-decoration: none;
+}
+
+.arriba:hover{
+color:#FB6E15;
+text-decoration: underline;
+}
+
+.arriba:active{
+color:#333333;
+}
+
+
+
+.carro {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 7.5pt;
+	font-style: normal;
+	line-height: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	color: #333333;
+	text-decoration: none;
+	
+}
+
+.cc {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 6.5pt;
+	font-style: normal;
+	line-height: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	color: #000000;
+	text-decoration: none;
+	border-color: #99cc33;
+	border-style: solid;
+	border-width: 1px;
+}
+
+.cc_text {
+	font-family: Arial, Helvetica, sans-serif;
+    border-bottom:1px dashed #7ABD09;
+	font-size: 7.5pt;
+	font-style: normal;
+	line-height: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	text-decoration: none;
+	color: #000000;
+}
+.cc_text_link {
+	text-decoration: none;
+}
+.cc_text_link:link{
+	color:#000000;
+	text-decoration: none;
+}
+.cc_text_link:visited{
+	color:#000000;
+	text-decoration: none;
+}
+.cc_text_link:hover{
+  color: #1FA22E;
+  text-decoration: underline;
+}
+.cc_text_link:active{
+	color:#000000;
+	text-decoration: none;
+}
+
+.carroGuardado {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 8.5pt;
+	font-style: normal;
+	line-height: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	color: #333333;
+	text-decoration: none;
+	padding-left: 5px;
+	padding-right: 10px;
+	}
+	
+.rescateCompras {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 9pt;
+	font-style: normal;
+	line-height: normal;
+	font-weight: bold;
+	font-variant: normal;
+	text-transform: none;
+	color: #ffffff;
+	text-decoration: none;
+	padding-left: 5px;
+	 
+	
+	}
+	
+.titulo {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	font-style: normal;
+	line-height: normal;
+	font-weight: bold;
+	font-variant: normal;
+	text-transform: none;
+	color: #333333;
+	text-decoration: none;
+	
+}
+.titulo_verde_2011 {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	font-style: normal;
+	line-height: normal;
+	font-weight: bold;
+	font-variant: normal;
+	text-transform: none;
+	color: #1FA22E;
+	text-decoration: none;
+	
+}	
+.tituloNaranjo {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12pt;
+	font-style: normal;
+	line-height: normal;
+	font-weight: bold;
+	font-variant: normal;
+	text-transform: none;
+	color: #1FA22E;
+	text-decoration: none;
+	padding-right: 10px; 
+	
+	
+}
+
+	
+.chica	{
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	font-style: normal;
+	line-height: 10px;
+	font-weight: normal;
+	font-variant: normal;
+	color: #666;
+	text-decoration: none;
+
+}
+.chica a:link{
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	font-style: normal;
+	line-height: 10px;
+	font-weight: normal;
+	font-variant: normal;
+	color: #666666;
+	text-decoration: none;
+
+}
+.chica a:visited	{
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	font-style: normal;
+	line-height: 10px;
+	font-weight: normal;
+	font-variant: normal;
+	color: #666666;
+	text-decoration: none;
+
+}
+.chica a:hover{
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	font-style: normal;
+	line-height: 10px;
+	font-weight: normal;
+	font-variant: normal;
+	color: #1FA22E;
+	text-decoration: none;
+}
+.campo {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-style: normal;
+	line-height: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	color: #666;
+	border-color: #CCC;
+	border-style: solid;
+	border-width: 1px;
+}
+.campoblanco {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-style: normal;
+	line-height: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	color: #666666;
+	border-color: #CCC;
+	border-style: solid;
+	border-width: 1px;
+}
+
+.campoblancoTotal {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	font-style: bold;
+	text-align: right;
+	line-height: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	color: #000000;
+	border-color: #CCCCCC;
+	border-style: solid;
+	border-width: 1px;
+}
+
+.calendario {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	font-style: normal;
+	line-height: normal;
+	font-weight: bold;
+	text-transform: none;
+	color: #507B06;
+	text-decoration: none;
+}
+.titulolectura {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10pt;
+	font-style: normal;
+	line-height: normal;
+	font-weight: bold;
+	font-variant: normal;
+	text-transform: none;
+	color: #666;
+	text-decoration: none;
+	
+}
+.TablaCentral{
+	border-style: none solid none ;
+	border-width: 1px;
+	border-color: #9F9D9D;
+}
+.TablaFicha{
+border-style: none solid none ;
+border-width: 1px;
+border-color: #7ABD09;
+}
+.TablaFichaInterna {
+    border-left:1px dashed #7ABD09;
+}
+
+.TablaCentralb{
+border-style: none none none solid ;
+border-width: 1px;
+border-color: #9DCA44;
+}
+.TablaCarro{
+border-style: none solid none none ;
+border-width: 1px;
+border-color: #9F9D9D;
+}
+
+.TablaDiponiblePaso1 {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 8.5pt;
+	border-bottom:1px dashed #CCC;
+	border-collapse:collapse;
+	padding: 2px;
+	
+}
+.RescateInternet{
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 8.5pt;
+	border-bottom:1px dashed #7ABD09;
+	border-collapse:collapse;
+	padding: 2px;
+	background-color:#FFFFCC
+}
+
+
+.celda1 {
+	font-family: Arial, Helvetica, sans-serif;
+    border-left:1px dashed #CCC;
+	font-size: 8.5pt;
+	font-style: normal;
+	line-height: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	text-decoration: none;
+	padding-left: 3px;
+	padding-right: 3px;
+	}
+
+.celda1Izquierda {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 8.5pt;
+	font-style: normal;
+	line-height: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	text-decoration: none;
+	padding-left: 3px;
+	padding-right: 3px;
+	}
+
+.TablaNoDiponiblePaso1 {
+	border-bottom:1px dashed #5E93B5;
+    border-collapse:collapse;
+	padding: 2px;
+	background-color: #F4F4F4;
+}
+
+.celda1NoDisponible {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 8.5pt;
+	font-style: italic;
+	line-height: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	color: #333333;
+	text-decoration: none;
+    border-right:1px dashed #5E93B5;
+	padding-left: 3px;
+	padding-right: 3px;
+	}
+
+.bodyMargen {
+
+	margin-left: 5px;
+	margin-top: 0px;
+	margin-right: 5px;
+	margin-bottom: 0px;
+
+}
+
+body {
+
+   scrollbar-bace-color:#EFEFEF;
+   scrollbar-face-color:#9DCA44;
+   scrollbar-arrow-color:#FFFFFF;
+   scrollbar-track-color:#EFEFEF;
+   scrollbar-shadow-color:#9DCA44;
+   scrollbar-highlight-color:#C8E78B;
+   scrollbar-3dlight-color:#C8E78B;
+   scrollbar-darkshadow-Color:#9DCA44;
+  
+  }
+.calendarioactivo{
+	/*width:55px;*/
+	height:20px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 9pt;
+	text-decoration: none;
+	border-left:1px dashed #7ABD09;
+	text-align:center;
+	color:#333333;
+	background:#ffffff;
+}
+.calendarioSeleccion {
+	/*width:55px;*/
+	height:20px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 9pt;
+	text-decoration:none;
+	border-left: 1px dashed #7ABD09;
+	/*border-bottom: 1px solid #7ABD09;
+	border-right: 1px solid #7ABD09;
+	border-top: 1px solid #7ABD09;*/
+	text-align:center;
+	color:#FC4B05;
+	background:#FFF964;
+	
+}
+.calendarioOnMouseOver {
+	/*width:55px;*/
+	height:20px;
+	font-family: Arial, Helvetica, sans-serif;
+	text-align:center;
+	font-size: 9pt;
+	color:#FC4B05;
+	text-decoration:none;
+	background:#FBF8BB;
+	border-left:1px dashed #7ABD09;
+	cursor: hand;
+	cursor:pointer;
+}
+.calendariocandado{
+	/*width:55px;*/
+	height:20px;
+	border-left:1px dashed #7ABD09;
+	color:#333333;
+}
+.resumencompra{
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 9pt;
+	font-weight: normal;
+	text-decoration: none;
+	border-left:1px dashed #CCC;
+	border-bottom:1px dashed #CCC;
+	color:#666;
+	padding-left: 10px;
+	padding-right: 3px;
+
+}
+.resumencompraobscuro{
+	width:205px;
+	height:30px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 9pt;
+	text-decoration: none;
+	border-bottom:1px dashed #7ABD09;
+	color:#333333;
+
+}
+.resumencompraB{
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 9pt;
+	font-weight: normal;
+	text-decoration: none;
+	border-left:1px dashed #7ABD09;
+	color:#333333;
+	padding-left: 10px;
+	padding-right: 3px; 
+
+}
+
+.imprimirobscuro{
+	width:200px;
+	height:30px;
+	font-family: Arial, Helvetica, sans-serif;	
+	font-size: 9pt;
+	padding-left: 5px;
+	text-decoration: none;
+	border-bottom:1px dashed #7ABD09;
+	color:#333333;
+	background:#DEF7AD;
+
+}
+
+.imprimirobscurob{
+
+	border-style: none solid none solid ;
+	border-width: 1px;
+	border-color: #7ABD09;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 9pt;
+	padding-left: 5px;
+	padding-right: 10px;
+	text-decoration: none;
+	color:#333333;
+	background:#DEF7AD;
+
+
+
+
+}
+.ficha-descripcion {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 8.5pt;
+	font-style: normal;
+	color:#ffffff;
+	line-height: normal;
+	font-weight: bold;
+	font-variant: normal;
+	text-transform: none;
+	text-decoration: none;
+	padding-left: 3px;
+	padding-right: 3px;
+	background:#A9D246;
+	padding-left: 10px;
+	}
+	
+.TablaPaso2SepHorizontal {
+	border-bottom:1px dashed #5E93B5;
+    border-collapse:collapse;
+}
+
+.celda1Paso2SepVertical {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 8.5pt;
+	line-height: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	text-decoration: none;
+    border-left:1px solid #D2E2ED;
+	padding-top: 4px;
+	padding-left: 4px;
+	padding-right: 4px;
+	border-bottom:1px dashed #5E93B5;
+    border-collapse:collapse;
+}
+
+.ficha_separador {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 8.5pt;
+	line-height: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	text-decoration: none;
+    padding-top: 4px;
+	padding-left: 4px;
+	padding-right: 4px;
+	border-collapse:collapse;
+}
+
+.celda5Paso2SepVertical {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 8.5pt;
+	line-height: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	text-decoration: none;
+    border-left:1px solid #D2E2ED;
+	border-right:1px solid #D2E2ED;
+	padding-top: 4px;
+	padding-left: 4px;
+	padding-right: 4px;
+	border-bottom:1px dashed #5E93B5;
+    border-collapse:collapse;
+}
+
+	.Marca{
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 8.5pt;
+	line-height: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	text-decoration: none;
+	color:#1FA22E;
+	}
+.mouselapiz {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 8.5pt;
+	font-style: normal;
+	line-height: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	color: #333333;
+	text-decoration: none;
+	padding-left: 3px;
+	padding-right: 3px; 
+	cursor: url('/FO_IMGS/img/estructura/paso2/lapiz.cur'),auto;
+}	
+.abajopaso1y2 {
+	height:31px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 9px;
+	font-style: normal;
+	line-height: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	color: #666666;
+	text-decoration: none;
+	border-style: solid none solid ;
+	border-width: 1px;
+	border-color:#AFAEAE ;
+	background:#EFEFEF;
+}
+
+.desc_productos {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 8.5pt;
+	font-style: normal;
+	line-height: normal;
+	font-weight: normal;
+	font-variant: normal;
+	color:#000000;
+	text-decoration: none;
+	}
+.desc_productos:link {
+	color:#000000;
+	text-decoration: none;
+	}
+.desc_productos:visited {
+	color:#000000;
+	text-decoration: none;
+	}
+.desc_productos:hover {
+  color: #1FA22E;
+  text-decoration: underline;
+}
+.desc_productos:active {
+	color:#000000;
+	text-decoration: none;
+	}
+.tituloDespacho {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10pt;
+	font-style: normal;
+	line-height: normal;
+	font-weight: bold;
+	font-variant: normal;
+	text-transform: none;
+	color: #F37914;
+	text-decoration: none;
+}
+.tituloDespachoNuevo {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10pt;
+	font-style: normal;
+	line-height: normal;
+	font-weight: bold;
+	font-variant: normal;
+	text-transform: none;
+	color: red;
+	text-decoration: none;
+}
+.lectura_calendario {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 8pt;
+	font-style: normal;
+	line-height: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	color: black;
+	text-decoration: none;
+}
+.tituloDespSemana {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	font-style: normal;
+	line-height: normal;
+	font-weight: bold;
+	font-variant: normal;
+	text-transform: none;
+	color: #8FB726;
+	text-decoration: none;
+
+}
+.calendarioExpress {
+	/*width:55px;*/
+	height:20px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 9pt;
+	text-decoration: none;
+	border-left:1px dashed #7ABD09;
+	text-align:center;
+	color: #F37914;
+	background:#ffffff;
+}
+
+.msgCalendario {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size:		8.5pt;
+	font-style:		normal;
+	font-weight: 	bold;
+	font-variant: 	normal;
+	text-transform: none;
+	color: 			#C31629;
+	text-decoration:none;
+	line-height: 	normal;
+}
+.calendarioActivoExtendido {
+	/*width:55px;*/
+	height:20px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 9pt;
+	text-decoration: none;
+	border-left:1px dashed #7ABD09;
+	text-align:center;
+	color:#333333;
+	background:#DEF7AD;
+}
+
+div#tipDiv {
+  position:absolute;
+  visibility:hidden;
+  left:0; top:0;
+  z-index:10000;
+  background-color:#D5F0FB;
+  border:1px solid #5AA3C6; 
+  width:300px; padding:6px;
+  color:#000; font-size:11px; line-height:1.3;
+}
+/* These are used in the wrapTipContent function */
+div#tipDiv div.img {
+  	text-align:left;
+}
+div#tipDiv div.txt {
+	text-align:left;
+	margin-top:4px;
+}
+
+.productoAgregado {
+	background:#DEF7AD;
+}
+
+table#t_promociones {
+    background-color:#ffffff;
+	cellspacing: 0px;
+	cellpadding: 0px;
+    width: 390px;
+}
+
+table#t_promociones td {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 9pt;
+}
+
+table#total_promociones {
+    background-color:#ffffff;
+	cellspacing: 0px;
+	cellpadding: 0px;
+    width: 390px;
+}
+
+table#total_promociones td {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 9pt;
+	font-weight: bold;
+	height: 30px;
+}
+
+table#t_cupones {
+	background-color:#ffffff;
+	cellspacing: 0px;
+	cellpadding: 0px;
+	width: 90%;
+	/*border: 1px dashed #666666;*/
+}
+
+table#t_cupones td {
+	font-family: Arial, Helvetica, sans-serif;
+    /*border-left:1px dashed #aaaaaa;
+	border-right:1px dashed #aaaaaa;
+	border-bottom:1px dashed #aaaaaa;*/
+	font-size: 8.5pt;
+	font-style: normal;
+	line-height: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	text-decoration: none;
+	padding-left: 3px;
+	padding-right: 3px;
+	text-align: center;
+	
+}
+.Estilo2 {font-size: 12px
+}
+
+#result_clave {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 8pt;
+	font-style: normal;
+	line-height: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	color: #333333;
+	text-decoration: none;
+	padding-left: 3px;
+}
+#div_menu_direccion{
+	padding-top: 2px;
+	padding-bottom: 1px;
+	padding-left: 10px;
+	height: 112px;
+	float: left;
+	width: 220px;
+	
+}
+
+#div_menu_direccion a {
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:11px;
+	font-style:normal;
+	font-variant:normal;
+	font-weight:normal;
+	line-height:14px;
+	text-transform:none;
+	color: #666;
+}
+
+#div_menu_direccion ul {
+	margin-top: 0px;
+	margin-bottom: 0px;
+	line-height: 0px;
+	padding-left: 20px;
+}
+
+#div_menu_direccion ul li{
+	list-style-image: url("/FO_IMGS/img/estructura/carro/flechanaranja.gif");
+	list-style-position: outside;
+}
+
+#div_menu_direccion label {
+	padding-left: 5em;
+}
+#div_usuario{
+	text-align: center;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	height: 20px;
+	color: #666;
+	font-weight: bold;
+	width: auto;
+	float: right;
+	padding: 10px;
+}
+	/* HEADER NUEVO 2011 */
+		
+	.menu_superior_2011{
+	float:left;
+	width:960px;
+	height:130px;
+	}
+	.logo_jumbo_2011{
+	float:left;
+	width:245px;
+	height:80px;
+	padding-top: 10px;
+	}
+		
+	.menu_links_jumbo_2011{
+	float:left;
+	width:960px;
+	height:32px;
+	background-image: url(/FO_IMGS/img/fondo_verde_menu.gif);
+	}
+	.menu_arriba_cerrar_sesion{
+	text-align: center;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	height: 20px;
+	color: #666;
+	width: auto;
+	float: right;
+	padding-top: 10px;
+	padding-left: 10px;
+}
+	.menu_arriba_nombre_cliente{
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	height: 20px;
+	color: #666;
+	width: auto;
+	float: right;
+	padding-top: 10px;
+	padding-left: 10px;
+	font-weight: bold;
+}
+	.menu_arriba_necesitas_ayuda{
+	text-align: center;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	height: 20px;
+	color: #666;
+	width: auto;
+	float: right;
+	padding-top: 15px;
+	padding-left: 10px;
+}
+
+	.linea_menu_arriba_2011{
+	float:right;
+	width:500px;
+	height:45px;
+	padding-left: 10px;
+	}
+
+	/* Everything CSS Sprite Menu */
+	ul#menunew{margin:0; padding:0; list-style:none; clear:both;}
+		#menunew li{overflow:hidden; text-indent:-9999px; display:inline; float:left;}
+			#menunew li a{ background-image: url(/FO_IMGS/img/menu_nvo_2011.gif); background-repeat:no-repeat; width:100%; height:100%; display:block; }
+			
+			/* Home Mi Cuenta */
+			#menunew li.micuenta{width:98px; height:32px;}
+				#menunew li.micuenta a{background-position:0 0;}
+				#menunew li.micuenta a:hover{background-position:0 -32px;}
+				#menunew li.micuenta a.selected{background-position:0 -32px;}
+			
+			/* Home Mis Listas */
+			#menunew li.mislistas{width:100px; height:32px;}
+				#menunew li.mislistas a{background-position: -100px 0;}
+				#menunew li.mislistas a:hover{background-position:-100px -32px;}
+				#menunew li.mislistas a.selected{background-position:-100px -32px;}
+				
+			/* Home Agregar Productos */
+			#menunew li.productos{width:185px;height:32px;}
+				#menunew li.productos a{background-position:-205px 0;}
+				#menunew li.productos a:hover{background-position:-205px -32px;}
+				#menunew li.productos a.selected{background-position:-205px -32px;}
+				
+				/* Home Pagar */
+			#menunew li.pagar{width:70px; height:32px;}
+				#menunew li.pagar a{background-position:-395px 0;}
+				#menunew li.pagar a:hover{background-position:-395px -32px;}
+				#menunew li.pagar a.selected{background-position:-395px -32px;}
+
+
+/* FOOTER NUEVO 2011 */
+
+.modulo_footer_2011{
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:11px;
+	color:#666;
+	float:left;
+	width:170px;
+	height:160px;
+	border-right: 1px dashed #CCC;
+}
+.modulo_footer_2011_der{
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:11px;
+	color:#666;
+	float:left;
+	width:170px;
+	height:100px;
+}
+.fila_footer_2011{
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:11px;
+	color:#666 !important;
+	float:left;
+	width:140px;
+	height:18px;
+	text-decoration: none !important;
+	padding-left: 30px;
+	text-align: left;
+}
+.fila_footer_2011 a{
+	text-decoration: none !important;
+	color:#666 !important;
+}
+.fila_footer_2011 a:hover{
+	text-decoration: underline;
+	color:#1FA22E !important;
+}
+.fila_footer_2011 .bot_enviar { background:url(/FO_IMGS/images/html/bot_enviar.gif) no-repeat; margin:0; padding:0; width:45px; height:21px; cursor:pointer; border:none; text-decoration:none; font-size:1px; color:#889E75; }
+.fila_footer_2011 .input_email { background:url(/FO_IMGS/images/html/bg_input.jpg) top left repeat-x; height:19px; width:152px; border:1px solid #CED5DA; }
+
+
+/* MARCAS Y NEWSLETTER PROMOCIONES */
+#marcas_newsletter {
+	height:80px;
+	border-top:1px solid #FFF;
+	margin:0;
+	padding:0;
+}
+#marcas_newsletter .marcas { float:left; margin:0; padding:0 0 0 22px; }
+.newsletter {
+	float:left;
+	margin:0;
+	width:230px;
+	height:50px;
+	padding-left: 20px;
+}
+.newsletter img { padding:0 0 3px 0; margin:0; }
+.newsletter .input_email {
+	height:19px;
+	width:152px;
+	border:1px solid #CCC;
+	font-family: Arial, Helvetica, sans-serif;
+	color: #666;
+	font-size: 11px;
+	background-color: #FFF;
+}
+.newsletter .bot_enviar {
+	background:url(/FO_IMGS/images/html/bot_enviar.gif) no-repeat;
+	margin:0;
+	padding:0;
+	cursor:pointer;
+	border:none;
+	text-decoration:none;
+	width: 29px;
+	height: 23px;
+	font-size: 1px;
+}

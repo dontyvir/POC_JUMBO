@@ -1,0 +1,50 @@
+<?xml version="1.0"	?>
+<!-- <!DOCTYPE cache	SYSTEM "cachespec.dtd"> -->
+<cache>
+	<cache-entry>
+		<name>/LogonFormMobi</name>
+		<class>servlet</class>
+		<cache-id>
+			<timeout>86400</timeout>
+		</cache-id>
+	</cache-entry>
+	<cache-entry>
+		<name>/RegisterForm</name>
+		<class>servlet</class>
+		<cache-id>
+			<component id="cod_error" type="session">
+				<required>false</required>
+			</component>
+			<timeout>3600</timeout>
+		</cache-id>
+	</cache-entry>
+	<cache-entry>
+		<name>/ComunasList</name>
+		<class>servlet</class>
+		<cache-id>
+			<component id="reg_id" type="parameter">
+				<required>true</required>
+			</component>
+			<timeout>3600</timeout>
+		</cache-id>
+	</cache-entry>
+	<cache-entry>
+		<name>/ComunasConCoberturaByRegion</name>
+		<class>servlet</class>
+		<cache-id>
+			<component id="id_region" type="parameter">
+				<required>true</required>
+			</component>
+			<timeout>3600</timeout>
+		</cache-id>
+	</cache-entry>
+
+	<!-- Home del sitio 1 hora -->
+	<cache-entry>
+		<name>/LogonForm</name>
+		<class>servlet</class>
+		<cache-id>
+			<timeout>3600</timeout>
+		</cache-id>
+	</cache-entry>
+</cache>

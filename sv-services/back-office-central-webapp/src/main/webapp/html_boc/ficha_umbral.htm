@@ -1,0 +1,459 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="EXPIRES" CONTENT="Mon, 22 Jul 2002 11:12:01 GMT">
+<title>Jumbo.cl Back Office Central</title>
+<link href="estilos.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="menu/menu.css">
+<link id="luna-tab-style-sheet" type="text/css" rel="stylesheet"
+	href="js/tabs/tabpane.css" />
+<script language="JavaScript" src="popup.js"></script>
+<script language="JavaScript" src="funciones.js"></script>
+<SCRIPT LANGUAGE="JavaScript">window.name='padre'</SCRIPT>
+<script type="text/javascript" src="js/tabs/tabpane.js"></script>
+<!-- Checksn -->
+<SCRIPT language="JavaScript"> 
+function checkSN() {
+		if(document.formGuardar.chkUmbralActivacion.checked == true){
+		 	document.formGuardar.u_activacion.value = "S"
+		 	}
+		if(document.formGuardar.chkUmbralActivacion.checked == false){ 
+			document.formGuardar.u_activacion.value = "N"
+			}
+} //fin
+</SCRIPT>
+<!-- Checksn -->
+
+<SCRIPT language="JavaScript"> 
+function limpia() {
+document.formGuardar.u_unidad.value = "";
+document.formGuardar.u_monto.value = "";
+document.getElementById('chkUmbralActivacion').disabled = true;
+document.getElementById('btnGuardar').disabled = true ;
+}
+</script>
+
+<SCRIPT language="JavaScript">
+function alComienzo()
+	{
+		document.getElementById('chkUmbralActivacion').disabled = false;
+	}
+</SCRIPT>
+
+
+<SCRIPT language="JavaScript">
+function activar()
+	{
+		document.getElementById('btnGuardar').disabled = false ;
+		document.getElementById('chkUmbralActivacion').disabled = false;
+	}
+</SCRIPT>
+
+<script language="JavaScript">
+function GetKey(e) {
+   var keynum;
+   if(window.event) { keynum = e.keyCode; }
+   else if(e.which) { keynum = e.which; }
+   return keynum;
+}
+
+function GetChar(ev) {
+   var ev = ev || window.event;
+   var chr = ev.charCode || ev.keyCode;
+   return String.fromCharCode(chr);
+}
+
+function ValidarTecla(ev) {
+   var key = GetKey(ev);
+   if (key > 63) {
+      var chr = GetChar(ev);
+      if (/[\d|\.|,]/.test(chr)) {
+         return true;
+      } else {
+         return false;
+      }
+   } else {
+      return true;
+   }
+}
+
+function ValidarTexto() {
+   var valorUno = document.formGuardar.u_unidad.value;
+   var valorDos = document.formGuardar.u_monto.value;
+   
+   var flag = false;
+   
+   if ((isNaN(valorUno)) || valorUno == "" || (isNaN(valorDos)) || valorDos == "" ){
+   alert("Hay un Valor No válido , Formato Ejemplo(65.89).");
+   document.getElementById('chkUmbralActivacion').disabled = true;
+   document.getElementById('btnGuardar').disabled = true;
+   }else {
+   if (/^\d+[|\.]\d+/.test(valorUno) == false || /^\d+[|\.]\d+/.test(valorDos) == false) {
+    //if (/^\d+(\.\d+{2,2})?$/.test(valorUno) == false || (/^\d+(\.\d+{2,2}).test(valorDos) == false) {
+     alert("El valor Debe Estar entre 0.1 y 99.99 ,Formato Ejemplo(12.34).");
+	document.getElementById('chkUmbralActivacion').disabled = true;
+	document.getElementById('btnGuardar').disabled = true;
+     flag =true;
+   } 
+   else {
+      if ((parseFloat(valorUno) < 0.1) || (parseFloat(valorUno) > 99.99) || (parseFloat(valorDos) < 0.1) || (parseFloat(valorDos) > 99.99)) {
+         alert("El valor Debe Estar entre 0.1 y 99.99 ,Formato Ejemplo(12.34).");
+         document.getElementById('chkUmbralActivacion').disabled = true;
+		 document.getElementById('btnGuardar').disabled = true;
+         flag = true;
+      }
+      else{
+      		var n1 = valorUno.indexOf(".");  
+      		var n2 = valorDos.indexOf(".");
+      		var t1 = valorUno.length;
+      		var t2 = valorDos.length;
+      		
+      	if(n1 == 1 && t1 == 5  || n2 == 1 && t2 == 5)
+      	{
+      	alert("El valor Debe Tener 2 Decimales , Formato Ejemplo(12.34)");
+         document.getElementById('chkUmbralActivacion').disabled = true;
+		 document.getElementById('btnGuardar').disabled = true;
+      	flag = true;
+      	} 
+      	
+      }	
+      
+      if (!flag)
+      	document.getElementById('btnActivar').click();
+      	
+      	
+      		
+  	}    
+		
+     
+      
+   }
+}
+</script>
+<script language="JavaScript">
+
+ 			 function validarUmbral(){
+ 			 var enteroValido = [document.formGuardar.u_unidad.value,document.formGuardar.u_monto.value];
+			 var mensaje = "";
+			 var flag = false;
+			
+								for(i = 0; i <  enteroValido.length ; i++){
+												if(enteroValido[i] > 0){
+														if(esCero(enteroValido[i])){
+															alert('El Umbral no puede ser 0');
+																		flag = true;
+																		break;	}				
+										
+													if(esVacio(enteroValido[i])){
+														alert('Solo se deben ingresar campos num\u00E9ricos en cada Umbral');
+														flag = true;
+														break;
+														}	
+						
+													if(esNumero(enteroValido[i])){
+													alert('Solo se deben ingresar campos num\u00E9ricos en cada Umbral');
+													flag = true;
+													break;
+													}
+														
+													if(tienePunto(enteroValido[i])){
+													alert('Debe ingresar un valor decimal EJ: 45.09');
+													flag = true;
+													break;
+													}	
+							
+														
+										}
+			
+					
+						}
+		if(!flag)document.formGuardar.submit(); 
+}
+					
+				function esVacio(valor){
+				if (valor == "" && !(/^\s+$/.test(valor))){
+					return true;
+				}else{
+					return false;
+								}
+			}
+			
+						
+				function esNumero(valor){
+				//valor = valor.replace('-', '');
+				//if (!/^([0-9])*$/.test(valor)){
+				if (!/^([0-9])*[.]?[0-9]*$/.test(valor)){ 
+					return true;
+				}else{
+					return false;
+				}
+			}
+			
+				function tienePunto(valor){
+				var pos = valor.indexOf(".");
+				if (pos == -1){
+				return true;
+				}else
+				return false
+				}
+					
+				function esCero(valor){
+				//valor = valor.replace('-', '');
+				//if (!/^([0-9])*$/.test(valor)){
+				if (valor <= 0){ 
+					return true;
+				}else{
+					return false;
+				}
+			}
+				
+						 	
+</script>
+<style type="text/css">
+<!--
+.style1 {color: #666666}
+-->
+</style>
+
+</head>
+
+<body onload="alComienzo()">
+<script language="JavaScript" src="menu/menu.js"></script>
+<script language="JavaScript" src="menu/menu_tpl.js"></script>
+<script language="JavaScript" src="menu/menu_items.js"></script>
+<table width="780" height="100%" border="0" cellpadding="0"
+	cellspacing="0">
+	<tr>
+		<td height="78" valign="top">
+		<table width="100%" height="59" border="0" align="center"
+			cellpadding="0" cellspacing="0" bgcolor="#ffffff">
+			<tr>
+				<td width="275" height="59" align="left" class="user"><img
+					src="img/header2.jpg" width="275" height="60" /></td>
+				<td width="505" align="left" valign="bottom"
+					background="img/bg-1.jpg" class="user">
+				<table width="90%" border="0" align="center" cellpadding="0"
+					cellspacing="2">
+					<tr>
+						<td>&nbsp;</td>
+					</tr>
+					<tr>
+						<td>
+						<div align="right" class="infoBL">Usuario:
+						{hdr_nombre}&nbsp;&nbsp;| {hdr_fecha}</div>
+						</td>
+					</tr>
+				</table>
+				</td>
+			</tr>
+		</table>
+		<table width="100%" height="19" border="0" align="center"
+			cellpadding="0" cellspacing="0" bgcolor="#f1f0e9"
+			style="border-top:1px solid #ABABAB; border-bottom:1px solid #ABABAB">
+			<tr>
+				<td align="left" bgcolor="#FFFFFF" class="user"></td>
+			</tr>
+		</table>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top" bgcolor="#FFFFFF">
+		<table border="0" width="100%" class='ContentTitle'>
+			<tr>
+				<td width="53%" height="20" class='HeaderTitle'>Detalle Local:
+				{nom_local}</td>
+				<td width="47%" class='HeaderTitle'>
+				<div align="right"><a href="ViewMantenedorParametros"><img
+					src="img/volver.gif" alt="Volver" width="32" height="32" border="0" /></a></div>
+				</td>
+			</tr>
+		</table>
+		<br />
+
+
+
+		<table width="100%" border="0" cellspacing="2" cellpadding="2">
+			<tr valign="top">
+				<td width="71%">
+				<table width="92%" align="center" border="0">
+					<tr>
+						<td>
+						<div class="tab-page" id="modules-cpanel"><script
+							type="text/javascript">
+											var tabPane1 = new WebFXTabPane( document.getElementById( "modules-cpanel" ), 0 );
+										</script>
+						<div class="tab-page" id="modulo1">
+						<h2 class="tab">General</h2>
+						<div><!-- action="./ViewGuardarUmbral?id_local={id_local}&nom_local={nom_local}&u_unidad={u_unidades}&u_monto={u_monto}&u_activacion={mje}" method="GET"> -->
+						<form name="formGuardar"
+							action="ViewGuardarUmbral?id_local={id_local}&nom_local={nom_local}&u_unidad={u_unidad}&u_monto={u_monto}&u_activacion={mje}"
+							method="GET">
+						<p><strong>Datos del Umbral</strong></p>
+						<center><input type="hidden" id="id_local" name="id_local"
+							value="{id_local}"></center>
+						<DIV align="right"><INPUT type="hidden" name="nom_local"
+							value="{nom_local}" id="nom_local"></DIV>
+						<center><input id="u_activacion" type="hidden" name="u_activacion"
+							value="{mje}"></center>
+						<input type="hidden" name="nombre_usuario" value="{hdr_nombre}"
+							id="nombre_usuario">
+				<input style="visibility:hidden;" id="btnActivar" type="button" value="" onClick="activar();">  
+					
+						<table width="80%" border="0" cellpadding="0" cellspacing="2">
+							<tr>
+								<td width="159">Nombre Local</td>
+								<td width="398">{nom_local}</td>
+							</tr>
+							<tr>
+								<td height="12" width="159">Umbral Unidades</td>
+								<td height="28" width="71%"><INPUT type="text" id="u_unidad"
+									name="u_unidad" size="20" maxlength=5 value="{u_unidades}" onKeypress="ValidarTecla(event);" onBlur="ValidarTexto();"></td>
+							</tr>
+							<tr>
+								<td height="12" width="159" nowrap>Umbral Monto</td>
+								<td height="28" width="71%"><INPUT type="text" id="u_monto"	maxlength=5 name="u_monto" size="20" value="{u_monto}" onKeypress="ValidarTecla(event);" onBlur="ValidarTexto();"></td>
+
+
+
+							</tr>
+							<tr>
+								<TD width="159">Activaci&oacute;n</TD>
+								<TD width="398"><INPUT type="checkbox"
+									name="chkUmbralActivacion" disabled id="chkUmbralActivacion"
+									onchange="checkSN();"></TD>
+
+							</tr>
+							<tr>
+								<TD width="159">Ultima Actualizaci&oacute;n</TD>
+								<TD width="398"><font>{fecha_modi}</font></TD>
+
+
+							</tr>
+							<tr>
+								<TD width="159"></TD>
+								<TD width="398"></TD>
+
+
+							</tr>
+							<tr>
+								<td width="159"></td>
+								<td width="398"></td>
+							</tr>
+							<tr>
+
+								<td width="158"><input type="button" name="btnGuardar"
+									value="Guardar Umbral" onClick="javascript:validarUmbral();"
+									id="btnGuardar" />
+								<td width="398"><INPUT type="button" name="btnCancelar"
+									value="Cancelar" onclick="limpia();"></td>
+
+							</tr>
+							<tr>
+								<td width="159"></td>
+								<td width="398"></td>
+							</tr>
+							<tr>
+								<td width="159"></td>
+								<td width="398"></td>
+							</tr>
+							<tr>
+								<td width="159"></td>
+								<td width="398"></td>
+							</tr>
+							<tr>
+								<td width="159"></td>
+								<td width="398"></td>
+							</tr>
+							<tr>
+								<td width="159"></td>
+								<td width="398"></td>
+							</tr>
+							<tr>
+								<td width="159"></td>
+								<td width="398"></td>
+							</tr>
+							<tr>
+								<td width="159"></td>
+								<td width="398"></td>
+							</tr>
+							<tr>
+								<td width="159"></td>
+								<td width="398"></td>
+							</tr>
+							<tr>
+								<td colspan="2"></td>
+							</tr>
+							<tr>
+								<td width="159"></td>
+								<td width="398"></td>
+							</tr>
+						</table>
+						<br />
+						</form>
+						</div>
+						</div>
+
+						<br />
+						<br />
+						<br />
+						<br />
+						</div>
+
+
+						</td>
+					</tr>
+				</table>
+				</td>
+
+			</tr>
+		</table>
+
+		</td>
+	</tr>
+	<tr>
+		<td>
+		<table width="100%" height="19" border="0" align="center"
+			cellpadding="0" cellspacing="0" bgcolor="#f1f0e9"
+			style="border-top:1px solid #ABABAB; border-bottom:1px solid #ABABAB">
+			<tr>
+				<td align="center" bgcolor="#67b01a" class="infoBL">
+				<div align="center">Back Office Central - Jumbo.cl</div>
+				</td>
+			</tr>
+		</table>
+		</td>
+	</tr>
+</table>
+
+<SCRIPT language="JavaScript"> 
+ 			chk = document.getElementById('u_activacion').value;
+  				if(chk == "S"){
+ 	 				document.getElementById("chkUmbralActivacion").checked=true
+ 	 				document.getElementById('chkUmbralActivacion').disabled =false;
+ 	 					 	}
+ 				if	(chk == "N"){
+ 					document.getElementById("chkUmbralActivacion").checked=false
+ 	  				document.getElementById("chkUmbralActivacion").disabled=true
+ 							 	}
+ 	 
+ 	
+</SCRIPT>
+<script language="JavaScript">
+	respuestOK = "{respuesta_ok}";
+	respuestOK = respuestOK.replace('{', '');respuestOK = respuestOK.replace('}', '');
+	respuestOK = respuestOK.replace('respuesta_ok', '');
+	if(respuestOK != ""){
+		alert(respuestOK);
+	}
+</script>
+
+
+
+
+
+</body>
+</html>

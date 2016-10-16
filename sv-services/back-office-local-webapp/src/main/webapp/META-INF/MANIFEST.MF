@@ -1,0 +1,31 @@
+Manifest-Version: 1.0
+Class-Path: META-INF/lib/asm-attrs.jar META-INF/lib/asm.jar META-INF/l
+ ib/backport-util-concurrent-3.1.jar META-INF/lib/cglib-2.1.3.jar META
+ -INF/lib/com.ibm.mq.jar META-INF/lib/com.ibm.mqbind.jar META-INF/lib/
+ com.ibm.mqjms.jar META-INF/lib/commons-beanutils-1.6.1.jar META-INF/l
+ ib/commons-collections-3.2.jar META-INF/lib/commons-dbcp-1.2.1.jar ME
+ TA-INF/lib/commons-lang-2.1.jar META-INF/lib/commons-logging-1.1.jar 
+ META-INF/lib/commons-pool-1.3.jar META-INF/lib/db2jcc.jar META-INF/li
+ b/db2jcc_license_cu.jar META-INF/lib/dom4j-1.6.1.jar META-INF/lib/ehc
+ ache-1.1.jar META-INF/lib/fastm.jar META-INF/lib/hibernate3.jar META-
+ INF/lib/jta.jar META-INF/lib/junit-3.8.1.jar META-INF/lib/log4j-1.2.1
+ 3.jar META-INF/lib/poi-3.6-20091214-j1.4.jar META-INF/lib/poi-contrib
+ -3.6-20091214-j1.4.jar META-INF/lib/poi-ooxml-3.6-20091214-j1.4.jar M
+ ETA-INF/lib/poi-ooxml-schemas-3.6-20091214-j1.4.jar META-INF/lib/poi-
+ scratchpad-3.6-20091214-j1.4.jar META-INF/lib/retrotranslator-runtime
+ -1.2.9.jar Casos.jar Clientes.jar Common.jar Contenidos.jar EventosPe
+ rsonalizados.jar Parametros.jar Pedidos.jar Shared.jar Usuarios.jar V
+ teCotizaciones.jar VteEmpresas.jar IrsPromosDAO.jar LDAP.jar PromoCar
+ ga.jar PromoLibreria.jar Bolsas.jar common-module-1.0-SNAPSHOT.jar us
+ uarios-module-1.0-SNAPSHOT.jar shared-module-1.0-SNAPSHOT.jar pedidos
+ -module-1.0-SNAPSHOT.jar bolsas-module-1.0-SNAPSHOT.jar contenidos-mo
+ dule-1.0-SNAPSHOT.jar clientes-module-1.0-SNAPSHOT.jar eventos-person
+ alizados-module-1.0-SNAPSHOT.jar parametros-module-1.0-SNAPSHOT.jar p
+ romociones-carga-module-1.0-SNAPSHOT.jar irs-promociones-module-1.0-S
+ NAPSHOT.jar promociones-libreria-module-1.0-SNAPSHOT.jar venta-empres
+ as-module-1.0-SNAPSHOT.jar casos-module-1.0-SNAPSHOT.jar ldap-module-
+ 1.0-SNAPSHOT.jar umbrales-module-1.0-SNAPSHOT.jar fastm-1.0.jar poi-3
+ .6.jar commons-logging-1.1.jar log4j-1.2.13.jar logkit-1.0.1.jar aval
+ on-framework-4.1.3.jar com.ibm.mq-5.307.jar com.ibm.mqjms-5.307.jar s
+ v-modules-1.0-SNAPSHOT.jar
+

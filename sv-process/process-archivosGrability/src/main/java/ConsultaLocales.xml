@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap 
+   PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" 
+   "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap >
+	<resultMap id="resultLocal" class="java.util.HashMap">
+		<result property="key" column="row_id"/>
+		<result property="valor" column="col2"/>
+		<result property="estado" column="estado"/>
+	</resultMap>
+	
+	<select id="getLocal" resultMap="resultLocal" >
+	<![CDATA[
+		SELECT CAST(LOCALES.ID_LOCAL AS VARCHAR(50)) AS row_id,
+		       LOCALES.ID_LOCAL||'|'||
+               LOCALES.COD_LOCAL||'|'||
+               TRIM(REPLACE(LOCALES.NOM_LOCAL,'|',' '))||'|'||
+               NVL(DECODE(LOCALES.RETIRO_LOCAL,'N',0,'S',1),0) ||'|'||
+               TRIM(REPLACE(LOCALES.DIRECCION,'|',' ')) AS col2,
+               'N' AS ESTADO
+		FROM
+			(
+             SELECT DISTINCT 
+                    LC.ID_LOCAL,
+                    LC.COD_LOCAL,
+                    LC.NOM_LOCAL,
+                    LC.RETIRO_LOCAL,
+                    LC.DIRECCION
+               FROM bodba.BO_COMUNAS  AS CM 
+               JOIN bodba.BO_REGIONES AS RG ON CM.REG_ID = RG.REG_ID
+			   JOIN bodba.BO_POLIGONO AS PL ON CM.ID_COMUNA = PL.ID_COMUNA
+			   JOIN bodba.BO_ZONAS    AS ZN ON ZN.ID_ZONA = PL.ID_ZONA 
+			   JOIN bodba.BO_LOCALES  AS LC ON ZN.ID_LOCAL = LC.ID_LOCAL
+			) LOCALES
+	]]>
+	</select>
+	<select id="getLocalNov" resultMap="resultLocal" >
+	<![CDATA[
+	WITH DATOS
+	(
+	    ID_DAT_LOCAL,
+	    COL2
+	)
+	AS
+	(
+		SELECT CAST(LOCALES.ID_LOCAL AS VARCHAR(50)) AS ID_DAT_LOCAL,
+		       LOCALES.ID_LOCAL||'|'||
+               LOCALES.COD_LOCAL||'|'||
+               REPLACE(REPLACE(TRIM(LOCALES.NOM_LOCAL),'''',' '),'|',' ')||'|'||
+                NVL(DECODE(LOCALES.RETIRO_LOCAL,'N',0,'S',1),0) ||'|'||
+               REPLACE(REPLACE(TRIM(LOCALES.DIRECCION),'''',' '),'|',' ') AS col2
+		FROM
+			(
+             SELECT DISTINCT 
+                    LC.ID_LOCAL,
+                    LC.COD_LOCAL,
+                    LC.NOM_LOCAL,
+                    LC.RETIRO_LOCAL,
+                    LC.DIRECCION
+               FROM bodba.BO_COMUNAS  AS CM 
+               JOIN bodba.BO_REGIONES AS RG ON CM.REG_ID = RG.REG_ID
+			   JOIN bodba.BO_POLIGONO AS PL ON CM.ID_COMUNA = PL.ID_COMUNA
+			   JOIN bodba.BO_ZONAS    AS ZN ON ZN.ID_ZONA = PL.ID_ZONA 
+			   JOIN bodba.BO_LOCALES  AS LC ON ZN.ID_LOCAL = LC.ID_LOCAL
+			) LOCALES
+    )
+	 SELECT PRE.ROW_ID,
+	        PRE.COL2,
+	        PRE.ESTADO
+	  FROM (
+	    /* MODIFICADOS */
+	    SELECT DATOS.ID_DAT_LOCAL AS ROW_ID, DATOS.COL2, 'M' AS ESTADO
+	      FROM DATOS, bodba.BO_INT_LOCAL AS DIS
+	     WHERE DIS.ID_INT_LOCAL = DATOS.ID_DAT_LOCAL
+	       AND DIS.INT_DATA != DATOS.COL2
+	     UNION ALL
+	     
+	     /* NUEVOS */
+        SELECT D.ID_DAT_LOCAL AS ROW_ID, D.COL2, 'N' AS ESTADO
+	    FROM DATOS D LEFT JOIN bodba.BO_INT_LOCAL AS LCL on D.ID_DAT_LOCAL=LCL.ID_INT_LOCAL WHERE LCL.ID_INT_LOCAL is null  
+                    
+	     UNION ALL	     
+	     /* ELIMINADOS */
+	    SELECT DIS.ID_INT_LOCAL AS ROW_ID, DIS.INT_DATA AS COL2, 'E' AS ESTADO
+	      FROM bodba.BO_INT_LOCAL AS DIS
+	     WHERE NOT EXISTS 
+	           (SELECT 1
+	              FROM DATOS AS DAT
+                  JOIN bodba.BO_INT_LOCAL AS LCL
+                    ON DAT.ID_DAT_LOCAL = LCL.ID_INT_LOCAL)
+                    
+         UNION ALL
+	     /* ELIMINADOS cuando no viene en la estructura datos*/	    	
+		    SELECT DIS.ID_INT_LOCAL AS ROW_ID, DIS.INT_DATA AS COL2, 'E' AS ESTADO
+		    FROM bodba.BO_INT_LOCAL AS DIS LEFT JOIN DATOS D on DIS.ID_INT_LOCAL = D.ID_DAT_LOCAL  WHERE D.ID_DAT_LOCAL is null
+		    
+        ) AS PRE
+	]]>
+	</select>
+</sqlMap>

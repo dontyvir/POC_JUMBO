@@ -1,0 +1,153 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html><!-- InstanceBegin template="/Templates/print.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="EXPIRES" CONTENT="Mon, 22 Jul 2002 11:12:01 GMT">
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>Jumbo.cl Back Office Central</title>
+<!-- InstanceEndEditable -->
+<!-- InstanceBeginEditable name="head" --><!-- InstanceEndEditable -->
+<link href="estilos.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+<!--
+body {
+	background-color: #FFFFFF;
+}
+-->
+</style></head>
+
+<body>
+<!-- InstanceBeginEditable name="Body" --><br>		
+
+		<script>
+			function validar_navegacion(form){
+				if (form.categoria.value == "-"){
+					alert("Selección no valida, seleccione una categoría");
+					return false;
+				}
+				return true;
+			}
+			
+			
+				function buscarXarbolSap(valor){
+					contenido = document.nav_cat.sel_cat.value.split("|"); // Se hace el split porque viene id y tipo 
+					document.nav_cat.categoria.value = contenido[0]; // La posicion 0 es el id de categoria
+					document.nav_cat.tipo.value = contenido[1];	// La posicion 1 es el tipo			
+					if (document.nav_cat.categoria.value == "" || document.nav_cat.categoria.value == "-"){
+						alert("Debe seleccionar una categoría");
+						document.nav_cat.sel_cat.focus();
+						//return false;
+					}else{
+						if (valor == "navega" ){
+							document.nav_cat.accion.value = "navega";
+							if (document.nav_cat.tipo.value == "I" || document.nav_cat.tipo.value == "S" ){
+								document.nav_cat.submit();
+							}
+						}
+						else{
+							document.nav_cat.accion.value = "bus_nav";
+							document.nav_cat.submit();
+						}	
+						
+					} 
+					
+				}			
+		</script>	
+<SCRIPT LANGUAGE="JavaScript">window.name='winmodal'</SCRIPT>				
+            <table width="95%"  border="0" align="center" cellpadding="0" cellspacing="2">
+              <tr>
+                <td><fieldset>
+                <legend>Buscar Productos</legend>
+                <table width="100%"  border="0" align="center" cellpadding="0" cellspacing="0">
+                        <form name="form_sap" method="get" action="ViewBusqProdSapForm" TARGET='winmodal'> 
+                        <input type=hidden name=accion value="bus_sap">               
+		                  <tr>
+        		            <td width="27%">C&oacute;d SAP 
+								<input type="radio" name="tipo_sap" value="cat" {check1} >
+								Categ
+								<input type="radio" name="tipo_sap" value="prod" {check2} >
+								Prod 
+							</td>
+                		    <td width="54%">Navegar Arbol Categor&iacute;as SAP </td>
+                  		</tr>
+                  
+                  <tr>
+                    <td>&nbsp;
+
+	                        <input name="sap" type="text" size="20" maxlength="20" value="{sap}">
+
+                        <input type="submit" class="cmd" value="Buscar"></td>
+                    <td>
+	                    </form>         
+	                    
+					<form name="nav_cat" method=post action="ViewBusqProdSapForm" TARGET='winmodal' >	                               
+					<input type="hidden" name="accion" value="">
+					<input type="hidden" name="tipo"  value="">
+					<input type="hidden" name="categoria"  value="">					
+                   <select name="sel_cat" onchange="buscarXarbolSap('navega');" >
+                   <option value="">-- Seleccionar --</option>
+                    <!-- BEGIN DYNAMIC: CATEGORIA -->
+                    	<OPTION value="{cat_id}" {sel_cat}>{cat_nombre}</OPTION>
+                    <!-- END DYNAMIC: CATEGORIA -->
+                        <option value="-">------------------------</option>
+                        <option value="{cod_cat_abuelo}|S">SUBIR UN NIVEL</option>
+                    </select>
+                      <input type="button" class="cmd" value="Buscar" onclick=" buscarXarbolSap('ir');"></td>
+                  </tr>
+                  </form>
+                </table>
+                </fieldset></td>
+              </tr>
+			</table>
+			<br>
+			<table width="95%"  border="1" align="center" cellpadding="0" cellspacing="0" class="tabla2">
+			  <tr align="left">
+				<th width="11%">Id Prod</th>			  
+				<th width="11%">Cód Prod</th>
+				<th width="22%">Descripción</th>
+				<th width="44%">Categ SAP                
+				<th width="9%">Sel
+			  </tr>
+			  <!-- BEGIN DYNAMIC: INF_PROD -->
+			  <tr>
+				<td>{id_prod}</td>
+				<td>{cod_prod}</td>
+				<td>{desc_prod}</td>
+				<td>{cat_sap}</td>
+				<td> <div align="center"><img src="img/forward.gif" width="16" height="16" onclick="javascript: valor='{valor}'; window.returnValue = valor; window.close();"  onmouseover="javascript:style.cursor='hand'" ></div></td>
+			  </tr>
+			  <!-- END DYNAMIC: INF_PROD -->
+			  
+			</table>
+			<center>{mje1}</center>
+			<table width="95%"  border="0" align="center" cellpadding="0" cellspacing="0">
+			<form name="form" action="ViewBusqProdSapForm" method=get TARGET='winmodal'>
+			<input type=hidden name="tipo_sap" value="{tipo_sap}">					
+			<input type=hidden name="sap" value="{sap}">
+			<input type=hidden name=accion value="{accion}" >
+			<input type=hidden name="categoria" value="{categoria}" >
+			
+			  <tr>
+				<td align="right">P&aacute;ginas : 
+				<select name="pagina" onchange="submit(this.form);">
+				<!-- BEGIN DYNAMIC: PAGINA -->
+				<option value="{pag}" {sel_pag} >{pag}</option>
+				<!-- END DYNAMIC: PAGINA -->
+				</select>
+				</td>
+			  </tr>
+			  </form>
+			  </table>
+			  <tr>
+				<td align="right">	
+				<div align="center">
+				  <input name="Button" type="button" class="cmd" value="  Cerrar  " onClick="window.close();">
+				</div></td>
+			  </tr>
+			</table>
+
+<!-- InstanceEndEditable --></body>
+<!-- InstanceEnd --></html>

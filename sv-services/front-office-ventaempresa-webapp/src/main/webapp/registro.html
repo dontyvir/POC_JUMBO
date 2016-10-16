@@ -1,0 +1,387 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html><!-- InstanceBegin template="/Templates/exterior1.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>Venta Empresas</title>
+<!-- InstanceEndEditable -->
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="EXPIRES" CONTENT="Mon, 22 Jul 2002 11:12:01 GMT">
+<link href="/WebFOVE/style.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+<!--
+body {
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+}
+-->
+</style>
+<script language="JavaScript" src="/WebFOVE/funciones.js"></script>
+<!-- InstanceBeginEditable name="head" -->
+<script language="JavaScript" src="/WebFOVE/registro_val.js"></script>
+<script language="JavaScript" src="/WebFOVE/checkrut.js"></script>
+
+<SCRIPT LANGUAGE="JavaScript">
+
+if ("{msg_error}" == 1){
+	alert("{desc_msg_error}");
+}
+
+
+var arr_comunas = new Array(2);
+arr_comunas[0] = new Array();    //Id de la region
+arr_comunas[1] = new Array();    //Nombre de la comuna
+
+var i = 0;
+
+<!--  BEGIN DYNAMIC: select_comunas -->
+arr_comunas[0][i] = '{reg_id}';
+arr_comunas[1][i++] = '{nombre_com}';
+<!--  END DYNAMIC: select_comunas -->
+
+function bcomuna(){
+	formulario = document.cliente;
+	formulario.comuna.length=0;
+	valor_region = formulario.ciudadtmp.options[formulario.ciudadtmp.selectedIndex].value;
+	for(i=0; i < arr_comunas[0].length; ++i){
+		if(arr_comunas[0][i] == valor_region){
+			makeOptionList(formulario.comuna,arr_comunas[1][i],arr_comunas[1][i],0);
+		}
+	}
+	formulario.ciudad.value = formulario.ciudadtmp.options[formulario.ciudadtmp.selectedIndex].text;
+}
+
+
+function cargar_select_pag() {
+	var formulario = document.cliente;
+
+	objeto = formulario.fon_cod_1;
+	cant = objeto.options.length;
+	for( var i = 0; i < cant; i++ ) {
+		if( objeto.options[i].value == formulario.fon_cod_1_tmp.value ) {
+			objeto.selectedIndex = i;
+			break;
+		}
+	}	
+
+	objeto = formulario.fon_cod_2;
+	cant = objeto.options.length;
+	for( var i = 0; i < cant; i++ ) {
+		if( objeto.options[i].value == formulario.fon_cod_2_tmp.value ) {
+			objeto.selectedIndex = i;
+			break;
+		}
+	}	
+
+	objeto = formulario.fon_cod_3;
+	cant = objeto.options.length;
+	for( var i = 0; i < cant; i++ ) {
+		if( objeto.options[i].value == formulario.fon_cod_3_tmp.value ) {
+			objeto.selectedIndex = i;
+			break;
+		}
+	}	
+
+
+	objeto = formulario.tamano_empresa;
+	cant = objeto.options.length;
+	for( var i = 0; i < cant; i++ ) {
+		if( objeto.options[i].value == formulario.tamano_empresa_tmp.value ) {
+			objeto.selectedIndex = i;
+			break;
+		}
+	}	
+
+}
+
+
+</script>
+<!-- InstanceEndEditable -->
+
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript"></script>
+<script type="text/javascript">
+   _uacct = "UA-1529321-3";
+   urchinTracker();
+</script>
+</head>
+
+<body>
+
+<table width="770" border="0" align="center" cellpadding="0" cellspacing="0">
+<tr>
+<td><table width="100%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+    <td width="315" align="left" valign="bottom"><img src="/WebFOVE/img/logove.gif" border="0" usemap="#Map"></td>
+    <td>&nbsp;</td>
+    <td width="21%" align="left" valign="bottom"><img src="/WebFOVE/img/lego.jpg" width="224" height="86"></td>
+  </tr>
+  <tr>
+    <td colspan="3" valign="middle" ><table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="left" background="/WebFOVE/img/bg-header.gif"><img src="/WebFOVE/img/header-bd-izq.gif" width="9" height="11"></td>
+        <td align="right" background="/WebFOVE/img/bg-header.gif"><img src="/WebFOVE/img/header-bd-der.gif" width="11" height="11"></td>
+      </tr>
+      <tr>
+        <td align="left" background="/WebFOVE/img/bk-izq-header.gif"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td><img src="/WebFOVE/img/header-bd-izq-izq.gif" width="1" height="20"></td>
+            <td></td>
+          </tr>
+        </table></td>
+        <td width="421" align="right"><table width="421" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td width="15"><img src="/WebFOVE/img/borde-med-header.gif"></td>
+            <td width="270" align="left" bgcolor="#419f27">&nbsp;</td>
+            <td width="120" align="right" bgcolor="#419f27"><script type="text/javascript" src="/WebFOVE/flashobject.js"></script>
+                    <div id="iconos" style="width: 120px; height: 19px" align="right"></div>
+              <script type="text/javascript">
+var fo = new FlashObject("/WebFOVE/img/banner/{bt_inicio}", "animationName", "120", "19", "7", "#FFFFFF");
+fo.addParam("allowScriptAccess", "sameDomain");
+fo.addParam("quality", "high");
+fo.addParam("scale", "noscale");
+fo.write("iconos");
+          </script>
+            </td>
+            <td width="11" align="right"><div align="right"><img src="/WebFOVE/img/borde-der-header.gif"></div></td>
+          </tr>
+        </table></td>
+      </tr>
+    </table></td>
+  </tr>
+</table>
+  <map name="Map">
+    <area shape="rect" coords="7,0,314,43" href="http://www.jumboempresas.cl" target="_blank">
+  </map>
+  <table width="100%" height="400" border="0" cellpadding="0" cellspacing="0" class="tabla_marco">
+	  <tr>
+		<td valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="10">
+	  <tr>
+		<td><!-- InstanceBeginEditable name="EditRegionTitulo" --><span class="titulo">Solicitud de registro</span><br>
+		  <span class="texto">Recuerda completar todos los campos marcados con asterisco.</span> <!-- InstanceEndEditable --></td>
+	  </tr>
+	</table><!-- InstanceBeginEditable name="EditRegionContenido" --><br>
+		  <table width="400" border="0" align="center" cellpadding="0" cellspacing="2">
+            <tr>
+              <td><table width="100%"  border="0" cellpadding="0" cellspacing="0">
+                  <tr>
+                    <td><form action="SendMail" method="post" name="cliente" onsubmit="return ValidaFormSolicitud();">
+						<INPUT TYPE="hidden" NAME="fon_cod_1_tmp" value="{fon_cod_1}">
+						<INPUT TYPE="hidden" NAME="fon_cod_2_tmp" value="{fon_cod_2}">
+						<INPUT TYPE="hidden" NAME="fon_cod_3_tmp" value="{fon_cod_3}">
+						<INPUT TYPE="hidden" NAME="tamano_empresa_tmp" value="{tamano_empresa}">
+						<INPUT TYPE="hidden" NAME="ciudad" value="">
+                        <table width="100%"  border="0" align="center" cellpadding="2" cellspacing="0">
+                          <tr>
+                            <td colspan="3"><strong class="titulo">Datos Empresa </strong></td>
+                          </tr>
+                          <tr>
+                            <td width="150" class="texto_formularios">Nombre Contacto * </td>
+                            <td>:</td>
+                            <td><input name="nombre_contacto" type="text" id="nombre_contacto" size="30" maxlength="30" onFocus="cambiar_color_on(this);" onBlur="cambiar_color_off(this);" value="{nombre_contacto}" onpaste="return false;"></td>
+                          </tr>
+                          <tr>
+                            <td width="150" class="texto_formularios">Cargo * </td>
+                            <td>:</td>
+                            <td><input name="cargo" type="text" id="cargo" size="30" maxlength="30" onFocus="cambiar_color_on(this);" onBlur="cambiar_color_off(this);" value="{cargo}" onpaste="return false;"></td>
+                          </tr>
+                          <tr>
+                            <td width="150" class="texto_formularios">Tel&eacute;fono Contacto 1 * </td>
+                            <td>:</td>
+                            <td>
+							<select name="fon_cod_1" id="fon_cod_1" onFocus="cambiar_color_on(this);" onBlur="cambiar_color_off(this);">
+							<option value='02'>02</option>
+							<option value='32'>32</option>
+							<option value='33'>33</option>
+							<option value='34'>34</option>
+							<option value='35'>35</option>
+							<option value='41'>41</option>
+							<option value='42'>42</option>
+							<option value='43'>43</option>
+							<option value='45'>45</option>
+							<option value='51'>51</option>
+							<option value='52'>52</option>
+							<option value='53'>53</option>
+							<option value='55'>55</option>
+							<option value='57'>57</option>
+							<option value='58'>58</option>
+							<option value='61'>61</option>
+							<option value='63'>63</option>
+							<option value='64'>64</option>
+							<option value='65'>65</option>
+							<option value='67'>67</option>
+							<option value='71'>71</option>
+							<option value='72'>72</option>
+							<option value='73'>73</option>
+							<option value='75'>75</option>
+							</select>							
+							<input name="fono_contacto1" type="text" id="fono_contacto1" size="7" maxlength="7" onFocus="cambiar_color_on(this);" onBlur="cambiar_color_off(this);" value="{fono_contacto1}" onpaste="return false;"></td>
+                          </tr>
+                          <tr>
+                            <td width="150" class="texto_formularios">Tel&eacute;fono Contacto 2 * </td>
+                            <td>:</td>
+                            <td>
+							  <select name="fon_cod_2" id="fon_cod_2" onFocus="cambiar_color_on(this);" onBlur="cambiar_color_off(this);">
+							  <option value="7">7</option>
+							  <option value="8">8</option>
+							  <option value="9">9</option>
+							  </select>							
+							<input name="fono_contacto2" type="text" id="fono_contacto2" size="7" maxlength="7" onFocus="cambiar_color_on(this);" onBlur="cambiar_color_off(this);" value="{fono_contacto2}" onpaste="return false;"></td>
+                          </tr>
+                          <tr>
+                            <td width="150" class="texto_formularios">Tel&eacute;fono Contacto 3</td>
+                            <td>:</td>
+                            <td>
+							<select name="fon_cod_3" id="fon_cod_3" onFocus="cambiar_color_on(this);" onBlur="cambiar_color_off(this);">
+							<option value='02'>02</option>
+							<option value='32'>32</option>
+							<option value='33'>33</option>
+							<option value='34'>34</option>
+							<option value='35'>35</option>
+							<option value='41'>41</option>
+							<option value='42'>42</option>
+							<option value='43'>43</option>
+							<option value='45'>45</option>
+							<option value='51'>51</option>
+							<option value='52'>52</option>
+							<option value='53'>53</option>
+							<option value='55'>55</option>
+							<option value='57'>57</option>
+							<option value='58'>58</option>
+							<option value='61'>61</option>
+							<option value='63'>63</option>
+							<option value='64'>64</option>
+							<option value='65'>65</option>
+							<option value='67'>67</option>
+							<option value='71'>71</option>
+							<option value='72'>72</option>
+							<option value='73'>73</option>
+							<option value='75'>75</option>
+							</select>							
+							<input name="fono_contacto3" type="text" id="fono_contacto3" size="7" maxlength="7" onFocus="cambiar_color_on(this);" onBlur="cambiar_color_off(this);" value="{fono_contacto3}" onpaste="return false;"></td>
+                          </tr>
+                          <tr>
+                            <td width="150" class="texto_formularios">E-mail * </td>
+                            <td>:</td>
+                            <td><input name="email" type="text" id="email" size="30" maxlength="30" onFocus="cambiar_color_on(this);" onBlur="cambiar_color_off(this);" value="{email}" onpaste="return false;"></td>
+                          </tr>
+                          <tr>
+                            <td width="150" class="texto_formularios">Confirmaci&oacute;n e-mail * </td>
+                            <td>:</td>
+                            <td><input name="email_c" type="text" id="mail_c" size="30" maxlength="30" onFocus="cambiar_color_on(this);" onBlur="cambiar_color_off(this);" value="{email_c}" onpaste="return false;"></td>
+                          </tr>
+                          <tr>
+                            <td width="150" class="texto_formularios">RUT empresa * </td>
+                            <td width="3">:</td>
+                            <td><input name="rutemp" type="text" id="rutemp" size="10" maxlength="10"  onFocus="cambiar_color_on(this);" onBlur="cambiar_color_off(this);" value="{rutemp}" onpaste="return false;">
+                    -
+                      <input name="dvemp"  type="text" size="1" maxlength="1"   onFocus="cambiar_color_on(this);" onBlur="cambiar_color_off(this);" value="{dvemp}" onpaste="return false;"/></td>
+                          </tr>
+                          <tr>
+                            <td width="150" class="texto_formularios">Nombre empresa *</td>
+                            <td>:</td>
+                            <td><input name="nombre_empresa" type="text" id="nombre_empresa" size="30" maxlength="30" onFocus="cambiar_color_on(this);" onBlur="cambiar_color_off(this);" value="{nombre_empresa}" onpaste="return false;"></td>
+                          </tr>
+                          <tr>
+                            <td width="150" class="texto_formularios">Raz&oacute;n Social * </td>
+                            <td>:</td>
+                            <td><input name="razon" type="text" id="razon" size="30" maxlength="30" onFocus="cambiar_color_on(this);" onBlur="cambiar_color_off(this);" value="{razon}" onpaste="return false;"></td>
+                          </tr>
+                          <tr>
+                            <td width="150" class="texto_formularios">Giro * </td>
+                            <td>:</td>
+                            <td><input name="rubro" type="text" id="rubro" size="30" maxlength="30" onFocus="cambiar_color_on(this);" onBlur="cambiar_color_off(this);" value="{rubro}" onpaste="return false;"></td>
+                          </tr>
+                          <tr>
+                            <td width="150" valign="top" class="texto_formularios">Tama&ntilde;o empresa * </td>
+                            <td>:</td>
+                            <td><SELECT NAME="tamano_empresa" onFocus="cambiar_color_on(this);" onBlur="cambiar_color_off(this);">
+                                <option value="1">Menos de 5 empleados</option>
+                                <option value="2">M&aacute;s de 5 y menos de 10 empleados</option>
+                                <option value="3">M&aacute;s de 10 empleados</option>
+                            </SELECT></td>
+                          </tr>
+                          <tr>
+                            <td width="150" class="texto_formularios">Dirección Comercial</td>
+                            <td>:</td>
+                            <td><input name="dir_com" type="text" id="dir_com" size="30" maxlength="30" onFocus="cambiar_color_on(this);" onBlur="cambiar_color_off(this);" value="{dir_com}" onpaste="return false;"></td>
+                          </tr>
+                          <tr>
+                            <td width="150" class="texto_formularios">Región * </td>
+                            <td>:</td>
+                            <td>
+								<select NAME="ciudadtmp" onchange="bcomuna()" onFocus="cambiar_color_on(this);" onBlur="cambiar_color_off(this);">
+									<option value="0">Seleccione</OPTION>
+									<!--  BEGIN DYNAMIC: select_regiones -->
+									<option value="{option_reg_id}">{option_reg_nombre}</OPTION>
+									<!--  END DYNAMIC: select_regiones -->
+								</select>
+							</td>
+                          </tr>
+                          <tr>
+                            <td width="150" class="texto_formularios">Comuna * </td>
+                            <td>:</td>
+                            <td>
+								<SELECT NAME="comuna" onFocus="cambiar_color_on(this);" onBlur="cambiar_color_off(this);">
+									<option value="0">Seleccione</OPTION>
+								</SELECT>
+							</td>
+                          </tr>
+
+                          <tr>
+                            <td colspan=3 class="texto_formularios">&nbsp;</td>
+                          </tr>
+                          <tr>
+                            <td width="150">&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td><input name="Submit2" type="button" class="botonChico" onClick="location.href='ViewLogonForm'" value="Volver">
+							<input name="Submit" type="submit" class="botonChico" value="Enviar"></td>
+                          </tr>
+                        </table>
+                    </form></td>
+                  </tr>
+              </table></td>
+            </tr>
+          </table>
+<SCRIPT LANGUAGE="JavaScript">          
+window.document.cliente.nombre_contacto.onkeypress		= KeyIsTexto;
+window.document.cliente.cargo.onkeypress				= KeyIsTexto;
+window.document.cliente.fono_contacto1.onkeypress 		= KeyIsNumber;
+window.document.cliente.fono_contacto2.onkeypress 		= KeyIsNumber;
+window.document.cliente.fono_contacto3.onkeypress 		= KeyIsNumber;
+window.document.cliente.email.onkeypress 				= KeyIsTexto_R;
+window.document.cliente.email_c.onkeypress 				= KeyIsTexto_R;
+window.document.cliente.rutemp.onkeypress 				= KeyIsRut;
+window.document.cliente.dvemp.onkeypress 				= KeyIsRut;
+window.document.cliente.nombre_empresa.onkeypress 		= KeyIsTexto;
+window.document.cliente.razon.onkeypress 				= KeyIsTexto_Razon;
+window.document.cliente.rubro.onkeypress 				= KeyIsTexto;
+window.document.cliente.dir_com.onkeypress 				= KeyIsTexto;
+</SCRIPT>
+	<script>cargar_select_pag();</script>
+		<!-- InstanceEndEditable --></td>
+	  </tr>
+	</table>
+	 <table width="100%" height="28" border="0" cellpadding="2" cellspacing="0">
+      <tr>
+       <td height="10" background="/WebFOVE/img/bk-izq-header.gif"><img src="/WebFOVE/img/bk-izq-header.gif" width="1" height="10"></td>
+      </tr>
+      <tr>
+        <td class="footer"><a href="http://www.jumbointernet.cl/contacto6.htm" target="_blank" class="footer">Contacto</a> | <a href="http://www.jumbo.cl/FO/LogonForm" target="_blank" class="footer">Compa&ntilde;&iacute;a</a> | <a href="http://www.jumbointernet.cl/preguntas_frecuentes.html" target="_blank" class="footer">Preguntas Frecuentes</a> | <a href="http://www.jumbointernet.cl/preguntas_frecuentes.html#1" target="_blank" class="footer"> C&oacute;mo Cotizar </a>|<a href="http://www.jumbointernet.cl/preguntas_frecuentes.html#b4" target="_blank" class="footer">Medios de Pago</a> | <a href="http://www.jumbointernet.cl/preguntas_frecuentes.html#5" target="_blank" class="footer">Costos de Despacho</a><br>
+          <br></td>
+      </tr>
+      <tr>
+        <td class="footer">Servicio de Atenci&oacute;n al Cliente 600 400 3000 | Fono Tarjeta Jumbo M&aacute;s: 600 600 0505<br>
+Copyright&copy; Cencosud 2002, Santiago Chile | Sitio Desarrollado para Internet Explorer 5 o superior,<br>
+Resoluci&oacute;n de pantalla 800x600 | Para ver el sitio necesita el plug in de Flash.</td>
+      </tr>
+    </table></td>
+</tr>	
+</table>
+
+</body>
+<!-- InstanceEnd -->
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+	<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+	<META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+	<META HTTP-EQUIV="EXPIRES" CONTENT="Mon, 22 Jul 2002 11:12:01 GMT">
+	<title>Jumbo.cl Back Office Central</title>
+</head>
+
+<body>
+	<table width="780" height="100%" border="0" cellpadding="0" cellspacing="0">
+		<tr height="400">
+			<td valign="top" bgcolor="#FFFFFF">
+				<table border=0 width="100%" class='ContentTitle'>
+					<tr><td width="53%" height="20" class='HeaderTitle'>Publicaci&oacute;n / Despublicaci&oacute;n masiva de productos</td></tr>
+				</table>
+				
+				<br>
+				<table width="100%"  border="0" cellspacing="2" cellpadding="2">
+					<tr valign="top">
+						<td width="71%">
+							<table width="92%" align="center" border="0">
+              	<tr>
+									<td>
+										<h2 class="tab"></h2>
+										<div align="left" id="div_ficha">
+											<form id="formPubMasiva" name="formPubMasiva">
+												<fieldset>
+													<legend>Publicaci&oacute;n / Despublicaci&oacute;n masiva de productos</legend>
+													<div>
+														<LABEL for="locales">Acci&oacute;n:</LABEL>
+														<input type="radio" id="radio_publicar" name="publicar" value="si" checked="checked">Publicar
+														<input type="radio" id="radio_despublicar" name="publicar" value="no">Despublicar
+														<input type="radio" id="radio_sintock" name="publicar" value="constock">Productos con Stock
+														<input type="radio" id="radio_constock" name="publicar" value="sinstock">Productos sin Stock
+													</div>
+													<div>
+														<br />
+														<LABEL for="locales">Locales:</LABEL>
+														<!-- BEGIN DYNAMIC: LOCALES -->
+															<input type="checkbox" name="local_check" value="{local_id}">{local_codigo}
+														<!-- END DYNAMIC: LOCALES -->
+	                          <input type="checkbox" id="checkAllAuto" name="checkAllAuto">Todos los Locales
+													</div>
+													<div id="div_motivos" style="display: none;">
+																<br />
+                    						Motivo: <SELECT id="motivo_des" name="motivo_des">
+		                            			<!-- BEGIN DYNAMIC: MOTIVOS -->
+																				<OPTION value="{motivo_id}" {selected} >{motivo_nombre}</OPTION>
+          					          		<!-- END DYNAMIC: MOTIVOS -->
+                    						</SELECT>
+                    						Obs: <input type="text" id="obs" name="obs" maxlength="80" size="80"/>
+	                        </div>
+													<div>
+															<br />
+															<LABEL for="productos">Pegar ids FO de los productos (separados por enter, espacios o cualquier caracter):</LABEL>
+															<textarea id="productos" name="productos" cols="70" rows="10" />
+													</div>
+													<div>
+														¿Evitar Publicaci&oacute;n/Despublicaci&oacute;n por bloqueo?<input type="checkbox" name="evitar_pub_des" />
+													</div>
+												</fieldset>	                            
+												<input id="ejecutar" name="ejecutar" type="button" value="Ejecutar">
+											</form>
+											
+											<div id="div_cargando" style="display: none;">
+													<img id="img_cargando" src="img/cargando.gif" /> 
+											</div>
+											
+											<div id="div_resultado">
+											</div>
+											<a href="ViewMonProducts">Volver</a>
+                  <br>
+                	<br>
+              	</div>
+									</td>
+								</tr>
+							</table>
+	     			</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+	</table>
+</body>
+</html>

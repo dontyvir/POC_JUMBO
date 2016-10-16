@@ -1,0 +1,253 @@
+.footer {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #999999;
+	text-align: center;
+}
+.footer A:link{
+	color: #999999;
+	text-decoration:none;
+}
+.footer A:visited{
+	color: #999999;
+	text-decoration:none;
+}
+.footer A:active{
+	color: #999999;
+	text-decoration:none;
+}
+.footer A:hover{
+	color: #999999;
+	text-decoration:none;
+}
+.txt_general {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #000000;
+}
+.txt_general A:link{
+	color: #000000;
+	text-decoration:underline;
+}
+.txt_general A:visited{
+	color: #000000;
+	text-decoration:underline;
+}
+.txt_general A:active{
+	color: #000000;
+	text-decoration:underline;
+}
+.txt_general A:hover{
+	color: #000000;
+	text-decoration:underline;
+}
+.txt_general2 {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #4b4b4b;
+}
+.txt_general2 A:link{
+	color: #4b4b4b;
+	text-decoration:underline;
+}
+.txt_general2 A:visited{
+	color: #4b4b4b;
+	text-decoration:underline;
+}
+.txt_general2 A:active{
+	color: #4b4b4b;
+	text-decoration:underline;
+}
+.txt_general2 A:hover{
+	color: #4b4b4b;
+	text-decoration:underline;
+}
+.txt_general2naranja {
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight:bold;
+	font-size: 10px;
+	color: #FF7701;
+}
+.txt_general2naranja A:link{
+	color: #FF7701;
+	text-decoration:underline;
+}
+.txt_general2naranja A:visited{
+	color: #FF7701;
+	text-decoration:underline;
+}
+.txt_general2naranja A:active{
+	color: #FF7701;
+	text-decoration:underline;
+}
+.txt_general2naranja A:hover{
+	color: #FF7701;
+	text-decoration:underline;
+}
+.txt_general4 {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #84AA18;
+}
+.txt_general4 A:link{
+	color: #84AA18;
+	text-decoration:underline;
+}
+.txt_general4 A:visited{
+	color: #84AA18;
+	text-decoration:underline;
+}
+.txt_general4 A:active{
+	color: #84AA18;
+	text-decoration:underline;
+}
+.txt_general4 A:hover{
+	color: #84AA18;
+	text-decoration:underline;
+}
+.txt_general3 {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #4b4b4b;
+}
+.txt_general3 A:link{
+	color: #4b4b4b;
+	text-decoration:none;
+}
+.txt_general3 A:visited{
+	color: #4b4b4b;
+	text-decoration:none;
+}
+.txt_general3 A:active{
+	color: #4b4b4b;
+	text-decoration:none;
+}
+.txt_general3 A:hover{
+	color: #4b4b4b;
+	text-decoration:underline;
+}
+.txt_guia {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #757372;
+}
+.txt_guia A:link{
+	color: #757372;
+	text-decoration:underline;
+}
+.txt_guia A:visited{
+	color: #757372;
+	text-decoration:underline;
+}
+.txt_guia A:active{
+	color: #757372;
+	text-decoration:underline;
+}
+.txt_guia A:hover{
+	color: #757372;
+	text-decoration:underline;
+}
+.titulos {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-weight: bold;
+	color: #666666;
+}
+.titulos A:link{
+	color: #666666;
+	text-decoration:none;
+}
+.titulos A:active{
+	color: #666666;
+	text-decoration:none;
+}
+.titulos A:visited{
+	color: #666666;
+	text-decoration:none;
+}
+.titulos A:hover{
+	color: #666666;
+	text-decoration:underline;
+}
+.campo1 {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	border: 1px solid #CCCCCC;
+}
+.campo11 {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 9px;
+	border: solid #CCCCCC;
+}
+
+.bajada {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #4b4b4b;
+}
+.titulos_mapa {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-weight: bold;
+	color: #86a820;
+}
+.titulos_mapa A:link{
+	color: #86a820;
+	text-decoration:none;
+}
+.titulos_mapa A:active{
+	color: #86a820;
+	text-decoration:none;
+}
+.titulos_mapa A:visited{
+	color: #86a820;
+	text-decoration:none;
+}
+.titulos_mapa A:hover{
+	color: #86a820;
+	text-decoration:underline;
+}
+.txt_general4 {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #000000;
+}
+.txt_general4 A:link{
+	color: #000000;
+	text-decoration:none;
+}
+.txt_general4 A:visited{
+	color: #000000;
+	text-decoration:none;
+}
+.txt_general4 A:active{
+	color: #000000;
+	text-decoration:none;
+}
+.txt_general4 A:hover{
+	color: #000000;
+	text-decoration:underline;
+}
+.form {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 9px;
+	line-height: normal;
+	background-color: #FFFFFF;
+	border: 1px solid #CCCCCC;
+}
+.tablainicio{
+    border-left:1px solid #d4df87;
+	border-right:1px solid #d0d0d0;
+}
+.bordemenu{
+    border-right:1px solid #d0d0d0;
+}
+div.loading {
+	position:absolute;
+	top:10px;
+	left:10px;
+	visibility:hidden;
+}
+.naranjo_txt {
+	color: #FF7701;
+}

@@ -1,0 +1,918 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="EXPIRES" CONTENT="Mon, 22 Jul 2002 11:12:01 GMT">
+
+<title>Jumbo.cl</title>
+<script>
+var mod_icon = 0;
+var mod_sub = 0;
+</script>
+
+<link rel="shortcut icon" href="/FO_IMGS/img/favicon.ico" >
+<link href="/FO_WebContent/css/estilostextos.css" rel="stylesheet" type="text/css" />
+<style type="text/css">
+<!--
+a:link {
+	color: #669900;
+}
+a:visited {
+	color: #669900;
+}
+a:hover {
+	color: #333333;
+}
+a:active {
+	color: #669900;
+}
+.Estilo1 {
+	font-size: 10pt;
+	font-weight: bold;
+}
+.Estilo2 {font-size: 12px}
+.lectura1 {	font-family: "Trebuchet MS";
+	font-size: 12px;
+	font-style: normal;
+	line-height: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	color: #333333;
+	text-decoration: none;
+}
+.Estilo4 {font-size: 12px; font-weight: bold; color: #333333; }
+
+#inputtotdesc {
+	position:relative;
+	visibility:hidden;
+	overflow:visible;
+	height: 0px;
+	z-index:1;
+}
+
+#modificardireccion {
+	position:absolute;
+	visibility:hidden;
+	overflow:visible;
+	top:200px;
+	left:250px;
+	width:0px;
+	height:0px;
+	z-index:2;
+}
+
+#desplegar {
+	position:absolute;
+	width: 0px;
+	height: 0px;
+	left: 0px;
+	top: 0px;
+	visibility: hidden;
+	border: 1;
+	z-index: 5;
+}
+-->
+</style>
+<script type="text/JavaScript">
+<!--
+function MM_swapImgRestore() { //v3.0
+  var i,x,a=document.MM_sr; 
+  for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) 
+  	x.src=x.oSrc;
+}
+
+function MM_preloadImages() { //v3.0
+  var d=document; 
+  if(d.images) { 
+  	if(!d.MM_p) 
+		d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; 
+	for(i=0; i<a.length; i++)
+    	if (a[i].indexOf("#")!=0) { 
+			d.MM_p[j]=new Image; 
+			d.MM_p[j++].src=a[i];
+    	}
+   }
+}
+
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  
+  if(!d) 
+  	d=document; 
+  if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) 
+  	x=d.all[n]; 
+  for (i=0;!x&&i<d.forms.length;i++) 
+  	x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) 
+  	x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) 
+  	x=d.getElementById(n); 
+  return x;
+}
+
+function MM_swapImage() { //v3.0
+  var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; 
+  for(i=0;i<(a.length-2);i+=3)
+   	if ((x=MM_findObj(a[i]))!=null) {
+		document.MM_sr[j++]=x; 
+		if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];
+   }
+}
+
+function MM_showHideLayers() { //v6.0
+  var i,p,v,obj,args=MM_showHideLayers.arguments;
+  for (i=0; i<(args.length-2); i+=3) 
+  	if ((obj=MM_findObj(args[i]))!=null) { 
+		v=args[i+2];
+    	if (obj.style) { 
+			obj=obj.style; v=(v=='show')?'visible':(v=='hide')?'hidden':v; 
+		}
+		obj.visibility=v; 
+	}
+}
+
+function showCalendario() {
+MM_showHideLayers('ventana','','show');
+var layerCalendario = document.getElementById('ventana');
+var ancho = document.documentElement.scrollWidth; // screen.availWidth;
+var largo = document.documentElement.scrollHeight; // screen.availHeight;
+layerCalendario.style.width = '536px';
+layerCalendario.style.height = '305px';
+layerCalendario.style.left = (ancho-665)/2 + 'px';
+layerCalendario.style.top = '50px'; // (largo)/2 - 305 + 'px';
+var requestOptions = {
+			'method': 'post',
+			'parameters': 'paso=2',
+			'onSuccess': creaCalendario
+		};
+new Ajax.Request('AjaxDespachoChart', requestOptions);
+}
+
+function hideCalendario() {
+	MM_showHideLayers('ventana','','hide');
+	var layerCalendario = document.getElementById('ventana');
+	layerCalendario.style.width = '0px';
+	layerCalendario.style.height = '0px';
+	MM_showHideLayers('ventana_explicacion','','hide');
+}
+
+function showFichaProducto() {
+MM_showHideLayers('ventana_ficha','','show');
+var layerFichaProducto = document.getElementById('ventana_ficha');
+var ancho = screen.availWidth;
+var largo = screen.availHeight;
+var ypos = document.body.scrollTop;
+layerFichaProducto.style.width = '450px';
+layerFichaProducto.style.height = '240px';
+layerFichaProducto.style.left = (ancho-450)/2;
+layerFichaProducto.style.top = (largo-400)/2 + ypos - 50;
+}
+
+function hideFichaProducto() {
+MM_showHideLayers('ventana_ficha','','hide');
+var layerFichaProducto = document.getElementById('ventana_ficha');
+layerFichaProducto.style.width = '0px';
+layerFichaProducto.style.height = '0px';
+}
+
+function showPromoProducto() {
+MM_showHideLayers('ventana_promo','','show');
+var layerPromoProducto = document.getElementById('ventana_promo');
+var ancho = screen.availWidth;
+var largo = screen.availHeight;
+var ypos = document.body.scrollTop;
+layerPromoProducto.style.width = '395px';
+layerPromoProducto.style.height = '240px';
+layerPromoProducto.style.left = 100;
+layerPromoProducto.style.top = (largo-450)/2 + ypos;
+}
+
+function hidePromoProducto() {
+MM_showHideLayers('ventana_promo','','hide');
+var layerPromoProducto = document.getElementById('ventana_promo');
+layerPromoProducto.style.width = '0px';
+layerPromoProducto.style.height = '0px';
+}
+
+function showComentario() {
+MM_showHideLayers('comentarioproducto','','show');
+var layerComentario = document.getElementById('comentarioproducto');
+var ancho = screen.availWidth;
+var largo = screen.availHeight;
+var ypos = document.body.scrollTop;
+layerComentario.style.width = '395px';
+layerComentario.style.height = '240px';
+layerComentario.style.left = (ancho-395)/2;
+layerComentario.style.top = (largo-400)/2 + ypos - 50;
+}
+
+function hideComentario() {
+MM_showHideLayers('comentarioproducto','','hide');
+var layerComentario = document.getElementById('comentarioproducto');
+layerComentario.style.width = '0px';
+layerComentario.style.height = '0px';
+}
+
+function showModificarDireccion() {
+MM_showHideLayers('modificardireccion','','show');
+var layerModificarDireccion = document.getElementById('modificardireccion');
+var ancho = screen.availWidth;
+var largo = screen.availHeight;
+var ypos = document.body.scrollTop;
+layerModificarDireccion.style.width = '283px';
+layerModificarDireccion.style.height = '170px';
+layerModificarDireccion.style.left = (ancho-283)/2;
+layerModificarDireccion.style.top = (largo-400)/2 + ypos - 50;
+}
+
+function hideModificarDireccion() {
+MM_showHideLayers('modificardireccion','','hide');
+var layerModificarDireccion = document.getElementById('modificardireccion');
+layerModificarDireccion.style.width = '0px';
+layerModificarDireccion.style.height = '0px';
+}
+
+var objectSelected = null;
+var defaultStyle = null;
+var defaultStyleSelected = null;
+
+function cambiarEstilo(element, newStyle) {
+	if (objectSelected != null) {
+		if (element != objectSelected)
+			element.className = newStyle;
+	} else 
+		element.className = newStyle;
+}
+
+function cambiarEstiloCal(element, newStyle) {
+	if( document.t_picking.jsel.value == 1 ) {
+		if (objectSelected != null) {
+			if (element != objectSelected)
+				element.className = newStyle;
+		} else 
+			element.className = newStyle;
+		element.style.cursor="hand";
+	}
+}
+
+function seleccionarElemento(element, newStyle, nextDefaultStyle) {
+	if (objectSelected != null) {
+		objectSelected.className = defaultStyleSelected;
+	}
+	element.className = newStyle;
+	objectSelected = element;
+	defaultStyleSelected = nextDefaultStyle;
+}
+
+function setEstiloNormal(normalStyle) {
+	defaultStyle = normalStyle;
+}
+
+function seleccionarElementoCal(element, newStyle) {
+	if (objectSelected != null) {
+		objectSelected.className = defaultStyle;
+	}
+    if( document.t_picking.jsel.value == 1 ) {
+        element.className = newStyle;
+        objectSelected = element;
+    }
+}
+
+function updatePosLayerComentario() {
+	var layerFicha = document.getElementById('comentarioproducto');
+	var screenX = 30;
+	var screenY = (screen.availHeight / 2) - 250;
+	var xpos = screenX;
+	var ypos = document.body.scrollTop;
+	ypos += screenY;
+	layerFicha.style.top = ypos + 'px';
+	layerFicha.style.left = xpos + 'px';
+} 
+
+function updatePosLayerFicha() {
+	var layerFicha = document.getElementById('fichaproducto');
+	var screenX = 30;
+	var screenY = (screen.availHeight / 2) - 255;
+	var xpos = screenX;
+	var ypos = document.body.scrollTop;
+	ypos += screenY;
+	layerFicha.style.top = ypos + 'px';
+	layerFicha.style.left = xpos + 'px';
+}
+
+function send_despacho( desp, precio, pick, fecha ) {
+	var precio_aux = precio.replace("$","").replace(".","");
+    document.t_picking.jpicking.value = pick ;
+    document.t_picking.jprecio.value = precio_aux;
+    document.t_picking.jdespacho.value = desp;
+    document.t_picking.jfecha.value = fecha;
+}
+
+function mueveCalendario(sel,pa,zona_id,cant_prod) {
+    var requestOptions = {
+			'method': 'post',
+			'parameters': "sel=" + sel + "&pa=" + pa + "&zona_id=" + zona_id + "&cant_prod=" + cant_prod + "&paso=2",
+			'onSuccess': creaCalendario
+	};
+	new Ajax.Request('AjaxDespachoChart', requestOptions);
+}
+
+function creaCalendario(REQUEST){
+	document.getElementById('jcalendario').innerHTML = REQUEST.responseText;
+	tp1 = new WebFXTabPane( document.getElementById( "tabPane1" ) );
+} 
+//-->
+</script>
+<link href="/FO_WebContent/css/estilosmenupaso2.css" rel="stylesheet" type="text/css">
+<script language="JavaScript" src="/FO_WebContent/js/prototype.js"></script>
+<script type="text/javascript" src="/FO_WebContent/js/funciones.js"></script>
+<script type="text/javascript" src="/FO_WebContent/js/funciones_teclado.js"></script>
+<script type="text/javascript" src="/FO_WebContent/js/pop_imagen.js"></script>
+<script language="JavaScript" src="/FO_WebContent/js/layer.js"></script>
+<script language="JavaScript" src="/FO_WebContent/js/search.js"></script>
+<script language="JavaScript" src="/FO_WebContent/js/dhtml_popup.js"></script>
+<script type="text/javascript" src="/FO_WebContent/js/dw_event.js"></script>
+<script type="text/javascript" src="/FO_WebContent/js/dw_viewport.js"></script>
+<script type="text/javascript" src="/FO_WebContent/js/dw_tooltip.js"></script>
+<script language="JavaScript" src="/FO_WebContent/js/promo.js"></script>
+<script language="JavaScript">
+  ficha_paso = '2b'; //indica que es el paso1
+</script>
+<link id="luna-tab-style-sheet" type="text/css" rel="stylesheet" href="/FO_WebContent/css/luna/tab.css" />
+<script type="text/javascript" src="/FO_WebContent/js/tabpane.js"></script>
+</head>
+
+<body class="bodyMargen" onLoad="MM_preloadImages('/FO_IMGS/img/estructura/paso1/bt_agregaralcarrob.gif','/FO_IMGS/img/estructura/paso2/bt_irbuscarb.gif','/FO_IMGS/img/estructura/paso2/bt_busqueda-avanzadab.gif','/FO_IMGS/img/estructura/paso2/bt_busqueda-multipleb.gif','/FO_IMGS/img/estructura/bt_cerrar-verde.gif','/FO_IMGS/img/estructura/carro/irpaso3-chicob.gif','/FO_IMGS/img/estructura/carro/irpaso3-chicob.gif','/FO_IMGS/img/estructura/paso2/bt_irbuscarb.gif','/FO_IMGS/img/estructura/paso2/bt_busqueda-multipleb.gif','/FO_IMGS/img/estructura/bt_cerrar-verde.gif','/FO_IMGS/img/estructura/bt_promociones_agregadas_b.gif','/FO_IMGS/img/estructura/paso2/bt_irapaso3b.gif','/FO_IMGS/img/estructura/bt_mi_listab.gif');Tooltip.init()">
+<a name="arriba"></a>
+<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td valign="top"><table width="100%" border="0" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF">
+       <tr>
+        <td><script type="text/javascript" src="/FO_WebContent/js/flashobject.js"></script>
+              <div id="header" style="width: 270px; height: 115px"></div>          </td>
+  
+  <td align="right">
+              <div id="random" style="width: 268px; height: 115px"></div>            </td>
+      </tr>
+      <tr>
+        <td width="60" align="right" background="/FO_IMGS/img/estructura/paso1/tramaverdeoscura.gif" class="lectura">&nbsp;</td>
+        <td width="37%" height="24" align="right" background="/FO_IMGS/img/estructura/paso1/tramaverdeoscura.gif" class="lectura"><script type="text/javascript" src="/FO_WebContent/js/flashobject.js"></script>
+              <div id="iconos" style="width: 190px; height: 24px"></div>          </td>
+      </tr>
+    </table>
+    <table width="100%" height="100%" border="0" cellpadding="0" cellspacing="0" class="TablaCentral" >
+		  <tr>
+            <td width="160" valign="top"><table width="160" height="100%" border="0" cellpadding="0" cellspacing="0" class="TablaCarro">
+              <tr>
+                <td height="59" valign="top" bgcolor="#FFFFFF"><!-- #BeginLibraryItem "/Library/buscador.lbi" --><table width="100%" border="0" cellpadding="3" cellspacing="0" class="TablaSuperior">
+                  <tr><form name="f_search" method="post" action="SearchItemDisplay" onSubmit="if( buscar()===undefined) return false;">
+                    <td height="48">
+                      <table width="100%" border="0" cellpadding="0" cellspacing="0" class="TablaSuperior">
+                        <tr>
+                          <td height="41"><span class="tabla">BUSCAR</span>
+                      
+                      <input name="patron" type="text" class="campo" size="10" maxlength="20">
+                      <a href="javascript:buscar();" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image19','','/FO_IMGS/img/estructura/paso2/bt_irbuscarb.gif',1)"><img src="/FO_IMGS/img/estructura/paso2/bt_irbuscar.gif" alt="buscar" name="Image19" width="16" height="15" border="0"><br>
+                      </a></td>
+                        </tr>
+                      </table>
+                      <a href="SearchDisplay" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image20','','/FO_IMGS/img/estructura/paso2/bt_busqueda-avanzadab.gif',1)"></a></td>
+                  </form>
+				  <SCRIPT LANGUAGE="JavaScript">window.document.f_search.patron.onkeypress = KeyIsTexto;</SCRIPT>
+                  </tr>
+                  <tr>
+                    <td><a href="SearchDisplay" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('multiple','','/FO_IMGS/img/estructura/paso2/bt_busqueda-multipleb.gif',1)"><img src="/FO_IMGS/img/estructura/paso2/bt_busqueda-multiple.gif" name="multiple" width="141" height="28" border="0"></a></td>
+                  </tr>
+                </table><!-- #EndLibraryItem --></td>
+              </tr>
+              <tr>
+                <td valign="top">
+				
+				<table width="100%" border="0" cellspacing="0" cellpadding="0">
+				  <!-- BEGIN DYNAMIC: CON_PATRON -->
+				  <tr>
+				    <td  class="menuOnMouseOver" style="cursor:hand" onClick="toggleBlock('search');" onMouseOver="cambiarEstilo(this, 'menuOnMouseOver')" onMouseOut="cambiarEstilo(this, 'menuOnMouseOver')">Resultado B&uacute;squeda </td>
+                    </tr>
+				  <tr><td>
+				    <table width="100%" border="0" cellspacing="0" cellpadding="0" id="dsearch" style="cursor:hand">
+				      <!-- BEGIN DYNAMIC: SESSION_PATRON -->
+				      <tr>
+				        <td class="{class_menu_patron}" style="cursor:hand" onClick="javascript:buscar_cat('{patron}');seleccionarElemento(this, 'menuDesplegadoSeleccion', 'menuDesplegado')" onMouseOver="cambiarEstilo(this, 'menuDesplegadoOnMouseOver')" onMouseOut="cambiarEstilo(this, '{class_menu_patron}')">{patron}</td>
+                    </tr>
+				      <!-- END DYNAMIC: SESSION_PATRON -->
+				      </table>
+                    </td></tr>
+				  <!-- END DYNAMIC: CON_PATRON -->
+				  <!-- BEGIN DYNAMIC: CATEGORIAS -->	
+				  <tr>
+				    <td  class="{class_menu}" id="{cat_id}" style="cursor:hand" onClick="hideAll('menuactivo');hideAll('menuactivob');toggleBlock('{cat_id}');" onMouseOver="cambiarEstilo(this, 'menuOnMouseOver')" onMouseOut="cambiarEstilo(this, '{class_menu}')">{cat_nombre}</td>
+                    </tr>
+				  <tr>
+				    <td>
+				      <table width="100%" border="0" cellspacing="0" cellpadding="0" id="d{cat_id}" style="display:none;cursor:hand">
+				        <!-- BEGIN DYNAMIC: SUBCAT -->
+				        <tr>
+				          <td class="menuDesplegado" onClick="categoria({cat_id}, '{cat_tipo}', '{cat_padre}');seleccionarElemento(this, 'menuDesplegadoSeleccion', 'menuDesplegado')" onMouseOver="cambiarEstilo(this, 'menuDesplegadoOnMouseOver')" onMouseOut="cambiarEstilo(this, 'menuDesplegado')">{nombre_subcat}</td>
+	                    </tr>
+				        <!-- END DYNAMIC: SUBCAT -->
+				        </table>                      </td>
+                    </tr>
+				  <!-- END DYNAMIC: CATEGORIAS -->                   
+				  </table>				<SCRIPT LANGUAGE="JavaScript">
+				window.document.f_search.onkeypress   	= KeyIsTexto;
+				</script>				</td>
+            </table></td>
+            <td valign="top" height="100%">
+		<script	type="text/JavaScript">
+			function filtrar_marca() {
+
+    var form = document.f_filtros;
+    reg_sel = form.marcas.options[form.marcas.selectedIndex].value;
+    reg_or = form.orden.options[form.orden.selectedIndex].value;
+
+    id = form.cai.value;
+
+    top.ifrm_productos.location = "SearchItemBList?mar_id={marca_id}&orden="+reg_or+"&patron={patron}";
+
+}
+        </script>		<table width="100%" height="100%" border="0" cellspacing="0" cellpadding="8">
+		  <tr>
+		    <td width="100%"><table width="100%" height="100%" border="0" cellpadding="0" cellspacing="0">
+		      <tr>
+		        <td height="92" valign="top" class="lectura"><table width="100%" border="0" align="center" cellpadding="5" cellspacing="0">
+		          <tr>
+		            <td height="30" class="tituloNaranjo">{cat_nombre}</td>
+					    <td width="30" align="right" valign="top"><a href="ayuda-paso2.html" target="_blank"><img src="/FO_IMGS/img/estructura/bt_ayuda.gif" width="28" height="40" border="0" /></a></td>
+                      </tr>
+		          </table>
+					  <table width="100%" border="0" align="center" cellpadding="5" cellspacing="0">
+					    <tr>
+					      <form name="f_filtros" method="post" action="">
+					        <INPUT TYPE="hidden" NAME="cai" VALUE="{categoria_id}">
+					        <td height="30" class="lectura" >Buscar por marca
+					          <select name="marcas" class="campoblanco" onChange="filtrar_marca();">
+					            <!-- BEGIN DYNAMIC: FIL_MARCAS -->
+					            <option value="{valor}">{nombre}</option>
+					            <!-- END DYNAMIC: FIL_MARCAS -->
+					            </select>
+					          Ordenar por 
+					          <select name="orden" class="campoblanco" onChange="filtrar_marca();">
+					            <option value="precio">Precio</option>
+					            <option value="nombre">Nombre</option>
+					            <option value="ppum">Precio por Unidad</option>
+				              </select></td>
+                        </form>
+                      </tr>
+					    </table>
+                      <br><!-- #BeginLibraryItem "/Library/cabeceratablapaso2.lbi" --><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                        <tr>
+                          <td width="2"><img src="/FO_IMGS/img/estructura/paso2/taba-medio-izq.gif" width="2" height="29"></td>
+                          <td background="/FO_IMGS/img/estructura/paso2/taba-medio-medio.gif"><table width="100%" border="0" cellspacing="3" cellpadding="0">
+                            <tr>
+                              <td width="44" class="tabla">Producto</td>
+                              <td class="celda1">Descripci&oacute;n</td>
+                              <td width="69" class="celda1">Precio</td>
+                              <td width="140" class="celda1">Cantidad</td>
+                              <td width="42" class="celda1">Comprar</td>
+                              </tr>
+                            </table></td>
+                          
+                          <td width="2" align="right"><img src="/FO_IMGS/img/estructura/paso2/taba-medio-der.gif" width="2" height="29"></td>
+                          </tr>
+                      </table><!-- #EndLibraryItem --></td>
+                </tr>
+		      <tr>
+		        <td valign="top"><iframe src="SearchItemBList?mar_id={marca_id}&patron={patron}"  name="ifrm_productos" id="ifrm_productos" width="100%" height="100%" frameborder=0 allowtransparency> </iframe></td>
+                </tr>
+		      </table></td>
+            </tr>
+		  </table></td>
+		  </tr>
+    </table></td>
+    <td width="220" height="100%" valign="top"><table width="100%" height="100%"  border="0" cellpadding="0" cellspacing="0" bordercolor="#BFBEBE" class="TablaCarro">
+      <tr>
+        <td valign="top" width="100%"><table width="100%" height="100%"  border="0" cellpadding="0" cellspacing="0" bordercolor="#BFBEBE" class="TablaCarro">
+          <tr>
+            <td valign="top" width="100%">
+<table border="0" width="100%" height="" cellpadding="0" cellspacing="0"><tr><td><table width="100%" height="130" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+    <td background="/FO_IMGS/img/estructura/carro/carroarriba.gif"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td width="26%">&nbsp;</td>
+        <td width="74%" height="30" class="lectura"><span class="Estilo1">{nombre_cliente}<br />
+        </span></td>
+      </tr>
+    </table>
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td width="16%"><div align="right"><img src="/FO_IMGS/img/estructura/carro/flechanaranja.gif" width="8" height="8" alt=""/></div></td>
+            <td width="84%"><a href="javascript:showModificarDireccion();" class="arriba">Cambiar Direcci&oacute;n</a></td>
+          </tr>
+          <tr>
+            <td><div align="right"><img src="/FO_IMGS/img/estructura/carro/flechanaranja.gif" width="8" height="8" alt=""/></div></td>
+            <td><a href="javascript:showCalendario();" class="arriba">Costos de Despacho</a> </td>
+          </tr>
+          <tr>
+            <td><div align="right"><img src="/FO_IMGS/img/estructura/carro/flechanaranja.gif" width="8" height="8" alt=""/></div></td>
+            <td><a href="http://www.jumbo.cl/supermercado/preguntas/preguntas.html" target="_blank" class="arriba">Preguntas Frecuentes</a></td>
+          </tr>
+          <tr>
+            <td><div align="right"><img src="/FO_IMGS/img/estructura/carro/flechanaranja.gif" width="8" height="8" alt=""/></div></td>
+            <td><a href="RegisterUpdForm" class="arriba">Actualiza tus Datos</a></td>
+          </tr>
+          <tr>
+            <td><div align="right"><img src="/FO_IMGS/img/estructura/carro/flechanaranja.gif" width="8" height="8" alt=""/></div></td>
+            <td><a href="UltComprasForm" class="arriba">Utiliza Tu Lista Frecuente </a></td>
+          </tr>
+          <tr>
+            <td><div align="right"><img src="/FO_IMGS/img/estructura/carro/flechanaranja.gif" width="8" height="8" alt=""/></div></td>
+            <td><a href="javascript:mis_promo();" class="arriba">Ver Mis Promociones </a></td>
+          </tr>
+          <tr>
+            <td><div align="right"><img src="/FO_IMGS/img/estructura/carro/flechanaranja.gif" width="8" height="8" alt=""/></div></td>
+            <td><a href="Logoff" class="arriba">Guardar y Cerrar Sesi&oacute;n</a></td>
+          </tr>
+        </table></td>
+  </tr>
+</table></td></tr><tr><td>
+	<table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                  <td><img src="/FO_IMGS/img/estructura/carro/bajocontador.gif" width="220" height="18" /></td>
+                    </tr>
+                <tr>
+											<td height="53" align="center">
+												<div id="inputtotdesc">					
+												<table width="93%" border="0" cellspacing="0" cellpadding="2">
+													<tr>
+														<td height="26" colspan="2" class="titulosVerdesCopy Estilo2"><span class="Estilo2">TOTAL AHORRO PROMOCIONES</span></td>
+													</tr>
+													<tr>
+														<td class="titulosVerdesCopy Estilo2">
+															<table border="0" cellspacing="0" cellpadding="0">
+																<tr>
+																	<td width="6" height="6"><img src="/FO_IMGS/img/estructura/tablasupizq.gif" width="6" height="6" alt=""/></td>
+																	<td width="86" height="6" style="background: url(/FO_IMGS/img/estructura/tablasup.gif);"><img src="/FO_IMGS/img/estructura/tablasup.gif" width="1" height="6" alt=""/></td>
+																	<td width="10" height="6"><img src="/FO_IMGS/img/estructura/tablasupder.gif" width="6" height="6" alt=""/></td>
+																</tr>
+																<tr>
+																	<td width="6" height="10" style="background: url(/FO_IMGS/img/estructura/tablaizq.gif);"><img src="/FO_IMGS/img/estructura/tablaizq.gif" width="6" height="1" alt=""/></td>
+																	<td valign="top" class="lectura" height="20">
+																		<form name="ftotal_desc" method="post" style="{margin: 0px; padding: 0px;}">
+																		<div align="right">
+																			<input name="_total_desc" type="text" class="campoblancoTotal" size="10" value="0" readonly="readonly" />
+																			<input name="_total_desc_txt" type="hidden" value="" />
+																		</div>
+																		</form>
+																	</td>
+																	<td width="10" style="background: url(/FO_IMGS/img/estructura/tablader.gif);"><img src="/FO_IMGS/img/estructura/tablader.gif" width="6" height="1" alt=""/></td>
+																</tr>
+																<tr>
+																	<td width="6" height="6"><img src="/FO_IMGS/img/estructura/tablainfizq.gif" width="6" height="6" alt=""/></td>
+																	<td height="6" style="background: url(/FO_IMGS/img/estructura/tablainf.gif);"><img src="/FO_IMGS/img/estructura/tablainf.gif" width="1" height="6" alt=""/></td>
+																	<td width="10" height="6"><img src="/FO_IMGS/img/estructura/tablainfder.gif" width="6" height="6" alt=""/></td>
+																</tr>
+															</table>
+														</td>
+                									</tr>
+													<tr>
+														<td height="26" colspan="2" class="tituloDespacho Estilo2">
+															<a href="javascript:resumen_promo();" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image100','','/FO_IMGS/img/estructura/bt_promociones_agregadas_b.gif',1)">
+																<img src="/FO_IMGS/img/estructura/bt_promociones_agregadas_a.gif" name="Image100" width="165" height="27" border="0" id="Image100" />
+															</a>	
+														</td>
+													</tr>
+												</table>
+												</div>
+												<table width="93%" border="0" cellspacing="0" cellpadding="2">				
+													<tr>
+														<td height="26" colspan="2" class="tituloDespacho Estilo2"><span class="Estilo2">TOTAL CARRO DE COMPRAS</span></td>
+													</tr>				
+													<tr>
+														<td height="27" class="titulosVerdesCopy Estilo2">
+															<table width="95%" border="0" cellspacing="0" cellpadding="0">
+																<tr>
+																	<td width="6" height="6"><img src="/FO_IMGS/img/estructura/tablasupizq.gif" width="6" height="6" alt=""/></td>
+																	<td width="111" height="6" style="background: url(/FO_IMGS/img/estructura/tablasup.gif);"><img src="/FO_IMGS/img/estructura/tablasup.gif" width="1" height="6" alt=""/></td>
+																	<td width="10" height="6"><img src="/FO_IMGS/img/estructura/tablasupder.gif" width="6" height="6" alt=""/></td>
+																</tr>
+																<tr>
+																	<td width="6" height="10" style="background: url(/FO_IMGS/img/estructura/tablaizq.gif);"><img src="/FO_IMGS/img/estructura/tablaizq.gif" width="6" height="1" alt=""/></td>
+																	<td valign="top" class="lectura" height="20">
+                    													<form name="ftotal" method="post" style="{margin: 0px; padding: 0px;}">
+																		<div align="right">
+																				<input name="_total" type="text" class="campoblancoTotal" size="10" value="0" readonly="readonly" />
+																		</div>
+																		</form>
+																	</td>
+																	<td width="10" style="background: url(/FO_IMGS/img/estructura/tablader.gif);"><img src="/FO_IMGS/img/estructura/tablader.gif" width="6" height="1" alt=""/></td>
+																</tr>
+																<tr>
+																	<td width="6" height="6"><img src="/FO_IMGS/img/estructura/tablainfizq.gif" width="6" height="6" alt=""/></td>
+																	<td height="6" style="background: url(/FO_IMGS/img/estructura/tablainf.gif);"><img src="/FO_IMGS/img/estructura/tablainf.gif" width="1" height="6" alt=""/></td>
+																	<td width="10" height="6"><img src="/FO_IMGS/img/estructura/tablainfder.gif" width="6" height="6" alt=""/></td>
+																</tr>
+															</table>
+														</td>
+														<td class="titulosVerdesCopy Estilo2"><a href="CheckoutForm" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image49','','/FO_IMGS/img/estructura/paso2/bt_irapaso3b.gif',1)"><img src="/FO_IMGS/img/estructura/paso2/bt_irapaso3.gif" name="Image49" alt="Ir al Paso 3" title="Ir al Paso 3" border="0"></a></td>
+													</tr>
+													<tr>
+														<td colspan="2" align="left"><a href="javascript:verificalista();" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image75','','/FO_IMGS/img/estructura/bt_mi_listab.gif',1)"><img src="/FO_IMGS/img/estructura/bt_mi_lista.gif" alt="guardar mi lista" title="guardar mi lista" name="Image75" width="134" height="27" border="0" id="Image75" /></a></td>
+													</tr>
+												</table>
+											</td>
+										</tr>
+                </table>
+</td></tr><tr><td height="400">
+                <table width="100%" border="0" cellpadding="0" cellspacing="0">
+                  <tr>
+                    <td valign="top" background="/FO_IMGS/img/estructura/carro/fondo.gif"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                      <tr>
+                        <td valign="middle" height="400" style="background-image: url(/FO_IMGS/img/estructura/carro/jumbito.gif); background-position: bottom;">
+                        <iframe src="OrderItemDisplay"  name="ifrm_carro" id="ifrm_carro" width="100%" height="100%" scrolling="auto" frameborder=0 allowtransparency> </iframe></td>
+                          </tr>
+                      </table></td>
+                    </tr>
+                  </table>
+</td></tr><tr><td>
+                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                 <tr>
+		        <td height="5"><img src="/FO_IMGS/img/estructura/transparente.gif" width="1" height="5"><img src="/FO_IMGS/img/estructura/carro/carroabajo.gif" width="220" height="5"></td>
+		      	</tr>
+			  	<tr>
+                    <td align="center"><a href="http://juegos.jumbo.netred.cl/e-tiempo/?utm_source=Banners%2Be%2Btiempo&utm_medium=Banners%2Be%2Btiempo&utm_content=bannersetiempo&utm_campaign=bannersetiempo" target="_blank"><img src="/FO_IMGS/img/banners/bannersedal.jpg" width="220" height="100" alt="" border="0"/></a></td>
+                    </tr>
+                <tr>
+                    <td align="center"><img src="/FO_IMGS/img/1x1trans.gif" height="4" ></td>
+                  </tr>
+                  <tr>
+                    <td align="center"><img id="cat_totem" src="/FO_IMGS/img/1x1trans.gif"></td>
+                  </tr>
+                </table>
+</td></tr></table>	    </td></tr>
+        </table></td>
+      </tr>
+    </table></td>
+  </tr>
+</table>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td height="31" colspan="2" class="footer"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td width="7" height="31"><img src="/FO_IMGS/img/estructura/paso1/abajo-izq.gif" width="7" height="31"></td>
+        <td height="31" background="/FO_IMGS/img/estructura/paso1/abajo-fondo.gif"><!-- #BeginLibraryItem "/Library/links-abajo.lbi" -->
+<div align="center" class="footer">    <a href="http://www.jumbo.trabajando.com/" target="_blank">Trabaje en Jumbo</a> | <a href="http://www.jumbo.cl/supermercado/contactenos/proveedores.html" target="_blank">Sea Proveedor</a> | <a href="http://www.jumbo.cl/supermercado/contactenos/index.html" target="_blank">Contacto</a> | <a href="http://www.jumbo.cl/supermercado/familia_jumbo/index.html" target="_blank">Compa&ntilde;&iacute;a</a> | <a href="/FO_WebContent/seguridad.html" target="_blank">Seguridad y Privacidad </a> | <a href="http://www.jumbo.cl/supermercado/terminos/terminos.html" target="_blank">T&eacute;rminos del Servicio</a> | <a href="http://www.jumbo.cl/supermercado/preguntas/preguntas.html" target="_blank">Preguntas Frecuentes</a> | <a href="/FO_WebContent/tour.html">Tour Virtual</a></div>
+ <!-- #EndLibraryItem --></td>
+        <td width="7" height="31"><img src="/FO_IMGS/img/estructura/paso1/abajo-der.gif" width="7" height="31"></td>
+      </tr>
+    </table>    </td>
+  </tr>
+  <tr>
+    <td height="16" colspan="2" class="footer"><div align="center"><br /><!-- #BeginLibraryItem "/Library/footer.lbi" -->
+Servicio de Atenci&oacute;n al Cliente 600 400 3000 | Ayuda Internet 600 400 3000  |  Tarjeta M&aacute;s Jumbo  600 600 0505<br>
+Copyright&copy; Cencosud 2006 | Sitio Desarrollado para Internet Explorer 6  |  Para ver el sitio necesita el<a href="http://www.macromedia.com/go/getflashplayer" target="_blank"> Plug in de Flash.</a><!-- #EndLibraryItem --><br />
+    </div></td>
+  </tr>
+</table>
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+    <td><!-- #BeginLibraryItem "/Library/layercarro.lbi" -->
+<div id="ventana" style="position:absolute;visibility:hidden;">	
+  <span id="dragbar1" onMousedown="javascript:initializedrag(event,'ventana','dragbar1');" style="cursor:move;">
+  <table width="665" height="38" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+      <td width="8" height="7" valign="top"><img src="/FO_IMGS/img/estructura/layers/esquinaSupIzq.gif" width="8" height="7" /></td>
+      <td height="7" colspan="2" valign="top" background="/FO_IMGS/img/estructura/layers/arriba.gif"><img src="/FO_IMGS/img/estructura/layers/arriba.gif" width="1" height="7" /></td>
+      <td width="8" height="7" valign="top"><img src="/FO_IMGS/img/estructura/layers/esquinaSupDer.gif" width="8" height="7" /></td>
+    </tr>
+    <tr>
+      <td height="31" valign="top" background="/FO_IMGS/img/estructura/layers/izquierdoArriba.gif"><img src="/FO_IMGS/img/estructura/layers/izquierdoArriba.gif" width="8" height="1" /></td>
+      <td width="635" height="31" align="center" valign="top" background="/FO_IMGS/img/estructura/layers/tramafondo.gif">
+        <p align="center"><span class="titulosLayers">Disponibilidad de despacho </span></p>      </td>
+      <td width="14" align="center" valign="top" background="/FO_IMGS/img/estructura/layers/tramafondo.gif">
+	    <a href="javascript:hideCalendario();">
+ 	    <img src="/FO_IMGS/img/estructura/bt_cerrar.gif" alt="cerrar ventana" border="0" width="29" height="23" align="right" /></a>      </td>
+      <td width="8" height="31" valign="top" background="/FO_IMGS/img/estructura/layers/derechoArriba.gif"><img src="/FO_IMGS/img/estructura/layers/derechoArriba.gif" width="8" height="1" /></td>
+    </tr>
+  </table>
+  </span>
+  <table width="665" height="267" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+      <td height="259" valign="top" background="/FO_IMGS/img/estructura/layers/bordeIzq.gif"></td>
+      <td colspan="2" valign="top" bgcolor="#FFFFFF">
+        <table width="95%" height="100%" border="0" align="center" cellpadding="0" cellspacing="0">
+          <tr>
+            <td height="124" align="left" valign="top" bgcolor="#FFFFFF">
+              <div align="center"><span class="lectura"><br />
+              La tabla siguiente s&oacute;lo muestra informaci&oacute;n, podr&aacute;s seleccionar <br /> 
+              el  horario de despacho al final  de la compra. <br />
+              </span></div>
+			  <div id="jcalendario"></div>            </td>
+          </tr>
+        </table>      </td>
+      <td width="8" height="259" valign="top" background="/FO_IMGS/img/estructura/layers/bordeDer.gif"></td>
+    </tr>
+    <tr>
+      <td width="8" height="7" valign="top"><img src="/FO_IMGS/img/estructura/layers/esquinaInfIzq.gif" width="8" height="7" /></td>
+      <td height="7" colspan="2" background="/FO_IMGS/img/estructura/layers/abajo.gif"><img src="/FO_IMGS/img/estructura/layers/abajo.gif" width="1" height="7" /></td>
+      <td width="8" height="7" valign="top"><img src="/FO_IMGS/img/estructura/layers/esquinaInfDer.gif" width="8" height="7" /></td>
+    </tr>
+  </table>
+</div>
+
+<div id="modificardireccion" style="position:absolute;visibility:hidden;">	
+  <span id="dragbar2" onMousedown="javascript:initializedrag(event,'modificardireccion','dragbar2');" style="cursor:move;">						  
+  <table width="283" height="38" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+      <td width="8" height="7" valign="top"><img src="/FO_IMGS/img/estructura/layers/esquinaSupIzq.gif" width="8" height="7" /></td>
+      <td height="7" colspan="2" valign="top" background="/FO_IMGS/img/estructura/layers/arriba.gif"><img src="/FO_IMGS/img/estructura/layers/arriba.gif" width="1" height="7" /></td>
+      <td width="8" height="7" valign="top"><img src="/FO_IMGS/img/estructura/layers/esquinaSupDer.gif" width="8" height="7" /></td>
+    </tr>
+    <tr>
+      <td height="31" valign="top" background="/FO_IMGS/img/estructura/layers/izquierdoArriba.gif"><img src="/FO_IMGS/img/estructura/layers/izquierdoArriba.gif" width="8" height="1" /></td>
+      <td width="506" height="31" align="center" valign="top" background="/FO_IMGS/img/estructura/layers/tramafondo.gif">
+        <p align="center"><span class="titulosLayers">Advertencia</span></p>      </td>
+      <td width="14" align="center" valign="top" background="/FO_IMGS/img/estructura/layers/tramafondo.gif">
+	    <a href="javascript:hideModificarDireccion();">		  
+		<img src="/FO_IMGS/img/estructura/bt_cerrar.gif" alt="cerrar ventana" border="0" width="29" height="23" align="right" /></a>      </td>
+      <td width="8" height="31" valign="top" background="/FO_IMGS/img/estructura/layers/derechoArriba.gif"><img src="/FO_IMGS/img/estructura/layers/derechoArriba.gif" width="8" height="1" /></td>
+    </tr>
+  </table>
+  <iframe name=texto src="/FO_WebContent/layers/advertenciamodificardatos2.html" frameborder=0 width="283" height="132" scrolling="no" ></iframe>
+  </span></div>
+
+<div id="ventanarespromo" style="position:absolute;visibility:hidden;">
+  <div id="dragbar8" onmousedown="javascript:initializedrag(event,'ventanarespromo','dragbar8');" style="cursor:move;">
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+            <td width="3%" align="left" valign="top" bgcolor="#7ABD09"><img src="/FO_IMGS/img/ficha/tabla-sup-izq.gif" width="5" height="4" alt=""/></td>
+            <td width="79%" height="30" valign="middle" bgcolor="#7ABD09">
+				<table width="100%" border="0" cellspacing="0" cellpadding="0">
+					<tr>
+						<td width="35px">
+							<img src="/FO_IMGS/img/promociones/bt_pr_$.png" alt=""/>
+						</td>
+						<td valign="middle">
+							<span class="rescateCompras">PROMOCIONES AGREGADAS</span>
+						</td>
+					</tr>
+				</table>
+			</td>
+            <td width="15%" align="right" bgcolor="#7ABD09"><a href="javascript:top.hideResumenPromo();" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image10','','/FO_IMGS/img/estructura/bt_cerrar-verde.gif',1)"><img src="/FO_IMGS/img/estructura/bt_cerrar-verde.gif" name="Image10" width="30" height="25" border="0" id="Image10" alt=""/></a></td>
+            <td width="3%" align="right" valign="top" bgcolor="#7ABD09"><img src="/FO_IMGS/img/ficha/tabla-sup-der.gif" width="6" height="4" alt=""/></td>
+      </tr>
+    </table>
+  </div>
+  <iframe name="frm_respromo" id="frm_respromo" src="#" frameborder="0" width="396" height="310" scrolling="no"></iframe>
+</div>
+
+<div id="ventanamispromo" style="position:absolute;visibility:hidden;">
+  <div id="dragbar11" onmousedown="javascript:initializedrag(event,'ventanamispromo','dragbar11');" style="cursor:move;">
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+            <td width="3%" align="left" valign="top" bgcolor="#7ABD09"><img src="/FO_IMGS/img/ficha/tabla-sup-izq.gif" width="5" height="4" alt=""/></td>
+            <td width="79%" height="30" valign="middle" bgcolor="#7ABD09">
+				<table width="100%" border="0" cellspacing="0" cellpadding="0">
+					<tr>
+						<td width="35px">
+							<img src="/FO_IMGS/img/promociones/bt_pr_$.png" alt=""/>
+						</td>
+						<td valign="middle">
+							<span class="rescateCompras">MIS PROMOCIONES</span>
+						</td>
+					</tr>
+				</table>	
+			</td>
+            <td width="15%" align="right" bgcolor="#7ABD09"><a href="javascript:top.hideMisPromo();" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image10','','/FO_IMGS/img/estructura/bt_cerrar-verde.gif',1)"><img src="/FO_IMGS/img/estructura/bt_cerrar-verde.gif" name="Image10" width="30" height="25" border="0" id="Image10" alt=""/></a></td>
+            <td width="3%" align="right" valign="top" bgcolor="#7ABD09"><img src="/FO_IMGS/img/ficha/tabla-sup-der.gif" width="6" height="4" alt=""/></td>
+      </tr>
+    </table>
+  </div>
+  <iframe name="frm_mispromo" id="frm_mispromo" src="#" frameborder="0" width="396" height="310" scrolling="no"></iframe>
+</div>
+
+<div id="ventana_promo" style="position:absolute;visibility:hidden;">
+  <span id="dragbar" onMousedown="javascript:initializedrag(event,'ventana_promo');" style="cursor:move;">
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td width="3%" align="left" valign="top" bgcolor="7ABD09"><img src="/FO_IMGS/img/ficha/tabla-sup-izq.gif" width="5" height="4" /></td>
+        <td width="72%" height="30" valign="middle" bgcolor="7ABD09"><span class="rescateCompras">Promociones</span></td>
+        <td width="22%" align="right" bgcolor="7ABD09"><a href="javascript:top.hidePromoProducto();" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image101','','/FO_IMGS/img/estructura/bt_cerrar-verde.gif',1)"><img src="/FO_IMGS/img/estructura/bt_cerrar-verde.gif" name="Image101" width="30" height="25" border="0" id="Image101" /></a></td>
+        <td width="3%" align="right" valign="top" bgcolor="7ABD09"><img src="/FO_IMGS/img/ficha/tabla-sup-der.gif" width="6" height="4" /></td>
+      </tr>
+    </table>
+  </span>
+  <div id="promoproducto">
+    <iframe name="frm_promo" id="frm_promo" src="#" frameborder="0" width="396px" height="310px" scrolling="no"></iframe>
+  </div>
+</div>
+
+<div id="ventana_ficha" style="position:absolute;visibility:hidden;">
+  <span id="dragbar3" onMousedown="javascript:initializedrag(event,'ventana_ficha','dragbar3');" style="cursor:move;">
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td width="3%" align="left" valign="top" bgcolor="7ABD09"><img src="/FO_IMGS/img/ficha/tabla-sup-izq.gif" width="5" height="4" /></td>
+        <td width="72%" height="30" valign="middle" bgcolor="7ABD09"><span class="rescateCompras">PRODUCTO</span></td>
+        <td width="22%" align="right" bgcolor="7ABD09"><a href="javascript:top.hideFichaProducto();" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image101','','/FO_IMGS/img/estructura/bt_cerrar-verde.gif',1)"><img src="/FO_IMGS/img/estructura/bt_cerrar-verde.gif" name="Image101" width="30" height="25" border="0" id="Image101" /></a></td>
+        <td width="3%" align="right" valign="top" bgcolor="7ABD09"><img src="/FO_IMGS/img/ficha/tabla-sup-der.gif" width="6" height="4" /></td>
+      </tr>
+    </table>
+  </span>
+  <div id="fichaproducto">
+    <iframe name="frm_ficha" id="frm_ficha" src="fichaprueba.html" frameborder="0" width="450px" height="310px" scrolling="no"></iframe>
+  </div>
+</div>
+<div id="comentarioproducto" style="position:absolute;visibility:hidden;">
+  <table width="395" border="0" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF">
+    <tr>
+      <td>
+        <span id="dragbar4" onMousedown="javascript:initializedrag(event,'comentarioproducto','dragbar4');" style="cursor:move;"> 
+		<table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td width="3%" align="left" valign="top" bgcolor="7ABD09"><img src="/FO_IMGS/img/ficha/tabla-sup-izq.gif" width="5" height="4" /></td>
+            <td width="79%" height="30" valign="middle" bgcolor="7ABD09"><span class="rescateCompras">TUS NOTAS PARA ESTE PRODUCTO </span></td>
+            <td width="15%" align="right" bgcolor="7ABD09"><a href="javascript:top.MM_showHideLayers('comentarioproducto','','hide')" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image10','','/FO_IMGS/img/estructura/bt_cerrar-verde.gif',1)"><img src="/FO_IMGS/img/estructura/bt_cerrar-verde.gif" name="Image10" width="30" height="25" border="0" id="Image10" /></a></td>
+            <td width="3%" align="right" valign="top" bgcolor="7ABD09"><img src="/FO_IMGS/img/ficha/tabla-sup-der.gif" width="6" height="4" /></td>
+          </tr>
+        </table>
+		</span>
+        <table width="200" border="0" cellspacing="0" cellpadding="0" class="TablaFicha">
+          <tr>
+            <td><iframe name="frm_comentarios" id="frm_comentarios" src="#" frameborder="0" width="395" height="200" scrolling="auto"></iframe></td>
+          </tr>
+        </table>
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td width="5" height="5" align="left" valign="bottom"><img src="/FO_IMGS/img/ficha/tabla-inf-izq.gif" width="5" height="5" /></td>
+            <td background="/FO_IMGS/img/ficha/tabla-inferior.gif"><img src="/FO_IMGS/img/ficha/tabla-inferior.gif" width="1" height="5" /></td>
+            <td background="/FO_IMGS/img/ficha/tabla-inferior.gif"><img src="/FO_IMGS/img/ficha/tabla-inferior.gif" width="1" height="5" /></td>
+            <td width="6" height="5" align="right" valign="bottom"><img src="/FO_IMGS/img/ficha/tabla-inf-der.gif" width="6" height="5" /></td>
+          </tr>
+        </table>      </td>
+    </tr>
+  </table>			
+</div><!-- #EndLibraryItem --></td>
+  </tr>
+</table>
+<div id="loading" style="display:none;">
+  <table cellpadding="0" cellspacing="0" border="0" style="font: 10px Verdana, Geneva, Arial, Helvetica, sans-serif; z-index: 500;">
+    <tr>
+	  <td><img src="/FO_IMGS/images/nuevojumbo/loading_left.gif" height="50" width="6" /></td>
+	  <td style="background: url(/FO_IMGS/images/nuevojumbo/loading_center.gif); width:100px; text-align: center;vertical-align: middle;"><strong>Cargando...</strong></td>
+	  <td><img src="/FO_IMGS/images/nuevojumbo/loading_right.gif" height="50" width="6" /></td>
+	</tr>
+  </table>
+</div>
+<div id="desplegar">
+	<img src="/FO_IMGS/img/gr/fotopreparacion.gif" id="img_des" border="1" onerror="this.src='/FO_IMGS/img/gr/fotopreparacion.gif'"></div>
+<script type="text/javascript">
+var ancho = screen.availWidth;
+var largo = screen.availHeight;
+$("loading").style.position = 'absolute';
+$("loading").style.width = '112px';
+$("loading").style.height = '50px';
+$("loading").style.left = (ancho-112)/2;
+$("loading").style.top = (largo-400)/2;
+</script>
+<script type="text/javascript">
+var fo = new FlashObject("/FO_IMGS/img/headerpaso2.swf", "animationName", "270", "115", "6", "#FFFFFF");
+fo.addParam("allowScriptAccess", "sameDomain");
+fo.addParam("quality", "high");
+fo.addParam("scale", "noscale");
+fo.addParam("wmode" ,"transparent");
+fo.write("header");
+</script>
+<script type="text/javascript">
+var fo = new FlashObject("/FO_IMGS/img/random800.swf", "animationName", "268", "115", "6", "#FFFFFF");
+fo.addParam("allowScriptAccess", "sameDomain");
+fo.addParam("quality", "high");
+fo.addParam("scale", "noscale");
+fo.addParam("wmode" ,"transparent");
+fo.write("random");
+</script>
+<script type="text/javascript">
+var fo = new FlashObject("/FO_IMGS/img/bt-iniciocontactotelefono.swf", "animationName", "190", "24", "6", "#FFFFFF");
+fo.addParam("allowScriptAccess", "sameDomain");
+fo.addParam("quality", "high");
+fo.addParam("scale", "noscale");
+fo.addParam("wmode" ,"transparent");
+fo.write("iconos");
+</script>
+<script type="text/javascript">
+var globalCallbacks = {
+                onCreate: function(){
+                        $("loading").show();
+                },
+                onComplete: function() {
+                        if(Ajax.activeRequestCount == 0){
+                                $("loading").hide();
+                        }
+                }
+        };
+Ajax.Responders.register( globalCallbacks );
+</script>
+</body>
+</html>

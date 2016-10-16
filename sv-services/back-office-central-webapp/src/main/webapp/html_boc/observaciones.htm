@@ -1,0 +1,110 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html><!-- InstanceBegin template="/Templates/fullbody.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="EXPIRES" CONTENT="Mon, 22 Jul 2002 11:12:01 GMT">
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>Untitled Document</title>
+<!-- InstanceEndEditable -->
+
+<!-- InstanceBeginEditable name="head" --><!-- InstanceEndEditable -->
+
+<link href="estilos.css" rel="stylesheet" type="text/css">
+<!--link href="../default.css" rel="stylesheet" type="text/css"-->
+<style type="text/css">
+<!--
+.style1 {color: #666666}
+-->
+</style>
+</head>
+
+<body>
+<link rel="stylesheet" href="menu/menu.css">
+<script language="JavaScript" src="menu/menu.js"></script>
+<script language="JavaScript" src="menu/menu_tpl.js"></script>
+<script language="JavaScript" src="menu/menu_items.js"></script>
+<script language="JavaScript" src="popup.js"></script>
+<script language="JavaScript" src="funciones.js"></script>
+<table width="780" height="100%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+    <td height="78" valign="top">
+	
+	<TABLE width="100%" height=59 border=0 align="center" cellpadding="0" cellspacing="0" bgcolor="#ffffff">
+	  <TR>
+		<TD width=275 height="59" align=left class=user><img src="img/header2.jpg" width="275" height="60"></TD>
+		<TD width=505 align=left valign="bottom" background="img/bg-1.jpg" class=user><table width="90%"  border="0" align="center" cellpadding="0" cellspacing="2">
+          <tr>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td><div align="right" class="infoBL">Usuario: {hdr_nombre}&nbsp;&nbsp;| {hdr_fecha}</div></td>
+          </tr>
+        </table></TD>
+	  </TR>
+	</TABLE>
+	<TABLE width="100%" height=19 border=0 align="center" cellpadding="0" cellspacing="0" bgcolor="#f1f0e9" style="border-top:1px solid #ABABAB; border-bottom:1px solid #ABABAB">
+	  <TR>
+		<TD align=left bgcolor="#FFFFFF" class=user></TD>
+		</TR>
+	</TABLE>
+
+	
+	</td>
+  </tr>
+  <tr height="400">
+    <td valign="top" bgcolor="#FFFFFF">
+      <table border=0 width="100%" class='ContentTitle'>
+        <tr>
+          <td width="53%" height="20" class='HeaderTitle'><!-- InstanceBeginEditable name="Titulo" -->
+				  Observaciones BOC <!-- InstanceEndEditable --></td>
+          <td width="47%" class='HeaderTitle'><!-- InstanceBeginEditable name="Botonera" -->Botonera<!-- InstanceEndEditable --></td>
+        </tr>
+      </table>
+	  <br>
+      <table width="100%"  border="0" cellspacing="2" cellpadding="2">
+        <tr valign="top">
+          <td width="71%"><!-- InstanceBeginEditable name="Izquierda" -->
+            <ol>
+              <li>&iquest;Qu&eacute; pasa cuando se cambia una direcci&oacute;n de despacho? Cambio de Local??? cualquier estado del pedido??? </li>
+              <li>Si la orden Est&aacute; en Validaci&oacute;n y cambio una direcci&oacute;n de despacho, &iquest;recalculo los precios o s&oacute;lo lo asigno a otro local?, creo que simplemente debiese asignarlo a otro local (por simplicidad)</li>
+              <li>Si cambio el local que est&aacute; asignado a la direcci&oacute;n de despacho, eso lo debo hacer tanto en la libreta de direcciones como en el pedido ya que son independientes. ---&gt; Lo puede hacer solo en la etapa de validaci&oacute;n, solo si es el mismo local y la misma zona de despacho. Caso contrario, anular la OP y ver la posibilidad de inyectar productos al carro para completar el flujo de compras. </li>
+              <li>En el caso de primera compra de nueva direcci&oacute;n en comunas surtidas por dos locales, los precios los mantenemos, los stocks no nos preocupan, las capacidades de despacho deben ser confirmadas, si se cambia a una hora de despacho de mayor valor, se le cobrar&aacute; m&aacute;s al cliente. </li>
+              <li>La relaci&oacute;n entre comunas y zonas es MxN.</li>
+              <li>La relaci&oacute;n entre Locales y Zonas es 1xN.</li>
+              <li>la relaci&oacute;n entre Locales y Comunas es 1xN.</li>
+              <li>  Las Zonas de locales son excluyentes.</li>
+              <li>En el caso de cambiar la direcci&oacute;n a otro local, evaluar la posibilidad de reinyectarlo al FO o bien reutilizar las funcionalidades en el BOC. (Ingresar productos, aplicar descuentos, medio de pago, calendario despacho).</li>
+              <li>Para cambiar una fecha de despacho, la orden de pedido debe estar en el BOC.</li>
+              <li>El BOL debe poseer una funcionalidad para cambiar el estado del pedido a En Validaci&oacute;n.</li>
+              <li>En caso de cambio de fecha de despacho, si hubo diferencia de precios, el BOC debe recalcular el total de la orden con el nuevo costo de despacho. Dar la posibilidad de modificar el nuevo precio, pues tal vez no se le deba cobrar al cliente.</li>
+              <li>Al editar una OP el ejecutivo dejar&aacute; tomada la OP, el ejecutivo estar&aacute; obligado a salir del modo edici&oacute;n antes de validar otra OP. En caso que el ejecutivo vaya a editar otra OP, el sistema lo restringir&aacute; y le dar&aacute; la indicaci&oacute;n a que cierre la OP abierta.</li>
+              <li>El flujo con medio de pago rechazado en BOL debe ser devuelto a BOC, gestionado y vuelto a inyectar</li>
+              <li>Estado En Validaci&oacute;n significa que ha sido tomada por un ejecutivo.</li>
+              <li>Al validar, cuando solamente hay warnings, le pide un log.</li>
+            </ol>
+            <p>&nbsp;</p>
+            <p><br>
+	        </p>
+                  <p>&nbsp;</p>
+          <!-- InstanceEndEditable --></td>
+        </tr>
+      </table>
+      </td>
+  </tr>
+  <tr>
+    <td>
+	<TABLE width="100%" height=19 border=0 align="center" cellpadding="0" cellspacing="0" bgcolor="#f1f0e9" style="border-top:1px solid #ABABAB; border-bottom:1px solid #ABABAB">
+	  <TR>
+		<TD align=center bgcolor="#67b01a" class=infoBL><div align="center">Back Office Central - Jumbo.cl</div></TD>
+		</TR>
+	</TABLE>
+
+	
+	</td>
+  </tr>
+</table>
+</body>
+<!-- InstanceEnd --></html>

@@ -1,0 +1,251 @@
+body {
+	background-color: #DCDCDC;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px; /*line-height: 24px;*/
+	color: #336699;
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+}
+
+/*** OCULTAR ESTILOS DE TABS***/
+.dynamic-tab-pane-control.tab-pane {
+	position:	relative;
+	/*width:		50%;		 //width needed weird IE bug 
+	margin-right:	-2px;	 to make room for the shadow */
+}
+.dynamic-tab-pane-control .tab-row .tab {
+	/*width: 0px;
+	height: 0px;
+	background-image: url( "tab.png" );*/
+	position: relative;
+	top: 0;
+	display: inline;
+	float: left;
+	overflow: hidden;
+	cursor: hand;
+	margin: 0px 0px 0px 0px;
+	padding: 0px 0px 0px 0px;
+	border: 0;
+	z-index: 1;
+	font: 11px Tahoma;
+	/*white-space: nowrap;*/
+	text-align: center;
+}
+.dynamic-tab-pane-control .tab-row .tab.selected {
+	/*width: 74px !important;
+	height: 18px !important;
+	background-image:	url( "tab_active.png" ) !important;
+	background-repeat: no-repeat;*/
+	border-bottom-width:	0;
+	z-index: 3;
+	padding:	0px 0px 0px 0px;
+	margin: 0px 0px 0px 0px;
+	top: 0px;
+	font: 11px Tahoma;
+}
+.dynamic-tab-pane-control .tab-row .tab a {
+	font:	11px Tahoma;
+	color: #333;
+	text-decoration: none;
+	cursor: hand;
+}
+.dynamic-tab-pane-control .tab-row .tab.hover {
+	font:	11px Tahoma;
+	width: 0px;
+	height: 0px;
+	/*background-image:	url( "tab_hover.png" );
+	background-repeat: no-repeat;*/
+}
+.dynamic-tab-pane-control .tab-page {
+
+	border: 0px; /* solid rgb( 145, 155, 156 );*/
+	background-color:#FFFFFF;
+	z-index: 2;
+	position: relative;
+	top: 0px;
+	font: 11px Tahoma;
+	color: #333;
+	
+	/*244, 243, 238*/
+	/* 145, 155, 156*/
+	padding:	0px;
+	width: 87%;  /* stupid stupid stupid IE!!! */
+	float: left;
+
+}
+.dynamic-tab-pane-control .tab-row {
+	z-index: 1;
+	white-space: nowrap;
+}
+
+
+
+
+
+/*** OCULTAR MENU ***/
+.m0l0iout {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	text-decoration: none;
+	text-align:center;
+	FONT-WEIGHT: normal; 
+	padding: 0px;
+	color:#FFFFFF;
+}
+.m0l0iover {
+	text-decoration: none;
+	text-align:center;
+	FONT-WEIGHT: normal;
+	padding: 0px;
+	color:#FFFFFF;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px;
+}
+.m0l0oout {
+	text-decoration : none;
+	border : 0px; /*#4682B4;*/
+	background-color: #FFFFFF;
+	color:#FFFFFF;
+}
+.m0l0oover {
+	color:#FFFFFF;
+	text-decoration : none; /* EFB505 #FFCC00;*/
+	background-color: #FFFFFF;
+	border-top-width: 0px;
+	border-right-width: 0px;
+	border-bottom-width: 0px;
+	border-left-width: 0px;
+	border-top-style: solid;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-left-style: solid;
+	border-top-color: transparent;
+	border-right-color: transparent;
+	border-bottom-color: transparent;
+	border-left-color: transparent;
+}
+.m0l1iout {
+	text-indent:4px;
+	text-decoration: none;
+	FONT-WEIGHT: normal;
+	padding: 0px;
+	color:#FFFFFF;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px;
+}
+.m0l1iover {
+	text-indent:4px;
+	text-decoration : none;
+	FONT-WEIGHT: normal;
+	padding: 0px;
+	color:#FFFFFF;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px;
+}
+.m0l1oout {
+	text-decoration : none;
+	filter: alpha(opacity=100);
+	background-color: #FFFFFF;
+	border: 0px;
+	color:#FFFFFF;
+}
+.m0l1oover {
+	text-decoration : none;
+	border : 0px; /*#FFCC00;*/
+	background-color: #FFFFFF;
+	color:#FFFFFF;
+}
+.m0l2iover {
+	text-decoration : none;
+	padding: 0px;
+	color:#FFFFFF;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px;
+}
+.m0l2oout {
+	text-decoration : none;
+	border : 0px;
+	background-color: #FFFFFF;
+	color:#FFFFFF;
+}
+.m0l2oover {
+	text-decoration : none;
+	border : 0px;
+	background: #FFFFFF;
+	color:#FFFFFF;
+}
+
+
+
+
+
+/*** TABLA ***/
+.tabla2
+{
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #000000;
+	background-color:#DEDEDE;
+	/*width:98%;*/
+}
+.tabla2 td
+{
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #000000;
+	background-color:#FFFFFF;
+}
+
+fieldset{
+padding:0px; 
+margin:0px; 
+border:1px solid #F6F6F3;
+color:#FFFFFF;
+background-color:#FFFFFF;
+width:90%;
+}
+
+/**********************************
+	elementos no imprimibles
+***********************************/
+#log_001 
+{
+	display:none;
+}
+#caso_001 
+{
+	display:none;
+}
+#doc_001
+{
+	display:none;
+}
+#detalle_caso 
+{
+	display:none;
+}
+#cabecera_001 
+{
+	display:none;
+}
+/*
+#cabecera_002 
+{
+	display:none;
+}*/
+#footer
+{
+	display:none;
+}
+#boton_print
+{
+	display:none;
+}
+#boton_docs
+{
+	display:none;
+}
+
+

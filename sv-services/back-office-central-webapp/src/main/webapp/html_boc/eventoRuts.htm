@@ -1,0 +1,196 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html><!-- InstanceBegin template="/Templates/fullbody.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="EXPIRES" CONTENT="Mon, 22 Jul 2002 11:12:01 GMT">
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>Jumbo.cl Back Office Central</title>
+<!-- InstanceEndEditable -->
+
+<!-- InstanceBeginEditable name="head" -->
+
+<link id="luna-tab-style-sheet" type="text/css" rel="stylesheet" href="js/tabs/tabpane.css" />
+<SCRIPT LANGUAGE="JavaScript" SRC="validacion.js"></SCRIPT>	
+<script language="JavaScript" src="funciones.js"></script>
+<script type="text/javascript" src="js/tabs/tabpane.js"></script>
+<script language="JavaScript" src="prototype.js"></script>
+<script language="JavaScript" src="js/eventoRuts.js"></script>
+
+<!-- InstanceEndEditable -->
+
+<link href="estilos.css" rel="stylesheet" type="text/css">
+<!--link href="../default.css" rel="stylesheet" type="text/css"-->
+<style type="text/css">
+<!--
+.style1 {color: #666666}
+-->
+</style>
+</head>
+
+<body>
+<link rel="stylesheet" href="menu/menu.css">
+<script language="JavaScript" src="menu/menu.js"></script>
+<script language="JavaScript" src="menu/menu_tpl.js"></script>
+<script language="JavaScript" src="menu/menu_items.js"></script>
+<script language="JavaScript" src="popup.js"></script>
+<script language="JavaScript" src="funciones.js"></script>
+<table width="780" height="100%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+    <td height="78" valign="top">
+	
+	<TABLE width="100%" height=59 border=0 align="center" cellpadding="0" cellspacing="0" bgcolor="#ffffff">
+	  <TR>
+		<TD width=275 height="59" align=left class=user><img src="img/header2.jpg" width="275" height="60"></TD>
+		<TD width=505 align=left valign="bottom" background="img/bg-1.jpg" class=user><table width="90%"  border="0" align="center" cellpadding="0" cellspacing="2">
+          <tr>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td><div align="right" class="infoBL">Usuario: {hdr_nombre}&nbsp;&nbsp;| {hdr_fecha}</div></td>
+          </tr>
+        </table></TD>
+	  </TR>
+	</TABLE>
+	<TABLE width="100%" height=19 border=0 align="center" cellpadding="0" cellspacing="0" bgcolor="#f1f0e9" style="border-top:1px solid #ABABAB; border-bottom:1px solid #ABABAB">
+	  <TR>
+		<TD align=left bgcolor="#FFFFFF" class=user></TD>
+		</TR>
+	</TABLE>
+
+	
+	</td>
+  </tr>
+  <tr height="400">
+    <td valign="top" bgcolor="#FFFFFF">
+      <table border=0 width="100%" class='ContentTitle'>
+        <tr>
+          <td width="53%" height="20" class='HeaderTitle'><!-- InstanceBeginEditable name="Titulo" --> Rut's del Evento {id_evento} <!-- InstanceEndEditable --></td>
+          <td width="47%" class='HeaderTitle'><!-- InstanceBeginEditable name="Botonera" -->
+            <div align="right"><a href="ViewMonEventos"><img src="img/volver.gif" width="32" height="32" border="0"></a></div>
+          <!-- InstanceEndEditable --></td>
+        </tr>
+      </table>
+	  <br>
+      <table width="100%"  border="0" cellspacing="2" cellpadding="2">
+        <tr valign="top">
+          <td width="71%"><!-- InstanceBeginEditable name="Izquierda" -->
+
+	
+	<form method="POST" enctype='multipart/form-data' name="frm_add_ruts" action="AddEventoRuts">
+	
+	  <table width="98%"  border="0" align="center" cellpadding="0" cellspacing="0" class="tabla3">
+        <tr>
+          <td>&nbsp;</td>
+          <th>&nbsp;</th>
+          <th>&nbsp;</th>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td width="3%">&nbsp;</td>
+          <th width="13%">Subir Planilla</th>
+          <th width="2%">:</th>
+          <td width="55%">
+			  <input name="upFile" id="upFile" type="file" class="boton" >
+			  <input type="hidden" name="id_evento" id="id_evento" value="{id_evento}" >
+			  <input type="hidden" name="cargo_rut" id="cargo_rut" value="{cargo_rut}" >		  
+		  </td>
+          <td width="27%"><a href="planilla_rut_evento.xls" target="_blank">Bajar Ejemplo &nbsp;&nbsp;<img src="img/ico_excel.gif" width="16" height="16" border="0" ></a></td>
+        </tr>
+        <tr>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp; </td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>
+		  <input name="Button2" type="button" class="cmd" style="width:90px" id="Button" value=" Aceptar " onClick="javascript:subirRuts();"> &nbsp;&nbsp;
+		  <input name="Button3" type="button" class="cmd" style="width:90px" id="Button2" value=" Salir " onClick="javascript:cancelar();"> &nbsp;&nbsp;
+		  <input name="Button3" type="button" class="cmd" style="width:90px" id="Button2" value=" Salir y Liberar " onClick="javascript:liberar();"> &nbsp;&nbsp;
+		  </td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+        </tr>
+      </table>
+	  	
+	</form>
+	
+
+<div id="loading" style="display:none">
+<table style="Z-INDEX: 500; POSITION: absolute; LEFT: 0; TOP: 0" cellSpacing="0" cellPadding="0" border="0" id="tabla_loading">
+<tr>
+<td width="75" height="25" bgcolor="#FF0000">&nbsp;&nbsp;&nbsp;<font color="#FFFFFF"><b>Cargando...</b></font></td>
+</tr>
+</table>
+</div>
+
+<fieldset id="msj_respuesta">
+<legend align="left">Mensajes</legend>
+<table width="80%" border="0" align="center" cellpadding="0" cellspacing="0">
+      <tr valign="top">
+	  	<td align="left">{mensaje}</td>
+	</tr>
+</table>
+<div align="right"><a href="javascript:cerrarMsj();">Cerrar mensajes</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+</fieldset>
+
+<br>
+    <table width="98%" border="0" align="center" cellpadding="0" cellspacing="0" class="tabla2">
+      <tr valign="top">
+        <th width="8%" align="center">N&deg;</th>
+        <th width="18%" align="center" height="25">RUT Cliente </th>
+        <th width="19%" align="center">Ocurrencia m&aacute;xima por evento</th>
+        <th width="19%" align="center">Ocurrencia por Rut </th>
+        <th width="17%" align="center">Fecha Creaci&oacute;n </th>
+        <th width="19%" align="center">Fecha Modificaci&oacute;n </th>
+      </tr>
+	  <!-- BEGIN DYNAMIC: RUTS_EVENTO -->
+      <tr>
+        <td align="right">{nro_registro}</td>
+        <td height="25" align="right">{cli_rut} - {cli_dv} &nbsp;&nbsp;</td>
+        <td align="center">{ocurrencia_max}</td>
+        <td align="center">{ocurrencia_por_rut}</td>
+        <td align="center">{fecha_creacion}</td>
+        <td align="center">{fecha_modificacion}</td>
+      </tr>   
+	  <!-- END DYNAMIC: RUTS_EVENTO --> 
+    </table>
+	<center>{msj_ruts}</center>
+          <br>
+          <!-- InstanceEndEditable --></td>
+        </tr>
+      </table>
+      </td>
+  </tr>
+  <tr>
+    <td>
+	<TABLE width="100%" height=19 border=0 align="center" cellpadding="0" cellspacing="0" bgcolor="#f1f0e9" style="border-top:1px solid #ABABAB; border-bottom:1px solid #ABABAB">
+	  <TR>
+		<TD align=center bgcolor="#67b01a" class=infoBL><div align="center">Back Office Central - Jumbo.cl</div></TD>
+		</TR>
+	</TABLE>
+
+	
+	</td>
+  </tr>
+</table>
+</body>
+<!-- InstanceEnd -->
+<script>
+init();
+</script>
+</html>

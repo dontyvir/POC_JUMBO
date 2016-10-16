@@ -1,0 +1,43 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="EXPIRES" CONTENT="Mon, 22 Jul 2002 11:12:01 GMT">
+<script language="JavaScript" src="funciones.js"></script>
+</head>
+<body bgcolor="white" onLoad="parent.parent.document.form1.action.value='AddProdCatWeb';parent.document.form1.id_prod.value ='';parent.document.form1.orden.value =1000;parent.document.form1.rad_pago[1].checked=true;">
+<script>
+	function editar(cod_prod, orden, con_pago, procat_id){
+		parent.parent.document.form1.id_prod.value = cod_prod;
+		parent.parent.document.form1.id_prod.disabled = true;
+		parent.parent.document.form1.orden.value = orden;
+		parent.parent.document.form1.action.value='ModProdCatWeb';
+		parent.parent.document.form1.procat_id.value = procat_id;
+		parent.parent.document.form1.Button.value = 'Actualizar Categoría';
+		if(con_pago == 'Si'){
+			parent.document.form1.rad_pago[0].checked=true;
+		}else{
+			parent.document.form1.rad_pago[1].checked=true;
+		}
+		 
+	}
+</script>
+<link href="estilos.css" rel="stylesheet" type="text/css">
+<table width="550" border="0" align="center" cellpadding="2" cellspacing="0" class="tabla2" >
+{mensaje}
+  <!-- BEGIN DYNAMIC: PRODUCTOS -->
+	<tr valign="top">
+	  <td width="74">{cod_prod}</td>
+	  <td width="350">{nom_prod}</td>
+	  <td width="60">{orden}</td>
+	  <td width="60">{con_pago}</td>
+	  <!-- ViewCatWebForm?id_cat={cate}&id_prod={cod_prod}&action={action} -->
+	  <td width="10"><a href="javascript:editar({cod_prod},{orden},'{con_pago}',{procat_id});" ><img src='img/editicon.gif' border=0></a></td>
+	  <td width="20"><a href='javascript:validar_eliminar("Esta seguro que desea eliminar?","ModSupCatProduct?id_prod={cod_prod}&id_cat={cate}&origen=CAT&url=ViewCatProdIframe?categoria_id={cate}");'><img src='img/trash.gif' border=0></a></td>
+	</tr>
+  <!-- END DYNAMIC: PRODUCTOS -->
+</table>
+{mns}
+</body>
+</html>                           

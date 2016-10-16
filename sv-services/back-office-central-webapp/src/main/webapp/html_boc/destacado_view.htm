@@ -1,0 +1,107 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" 
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+		<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+		<META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+		<META HTTP-EQUIV="EXPIRES" CONTENT="Mon, 22 Jul 2002 11:12:01 GMT">
+		<title>Jumbo.cl Back Office Central</title>
+		<script type="text/javascript">
+        	var $j = jQuery.noConflict();
+						$j(function() {
+                $j('#contenedor').tabs();
+            });
+     </script>
+     	<link rel="stylesheet" type="text/css" href="css/jquery.tabs.css" media="print, projection, screen" />
+	</head>
+
+	<body>
+		<table width="780" height="100%" border="0" cellpadding="0" cellspacing="0">
+			<tr height="400">
+				<td valign="top" bgcolor="#FFFFFF">
+					<table border=0 width="100%" class='ContentTitle'>
+						<tr><td width="53%" height="20" class='HeaderTitle'>Ver destacado</td></tr>
+					</table>
+					
+					<br>
+					<table width="100%"  border="0" cellspacing="2" cellpadding="2">
+						<tr valign="top">
+							<td width="71%">
+								<table width="92%" align="center" border="0">
+	              	<tr>
+										<td>
+											<a href="ViewMonDestacados">Volver</a>
+											
+											
+											<div id="contenedor">
+												<ul>
+									        <li><a href="#div_ficha"><span>Ficha</span></a></li>
+									        <li><a href="#div_productos"><span>Productos</span></a></li>
+										    </ul>
+												<div id="div_ficha">
+														<fieldset>
+															<legend>Datos de destacado</legend>
+															<div id="div_imagen">
+										            	<img src="http://www.jumbo.cl/FO_IMGS/img/destacados/{imagen}" border="0"  />
+										          </div>
+															<div>
+																	<div>
+																		<LABEL for="descripcion">Descripci&oacute;n:</LABEL>
+																		{descripcion}
+																	</div>
+				
+																	<div>
+																		<LABEL for="fecha_ini">Fecha Inicio:</LABEL>
+											              {fecha_ini}
+											            </div>
+											            
+																	<div>
+										              	<LABEL for="fecha_fin">Fecha Fin:</LABEL>
+										              	{fecha_fin}
+																	</div>
+				
+											            <div>  	
+										              	<LABEL for="imagen">Imagen:</LABEL> 
+										              	{imagen}
+										            	</div>
+										            	
+										            	<div>  	
+										              	<LABEL for="locales">Locales:</LABEL> 
+										              	{locales}
+										            	</div>
+										          </div>
+								            </fieldset>
+								        </div>
+								        <div id="div_productos"> 
+								            <fieldset>
+								            	<legend>Productos destacados</legend>
+								            	<DIV>
+								            		<TABLE>
+								            			<tr>
+								            				<TH>id</TH><th>cod_sap</th><TH>descripci&oacute;n</TH><TH>marca</TH>
+								            			</tr>
+								            			<!-- BEGIN DYNAMIC: PRODUCTOS -->
+								            			<tr>
+								            				<TD>{producto_id}</TD><TD>{codigo}</TD><TD>{descripcion}</TD><TD>{marca}</TD>
+								            			</tr>
+								            			<!-- END DYNAMIC: PRODUCTOS -->
+								            		</TABLE>
+								            	</DIV>
+													</fieldset>	
+		              			</div>
+		              </div> <!-- contenedor -->
+				              <a href="ViewMonDestacados">Volver</a>
+				              <br />
+				              <br />
+										</td>
+									</tr>
+								</table>
+		     			</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+		</table>
+	</body>
+</html>

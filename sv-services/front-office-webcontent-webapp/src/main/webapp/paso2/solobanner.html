@@ -1,0 +1,115 @@
+<script type="text/javascript">
+	jQuery().ready(
+		function() {
+			var display ="{display_calendario_despacho}";
+			var action  = "/FO/DespachosDisponibles";	
+			if(display == 'block'){
+				getOfficesAvailable('INIT_ML');
+			}
+		}
+	);
+	
+	try {
+		mxTracker._trackPageview('{nombreCabeceraAnalytics}');	
+	} catch(err) {}
+
+
+</script>
+
+<!-- DESPACHOS DISPONIBLES !!! -->
+<div id="contenedor_lightbox_DP"  style="display:{display_calendario_despacho};" >
+	<div id="cont_cabecera_DP"><img src="/FO_IMGS/img/estructura/banner_contraer_despacho.jpg" border="0" alt="Cerrar" onclick="javascript:getOfficesAvailable('HIDE_ML')"/></div>
+	<div id="contenido_DP"></div>
+</div>  
+<!-- FIN DESPACHOS DISPONIBLES !!! -->	
+
+<div id="banner_subcat"><img id="img_banner_subcat" border="0px" src="/FO_IMGS/img/1x1trans.gif" onerror="this.src=get_banner();"></div>
+	
+<!-- BEGIN DYNAMIC: BANNERS -->
+<div id="dflash">
+	<div id="pub1">
+	</div>
+</div>
+<!-- END DYNAMIC: BANNERS -->
+
+
+<div id="df">
+	<div id="pubTitulo">
+		<label class="tituloNaranjo">{nombreCabecera} / {nombre}</label>
+	</div>
+</div>
+
+<!-- DIV PARA CHAORDIC -->
+<div style="clear: both" chaordic="middle"> </div>
+<!-- FIN DIV PARA CHAORDIC -->
+
+<div class="contenedor_menu_nuevo">
+<!-- BEGIN DYNAMIC: DIV4 -->
+	<div class="contenedor_nuevas_cat">
+	<!-- BEGIN DYNAMIC: INT -->
+	  <div class="modulo_vertical_categoria">
+        <div class="foto_categoria_nueva"><img id="cat_imagen_{cat_id}" src="/FO_IMGS/img/intermedias/{cat_imagen}" width="120" height="120"></div>
+
+<!-- 13112012 VMatheu-->
+        <a href="javascript:muestraterminal({cat_padre},{cat_id}, -1);" onclick="chaordicSubCategorias('{nombre_subcat}','{nombre_padre}',id_cliente,nombre_cliente,email_cliente);">
+	        <div class="txt_categoria_nueva">
+	        	{cat_nombre}
+	        </div>
+        </a>
+<!-- - 13112012 VMatheu-->
+
+        <!-- BEGIN DYNAMIC: TER -->
+        <div class="txt_categoria_terminales"><a href="javascript:mostrarterminal({cabecera},{intermedia},{terminal})" onclick="chaordicSubSubCategorias('{nombre_subcat}','{nombre_padre}','{nombre_abuelo}',id_cliente,nombre_cliente,email_cliente);">{cat_nombre}</a></div>
+        <!-- END DYNAMIC: TER -->
+      </div>
+	<!-- END DYNAMIC: INT -->      
+	</div>
+<!-- END DYNAMIC: DIV4 -->	
+</div>
+
+<!-- BEGIN DYNAMIC: BANNERS -->
+<script type="text/javascript">
+var fo = new FlashObject("/FO_IMGS/img/banners/cat_padre/{banner_principal}", "animationName", "550", "100", "8", "#FFFFFF");
+fo.addParam("allowScriptAccess", "sameDomain");
+fo.addParam("quality", "high");
+fo.addParam("scale", "noscale");
+fo.addParam("wmode" ,"transparent");
+fo.write("pub1");
+</script>
+<!-- END DYNAMIC: BANNERS -->
+
+<script type="text/javascript">
+
+	jQuery().ready(
+		function() {
+			if("{banner}" != "") {
+				$j("img#img_banner_subcat").attr("src", "/FO_IMGS/bn/1024/{banner}");
+				$j("img#img_banner_subcat").width(560);
+				if("{url_banner}" != "") {
+					
+					$j("img#img_banner_subcat").css("cursor","pointer"); 
+					$j("img#img_banner_subcat").attr("title","{url_banner}");
+					
+					$j("img#img_banner_subcat").click(function(e){
+						
+						try { 
+							mxTracker._trackPromo('{banner}');
+							location.href="{url_banner}";
+						} catch(err) {
+							if(mxTracker ==  null){					 
+								location.href="{url_banner}";
+							}
+						}
+					});
+				}
+			}
+		}
+	);
+	
+	function get_banner() {
+	  $j("img#img_banner_subcat").width(1);
+      $j("img#img_banner_subcat").height(1);
+      return '/FO_IMGS/img/1x1trans.gif';
+    }
+		
+	</script>

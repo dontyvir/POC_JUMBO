@@ -1,0 +1,68 @@
+<?xml version="1.0"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>cl.cencosud.jumbo.services</groupId>
+		<artifactId>sv-services</artifactId>
+		<version>2.0.12-SNAPSHOT</version>
+	</parent>
+
+	<artifactId>auditoria-webapp</artifactId>
+
+	<packaging>war</packaging>
+	<name>autoditoria-webapp Maven Webapp</name>
+	<url>http://maven.apache.org</url>
+	
+	<properties>
+		<m2eclipse.wtp.contextRoot>WS_Auditoria</m2eclipse.wtp.contextRoot>
+	</properties>
+	
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>3.8.1</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>jdom</groupId>
+			<artifactId>jdom</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>axis</groupId>
+			<artifactId>axis</artifactId>
+		</dependency>
+        <dependency>
+            <groupId>cl.jumbo.modules.common</groupId>
+            <artifactId>common-module</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>cl.jumbo.modules.shared</groupId>
+            <artifactId>shared-module</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>cl.jumbo.modules.pedidos</groupId>
+            <artifactId>pedidos-module</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+	</dependencies>
+	<build>
+		<finalName>autoditoria-webapp</finalName>
+		<plugins>
+			<plugin>
+				<artifactId>maven-war-plugin</artifactId>
+				<configuration>
+					<archive>
+						<manifest>
+							<addClasspath>true</addClasspath>
+						</manifest>
+					</archive>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+
+</project>

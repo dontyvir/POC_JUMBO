@@ -1,0 +1,184 @@
+Tablas que participan en la carga de la ronda a la base de datos.
+
+Inserciones:
+
+BO_BINS_PEDIDO: un bin pertenece a una ronda y aun pedido.
+Columnas:
+	id_bp: id del bin en la tabla (único)
+	id_ronda: id de la ronda
+	id_pedido: id del pedido
+	cod_bin: codigo del bin, el bin se reutiliza en distintas rondas, pero aparece sólo una vez en cada ronda.
+	cod_sello1, cod_sello2: código sello 1 y sello 2
+	cod_ubicacion:??
+	tipo: V o F, virtual o fijo
+
+BO_DETALLE_PICKING: 
+Columnas:
+	id_dpicking: id del detalle en la tabla (único)
+	id_detalle: id del detalle del pedido (producto pickeado)
+	id_bp: id del bin
+	id_producto: id del producto en bo_productos, nulo cuando es sustituto
+	id_pedido: id del pedido (esto esta redundante ya que tiene el id_detalle)
+	cbarra: codigo de barra del producto
+	descripcion: descripción del producto pickeado.
+	precio: se obtiene del pedido
+	cant_pick: cantidad pickeada
+	sustituto: S o N
+
+
+BO_TRACKING_OD:
+Columnas:
+	id_tracking: id en la tabla (único)
+	id_mot:
+	id_mot_ant:
+	id_pedido: id del pedido
+	usuario: 
+	descripcion: descripción del tracking
+	fecha:
+
+BO_LOG_RONDAS:
+Columnas:
+	id_log: id de la tabla (único)
+	id_ronda: id de la ronda
+	usuario:
+	descr:
+	fechahora:
+
+BO_ALERTA_OP:
+Columnas:
+	id_alerta: id de la alerta
+	id_pedido: id del pedido
+	
+Actualizaciones (con * los datos a actualizar)
+
+BO_PEDIDOS:
+Columnas:
+	id_pedido: id del pedido en la tabla (único)
+	*id_estado: id del estado del pedido
+	id_jdespacho: id de la jornada de despacho
+	id_jpicking: id de la jornada de picking
+	id_mot: id del motivo del estado del pedido
+	id_mot_ant: creo que no se usa
+	id_local: id del local
+	id_comuna: id de la comuna
+	id_zona: id de la zona
+	id_usuario: creo que no se usa
+	id_usuario_fono:
+	id_cliente: id del cliente del pedido
+	genero:
+	fnac:
+	rut_cliente: redundante
+	dv_cliente: redundante
+	nom_cliente:
+	telefono2:
+	telefono:
+	tipo_despacho:
+	¿*?costo_despacho:
+	fcreacion: fecha creación registro
+	*monto_pedido: 
+	indicacion: del cliente
+	medio_pago:
+	num_mp: número de tarjeta
+	clave_mp: creo que no se usa
+	fecha_exp: fecha expiración tarjeta
+	n_cuotas: número de cuotas
+	meses_libr_pago:
+	nom_tbancaria:
+	tb_banco:
+	cant_productos: cantidad de productos
+	cant_bins: cantidad de bins
+	pol_id: id de politica de sustitución
+	pol_sustitucion: texto del la politica de sustitución
+	observacion:
+	
+	
+	
+
+BO_DETALLE_PEDIDO: los productos que componen el pedido
+Columnas:
+	id_detalle: id del detalle en la tabla (único)
+	id_pedido: id del pedido
+	id_sector: id del sector del supermercado donde se encuentra el pedido
+	id_producto: id del producto en bo_productos.
+	cod_prod1: código SAP del producto (redundante)
+	uni_med: unidad de medida del producto (redundante)
+	precio: precio del producto al momento del realizar el pedido. ¿de fo_precios_locales?
+	descripción: descripción del producto
+	cant_solic: cantidad solicitada del producto
+	*cant_pick: cantidad pickeada del producto
+	*cant_faltan: cantidad de faltantes
+	*cant_spick: cantidad sin pickear
+	observacion: ¿observación para el pickeador?
+	preparable: S o N
+	pesable: S o N
+	con_nota: S o N
+	precio_lista: precio original sin descuento
+	dscto_item: descuento
+	tipo_sel: el producto se seleccionó en G:gondola W:ficha U:paso1 del sitio web
+	id_criterio: creo que no se usa
+	desc_criterio: creo que no se usa
+
+
+BO_RONDAS: se crean rondas para realizar el picking 
+Columnas:
+	id_ronda: id de la rona en la tabla (único)
+	id_sector: id del sector dentro del local
+	id_usuario: id del usuario asignado a realizar la ronda
+	id_jpicking: id de la jornada del picking
+	*id_estado: id del estado del picking
+	id_local: id del local
+	*cant_productos: cantidad de productos a pickear (¿cantidad en distintas unidades?)
+	fcreacion: fecha y hora de creación del registro
+	*? fini_picking: fecha y hora de inicio del picking
+	*? ffin_picking: fecha y hora de término del picking
+	tipo_ve: N o S, normal o especial
+	tipo_picking: N o L, normal o light
+	
+
+BO_DETALLE_RONDAS: producto de se van a pickear en la ronda
+				una ronda se compone de uno o más pedidos, 
+				en una ronda no necesariamente se deben pikear todos los productos del pedido
+Columnas:
+	id_dronda: id del detalle en la tabla (único)
+	id_detalle: id del detalle del pedido (el producto a pickear)
+	id_ronda: id de la ronda
+	id_pedido: id del pedido (redundante)
+	cantidad: cantidad del producto
+	*cant_pick: cantidad pickeada
+	*cant_faltan: cantidad de faltantes (no hay stock para pickear)
+	*cant_spick: cantidad sin pickear
+	*sustituto: N o S, normal(no se sutituye) o sustituto
+	mot_sustitucion: id del motivo de sustitución
+	
+	
+	
+	
+Datos de la PDA
+
+List<TPBinOpDTO>			bins				= dto.getLst_bin_op();
+List<TPDetallePickingDTO>	productosPickeados	= dto.getLst_det_picking();
+List<TPDetallePedidoDTO>	productosDelPedido	= dto.getLst_det_pedido();
+List<TPRegistroPickingDTO>	lst_reg_pick		= dto.getLst_reg_picking();
+
+
+
+TPBinOpDTO: posicion,cod_bin,id_op, tipo, cod_sello1, cod_sello2, cod_ubicacion, id_bin
+TPDetallePickingDTO: cBarra, tipo, id_detalle, posicion, id_dronda, cantidad;
+TPDetallePedidoDTO: id_detalle, id_op, cod_sap, u_med, descripcion, cant_pedida, cant_pickeada, cant_faltante,
+					cant_sinpickear, precio, observacion, es_pesable, sector, sust_camb_form, id_dronda, mot_sustitucion;
+TPRegistroPickingDTO: ronda, usuario, perfil, hora
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

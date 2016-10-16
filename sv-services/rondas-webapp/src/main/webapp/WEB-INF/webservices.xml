@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<webservices xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.1" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://www.ibm.com/webservices/xsd/j2ee_web_services_1_1.xsd">
+    <webservice-description>
+        <webservice-description-name>RondaBeanService</webservice-description-name>
+        <wsdl-file>WEB-INF/wsdl/RondaBean.wsdl</wsdl-file>
+        <jaxrpc-mapping-file>WEB-INF/RondaBean_mapping.xml</jaxrpc-mapping-file>
+        <port-component>
+            <port-component-name>RondaBean</port-component-name>
+            <wsdl-port xmlns:pfx="http://beans.ws.bbr.cl">pfx:RondaBean</wsdl-port>
+            <service-endpoint-interface>cl.bbr.ws.beans.RondaBean</service-endpoint-interface>
+            <service-impl-bean>
+                <servlet-link>cl_bbr_ws_beans_RondaBean</servlet-link>
+            </service-impl-bean>
+        </port-component>
+    </webservice-description>
+</webservices>

@@ -1,0 +1,247 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html><!-- InstanceBegin template="/Templates/fullbody.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="EXPIRES" CONTENT="Mon, 22 Jul 2002 11:12:01 GMT">
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>Jumbo.cl Back Office Central</title>
+<!-- InstanceEndEditable -->
+
+<!-- InstanceBeginEditable name="head" -->
+<script language="JavaScript" src="funciones.js"></script>
+<!-- InstanceEndEditable -->
+
+<link href="estilos.css" rel="stylesheet" type="text/css">
+<!--link href="../default.css" rel="stylesheet" type="text/css"-->
+<style type="text/css">
+<!--
+.style1 {color: #666666}
+-->
+</style>
+</head>
+
+<body>
+<link rel="stylesheet" href="menu/menu.css">
+<script language="JavaScript" src="menu/menu.js"></script>
+<script language="JavaScript" src="menu/menu_tpl.js"></script>
+<script language="JavaScript" src="menu/menu_items.js"></script>
+<script language="JavaScript" src="popup.js"></script>
+<script language="JavaScript" src="funciones.js"></script>
+<table width="780" height="100%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+    <td height="78" valign="top">
+	
+	<TABLE width="100%" height=59 border=0 align="center" cellpadding="0" cellspacing="0" bgcolor="#ffffff">
+	  <TR>
+		<TD width=275 height="59" align=left class=user><img src="img/header2.jpg" width="275" height="60"></TD>
+		<TD width=505 align=left valign="bottom" background="img/bg-1.jpg" class=user><table width="90%"  border="0" align="center" cellpadding="0" cellspacing="2">
+          <tr>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td><div align="right" class="infoBL">Usuario: {hdr_nombre}&nbsp;&nbsp;| {hdr_fecha}</div></td>
+          </tr>
+        </table></TD>
+	  </TR>
+	</TABLE>
+	<TABLE width="100%" height=19 border=0 align="center" cellpadding="0" cellspacing="0" bgcolor="#f1f0e9" style="border-top:1px solid #ABABAB; border-bottom:1px solid #ABABAB">
+	  <TR>
+		<TD align=left bgcolor="#FFFFFF" class=user></TD>
+		</TR>
+	</TABLE>
+
+	
+	</td>
+  </tr>
+  <tr height="400">
+    <td valign="top" bgcolor="#FFFFFF">
+      <table border=0 width="100%" class='ContentTitle'>
+        <tr>
+          <td width="53%" height="20" class='HeaderTitle'><!-- InstanceBeginEditable name="Titulo" --> Monitor de Clientes<!-- InstanceEndEditable --></td>
+          <td width="47%" class='HeaderTitle'><!-- InstanceBeginEditable name="Botonera" --><!-- InstanceEndEditable --></td>
+        </tr>
+      </table>
+	  <br>
+      <table width="100%"  border="0" cellspacing="2" cellpadding="2">
+        <tr valign="top">
+          <td width="71%"><!-- InstanceBeginEditable name="Izquierda" -->   
+  <script language="JavaScript" src="funciones.js"></script>        
+		<script src="validacion.js"></script>          
+ <SCRIPT LANGUAGE="JavaScript">
+ 	
+ 	//(20-10-2014) NSepulveda - Filtro para buscar clientes en el BOC con el dato del mail
+ 	//Funcion onchange de los radiobuttons:
+ 	function onChangeSearchCli(form){
+		var radioEmail = form.buscapor[2].checked;
+		var inputName = document.frmCli.buscar;
+		
+		if(radioEmail == true){
+			inputName.maxLength = 50;
+		}else{
+			inputName.maxLength = 30;
+		}
+ 	}
+ 
+ 	function validar(form){
+		if (form.buscapor[0].checked == true ){
+			if (validar_solonumero(form.buscar, "Rut debe ser númerico."))
+				return false;
+			if (Trim(form.buscar.value) == ""){	
+				alert("El campo Buscar no puede ser vacío. ");
+				form.buscar.value = "";
+				form.buscar.focus();
+				return false;
+			}
+		}
+		if (form.buscapor[1].checked == true ){
+			if (validar_letranumero(form.buscar, "Al buscar por Apellido se permiten solo letras y números."))
+				return false;
+			if (Trim(form.buscar.value) == ""){	
+				alert("El campo Buscar no puede ser vacío. ");
+				form.buscar.value = "";
+				form.buscar.focus();
+				return false;
+			}
+		}
+		//(20-10-2014) NSepulveda - Filtro para buscar clientes en el BOC con el dato del mail
+		if (form.buscapor[2].checked == true ){
+			if (Trim(form.buscar.value) == ""){	
+				alert("El campo Buscar no puede ser vacío. ");
+				form.buscar.value = "";
+				form.buscar.focus();
+				return false;
+			}
+			if (validar_email(form.buscar, "La dirección de email es incorrecta o está mal escrita."))
+				return false;
+		}
+
+		return true;			
+	}
+
+</SCRIPT>         
+                   <table width="83%"  border="0" align="center" cellpadding="0" cellspacing="2">
+              <tr>
+                <td height="72"><fieldset>
+                  <legend>Buscar Clientes</legend>
+                  <form name="frmCli" method="post" action="ViewMonClient" onsubmit="return validar(frmCli);">
+                  <table width="98%"  border="0" align="center" cellpadding="0" cellspacing="2">
+                    <!--input type="hidden" name="action" value="bus_cli"-->
+                    <input type="hidden" name="id_cliente" value="{id_cliente}" >
+                    <input type="hidden" name="pagina1" value="{pagina}">                    
+                   <tr>
+                   	<!-- (20-10-2014) Se agrega funcion onchange a cada radio button -->
+                      <td width="35%">Cliente
+                          <input name="buscapor" type="radio" value="rut" onchange="onChangeSearchCli(frmCli);" {check_1} >
+						  Rut
+						  <input name="buscapor" type="radio" value="apellido" onchange="onChangeSearchCli(frmCli);" {check_2} >
+						  Apellido
+						  <input name="buscapor" type="radio" value="email" onchange="onChangeSearchCli(frmCli);" {check_3} >
+						  E-mail</td>
+                      <td width="33%">&nbsp;</td>
+                      <td width="32%">&nbsp;</td>
+                    </tr>
+                    <tr>
+                      <td colspan=2><input name="buscar" type="text" size="15" value="{buscar}" maxlength="{maxLengthBuscar}">
+                          <input  type="submit" class="cmd" value="Buscar" >
+                          ( Rut: Sin puntos ni dígito verificador)</td>
+                      <td>&nbsp;</td>
+                    </tr>
+                  </table>
+                    </form>
+                </fieldset></td>
+              </tr>
+            </table>
+            <br>
+            <form name="form1" method="get" action="ViewMonClient"> 
+            <input type="hidden" name="action" value="bus_est"> 
+		  	<input name="buscar" type=hidden value="{buscar}">
+		  	<input name="buscapor" type=hidden value="{buscapor}">
+		  <table width="85%"  border="1" align="center" cellpadding="2" cellspacing="0" class="tabla2">
+            <tr>
+              <th width="12%">Rut</th>
+              <th><div align="left">Nombre</div></th>
+              <th><div align="left">Paterno </div></th>
+              <th> <div align="left">Materno </div></th>
+              <th>F.Nac.</th>
+			  <th>Empresa</th>
+              <th>
+                         
+              <div align="center">Estado<br>
+
+                <select name="estado" onchange="submit(this.form);">
+                  <option value="">Todos</option>
+			<!-- BEGIN DYNAMIC: ESTADOS -->	
+                  <option value="{id_estado}" {sel1}>{nom_estado}</option>
+            <!-- END DYNAMIC: ESTADOS -->
+                </select>
+                
+              </div>
+       
+              </th>
+              <th>Acciones</th>
+            </tr>
+			<!-- BEGIN DYNAMIC: listado_cli -->
+            <tr valign="top">
+              <td><div align="right">{rut}</div></td>
+              <td>{nombres}</td>
+              <td>{apellido_pat}</td>
+              <td>{apellido_mat}</td>
+              <td >{f_nac}</td>
+              <td align="center"><a href="{ver_empresa}">{empresa}</a></td>
+              <td align="center">{bloq}</td>
+              <td align="center"><a href="{ver}">{acciones}</a></td>
+            </tr>            
+			<!-- END DYNAMIC: listado_cli -->
+          </table>
+          <center> {mje1}</center>
+	</form>
+	<FORM name=form3 method=get action="ViewMonClient">
+	  	<input type="hidden" name="action" value="{action}">
+	  	<input name="buscar" type=hidden value="{buscar}">
+	  	<input name="buscapor" type=hidden value="{buscapor}">
+	  	<input name="estado" type=hidden value="{estado}">
+		<table align=right>
+			<tr>
+				<td colspan="7" align="right">
+					<a href="ViewMonClient?pagina={anterior}&action={action}&buscar={buscar}&buscapor={buscapor}&estado={estado}">{anterior_label}&nbsp;</a>
+					Página :<select name="pagina" onchange="submit(this.form);">
+					<!-- BEGIN DYNAMIC: PAGINAS -->						
+						<option value="{pag}" {sel_pag}>{pag}</option>
+					<!-- END DYNAMIC: PAGINAS -->						
+						</select>
+					&nbsp; <a href="ViewMonClient?pagina={siguiente}&action={action}&buscar={buscar}&buscapor={buscapor}&estado={estado}">{siguiente_label} &nbsp;</a>
+				</td>
+			</tr>
+			
+		</table>
+	</FORM>
+	<SCRIPT LANGUAGE="JavaScript">
+		//(20-10-2014) NSepulveda - Filtro para buscar clientes en el BOC con el dato del mail
+		//Se cambio la funcion del evento onkeypress 'KeyIsTexto' por una que manejara validaciones de emails (KeyIsTextoEmailMonClient).
+		window.document.frmCli.buscar.onkeypress 	= KeyIsTextoEmailMonClient;
+	</script>	
+
+          <br>
+          <br>
+          <!-- InstanceEndEditable --></td>
+        </tr>
+      </table>
+      </td>
+  </tr>
+  <tr>
+    <td>
+	<TABLE width="100%" height=19 border=0 align="center" cellpadding="0" cellspacing="0" bgcolor="#f1f0e9" style="border-top:1px solid #ABABAB; border-bottom:1px solid #ABABAB">
+	  <TR>
+		<TD align=center bgcolor="#67b01a" class=infoBL><div align="center">Back Office Central - Jumbo.cl</div></TD>
+		</TR>
+	</TABLE>
+
+	
+	</td>
+  </tr>
+</table>
+</body>
+<!-- InstanceEnd --></html>

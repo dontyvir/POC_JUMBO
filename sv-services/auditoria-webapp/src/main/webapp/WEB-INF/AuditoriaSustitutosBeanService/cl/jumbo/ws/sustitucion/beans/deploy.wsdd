@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- Use this file to deploy some handlers/chains and services      --><!-- Two ways to do this:                                           --><!--   java org.apache.axis.client.AdminClient deploy.wsdd          --><!--      after the axis server is running                          --><!-- or                                                             --><!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   --><!--      from the same directory that the Axis engine runs         --><deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from AuditoriaSustitutosBeanService WSDL service -->
+
+  <service name="AuditoriaSustitutosBean" provider="java:RPC">
+      <parameter name="wsdlTargetNamespace" value="http://beans.sustitucion.ws.jumbo.cl"/>
+      <parameter name="wsdlServiceElement" value="AuditoriaSustitutosBeanService"/>
+      <parameter name="wsdlServicePort" value="AuditoriaSustitutosBean"/>
+      <parameter name="className" value="cl.jumbo.ws.sustitucion.beans.AuditoriaSustitutosBean"/>
+      <parameter name="wsdlPortType" value="AuditoriaSustitutosBean"/>
+      <operation xmlns:operNS="http://beans.sustitucion.ws.jumbo.cl" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="getDetalleProdSustitutos" qname="operNS:getDetalleProdSustitutos" returnQName="getDetalleProdSustitutosReturn" returnType="rtns:string">
+        <parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" name="ListaBarrasSustitucionXML" type="tns:string"/>
+        <parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" name="id_ronda" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://beans.sustitucion.ws.jumbo.cl" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="descargaAuditoriaSustitucion" qname="operNS:descargaAuditoriaSustitucion" returnQName="descargaAuditoriaSustitucionReturn" returnType="rtns:string">
+        <parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" name="TablaAuditoria_SustitucionXML" type="tns:string"/>
+      </operation>
+      <parameter name="allowedMethods" value="getDetalleProdSustitutos descargaAuditoriaSustitucion"/>
+
+  </service>
+</deployment>

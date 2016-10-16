@@ -1,0 +1,14 @@
+img {
+border-width: 0;
+}
+
+#canalRedSocial {
+padding-top:20px; 
+width:180px;
+}
+
+#canalRedSocial img {
+width:19px; 
+height:17px;
+border-width: 0;
+} 

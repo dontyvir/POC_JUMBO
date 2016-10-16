@@ -1,0 +1,236 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html><!-- InstanceBegin template="/Templates/fullbody.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="EXPIRES" CONTENT="Mon, 22 Jul 2002 11:12:01 GMT">
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>Jumbo.cl Back Office Local</title>
+<!-- InstanceEndEditable -->
+
+<!-- InstanceBeginEditable name="head" -->
+<script language="JavaScript" src="funciones.js"></script>
+<!-- InstanceEndEditable -->
+
+<link href="estilos.css" rel="stylesheet" type="text/css">
+<!--link href="../Prototipo/default.css" rel="stylesheet" type="text/css"-->
+<style type="text/css">
+<!--
+.style1 {color: #666666}
+-->
+</style>
+
+<script language="javascript">
+   function validar_form(form) {
+      var k=0;
+      var ListCheck = new Array();
+      var ListCant  = new Array();
+      
+      if (form.opcion.checked == true){
+          alert('pedido checkeado:' + form.checked.value);
+      }
+      
+      /*for(i=0; i<form.elements.length; i++){
+         var campo = form.elements[i].name;
+         if (campo.indexOf("check_") >= 0){
+            var valor = form.elements[i].checked;
+            //alert('campo: '+campo + '  valor: ' + valor);
+            ListCheck.push(valor);
+         }else if (campo == ('cant_' + k)){ //campo.indexOf("cant_") >= 0 && 
+            var valor = form.elements[i].value;
+            //alert('campo: '+campo + '  valor: ' + valor);
+            ListCant.push(valor);
+            k=k+1;
+         }
+      }*/
+      
+      /*for(i=0; i<ListCant.length; i++){
+         //alert(ListCheck[i] + '  ' + ListCant[i]);
+         if (ListCheck[i] == true){
+            if (ListCant[i] <= 0){
+               alert('El valor ingresado debe ser superior a cero (0)');
+               return false;
+            }
+         }
+      }*/
+      
+      /*if(form.id_sector.value == ""){
+         opform1.id_sector.focus();
+        return false;
+      }*/
+      return false;
+   }
+
+   function ValidaText(obj, cantProd){
+      decallowed = 2; 
+      fieldName  = obj; //document.forma1.cant_{i}; 
+      fieldValue = obj.value; //document.forma1.cant_{i}.value; 
+      fielFloat = parseFloat(fieldValue);
+      cantFloat = parseFloat(cantProd);
+      //alert(fieldValue + ' >= ' + cantProd);
+      
+      if (isNaN(fieldValue) || fieldValue == '') { 
+          alert('Debe ingresar un Número');
+          fieldName.select();
+          fieldName.focus();
+      }else{
+         if (fieldValue.indexOf('.') == -1) 
+             fieldValue += '.';
+         
+         dectext = fieldValue.substring(fieldValue.indexOf('.')+1, fieldValue.length); 
+         
+         if (dectext.length > decallowed){
+             alert ('Se aceptan números con 2 decimales');
+             fieldName.select();
+             fieldName.focus();
+         }else{
+            if (fieldValue < 0){
+                alert('Se deben ingresar números positivos');
+                fieldName.select();
+                fieldName.focus();
+            }else{
+               if (fielFloat > cantFloat){
+                   alert('El valor ingresado no debe ser mayo al Total de Productos.');
+                   fieldName.select();
+                   fieldName.focus();
+               }
+            }
+         }   
+      }
+   }
+</script>
+</head>
+<body>
+<link rel="stylesheet" href="menu/menu.css">
+<script language="JavaScript" src="menu/menu.js"></script>
+<script language="JavaScript" src="menu/menu_tpl.js"></script>
+<script language="JavaScript" src="menu/menu_items.js"></script>
+<script language="JavaScript" src="popup.js"></script>
+<table width="780" height="100%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+    <td height="78" valign="top">
+	<TABLE width="100%" height=59 border=0 align="center" cellpadding="0" cellspacing="0" bgcolor="#ffffff">
+	  <TR>
+		<TD width=275 height="59" align=left class=user><img src="img/header2.jpg" width="275" height="60"></TD>
+		<TD width=505 align=left valign="bottom" background="img/bg-1.jpg" class=user><table width="90%"  border="0" align="center" cellpadding="0" cellspacing="2">
+          <tr>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td><div align="right" class="infoBL">Usuario: {hdr_nombre} | Local: {hdr_local} | {hdr_fecha} </div></td>
+          </tr>
+        </table></TD>
+	  </TR>
+	</TABLE>
+	<TABLE width="100%" height=19 border=0 align="center" cellpadding="0" cellspacing="0" bgcolor="#f1f0e9" style="border-top:1px solid #ABABAB; border-bottom:1px solid #ABABAB">
+	  <TR>
+		<TD align=left bgcolor="#FFFFFF" class=user></TD>
+	  </TR>
+	</TABLE>
+	</td>
+  </tr>
+  <tr height="400">
+    <td valign="top" bgcolor="#FFFFFF">
+      <table border=0 width="100%" class='ContentTitle'>
+        <tr>
+          <td width="53%" height="20" class='HeaderTitle'><!-- InstanceBeginEditable name="Titulo" -->Creaci&oacute;n
+				de Ronda de Picking<!-- InstanceEndEditable --></td>
+          <td width="47%" class='HeaderTitle'><!-- InstanceBeginEditable name="Botonera" --><!-- InstanceEndEditable --></td>
+        </tr>
+      </table>
+	  <br>
+      <table width="100%"  border="0" cellspacing="2" cellpadding="2">
+        <tr valign="top">
+          <td width="71%"><!-- InstanceBeginEditable name="Izquierda" -->
+			<form name="opform1" method = "get" action = "ViewCrearRondaPKL">	
+			<input type="hidden" name="id_jornada" value="{id_jornada}">
+			<table border="0" align="center" cellpadding="2" cellspacing="2">
+				<tr>
+					<td width="150">&nbsp;</td>
+					<td width="150">Zona de Despacho</td>
+					<td width="100">&nbsp;</td>
+				</tr>	
+				<tr>
+					<td>&nbsp;</td>
+					<td>
+						<select name="id_zona">
+							<option value=""> TODAS </option>
+							<!--BEGIN DYNAMIC: select_zonas -->
+								<option value="{id_zona}" {sel_zona}>{nom_zona}</option>
+							<!--END DYNAMIC: select_zonas -->							
+						</select>
+					</td>
+					<td><input type="submit" value="Desplegar"></td>
+				</tr>
+				<tr>
+					<td colspan="3">
+						{mjeError}
+					</td>
+				</tr>
+			</table>
+			</form>
+			<form name="forma1" method="post" action="CreaRondaPKL" onSubmit="javascript:return validar_form(this);">
+			    <table width="700" border="0" align="center" cellpadding="2" cellspacing="0" class="tabla21">
+					<tr bgcolor="#FFFFFF">
+						<th width="107">Jornada</th>
+					    <th width="70">Comuna</th>			
+						<th width="68"><div align="center">N&deg; OP</div>						
+						<th width="68">Zona</th>
+						<th width="104">Cant Prods. </th>
+						<th width="104">Cant Prods distintos entre si. </th>
+						<th width="50">Acciones</th>
+						<th width="101">Incluir en Ronda</th>
+						<th width="74">Seleccionar</th>
+					</tr>
+					<!-- BEGIN DYNAMIC: select_crea_ronda1 -->
+					<tr bgcolor="{color_fondo_op}">
+						<input type="hidden" name="id_jornada"    value="{id_jornada}">
+						<input type="hidden" name="id_pedido_{i}" value="{id_pedido}">
+						<input type="hidden" name="cant_prod_{i}" value="{cant_prod}">
+						<td {borderstyle}><div align="center">{hora_inicio} - {hora_fin}</div></td>
+						<td {borderstyle}><div align="center">{comuna}</div></td>
+						<td {borderstyle}><div align="center">{id_pedido}</div></td>
+						<td {borderstyle}><div align="center">{zona}</div></td>
+						<td {borderstyle}><div align="center">{cant_prod}</div></td>
+						<td {borderstyle}><div align="center">{cant_prod_distintos}</div></td>
+						<td {borderstyle}><div align="center"><a href="javascript:popUpWindow('ViewProdPedidoXSectorForm?id_pedido={id_pedido}&id_sector={id_sector}', 100, 100, 600, 490)">Ver</a></div></td>
+						<td {borderstyle}><div align="center">{cant_prod}</div></td>
+						<td {borderstyle}><div align="center"><!-- input name="check_{i}" type="checkbox" {chekear}--><input name="opcion" type="radio" value="{id_pedido}"></div></td>
+					</tr>
+					<!-- END DYNAMIC: select_crea_ronda1 -->
+					<tr bgcolor="#FFFFFF">
+					  <td colspan="10" align="center" height="30"><b>{msg}</b></td>
+					</tr>
+				</table>
+				<table width="664" border="0" align="center" cellpadding="2" cellspacing="2">
+					<tr>
+						<td width="656">
+						<div align="right"><input type="submit" name="Button1" value="   Crear Ronda  " {disabled}></div>
+						</td>
+					</tr>
+				</table>
+				<input type="hidden" name="url" value="ViewResCrearRondaOk">
+				<input type="hidden" name="id_sector" value="{id_sector}">
+				<input type="hidden" name="tipo_ve" value="{tipo_ve}">
+			</form>
+				<!-- InstanceEndEditable --></td>
+        </tr>
+      </table>
+      </td>
+  </tr>
+  <tr>
+    <td>
+	<TABLE width="100%" height=19 border=0 align="center" cellpadding="0" cellspacing="0" bgcolor="#f1f0e9" style="border-top:1px solid #ABABAB; border-bottom:1px solid #ABABAB">
+	  <TR>
+		<TD align=center bgcolor="#67b01a" class=infoBL><div align="center">Back Office Local - Jumbo.cl</div></TD>
+		</TR>
+	</TABLE>
+
+	
+	</td>
+  </tr>
+</table>
+</body>
+<!-- InstanceEnd --></html>

@@ -1,0 +1,662 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html><!-- InstanceBegin template="/Templates/fullbody.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="EXPIRES" CONTENT="Mon, 22 Jul 2002 11:12:01 GMT">
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>Jumbo.cl Back Office Central</title>
+<script type="text/javascript" src="popup.js"></script>
+<!-- InstanceEndEditable -->
+
+<!-- InstanceBeginEditable name="head" -->
+<SCRIPT LANGUAGE="JavaScript">window.name='winmodal'</SCRIPT>
+<script language="JavaScript">
+
+	function abre_popup_mot(){
+		valor ="";
+		if ((valor = popUpWindowModalscroll('ViewMotivoDesp?id_producto={cod_prod}&tipo_prod={gen}', 100, 100, 600, 400))!= '') {
+			if (valor != ""){
+				document.productos.valor.value = valor;
+			}
+		}
+	}
+
+	function validar(form){
+			var checado = false;
+			$j("input[name='local_check']").each( function(){
+					checado = checado || $j(this).attr('checked');
+			});
+			if(!checado && $j('#motivo_des').val() == -1){
+				alert("Debe seleccionar un motivo de despublicación");
+				return false;
+			} 
+			
+		if (form.marca.value == "" || form.tipo.value == "" || form.descr_corta.value=="" || form.atr_dif.value==""){
+			alert("Debe ingresar todos los datos");
+			return false;
+		}
+		if (form.desc_larga.value.length > 255){
+			alert("El máximo de caracteres permitidos por Descripción Larga es 255");
+			return false;
+		}		
+		//if (validar_letranumero(form.descr_corta, "La descripción Corta solo soporta letras y números ")) return false;
+		//if (validar_letranumero(form.desc_larga, "La descripción Larga solo soporta letras y números ")) return false;
+		//if (validar_letranumero(form.tipo, "El Tipo solo soporta letras y números ")) return false;
+		//if (validar_letranumero(form.atr_dif, "El atributo diferenciador solo soporta letras y números ")) return false;
+		var agree=confirm("¿Esta seguro(a) de guardar los cambios?");
+		if (agree) return true ;
+		else
+			return false ;
+		
+		return true;
+	}
+	function guardar(form){
+		if(validar(form))
+			form.submit();
+	}
+	function val_publDesp(form){
+		if(frmPubDesp.action.value==1){
+			if(validar_obligatorio( form.tipo, "El tipo es obligatorio para publicar"))
+				return false;
+			if(validar_obligatorio( form.descr_corta, "La descripción corta es obligatoria para publicar"))
+				return false;
+		}
+		if(validar(form)){
+			frmPubDesp.tipo.value 		= form.tipo.value;
+			frmPubDesp.id_marca.value 	= form.marca.options[form.marca.selectedIndex].value;
+			frmPubDesp.desc_corta.value = form.descr_corta.value;
+			frmPubDesp.desc_larga.value = form.desc_larga.value;
+			frmPubDesp.submit();
+		}
+	}
+	function val_eliminar(form){
+		if(confirm("¿Esta seguro que desea eliminar este producto?"))
+			form.submit();
+	}
+	
+	function agregar(form){
+		form.id_cat.value 	= form.sel_cat.options[form.sel_cat.selectedIndex].value;
+		form.nom_cat.value 	= form.sel_cat.options[form.sel_cat.selectedIndex].text;
+		form.sel_cat.value = form.busq_num_cat.value;
+		//form.submit();
+	}
+	
+	function agrega_sug(form){
+		form.id_producto_sug.value = form.id_prod.value;
+		if  (form.id_prod.value =="")
+			alert("Debe ingresar Codigo de Sugerido");
+		else{
+			if(!validar_solonumero(form.id_prod, "Código de Sugerido es un Campo Numerico")){
+				form.submit();
+			}
+		}
+	}
+	function mostrar_log(form){
+		form.submit();
+	}
+	
+	function abre_popup(){
+		valor="";
+		if ((valor = popUpWindowModalscroll('ViewBusqProdForm', 100, 100, 600, 400))> '0') {
+			if (valor != ""){
+				id = valor.split("|");
+				document.frmModItem.id_prod.value = id[0];
+				document.frmModItem.desc.value = id[1];
+			}
+		}
+	}
+	function abre_popup1(){
+		valor="";
+		if ((valor = popUpWindowModalscroll('ViewBusqProdForm', 100, 100, 600, 400))!= '') {
+			if (valor != ""){
+				id = valor.split("|");
+				document.frmModSug.id_prod.value = id[0];
+			}
+		}
+	}	
+	function abre_popupC(){
+		valor= "";
+		if ((valor = popUpWindowModalscroll('ViewNavCatForm?tipo=T', 100, 100, 600, 400))> '0') {
+			if (valor != ""){
+				id = valor.split("|");
+				document.frmAgreCat.id_cat.value = id[0];
+				document.frmAgreCat.nom_cat.value = id[1];
+				document.frmAgreCat.nom_cate.value = id[1];
+			}
+		}
+	}   
+	
+</script>
+
+<script type="text/javascript" src="js/jquery/jquery-1.3.1.js"></script>
+<script language="javascript">
+	var $j = jQuery.noConflict();
+	jQuery().ready(function(){
+		var checado = false;
+			$j("input[name='local_check']").each( function(){
+					checado = checado || $j(this).attr('checked');
+			});
+			vistaMotivos(checado);
+		
+		
+		$j('#checkAllAuto').click(function(){
+			var checado = false;
+			$j("input[name='local_check']").each( function(){
+					this.checked = $j('#checkAllAuto').attr('checked');
+					checado = checado || $j(this).attr('checked');
+			});
+			vistaMotivos(checado);
+   	});
+   	
+   	$j("input[name='local_check']").click(function(){
+   		var checado = false;
+   		var checado2 = true;
+			$j("input[name='local_check']").each( function(){
+					checado = checado || $j(this).attr('checked');
+					checado2 = checado2 && $j(this).attr('checked');
+			});
+			vistaMotivos(checado);
+			if(checado2)
+				$j('#checkAllAuto').attr('checked', true);
+			else
+				$j('#checkAllAuto').attr('checked', false);
+   	});
+  });
+  
+  function vistaMotivos(checado){
+  	if(checado){
+				$j('#div_motivos').fadeOut("slow");
+		}
+		else{
+			$j('#div_motivos').fadeIn("slow");
+		}
+  }
+</script>	               		
+		
+
+<!-- InstanceEndEditable -->
+
+<link href="estilos.css" rel="stylesheet" type="text/css">
+<!--link href="../default.css" rel="stylesheet" type="text/css"-->
+<style type="text/css">
+<!--
+.style1 {color: #666666}
+-->
+</style>
+</head>
+
+<body>
+<link rel="stylesheet" href="menu/menu.css">
+<script language="JavaScript" src="menu/menu.js"></script>
+<script language="JavaScript" src="menu/menu_tpl.js"></script>
+<script language="JavaScript" src="menu/menu_items.js"></script>
+<script language="JavaScript" src="popup.js"></script>
+<script language="JavaScript" src="funciones.js"></script>
+<table width="780" height="100%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+    <td height="78" valign="top">
+	
+	<TABLE width="100%" height=59 border=0 align="center" cellpadding="0" cellspacing="0" bgcolor="#ffffff">
+	  <TR>
+		<TD width=275 height="59" align=left class=user><img src="img/header2.jpg" width="275" height="60"></TD>
+		<TD width=505 align=left valign="bottom" background="img/bg-1.jpg" class=user><table width="90%"  border="0" align="center" cellpadding="0" cellspacing="2">
+          <tr>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td><div align="right" class="infoBL">Usuario: {hdr_nombre}&nbsp;&nbsp;| {hdr_fecha}</div></td>
+          </tr>
+        </table></TD>
+	  </TR>
+	</TABLE>
+	<TABLE width="100%" height=19 border=0 align="center" cellpadding="0" cellspacing="0" bgcolor="#f1f0e9" style="border-top:1px solid #ABABAB; border-bottom:1px solid #ABABAB">
+	  <TR>
+		<TD align=left bgcolor="#FFFFFF" class=user></TD>
+		</TR>
+	</TABLE>
+
+	
+	</td>
+  </tr>
+  <tr height="400">
+    <td valign="top" bgcolor="#FFFFFF">
+      <table border=0 width="100%" class='ContentTitle'>
+        <tr>
+          <td width="53%" height="20" class='HeaderTitle'><!-- InstanceBeginEditable name="Titulo" --> Ficha de Producto <!-- InstanceEndEditable --></td>
+          <td width="47%" class='HeaderTitle'><!-- InstanceBeginEditable name="Botonera" -->
+            <div align="right"><a href="ViewMonProducts"><img src="img/back.png" width="32" height="32" border="0"></a></div>
+          <!-- InstanceEndEditable --></td>
+        </tr>
+      </table>
+	  <br>
+      <table width="100%"  border="0" cellspacing="2" cellpadding="2">
+        <tr valign="top">
+          <td width="71%"><!-- InstanceBeginEditable name="Izquierda" -->
+            <link id="luna-tab-style-sheet" type="text/css" rel="stylesheet" href="js/tabs/tabpane.css" />
+            <script type="text/javascript" src="js/tabs/tabpane.js"></script>
+            <table width="92%" align="center" border="0">
+              <tr>
+                <td><div class="tab-page" id="modules-cpanel">
+                    <script type="text/javascript">
+				   		var tabPane1 = new WebFXTabPane( document.getElementById( "modules-cpanel" ), 0 )
+				    </script>
+                    <div class="tab-page" id="modulo1">
+                      <h2 class="tab">Ficha</h2>
+                      <div align="left">
+					  
+                          <p><strong>Datos del Producto</strong></p>
+                          <table width="80%"  border="0" align="center" cellpadding="0" cellspacing="2">
+                          
+                          <form name="productos" method=post action="ModProduct" >
+                          <input type="hidden" name="id_producto" value="{id_prod}">
+                          <input type="hidden" name="tipo_prod" value="{tipo1}">                          
+                          <input type="hidden" name="url" value="ViewProductForm?cod_prod={id_prod}&tipo_prod={tipo1}">
+						  <input type="hidden" name="valor" value="">                          
+                          <input type="hidden" name="tipo_form" value="{tipo_form}">                          
+                          
+                            <tr>
+                              <td width="25%">Cod SAP</td>
+                              <td width="75%">{cod_sap}</td>
+                            </tr>
+                            <tr>
+                              <td>Estado</td>
+                              <td>{estado}</td>
+                            </tr>
+                            <tr>
+                              <td>Gen&eacute;rico</td>
+                              <td>{generico}</td>
+                            </tr>
+                            <tr>
+                              <td>&nbsp;</td>
+                              <td>&nbsp;</td>
+                            </tr>
+                            <tr>
+                              <td>Tipo</td>
+                              <td><input name="tipo" type="text" value="{tipo}" maxlength="50"></td>
+                            </tr>
+                            <tr>
+                              <td>Marca</td>
+                              <td><select name="marca">
+                              <option value="">---</option>
+                              <!-- BEGIN DYNAMIC: MARCAS -->
+                                <option value={mrc_id} {mrc_tip}>{mrc_nombre}</option>
+                              <!-- END DYNAMIC: MARCAS -->  
+                                </select></td>
+                            </tr>
+                            <tr>
+                              <td>Descripci&oacute;n Corta </td>
+                              <td><input name="descr_corta" type="text" value="{desc_corta}" size="50" maxlength="255"></td>
+                            </tr>
+                            <tr>
+                              <td valign="top">Descripci&oacute;n Larga </td>
+                              <td><textarea name="desc_larga" cols="80" rows="4" maxlength="255" onpaste = "return false" 
+                              onkeypress='key = window.event.keyCode; 
+	                              keychar = String.fromCharCode(key); 
+	                              keychar = keychar.toLowerCase(); 
+	                              if(this.value.length > 253){ this.value=this.value.substring(0,254); }' 
+                              onKeydown="if (event.ctrlKey && (String.fromCharCode(event.keyCode).toLowerCase() == 'c' || String.fromCharCode(event.keyCode).toLowerCase() == 'v')) { event.keyCode = 0; }">{desc_larga}</textarea></td>
+                              <!-- if (!(("áéíóúabcdefghijklmnñopqrstuvwxyz0123456789 .").indexOf(keychar) > -1)) window.event.keyCode = 0;  -->
+                            </tr>
+                            <tr>
+                              <td valign="top">Atributo diferenciador </td>
+                              <td><input name="atr_dif" cols="80" rows="4" value="{atr_dif}" maxlength="100"></td>
+                            </tr>                            
+                            <tr>
+                              <td>&nbsp;</td>
+                              <td>&nbsp;</td>
+                            </tr>
+                            <tr>
+                              <td>Imagen Minificha</td>
+                              <td><input name="img1" type="text" value="{img1}" maxlength="200"></td>
+                            </tr>
+                            <tr>
+                              <td>Imagen Ficha</td>
+                              <td><input name="img2" type="text" value="{img2}" maxlength="200"></td>
+                            </tr>                            
+                            <tr>
+                              <td>&nbsp;</td>
+                              <td>&nbsp;</td>
+                            </tr>
+                            
+                            <tr height="35">
+                            	<td colspan="2">¿Evitar Publicaci&oacute;n/Despublicaci&oacute;n por bloqueo?<input type="checkbox" name="evitar_pub_des" {evitar_pub_des_checked}></td>
+                            </tr>
+                            
+                            <tr>
+                            	<td colspan="2">
+                            		<table>
+                            			<tr><th>Local</th><th>Publicado</th></tr>
+	                            			<!-- BEGIN DYNAMIC: PUBLICACION -->
+	                            			<tr>
+	                            				<td>{local_nombre}</td>
+		                            			<td align="right"><input type="checkbox" name="local_check" value="{local_id}" {local_checked}></td>
+	                            			</tr>
+	                            			<!-- END DYNAMIC: PUBLICACION -->
+	                            			<tr>
+	                            				<td colspan="3" align="right">Todos los Locales</td>
+	                            				<td><input type="checkbox" id="checkAllAuto" name="checkAllAuto"></td>
+	                            				<td><div id="div_motivos" style="display: none;">
+	                            						Motivo: <SELECT id="motivo_des" name="motivo_des">
+					                            			<!-- BEGIN DYNAMIC: MOTIVOS -->
+																							<OPTION value="{motivo_id}" {selected} >{motivo_nombre}</OPTION>
+	                  					          		<!-- END DYNAMIC: MOTIVOS -->
+	                            						</SELECT>
+	                            						</div>
+	                            				</td>
+	                            			</tr>
+                            		</table>
+                            	</td>
+                            </tr>
+
+                            
+                            <tr>
+                              <td>Fecha Creaci&oacute;n </td>
+                              <td>{fec_crea}</td>
+                            </tr>
+                            <tr>
+                              <td>Fecha Ult. Modif. </td>
+                              <td>{fec_act}</td>
+                            </tr>
+                            <tr>
+
+                              <td>Usuario Ult. Mod.</td>
+                              <td>{usr_act}</td>
+                            </tr>
+                            <tr>
+                              <td>&nbsp;</td>
+                              <td>&nbsp;</td>
+                            </tr>
+                            <tr>
+                              <td>&nbsp;</td>
+                              <td><input name="Button" type="button" class="cmd" value="    Guardar    "
+                              onclick="javascript:guardar(productos)">
+                              
+                              <!-- Si el producto es de tipo generico, mostrar el boton Eliminar  -->
+                              <input name="Button" type="button" class="cmd" value="   Eliminar    "  {visible}
+                              onclick="javascript:val_eliminar(frmElim)" > </td>
+                            </tr>
+                          </form>
+                          <form name="frmPubDesp" method=post action="PubDespProduct" >
+                          <input type="hidden" name="id_producto" value="{id_prod}">
+                          <input type="hidden" name="action" value="{accion}">
+                          <input type="hidden" name="tipo_prod" value="{gen}">
+                          <input type="hidden" name="url" value="{url}">
+                          <input type="hidden" name="tipo" value="">
+                          <input type="hidden" name="id_marca" value="">
+                          <input type="hidden" name="desc_corta" value="">
+                          <input type="hidden" name="desc_larga" value="">
+                          <input type="hidden" name="uni_med" value="">
+                          <input type="hidden" name="contenido" value="0">
+                          <input type="hidden" name="adm_com" value="">
+                          <input type="hidden" name="es_prep" value="">
+                          <input type="hidden" name="int_val" value="0">
+                          <input type="hidden" name="int_max" value="0">
+                          </form>
+                          <form name="frmElim" method=post action="DelGenericProduct" >
+                          <input type="hidden" name="id_producto" value="{id_prod}">
+                          <input type="hidden" name="url" value="ViewMonProducts">
+                          </form>
+                          
+                          </table>
+                          <br>
+                          <br>
+                        <br>
+                      </div>
+                    </div>
+					
+                    <div class="tab-page" id="modulo2">
+                      <h2 class="tab">Im&aacute;genes</h2>
+					  
+                          <div align="left"> <strong>Imágenes disponibles</strong><br />
+                          <br>
+                          <br>
+                          <br>
+                            <table width="95%"  border="0" align="center" cellpadding="0" cellspacing="2">
+                            <tr>
+                              <td width="33%">Im&aacute;gen Grande </td>
+                              <!--td width="33%">Im&aacute;gen Mediana </td-->
+                              <td width="33%">Im&aacute;gen Chica </td>
+                            </tr>
+                            <tr>
+                              <td>&nbsp;</td>
+                              <!--td>&nbsp;</td-->
+                              <td>&nbsp;</td>
+                            </tr>
+                            <tr>
+                              <td><div align="center"><img name="img_minificha" src="{path_gr}{imagen2}" onError="this.src='img/transp.gif'"></div></td>
+                              <!--td><div align="center"><img name="img_minificha" src="{path_me}{imagen2}" onError="this.src='img/transp.gif'"></div></td-->
+                              <td><div align="center"><img name="img_minificha" src="{path_ch}{imagen1}" onError="this.src='img/transp.gif'"></div></td>
+                            </tr>
+                            <tr>
+                              <td>&nbsp;</td>
+                              <!--td>&nbsp;</td-->
+                              <td>&nbsp;</td>
+                            </tr>
+                          </table>
+                          <br>
+                          <br>
+                      </div>
+                    </div>
+					<script>					
+						function val_agrega_cat(form){
+							form.id_cat.disabled=false;
+	                    	form.Button.value = 'Agregar';							
+							if ( form.id_cat.value == ""){
+								alert("Debe ingresar un Numero de Categoria");
+								return false;
+							}
+							if (validar_solonumero(form.id_cat,"Nº de Categoría es un Campo Numerico")) return false;
+							return true;
+						}
+					</script>					
+					
+                    <div class="tab-page" id="modulo3">
+                      <h2 class="tab">Categor&iacute;as</h2>
+					  
+                         <div align="left"> <strong>Listado de Categor&iacute;as a la que pertenece el producto</strong><br />
+                          <br>
+                          <table width="459"  border="0" align="center" cellpadding="0" cellspacing="2">
+                            <tr>
+                              <td width="25%">Id categor&iacute;a</td>
+                              <td width="25%">Nombre</td>
+                              <td width="20%">Orden</td>
+                              <td width="20%">Con pago</td>
+                              <td width="10%">&nbsp;</td>
+                            </tr>
+                            
+                          <form name="frmAgreCat" method=post action="AddProdCatWeb" target="prodcat" onsubmit="return val_agrega_cat(this);">
+                          <input type="hidden" name="url" value="ViewProdCatIframe?id_prod={id_prod}&tipo_prod={gen}">
+                          <input type="hidden" name="id_prod" value="{id_prod}">
+                          <input name="nom_cat" type="hidden" value="" >
+                          <input type="hidden" name="origen" value="PROD">
+                          <input type="hidden" name="procat_id" value="">									
+ 						  <input type="hidden" name="action" value="{action}">		
+                            <tr>
+                            
+                            <td><input name="id_cat" type="text" size="10" maxlength="9" >
+		                    <a href="javascript:abre_popupC();"><img src="img/magnify.jpg" width="16" height="16" border="0" ALT="Muestra Categorías"></a></td>
+		                    <td><input type="text" name="nom_cate" value="" disabled></td>
+        	                <td><input type="text" name="orden"  value=1000 maxlength="9" size="9"></td>   
+                            <td>Si<input type="radio" name="rad_pago" value="S" checked >No<input type="radio" name="rad_pago" value="N" ></td>   
+        	                <td><input name="Envnum" type="submit" class="cmd" value="Agregar" onclick='var agree=confirm("¿Esta seguro(a) de guardar los cambios?"); if (agree){return true ; } else {return false ;}'></td>
+
+                            </tr>
+                          </form>
+
+                          </table>
+                          <br>
+                          <table width="459" border="0" align="center" cellpadding="2" cellspacing="0" class="tabla2">
+                            <tr>
+                              <th width="74">Cod Categ </th>
+                              <th width="330">Nombre</th>
+                              <th width="60">Orden</th>
+                              <th width="58">Con pago</th>
+                              <th width="50">Acciones</th>
+                            </tr>
+                          </table>
+                          <CENTER><IFRAME SRC="ViewProdCatIframe?id_prod={id_prod}&tipo_prod={gen}" NAME="prodcat" HEIGHT="194" WIDTH="459" border=0 > 
+							</IFRAME></CENTER>
+                          <br>
+							<script>document.frmAgreCat.id_cat.onkeypress = KeyIsSoloNum;
+									document.frmAgreCat.orden.onkeypress = KeyIsSoloNum;</script>                           
+                      </div>
+                    </div>
+
+                    <div class="tab-page" id="modulo4">
+                      <h2 class="tab">Items</h2>
+					  
+				<script language="JavaScript">
+					function agrega_item(form){
+						if(validar_obligatorio( form.id_prod, "El código del producto item es obligatorio"))
+								return false;
+						if(validar_solonumero( form.id_prod, "El código del producto item es un valor numérico"))
+							return false; 
+						if(validar_obligatorio( form.atrdiff_val, "El atributo diferenciador es obligatorio"))
+								return false;	
+						//if (validar_letranumero(form.atrdiff_val, "El atributo diferenciador solo soporta letras y números ")) return false;								
+						form.id_prod_item.value = form.id_prod.value;
+						return true;
+					}
+				</script>
+
+                        <div align="left"> <strong>Items del producto </strong><br />
+                          <br>
+                          <form name="frmModItem" method=post action="ModGenericItem" target="proditem" onsubmit="return agrega_item(this);">
+                          <input type="hidden" name="url" value="ViewProdItemIframe?id_prod={id_prod}">
+                          <input type="hidden" name="action" value="agregar">
+                          <input type="hidden" name="id_prod_gen" value="{id_prod}">
+                          <input type="hidden" name="id_prod_item" value="">
+                          <table width="64%"  border="0" align="center" cellpadding="0" cellspacing="2">
+                            <tr>
+                              <td width="34%">C&oacute;d Producto Item</td>
+                              <td width="29%">Desc</td>
+                              <td width="23%">Atributo Diferenciador</td>
+                              <td width="14%">&nbsp;</td>
+                            </tr>
+                            <tr>
+                              <td><input name="id_prod" type="text" value="" size="10" maxlength="9">
+                              <a href="javascript:abre_popup();"><img src="img/magnify.jpg" width="16" height="16" border="0"></a> </td>
+                              <td><input name="desc" type="text" disabled value="" size="20"></td>
+                              <td><input name="atrdiff_val" type="text" size="25" maxlength="100"></td>
+                              <td><!--input name="Button" type="button" class="cmd" value="Agregar" onClick="javascript:agrega_item(frmModItem)"-->
+                              <input type="submit" value="Agregar" >
+                              </td>
+                            </tr>
+                          </table>
+                          <br>
+                          <table width="463" border="0" align="center" cellpadding="2" cellspacing="0" class="tabla2">
+                            <tr>
+                              <th width="69">Cod Categ </th>
+                              <th width="227"><div align="left">Descripci&oacute;n</div></th>
+                              <th width="94"><div align="left">Atributo Dif </div></th>
+                              <th width="57">Sel</th>
+                            </tr>
+                          </table>
+                          <CENTER><IFRAME SRC="ViewProdItemIframe?id_prod={id_prod}" NAME="proditem" HEIGHT="194" WIDTH="470" border=0 > 
+							</IFRAME></CENTER>
+                          </form>
+                          <br>
+                          <br>
+                          <script>document.frmModItem.id_prod.onkeypress = KeyIsSoloNum;</script>
+                      </div>
+                    </div>
+			<div class="tab-page" id="modulo5">
+                      <h2 class="tab">Sugeridos</h2>
+                        <div align="left"> <strong>Productos sugeridos </strong><br />
+                          <br>
+                          <form name="frmModSug" method=post action="ModSugProduct"  target="prodsug">
+                          <input type="hidden" name="url" value="ViewProdSugIframe?id_prod={id_prod}">
+                          <input type="hidden" name="action" value="agregar">
+                          <input type="hidden" name="id_producto" value="{id_prod}">
+                          <input type="hidden" name="id_producto_sug" value="">
+                          <table width="51%"  border="0" align="center" cellpadding="0" cellspacing="2">
+                            <tr>
+                              <td width="42%">C&oacute;d Producto Item </td>
+                              <td width="33%">Tipo Relaci&oacute;n </td>
+                              <td width="25%">&nbsp;</td>
+                            </tr>
+                            <tr>
+                              <td><input name="id_prod" type="text" size="20" maxlength="9">
+                                <a href="javascript:abre_popup1();"><img src="img/magnify.jpg" width="16" height="16" border="0"></a>                              </td>
+                              <td><select name="direccion">
+                                  <option value="U" selected>A =&gt; B</option>
+                                  <option value="B">A &lt;=&gt; B</option>
+                                </select>
+                                <img src="img/hint.gif" width="16" height="16"></td>
+                              <td><input name="Button" type="button" class="cmd" value="Agregar" onClick="javascript:agrega_sug(frmModSug)"></td>
+                            </tr>
+                          </table>
+                          <br>
+                          <table width="459" border="0" align="center" cellpadding="2" cellspacing="0" class="tabla2">
+                            <tr>
+                              <th width="74">Cod Suger </th>
+                              <th width="225"><div align="left">Descripci&oacute;n</div></th>
+                              <th width="100"><div align="left">Direcci&oacute;n</div></th>
+                              <th width="48"><div align="left">Sel</div></th>
+                            </tr>
+                          </table>
+                          <CENTER><IFRAME SRC="ViewProdSugIframe?id_prod={id_prod}" NAME="prodsug" HEIGHT="194" WIDTH="459" border=0 > 
+							</IFRAME></CENTER>
+                          </form>
+                          <br>
+                          <script>document.frmModSug.id_prod.onkeypress = KeyIsSoloNum;</script>                          
+                      </div>
+                    </div>
+			
+                    <div class="tab-page" id="modulo6">
+                      <h2 class="tab">Log</h2>
+                        <div align="left"> <strong>Log del Producto </strong><br />
+                          <br>
+                          <form name="frmLog" method=post action="ViewProdLogIframe"  target="prodlog">
+                          <input type="hidden" name="id_prod" value="{id_prod}">
+                          <table width="669" border="0" align="center" cellpadding="2" cellspacing="0" >
+                          <tr>
+                          <td><input name="Button" type="button" class="cmd" value="Actualizar" onClick="javascript:mostrar_log(frmLog)"></td>
+                          </tr>
+                          </table>
+                          <table width="669" border="0" align="center" cellpadding="2" cellspacing="0" class="tabla2">
+                            <tr>
+                              <th width="145">Fecha </th>
+                              <th width="84"><div align="left">Usuario</div></th>
+                              <th width="309">Descripci&oacute;n</th>
+                            </tr>
+                          </table>
+                          <CENTER><IFRAME SRC="ViewProdLogIframe?id_prod={id_prod}" NAME="prodlog" HEIGHT="194" WIDTH="669" border=0 > 
+							</IFRAME></CENTER>
+                          <br>
+                          <br>
+                          <br>
+                      </div>
+                    </div>
+					
+                    </div></td>
+              </tr>
+            </table>
+              <div align="center"><br>
+                <br>
+                <br>
+                <br>
+              </div>
+              {mns}
+          <!-- InstanceEndEditable --></td>
+        </tr>
+      </table>
+      </td>
+  </tr>
+  <tr>
+    <td>
+	<TABLE width="100%" height=19 border=0 align="center" cellpadding="0" cellspacing="0" bgcolor="#f1f0e9" style="border-top:1px solid #ABABAB; border-bottom:1px solid #ABABAB">
+	  <TR>
+		<TD align=center bgcolor="#67b01a" class=infoBL><div align="center">Back Office Central - Jumbo.cl</div></TD>
+		</TR>
+	</TABLE>
+
+	
+	</td>
+  </tr>
+</table>
+</body>
+<!-- InstanceEnd --></html>

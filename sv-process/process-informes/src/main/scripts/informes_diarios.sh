@@ -1,0 +1,2 @@
+cd /home/was/programas_consolas/informes/bin
+nohup java -Xmx128m -Djava.ext.dirs=/home/was/programas_consolas/informes/lib:/home/was/programas_consolas/informes/bin cl.cencosud.informes.diario.InformesDiarios & >> logsDiarios.txt

@@ -1,0 +1,530 @@
+<script type="text/javascript">
+	jQuery().ready(
+		function() {
+			var display ="{display_calendario_despacho}";
+			var action  = "/FO/DespachosDisponibles";	
+			if(display == 'block'){
+				getOfficesAvailable('INIT_ML');
+			}
+			
+			$j('#x1').click(function(e) {
+				$j('.boton_bloque').css('background-position', '0 0');
+				$j('.boton_lista').css('background-position', '0 -20px');
+	    		if ($j(this).hasClass('boton_bloque')) {
+	        		$j('#lista_productos ul').removeClass('list').addClass('grid');
+	        		XHORIZONTAL=0;
+					$j('#lista_productos ul').each( function(index, row) {
+		       			 $j(row).children('li').children('div').removeClass('modulo_producto_horizontal').addClass('modulo_producto_vertical');
+		        	  	 $j(row).children('li').children('div').children('.modulo_precio_h').removeClass('modulo_precio_h').addClass('modulo_precio_v');
+		        		 $j(row).children('li').children('div').children('.modulo_descripcion_h').removeClass('modulo_descripcion_h').addClass('modulo_descripcion_v');
+		        		 $j(row).children('li').children('div').children('.modulo_foto_130_h').removeClass('modulo_foto_130_h').addClass('modulo_foto_130_v');
+		        		 $j(row).children('li').children('div').children('.icono_notas_h').removeClass('icono_notas_h').addClass('icono_notas_v');
+		        		 $j(row).children('li').children('div').children('.modulo_cantidad_h').removeClass('modulo_cantidad_h').addClass('modulo_cantidad_v');
+		        		 $j(row).children('li').children('div').children('.modulo_foto_130_v').children('img').width('130px');
+		                 $j(row).children('li').children('div').children('.modulo_foto_130_v').children('img').height('130px');
+		                 $j(row).children('li').children('div').children('.modulo_foto_130_v').children('.promo_h').removeClass('promo_h').addClass('promo_v');
+//		        		 $j(row).children('li').children('div').children('.modulo_foto_130_v').children('.promo_v').children('img').width('50px');
+//		                 $j(row).children('li').children('div').children('.modulo_foto_130_v').children('.promo_v').children('img').height('50px');
+			        });
+	        
+	    }
+	    else if($j(this).hasClass('boton_lista')) {
+	        $j('#lista_productos ul').removeClass('grid').addClass('list');
+	        XHORIZONTAL=1;
+			$j('#lista_productos ul').each( function(index, row) {
+		        $j(row).children('li').children('div').removeClass('modulo_producto_vertical').addClass('modulo_producto_horizontal');
+		        $j(row).children('li').children('div').children('.modulo_precio_v').removeClass('modulo_precio_v').addClass('modulo_precio_h');
+		        $j(row).children('li').children('div').children('.modulo_descripcion_v').removeClass('modulo_descripcion_v').addClass('modulo_descripcion_h');
+		        $j(row).children('li').children('div').children('.modulo_foto_130_v').removeClass('modulo_foto_130_v').addClass('modulo_foto_130_h');
+		        $j(row).children('li').children('div').children('.icono_notas_v').removeClass('icono_notas_v').addClass('icono_notas_h');
+		        $j(row).children('li').children('div').children('.modulo_cantidad_v').removeClass('modulo_cantidad_v').addClass('modulo_cantidad_h');
+		        $j(row).children('li').children('div').children('.modulo_foto_130_h').children('img').width('100px');
+		        $j(row).children('li').children('div').children('.modulo_foto_130_h').children('img').height('100px');
+		        $j(row).children('li').children('div').children('.modulo_foto_130_h').children('.promo_v').removeClass('promo_v').addClass('promo_h');
+//		        $j(row).children('li').children('div').children('.modulo_foto_130_h').children('.promo_h').children('img').width('40px');
+//		        $j(row).children('li').children('div').children('.modulo_foto_130_h').children('.promo_h').children('img').height('40px');
+			        });
+	    }
+	});
+	
+	$j('#x2').click(function(e) {
+		$j('.boton_bloque').css('background-position', '0 -20px');
+		$j('.boton_lista').css('background-position', '0 0');
+	    	if ($j(this).hasClass('boton_bloque')) {
+	        	$j('#lista_productos ul').removeClass('list').addClass('grid');
+	        	XHORIZONTAL=0;
+				$j('#lista_productos ul').each( function(index, row) {
+		        	$j(row).children('li').children('div').removeClass('modulo_producto_horizontal').addClass('modulo_producto_vertical');
+		        	$j(row).children('li').children('div').children('.modulo_precio_h').removeClass('modulo_precio_h').addClass('modulo_precio_v');
+		        	$j(row).children('li').children('div').children('.modulo_descripcion_h').removeClass('modulo_descripcion_h').addClass('modulo_descripcion_v');
+		        	$j(row).children('li').children('div').children('.modulo_foto_130_h').removeClass('modulo_foto_130_h').addClass('modulo_foto_130_v');
+		        	$j(row).children('li').children('div').children('.icono_notas_h').removeClass('icono_notas_h').addClass('icono_notas_v');
+		        	$j(row).children('li').children('div').children('.modulo_cantidad_h').removeClass('modulo_cantidad_h').addClass('modulo_cantidad_v');
+		        	$j(row).children('li').children('div').children('.modulo_foto_130_v').children('img').width('130px');
+		        	$j(row).children('li').children('div').children('.modulo_foto_130_v').children('img').height('130px');
+		        	$j(row).children('li').children('div').children('.modulo_foto_130_v').children('.promo_h').removeClass('promo_h').addClass('promo_v');
+//		        	$j(row).children('li').children('div').children('.modulo_foto_130_v').children('.promo_v').children('img').width('50px');
+//		        	$j(row).children('li').children('div').children('.modulo_foto_130_v').children('.promo_v').children('img').height('50px');
+			   });
+	      }
+	    	else if($j(this).hasClass('boton_lista')) {
+	        	$j('#lista_productos ul').removeClass('grid').addClass('list');
+	        	XHORIZONTAL=1;
+				$j('#lista_productos ul').each( function(index, row) {
+		    		$j(row).children('li').children('div').removeClass('modulo_producto_vertical').addClass('modulo_producto_horizontal');
+		        	$j(row).children('li').children('div').children('.modulo_precio_v').removeClass('modulo_precio_v').addClass('modulo_precio_h');
+		        	$j(row).children('li').children('div').children('.modulo_descripcion_v').removeClass('modulo_descripcion_v').addClass('modulo_descripcion_h');
+		        	$j(row).children('li').children('div').children('.modulo_foto_130_v').removeClass('modulo_foto_130_v').addClass('modulo_foto_130_h');
+		        	$j(row).children('li').children('div').children('.icono_notas_v').removeClass('icono_notas_v').addClass('icono_notas_h');
+		        	$j(row).children('li').children('div').children('.modulo_cantidad_v').removeClass('modulo_cantidad_v').addClass('modulo_cantidad_h');
+		       		$j(row).children('li').children('div').children('.modulo_foto_130_h').children('img').width('100px');
+		      		$j(row).children('li').children('div').children('.modulo_foto_130_h').children('img').height('100px');
+		       		$j(row).children('li').children('div').children('.modulo_foto_130_h').children('.promo_v').removeClass('promo_v').addClass('promo_h');
+//		        	$j(row).children('li').children('div').children('.modulo_foto_130_h').children('.promo_h').children('img').width('40px');
+//		        	$j(row).children('li').children('div').children('.modulo_foto_130_h').children('.promo_h').children('img').height('40px');
+				});
+	   		}
+		 });
+		}
+	);
+</script>
+
+
+<!-- DESPACHOS DISPONIBLES !!! -->
+<div id="contenedor_lightbox_DP"  style="display:{display_calendario_despacho};" >
+	<div id="cont_cabecera_DP"><img src="/FO_IMGS/img/estructura/banner_contraer_despacho.jpg" border="0" alt="Cerrar" onclick="javascript:getOfficesAvailable('HIDE_ML')"/></div>
+	<div id="contenido_DP"></div>
+</div>  
+						
+<!-- FIN DESPACHOS DISPONIBLES !!! -->	
+
+<!-- BEGIN DYNAMIC: RESULTADO -->
+<input type="hidden" id="ultima_accion" name="ultima_accion" value="{ultima_accion}" />
+<!-- <div id="banner_subcat"><img id="img_banner_subcat" border="0px" src="/FO_IMGS/img/1x1trans.gif" onerror="this.src=get_banner();"></div>-->
+<!-- <div id="div_titulo"><p><label id="cat" class="tituloNaranjo">{categoria_nombre} / {subcategoria_nombre}</label></p><br /></div>-->
+<div id="resultado">
+  <!-- BEGIN DYNAMIC: SUGERENCIAS -->
+  <div id="div_sugerencias" class="lectura">
+    <input type="hidden" id="sugerencias" name="sugerencias" value="{sugerencias}" />
+    <label for="sugerencias">Sugerencias: </label>
+    <!-- BEGIN DYNAMIC: PALABRAS -->
+    <A href="#" id="linksug">{palabra}</A>
+    <!-- END DYNAMIC: PALABRAS -->
+    <br/><br/>
+  </div>
+  <!-- END DYNAMIC: SUGERENCIAS -->
+
+	<div class="col_mail_central"   style="border:0px #000000 solid">
+		<!------------------------------ barra de busqueda --------------------------------->
+		<div id="banner_b"></div>
+				<div id="banner_subcat"><img id="img_banner_subcat" border="0px" src="/FO_IMGS/img/1x1trans.gif" onerror="this.src=get_banner();"></div>
+<!--  	  <div class="banner_top_categorias"><div id="banner_subcat"><img id="img_banner_subcat" border="0px" src="/FO_IMGS/img/1x1trans.gif" onerror="this.src=get_banner();"></div></div>-->
+<!-- 	  <div id="filtros" class="lectura">Se encontraron {total_encontrados} resultados para su b&uacute;squeda.<br/>-->
+		<!-- DIV PARA CHAORDIC -->
+		<div style="clear: both" chaordic="middle"> </div>
+		<!-- FIN DIV PARA CHAORDIC -->
+		<div class="barra_filtros_terminal">
+		  <table  width="100%" style="border:0px green solid">
+				<tr>
+					<td>
+						<table width="100%" cellpadding="5" cellspacing="5">
+							<tr>
+								<td height="28px" class="modulo_buscar_por" style="vertical-align: middle;">
+								<span style="float:left;border:0px red solid;margin:2px ">
+									<label class="modulo_buscar_por" for="marca">Marca: </label>
+				          <select id="marca" class="estilo_select" style="vertical-align: middle;">
+				            <!-- BEGIN DYNAMIC: MARCAS -->
+				            <option value="{id}" {selected}>{value}</option>
+				            <!-- END DYNAMIC: MARCAS -->
+				          </select>
+				          &nbsp;
+				          <label class="modulo_buscar_por" for="ordenar_por">Ordenar por: </label>
+				          <select id="ordenar_por" class="estilo_select" style="vertical-align: middle;">
+				            <!-- BEGIN DYNAMIC: ORDENAR_POR -->
+				            <option value="{id}" {selected}>{value}</option>
+				            <!-- END DYNAMIC: ORDENAR_POR -->
+				          </select>
+				          &nbsp;
+				          </span>
+					        <table cellpadding="0" cellspacing="0" style="border:0px green solid;float:right;">
+						        <tr>
+						          <td width="34%" class="modulo_buscar_por">Ver como:</td>
+						          <td width="33%" class="modulo_buscar_por"><a id="x1" class="boton_bloque" href="#"></a></td>
+						          <td width="33%" class="modulo_buscar_por"><a id="x2" class="boton_lista" href="#"></a></td>
+						        </tr>
+					        </table>
+					      </td>
+					    </tr>
+					  </table>
+					</td>
+				</tr>
+				<tr>
+					<td height="30px">
+						<table width="100%" cellpadding="0" cellspacing="1"   style="border:0px #000000 solid">
+					    <tr>
+								<td align="left" valign="middle" class="modulo_buscar_por" width="26%" style="border:0px #000000 solid">
+									<div class="info_text" ></div>
+						    </td>
+						    <td align="center"   width="45%" style="border:0px #000000 solid;text-align: center;">
+			 			    	<div class="page_navigation" ></div>
+						    </td>
+						    <td  align="right"  class="modulo_buscar_por"  width="29%" style="border:0px #000000 solid">
+									<div style="border:0px #000000 solid">Productos por p&aacute;gina: <a href="#" class="cantidad_por_pagina" id="a30">30</a> <a href="#" class="cantidad_por_pagina" id="a60">60</a> <a href="#" class="cantidad_por_pagina" id="a90">90</a></div>
+								</td>
+					    </tr>
+						</table>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<!----------------------- FIN barra de busqueda --------------------------------->
+
+		<!------------------------------ info --------------------------------->
+		<div id="lista_productos" class="modulo_grilla_fila">
+			<table id="tabla_productos" cellpadding="0" cellspacing="0" width="100%"  style="border:0px violet solid">
+				<tbody>
+					<tr>
+						<td style="border:0px #000000 solid">
+							<ul class="grid">
+								<!-- BEGIN DYNAMIC: PRODUCTOS -->								
+								<li style="border:0px red solid">
+									<div class="modulo_producto_vertical">
+							      <!-- campo1 -->
+							      <div class="modulo_foto_130_v"  style="border:0px #000000 solid">
+										<!-- 130 -->				
+										<!-- 				<img src="/FO_IMGS/ch/{imagen_chica}" width="130" height="130" onerror="this.src='/FO_IMGS/img/ch/fotopreparacion-chica.gif'" id="img_{pro_id}" onmouseover="javascript:top.desplegar_imagen('/FO_IMGS/gr/{imagen_chica}',this);" onmouseout="javascript:top.esconder_imagen();"/>-->
+										<img src="/FO_IMGS/gr/{imagen_chica}" width="130" height="130" onerror="this.src='/FO_IMGS/img/gr/fotopreparacion.gif'" id="img_{pro_id}" alt="{tipo} {marca}" style="width: 130px; height: 130px;"/>
+										<!-- BEGIN DYNAMIC: CON_PROMOCION -->
+										<div class="promo_v"><img src="/FO_IMGS/img/promociones/{promo_img}" width="40" height="41" onError="this.src='/FO_IMGS/img/promociones/promocion.gif'"/></div>
+										<!-- END DYNAMIC: CON_PROMOCION -->
+							      </div>
+							      <!-- campo2 -->
+										<div class="modulo_descripcion_v" style="border:0px #000000 solid">
+											<div class="txt_marca_h"  style="border:0px #000000 solid">{marca}</div>
+											<div class="txt_nombre_h"  style="border:0px #000000 solid">
+												<a id="ficha" href="javascript:ficha({id}, 2);" title="{tipo} {marca}"><b>{tipo}</b> <br/> {descripcion}</a> 
+											</div>
+											<!-- BEGIN DYNAMIC: CON_PROMOCION -->
+											<div class="txt_promo_h"  style="border:1px white solid"><!-- bug firefox 6-10, para solucionarlo se pinta borde blanco -->
+												<table id="x3" style="border:0px red solid" width="100%">
+													<tr>
+														<td style="text-align: center;border:0px black solid">
+															<span class="Marca" style="color:{promo_color_banner}">{promo_desc}</span> 
+														</td>
+<!-- 														<td width="60%" valign="center" style="text-align: left;border:0px black solid"">
+															<img src="/FO_IMGS/img/promociones/{promo_img}" border="0" onerror="this.src='/FO_IMGS/img/promociones/promocion.gif'" />
+														</td>
+-->													</tr>
+												</table>
+											</div>
+											<!-- END DYNAMIC: CON_PROMOCION -->
+											<!-- BEGIN DYNAMIC: DESTACADO -->
+<!-- 											<div class="txt_promo_h"  style="border:1px white solid"><!-- bug firefox 6-10, para solucionarlo se pinta borde blanco 
+												<table id="x3" style="border:0px red solid" width="100%">
+													<tr>
+														<td width="40%" valign="center" style="text-align: right;border:0px black solid">
+															<span class="Marca">{destacado_descripcion}</span> 
+														</td>
+														<td width="60%" valign="center" style="text-align: left;border:0px black solid"">
+															<img src="/FO_IMGS/img/destacados/{destacado_imagen}" border="0" onerror="this.src='/FO_IMGS/img/destacados/destacado.jpg'" />
+														</td>
+													</tr>
+												</table>
+											</div>-->
+											<!-- END DYNAMIC: DESTACADO -->
+							      </div>
+						        <!-- campo3 -->
+										<div class="modulo_precio_v" style="border:0px #000000 solid">
+											<div class="txt_precio_h" style="border:0px #000000 solid">{precio}</div>
+											<div class="txt_precio_medida_h" style="border:0px #000000 solid">{precio_por_unidad}</div>
+							      </div>
+						        <!-- campo4 -->
+										<div class="modulo_cantidad_v" style="border:0px #000000 solid">
+											<div class="form_cantidad" style="border:0px brown solid">
+												<div>
+													<form id="form2" name="form2" method="post" action="">	
+													<input id="cab_nom" value="{cabecera_nombreTA}" type="hidden" />
+														<input id="cat_nom" value="{categoria_nombreTA}" type="hidden" />
+														<input id="subcat_nom" value="{subcategoria_nombreTA}" type="hidden" />
+																										
+														<input class="form_cantidad_style" id="cantidad_{id}" value="{cantidad}" type="text" class="cc" size="4" maxlength="4" />
+														<input id="min_cantidad_{id}" value="{cantidad_minima}" type="hidden" />
+														<input id="max_cantidad_{id}" value="{cantidad_maxima}" type="hidden" />
+													</form>
+												</div> 
+												<div class="modulo_mas_menos">
+													<div class="modulo_agregar_mas"><a href="#" id=arriba_cantidad_{id}><img src="/FO_IMGS/img/estructura/paso2/btn_aumentar.jpg" width="27" height="22" border="0" /></a></div>
+													<div class="modulo_quitar_menos"><a href="#" id=abajo_cantidad_{id}><img src="/FO_IMGS/img/estructura/paso2/btn_disminuir.jpg" width="27" height="22" border="0" /></a></div>
+												</div>
+											</div>
+											<div style="text-align: center;border:0px brown solid">
+						            <!-- BEGIN DYNAMIC: IMG_AGREGAR -->
+						            <a id="agregar_{productoId}" href="javascript:;"><img name="imagen_{productoId}" id="imagen_{productoId}" src="/FO_IMGS/img/estructura/paso2/bt_agregar_carro.gif" alt="agregar o quitar unidades" border="0"  width="58" height="22" /></a>
+						            <!-- END DYNAMIC: IMG_AGREGAR -->
+						            <!-- BEGIN DYNAMIC: IMG_MODIFICAR -->
+						            <a id="modificar_{productoId}" href="javascript:;"><img name="imagen_{productoId}" id="imagen_{productoId}" src="/FO_IMGS/img/estructura/paso2/bt_actualizar_carro.gif" alt="agregar o quitar unidades" border="0"  width="58" height="22"/></a>
+						            <!-- END DYNAMIC: IMG_MODIFICAR -->
+											  <!-- BEGIN DYNAMIC: IMG_SINSTOCK -->
+											  <img src="/FO_IMGS/img/estructura/paso2/sinstock.gif" width="28" height="28" alt="Producto sin Stock" border="0"  />
+											  <!-- END DYNAMIC: IMG_SINSTOCK -->
+											</div>
+							      </div>
+							      
+							    </div>
+								</li>
+								<!-- END DYNAMIC: PRODUCTOS -->
+					    </ul>
+				    </td>
+			    </tr>
+				</tbody>
+	    </table>
+    </div>
+		<!--------------------------- FIN info --------------------------------->
+
+		<div class="barra_filtros_terminal" style="padding-bottom: 10px;">
+			<table width="100%" cellpadding="0" cellspacing="1"   style="border:0px red solid">
+				<tr>
+			    <td align="left" valign="middle" class="modulo_buscar_por" width="26%" style="border:0px #000000 solid">
+						<div class="info_text" >
+			    </td>
+			    <td align="center"   width="45%" style="border:0px #000000 solid;text-align: center;">
+ 			    	<div class="page_navigation" ></div>
+			    </td>
+			    <td  align="right"  class="modulo_buscar_por"  width="29%" style="border:0px #000000 solid">
+									<div style="border:0px #000000 solid">Productos por p&aacute;gina: <a href="#" class="cantidad_por_pagina" id="b30">30</a> <a href="#" class="cantidad_por_pagina" id="b60">60</a> <a href="#" class="cantidad_por_pagina" id="b90">90</a></div>
+			    </td>
+		    </tr>
+			</table>
+		</div>
+	</div>
+</div>
+ <div id="nomb_cate" style="visibility: hidden;">{categoria_nombre} / {subcategoria_nombre}</div>
+
+  <script type="text/javascript">
+  
+  			$j(document).ready(
+				function(){
+					var ancho = $j("div#div_productos").width();
+					if("{banner}" != "") {
+						if( ancho <= 611) {
+							$j("img#img_banner_subcat").width(ancho - 40 );
+						}
+						$j("img#img_banner_subcat").attr("src", "/FO_IMGS/bn/1024/{banner}");
+						if("{url_banner}" != "") {
+							
+							$j("img#img_banner_subcat").css("cursor","pointer"); 
+							$j("img#img_banner_subcat").attr("title","{url_banner}"); 
+							
+							var trackBannerImagen="{banner}";
+							var trackBanner ="try{mxTracker._trackPromo('"+trackBannerImagen+"',this,event);}catch(e){}";
+							
+							var link = "<a href=\"{url_banner}\" title=\"{url_banner}\" target=\"_self\" onclick=\""+trackBanner+"\"/>";
+							$j("img#img_banner_subcat").wrap(link);
+							
+							//no realiza traking en todos los navegadores.
+							/*$j("img#img_banner_subcat").click(function(e){
+								
+								try { 
+									mxTracker._trackPromo('{banner}');
+									location.href="{url_banner}";
+								} catch(err) {
+									if(mxTracker ==  null){					 
+										location.href="{url_banner}";
+									}
+								}
+							});*/
+					
+						}
+					} else {
+						var activa_banner_dafault="{activa_banner_dafault}";
+						var nombre_banner_dafault="{nombre_banner_dafault}";
+						var url_banner_dafault="{url_banner_dafault}";
+						var title_banner_dafault="{title_banner_dafault}";
+						var target_banner_dafault="{target_banner_dafault}";
+						var mxTracker_banner_dafault="{mxTracker_banner_dafault}";
+						
+						if(activa_banner_dafault == "1"){
+							var bn="/FO_IMGS/img/bn_busqueda/"+nombre_banner_dafault;
+							$j("img#img_banner_subcat").attr("src", bn);
+							
+							if(url_banner_dafault != "#"){	
+								var link="<a href='"+url_banner_dafault+"' title='"+title_banner_dafault+"' target='"+target_banner_dafault+"''/>";							
+								$j("img#img_banner_subcat").wrap(link);
+							
+							
+								if(mxTracker_banner_dafault =="1"){
+									$j("img#img_banner_subcat").click(function(e){
+										try {mxTracker._trackPromo(bn,this,event);} catch(err) {}
+									});
+								}
+							}
+						}						
+
+					}
+				}
+			);
+
+ 			$j(document).ready(function(){
+				$j('#resultado').pajinate({
+					items_per_page : XITEMSXPAGINA,
+					item_container_id : '.' + $j('table#tabla_productos tbody tr td ul').attr('class'),
+					nav_label_first : '<<',
+					nav_label_last : '>>',
+					nav_label_prev : '<',
+					nav_label_next : '>',
+					num_page_links_to_display: 5
+				});
+			});	
+			$j('#a' + XITEMSXPAGINA).css('font-weight', 'bold');
+			$j('#b' + XITEMSXPAGINA).css('font-weight', 'bold');
+			
+			
+			if(XHORIZONTAL==1){
+			$j('.boton_bloque').css('background-position', '0 -20px');
+			$j('.boton_lista').css('background-position', '0 0');
+	        $j('#lista_productos ul').removeClass('grid').addClass('list');
+			$j('#lista_productos ul').each( function(index, row) {
+		        $j(row).children('li').children('div').removeClass('modulo_producto_vertical').addClass('modulo_producto_horizontal');
+		        $j(row).children('li').children('div').children('.modulo_precio_v').removeClass('modulo_precio_v').addClass('modulo_precio_h');
+		        $j(row).children('li').children('div').children('.modulo_descripcion_v').removeClass('modulo_descripcion_v').addClass('modulo_descripcion_h');
+		        $j(row).children('li').children('div').children('.modulo_foto_130_v').removeClass('modulo_foto_130_v').addClass('modulo_foto_130_h');
+		        $j(row).children('li').children('div').children('.icono_notas_v').removeClass('icono_notas_v').addClass('icono_notas_h');
+		        $j(row).children('li').children('div').children('.modulo_cantidad_v').removeClass('modulo_cantidad_v').addClass('modulo_cantidad_h');
+		        $j(row).children('li').children('div').children('.modulo_foto_130_h').children('img').width('100px');
+		        $j(row).children('li').children('div').children('.modulo_foto_130_h').children('img').height('100px');
+		        $j(row).children('li').children('div').children('.modulo_foto_130_h').children('.promo_v').removeClass('promo_v').addClass('promo_h');
+//		        $j(row).children('li').children('div').children('.modulo_foto_130_h').children('.promo_h').children('img').width('40px');
+//		        $j(row).children('li').children('div').children('.modulo_foto_130_h').children('.promo_h').children('img').height('40px');
+			        });
+
+			}
+		else{
+			$j('.boton_bloque').css('background-position', '0 0');
+			$j('.boton_lista').css('background-position', '0 -20px');
+	        $j('#lista_productos ul').removeClass('list').addClass('grid');
+			$j('#lista_productos ul').each( function(index, row) {
+		        $j(row).children('li').children('div').removeClass('modulo_producto_horizontal').addClass('modulo_producto_vertical');
+		        $j(row).children('li').children('div').children('.modulo_precio_h').removeClass('modulo_precio_h').addClass('modulo_precio_v');
+		        $j(row).children('li').children('div').children('.modulo_descripcion_h').removeClass('modulo_descripcion_h').addClass('modulo_descripcion_v');
+		        $j(row).children('li').children('div').children('.modulo_foto_130_h').removeClass('modulo_foto_130_h').addClass('modulo_foto_130_v');
+		        $j(row).children('li').children('div').children('.icono_notas_h').removeClass('icono_notas_h').addClass('icono_notas_v');
+		        $j(row).children('li').children('div').children('.modulo_cantidad_h').removeClass('modulo_cantidad_h').addClass('modulo_cantidad_v');
+		        $j(row).children('li').children('div').children('.modulo_foto_130_v').children('img').width('130px');
+		        $j(row).children('li').children('div').children('.modulo_foto_130_v').children('img').height('130px');
+		        $j(row).children('li').children('div').children('.modulo_foto_130_v').children('.promo_h').removeClass('promo_h').addClass('promo_v');
+//		        $j(row).children('li').children('div').children('.modulo_foto_130_v').children('.promo_v').children('img').width('50px');
+//		        $j(row).children('li').children('div').children('.modulo_foto_130_v').children('.promo_v').children('img').height('50px');
+			        });
+		}
+			
+    
+	/* $j('#x1').click(function(e) {
+			$j('.boton_bloque').css('background-position', '0 0');
+			$j('.boton_lista').css('background-position', '0 -20px');
+	    if ($j(this).hasClass('boton_bloque')) {
+	        $j('#lista_productos ul').removeClass('list').addClass('grid');
+	        XHORIZONTAL=0;
+			$j('#lista_productos ul').each( function(index, row) {
+		        $j(row).children('li').children('div').removeClass('modulo_producto_horizontal').addClass('modulo_producto_vertical');
+		        $j(row).children('li').children('div').children('.modulo_precio_h').removeClass('modulo_precio_h').addClass('modulo_precio_v');
+		        $j(row).children('li').children('div').children('.modulo_descripcion_h').removeClass('modulo_descripcion_h').addClass('modulo_descripcion_v');
+		        $j(row).children('li').children('div').children('.modulo_foto_130_h').removeClass('modulo_foto_130_h').addClass('modulo_foto_130_v');
+		        $j(row).children('li').children('div').children('.icono_notas_h').removeClass('icono_notas_h').addClass('icono_notas_v');
+		        $j(row).children('li').children('div').children('.modulo_cantidad_h').removeClass('modulo_cantidad_h').addClass('modulo_cantidad_v');
+		        $j(row).children('li').children('div').children('.modulo_foto_130_v').children('img').width('130px');
+		        $j(row).children('li').children('div').children('.modulo_foto_130_v').children('img').height('130px');
+		        $j(row).children('li').children('div').children('.modulo_foto_130_v').children('.promo_h').removeClass('promo_h').addClass('promo_v');
+//		        $j(row).children('li').children('div').children('.modulo_foto_130_v').children('.promo_v').children('img').width('50px');
+//		        $j(row).children('li').children('div').children('.modulo_foto_130_v').children('.promo_v').children('img').height('50px');
+			        });
+	        
+	    }
+	    else if($j(this).hasClass('boton_lista')) {
+	        $j('#lista_productos ul').removeClass('grid').addClass('list');
+	        XHORIZONTAL=1;
+			$j('#lista_productos ul').each( function(index, row) {
+		        $j(row).children('li').children('div').removeClass('modulo_producto_vertical').addClass('modulo_producto_horizontal');
+		        $j(row).children('li').children('div').children('.modulo_precio_v').removeClass('modulo_precio_v').addClass('modulo_precio_h');
+		        $j(row).children('li').children('div').children('.modulo_descripcion_v').removeClass('modulo_descripcion_v').addClass('modulo_descripcion_h');
+		        $j(row).children('li').children('div').children('.modulo_foto_130_v').removeClass('modulo_foto_130_v').addClass('modulo_foto_130_h');
+		        $j(row).children('li').children('div').children('.icono_notas_v').removeClass('icono_notas_v').addClass('icono_notas_h');
+		        $j(row).children('li').children('div').children('.modulo_cantidad_v').removeClass('modulo_cantidad_v').addClass('modulo_cantidad_h');
+		        $j(row).children('li').children('div').children('.modulo_foto_130_h').children('img').width('100px');
+		        $j(row).children('li').children('div').children('.modulo_foto_130_h').children('img').height('100px');
+		        $j(row).children('li').children('div').children('.modulo_foto_130_h').children('.promo_v').removeClass('promo_v').addClass('promo_h');
+//		        $j(row).children('li').children('div').children('.modulo_foto_130_h').children('.promo_h').children('img').width('40px');
+//		        $j(row).children('li').children('div').children('.modulo_foto_130_h').children('.promo_h').children('img').height('40px');
+			        });
+	    }
+	});
+	$j('#x2').click(function(e) {
+			$j('.boton_bloque').css('background-position', '0 -20px');
+			$j('.boton_lista').css('background-position', '0 0');
+	    if ($j(this).hasClass('boton_bloque')) {
+	        $j('#lista_productos ul').removeClass('list').addClass('grid');
+	        XHORIZONTAL=0;
+			$j('#lista_productos ul').each( function(index, row) {
+		        $j(row).children('li').children('div').removeClass('modulo_producto_horizontal').addClass('modulo_producto_vertical');
+		        $j(row).children('li').children('div').children('.modulo_precio_h').removeClass('modulo_precio_h').addClass('modulo_precio_v');
+		        $j(row).children('li').children('div').children('.modulo_descripcion_h').removeClass('modulo_descripcion_h').addClass('modulo_descripcion_v');
+		        $j(row).children('li').children('div').children('.modulo_foto_130_h').removeClass('modulo_foto_130_h').addClass('modulo_foto_130_v');
+		        $j(row).children('li').children('div').children('.icono_notas_h').removeClass('icono_notas_h').addClass('icono_notas_v');
+		        $j(row).children('li').children('div').children('.modulo_cantidad_h').removeClass('modulo_cantidad_h').addClass('modulo_cantidad_v');
+		        $j(row).children('li').children('div').children('.modulo_foto_130_v').children('img').width('130px');
+		        $j(row).children('li').children('div').children('.modulo_foto_130_v').children('img').height('130px');
+		        $j(row).children('li').children('div').children('.modulo_foto_130_v').children('.promo_h').removeClass('promo_h').addClass('promo_v');
+//		        $j(row).children('li').children('div').children('.modulo_foto_130_v').children('.promo_v').children('img').width('50px');
+//		        $j(row).children('li').children('div').children('.modulo_foto_130_v').children('.promo_v').children('img').height('50px');
+			        });
+	    }
+	    else if($j(this).hasClass('boton_lista')) {
+	        $j('#lista_productos ul').removeClass('grid').addClass('list');
+	        XHORIZONTAL=1;
+			$j('#lista_productos ul').each( function(index, row) {
+		        $j(row).children('li').children('div').removeClass('modulo_producto_vertical').addClass('modulo_producto_horizontal');
+		        $j(row).children('li').children('div').children('.modulo_precio_v').removeClass('modulo_precio_v').addClass('modulo_precio_h');
+		        $j(row).children('li').children('div').children('.modulo_descripcion_v').removeClass('modulo_descripcion_v').addClass('modulo_descripcion_h');
+		        $j(row).children('li').children('div').children('.modulo_foto_130_v').removeClass('modulo_foto_130_v').addClass('modulo_foto_130_h');
+		        $j(row).children('li').children('div').children('.icono_notas_v').removeClass('icono_notas_v').addClass('icono_notas_h');
+		        $j(row).children('li').children('div').children('.modulo_cantidad_v').removeClass('modulo_cantidad_v').addClass('modulo_cantidad_h');
+		        $j(row).children('li').children('div').children('.modulo_foto_130_h').children('img').width('100px');
+		        $j(row).children('li').children('div').children('.modulo_foto_130_h').children('img').height('100px');
+		        $j(row).children('li').children('div').children('.modulo_foto_130_h').children('.promo_v').removeClass('promo_v').addClass('promo_h');
+//		        $j(row).children('li').children('div').children('.modulo_foto_130_h').children('.promo_h').children('img').width('40px');
+//		        $j(row).children('li').children('div').children('.modulo_foto_130_h').children('.promo_h').children('img').height('40px');
+			        });
+	    }
+	}); */
+    
+	$j('.cantidad_por_pagina').click(function(e) {
+		$j('.cantidad_por_pagina').css('font-weight', 'normal');
+		$j('#a' + $j(this).text()).css('font-weight', 'bold');
+		$j('#b' + $j(this).text()).css('font-weight', 'bold');
+		cantidadPorPagina($j(this).text());
+	});
+	
+    if ("{ultima_accion}" == "buscar") {
+	      if ("{total_encontrados}" == "0"){
+	      	try {
+	      	    mxTracker._trackContent('/busqueda/sin_resultado/?patron={texto}/Pagina1','lista_productos');
+			} catch(err) {}
+		 }  
+	      else{
+	       		try {
+	       		    mxTracker._trackContent('/busqueda/con_resultado/?patron={texto}/Pagina1','lista_productos');
+			        } catch(err) {}
+	      }
+        
+    } else {
+      		try{
+					mxTracker._trackContent('{cabecera_nombre}/{categoria_nombre}/{subcategoria_nombre}/Pagina1','lista_productos');
+			} catch(e){};
+    }
+    function get_banner() {
+      $j("img#img_banner_subcat").width(1);
+      $j("img#img_banner_subcat").height(1);
+      return '/FO_IMGS/img/1x1trans.gif';
+    }
+  </script>
+<!-- END DYNAMIC: RESULTADO -->	
+	

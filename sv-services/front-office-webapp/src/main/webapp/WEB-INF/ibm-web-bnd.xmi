@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<webappbnd:WebAppBinding xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:webappbnd="webappbnd.xmi" xmi:id="WebAppBinding_1210191731145">
+  <webapp href="WEB-INF/web.xml#WebApp_ID"/>
+  <resRefBindings xmi:id="ResourceRefBinding_1210191731145" jndiName="jdbc/fodbaVE">
+    <bindingResourceRef href="WEB-INF/web.xml#ResourceRef_1176415568265"/>
+  </resRefBindings>
+  <resRefBindings xmi:id="ResourceRefBinding_1210191782396" jndiName="jdbc/vthdba">
+    <bindingResourceRef href="WEB-INF/web.xml#ResourceRef_1182976525296"/>
+  </resRefBindings>
+</webappbnd:WebAppBinding>

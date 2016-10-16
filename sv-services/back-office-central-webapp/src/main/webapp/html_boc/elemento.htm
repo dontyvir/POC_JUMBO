@@ -1,0 +1,239 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html><!-- InstanceBegin template="/Templates/fullbody.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="EXPIRES" CONTENT="Mon, 22 Jul 2002 11:12:01 GMT">
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>Jumbo.cl Back Office Central</title>
+<!-- InstanceEndEditable -->
+
+<!-- InstanceBeginEditable name="head" --><!-- InstanceEndEditable -->
+
+<link href="estilos.css" rel="stylesheet" type="text/css">
+<!--link href="../default.css" rel="stylesheet" type="text/css"-->
+<style type="text/css">
+<!--
+.style1 {color: #666666}
+-->
+</style>
+</head>
+
+<body>
+<link rel="stylesheet" href="menu/menu.css">
+<script language="JavaScript" src="menu/menu.js"></script>
+<script language="JavaScript" src="menu/menu_tpl.js"></script>
+<script language="JavaScript" src="menu/menu_items.js"></script>
+<script language="JavaScript" src="popup.js"></script>
+<script language="JavaScript" src="funciones.js"></script>
+<table width="780" height="100%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+    <td height="78" valign="top">
+	
+	<TABLE width="100%" height=59 border=0 align="center" cellpadding="0" cellspacing="0" bgcolor="#ffffff">
+	  <TR>
+		<TD width=275 height="59" align=left class=user><img src="img/header2.jpg" width="275" height="60"></TD>
+		<TD width=505 align=left valign="bottom" background="img/bg-1.jpg" class=user><table width="90%"  border="0" align="center" cellpadding="0" cellspacing="2">
+          <tr>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td><div align="right" class="infoBL">Usuario: {hdr_nombre}&nbsp;&nbsp;| {hdr_fecha}</div></td>
+          </tr>
+        </table></TD>
+	  </TR>
+	</TABLE>
+	<TABLE width="100%" height=19 border=0 align="center" cellpadding="0" cellspacing="0" bgcolor="#f1f0e9" style="border-top:1px solid #ABABAB; border-bottom:1px solid #ABABAB">
+	  <TR>
+		<TD align=left bgcolor="#FFFFFF" class=user></TD>
+		</TR>
+	</TABLE>
+
+	
+	</td>
+  </tr>
+  <tr height="400">
+    <td valign="top" bgcolor="#FFFFFF">
+      <table border=0 width="100%" class='ContentTitle'>
+        <tr>
+          <td width="53%" height="20" class='HeaderTitle'><!-- InstanceBeginEditable name="Titulo" -->
+				  Administraci&oacute;n de Elemento<!-- InstanceEndEditable --></td>
+          <td width="47%" class='HeaderTitle'><!-- InstanceBeginEditable name="Botonera" -->
+            <div align="right"></div>
+          <!-- InstanceEndEditable --></td>
+        </tr>
+      </table>
+	  <br>
+      <table width="100%"  border="0" cellspacing="2" cellpadding="2">
+        <tr valign="top">
+          <td width="71%"><!-- InstanceBeginEditable name="Izquierda" -->
+          <script language="JavaScript" src="funciones.js"></script>
+          <script language="JavaScript">
+            function guardar(form){
+          		if( validar_obligatorio( form.nombre, "El nombre es obligatorio" ) ) return false;          		
+          		if (validar_letranumero(form.nombre, "Nombre solo permite letras y números")) return false;				          		
+          		if( validar_obligatorio( form.descripcion, "La descripción es obligatorio" ) ) return false;
+				
+				return true;
+			}
+          	function agregar(form){
+				form.submit();
+			}
+			function agregarLoc(form){
+				form.submit();
+			}
+		</script>
+          
+          
+          <script src="validacion.js"></script>
+            
+            <link id="luna-tab-style-sheet" type="text/css" rel="stylesheet" href="js/tabs/tabpane.css" />
+            <script type="text/javascript" src="js/tabs/tabpane.js"></script>
+            <table width="92%" align="center" border="0">
+              <tr>
+                <td><div class="tab-page" id="modules-cpanel">
+                    <script type="text/javascript">
+				   		var tabPane1 = new WebFXTabPane( document.getElementById( "modules-cpanel" ), 0 )
+				    </script>
+                
+                    <div class="tab-page" id="modulo1">
+                      <h2 class="tab">Ficha</h2>
+                      <div align="left">
+					  
+                          <p><strong>Datos del Elemento</strong></p>
+				          <form name="frmCampGuardar" method="post" action="ModElemento" onsubmit="return guardar(this);">
+				          <input name=url type=hidden value="ViewElementoForm?id_elemento={id_elemento}">
+				          <input name=id_elemento type=hidden value="{id_elemento}">
+                          <table width="80%"  border="0" align="center" cellpadding="0" cellspacing="2">
+				            <tr>
+				              <td width="17%">Id Elemento </td>
+				              <td width="83%">{id_elemento}</td>
+				            </tr>
+				            <tr>
+				              <td>Nombre</td>
+				              <td><input name="nombre" type="text" value="{elem_nom}" size="30" maxlength="255"></td>
+				            </tr>
+				            <tr valign=top>
+				              <td>Descripción</td>
+				              <td><TEXTAREA NAME="descripcion" COLS=50 ROWS=5 onchange="if(this.value.length > 255){ alert('Has superado el tama&ntilde;o m&aacute;ximo permitido (255 Caracteres)'); return false; }">{elem_des}</TEXTAREA></td>
+				            </tr>
+				            <tr>
+				              <td>Tipo</td>
+				              <td><select name="sel_tip">
+								<!-- BEGIN DYNAMIC: TIPOS -->
+								<option value="{tip_id}" {sel_tip}>{tip_nom}</option>
+								<!-- END DYNAMIC: TIPOS -->  
+				              </select></td>
+				            </tr>
+				            <tr>
+				              <td>Fecha de creación</td>
+				              <td>{elem_fec}</td>
+				            </tr>
+				            <tr>
+				              <td>Estado</td>
+				              <td><select name="sel_est">
+								<!-- BEGIN DYNAMIC: ESTADOS -->
+								<option value="{id_estado}" {sel_est}>{nom_estado}</option>
+								<!-- END DYNAMIC: ESTADOS -->  
+				              </select></td>
+				            </tr>
+				            <tr>
+				              <td>Url destino</td>
+				              <td><input name="url_dest" type="text" value="{elem_url}" size="30" maxlength="255"></td>
+				            </tr>
+                            <tr>
+                              <td>&nbsp;</td>
+                              <td><input name="Button" type="submit" class="cmd" value="    Guardar    " >
+                              	  <input name="Button" type="button" class="cmd" value=" Eliminar Elemento " 
+                                  onclick="javascript:validar_eliminar('Esta seguro que desea eliminar?','DelElemento?id_elemento={id_elemento}&url=ViewMonElementos')">
+                                  <input name="Button" type="button" class="cmd" value="    Cancelar     " 
+    	                          onclick="javascript:location.href='ViewMonElementos';">
+		                          </td>
+                            </tr>
+                          </table>
+	                     </form>      
+                          <br>
+                        <br>
+                      </div>
+                    </div>
+					
+                    <div class="tab-page" id="modulo3">
+                      <h2 class="tab">Campa&ntilde;as</h2>
+					  
+                         <div align="left"> <strong>Listado de Campa&ntilde;as del Elemento</strong><br />
+                          <br>
+                          <form name="frmModCamp" method="post" action="ModCampElemento" target="campElem">
+							<input type="hidden" name="url" value="ViewElemCampIframe?id_elemento={id_elemento}">
+							<input type="hidden" name="id_elemento" value="{id_elemento}">
+							<input type="hidden" name="origen" value="ELEM">
+							<!-- input type="hidden" name="per_id" value=""-->
+							<input type="hidden" name="accion" value="agregar">
+                          <table width="66%"  border="0" align="center" cellpadding="0" cellspacing="2">
+                            <tr>
+                              <td width="48%">Seleccione la campa&ntilde;a </td>
+							  <td width="52%">&nbsp;</td>
+                            </tr>
+                            <tr>
+                              <td><select name="id_campana" >
+			                      <!-- BEGIN DYNAMIC: CAMPANAS -->
+			                        <option  value="{camp_id}">{camp_nom}</option>
+			                      <!-- END DYNAMIC: CAMPANAS -->
+			                      </select>
+                                <input name="Button" type="button" class="cmd" value="Agregar" onClick="javascript:agregar(frmModCamp)" {disabled_camp}></td>
+                            </tr>
+                          </table>
+                          </form>
+                          <br>
+                          <table width="459" border="0" align="center" cellpadding="2" cellspacing="0" class="tabla2">
+                            <tr>
+                              <th width="74">Cod Elem </th>
+                              <th width="74">Nombre </th>
+                              <th width="225">Descripcion</th>
+                              <th width="48">Fecha</th>
+                              <th width="48">&nbsp;</th>
+                            </tr>
+                          </table>
+                          <CENTER><IFRAME SRC="ViewElemCampIframe?id_elemento={id_elemento}" NAME="campElem" HEIGHT="194" WIDTH="459" border=0 > 
+							</IFRAME></CENTER>
+                          <table width="63%"  border="0" align="center" cellpadding="0" cellspacing="2">
+                            <tr>
+                              <td width="50%"><div align="right">
+                            </div></td>
+                            </tr>
+                          </table>
+                          <br>
+                      </div>
+                    </div>
+                    
+                   </div></td>
+              </tr>
+            </table>
+          </form>
+          <br>
+
+		      <br>
+			<script>
+			//	document.frmCampGuardar.login.onkeypress = KeyIsTexto;
+				document.frmCampGuardar.nombre.onkeypress = KeyNotCarExt;
+			</script>
+	      <!-- InstanceEndEditable --></td>
+        </tr>
+      </table>
+      </td>
+  </tr>
+  <tr>
+    <td>
+	<TABLE width="100%" height=19 border=0 align="center" cellpadding="0" cellspacing="0" bgcolor="#f1f0e9" style="border-top:1px solid #ABABAB; border-bottom:1px solid #ABABAB">
+	  <TR>
+		<TD align=center bgcolor="#67b01a" class=infoBL><div align="center">Back Office Central - Jumbo.cl</div></TD>
+		</TR>
+	</TABLE>
+
+	
+	</td>
+  </tr>
+</table>
+</body>
+<!-- InstanceEnd --></html>

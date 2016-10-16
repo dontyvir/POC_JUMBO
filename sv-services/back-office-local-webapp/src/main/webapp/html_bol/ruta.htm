@@ -1,0 +1,261 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE" />
+<META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE" />
+<META HTTP-EQUIV="EXPIRES" CONTENT="Mon, 22 Jul 2002 11:12:01 GMT" />
+<title>Jumbo.cl Back Office Local</title>
+<link id="luna-tab-style-sheet" type="text/css" rel="stylesheet" href="js/tabs/tabpane.css" />
+<link href="estilos.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="menu/menu.css" type="text/css" />
+<script language="JavaScript" src="prototype.js"></script>
+<script type="text/javascript" src="js/tabs/tabpane.js"></script>
+<script type="text/javascript" src="js/ruta.js"></script>
+</head>
+
+<body>
+<script type="text/javascript" language="JavaScript" src="menu/menu.js"></script>
+<script type="text/javascript" language="JavaScript" src="menu/menu_tpl.js"></script>
+<script type="text/javascript" language="JavaScript" src="menu/menu_items.js"></script>
+<table width="780" border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td height="78" valign="top">
+			
+			<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#ffffff">
+				<tr>
+					<td width="275" height="59" align="left" class="user"><img src="img/header2.jpg" width="275" height="60" /></td>
+					<td width="505" align="left" valign="bottom" style="background: url(img/bg-1.jpg);" class="user">
+						<table width="90%" border="0" align="center" cellpadding="0" cellspacing="2">
+							<tr>
+								<td>&nbsp;</td>
+							</tr>
+							<tr>
+								<td><div align="right" class="infoBL">Usuario: {hdr_nombre}&nbsp;&nbsp;| {hdr_fecha}</div></td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+			</table>
+			
+		</td>
+	</tr>
+	<tr>
+		<td valign="top" bgcolor="#FFFFFF" height="400">
+			<table border="0" width="100%" class='ContentTitle'>
+				<tr>
+					
+          <td width="53%" height="20" class='HeaderTitle'>Detalle de Ruta ID {id_ruta}</td>
+					<td width="47%" class='HeaderTitle'><div align="right"><a href="javascript:window.history.back()"><img src="img/volver.gif" width="32" height="32" border="0"></a></div></td>
+				</tr>
+			</table>
+			<br />
+			<table width="100%"  border="0" cellspacing="2" cellpadding="2">
+				<tr valign="top">
+					<td width="71%">
+					
+					<div class="tab-page" id="modules-cpanel">
+						<script type="text/javascript">
+						var tabPane1 = new WebFXTabPane( document.getElementById( "modules-cpanel" ), true )
+						</script>
+						<div class="tab-page" id="modulo1">
+							<h2 class="tab" id="ruta_001">General</h2>
+							<div align="left"> 
+								<p id="gral">
+									<strong>Datos de la Ruta</strong>
+									<br/>
+									<br/>
+									
+                  <table width="90%" border="0" align="center" cellpadding="0" cellspacing="2">
+                    <tr> 
+                      <td width="21%">ID de Ruta</td>
+                      <td width="4%">:</td>
+                      <td width="75%">{id_ruta}<input type="hidden" name="id_ruta" id="id_ruta" value="{id_ruta}" /></td>
+                    </tr>
+                    <tr> 
+                      <td>Estado Ruta</td>
+                      <td>:</td>
+                      <td>{estado}</td>
+                    </tr>
+                    <tr> 
+                      <td>Fono contacto m&oacute;vil</td>
+                      <td>:</td>
+                      <td>{fono}</td>
+                    </tr>
+                    <tr> 
+                      <td>Chofer</td>
+                      <td>:</td>
+                      <td>{chofer}</td>
+                    </tr>
+                    <tr> 
+                      <td>Patente</td>
+                      <td>:</td>
+                      <td>{patente}</td>
+                    </tr>
+                    <tr> 
+                      <td>Fecha/Hora salida Local</td>
+                      <td>:</td>
+                      <td>{fecha_hora_out}</td>
+                    </tr>
+                    <tr> 
+                      <td>Zonas de Despacho</td>
+                      <td>:</td>
+                      <td>{zonas}</td>
+                    </tr>
+                    <tr> 
+                      <td>Fecha</td>
+                      <td>:</td>
+                      <td>{fecha}</td>
+                    </tr>
+                    <tr> 
+                      <td>Jornada de Despacho</td>
+                      <td>:</td>
+                      <td>{jornadas}</td>
+                    </tr>
+                    <tr> 
+                      <td>N&uacute;mero de Bins</td>
+                      <td>:</td>
+                      <td>{bins}</td>
+                    </tr>
+                    <tr> 
+                      <td height="79" colspan="3" align="center"><table width="90%" border="0" cellspacing="2" cellpadding="0">
+                          <tr> 
+                            <td width="40%" align="center" valign="top">
+							
+							 <a href="javascript:abrirVentanaRuta('ViewHojaRuta');"> 
+                              <img src="img/ico_print.gif" width="34" height="34" border="0" /> 
+                              </a> <br />
+                              Hoja de Ruta 
+							</td>
+                            <td width="20%" align="center" valign="top">
+							<a href="javascript:{link_1}"> 
+                              <img src="img/ico_print.gif" width="34" height="34" border="0" /> 
+                              </a> <br />
+                              Hoja de Despacho<br />
+                              1/2
+							</td>
+                            <td width="20%" align="center" valign="top">
+							<a href="javascript:{link_2}"> 
+                              <img src="img/ico_print.gif" width="34" height="34" border="0" /> 
+                              </a> <br />
+                              Hoja de Despacho<br />
+                              2/2
+							</td>
+                            <td width="20%" align="center" valign="top"> <a href="javascript:abrirVentana('ViewPopGuiaDespacho', 2);"> 
+                              <img src="img/ico_print.gif" width="34" height="34" border="0" /> 
+                              </a> <br />
+                              Gu&iacute;as de Despacho </td>
+                          </tr>
+                          <tr> 
+                            <td colspan="4" align="center" valign="middle" height="50">
+								<input type="button" name="Submit2" style="width:150px" value="Anular Ruta" onClick="javascript:anularRuta();" {btn_disabled} />
+								&nbsp;&nbsp;&nbsp;&nbsp;
+								<input type="button" name="Submit3" style="width:150px" value="Activar Ruta" onClick="javascript:activarRuta();" {btn_disabled} />
+                             </td>
+                          </tr>
+                        </table> </td>
+                    </tr>
+                  </table>
+
+								</p>
+							</div>
+						</div>
+						<div class="tab-page" id="modulo1">
+							<h2 class="tab" id="ruta_002">OP</h2>
+							<div align="left"> 
+								<p id="op">
+									<strong>Pedidos</strong>
+									
+				<form action="" name="f_grilla">		 
+                  <table width="99%" border="0" align="center" cellpadding="0" cellspacing="0" class="tabla2">
+                    <tr> 
+                      <th width="1%">&nbsp;</th>
+                      <th width="9%" align="center">N&deg; OP</th>
+                      <th width="10%" align="center">Tipo Pedido</th>
+                      <th width="5%" align="center">&iquest;Reprog.?</th>
+                      <th width="13%" align="center">Direcci&oacute;n despacho</th>
+                      <th width="10%" align="center">Comuna despacho</th>
+                      <th width="10%" align="center">Zona Despacho</th>
+                      <th width="10%" align="center">Jornada Despacho</th>
+                      <th width="9%" align="center">Estado</th>
+                      <th width="9%" align="center">Fecha/Hora Llegada Domi</th>
+                      <th width="9%" align="center">Fecha/Hora Salida Domi</th>
+					  <th width="5%" align="center">Doc</th>
+                    </tr>
+                    <!-- BEGIN DYNAMIC: OPS -->
+                    <tr> 
+                      <td><input type="checkbox" name="pedidos" value="{id_pedido_real}"></td>
+                      <td>{op}&nbsp;</td>
+                      <td>{tipo}&nbsp;</td>
+                      <td>{repr}&nbsp;</td>
+                      <td>{direc}&nbsp;</td>
+                      <td>{comuna}&nbsp;</td>
+                      <td>{zona}&nbsp;</td>
+                      <td>{jornada}&nbsp;</td>
+                      <td>{estado}&nbsp;</td>
+                      <td>{llegada}&nbsp;</td>
+                      <td>{salida}&nbsp;</td>
+					  <td align="center">{doc}&nbsp;</td>
+                    </tr>
+                    <!-- END DYNAMIC: OPS -->
+                  </table>
+				  <center>{msj_peds}</center>
+				  <br />
+				  <table width="99%"  border="0" align="center" cellpadding="0" cellspacing="0">
+                    <tr>						
+                      <td><input type="button" name="Submit" style="width:150px" value="Eliminar OP de Ruta" onClick="javascript:eliminarOP();" {btn_disabled} /></td>
+					  <td align="center"></td>
+					  <td align="center"></td>
+					</tr>
+				   </table>
+				   </form>
+				  
+								</p>
+							</div>
+						</div>
+						<div class="tab-page" id="modulo1">
+							<h2 class="tab" id="ruta_003">Log</h2>
+							<div align="left"> 
+								<p id="log">
+									<strong>Detalles de la Ruta</strong>
+									
+                  <table width="99%"  border="0" align="center" cellpadding="0" cellspacing="0" class="tabla2">
+                    <tr> 
+                      <th width="18%">Fecha</th>
+                      <th width="15%">Usuario</th>
+                      <th width="14%">Estado</th>
+                      <th width="53%">Detalle del Cambio</th>
+                    </tr>
+                    <!-- BEGIN DYNAMIC: LOG_RUTA -->
+                    <tr> 
+                      <td>{fecha}&nbsp;</td>
+                      <td>{usuario}&nbsp;</td>
+                      <td>{estado}&nbsp;</td>
+                      <td>{detalle}&nbsp;</td>
+                    </tr>
+                    <!-- END DYNAMIC: LOG_RUTA -->
+                  </table>
+                  <center>
+                    {msj_log}
+                  </center>
+							</p>
+							</div>
+						</div>
+					</div>
+					
+					
+					
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+<table width="780" border="0" cellpadding="0" cellspacing="0" bgcolor="#f1f0e9" style="border-top:1px solid #ABABAB; border-bottom:1px solid #ABABAB">
+	<tr>
+		<td align="center" bgcolor="#67b01a" class="infoBL" height="19"><div align="center">Back Office Central - Jumbo.cl</div></td>
+	</tr>
+</table>
+</body>
+</html>

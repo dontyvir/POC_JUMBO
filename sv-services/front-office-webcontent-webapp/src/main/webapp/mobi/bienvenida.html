@@ -1,0 +1,69 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<meta name="viewport" content="width=320;initial-scale=1.0; maximum-scale=1.0; user-scalable=false;"/>
+<title>Jumbo Mobile - Bienvenida</title>
+<link href="/FO_WebContent/mobi/css/bienvenida.css" rel="stylesheet" type="text/css" />
+<link href="/FO_WebContent/mobi/css/bordes_redondeados.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<form id="form1" name="form1" method="post" action="UltComprasFormMobi">
+<div id="contenedor_b">
+	<div id="encabezado_b">
+		<h2>Jumbo.cl mobile, más tiempo para ti</h2>
+	</div>
+	<div id="boton_b">
+		<img src="/FO_IMGS/images/mobi/bt_1.gif" alt="Bienvenida" />
+	</div>
+	<div id="margen_verde">
+		<div class="top-right-corner_b">
+			<div class="top-right-inside_b">&bull;</div>
+		</div>		
+	</div>
+	<div id="contenido">
+		<input type="hidden" name="mostrar_evento" id="mostrar_evento" value="{mostrar_evento}" />
+			<div class="tx_nombre"> {nombre_cliente} </div>
+			<div class="tx_bienvenida"><p>Tu pedido será despachado a la siguiente dirección:</p></div>
+			<div class="direccion">
+				<select name="loc_id" class="camposelect">
+					<!-- BEGIN DYNAMIC: dir_despachos -->
+					<option value="{dir_valor}" {selected_dir}>{dir_opcion}</option>
+					<!-- END DYNAMIC: dir_despachos -->
+				</select>
+			</div>
+			<div id="modificardireccion">
+				<a href="AddressFormMobi"> <div class="link_verde">¿Quieres agregar o modificar tus direcciones de despacho?</div></a>
+			</div>
+			<!-- BEGIN DYNAMIC: existe_carro -->
+			<div class="bienvenidarounded-box">
+				<div class="top-left-corner"><div class="top-left-inside">&bull;</div></div>
+				<div class="bienvenida-bottom-left-corner"><div class="bottom-left-inside">&bull;</div></div>
+				<div class="top-right-corner"><div class="top-right-inside">&bull;</div></div>
+				<div class="bienvenida-bottom-right-corner"><div class="bottom-right-inside">&bull;</div></div>
+				<!-- Aqui va el contenido -->
+				<div class="bienvenidabox-contents"> 
+					<p>Tenemos productos guardados en tu carro. ¿Deseas conservarlos para usarlos en esta compra?</p>
+					<div class="modulo_si_carrog"> 
+						<input name="rbtnelicarro" class="btnradio" type="radio" value="1" checked="checked" /><label class="op_carrog">Si</label>
+					</div>
+					<div class="modulo_no_carrog"> 
+						<input name="rbtnelicarro" class="btnradio" type="radio" value="0" /><label class="op_carrog">No</label>
+					</div>
+				</div>
+				<!-- fin contenido -->
+			</div>
+			<!-- END DYNAMIC: existe_carro --> 
+			<div class="bt_g_b">
+				<a href="javascript:submit_direccion();"><img src="/FO_IMGS/images/mobi/bt_continuar.gif" alt="Continuar" title="Continuar" name="Continuar" border="0" align="center"/></a>
+			</div>
+	</div>
+</div>
+</form>
+
+<script type="text/javascript" src="/FO_WebContent/mobi/js/prototype.js"></script>
+<script type="text/javascript" src="/FO_WebContent/mobi/js/global.js"></script>
+<script type="text/javascript" src="/FO_WebContent/mobi/js/bienvenida.js"></script>
+
+</body>
+</html>

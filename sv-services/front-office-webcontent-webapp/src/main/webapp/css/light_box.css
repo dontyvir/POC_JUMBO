@@ -1,0 +1,500 @@
+.contenedor_lightbox{
+	float:left;
+	text-align:center;
+/*	text-align:left;*/
+	padding:8px;
+	border:1px solid #CCC;
+	background:#FFFFFF;
+	width: 400px;
+	border-radius: 8px;
+	box-shadow: 0px 4px 10px #CCC;
+/*
+	-moz-border-radius-bottomleft: 8px;
+	-webkit-border-bottom-left-radius: 8px;
+	-webkit-border-top-left-radius: 8px;
+	-webkit-border-top-right-radius: 8px;
+	border-bottom-left-radius: 8px;
+	-moz-border-radius-bottomright: 8px;
+	-webkit-border-bottom-right-radius: 8px;
+	border-bottom-right-radius: 8px;
+	-moz-box-shadow: 0px 4px 10px #CCC;
+	-webkit-box-shadow: 0px 4px 10px #CCC;
+	box-shadow: 0px 4px 10px #CCC;
+*/
+/*	height:200px;
+	height: 300px;*/
+}
+.linea_registro_2012{
+	padding-bottom: 5px;
+	text-align:left;
+}
+
+.linea_registro_2012_guardar_carro{
+	padding-bottom: 5px;
+	text-align:center;
+}
+
+.fila_registro_2012_name{
+/*	width:200px;
+	float:left;*/
+	height: 20px;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:14px;
+	color:#666;
+/*	padding-left: 100px;*/
+}
+.fila_registro_2012_form{
+/*	width:200px;
+	float:left;*/
+	height: 20px;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:14px;
+	color:#666;
+/*	padding-bottom: 3px;
+	padding-left: 100px;*/
+}
+
+.fila_registro_2012_guardar_carro{
+	height: 20px;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:14px;
+	color: #1FA22E;
+	margin-bottom: 4px;
+}
+
+.form_registro_2012 {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-style: normal;
+	line-height: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	color: #666;
+	border-color: #CCC;
+	border-style: solid;
+	border-width: 1px;
+	height: 20px;
+}
+.fila_olvidaste_clave_2012{
+/*	width:200px;
+	float:left;*/
+	height: 20px;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:12px;
+	color:#999;
+	padding-top: 5px;
+	text-decoration:none;
+/*	padding-left: 100px;*/
+}
+.fila_olvidaste_clave_2012 a:link{
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:12px;
+	color:#999;
+	text-decoration:none;
+}
+.fila_olvidaste_clave_2012 a:hover{
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:12px;
+	color:#999;
+	text-decoration:underline;
+}
+
+.bt_ingresar_2012{
+/*	width:200px;
+	float:left;*/
+	height: 30px;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:12px;
+	color:#666;
+	text-align: left;
+	cursor:pointer;
+/*	padding-left: 100px;*/
+}
+.txt_green_2012{
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:12px;
+	color:#1FA22E;
+/*	background-color:#1FA22E;*/
+}
+.txt_green_2012 a:link {
+		font-family:Arial, Helvetica, sans-serif;
+	font-size:12px;
+	color:#1FA22E;
+}
+.txt_green_2012  a:active{
+		font-family:Arial, Helvetica, sans-serif;
+	font-size:12px;
+	color:#1FA22E;
+}
+.txt_green_2012  a:visited {
+		font-family:Arial, Helvetica, sans-serif;
+	font-size:12px;
+	color:#1FA22E;
+}
+.txt_green_2012 a:hover{
+		font-family:Arial, Helvetica, sans-serif;
+	font-size:12px;
+	color:#1FA22E;
+	text-decoration:underline;
+}
+.fila_sin_clave_2012{
+/*	float:left;
+	height:auto;
+	width:200px;*/
+	padding-bottom: 5px;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:12px;
+	color:#999;
+	padding-top: 20px;
+	text-align: left;
+/*	padding-left: 100px;*/
+	
+}
+
+.iniciar_sesion_jumbo_2012{
+/*	width:300px;*/
+/*	float:left;*/
+	height: 70px;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:16px;
+	color:#1FA22E;
+	font-weight: bold;
+	text-align: center;
+/*	padding-left: 50px;
+	padding-left: 50px;*/
+}
+.bt_guardar_2012{
+	width:200px;
+	float:left;
+	height: 30px;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:12px;
+	color:#666;
+	padding-left: 100px;
+	padding-top:20px;
+}
+
+.bt_guardar_2012_guardar_carro{
+	width:360px;
+	float:left;
+	height: 30px;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:12px;
+	color:#666;
+	padding-top:20px;
+	text-align: center;
+}
+.contenedor_lightbox_registro_2{
+	float:left;
+	text-align:left;
+	padding:30px 0px 20px 0px;
+	border:1px solid #CCC;
+	background:#FFFFFF;
+	width: 610px;
+	border-radius: 8px 8px 8px 8px;
+	/*
+	-moz-border-radius-bottomleft: 8px;
+	-moz-border-radius-topleft: 8px;
+	-moz-border-radius-topright: 8px;
+	-webkit-border-bottom-left-radius: 8px;
+	-webkit-border-top-left-radius: 8px;
+	-webkit-border-top-right-radius: 8px;
+	border-bottom-left-radius: 8px;
+	-moz-border-radius-bottomright: 8px;
+	-webkit-border-bottom-right-radius: 8px;
+	border-bottom-right-radius: 8px;
+	-moz-box-shadow: 0px 4px 10px #CCC;
+	-webkit-box-shadow: 0px 4px 10px #CCC;
+	-moz-box-shadow: 0px 4px 10px #CCC;
+	-webkit-box-shadow: 0px 4px 10px #CCC;
+	box-shadow: 0px 4px 10px #CCC;
+	*/
+	/*height:200px;*/
+	height: auto;
+}
+.col_1_registro_2_2012{
+	width:300px;
+	float:left;
+	height: 200px;
+	border-left-width: 1px;
+	border-left-style: dashed;
+	border-left-color: #CCC;
+}
+.col_2_registro_2_2012{
+	width:300px;
+	float:left;
+	height: auto;
+}
+
+.col_2_registro_2_2012_dir_exito{
+	width:300px;
+	float:left;
+	height: auto;
+	border-left-width: 1px;
+	border-left-style: dashed;
+	border-left-color: #CCC;
+}
+
+.col_sin_clave_2012{
+	float:left;
+	height:auto;
+	width:170px;
+	padding-bottom: 5px;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:16px;
+	color:#1FA22E;
+	padding-top: 20px;
+	padding-left: 50px;
+	text-align: right;
+	font-weight: bold;
+	
+}
+.col_sin_clave_2012 a{
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:16px;
+	color:#1FA22E;
+}
+.col_sin_clave_2012 a:hover{
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:16px;
+	color:#1FA22E;
+}
+.col_sin_clave_2012 a:link{
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:16px;
+	color:#1FA22E;
+}
+.col_sin_clave_2012 a:visited{
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:16px;
+	color:#1FA22E;
+}
+.fila_registro_2_2012_titulo{
+	width:200px;
+	float:left;
+	height: 40px;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:16px;
+	color:#666;
+	padding-left: 100px;
+}
+
+.contenedor_lightbox_carro_name{
+	float:left;
+	text-align:left;
+	padding:30px 0px 30px 0px;
+	border:1px solid #CCC;
+	background:#FFFFFF;
+	width: 360px;
+	-moz-border-radius-bottomleft: 8px;
+	-webkit-border-bottom-left-radius: 8px;
+	-webkit-border-top-left-radius: 8px;
+	-webkit-border-top-right-radius: 8px;
+	border-bottom-left-radius: 8px;
+	-moz-border-radius-bottomright: 8px;
+	-webkit-border-bottom-right-radius: 8px;
+	border-bottom-right-radius: 8px;
+	-moz-box-shadow: 0px 4px 10px #CCC;
+	-webkit-box-shadow: 0px 4px 10px #CCC;
+	box-shadow: 0px 4px 10px #CCC;
+	height:200px;
+	height: auto;
+
+	border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+.error_rut_existe{
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:10px;
+	color:#FF0000;
+	width: 220px;
+	float: left;
+	height: auto;
+	padding-left: 6px;
+	padding-top: 5px;
+}
+
+/* @group Estilos para Registro Sencillo by Dcadiz 28MAY2012*/
+.linea_registro_2012_RS{
+	float:left;
+	height:auto;
+	width:300px;
+	padding-bottom: 5px;
+}
+
+.fila_registro_2012_name_RS{
+	width:200px;
+	float:left;
+	padding-left: 70px;
+	color:#666;
+}
+
+.fila_registro_2012_form_RS{
+	width:200px;
+	float:left;
+	padding-bottom: 3px;
+	padding-left: 70px;
+}
+
+.bt_ingresar_2012_RS{
+	width:553px;
+	float:left;
+	margin-top: 20px;
+	text-align: right;
+}
+
+.col_1_registro_2_2012_RS{
+	width:300px;
+	float:left;
+	height: auto;
+}
+
+.col_2_registro_2_2012_RS{
+	width:300px;
+	float:left;
+	height: auto;
+	border-left-width: 1px;
+	border-left-style: dashed;
+	border-left-color: #CCC;
+}
+
+.fila_registro_2_2012_titulo_RS{
+	width:200px;
+	float:left;
+	height: 40px;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:16px;
+	color:#1FA22E;
+	padding-left: 70px;
+}
+
+.cont_acepto_info{
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:10px;
+	color:#999;
+	width: 170px;
+	float: left;
+	height: auto;
+	padding-left: 6px;
+	padding-top: 5px;
+}
+
+.fila_registro_3_2012_titulo{
+	width:230px;
+	float:left;
+	height: 40px;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:16px;
+	color:#666;
+	padding-left: 70px;
+}
+
+.btns{
+	float:left;
+	height: auto;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:12px;
+	color:#666;
+	padding-left: 40px;
+	cursor:pointer;
+}
+.cont_info_direccion{
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:10px;
+	color:#999;
+	width: 240px;
+	float: left;
+	height: auto;
+	padding-left: 42px;
+	padding-top: 5px;
+}
+
+
+
+/* INICIO INDRA 14-11-2012 */
+.contenedor_lightbox_listas{
+	/*text-align:center;*/
+	padding:20px 20px 20px 20px;
+	border:1px solid #CCC;
+	background:#FFFFFF;
+	width: 550px;
+	-moz-border-radius-bottomleft: 8px;
+	-webkit-border-bottom-left-radius: 8px;
+	-webkit-border-top-left-radius: 8px;
+	-webkit-border-top-right-radius: 8px;
+	border-bottom-left-radius: 8px;
+	-moz-border-radius-bottomright: 8px;
+	-webkit-border-bottom-right-radius: 8px;
+	border-bottom-right-radius: 8px;
+	-moz-box-shadow: 0px 4px 10px #CCC;
+	-webkit-box-shadow: 0px 4px 10px #CCC;
+	box-shadow: 0px 4px 10px #CCC;
+	height: 400px;
+}
+/* FIN INDRA 14-11-2012 */
+/*inicio magno*/
+.titulo_confirmacion_lightbox {
+	float:left;
+	height: auto;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:16px;
+	color:#009640;
+	padding-top: 10px;
+	padding-bottom: 2px;
+	font-weight: bold;
+	width: 370px;
+	border-bottom: 1px #009640 dashed;
+	margin-left: 10px;
+}
+.mail_contenedor_lightbox{
+	float:left;
+	text-align:center;
+	/*	text-align:left;*/
+	padding:8px;
+	border:1px solid #CCC;
+	background:#FFFFFF;
+	border-radius: 8px;
+	box-shadow: 0px 4px 10px #CCC;
+	-moz-border-radius-bottomleft: 8px;
+	-webkit-border-bottom-left-radius: 8px;
+	-webkit-border-top-left-radius: 8px;
+	-webkit-border-top-right-radius: 8px;
+	border-bottom-left-radius: 8px;
+	-moz-border-radius-bottomright: 8px;
+	-webkit-border-bottom-right-radius: 8px;
+	border-bottom-right-radius: 8px;
+	-moz-box-shadow: 0px 4px 10px #CCC;
+	-webkit-box-shadow: 0px 4px 10px #CCC;
+	box-shadow: 0px 4px 10px #CCC;
+	width: 400px;
+	margin: 20px;
+}
+
+.txt_confirmacion_lightbox{
+	float:left;
+	height: auto;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:14px;
+	padding-top: 10px;
+	padding-bottom: 5px;
+	margin-left: 10px;
+	color: #666;
+	width: 370px;
+}
+
+.txt_confirmacion_form_lightbox{
+	float:left;
+	height: auto;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:14px;
+	padding-top: 10px;
+	padding-bottom: 20px;
+	margin-left: 10px;
+	color: #666;
+}
+/*fin magno*/
+
+/* @end */
+
+

@@ -1,0 +1,498 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+
+<style type="text/css" >
+.tdProductoPar{
+  background-color: #f0f0f0;
+}
+.td_borderTitulo{
+  border-left: #D1D1D1 solid 1px; 
+  border-right: #D1D1D1 solid 1px; 
+  border-top: #D1D1D1 solid 1px;
+}
+.td_borderSinTitulo{
+  border-left: #D1D1D1 solid 1px; 
+  border-right: #D1D1D1 solid 1px; 
+  border-top: #f0f5e4 solid 0px;
+}
+</style>
+</head>
+
+<body>
+  <font face="Arial, Helvetica, sans-serif" size="2" color="#333333">
+    <table width="670" align="center">
+      <tbody>
+        <tr>
+          <td width="670" colspan="2" valign="top">
+            <a href="http://www.jumbo.cl/FO/LogonForm?utm_source=mail_resumen_pedido&utm_medium=header&utm_campaign=mail_resumen_pedido" target="_blank">
+              <img src="http://www.jumbo.cl/supermercado/mail/header_auto/bn_logo_jumbo.jpg" alt="Jumbo.cl" border="0">
+            </a>
+            
+            <table width="670" border="0" cellpadding="11">
+              <tbody>
+                <tr>
+                  <td width="645">
+                    <font face="Arial, Helvetica, sans-serif" size="5" color="#009640">
+                      <strong>{nombre_cliente}</strong>
+                      <br> &iexcl;Gracias por comprar en Jumbo.cl!
+                    </font> <br> <br>
+                    
+                    <font color="#333333" size="2" face="Arial, Helvetica, sans-serif">
+                      Recibir&aacute;s tu pedido en el horario que elegiste. Puedes revisar el estado de tu
+                      pedido ingresando en 
+                      <font color="#009640">
+                        <strong>"Mi	Cuenta"</strong>
+                      </font> 
+                      como usuario registrado*
+                    </font>
+                    <br> <br> 
+
+                    <font color="#333333" size="1" face="Arial, Helvetica, sans-serif">
+					  *Si no est&aacute;s registrado(a) y guardaste tu compra, revisa
+                       el estado de tu pedido en&nbsp; "Mi Cuenta" con tu
+                       RUT y los primeros 5 d&iacute;gitos de &eacute;ste como clave
+                    </font>
+                    
+                   <font color="#333333" size="1" face="Arial, Helvetica, sans-serif">.</font>
+                     <br> <br>
+                     <table width="650" border="0" cellspacing="0" cellpadding="2">
+                       <tbody>
+                         <tr>
+                           <td height="40" align="center" valign="middle">
+                             <a href="http://www.jumbo.cl/supermercado/landing_sustitucion/index.html?utm_source=mail_resumen_pedido&utm_medium=huincha&utm_campaign=beneficio_sustitucion" target="_blank">
+                               <img src="http://www.jumbo.cl/supermercado/mail/sustitucion/huincha_sustitucion_recuerda.jpg" alt="Recuerda, al sustituir nosotros siempre cubriremos la diferencia de precio" border="0" width="645" height="100">
+                             </a>
+                           </td>
+                         </tr>
+                       </tbody>
+                     </table>
+                     <br>
+                     <table width="100%" border="0" cellspacing="0">
+                       <tbody>
+                         <tr>
+                           <td style="border-top: #D1D1D1 solid 1px; border-bottom: #D1D1D1 solid 1px; border-left: #D1D1D1 solid 1px; border-right: #D1D1D1 solid 1px">
+                             <table width="100%" cellspacing="0" cellpadding="5">
+                               <tbody>
+                                 <tr>
+                                   <td colspan="2" bgcolor="#1fa22e">
+                                     <b>
+                                       <font color="#FFF" size="2" face="Arial, Helvetica, sans-serif">
+                                         <strong>RESUMEN DE TU PEDIDO</strong>
+                                       </font>
+                                     </b>
+                                   </td>
+                                 </tr>
+                                 <tr>
+                                   <td width="278" style="border-right: #D1D1D1 solid 1px">
+                                     <font color="#333333" size="2" face="Arial, Helvetica, sans-serif">
+                                       <strong>N&deg; de pedido</strong>
+                                     </font>
+                                   </td>
+                                   <td width="341">
+                                     <font color="#333333" size="2" face="Arial, Helvetica, sans-serif">{idped}</font>
+                                   </td>
+                                 </tr>
+                                 <tr>
+                                   <td bgcolor="#f0f0f0" width="278" style="border-right: #D1D1D1 solid 1px">
+                                     <font color="#333333" size="2" face="Arial, Helvetica, sans-serif">
+                                       <strong>Fecha y hora del despacho</strong>
+                                     </font>
+                                   </td>
+                                   <td bgcolor="#f0f0f0" width="341">
+                                     <font color="#333333" size="2" face="Arial, Helvetica, sans-serif">{fecha_tramo}</font>
+                                   </td>
+                                 </tr>
+                                 <tr>
+                                   <td width="278" style="border-right: #D1D1D1 solid 1px">
+                                     <font color="#333333" size="2" face="Arial, Helvetica, sans-serif">
+                                       <strong>Direcci&oacute;n de despacho</strong>
+                                     </font>
+                                   </td>
+                                   <td width="341">
+                                     <font color="#333333" size="2" face="Arial, Helvetica, sans-serif">{lugar_despacho}</font>
+                                   </td>
+                                 </tr>
+                                 <tr>
+                                   <td bgcolor="#f0f0f0" style="border-right: #D1D1D1 solid 1px">
+                                     <font color="#333333" size="2" face="Arial, Helvetica, sans-serif">
+                                       <strong>Persona autorizada a recibir el despacho</strong>
+                                     </font>
+                                   </td>
+                                   <td bgcolor="#f0f0f0">
+                                     <font color="#333333" size="2" face="Arial, Helvetica, sans-serif">{sin_gente_txt}</font>
+                                   </td>
+                                 </tr>
+                                 <tr>
+                                   <td style="border-right: #D1D1D1 solid 1px">
+                                     <font color="#333333" size="2" face="Arial, Helvetica, sans-serif">
+                                       <strong>Cantidad de productos</strong>
+                                     </font>
+                                   </td>
+                                   <td>
+                                     <font color="#333333" size="2" face="Arial, Helvetica, sans-serif">{cantidad}</font>
+                                   </td>
+                                 </tr>
+                                 <tr>
+                                   <td bgcolor="#f0f0f0" style="border-right: #D1D1D1 solid 1px">
+                                     <font color="#333333" size="2" face="Arial, Helvetica, sans-serif">
+                                       <strong>Monto del pedido</strong>
+                                     </font>
+                                   </td>
+                                   <td bgcolor="#f0f0f0">
+                                     <font color="#333333" size="2" face="Arial, Helvetica, sans-serif">{monto_op}</font>
+                                   </td>
+                                 </tr>
+                                 <tr>
+                                   <td style="border-right: #D1D1D1 solid 1px">
+                                     <font color="#333333" size="2" face="Arial, Helvetica, sans-serif">
+                                       <strong>Costo de Servicio</strong>
+                                     </font>
+                                   </td>
+                                   <td>
+                                     <font color="#333333" size="2" face="Arial, Helvetica, sans-serif">{monto_despacho}</font>
+                                   </td>
+                                 </tr>
+                                 <tr>
+                                   <td bgcolor="#f0f0f0" style="border-right: #D1D1D1 solid 1px">
+                                     <font color="#333333" size="2" face="Arial, Helvetica, sans-serif">
+                                       <strong>Monto reservado*</strong>
+                                     </font>
+                                   </td>
+                                   <td bgcolor="#f0f0f0">
+                                     <font color="#333333" size="2" face="Arial, Helvetica, sans-serif">{monto_reservado}</font>
+                                   </td>
+                                 </tr>
+                               </tbody>
+                             </table>
+                           </td>
+                         </tr>
+                       </tbody>
+                     </table>
+                     <table>
+                       <tbody>
+                         <tr>
+                           <td>
+                             <font color="#333333" size="1" face="Arial, Helvetica, sans-serif">
+                               * Es el monto reservado en tu tarjeta, el cu&aacute;l corresponde al 
+                               <strong>Monto del Pedido</strong> m&aacute;s el <strong>Costo del Servicio</strong>
+                               . El monto final cobrado puede ser menor al monto reservado debido a los productos sustituidos o faltantes.
+                             </font>
+                           </td>
+                         </tr>
+                       </tbody>
+                     </table>
+                     <br />
+                     <br />
+                     <div style="display:{switch};">
+                       <font color="#666" size="4" face="Arial, Helvetica, sans-serif"> 
+                         <strong>Detalle de descuentos:</strong>
+                       </font>
+                       <br />
+                       <br />
+                       <table width="645" border="0" cellspacing="0">
+                         <tbody style="display:{switch};">
+                           <tr>
+                             <td style="border-bottom: #D1D1D1 solid 1px;">
+                               <table width="100%" cellspacing="0" cellpadding="5">
+                                 <tbody style="display:{switch};">
+                                   <tr>
+                                     <td width="15%" bgcolor="#1fa22e" style="text-align:center; border-bottom: #D1D1D1 solid 1px; border-right: #D1D1D1 solid 1px;">
+                                       <font color="#FFFFFF" size="2" face="Arial, Helvetica, sans-serif">
+                                         <strong>Tipo</strong>
+                                       </font>
+                                     </td>
+                                     <td width="72%" bgcolor="#1fa22e" style="text-align:center; border-bottom: #D1D1D1 solid 1px; border-right: #D1D1D1 solid 1px;">
+                                       <font color="#FFFFFF" size="2" face="Arial, Helvetica, sans-serif">
+                                         <strong>Detalle</strong>
+                                       </font>
+                                     </td>
+                                     <td width="13%" bgcolor="#1fa22e" style="text-align:center; border-bottom: #D1D1D1 solid 1px; border-right: #D1D1D1 solid 1px;">
+                                       <font color="#FFFFFF" size="2" face="Arial, Helvetica, sans-serif">
+                                         <strong>Monto descontado</strong>
+                                       </font>
+                                     </td>
+                                   </tr>
+                                   <!-- BEGIN DYNAMIC: DESCUENTOS -->
+                                   <tr>
+                                     <td width="15%" valign="top" bgcolor="#f0f5e4" class="{CELDA_TITULO}">
+                                       <font color="#009640" size="2" face="Arial, Helvetica, sans-serif">
+                                         <strong>{nombre_descuento}</strong> 
+                                       </font>
+                                     </td>
+                                     <td class="{CLASE_CELDA}" width="72%" style="text-align: left; border-right: #D1D1D1 solid 1px; border-bottom: #D1D1D1 solid 1px;">
+                                       <font color="#333333" size="2" face="Arial, Helvetica, sans-serif">{detalle_descuento}</font>
+                                     </td>
+                                     <td class="{CLASE_CELDA}" width="13%" valign="top" style="text-align: center; border-right: #D1D1D1 solid 1px; border-bottom: #D1D1D1 solid 1px;">
+                                       <font color="#333333" size="2" face="Arial, Helvetica, sans-serif">{monto_descuento}</font>
+                                     </td>
+                                   </tr>
+                                   <!-- END DYNAMIC: DESCUENTOS -->
+                                   </tbody>
+                                 </table>
+                               </td>
+                             </tr>
+                           </tbody>
+                         </table>
+                         <!-- fin cupon -->
+                         <br />
+                         <br />
+                       </div>
+                       <font color="#666" size="4" face="Arial, Helvetica, sans-serif"> 
+                         <strong>Detalle de productos:</strong>
+                       </font>
+                       <br>
+                       <br>
+                       <table width="645" border="0" cellspacing="0">
+                         <tbody>
+                           <tr>
+                             <td valign="top" style="border-top: #D1D1D1 solid 1px; border-bottom: #D1D1D1 solid 1px; border-left: #D1D1D1 solid 1px; border-right: #D1D1D1 solid 1px">
+                               <table width="100%" height="35" bgcolor="#f0f5e4" cellpadding="5">
+                                 <tbody>
+                                   <tr>
+                                     <td width="80" height="35" align="center" style="border-right: #D1D1D1 solid 1px">
+                                       <font color="#333333" size="2" face="Arial, Helvetica, sans-serif">
+                                         <strong>Cantidad</strong>
+                                       </font>
+                                     </td>
+                                     <td width="41%" height="35" align="center" style="border-right: #D1D1D1 solid 1px">
+                                       <font color="#333333" size="2" face="Arial, Helvetica, sans-serif">
+                                         <strong>Producto</strong>
+                                       </font>
+                                     </td>
+                                     <td width="16%" height="35" align="center" style="border-right: #D1D1D1 solid 1px">
+                                       <font color="#333333" size="2" face="Arial, Helvetica, sans-serif">
+                                         <strong>C&oacute;digo</strong>
+                                       </font>
+                                     </td>
+                                     <td width="16%" height="35" align="center" style="border-right: #D1D1D1 solid 1px">
+                                       <font color="#333333" size="2" face="Arial, Helvetica, sans-serif">
+                                         <strong>Precio<br> Unitario*</strong>
+                                       </font>
+                                     </td>
+                                     <td width="14%" height="35" align="center">
+                                       <font color="#333333" size="2" face="Arial, Helvetica, sans-serif">
+                                         <strong>Monto<br>Total</strong>
+                                       </font>
+                                     </td>
+                                   </tr>
+                                 </tbody>
+                               </table>
+                               <table width="100%" border="0" cellpadding="0" cellspacing="0">
+                                 <tbody>
+                                   <!--31102012 VMatheu --> 
+                                   <!-- BEGIN DYNAMIC: PRODUCTOS -->
+                                   <tr id="fila{contador}">
+                                     <td width="20%">
+                                       <table width="640" border="0" cellpadding="0" cellspacing="0" class="{CLASE_TABLA}">
+                                         <tbody>
+                                           <tr>
+                                             <td class="{CLASE_CELDA}" width="13%" style=" border-bottom: #D1D1D1 solid 1px">
+                                               <table border="0" cellpadding="0" cellspacing="0">
+                                                 <tbody>
+                                                   <tr>
+                                                     <td>
+                                                       <!-- BEGIN DYNAMIC: INPUT_SEL -->
+                                                       <table border="0" cellspacing="0" cellpadding="0">
+                                                         <tbody>
+                                                           <tr>
+                                                             <td width="4" class="NoDisponible"></td>
+                                                             <td width="84" rowspan="2" align="center" class="NoDisponible" style="border-right: #D1D1D1 solid 1px">
+                                                                 <font color="#333333" size="2" face="Arial, Helvetica, sans-serif">{valor}</font>
+                                                             </td>
+                                                           </tr>
+                                                           <tr>
+                                                             <td></td>
+                                                           </tr>
+                                                         </tbody>
+                                                       </table>
+                                                       <!-- END DYNAMIC: INPUT_SEL -->
+                                                     </td>
+                                                   </tr>
+                                                 </tbody>
+                                               </table>
+                                             </td>
+                                             <td width="41%" align="center" class="{CLASE_CELDA}" style="border-right: #D1D1D1 solid 1px; border-bottom: #D1D1D1 solid 1px">
+                                               <font color="#333333" size="2" face="Arial, Helvetica, sans-serif">
+                                                 {descripcion} - <span class="Marca">{marca}</span>{NO_DISPONIBLE}
+                                               </font>
+                                             </td>
+                                             <td width="16%" align="center" class="{CLASE_CELDA}" style="border-right: #D1D1D1 solid 1px; border-bottom: #D1D1D1 solid 1px">
+                                               <div align="center">
+                                                 <font color="#333333" size="2" face="Arial, Helvetica, sans-serif">{cod_sap}</font>
+                                               </div>
+                                             </td>
+                                             <td width="16%" align="center" class="{CLASE_CELDA}" style="border-right: #D1D1D1 solid 1px; border-bottom: #D1D1D1 solid 1px">
+                                               <div align="right">
+                                                 <font color="#333333" size="2" face="Arial, Helvetica, sans-serif">{precio_unitario}</font>
+                                               </div>
+                                             </td>
+                                             <td width="14%" align="center" class="{CLASE_CELDA}" style=" border-bottom: #D1D1D1 solid 1px">
+                                               <font color="#333333" size="2" face="Arial, Helvetica, sans-serif">{precio_total}</font>
+                                             </td>
+                                           </tr>
+                                         </tbody>
+                                       </table>
+                                     </td>
+                                   </tr>
+                                   <!-- END DYNAMIC: PRODUCTOS -->
+                                   <!-- -31102012 VMatheu -->
+                                 </tbody>
+                               </table>
+                             </td>
+                           </tr>
+                         </tbody>
+                       </table>
+                       <table>
+                         <tbody>
+                           <tr>
+                             <td>
+                               <font color="#333333" size="1" face="Arial, Helvetica, sans-serif">
+                                 *Los precios de los productos que se cobrar&aacute;n en la boleta, 
+                                 ser&aacute;n los mismos que aparecen en el resumen de tu pedido. Para compras con 
+                                 Tarjeta Cencosud y Tarjeta M&aacute;s, una vez confirmada la compra se 
+                                 enviar&aacute;n los datos del cr&eacute;dito en un plazo no mayor a 10 d&iacute;as.
+                               </font>
+                               <br>
+                               <br>
+                               <span>
+                                 <font color="#333333" size="1" face="Arial, Helvetica, sans-serif">
+                                   <img src="http://www.jumbo.cl/FO_IMGS/img/estructura/fl.gif" alt="" border="0" width="6" height="7">
+                                   &nbsp;
+                                   <a href="http://www.jumbo.clhttp://www.jumbo.cl/supermercado/preguntas/preguntas.html#b4" style="color: #009640" target="_blank">
+                                     Ver pol&iacute;ticas de devoluci&oacute;n de productos
+                                   </a>
+                                 </font>
+                               </span>
+                             </td>
+                           </tr>
+                         </tbody>
+                       </table>
+                       <br>
+                       <table width="100%" border="0" cellspacing="0">
+                         <tbody>
+                           <tr>
+                             <td style="border-top: #D1D1D1 solid 1px; border-bottom: #D1D1D1 solid 1px; border-left: #D1D1D1 solid 1px; border-right: #D1D1D1 solid 1px">
+                               <table width="100%" cellspacing="0" cellpadding="5">
+                                 <tbody>
+                                   <tr>
+                                     <td colspan="2" bgcolor="#f0f5e4">
+                                       <b>
+                                         <font color="#333" size="2" face="Arial, Helvetica, sans-serif">
+                                           <strong>DETALLES DE TU PEDIDO</strong>
+                                         </font>
+                                       </b>
+                                     </td>
+                                   </tr>
+                                   <tr>
+                                     <td width="278" style="border-right: #D1D1D1 solid 1px">
+                                       <font color="#333333" size="2" face="Arial, Helvetica, sans-serif">
+                                         <strong>Comercio</strong>
+                                       </font>
+                                     </td>
+                                     <td width="341">
+                                       <font color="#333333" size="2" face="Arial, Helvetica, sans-serif">Jumbo.cl</font>
+                                     </td>
+                                   </tr>
+                                   <tr>
+                                     <td bgcolor="#f0f0f0" width="278" style="border-right: #D1D1D1 solid 1px">
+                                       <font color="#333333" size="2" face="Arial, Helvetica, sans-serif">
+                                         <strong>Tipo de transacci&oacute;n</strong>
+                                       </font>
+                                     </td>
+                                     <td bgcolor="#f0f0f0" width="341">
+                                       <font color="#333333" size="2" face="Arial, Helvetica, sans-serif">Venta</font>
+                                     </td>
+                                   </tr>
+                                   <tr>
+                                     <td width="278" style="border-right: #D1D1D1 solid 1px">       
+                                       <font color="#333333" size="2" face="Arial, Helvetica, sans-serif">
+                                         <strong>Fecha de ingreso del pedido</strong>
+                                       </font>
+                                     </td>
+                                     <td width="341">
+                                       <font color="#333333" size="2" face="Arial, Helvetica, sans-serif">{fecha_ingreso}</font>
+                                     </td>
+                                   </tr>
+                                   <tr>
+                                     <td bgcolor="#f0f0f0" width="278" style="border-right: #D1D1D1 solid 1px">
+                                       <font color="#333333" size="2" face="Arial, Helvetica, sans-serif">
+                                         <strong>Forma de pago</strong>
+                                       </font>
+                                     </td>
+                                     <td bgcolor="#f0f0f0" width="341">
+                                       <font color="#333333" size="2" face="Arial, Helvetica, sans-serif">{forma_pago}</font>
+                                     </td>
+                                   </tr>
+                                   <tr>
+                                     <td width="278" style="border-right: #D1D1D1 solid 1px">
+                                       <font color="#333333" size="2" face="Arial, Helvetica, sans-serif">
+                                         <strong>Tipo de documento</strong>
+                                       </font>
+                                     </td>
+                                     <td width="341">
+                                       <font color="#333333" size="2" face="Arial, Helvetica, sans-serif">{tip_doc}</font>
+                                     </td>
+                                   </tr>
+                                   <tr>
+                                     <td bgcolor="#f0f0f0" width="278" style="border-right: #D1D1D1 solid 1px">
+                                       <font color="#333333" size="2" face="Arial, Helvetica, sans-serif">
+                                         <strong>Tarjeta de cr&eacute;dito</strong>
+                                       </font>
+                                     </td>
+                                     <td bgcolor="#f0f0f0" width="341">
+                                       <font color="#333333" size="2" face="Arial, Helvetica, sans-serif">{4_ultimos}</font>
+                                     </td>
+                                   </tr>
+                                   <tr>
+                                     <td width="278" style="border-right: #D1D1D1 solid 1px">
+                                       <font color="#333333" size="2" face="Arial, Helvetica, sans-serif">
+                                         <strong>C&oacute;digo autorizaci&oacute;n de transacci&oacute;n</strong>
+                                       </font>
+                                     </td>
+                                     <td width="341">
+                                       <font color="#333333" size="2" face="Arial, Helvetica, sans-serif">{cod_aut_trx}</font>
+                                     </td>
+                                   </tr>
+                                   <tr>
+                                     <td bgcolor="#f0f0f0" width="278" style="border-right: #D1D1D1 solid 1px">
+                                       <font color="#333333" size="2" face="Arial, Helvetica, sans-serif">
+                                         <strong>N&deg; de cuotas</strong>
+                                       </font>
+                                     </td>
+                                     <td bgcolor="#f0f0f0" width="341">
+                                       <font color="#333333" size="2" face="Arial, Helvetica, sans-serif">{nro_cuotas}</font>
+                                     </td>
+                                   </tr>
+                                 </tbody>
+                               </table>
+                             </td>
+                           </tr>
+                         </tbody>
+                       </table>
+                     </td>
+                </tr>
+              </tbody>
+            </table>
+          </td>
+        </tr>
+        
+        <tr><td>&nbsp;</td></tr>
+        
+        <tr>
+          <td valign="middle" align="center" style="border-bottom: 2px solid #009640; padding-bottom: 15px; padding-top: 10px; border-top: #009640 dashed 1px">
+             <font color="#333333" size="2" face="Arial, Helvetica, sans-serif">
+               Si tienes cualquier consulta ll&aacute;manos al
+               <strong>600 400 3000</strong> o escr&iacute;benos a
+               contacto@jumboweb.cl
+             </font>
+           </td>
+        </tr>
+               
+      </tbody>
+    </table>
+  </font>
+</body>
+</html>

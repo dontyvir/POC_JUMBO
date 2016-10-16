@@ -1,0 +1,101 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<meta name="viewport" content="width=320;initial-scale=1.0; maximum-scale=1.0; user-scalable=false;"/>
+<title>Jumbo Mobile - Paso2</title>
+<link rel="stylesheet" href="/FO_WebContent/mobi/css/paso2.css" type="text/css"/>
+<link rel="stylesheet" href="/FO_WebContent/mobi/css/lightbox.css" type="text/css" />
+<link rel="stylesheet" href="/FO_WebContent/mobi/css/bordes_redondeados.css" type="text/css" />
+<link rel="stylesheet" href="/FO_WebContent/mobi/css/carropermanente.css" type="text/css" />
+</head>
+<body onload="actualizaCarro()">
+<form action="PasoDosFormMobi" id="p2" name="p2" method="post">
+	<div id="contenedor_b">
+		<div id="encabezado_b">
+			<h2>Jumbo.cl mobile, mas tiempo para ti</h2>
+		</div>
+		<div id="boton_b">
+			<a href="BienvenidaFormMobi"><img src="/FO_IMGS/images/mobi/bt_1_b.gif" alt="Bienvenida" border="0" /></a>
+			<a href="UltComprasFormMobi"><img src="/FO_IMGS/images/mobi/bt_2_b.gif" alt="Paso1" border="0" /></a>
+			<a href="PasoDosFormMobi"><img src="/FO_IMGS/images/mobi/bt_3.gif" alt="Paso2" border="0" /></a>
+			<a href="PasoTresFormMobi"><img src="/FO_IMGS/images/mobi/bt_4_b.gif" alt="Paso3" border="0" /></a>
+			<a href="OrderItemDisplayMobi"><img src="/FO_IMGS/images/mobi/bt_5_b.gif" alt="Carro" border="0" /></a>
+		</div>
+		<div id="margen_verde">
+			<h3>Agrega m&aacute;s productos  a tu carro </h3>
+		</div>
+		<div id="contenido_p2" align="center">
+			<div id="mod_buscar">
+				<div class="buscar_iz_p2" >Producto:</div>
+				<div class="buscar_der_p2">
+					<div class="texto_buscar">
+						<input type="text" name="buscar" id="buscar" value="{palabra}" size="17" />
+					</div>
+					<div class="borrar">
+						<a href="javascript:borrar();">
+							<img src="/FO_IMGS/images/mobi/paso2/borrar.gif" alt="borrar texto" border="0" />
+						</a>
+					</div>
+				</div>
+				<div class="buscar_iz_p2" align="left"></div>
+				<div align="left">
+					<div class="bt_buscar_p2">
+						<a href="javascript:buscador();"><img src="/FO_IMGS/images/mobi/paso2/bt_buscar.gif" name="bt-buscar" border="0" id="bt-buscar" /></a>
+					</div>
+					<div  class="ver_foto_p2" align="left" width="40" height="40">
+						<input type="checkbox" name="ver_fotos" checked="checked"/><label for="ver_fotos">Ver fotos</label>
+					</div>
+				</div>
+			</div>
+			<div id="mod_mostrar">			
+				<div class="buscar_iz_p2" >Categoría:</div>		
+				<div class="buscar_der_p2" >
+					<select name="categorias" class="selectbusca" onchange="javascript:listarSubCategorias(this.value);" >
+						<!-- BEGIN DYNAMIC: CATEGORIAS -->
+							<option value="{id}" {selected}>{nombre}</option>
+						<!-- END DYNAMIC: CATEGORIAS -->
+					</select>
+				</div>
+				<div class="buscar_iz_p2" >Subcategoría:</div>
+				<div class="buscar_der_p2" >
+					<select class="selectbusca" name="subcategorias" id="subcategorias" onchange="javascript:mostrar(this.value);">
+						<option value="0" selected>Todas</option>
+					</select>
+				</div>
+			</div>
+			<div id="resultado">
+				<div class="bn"> 
+					<div class="bn1" align="left">
+						<img src="/FO_IMGS/img/banners/bn1.jpg" width="140" height="110"/>
+					</div>
+					<div class="bn2" align="right">
+						<img src="/FO_IMGS/img/banners/bn2.jpg" width="140" height="110"/>
+					</div>
+				</div>	
+			</div>
+		</div>
+	</div>
+</form>
+<div id="carro">
+	<div class="total"> 
+		<div class="carrito"><img src="/FO_IMGS/images/mobi/carrito.gif" /></div>
+		<div class="totalizador"><label><input name="total_carro_compra" id="total_carro_compra" type="text" size="13" readonly="readonly" /> Total</label></div>
+		<div class="bt_paso3"><a href="PasoTresFormMobi"><img src="/FO_IMGS/images/mobi/bt_irpaso3.gif" alt="Ir a paso 3" longdesc="Pasar directamente al Paso 3" border="0" /></a></div>
+	</div>
+	<div class="carrito_abajo">
+		<div class="links_abajo">
+			<a href="/FO_WebContent/mobi/faq.html" target="_blank"><img src="/FO_IMGS/images/mobi/faq.gif" width="39" height="40" border="0" /></a>
+			<a href="AddressFormMobi"><img src="/FO_IMGS/images/mobi/cam-dir.gif" width="101" height="40" border="0" /></a>
+			<a href="javascript:salirDelSitio();"><img src="/FO_IMGS/images/mobi/guardar.gif" width="115" height="40" border="0" /></a>
+		</div>
+	</div>
+</div>
+<br/><br/><br/>
+<script type="text/javascript" src="/FO_WebContent/mobi/js/prototype.js"></script>
+<script type="text/javascript" src="/FO_WebContent/mobi/js/global.js"></script>
+<script type="text/javascript" src="/FO_WebContent/mobi/js/paso2.js"></script>
+<script type="text/javascript" src="/FO_WebContent/mobi/js/lightbox.js"></script>
+<script type="text/javascript" src="/FO_WebContent/mobi/js/flotante.js"></script>
+</body>
+</html>

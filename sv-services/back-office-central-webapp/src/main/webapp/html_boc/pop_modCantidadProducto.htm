@@ -1,0 +1,96 @@
+<HTML>
+<HEAD>
+<TITLE>Modificar Cantidad de Productos</TITLE>
+<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE" />
+<META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE" />
+<META HTTP-EQUIV="EXPIRES" CONTENT="Mon, 22 Jul 2002 11:12:01 GMT" />
+<link href="estilos.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript">
+function guardar() {
+  if ( !document.f1.todos.checked ) {
+    if ( document.f1.cant_original.value == document.f1.cant_ped.value ) {
+      alert("Debe seleccionar un valor distinto a la cantidad original");
+      return;
+    }
+  }
+  if (confirm("Se procederá a realizar las modificaciones solicitadas.")) {
+    document.f1.submit();
+  }
+}
+function cancelar() {
+  window.close();
+}
+function init() {
+  opener.parent.frames['prod_ifr'].window.location.reload();
+  opener.parent.frames['logiframe'].window.location.reload();
+  if ( "{msj}" != "" ) {
+    alert("{msj}");
+    if ( "{msj}" == "Producto eliminado del listado" ) {
+      cancelar();
+    }
+  }
+}
+</script>
+</HEAD>
+<BODY onload="init();">
+<form name="f1" action="ModCantidadProductos" method="post">
+<TABLE width="100%" border="0" align="center" cellpadding="2" cellspacing="0" class="tabla2">
+  <TBODY>
+    <TR>
+      <TH>Modificar Cantidad de Productos</TH>
+    </TR>
+    <TR>
+      <TD>
+      
+        <table width="100%" border="0" cellspacing="2" cellpadding="2" class="tabla5">
+          <TBODY>
+		  <tr>
+		    <td>Id Producto:</td>
+		    <td colspan="2">{id_producto}</td>
+		  </tr>
+		  <tr>
+		    <td>Descripción:<br/></td>
+		    <td colspan="2">{descripcion}</td>
+		  </tr>
+		  <tr>
+		    <td>Cantidad Pedido:</td>
+		    <td colspan="2">{cant_original}</td>
+		  </tr>
+		  <tr>
+		    <td>Cantidad Nueva:</td>
+		    <td>
+		    
+		    <!-- BEGIN DYNAMIC: LISTA_SEL -->
+		    <select name="cant_ped" >
+		    <!-- BEGIN DYNAMIC: CANTIDADES -->
+		    <option value="{valor}" {selected}>{opcion}</option>
+		    <!-- END DYNAMIC: CANTIDADES -->
+		    </select>
+		    <!-- END DYNAMIC: LISTA_SEL -->
+		    
+		    </td>
+		    <td><input type="checkbox" name="todos" value="1" /> Eliminar todos</td>
+		  </tr>
+		  <tr>
+		    <td colspan="3" align="center" height="20">&nbsp;</td>
+		  </tr>
+		  <tr>
+		    <td align="center"><input type="button" name="save" value="Guardar Cambios" onclick="javascript:guardar();" /></td>
+		    <td>&nbsp;</td>
+		    <td align="center"><input type="button" name="cancel" value="Cancelar Cambios" onclick="javascript:cancelar();" /></td>
+		  </tr>
+		  </TBODY>
+		</table>
+      
+      </TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<input type="hidden" name="id_prod" value="{id_producto}" />
+<input type="hidden" name="id_pedido" value="{id_pedido}" />
+<input type="hidden" name="id_detalle" value="{id_detalle_pedido}" />
+<input type="hidden" name="desc_producto" value="{descripcion}" />
+<input type="hidden" name="cant_original" value="{cant_original}" />
+</form>
+</BODY>
+</HTML>

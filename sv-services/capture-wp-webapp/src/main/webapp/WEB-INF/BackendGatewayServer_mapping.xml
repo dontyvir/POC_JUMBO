@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<java-wsdl-mapping xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.1" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://www.ibm.com/webservices/xsd/j2ee_jaxrpc_mapping_1_1.xsd">
+    <package-mapping>
+        <package-type>com.transbank.capturatrx.ws</package-type>
+        <namespaceURI>http://ws.capturatrx.transbank.com/</namespaceURI>
+    </package-mapping>
+    <java-xml-type-mapping>
+        <java-type>com.transbank.capturatrx.ws.TrxReturn</java-type>
+        <root-type-qname xmlns:rtq="http://ws.capturatrx.transbank.com/">rtq:trxReturn</root-type-qname>
+        <qname-scope>complexType</qname-scope>
+        <variable-mapping>
+            <java-variable-name>codErr</java-variable-name>
+            <xml-element-name>codErr</xml-element-name>
+        </variable-mapping>
+        <variable-mapping>
+            <java-variable-name>desErr</java-variable-name>
+            <xml-element-name>desErr</xml-element-name>
+        </variable-mapping>
+    </java-xml-type-mapping>
+    <java-xml-type-mapping>
+        <java-type>double</java-type>
+        <root-type-qname xmlns:rtq="http://www.w3.org/2001/XMLSchema">rtq:double</root-type-qname>
+        <qname-scope>simpleType</qname-scope>
+    </java-xml-type-mapping>
+    <java-xml-type-mapping>
+        <java-type>com.transbank.capturatrx.ws.TrxInput</java-type>
+        <root-type-qname xmlns:rtq="http://ws.capturatrx.transbank.com/">rtq:trxInput</root-type-qname>
+        <qname-scope>complexType</qname-scope>
+        <variable-mapping>
+            <java-variable-name>codAut</java-variable-name>
+            <xml-element-name>codAut</xml-element-name>
+        </variable-mapping>
+        <variable-mapping>
+            <java-variable-name>codCred</java-variable-name>
+            <xml-element-name>codCred</xml-element-name>
+        </variable-mapping>
+        <variable-mapping>
+            <java-variable-name>fechaAut</java-variable-name>
+            <xml-element-name>fechaAut</xml-element-name>
+        </variable-mapping>
+        <variable-mapping>
+            <java-variable-name>finTarjeta</java-variable-name>
+            <xml-element-name>finTarjeta</xml-element-name>
+        </variable-mapping>
+        <variable-mapping>
+            <java-variable-name>montoCaptura</java-variable-name>
+            <xml-element-name>montoCaptura</xml-element-name>
+        </variable-mapping>
+        <variable-mapping>
+            <java-variable-name>ordenPedido</java-variable-name>
+            <xml-element-name>ordenPedido</xml-element-name>
+        </variable-mapping>
+    </java-xml-type-mapping>
+    <java-xml-type-mapping>
+        <java-type>int</java-type>
+        <root-type-qname xmlns:rtq="http://www.w3.org/2001/XMLSchema">rtq:int</root-type-qname>
+        <qname-scope>simpleType</qname-scope>
+    </java-xml-type-mapping>
+    <java-xml-type-mapping>
+        <java-type>java.lang.String</java-type>
+        <root-type-qname xmlns:rtq="http://www.w3.org/2001/XMLSchema">rtq:string</root-type-qname>
+        <qname-scope>simpleType</qname-scope>
+    </java-xml-type-mapping>
+    <service-interface-mapping>
+        <service-interface>com.transbank.capturatrx.ws.BackendGatewayServerImplService</service-interface>
+        <wsdl-service-name xmlns:sim="http://ws.capturatrx.transbank.com/">sim:BackendGatewayServerImplService</wsdl-service-name>
+        <port-mapping>
+            <port-name>BackendGatewayServerImplPort</port-name>
+            <java-port-name>BackendGatewayServerImplPort</java-port-name>
+        </port-mapping>
+    </service-interface-mapping>
+    <service-endpoint-interface-mapping>
+        <service-endpoint-interface>com.transbank.capturatrx.ws.BackendGatewayServer</service-endpoint-interface>
+        <wsdl-port-type xmlns:seimwpt="http://ws.capturatrx.transbank.com/">seimwpt:BackendGatewayServer</wsdl-port-type>
+        <wsdl-binding xmlns:seimwb="http://ws.capturatrx.transbank.com/">seimwb:BackendGatewayServerImplServiceSoapBinding</wsdl-binding>
+        <service-endpoint-method-mapping>
+            <java-method-name>capturaDiferida</java-method-name>
+            <wsdl-operation>capturaDiferida</wsdl-operation>
+            <wrapped-element></wrapped-element>
+            <method-param-parts-mapping>
+                <param-position>0</param-position>
+                <param-type>com.transbank.capturatrx.ws.TrxInput</param-type>
+                <wsdl-message-mapping>
+                    <wsdl-message xmlns:mppm="http://ws.capturatrx.transbank.com/">mppm:capturaDiferida</wsdl-message>
+                    <wsdl-message-part-name>arg0</wsdl-message-part-name>
+                    <parameter-mode>IN</parameter-mode>
+                </wsdl-message-mapping>
+            </method-param-parts-mapping>
+            <wsdl-return-value-mapping>
+                <method-return-value>com.transbank.capturatrx.ws.TrxReturn</method-return-value>
+                <wsdl-message xmlns:wrvm="http://ws.capturatrx.transbank.com/">wrvm:capturaDiferidaResponse</wsdl-message>
+                <wsdl-message-part-name>return</wsdl-message-part-name>
+            </wsdl-return-value-mapping>
+        </service-endpoint-method-mapping>
+    </service-endpoint-interface-mapping>
+</java-wsdl-mapping>

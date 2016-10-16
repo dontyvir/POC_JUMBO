@@ -1,0 +1,599 @@
+2014-08-13 00:45:08,504 DEBUG main cl.cencosud.procesos.carroabandonado.main.CarroAbandonado - [CarroAbandonado][main] Inicia metodo
+2014-08-13 00:45:08,512 DEBUG main cl.cencosud.procesos.carroabandonado.main.CarroAbandonado - [CarroAbandonado][main] inicio el process
+2014-08-13 00:45:08,512 DEBUG main cl.cencosud.procesos.carroabandonado.engine.Maestro - [Maestro][process] Ingreso al metodo
+2014-08-13 00:45:08,513 INFO  main cl.cencosud.procesos.carroabandonado.engine.Maestro - [Maestro][process] Comienza la ejecución del proceso 13-08-2014 00:45:08
+2014-08-13 00:45:08,564 DEBUG main cl.cencosud.procesos.carroabandonado.util.JFactory - [JFactory][getConnectionDB2] Ingreso al método.
+2014-08-13 00:45:08,564 DEBUG main cl.cencosud.procesos.carroabandonado.util.JFactory - [JFactory][getConnectionDB2] Obtengo la conexión.
+2014-08-13 00:45:08,564 DEBUG main cl.cencosud.procesos.carroabandonado.util.ConnectionDB2 - [ConnectionDB2][getConnectionDB2] Ingreso al método.
+2014-08-13 00:45:08,617 DEBUG main cl.cencosud.procesos.carroabandonado.util.ConnectionDB2 - [ConnectionDB2][getConnectionDB2] Realizo la instancia de la clase.
+2014-08-13 00:45:08,617 DEBUG main cl.cencosud.procesos.carroabandonado.util.ConnectionDB2 - [ConnectionDB2][ConnectionDB2] Ingreso al metodo constructor de la clase.
+2014-08-13 00:45:08,617 DEBUG main cl.cencosud.procesos.carroabandonado.util.ConnectionDB2 - [ConnectionDB2][ConnectionDB2] Realizo la busqueda de los parámetros en el properties.
+2014-08-13 00:45:08,617 DEBUG main cl.cencosud.procesos.carroabandonado.util.Util - [Util][getPropertiesString] recupero el valor del properties para la key db.url
+2014-08-13 00:45:08,620 DEBUG main cl.cencosud.procesos.carroabandonado.util.Util - [Util][getPropertiesString] recupero el valor del properties para la key db.dbname
+2014-08-13 00:45:08,620 DEBUG main cl.cencosud.procesos.carroabandonado.util.Util - [Util][getPropertiesString] recupero el valor del properties para la key db.driver
+2014-08-13 00:45:08,620 DEBUG main cl.cencosud.procesos.carroabandonado.util.Util - [Util][getPropertiesString] recupero el valor del properties para la key db.username
+2014-08-13 00:45:08,620 DEBUG main cl.cencosud.procesos.carroabandonado.util.Util - [Util][getPropertiesString] recupero el valor del properties para la key db.password
+2014-08-13 00:45:08,621 INFO  main cl.cencosud.procesos.carroabandonado.util.ConnectionDB2 - [ConnectionDB2][ConnectionDB2] url 		: jdbc:db2://172.18.150.35:50000
+2014-08-13 00:45:08,621 INFO  main cl.cencosud.procesos.carroabandonado.util.ConnectionDB2 - [ConnectionDB2][ConnectionDB2] dbName 		: JMCL_VE
+2014-08-13 00:45:08,621 INFO  main cl.cencosud.procesos.carroabandonado.util.ConnectionDB2 - [ConnectionDB2][ConnectionDB2] driver 		: com.ibm.db2.jcc.DB2Driver
+2014-08-13 00:45:08,621 INFO  main cl.cencosud.procesos.carroabandonado.util.ConnectionDB2 - [ConnectionDB2][ConnectionDB2] userName 	: fodba
+2014-08-13 00:45:08,621 INFO  main cl.cencosud.procesos.carroabandonado.util.ConnectionDB2 - [ConnectionDB2][ConnectionDB2] password 	: fodba
+2014-08-13 00:45:09,040 DEBUG main cl.cencosud.procesos.carroabandonado.util.ConnectionDB2 - [ConnectionDB2][getConnectionDB2] Retorno conexión.
+2014-08-13 00:45:09,040 DEBUG main cl.cencosud.procesos.carroabandonado.util.JFactory - [JFactory][getConnectionDB2] retorno la conexión.
+2014-08-13 00:45:09,040 INFO  main cl.cencosud.procesos.carroabandonado.engine.Maestro - [Maestro][process] Realizo llamado a obtener carros abandonados
+2014-08-13 00:45:09,041 DEBUG main cl.cencosud.procesos.carroabandonado.dao.CarroAbandonadoDAO - [CarroAbandonadoDAO][getCarrosAbandonados] Ingreso al metodo
+2014-08-13 00:45:09,041 DEBUG main cl.cencosud.procesos.carroabandonado.dao.CarroAbandonadoDAO - [CarroAbandonadoDAO][getCarrosAbandonados] Recupero la query
+2014-08-13 00:45:09,041 DEBUG main cl.cencosud.procesos.carroabandonado.util.JFactory - [JFactory][getStringBuffer] Ingreso al método.
+2014-08-13 00:45:09,041 DEBUG main cl.cencosud.procesos.carroabandonado.util.JFactory - [JFactory][getStringBuffer] Recupero un StringBuffer.
+2014-08-13 00:45:09,041 DEBUG main cl.cencosud.procesos.carroabandonado.util.JFactory - [JFactory][getStringBuffer] Borro su contenido.
+2014-08-13 00:45:09,041 DEBUG main cl.cencosud.procesos.carroabandonado.util.JFactory - [JFactory][getStringBuffer] Retorno el StringBuffer.
+2014-08-13 00:45:09,041 DEBUG main cl.cencosud.procesos.carroabandonado.util.Util - [Util][getPropertiesString] recupero el valor del properties para la key carro.dias.abandono.minimo
+2014-08-13 00:45:09,041 DEBUG main cl.cencosud.procesos.carroabandonado.util.Util - [Util][getPropertiesString] recupero el valor del properties para la key carro.dias.abandono.maximo
+2014-08-13 00:45:09,041 DEBUG main cl.cencosud.procesos.carroabandonado.util.Util - [Util][getPropertiesString] recupero el valor del properties para la key carro.maximo.correos.periodo
+2014-08-13 00:45:09,041 INFO  main cl.cencosud.procesos.carroabandonado.dao.CarroAbandonadoDAO - [CarroAbandonadoDAO][getCarrosAbandonados] la query a ejecutar es SELECT C.CLI_ID, C.CLI_RUT, C.CLI_DV, C.CLI_NOMBRE, C.CLI_APELLIDO_PAT, C.CLI_APELLIDO_MAT, C.CLI_EMAIL 
+FROM FODBA.FO_CARRO_COMPRAS CC, FODBA.FO_CLIENTES C 
+WHERE CC.CAR_CLI_ID = C.CLI_ID 
+AND C.CLI_ESTADO = 'A' AND C.CLI_BLOQUEO = 'D' 
+AND CC.CAR_FEC_MICARRO IS NOT NULL 
+AND CC.CAR_EST_MAIL = 0 
+AND C.CLI_RUT NOT IN ( 
+        SELECT COL.COL_RUT FROM FODBA.FO_COLABORADOR COL 
+    ) 
+AND (( DAYS(CURRENT TIMESTAMP) - DAYS(CC.CAR_FEC_MICARRO) ) >= 0 ) 
+AND CC.CAR_CLI_ID NOT IN ( 
+        SELECT CA.CAR_CLI_ID 
+        FROM FODBA.FO_CARRO_ABANDONADO CA 
+        WHERE (( DAYS(CURRENT TIMESTAMP) - DAYS(CA.CAR_FEC_MAIL) ) <= 1 ) 
+        GROUP BY CA.CAR_CLI_ID 
+        HAVING COUNT(CA.CAR_CLI_ID) >= 1 
+    ) 
+GROUP BY C.CLI_ID, C.CLI_RUT, C.CLI_DV, C.CLI_NOMBRE, C.CLI_APELLIDO_PAT, C.CLI_APELLIDO_MAT, C.CLI_EMAIL 
+WITH UR 
+2014-08-13 00:45:09,041 DEBUG main cl.cencosud.procesos.carroabandonado.dao.CarroAbandonadoDAO - [CarroAbandonadoDAO][getCarrosAbandonados] Realizo llamado a obtener los datos
+2014-08-13 00:45:09,041 DEBUG main cl.cencosud.procesos.carroabandonado.util.JFactory - [JFactory][getQueryRunner] Ingreso al método.
+2014-08-13 00:45:09,041 DEBUG main cl.cencosud.procesos.carroabandonado.util.JFactory - [JFactory][getQueryRunner] Realizo la instancia.
+2014-08-13 00:45:09,042 DEBUG main cl.cencosud.procesos.carroabandonado.util.JFactory - [JFactory][getQueryRunner] Retorno el objeto.
+2014-08-13 00:45:11,596 DEBUG main cl.cencosud.procesos.carroabandonado.dao.CarroAbandonadoDAO - [CarroAbandonadoDAO][getCarrosAbandonados] Obtuve resultado.
+2014-08-13 00:45:11,596 DEBUG main cl.cencosud.procesos.carroabandonado.dao.CarroAbandonadoDAO - [CarroAbandonadoDAO][getCarrosAbandonados] Finaliza el metodo.
+2014-08-13 00:45:11,596 DEBUG main cl.cencosud.procesos.carroabandonado.dao.CarroAbandonadoDAO - [CarroAbandonadoDAO][getCategoriaMasCara] Ingreso al metodo
+2014-08-13 00:45:11,596 DEBUG main cl.cencosud.procesos.carroabandonado.dao.CarroAbandonadoDAO - [CarroAbandonadoDAO][getCategoriaMasCara] Recupero la query
+2014-08-13 00:45:11,596 DEBUG main cl.cencosud.procesos.carroabandonado.util.JFactory - [JFactory][getStringBuffer] Ingreso al método.
+2014-08-13 00:45:11,596 DEBUG main cl.cencosud.procesos.carroabandonado.util.JFactory - [JFactory][getStringBuffer] Borro su contenido.
+2014-08-13 00:45:11,596 DEBUG main cl.cencosud.procesos.carroabandonado.util.JFactory - [JFactory][getStringBuffer] Retorno el StringBuffer.
+2014-08-13 00:45:11,597 INFO  main cl.cencosud.procesos.carroabandonado.dao.CarroAbandonadoDAO - [CarroAbandonadoDAO][getCategoriaMasCara] la query a ejecutar es SELECT CC.CAR_PRO_ID, (INT(CC.CAR_CANTIDAD) * INT(PL.PRE_VALOR)) as SUMA 
+FROM FODBA.FO_CARRO_COMPRAS CC, FODBA.FO_PRECIOS_LOCALES PL 
+WHERE CC.CAR_PRO_ID = PL.PRE_PRO_ID 
+AND PL.PRE_LOC_ID = 1 
+AND CC.CAR_CLI_ID = 448471 
+WITH UR 
+2014-08-13 00:45:11,597 DEBUG main cl.cencosud.procesos.carroabandonado.dao.CarroAbandonadoDAO - [CarroAbandonadoDAO][getCategoriaMasCara] Realizo llamado a obtener los datos
+2014-08-13 00:45:11,597 DEBUG main cl.cencosud.procesos.carroabandonado.util.JFactory - [JFactory][getQueryRunner] Ingreso al método.
+2014-08-13 00:45:11,597 DEBUG main cl.cencosud.procesos.carroabandonado.util.JFactory - [JFactory][getQueryRunner] Retorno el objeto.
+2014-08-13 00:45:11,611 DEBUG main cl.cencosud.procesos.carroabandonado.dao.CarroAbandonadoDAO - [CarroAbandonadoDAO][getCategoriaMasCara] Finaliza el metodo.
+2014-08-13 00:45:11,611 DEBUG main cl.cencosud.procesos.carroabandonado.util.Util - [Util][getPropertiesString] recupero el valor del properties para la key carro.monto.minimo
+2014-08-13 00:45:11,611 DEBUG main cl.cencosud.procesos.carroabandonado.util.Util - [Util][getPropertiesString] recupero el valor del properties para la key carro.monto.maximo
+2014-08-13 00:45:11,611 DEBUG main cl.cencosud.procesos.carroabandonado.dao.CarroAbandonadoDAO - [CarroAbandonadoDAO][getSeccionMasCara] Ingreso al metodo
+2014-08-13 00:45:11,611 DEBUG main cl.cencosud.procesos.carroabandonado.dao.CarroAbandonadoDAO - [CarroAbandonadoDAO][getSeccionMasCara] Recupero la query
+2014-08-13 00:45:11,611 DEBUG main cl.cencosud.procesos.carroabandonado.util.JFactory - [JFactory][getStringBuffer] Ingreso al método.
+2014-08-13 00:45:11,611 DEBUG main cl.cencosud.procesos.carroabandonado.util.JFactory - [JFactory][getStringBuffer] Borro su contenido.
+2014-08-13 00:45:11,611 DEBUG main cl.cencosud.procesos.carroabandonado.util.JFactory - [JFactory][getStringBuffer] Retorno el StringBuffer.
+2014-08-13 00:45:11,611 INFO  main cl.cencosud.procesos.carroabandonado.dao.CarroAbandonadoDAO - [CarroAbandonadoDAO][getSeccionMasCara] la query a ejecutar es SELECT ID_SECCION, NOMBRE, SUM(SUMA) SUMA2 
+FROM 
+( 
+    SELECT CC.CAR_PRO_ID, (INT(CC.CAR_CANTIDAD) * INT(PL.PRE_VALOR)) as SUMA, S.ID_SECCION, S.NOMBRE 
+    FROM FODBA.FO_CARRO_COMPRAS CC, FODBA.FO_PRECIOS_LOCALES PL, 
+         FODBA.FO_PRODUCTOS FP, BODBA.BO_PRODUCTOS BP, BODBA.BO_SECCION S 
+    WHERE CC.CAR_PRO_ID = PL.PRE_PRO_ID 
+      AND CC.CAR_CLI_ID = 448471 
+      AND PL.PRE_LOC_ID = 1 
+      AND CC.CAR_PRO_ID = FP.PRO_ID 
+      AND FP.PRO_ID_BO = BP.ID_PRODUCTO 
+      AND S.ID_SECCION = CAST(SUBSTR(BP.ID_CATPROD, 1, 2) AS INT) 
+) P 
+GROUP BY ID_SECCION, NOMBRE 
+ORDER BY SUMA2 DESC 
+WITH UR 
+2014-08-13 00:45:11,611 DEBUG main cl.cencosud.procesos.carroabandonado.dao.CarroAbandonadoDAO - [CarroAbandonadoDAO][getSeccionMasCara] Realizo llamado a obtener los datos
+2014-08-13 00:45:11,611 DEBUG main cl.cencosud.procesos.carroabandonado.util.JFactory - [JFactory][getQueryRunner] Ingreso al método.
+2014-08-13 00:45:11,611 DEBUG main cl.cencosud.procesos.carroabandonado.util.JFactory - [JFactory][getQueryRunner] Retorno el objeto.
+2014-08-13 00:45:11,663 DEBUG main cl.cencosud.procesos.carroabandonado.dao.CarroAbandonadoDAO - [CarroAbandonadoDAO][getSeccionMasCara] Finaliza el metodo.
+2014-08-13 00:45:11,663 DEBUG main cl.cencosud.procesos.carroabandonado.dao.CarroAbandonadoDAO - [CarroAbandonadoDAO][getCuponSeccion] Ingreso al metodo
+2014-08-13 00:45:11,663 DEBUG main cl.cencosud.procesos.carroabandonado.dao.CarroAbandonadoDAO - [CarroAbandonadoDAO][getCuponSeccion] Recupero la query
+2014-08-13 00:45:11,663 DEBUG main cl.cencosud.procesos.carroabandonado.util.JFactory - [JFactory][getStringBuffer] Ingreso al método.
+2014-08-13 00:45:11,663 DEBUG main cl.cencosud.procesos.carroabandonado.util.JFactory - [JFactory][getStringBuffer] Borro su contenido.
+2014-08-13 00:45:11,663 DEBUG main cl.cencosud.procesos.carroabandonado.util.JFactory - [JFactory][getStringBuffer] Retorno el StringBuffer.
+2014-08-13 00:45:11,664 DEBUG main cl.cencosud.procesos.carroabandonado.util.Util - [Util][getPropertiesString] recupero el valor del properties para la key carro.cupon.prefijo
+2014-08-13 00:45:11,664 INFO  main cl.cencosud.procesos.carroabandonado.dao.CarroAbandonadoDAO - [CarroAbandonadoDAO][getCuponSeccion] la query a ejecutar es SELECT CD.ID_CUP_DTO, CD.CODIGO, CD.CANTIDAD, CD.DESCUENTO, CD.FECHA_FIN 
+FROM BODBA.BO_CUPON_DSCTO CD, BODBA.BO_CUPON_DSCTOXPRODS DP 
+WHERE CD.TIPO = 'S' 
+AND CD.ID_CUP_DTO = DP.ID_CUP_DTO 
+AND CD.CANTIDAD > 0 
+AND DP.ID_SECCION = 20 
+AND ((CD.FECHA_FIN >= CURRENT DATE) AND (CD.FECHA_INI <= CURRENT DATE)) 
+AND CD.CODIGO LIKE 'CA_%' 
+WITH UR 
+2014-08-13 00:45:11,664 DEBUG main cl.cencosud.procesos.carroabandonado.dao.CarroAbandonadoDAO - [CarroAbandonadoDAO][getCuponSeccion] Realizo llamado a obtener los datos
+2014-08-13 00:45:11,664 DEBUG main cl.cencosud.procesos.carroabandonado.util.JFactory - [JFactory][getQueryRunner] Ingreso al método.
+2014-08-13 00:45:11,664 DEBUG main cl.cencosud.procesos.carroabandonado.util.JFactory - [JFactory][getQueryRunner] Retorno el objeto.
+2014-08-13 00:45:11,807 DEBUG main cl.cencosud.procesos.carroabandonado.dao.CarroAbandonadoDAO - [CarroAbandonadoDAO][getCuponSeccion] Finaliza el metodo.
+2014-08-13 00:45:11,807 INFO  main cl.cencosud.procesos.carroabandonado.engine.Maestro - [Maestro][process] Realizo el llamado a generar el mail
+2014-08-13 00:45:11,808 DEBUG main cl.cencosud.procesos.carroabandonado.engine.Maestro - Fecha formato:09-09-2014
+2014-08-13 00:45:11,808 DEBUG main cl.cencosud.procesos.carroabandonado.util.Util - [Util][getPropertiesString] recupero el valor del properties para la key html.cupon.directorio
+2014-08-13 00:45:11,808 DEBUG main cl.cencosud.procesos.carroabandonado.util.Util - [Util][getPropertiesString] recupero el valor del properties para la key html.cupon.descuento
+2014-08-13 00:45:11,808 DEBUG main cl.cencosud.procesos.carroabandonado.util.Util - [Util][getPropertiesString] recupero el valor del properties para la key html.cupon.despacho
+2014-08-13 00:45:11,808 DEBUG main cl.cencosud.procesos.carroabandonado.util.Util - [Util][getPropertiesString] recupero el valor del properties para la key html.cupon.recuerda
+2014-08-13 00:45:11,873 INFO  main cl.cencosud.procesos.carroabandonado.engine.Maestro - [Maestro][process] Realizo el envio de los correos electronicos
+2014-08-13 00:45:11,873 DEBUG main cl.cencosud.procesos.carroabandonado.util.JFactory - [JFactory][getConnectionDB2] Ingreso al método.
+2014-08-13 00:45:11,873 DEBUG main cl.cencosud.procesos.carroabandonado.util.JFactory - [JFactory][getConnectionDB2] retorno la conexión.
+2014-08-13 00:45:11,873 DEBUG main cl.cencosud.procesos.carroabandonado.util.Util - [Util][getPropertiesString] recupero el valor del properties para la key jumbo.url.fo
+2014-08-13 00:45:11,873 DEBUG main cl.cencosud.procesos.carroabandonado.dao.CarroAbandonadoDAO - [CarroAbandonadoDAO][getCuponSeccion] Ingreso al metodo
+2014-08-13 00:45:11,873 DEBUG main cl.cencosud.procesos.carroabandonado.dao.CarroAbandonadoDAO - [CarroAbandonadoDAO][getInsertCarroAbandonado] Recupero la query
+2014-08-13 00:45:11,873 DEBUG main cl.cencosud.procesos.carroabandonado.util.JFactory - [JFactory][getStringBuffer] Ingreso al método.
+2014-08-13 00:45:11,873 DEBUG main cl.cencosud.procesos.carroabandonado.util.JFactory - [JFactory][getStringBuffer] Borro su contenido.
+2014-08-13 00:45:11,873 DEBUG main cl.cencosud.procesos.carroabandonado.util.JFactory - [JFactory][getStringBuffer] Retorno el StringBuffer.
+2014-08-13 00:45:11,873 INFO  main cl.cencosud.procesos.carroabandonado.dao.CarroAbandonadoDAO - [CarroAbandonadoDAO][getInsertCarroAbandonado] la query a ejecutar es INSERT INTO FODBA.FO_CARRO_ABANDONADO 
+	(CAR_CLI_ID, CAR_FEC_MAIL, CAR_TIPO_DCTO, CAR_CLI_NOMBRES, CAR_FECHA_FIN, CAR_MONTO_DCTO, CAR_CUPON, CAR_NOM_SECCION, CAR_ESTADO_MAIL) 
+VALUES 
+	( 448471, CURRENT TIMESTAMP, 'S', 'Cristian Alejandro', '2014-09-09', '10%', 'CA_TESTSESSION', 'Congelados', 0) 
+2014-08-13 00:45:11,873 DEBUG main cl.cencosud.procesos.carroabandonado.dao.CarroAbandonadoDAO - [CarroAbandonadoDAO][getInsertCarroAbandonado] Realizo llamado a obtener los datos
+2014-08-13 00:45:11,873 DEBUG main cl.cencosud.procesos.carroabandonado.util.JFactory - [JFactory][getQueryRunner] Ingreso al método.
+2014-08-13 00:45:11,873 DEBUG main cl.cencosud.procesos.carroabandonado.util.JFactory - [JFactory][getQueryRunner] Retorno el objeto.
+2014-08-13 00:45:11,931 DEBUG main cl.cencosud.procesos.carroabandonado.util.JFactory - [JFactory][getQueryRunner] Ingreso al método.
+2014-08-13 00:45:11,931 DEBUG main cl.cencosud.procesos.carroabandonado.util.JFactory - [JFactory][getQueryRunner] Retorno el objeto.
+2014-08-13 00:45:11,938 DEBUG main cl.cencosud.procesos.carroabandonado.dao.CarroAbandonadoDAO - [CarroAbandonadoDAO][getInsertCarroAbandonado] Finaliza el metodo.
+2014-08-13 00:45:11,957 DEBUG main cl.cencosud.procesos.carroabandonado.engine.Maestro - [Maestro][enviaEmail] Ingreso al método
+2014-08-13 00:45:11,957 DEBUG main cl.cencosud.procesos.carroabandonado.engine.Maestro - [Maestro][enviaEmail] Se realiza el envio de correo electronico
+2014-08-13 00:45:11,957 DEBUG main cl.cencosud.procesos.carroabandonado.util.Util - [Util][getPropertiesString] recupero el valor del properties para la key mail.smtp.host
+2014-08-13 00:45:11,957 DEBUG main cl.cencosud.procesos.carroabandonado.util.Util - [Util][getPropertiesString] recupero el valor del properties para la key mail.from
+2014-08-13 00:45:11,957 DEBUG main cl.cencosud.procesos.carroabandonado.util.Util - [Util][getPropertiesString] recupero el valor del properties para la key mail.subject
+2014-08-13 00:45:11,957 DEBUG main cl.cencosud.procesos.carroabandonado.util.Util - [Util][getPropertiesString] recupero el valor del properties para la key mail.send
+2014-08-13 00:45:11,957 INFO  main cl.cencosud.procesos.carroabandonado.engine.Maestro - [Maestro][enviaEmail] Conectando SMTP host[172.18.132.19]
+2014-08-13 00:45:11,958 DEBUG main cl.cencosud.procesos.carroabandonado.engine.Maestro - [Maestro][enviaEmail] host[172.18.132.19]
+2014-08-13 00:45:11,958 DEBUG main cl.cencosud.procesos.carroabandonado.engine.Maestro - [Maestro][enviaEmail] from[no-reply@cencosud.cl]
+2014-08-13 00:45:11,958 DEBUG main cl.cencosud.procesos.carroabandonado.engine.Maestro - [Maestro][enviaEmail] to[cristian.valdebenito@cencosud.cl]
+2014-08-13 00:45:11,958 DEBUG main cl.cencosud.procesos.carroabandonado.engine.Maestro - [Maestro][enviaEmail] cc[]
+2014-08-13 00:45:11,958 DEBUG main cl.cencosud.procesos.carroabandonado.engine.Maestro - [Maestro][enviaEmail] subject[Cristian Alejandro, tu carrito te está esperando [PRUEBA AMBIENTE DESARROLLO]]
+2014-08-13 00:45:11,958 DEBUG main cl.cencosud.procesos.carroabandonado.engine.Maestro - [Maestro][enviaEmail] bodyHtml[<html><head><title>Carro Jumbo.cl</title></head><body><table width="800" border="0" align="center" cellpadding="0" cellspacing="0">  <tr>    <td>    <p style="font-family:Arial, Helvetica, sans-serif; color:#000000; font-size:12px; text-align:center;">Si usted no visualiza bien este mail, haga<b> <a href="http://10.94.223.44:9080/FO/VerCuponMail?key=MjAx
+" style="color:#008000; text-decoration:none;"> click aqu&iacute;</a></b></font></p>    </td>  </tr>  <tr>    <td>                <table border="0" cellspacing="0" cellpadding="0">  <tr>    <td width="800" height="68"><img src="http://www.jumbo.cl/supermercado/mail/2014/0320_carro/carrito_2_01.jpg" width="800" height="68" border="0" usemap="#Map2" style="display:block"></td>  </tr>  <tr>    <td><table border="0" cellspacing="0" cellpadding="0">      <tr>        <td width="432" height="512"><img src="http://www.jumbo.cl/supermercado/mail/2014/0320_carro/carrito_2_02.jpg" width="432" height="512" border="0" usemap="#Map3" style="display:block"></td>        <td><table width="0" border="0" cellspacing="0" cellpadding="0">          <tr>            <td height="71"> <span style="font-weight:bold; font-size:21px; color:#666666; padding-left:17px; font-family:Arial, Helvetica, sans-serif"> Cristian Alejandro,</span></td>            </tr>          <tr>            <td>              <table width="340" border="0" cellspacing="0" cellpadding="0">                  </table>              </td>            </tr>          <tr>            <td width="366" height="160"><img style="display:block" src="http://www.jumbo.cl/supermercado/mail/2014/0320_carro/carrito_2_04.jpg" width="366" height="160" border="0"/></td>            </tr>          <tr>            <td height="98" align="center"><p style="font-weight:bold; font-size:45px; color:#333333; line-height:35px; font-family:Arial, Helvetica, sans-serif">10% dcto.<br/>              <span style="font-weight:bold; font-size:30px; color:#333333; line-height:23px;">en Congelados </span></p></td>            </tr>                                <tr>            <td height="80" align="right"> <p style="line-height:1px; font-weight:medium; font-size:14px; color:#666666; padding-right:25px; margin-top:10px; font-family:Arial, Helvetica, sans-serif ">Ingresa el c&oacute;digo del cup&oacute;n al momento de pagar:</p>              <p style="line-height:1px; font-weight:medium; font-size:14px; color:#666666; padding-right:25px; font-family:Arial, Helvetica, sans-serif"><span style="font-weight:bold; font-size:30px; color:#333333; line-height:23px;"> <span style="font-weight:bold; font-size:16px; color:#666666; padding-left:17px; font-family:Arial, Helvetica, sans-serif text-transform: uppercase;"> CA_TESTSESSION</span></p></td>            </tr>            <tr>            <td height="41" align="right"> <span style="font-weight:medium; font-size:12px; color:#666666; padding-right:25px; font-family:Arial, Helvetica, sans-serif">Dcto. v&aacute;lido hasta 09-09-2014</span></td>            </tr>                    <tr>            <td width="366" height="62"><img style="display:block" src="http://www.jumbo.cl/supermercado/mail/2014/0320_carro/carrito_2_08.jpg" width="366" height="62" border="0" usemap="#Map"></td>            </tr></table>        </td>      </tr>    </table></td>  </tr>  <tr>    <td width="800" height="20"><img style="display:block" src="http://www.jumbo.cl/supermercado/mail/2014/0320_carro/carrito_2_09.jpg" width="800" height="20" border="0"></td>  </tr></table>            </td>  </tr>  <tr>    <td><p  style="font-family:Arial, Helvetica, sans-serif; color:#333333; font-size:11px; text-align:center;">Descuento no acumulable con otras ofertas, en tal caso se aplicar&aacute; el descuento mayor.<br>      Cup&oacute;n v&aacute;lido hasta la fecha indicada anteriormente.<br>    </td>  </tr></table><map name="Map">  <area shape="rect" coords="3,-8,362,68" href="http://www.jumbo.cl/FO/LogonForm?utm_source=mail_carro_abandonado&utm_medium=mail_automatico&utm_campaign=seccion_congelados"></map><map name="Map2">  <area shape="circle" coords="62,67,60" href="http://www.jumbo.cl/FO/LogonForm?utm_source=mail_jumbo.cl_08ago2014&utm_medium=mail&utm_campaign=carrito_dcto&utm_content=header_logo_jumbo"></map><map name="Map3">  <area shape="circle" coords="62,-1,57" href="http://www.jumbo.cl/FO/LogonForm?utm_source=mail_jumbo.cl_08ago2014&utm_medium=mail&utm_campaign=carrito_dcto&utm_content=header_logo_jumbo"></map></body></html>]
+2014-08-13 00:45:11,958 DEBUG main cl.cencosud.procesos.carroabandonado.util.JFactory - [JFactory][getSendMail] Ingreso al método.
+2014-08-13 00:45:11,958 DEBUG main cl.cencosud.procesos.carroabandonado.util.JFactory - [JFactory][getSendMail] Realizo la instancia.
+2014-08-13 00:45:11,963 DEBUG main cl.cencosud.procesos.carroabandonado.util.JFactory - [JFactory][getSendMail] Retorno el objeto.
+2014-08-13 00:45:11,963 DEBUG main cl.cencosud.procesos.carroabandonado.util.SendMail - [SendMail][enviar] Ingreso al metodo
+2014-08-13 00:45:11,999 DEBUG main cl.cencosud.procesos.carroabandonado.util.SendMail - [SendMail][enviar] Mdestinatario SMTP: no-reply@cencosud.cl
+2014-08-13 00:45:11,999 DEBUG main cl.cencosud.procesos.carroabandonado.util.SendMail - [SendMail][enviar] Message.RecipientType.TO agregando: cristian.valdebenito@cencosud.cl
+2014-08-13 00:45:12,004 DEBUG main cl.cencosud.procesos.carroabandonado.util.SendMail - [SendMail][enviar] subject  :Cristian Alejandro, tu carrito te está esperando [PRUEBA AMBIENTE DESARROLLO]
+2014-08-13 00:45:12,004 DEBUG main cl.cencosud.procesos.carroabandonado.util.SendMail - [SendMail][enviar] DataHandler  :<html><head><title>Carro Jumbo.cl</title></head><body><table width="800" border="0" align="center" cellpadding="0" cellspacing="0">  <tr>    <td>    <p style="font-family:Arial, Helvetica, sans-serif; color:#000000; font-size:12px; text-align:center;">Si usted no visualiza bien este mail, haga<b> <a href="http://10.94.223.44:9080/FO/VerCuponMail?key=MjAx
+" style="color:#008000; text-decoration:none;"> click aqu&iacute;</a></b></font></p>    </td>  </tr>  <tr>    <td>                <table border="0" cellspacing="0" cellpadding="0">  <tr>    <td width="800" height="68"><img src="http://www.jumbo.cl/supermercado/mail/2014/0320_carro/carrito_2_01.jpg" width="800" height="68" border="0" usemap="#Map2" style="display:block"></td>  </tr>  <tr>    <td><table border="0" cellspacing="0" cellpadding="0">      <tr>        <td width="432" height="512"><img src="http://www.jumbo.cl/supermercado/mail/2014/0320_carro/carrito_2_02.jpg" width="432" height="512" border="0" usemap="#Map3" style="display:block"></td>        <td><table width="0" border="0" cellspacing="0" cellpadding="0">          <tr>            <td height="71"> <span style="font-weight:bold; font-size:21px; color:#666666; padding-left:17px; font-family:Arial, Helvetica, sans-serif"> Cristian Alejandro,</span></td>            </tr>          <tr>            <td>              <table width="340" border="0" cellspacing="0" cellpadding="0">                  </table>              </td>            </tr>          <tr>            <td width="366" height="160"><img style="display:block" src="http://www.jumbo.cl/supermercado/mail/2014/0320_carro/carrito_2_04.jpg" width="366" height="160" border="0"/></td>            </tr>          <tr>            <td height="98" align="center"><p style="font-weight:bold; font-size:45px; color:#333333; line-height:35px; font-family:Arial, Helvetica, sans-serif">10% dcto.<br/>              <span style="font-weight:bold; font-size:30px; color:#333333; line-height:23px;">en Congelados </span></p></td>            </tr>                                <tr>            <td height="80" align="right"> <p style="line-height:1px; font-weight:medium; font-size:14px; color:#666666; padding-right:25px; margin-top:10px; font-family:Arial, Helvetica, sans-serif ">Ingresa el c&oacute;digo del cup&oacute;n al momento de pagar:</p>              <p style="line-height:1px; font-weight:medium; font-size:14px; color:#666666; padding-right:25px; font-family:Arial, Helvetica, sans-serif"><span style="font-weight:bold; font-size:30px; color:#333333; line-height:23px;"> <span style="font-weight:bold; font-size:16px; color:#666666; padding-left:17px; font-family:Arial, Helvetica, sans-serif text-transform: uppercase;"> CA_TESTSESSION</span></p></td>            </tr>            <tr>            <td height="41" align="right"> <span style="font-weight:medium; font-size:12px; color:#666666; padding-right:25px; font-family:Arial, Helvetica, sans-serif">Dcto. v&aacute;lido hasta 09-09-2014</span></td>            </tr>                    <tr>            <td width="366" height="62"><img style="display:block" src="http://www.jumbo.cl/supermercado/mail/2014/0320_carro/carrito_2_08.jpg" width="366" height="62" border="0" usemap="#Map"></td>            </tr></table>        </td>      </tr>    </table></td>  </tr>  <tr>    <td width="800" height="20"><img style="display:block" src="http://www.jumbo.cl/supermercado/mail/2014/0320_carro/carrito_2_09.jpg" width="800" height="20" border="0"></td>  </tr></table>            </td>  </tr>  <tr>    <td><p  style="font-family:Arial, Helvetica, sans-serif; color:#333333; font-size:11px; text-align:center;">Descuento no acumulable con otras ofertas, en tal caso se aplicar&aacute; el descuento mayor.<br>      Cup&oacute;n v&aacute;lido hasta la fecha indicada anteriormente.<br>    </td>  </tr></table><map name="Map">  <area shape="rect" coords="3,-8,362,68" href="http://www.jumbo.cl/FO/LogonForm?utm_source=mail_carro_abandonado&utm_medium=mail_automatico&utm_campaign=seccion_congelados"></map><map name="Map2">  <area shape="circle" coords="62,67,60" href="http://www.jumbo.cl/FO/LogonForm?utm_source=mail_jumbo.cl_08ago2014&utm_medium=mail&utm_campaign=carrito_dcto&utm_content=header_logo_jumbo"></map><map name="Map3">  <area shape="circle" coords="62,-1,57" href="http://www.jumbo.cl/FO/LogonForm?utm_source=mail_jumbo.cl_08ago2014&utm_medium=mail&utm_campaign=carrito_dcto&utm_content=header_logo_jumbo"></map></body></html>
+2014-08-13 00:45:12,032 INFO  main cl.cencosud.procesos.carroabandonado.util.SendMail - [SendMail][enviar] Enviando correo
+2014-08-13 00:45:12,532 INFO  main cl.cencosud.procesos.carroabandonado.util.SendMail - [SendMail][enviar] SendMail - > Se envio Correo ...
+2014-08-13 00:45:12,532 INFO  main cl.cencosud.procesos.carroabandonado.engine.Maestro - [Maestro][enviaEmail]Correo enviado correctamente
+2014-08-13 00:45:12,532 DEBUG main cl.cencosud.procesos.carroabandonado.dao.CarroAbandonadoDAO - [CarroAbandonadoDAO][getUpdateCarroCompra] Ingreso al metodo
+2014-08-13 00:45:12,532 DEBUG main cl.cencosud.procesos.carroabandonado.dao.CarroAbandonadoDAO - [CarroAbandonadoDAO][getUpdateCarroCompra] Recupero la query
+2014-08-13 00:45:12,532 DEBUG main cl.cencosud.procesos.carroabandonado.util.JFactory - [JFactory][getStringBuffer] Ingreso al método.
+2014-08-13 00:45:12,532 DEBUG main cl.cencosud.procesos.carroabandonado.util.JFactory - [JFactory][getStringBuffer] Borro su contenido.
+2014-08-13 00:45:12,532 DEBUG main cl.cencosud.procesos.carroabandonado.util.JFactory - [JFactory][getStringBuffer] Retorno el StringBuffer.
+2014-08-13 00:45:12,532 INFO  main cl.cencosud.procesos.carroabandonado.dao.CarroAbandonadoDAO - [CarroAbandonadoDAO][getUpdateCarroCompra] la query a ejecutar es UPDATE FODBA.FO_CARRO_COMPRAS SET CAR_EST_MAIL=1 WHERE CAR_CLI_ID=448471 
+2014-08-13 00:45:12,532 DEBUG main cl.cencosud.procesos.carroabandonado.util.JFactory - [JFactory][getQueryRunner] Ingreso al método.
+2014-08-13 00:45:12,532 DEBUG main cl.cencosud.procesos.carroabandonado.util.JFactory - [JFactory][getQueryRunner] Retorno el objeto.
+2014-08-13 00:45:12,684 DEBUG main cl.cencosud.procesos.carroabandonado.dao.CarroAbandonadoDAO - [CarroAbandonadoDAO][getUpdateCarroCompra] Finaliza el metodo.
+2014-08-13 00:45:12,684 DEBUG main cl.cencosud.procesos.carroabandonado.dao.CarroAbandonadoDAO - [CarroAbandonadoDAO][getUpdateCarroAbandonado] Ingreso al metodo
+2014-08-13 00:45:12,684 DEBUG main cl.cencosud.procesos.carroabandonado.dao.CarroAbandonadoDAO - [CarroAbandonadoDAO][getUpdateCarroAbandonado] Recupero la query
+2014-08-13 00:45:12,684 DEBUG main cl.cencosud.procesos.carroabandonado.util.JFactory - [JFactory][getStringBuffer] Ingreso al método.
+2014-08-13 00:45:12,684 DEBUG main cl.cencosud.procesos.carroabandonado.util.JFactory - [JFactory][getStringBuffer] Borro su contenido.
+2014-08-13 00:45:12,684 DEBUG main cl.cencosud.procesos.carroabandonado.util.JFactory - [JFactory][getStringBuffer] Retorno el StringBuffer.
+2014-08-13 00:45:12,684 INFO  main cl.cencosud.procesos.carroabandonado.dao.CarroAbandonadoDAO - [CarroAbandonadoDAO][getUpdateCarroAbandonado] la query a ejecutar es UPDATE FODBA.FO_CARRO_ABANDONADO SET CAR_ESTADO_MAIL=1 WHERE CAR_ID=201 
+2014-08-13 00:45:12,684 DEBUG main cl.cencosud.procesos.carroabandonado.util.JFactory - [JFactory][getQueryRunner] Ingreso al método.
+2014-08-13 00:45:12,684 DEBUG main cl.cencosud.procesos.carroabandonado.util.JFactory - [JFactory][getQueryRunner] Retorno el objeto.
+2014-08-13 00:45:12,734 DEBUG main cl.cencosud.procesos.carroabandonado.dao.CarroAbandonadoDAO - [CarroAbandonadoDAO][getUpdateCarroAbandonado] Finaliza el metodo.
+2014-08-13 00:45:12,735 DEBUG main cl.cencosud.procesos.carroabandonado.engine.Maestro - [Maestro][process] Cierro conexiones
+2014-08-13 00:45:12,735 DEBUG main cl.cencosud.procesos.carroabandonado.util.ConnectionDB2 - [ConnectionDB2][getConnectionDB2] Ingreso al método.
+2014-08-13 00:45:12,735 DEBUG main cl.cencosud.procesos.carroabandonado.util.ConnectionDB2 - [ConnectionDB2][getConnectionDB2] Realizo el cierre de la conexión.
+2014-08-13 00:45:12,736 DEBUG main cl.cencosud.procesos.carroabandonado.util.ConnectionDB2 - [ConnectionDB2][getConnectionDB2] Fin del metodo. Mensaje null
+2014-08-13 00:45:12,737 INFO  main cl.cencosud.procesos.carroabandonado.engine.Maestro - [Maestro][process] Finaliza la ejecución del proceso 0 days 0:0:4
+2014-08-13 00:45:12,737 DEBUG main cl.cencosud.procesos.carroabandonado.engine.Maestro - [Maestro][process] Finaliza metodo
+2014-08-13 00:45:12,737 DEBUG main cl.cencosud.procesos.carroabandonado.main.CarroAbandonado - [CarroAbandonado][main] proceso terminado
+2014-08-13 00:47:43,412 DEBUG main cl.cencosud.procesos.carroabandonado.main.CarroAbandonado - [CarroAbandonado][main] Inicia metodo
+2014-08-13 00:47:43,472 DEBUG main cl.cencosud.procesos.carroabandonado.main.CarroAbandonado - [CarroAbandonado][main] inicio el process
+2014-08-13 00:47:43,472 DEBUG main cl.cencosud.procesos.carroabandonado.engine.Maestro - [Maestro][process] Ingreso al metodo
+2014-08-13 00:47:43,540 INFO  main cl.cencosud.procesos.carroabandonado.engine.Maestro - [Maestro][process] Comienza la ejecución del proceso 13-08-2014 00:47:43
+2014-08-13 00:47:43,651 DEBUG main cl.cencosud.procesos.carroabandonado.util.JFactory - [JFactory][getConnectionDB2] Ingreso al método.
+2014-08-13 00:47:43,651 DEBUG main cl.cencosud.procesos.carroabandonado.util.JFactory - [JFactory][getConnectionDB2] Obtengo la conexión.
+2014-08-13 00:47:43,665 DEBUG main cl.cencosud.procesos.carroabandonado.util.ConnectionDB2 - [ConnectionDB2][getConnectionDB2] Ingreso al método.
+2014-08-13 00:47:43,718 DEBUG main cl.cencosud.procesos.carroabandonado.util.ConnectionDB2 - [ConnectionDB2][getConnectionDB2] Realizo la instancia de la clase.
+2014-08-13 00:47:43,718 DEBUG main cl.cencosud.procesos.carroabandonado.util.ConnectionDB2 - [ConnectionDB2][ConnectionDB2] Ingreso al metodo constructor de la clase.
+2014-08-13 00:47:43,718 DEBUG main cl.cencosud.procesos.carroabandonado.util.ConnectionDB2 - [ConnectionDB2][ConnectionDB2] Realizo la busqueda de los parámetros en el properties.
+2014-08-13 00:47:43,718 DEBUG main cl.cencosud.procesos.carroabandonado.util.Util - [Util][getPropertiesString] recupero el valor del properties para la key db.url
+2014-08-13 00:47:43,766 DEBUG main cl.cencosud.procesos.carroabandonado.util.Util - [Util][getPropertiesString] recupero el valor del properties para la key db.dbname
+2014-08-13 00:47:43,766 DEBUG main cl.cencosud.procesos.carroabandonado.util.Util - [Util][getPropertiesString] recupero el valor del properties para la key db.driver
+2014-08-13 00:47:43,766 DEBUG main cl.cencosud.procesos.carroabandonado.util.Util - [Util][getPropertiesString] recupero el valor del properties para la key db.username
+2014-08-13 00:47:43,766 DEBUG main cl.cencosud.procesos.carroabandonado.util.Util - [Util][getPropertiesString] recupero el valor del properties para la key db.password
+2014-08-13 00:47:43,766 INFO  main cl.cencosud.procesos.carroabandonado.util.ConnectionDB2 - [ConnectionDB2][ConnectionDB2] url 		: jdbc:db2://172.18.150.35:50000
+2014-08-13 00:47:43,766 INFO  main cl.cencosud.procesos.carroabandonado.util.ConnectionDB2 - [ConnectionDB2][ConnectionDB2] dbName 		: JMCL_VE
+2014-08-13 00:47:43,766 INFO  main cl.cencosud.procesos.carroabandonado.util.ConnectionDB2 - [ConnectionDB2][ConnectionDB2] driver 		: com.ibm.db2.jcc.DB2Driver
+2014-08-13 00:47:43,766 INFO  main cl.cencosud.procesos.carroabandonado.util.ConnectionDB2 - [ConnectionDB2][ConnectionDB2] userName 	: fodba
+2014-08-13 00:47:43,766 INFO  main cl.cencosud.procesos.carroabandonado.util.ConnectionDB2 - [ConnectionDB2][ConnectionDB2] password 	: fodba
+2014-08-13 00:47:43,887 DEBUG main cl.cencosud.procesos.carroabandonado.util.ConnectionDB2 - [ConnectionDB2][getConnectionDB2] Retorno conexión.
+2014-08-13 00:47:43,887 DEBUG main cl.cencosud.procesos.carroabandonado.util.JFactory - [JFactory][getConnectionDB2] retorno la conexión.
+2014-08-13 00:47:43,887 INFO  main cl.cencosud.procesos.carroabandonado.engine.Maestro - [Maestro][process] Realizo llamado a obtener carros abandonados
+2014-08-13 00:47:43,887 DEBUG main cl.cencosud.procesos.carroabandonado.dao.CarroAbandonadoDAO - [CarroAbandonadoDAO][getCarrosAbandonados] Ingreso al metodo
+2014-08-13 00:47:43,887 DEBUG main cl.cencosud.procesos.carroabandonado.dao.CarroAbandonadoDAO - [CarroAbandonadoDAO][getCarrosAbandonados] Recupero la query
+2014-08-13 00:47:43,887 DEBUG main cl.cencosud.procesos.carroabandonado.util.JFactory - [JFactory][getStringBuffer] Ingreso al método.
+2014-08-13 00:47:43,887 DEBUG main cl.cencosud.procesos.carroabandonado.util.JFactory - [JFactory][getStringBuffer] Recupero un StringBuffer.
+2014-08-13 00:47:43,887 DEBUG main cl.cencosud.procesos.carroabandonado.util.JFactory - [JFactory][getStringBuffer] Borro su contenido.
+2014-08-13 00:47:43,887 DEBUG main cl.cencosud.procesos.carroabandonado.util.JFactory - [JFactory][getStringBuffer] Retorno el StringBuffer.
+2014-08-13 00:47:43,887 DEBUG main cl.cencosud.procesos.carroabandonado.util.Util - [Util][getPropertiesString] recupero el valor del properties para la key carro.dias.abandono.minimo
+2014-08-13 00:47:43,888 DEBUG main cl.cencosud.procesos.carroabandonado.util.Util - [Util][getPropertiesString] recupero el valor del properties para la key carro.dias.abandono.maximo
+2014-08-13 00:47:43,888 DEBUG main cl.cencosud.procesos.carroabandonado.util.Util - [Util][getPropertiesString] recupero el valor del properties para la key carro.maximo.correos.periodo
+2014-08-13 00:47:43,888 INFO  main cl.cencosud.procesos.carroabandonado.dao.CarroAbandonadoDAO - [CarroAbandonadoDAO][getCarrosAbandonados] la query a ejecutar es SELECT C.CLI_ID, C.CLI_RUT, C.CLI_DV, C.CLI_NOMBRE, C.CLI_APELLIDO_PAT, C.CLI_APELLIDO_MAT, C.CLI_EMAIL 
+FROM FODBA.FO_CARRO_COMPRAS CC, FODBA.FO_CLIENTES C 
+WHERE CC.CAR_CLI_ID = C.CLI_ID 
+AND C.CLI_ESTADO = 'A' AND C.CLI_BLOQUEO = 'D' 
+AND CC.CAR_FEC_MICARRO IS NOT NULL 
+AND CC.CAR_EST_MAIL = 0 
+AND C.CLI_RUT NOT IN ( 
+        SELECT COL.COL_RUT FROM FODBA.FO_COLABORADOR COL 
+    ) 
+AND (( DAYS(CURRENT TIMESTAMP) - DAYS(CC.CAR_FEC_MICARRO) ) >= 0 ) 
+AND CC.CAR_CLI_ID NOT IN ( 
+        SELECT CA.CAR_CLI_ID 
+        FROM FODBA.FO_CARRO_ABANDONADO CA 
+        WHERE (( DAYS(CURRENT TIMESTAMP) - DAYS(CA.CAR_FEC_MAIL) ) <= 1 ) 
+        GROUP BY CA.CAR_CLI_ID 
+        HAVING COUNT(CA.CAR_CLI_ID) >= 1 
+    ) 
+GROUP BY C.CLI_ID, C.CLI_RUT, C.CLI_DV, C.CLI_NOMBRE, C.CLI_APELLIDO_PAT, C.CLI_APELLIDO_MAT, C.CLI_EMAIL 
+WITH UR 
+2014-08-13 00:47:43,888 DEBUG main cl.cencosud.procesos.carroabandonado.dao.CarroAbandonadoDAO - [CarroAbandonadoDAO][getCarrosAbandonados] Realizo llamado a obtener los datos
+2014-08-13 00:47:43,888 DEBUG main cl.cencosud.procesos.carroabandonado.util.JFactory - [JFactory][getQueryRunner] Ingreso al método.
+2014-08-13 00:47:43,888 DEBUG main cl.cencosud.procesos.carroabandonado.util.JFactory - [JFactory][getQueryRunner] Realizo la instancia.
+2014-08-13 00:47:43,890 DEBUG main cl.cencosud.procesos.carroabandonado.util.JFactory - [JFactory][getQueryRunner] Retorno el objeto.
+2014-08-13 00:47:44,257 DEBUG main cl.cencosud.procesos.carroabandonado.dao.CarroAbandonadoDAO - [CarroAbandonadoDAO][getCarrosAbandonados] Obtuve resultado.
+2014-08-13 00:47:44,257 DEBUG main cl.cencosud.procesos.carroabandonado.dao.CarroAbandonadoDAO - [CarroAbandonadoDAO][getCarrosAbandonados] Finaliza el metodo.
+2014-08-13 00:47:44,279 DEBUG main cl.cencosud.procesos.carroabandonado.dao.CarroAbandonadoDAO - [CarroAbandonadoDAO][getCategoriaMasCara] Ingreso al metodo
+2014-08-13 00:47:44,279 DEBUG main cl.cencosud.procesos.carroabandonado.dao.CarroAbandonadoDAO - [CarroAbandonadoDAO][getCategoriaMasCara] Recupero la query
+2014-08-13 00:47:44,279 DEBUG main cl.cencosud.procesos.carroabandonado.util.JFactory - [JFactory][getStringBuffer] Ingreso al método.
+2014-08-13 00:47:44,279 DEBUG main cl.cencosud.procesos.carroabandonado.util.JFactory - [JFactory][getStringBuffer] Borro su contenido.
+2014-08-13 00:47:44,279 DEBUG main cl.cencosud.procesos.carroabandonado.util.JFactory - [JFactory][getStringBuffer] Retorno el StringBuffer.
+2014-08-13 00:47:44,279 INFO  main cl.cencosud.procesos.carroabandonado.dao.CarroAbandonadoDAO - [CarroAbandonadoDAO][getCategoriaMasCara] la query a ejecutar es SELECT CC.CAR_PRO_ID, (INT(CC.CAR_CANTIDAD) * INT(PL.PRE_VALOR)) as SUMA 
+FROM FODBA.FO_CARRO_COMPRAS CC, FODBA.FO_PRECIOS_LOCALES PL 
+WHERE CC.CAR_PRO_ID = PL.PRE_PRO_ID 
+AND PL.PRE_LOC_ID = 1 
+AND CC.CAR_CLI_ID = 448471 
+WITH UR 
+2014-08-13 00:47:44,280 DEBUG main cl.cencosud.procesos.carroabandonado.dao.CarroAbandonadoDAO - [CarroAbandonadoDAO][getCategoriaMasCara] Realizo llamado a obtener los datos
+2014-08-13 00:47:44,280 DEBUG main cl.cencosud.procesos.carroabandonado.util.JFactory - [JFactory][getQueryRunner] Ingreso al método.
+2014-08-13 00:47:44,280 DEBUG main cl.cencosud.procesos.carroabandonado.util.JFactory - [JFactory][getQueryRunner] Retorno el objeto.
+2014-08-13 00:47:44,291 DEBUG main cl.cencosud.procesos.carroabandonado.dao.CarroAbandonadoDAO - [CarroAbandonadoDAO][getCategoriaMasCara] Finaliza el metodo.
+2014-08-13 00:47:44,292 DEBUG main cl.cencosud.procesos.carroabandonado.util.Util - [Util][getPropertiesString] recupero el valor del properties para la key carro.monto.minimo
+2014-08-13 00:47:44,292 DEBUG main cl.cencosud.procesos.carroabandonado.util.Util - [Util][getPropertiesString] recupero el valor del properties para la key carro.monto.maximo
+2014-08-13 00:47:44,292 DEBUG main cl.cencosud.procesos.carroabandonado.dao.CarroAbandonadoDAO - [CarroAbandonadoDAO][getSeccionMasCara] Ingreso al metodo
+2014-08-13 00:47:44,292 DEBUG main cl.cencosud.procesos.carroabandonado.dao.CarroAbandonadoDAO - [CarroAbandonadoDAO][getSeccionMasCara] Recupero la query
+2014-08-13 00:47:44,292 DEBUG main cl.cencosud.procesos.carroabandonado.util.JFactory - [JFactory][getStringBuffer] Ingreso al método.
+2014-08-13 00:47:44,292 DEBUG main cl.cencosud.procesos.carroabandonado.util.JFactory - [JFactory][getStringBuffer] Borro su contenido.
+2014-08-13 00:47:44,292 DEBUG main cl.cencosud.procesos.carroabandonado.util.JFactory - [JFactory][getStringBuffer] Retorno el StringBuffer.
+2014-08-13 00:47:44,292 INFO  main cl.cencosud.procesos.carroabandonado.dao.CarroAbandonadoDAO - [CarroAbandonadoDAO][getSeccionMasCara] la query a ejecutar es SELECT ID_SECCION, NOMBRE, SUM(SUMA) SUMA2 
+FROM 
+( 
+    SELECT CC.CAR_PRO_ID, (INT(CC.CAR_CANTIDAD) * INT(PL.PRE_VALOR)) as SUMA, S.ID_SECCION, S.NOMBRE 
+    FROM FODBA.FO_CARRO_COMPRAS CC, FODBA.FO_PRECIOS_LOCALES PL, 
+         FODBA.FO_PRODUCTOS FP, BODBA.BO_PRODUCTOS BP, BODBA.BO_SECCION S 
+    WHERE CC.CAR_PRO_ID = PL.PRE_PRO_ID 
+      AND CC.CAR_CLI_ID = 448471 
+      AND PL.PRE_LOC_ID = 1 
+      AND CC.CAR_PRO_ID = FP.PRO_ID 
+      AND FP.PRO_ID_BO = BP.ID_PRODUCTO 
+      AND S.ID_SECCION = CAST(SUBSTR(BP.ID_CATPROD, 1, 2) AS INT) 
+) P 
+GROUP BY ID_SECCION, NOMBRE 
+ORDER BY SUMA2 DESC 
+WITH UR 
+2014-08-13 00:47:44,292 DEBUG main cl.cencosud.procesos.carroabandonado.dao.CarroAbandonadoDAO - [CarroAbandonadoDAO][getSeccionMasCara] Realizo llamado a obtener los datos
+2014-08-13 00:47:44,292 DEBUG main cl.cencosud.procesos.carroabandonado.util.JFactory - [JFactory][getQueryRunner] Ingreso al método.
+2014-08-13 00:47:44,292 DEBUG main cl.cencosud.procesos.carroabandonado.util.JFactory - [JFactory][getQueryRunner] Retorno el objeto.
+2014-08-13 00:47:44,298 DEBUG main cl.cencosud.procesos.carroabandonado.dao.CarroAbandonadoDAO - [CarroAbandonadoDAO][getSeccionMasCara] Finaliza el metodo.
+2014-08-13 00:47:44,298 DEBUG main cl.cencosud.procesos.carroabandonado.dao.CarroAbandonadoDAO - [CarroAbandonadoDAO][getCuponSeccion] Ingreso al metodo
+2014-08-13 00:47:44,298 DEBUG main cl.cencosud.procesos.carroabandonado.dao.CarroAbandonadoDAO - [CarroAbandonadoDAO][getCuponSeccion] Recupero la query
+2014-08-13 00:47:44,299 DEBUG main cl.cencosud.procesos.carroabandonado.util.JFactory - [JFactory][getStringBuffer] Ingreso al método.
+2014-08-13 00:47:44,299 DEBUG main cl.cencosud.procesos.carroabandonado.util.JFactory - [JFactory][getStringBuffer] Borro su contenido.
+2014-08-13 00:47:44,299 DEBUG main cl.cencosud.procesos.carroabandonado.util.JFactory - [JFactory][getStringBuffer] Retorno el StringBuffer.
+2014-08-13 00:47:44,299 DEBUG main cl.cencosud.procesos.carroabandonado.util.Util - [Util][getPropertiesString] recupero el valor del properties para la key carro.cupon.prefijo
+2014-08-13 00:47:44,299 INFO  main cl.cencosud.procesos.carroabandonado.dao.CarroAbandonadoDAO - [CarroAbandonadoDAO][getCuponSeccion] la query a ejecutar es SELECT CD.ID_CUP_DTO, CD.CODIGO, CD.CANTIDAD, CD.DESCUENTO, CD.FECHA_FIN 
+FROM BODBA.BO_CUPON_DSCTO CD, BODBA.BO_CUPON_DSCTOXPRODS DP 
+WHERE CD.TIPO = 'S' 
+AND CD.ID_CUP_DTO = DP.ID_CUP_DTO 
+AND CD.CANTIDAD > 0 
+AND DP.ID_SECCION = 20 
+AND ((CD.FECHA_FIN >= CURRENT DATE) AND (CD.FECHA_INI <= CURRENT DATE)) 
+AND CD.CODIGO LIKE 'CA_%' 
+WITH UR 
+2014-08-13 00:47:44,299 DEBUG main cl.cencosud.procesos.carroabandonado.dao.CarroAbandonadoDAO - [CarroAbandonadoDAO][getCuponSeccion] Realizo llamado a obtener los datos
+2014-08-13 00:47:44,299 DEBUG main cl.cencosud.procesos.carroabandonado.util.JFactory - [JFactory][getQueryRunner] Ingreso al método.
+2014-08-13 00:47:44,299 DEBUG main cl.cencosud.procesos.carroabandonado.util.JFactory - [JFactory][getQueryRunner] Retorno el objeto.
+2014-08-13 00:47:44,366 DEBUG main cl.cencosud.procesos.carroabandonado.dao.CarroAbandonadoDAO - [CarroAbandonadoDAO][getCuponSeccion] Finaliza el metodo.
+2014-08-13 00:47:44,367 INFO  main cl.cencosud.procesos.carroabandonado.engine.Maestro - [Maestro][process] Realizo el llamado a generar el mail
+2014-08-13 00:47:44,367 DEBUG main cl.cencosud.procesos.carroabandonado.engine.Maestro - Fecha formato:09-09-2014
+2014-08-13 00:47:44,367 DEBUG main cl.cencosud.procesos.carroabandonado.util.Util - [Util][getPropertiesString] recupero el valor del properties para la key html.cupon.directorio
+2014-08-13 00:47:44,367 DEBUG main cl.cencosud.procesos.carroabandonado.util.Util - [Util][getPropertiesString] recupero el valor del properties para la key html.cupon.descuento
+2014-08-13 00:47:44,367 DEBUG main cl.cencosud.procesos.carroabandonado.util.Util - [Util][getPropertiesString] recupero el valor del properties para la key html.cupon.despacho
+2014-08-13 00:47:44,367 DEBUG main cl.cencosud.procesos.carroabandonado.util.Util - [Util][getPropertiesString] recupero el valor del properties para la key html.cupon.recuerda
+2014-08-13 00:47:44,430 INFO  main cl.cencosud.procesos.carroabandonado.engine.Maestro - [Maestro][process] Realizo el envio de los correos electronicos
+2014-08-13 00:47:44,430 DEBUG main cl.cencosud.procesos.carroabandonado.util.JFactory - [JFactory][getConnectionDB2] Ingreso al método.
+2014-08-13 00:47:44,430 DEBUG main cl.cencosud.procesos.carroabandonado.util.JFactory - [JFactory][getConnectionDB2] retorno la conexión.
+2014-08-13 00:47:44,430 DEBUG main cl.cencosud.procesos.carroabandonado.util.Util - [Util][getPropertiesString] recupero el valor del properties para la key jumbo.url.fo
+2014-08-13 00:47:44,430 DEBUG main cl.cencosud.procesos.carroabandonado.dao.CarroAbandonadoDAO - [CarroAbandonadoDAO][getCuponSeccion] Ingreso al metodo
+2014-08-13 00:47:44,430 DEBUG main cl.cencosud.procesos.carroabandonado.dao.CarroAbandonadoDAO - [CarroAbandonadoDAO][getInsertCarroAbandonado] Recupero la query
+2014-08-13 00:47:44,430 DEBUG main cl.cencosud.procesos.carroabandonado.util.JFactory - [JFactory][getStringBuffer] Ingreso al método.
+2014-08-13 00:47:44,430 DEBUG main cl.cencosud.procesos.carroabandonado.util.JFactory - [JFactory][getStringBuffer] Borro su contenido.
+2014-08-13 00:47:44,430 DEBUG main cl.cencosud.procesos.carroabandonado.util.JFactory - [JFactory][getStringBuffer] Retorno el StringBuffer.
+2014-08-13 00:47:44,430 INFO  main cl.cencosud.procesos.carroabandonado.dao.CarroAbandonadoDAO - [CarroAbandonadoDAO][getInsertCarroAbandonado] la query a ejecutar es INSERT INTO FODBA.FO_CARRO_ABANDONADO 
+	(CAR_CLI_ID, CAR_FEC_MAIL, CAR_TIPO_DCTO, CAR_CLI_NOMBRES, CAR_FECHA_FIN, CAR_MONTO_DCTO, CAR_CUPON, CAR_NOM_SECCION, CAR_ESTADO_MAIL) 
+VALUES 
+	( 448471, CURRENT TIMESTAMP, 'S', 'Cristian Alejandro', '2014-09-09', '10%', 'CA_TESTSESSION', 'Congelados', 0) 
+2014-08-13 00:47:44,430 DEBUG main cl.cencosud.procesos.carroabandonado.dao.CarroAbandonadoDAO - [CarroAbandonadoDAO][getInsertCarroAbandonado] Realizo llamado a obtener los datos
+2014-08-13 00:47:44,430 DEBUG main cl.cencosud.procesos.carroabandonado.util.JFactory - [JFactory][getQueryRunner] Ingreso al método.
+2014-08-13 00:47:44,430 DEBUG main cl.cencosud.procesos.carroabandonado.util.JFactory - [JFactory][getQueryRunner] Retorno el objeto.
+2014-08-13 00:47:44,567 DEBUG main cl.cencosud.procesos.carroabandonado.util.JFactory - [JFactory][getQueryRunner] Ingreso al método.
+2014-08-13 00:47:44,567 DEBUG main cl.cencosud.procesos.carroabandonado.util.JFactory - [JFactory][getQueryRunner] Retorno el objeto.
+2014-08-13 00:47:44,574 DEBUG main cl.cencosud.procesos.carroabandonado.dao.CarroAbandonadoDAO - [CarroAbandonadoDAO][getInsertCarroAbandonado] Finaliza el metodo.
+2014-08-13 00:47:44,585 DEBUG main cl.cencosud.procesos.carroabandonado.engine.Maestro - [Maestro][enviaEmail] Ingreso al método
+2014-08-13 00:47:44,585 DEBUG main cl.cencosud.procesos.carroabandonado.engine.Maestro - [Maestro][enviaEmail] Se realiza el envio de correo electronico
+2014-08-13 00:47:44,585 DEBUG main cl.cencosud.procesos.carroabandonado.util.Util - [Util][getPropertiesString] recupero el valor del properties para la key mail.smtp.host
+2014-08-13 00:47:44,585 DEBUG main cl.cencosud.procesos.carroabandonado.util.Util - [Util][getPropertiesString] recupero el valor del properties para la key mail.from
+2014-08-13 00:47:44,585 DEBUG main cl.cencosud.procesos.carroabandonado.util.Util - [Util][getPropertiesString] recupero el valor del properties para la key mail.subject
+2014-08-13 00:47:44,586 DEBUG main cl.cencosud.procesos.carroabandonado.util.Util - [Util][getPropertiesString] recupero el valor del properties para la key mail.send
+2014-08-13 00:47:44,586 INFO  main cl.cencosud.procesos.carroabandonado.engine.Maestro - [Maestro][enviaEmail] Conectando SMTP host[172.18.132.19]
+2014-08-13 00:47:44,586 DEBUG main cl.cencosud.procesos.carroabandonado.engine.Maestro - [Maestro][enviaEmail] host[172.18.132.19]
+2014-08-13 00:47:44,586 DEBUG main cl.cencosud.procesos.carroabandonado.engine.Maestro - [Maestro][enviaEmail] from[no-reply@cencosud.cl]
+2014-08-13 00:47:44,586 DEBUG main cl.cencosud.procesos.carroabandonado.engine.Maestro - [Maestro][enviaEmail] to[cristian.valdebenito@cencosud.cl]
+2014-08-13 00:47:44,586 DEBUG main cl.cencosud.procesos.carroabandonado.engine.Maestro - [Maestro][enviaEmail] cc[]
+2014-08-13 00:47:44,586 DEBUG main cl.cencosud.procesos.carroabandonado.engine.Maestro - [Maestro][enviaEmail] subject[Cristian Alejandro, tu carrito te está esperando [PRUEBA AMBIENTE DESARROLLO]]
+2014-08-13 00:47:44,586 DEBUG main cl.cencosud.procesos.carroabandonado.engine.Maestro - [Maestro][enviaEmail] bodyHtml[<html><head><title>Carro Jumbo.cl</title></head><body><table width="800" border="0" align="center" cellpadding="0" cellspacing="0">  <tr>    <td>    <p style="font-family:Arial, Helvetica, sans-serif; color:#000000; font-size:12px; text-align:center;">Si usted no visualiza bien este mail, haga<b> <a href="http://10.94.223.44:9080/FO/VerCuponMail?key=MjAy
+" style="color:#008000; text-decoration:none;"> click aqu&iacute;</a></b></font></p>    </td>  </tr>  <tr>    <td>                <table border="0" cellspacing="0" cellpadding="0">  <tr>    <td width="800" height="68"><img src="http://www.jumbo.cl/supermercado/mail/2014/0320_carro/carrito_2_01.jpg" width="800" height="68" border="0" usemap="#Map2" style="display:block"></td>  </tr>  <tr>    <td><table border="0" cellspacing="0" cellpadding="0">      <tr>        <td width="432" height="512"><img src="http://www.jumbo.cl/supermercado/mail/2014/0320_carro/carrito_2_02.jpg" width="432" height="512" border="0" usemap="#Map3" style="display:block"></td>        <td><table width="0" border="0" cellspacing="0" cellpadding="0">          <tr>            <td height="71"> <span style="font-weight:bold; font-size:21px; color:#666666; padding-left:17px; font-family:Arial, Helvetica, sans-serif"> Cristian Alejandro,</span></td>            </tr>          <tr>            <td>              <table width="340" border="0" cellspacing="0" cellpadding="0">                  </table>              </td>            </tr>          <tr>            <td width="366" height="160"><img style="display:block" src="http://www.jumbo.cl/supermercado/mail/2014/0320_carro/carrito_2_04.jpg" width="366" height="160" border="0"/></td>            </tr>          <tr>            <td height="98" align="center"><p style="font-weight:bold; font-size:45px; color:#333333; line-height:35px; font-family:Arial, Helvetica, sans-serif">10% dcto.<br/>              <span style="font-weight:bold; font-size:30px; color:#333333; line-height:23px;">en Congelados </span></p></td>            </tr>                                <tr>            <td height="80" align="right"> <p style="line-height:1px; font-weight:medium; font-size:14px; color:#666666; padding-right:25px; margin-top:10px; font-family:Arial, Helvetica, sans-serif ">Ingresa el c&oacute;digo del cup&oacute;n al momento de pagar:</p>              <p style="line-height:1px; font-weight:medium; font-size:14px; color:#666666; padding-right:25px; font-family:Arial, Helvetica, sans-serif"><span style="font-weight:bold; font-size:30px; color:#333333; line-height:23px;"> <span style="font-weight:bold; font-size:16px; color:#666666; padding-left:17px; font-family:Arial, Helvetica, sans-serif text-transform: uppercase;"> CA_TESTSESSION</span></p></td>            </tr>            <tr>            <td height="41" align="right"> <span style="font-weight:medium; font-size:12px; color:#666666; padding-right:25px; font-family:Arial, Helvetica, sans-serif">Dcto. v&aacute;lido hasta 09-09-2014</span></td>            </tr>                    <tr>            <td width="366" height="62"><img style="display:block" src="http://www.jumbo.cl/supermercado/mail/2014/0320_carro/carrito_2_08.jpg" width="366" height="62" border="0" usemap="#Map"></td>            </tr></table>        </td>      </tr>    </table></td>  </tr>  <tr>    <td width="800" height="20"><img style="display:block" src="http://www.jumbo.cl/supermercado/mail/2014/0320_carro/carrito_2_09.jpg" width="800" height="20" border="0"></td>  </tr></table>            </td>  </tr>  <tr>    <td><p  style="font-family:Arial, Helvetica, sans-serif; color:#333333; font-size:11px; text-align:center;">Descuento no acumulable con otras ofertas, en tal caso se aplicar&aacute; el descuento mayor.<br>      Cup&oacute;n v&aacute;lido hasta la fecha indicada anteriormente.<br>    </td>  </tr></table><map name="Map">  <area shape="rect" coords="3,-8,362,68" href="http://www.jumbo.cl/FO/LogonForm?utm_source=mail_carro_abandonado&utm_medium=mail_automatico&utm_campaign=seccion_congelados"></map><map name="Map2">  <area shape="circle" coords="62,67,60" href="http://www.jumbo.cl/FO/LogonForm?utm_source=mail_jumbo.cl_08ago2014&utm_medium=mail&utm_campaign=carrito_dcto&utm_content=header_logo_jumbo"></map><map name="Map3">  <area shape="circle" coords="62,-1,57" href="http://www.jumbo.cl/FO/LogonForm?utm_source=mail_jumbo.cl_08ago2014&utm_medium=mail&utm_campaign=carrito_dcto&utm_content=header_logo_jumbo"></map></body></html>]
+2014-08-13 00:47:44,586 DEBUG main cl.cencosud.procesos.carroabandonado.util.JFactory - [JFactory][getSendMail] Ingreso al método.
+2014-08-13 00:47:44,586 DEBUG main cl.cencosud.procesos.carroabandonado.util.JFactory - [JFactory][getSendMail] Realizo la instancia.
+2014-08-13 00:47:44,598 DEBUG main cl.cencosud.procesos.carroabandonado.util.JFactory - [JFactory][getSendMail] Retorno el objeto.
+2014-08-13 00:47:44,598 DEBUG main cl.cencosud.procesos.carroabandonado.util.SendMail - [SendMail][enviar] Ingreso al metodo
+2014-08-13 00:47:44,620 DEBUG main cl.cencosud.procesos.carroabandonado.util.SendMail - [SendMail][enviar] Mdestinatario SMTP: no-reply@cencosud.cl
+2014-08-13 00:47:44,620 DEBUG main cl.cencosud.procesos.carroabandonado.util.SendMail - [SendMail][enviar] Message.RecipientType.TO agregando: cristian.valdebenito@cencosud.cl
+2014-08-13 00:47:44,626 DEBUG main cl.cencosud.procesos.carroabandonado.util.SendMail - [SendMail][enviar] subject  :Cristian Alejandro, tu carrito te está esperando [PRUEBA AMBIENTE DESARROLLO]
+2014-08-13 00:47:44,626 DEBUG main cl.cencosud.procesos.carroabandonado.util.SendMail - [SendMail][enviar] DataHandler  :<html><head><title>Carro Jumbo.cl</title></head><body><table width="800" border="0" align="center" cellpadding="0" cellspacing="0">  <tr>    <td>    <p style="font-family:Arial, Helvetica, sans-serif; color:#000000; font-size:12px; text-align:center;">Si usted no visualiza bien este mail, haga<b> <a href="http://10.94.223.44:9080/FO/VerCuponMail?key=MjAy
+" style="color:#008000; text-decoration:none;"> click aqu&iacute;</a></b></font></p>    </td>  </tr>  <tr>    <td>                <table border="0" cellspacing="0" cellpadding="0">  <tr>    <td width="800" height="68"><img src="http://www.jumbo.cl/supermercado/mail/2014/0320_carro/carrito_2_01.jpg" width="800" height="68" border="0" usemap="#Map2" style="display:block"></td>  </tr>  <tr>    <td><table border="0" cellspacing="0" cellpadding="0">      <tr>        <td width="432" height="512"><img src="http://www.jumbo.cl/supermercado/mail/2014/0320_carro/carrito_2_02.jpg" width="432" height="512" border="0" usemap="#Map3" style="display:block"></td>        <td><table width="0" border="0" cellspacing="0" cellpadding="0">          <tr>            <td height="71"> <span style="font-weight:bold; font-size:21px; color:#666666; padding-left:17px; font-family:Arial, Helvetica, sans-serif"> Cristian Alejandro,</span></td>            </tr>          <tr>            <td>              <table width="340" border="0" cellspacing="0" cellpadding="0">                  </table>              </td>            </tr>          <tr>            <td width="366" height="160"><img style="display:block" src="http://www.jumbo.cl/supermercado/mail/2014/0320_carro/carrito_2_04.jpg" width="366" height="160" border="0"/></td>            </tr>          <tr>            <td height="98" align="center"><p style="font-weight:bold; font-size:45px; color:#333333; line-height:35px; font-family:Arial, Helvetica, sans-serif">10% dcto.<br/>              <span style="font-weight:bold; font-size:30px; color:#333333; line-height:23px;">en Congelados </span></p></td>            </tr>                                <tr>            <td height="80" align="right"> <p style="line-height:1px; font-weight:medium; font-size:14px; color:#666666; padding-right:25px; margin-top:10px; font-family:Arial, Helvetica, sans-serif ">Ingresa el c&oacute;digo del cup&oacute;n al momento de pagar:</p>              <p style="line-height:1px; font-weight:medium; font-size:14px; color:#666666; padding-right:25px; font-family:Arial, Helvetica, sans-serif"><span style="font-weight:bold; font-size:30px; color:#333333; line-height:23px;"> <span style="font-weight:bold; font-size:16px; color:#666666; padding-left:17px; font-family:Arial, Helvetica, sans-serif text-transform: uppercase;"> CA_TESTSESSION</span></p></td>            </tr>            <tr>            <td height="41" align="right"> <span style="font-weight:medium; font-size:12px; color:#666666; padding-right:25px; font-family:Arial, Helvetica, sans-serif">Dcto. v&aacute;lido hasta 09-09-2014</span></td>            </tr>                    <tr>            <td width="366" height="62"><img style="display:block" src="http://www.jumbo.cl/supermercado/mail/2014/0320_carro/carrito_2_08.jpg" width="366" height="62" border="0" usemap="#Map"></td>            </tr></table>        </td>      </tr>    </table></td>  </tr>  <tr>    <td width="800" height="20"><img style="display:block" src="http://www.jumbo.cl/supermercado/mail/2014/0320_carro/carrito_2_09.jpg" width="800" height="20" border="0"></td>  </tr></table>            </td>  </tr>  <tr>    <td><p  style="font-family:Arial, Helvetica, sans-serif; color:#333333; font-size:11px; text-align:center;">Descuento no acumulable con otras ofertas, en tal caso se aplicar&aacute; el descuento mayor.<br>      Cup&oacute;n v&aacute;lido hasta la fecha indicada anteriormente.<br>    </td>  </tr></table><map name="Map">  <area shape="rect" coords="3,-8,362,68" href="http://www.jumbo.cl/FO/LogonForm?utm_source=mail_carro_abandonado&utm_medium=mail_automatico&utm_campaign=seccion_congelados"></map><map name="Map2">  <area shape="circle" coords="62,67,60" href="http://www.jumbo.cl/FO/LogonForm?utm_source=mail_jumbo.cl_08ago2014&utm_medium=mail&utm_campaign=carrito_dcto&utm_content=header_logo_jumbo"></map><map name="Map3">  <area shape="circle" coords="62,-1,57" href="http://www.jumbo.cl/FO/LogonForm?utm_source=mail_jumbo.cl_08ago2014&utm_medium=mail&utm_campaign=carrito_dcto&utm_content=header_logo_jumbo"></map></body></html>
+2014-08-13 00:47:44,632 INFO  main cl.cencosud.procesos.carroabandonado.util.SendMail - [SendMail][enviar] Enviando correo
+2014-08-13 00:47:44,892 INFO  main cl.cencosud.procesos.carroabandonado.util.SendMail - [SendMail][enviar] SendMail - > Se envio Correo ...
+2014-08-13 00:47:44,892 INFO  main cl.cencosud.procesos.carroabandonado.engine.Maestro - [Maestro][enviaEmail]Correo enviado correctamente
+2014-08-13 00:47:44,892 DEBUG main cl.cencosud.procesos.carroabandonado.dao.CarroAbandonadoDAO - [CarroAbandonadoDAO][getUpdateCarroCompra] Ingreso al metodo
+2014-08-13 00:47:44,892 DEBUG main cl.cencosud.procesos.carroabandonado.dao.CarroAbandonadoDAO - [CarroAbandonadoDAO][getUpdateCarroCompra] Recupero la query
+2014-08-13 00:47:44,892 DEBUG main cl.cencosud.procesos.carroabandonado.util.JFactory - [JFactory][getStringBuffer] Ingreso al método.
+2014-08-13 00:47:44,892 DEBUG main cl.cencosud.procesos.carroabandonado.util.JFactory - [JFactory][getStringBuffer] Borro su contenido.
+2014-08-13 00:47:44,893 DEBUG main cl.cencosud.procesos.carroabandonado.util.JFactory - [JFactory][getStringBuffer] Retorno el StringBuffer.
+2014-08-13 00:47:44,893 INFO  main cl.cencosud.procesos.carroabandonado.dao.CarroAbandonadoDAO - [CarroAbandonadoDAO][getUpdateCarroCompra] la query a ejecutar es UPDATE FODBA.FO_CARRO_COMPRAS SET CAR_EST_MAIL=1 WHERE CAR_CLI_ID=448471 
+2014-08-13 00:47:44,893 DEBUG main cl.cencosud.procesos.carroabandonado.util.JFactory - [JFactory][getQueryRunner] Ingreso al método.
+2014-08-13 00:47:44,893 DEBUG main cl.cencosud.procesos.carroabandonado.util.JFactory - [JFactory][getQueryRunner] Retorno el objeto.
+2014-08-13 00:47:44,925 DEBUG main cl.cencosud.procesos.carroabandonado.dao.CarroAbandonadoDAO - [CarroAbandonadoDAO][getUpdateCarroCompra] Finaliza el metodo.
+2014-08-13 00:47:44,925 DEBUG main cl.cencosud.procesos.carroabandonado.dao.CarroAbandonadoDAO - [CarroAbandonadoDAO][getUpdateCarroAbandonado] Ingreso al metodo
+2014-08-13 00:47:44,925 DEBUG main cl.cencosud.procesos.carroabandonado.dao.CarroAbandonadoDAO - [CarroAbandonadoDAO][getUpdateCarroAbandonado] Recupero la query
+2014-08-13 00:47:44,925 DEBUG main cl.cencosud.procesos.carroabandonado.util.JFactory - [JFactory][getStringBuffer] Ingreso al método.
+2014-08-13 00:47:44,925 DEBUG main cl.cencosud.procesos.carroabandonado.util.JFactory - [JFactory][getStringBuffer] Borro su contenido.
+2014-08-13 00:47:44,925 DEBUG main cl.cencosud.procesos.carroabandonado.util.JFactory - [JFactory][getStringBuffer] Retorno el StringBuffer.
+2014-08-13 00:47:44,925 INFO  main cl.cencosud.procesos.carroabandonado.dao.CarroAbandonadoDAO - [CarroAbandonadoDAO][getUpdateCarroAbandonado] la query a ejecutar es UPDATE FODBA.FO_CARRO_ABANDONADO SET CAR_ESTADO_MAIL=1 WHERE CAR_ID=202 
+2014-08-13 00:47:44,925 DEBUG main cl.cencosud.procesos.carroabandonado.util.JFactory - [JFactory][getQueryRunner] Ingreso al método.
+2014-08-13 00:47:44,926 DEBUG main cl.cencosud.procesos.carroabandonado.util.JFactory - [JFactory][getQueryRunner] Retorno el objeto.
+2014-08-13 00:47:44,969 DEBUG main cl.cencosud.procesos.carroabandonado.dao.CarroAbandonadoDAO - [CarroAbandonadoDAO][getUpdateCarroAbandonado] Finaliza el metodo.
+2014-08-13 00:47:44,970 DEBUG main cl.cencosud.procesos.carroabandonado.engine.Maestro - [Maestro][process] Cierro conexiones
+2014-08-13 00:47:44,970 DEBUG main cl.cencosud.procesos.carroabandonado.util.ConnectionDB2 - [ConnectionDB2][getConnectionDB2] Ingreso al método.
+2014-08-13 00:47:44,970 DEBUG main cl.cencosud.procesos.carroabandonado.util.ConnectionDB2 - [ConnectionDB2][getConnectionDB2] Realizo el cierre de la conexión.
+2014-08-13 00:47:44,971 DEBUG main cl.cencosud.procesos.carroabandonado.util.ConnectionDB2 - [ConnectionDB2][getConnectionDB2] Fin del metodo. Mensaje null
+2014-08-13 00:47:44,972 INFO  main cl.cencosud.procesos.carroabandonado.engine.Maestro - [Maestro][process] Finaliza la ejecución del proceso 0 days 0:0:1
+2014-08-13 00:47:44,972 DEBUG main cl.cencosud.procesos.carroabandonado.engine.Maestro - [Maestro][process] Finaliza metodo
+2014-08-13 00:47:44,972 DEBUG main cl.cencosud.procesos.carroabandonado.main.CarroAbandonado - [CarroAbandonado][main] proceso terminado
+2014-08-13 00:50:34,410 DEBUG main cl.cencosud.procesos.carroabandonado.main.CarroAbandonado - [CarroAbandonado][main] Inicia metodo
+2014-08-13 00:50:34,417 DEBUG main cl.cencosud.procesos.carroabandonado.main.CarroAbandonado - [CarroAbandonado][main] inicio el process
+2014-08-13 00:50:34,417 DEBUG main cl.cencosud.procesos.carroabandonado.engine.Maestro - [Maestro][process] Ingreso al metodo
+2014-08-13 00:50:34,418 INFO  main cl.cencosud.procesos.carroabandonado.engine.Maestro - [Maestro][process] Comienza la ejecución del proceso 13-08-2014 00:50:34
+2014-08-13 00:50:34,465 DEBUG main cl.cencosud.procesos.carroabandonado.util.JFactory - [JFactory][getConnectionDB2] Ingreso al método.
+2014-08-13 00:50:34,465 DEBUG main cl.cencosud.procesos.carroabandonado.util.JFactory - [JFactory][getConnectionDB2] Obtengo la conexión.
+2014-08-13 00:50:34,465 DEBUG main cl.cencosud.procesos.carroabandonado.util.ConnectionDB2 - [ConnectionDB2][getConnectionDB2] Ingreso al método.
+2014-08-13 00:50:34,515 DEBUG main cl.cencosud.procesos.carroabandonado.util.ConnectionDB2 - [ConnectionDB2][getConnectionDB2] Realizo la instancia de la clase.
+2014-08-13 00:50:34,516 DEBUG main cl.cencosud.procesos.carroabandonado.util.ConnectionDB2 - [ConnectionDB2][ConnectionDB2] Ingreso al metodo constructor de la clase.
+2014-08-13 00:50:34,516 DEBUG main cl.cencosud.procesos.carroabandonado.util.ConnectionDB2 - [ConnectionDB2][ConnectionDB2] Realizo la busqueda de los parámetros en el properties.
+2014-08-13 00:50:34,516 DEBUG main cl.cencosud.procesos.carroabandonado.util.Util - [Util][getPropertiesString] recupero el valor del properties para la key db.url
+2014-08-13 00:50:34,519 DEBUG main cl.cencosud.procesos.carroabandonado.util.Util - [Util][getPropertiesString] recupero el valor del properties para la key db.dbname
+2014-08-13 00:50:34,519 DEBUG main cl.cencosud.procesos.carroabandonado.util.Util - [Util][getPropertiesString] recupero el valor del properties para la key db.driver
+2014-08-13 00:50:34,519 DEBUG main cl.cencosud.procesos.carroabandonado.util.Util - [Util][getPropertiesString] recupero el valor del properties para la key db.username
+2014-08-13 00:50:34,519 DEBUG main cl.cencosud.procesos.carroabandonado.util.Util - [Util][getPropertiesString] recupero el valor del properties para la key db.password
+2014-08-13 00:50:34,519 INFO  main cl.cencosud.procesos.carroabandonado.util.ConnectionDB2 - [ConnectionDB2][ConnectionDB2] url 		: jdbc:db2://172.18.150.35:50000
+2014-08-13 00:50:34,519 INFO  main cl.cencosud.procesos.carroabandonado.util.ConnectionDB2 - [ConnectionDB2][ConnectionDB2] dbName 		: JMCL_VE
+2014-08-13 00:50:34,519 INFO  main cl.cencosud.procesos.carroabandonado.util.ConnectionDB2 - [ConnectionDB2][ConnectionDB2] driver 		: com.ibm.db2.jcc.DB2Driver
+2014-08-13 00:50:34,519 INFO  main cl.cencosud.procesos.carroabandonado.util.ConnectionDB2 - [ConnectionDB2][ConnectionDB2] userName 	: fodba
+2014-08-13 00:50:34,519 INFO  main cl.cencosud.procesos.carroabandonado.util.ConnectionDB2 - [ConnectionDB2][ConnectionDB2] password 	: fodba
+2014-08-13 00:50:34,636 DEBUG main cl.cencosud.procesos.carroabandonado.util.ConnectionDB2 - [ConnectionDB2][getConnectionDB2] Retorno conexión.
+2014-08-13 00:50:34,636 DEBUG main cl.cencosud.procesos.carroabandonado.util.JFactory - [JFactory][getConnectionDB2] retorno la conexión.
+2014-08-13 00:50:34,636 INFO  main cl.cencosud.procesos.carroabandonado.engine.Maestro - [Maestro][process] Realizo llamado a obtener carros abandonados
+2014-08-13 00:50:34,636 DEBUG main cl.cencosud.procesos.carroabandonado.dao.CarroAbandonadoDAO - [CarroAbandonadoDAO][getCarrosAbandonados] Ingreso al metodo
+2014-08-13 00:50:34,636 DEBUG main cl.cencosud.procesos.carroabandonado.dao.CarroAbandonadoDAO - [CarroAbandonadoDAO][getCarrosAbandonados] Recupero la query
+2014-08-13 00:50:34,636 DEBUG main cl.cencosud.procesos.carroabandonado.util.JFactory - [JFactory][getStringBuffer] Ingreso al método.
+2014-08-13 00:50:34,636 DEBUG main cl.cencosud.procesos.carroabandonado.util.JFactory - [JFactory][getStringBuffer] Recupero un StringBuffer.
+2014-08-13 00:50:34,636 DEBUG main cl.cencosud.procesos.carroabandonado.util.JFactory - [JFactory][getStringBuffer] Borro su contenido.
+2014-08-13 00:50:34,636 DEBUG main cl.cencosud.procesos.carroabandonado.util.JFactory - [JFactory][getStringBuffer] Retorno el StringBuffer.
+2014-08-13 00:50:34,636 DEBUG main cl.cencosud.procesos.carroabandonado.util.Util - [Util][getPropertiesString] recupero el valor del properties para la key carro.dias.abandono.minimo
+2014-08-13 00:50:34,637 DEBUG main cl.cencosud.procesos.carroabandonado.util.Util - [Util][getPropertiesString] recupero el valor del properties para la key carro.dias.abandono.maximo
+2014-08-13 00:50:34,637 DEBUG main cl.cencosud.procesos.carroabandonado.util.Util - [Util][getPropertiesString] recupero el valor del properties para la key carro.maximo.correos.periodo
+2014-08-13 00:50:34,637 INFO  main cl.cencosud.procesos.carroabandonado.dao.CarroAbandonadoDAO - [CarroAbandonadoDAO][getCarrosAbandonados] la query a ejecutar es SELECT C.CLI_ID, C.CLI_RUT, C.CLI_DV, C.CLI_NOMBRE, C.CLI_APELLIDO_PAT, C.CLI_APELLIDO_MAT, C.CLI_EMAIL 
+FROM FODBA.FO_CARRO_COMPRAS CC, FODBA.FO_CLIENTES C 
+WHERE CC.CAR_CLI_ID = C.CLI_ID 
+AND C.CLI_ESTADO = 'A' AND C.CLI_BLOQUEO = 'D' 
+AND CC.CAR_FEC_MICARRO IS NOT NULL 
+AND CC.CAR_EST_MAIL = 0 
+AND C.CLI_RUT NOT IN ( 
+        SELECT COL.COL_RUT FROM FODBA.FO_COLABORADOR COL 
+    ) 
+AND (( DAYS(CURRENT TIMESTAMP) - DAYS(CC.CAR_FEC_MICARRO) ) >= 0 ) 
+AND CC.CAR_CLI_ID NOT IN ( 
+        SELECT CA.CAR_CLI_ID 
+        FROM FODBA.FO_CARRO_ABANDONADO CA 
+        WHERE (( DAYS(CURRENT TIMESTAMP) - DAYS(CA.CAR_FEC_MAIL) ) <= 1 ) 
+        GROUP BY CA.CAR_CLI_ID 
+        HAVING COUNT(CA.CAR_CLI_ID) >= 1 
+    ) 
+GROUP BY C.CLI_ID, C.CLI_RUT, C.CLI_DV, C.CLI_NOMBRE, C.CLI_APELLIDO_PAT, C.CLI_APELLIDO_MAT, C.CLI_EMAIL 
+WITH UR 
+2014-08-13 00:50:34,637 DEBUG main cl.cencosud.procesos.carroabandonado.dao.CarroAbandonadoDAO - [CarroAbandonadoDAO][getCarrosAbandonados] Realizo llamado a obtener los datos
+2014-08-13 00:50:34,637 DEBUG main cl.cencosud.procesos.carroabandonado.util.JFactory - [JFactory][getQueryRunner] Ingreso al método.
+2014-08-13 00:50:34,637 DEBUG main cl.cencosud.procesos.carroabandonado.util.JFactory - [JFactory][getQueryRunner] Realizo la instancia.
+2014-08-13 00:50:34,638 DEBUG main cl.cencosud.procesos.carroabandonado.util.JFactory - [JFactory][getQueryRunner] Retorno el objeto.
+2014-08-13 00:50:35,018 DEBUG main cl.cencosud.procesos.carroabandonado.dao.CarroAbandonadoDAO - [CarroAbandonadoDAO][getCarrosAbandonados] Obtuve resultado.
+2014-08-13 00:50:35,019 DEBUG main cl.cencosud.procesos.carroabandonado.dao.CarroAbandonadoDAO - [CarroAbandonadoDAO][getCarrosAbandonados] Finaliza el metodo.
+2014-08-13 00:50:35,019 DEBUG main cl.cencosud.procesos.carroabandonado.dao.CarroAbandonadoDAO - [CarroAbandonadoDAO][getCategoriaMasCara] Ingreso al metodo
+2014-08-13 00:50:35,019 DEBUG main cl.cencosud.procesos.carroabandonado.dao.CarroAbandonadoDAO - [CarroAbandonadoDAO][getCategoriaMasCara] Recupero la query
+2014-08-13 00:50:35,019 DEBUG main cl.cencosud.procesos.carroabandonado.util.JFactory - [JFactory][getStringBuffer] Ingreso al método.
+2014-08-13 00:50:35,019 DEBUG main cl.cencosud.procesos.carroabandonado.util.JFactory - [JFactory][getStringBuffer] Borro su contenido.
+2014-08-13 00:50:35,019 DEBUG main cl.cencosud.procesos.carroabandonado.util.JFactory - [JFactory][getStringBuffer] Retorno el StringBuffer.
+2014-08-13 00:50:35,020 INFO  main cl.cencosud.procesos.carroabandonado.dao.CarroAbandonadoDAO - [CarroAbandonadoDAO][getCategoriaMasCara] la query a ejecutar es SELECT CC.CAR_PRO_ID, (INT(CC.CAR_CANTIDAD) * INT(PL.PRE_VALOR)) as SUMA 
+FROM FODBA.FO_CARRO_COMPRAS CC, FODBA.FO_PRECIOS_LOCALES PL 
+WHERE CC.CAR_PRO_ID = PL.PRE_PRO_ID 
+AND PL.PRE_LOC_ID = 1 
+AND CC.CAR_CLI_ID = 448471 
+WITH UR 
+2014-08-13 00:50:35,020 DEBUG main cl.cencosud.procesos.carroabandonado.dao.CarroAbandonadoDAO - [CarroAbandonadoDAO][getCategoriaMasCara] Realizo llamado a obtener los datos
+2014-08-13 00:50:35,020 DEBUG main cl.cencosud.procesos.carroabandonado.util.JFactory - [JFactory][getQueryRunner] Ingreso al método.
+2014-08-13 00:50:35,020 DEBUG main cl.cencosud.procesos.carroabandonado.util.JFactory - [JFactory][getQueryRunner] Retorno el objeto.
+2014-08-13 00:50:35,029 DEBUG main cl.cencosud.procesos.carroabandonado.dao.CarroAbandonadoDAO - [CarroAbandonadoDAO][getCategoriaMasCara] Finaliza el metodo.
+2014-08-13 00:50:35,029 DEBUG main cl.cencosud.procesos.carroabandonado.util.Util - [Util][getPropertiesString] recupero el valor del properties para la key carro.monto.minimo
+2014-08-13 00:50:35,029 DEBUG main cl.cencosud.procesos.carroabandonado.util.Util - [Util][getPropertiesString] recupero el valor del properties para la key carro.monto.maximo
+2014-08-13 00:50:35,029 DEBUG main cl.cencosud.procesos.carroabandonado.dao.CarroAbandonadoDAO - [CarroAbandonadoDAO][getSeccionMasCara] Ingreso al metodo
+2014-08-13 00:50:35,029 DEBUG main cl.cencosud.procesos.carroabandonado.dao.CarroAbandonadoDAO - [CarroAbandonadoDAO][getSeccionMasCara] Recupero la query
+2014-08-13 00:50:35,029 DEBUG main cl.cencosud.procesos.carroabandonado.util.JFactory - [JFactory][getStringBuffer] Ingreso al método.
+2014-08-13 00:50:35,029 DEBUG main cl.cencosud.procesos.carroabandonado.util.JFactory - [JFactory][getStringBuffer] Borro su contenido.
+2014-08-13 00:50:35,029 DEBUG main cl.cencosud.procesos.carroabandonado.util.JFactory - [JFactory][getStringBuffer] Retorno el StringBuffer.
+2014-08-13 00:50:35,029 INFO  main cl.cencosud.procesos.carroabandonado.dao.CarroAbandonadoDAO - [CarroAbandonadoDAO][getSeccionMasCara] la query a ejecutar es SELECT ID_SECCION, NOMBRE, SUM(SUMA) SUMA2 
+FROM 
+( 
+    SELECT CC.CAR_PRO_ID, (INT(CC.CAR_CANTIDAD) * INT(PL.PRE_VALOR)) as SUMA, S.ID_SECCION, S.NOMBRE 
+    FROM FODBA.FO_CARRO_COMPRAS CC, FODBA.FO_PRECIOS_LOCALES PL, 
+         FODBA.FO_PRODUCTOS FP, BODBA.BO_PRODUCTOS BP, BODBA.BO_SECCION S 
+    WHERE CC.CAR_PRO_ID = PL.PRE_PRO_ID 
+      AND CC.CAR_CLI_ID = 448471 
+      AND PL.PRE_LOC_ID = 1 
+      AND CC.CAR_PRO_ID = FP.PRO_ID 
+      AND FP.PRO_ID_BO = BP.ID_PRODUCTO 
+      AND S.ID_SECCION = CAST(SUBSTR(BP.ID_CATPROD, 1, 2) AS INT) 
+) P 
+GROUP BY ID_SECCION, NOMBRE 
+ORDER BY SUMA2 DESC 
+WITH UR 
+2014-08-13 00:50:35,029 DEBUG main cl.cencosud.procesos.carroabandonado.dao.CarroAbandonadoDAO - [CarroAbandonadoDAO][getSeccionMasCara] Realizo llamado a obtener los datos
+2014-08-13 00:50:35,030 DEBUG main cl.cencosud.procesos.carroabandonado.util.JFactory - [JFactory][getQueryRunner] Ingreso al método.
+2014-08-13 00:50:35,030 DEBUG main cl.cencosud.procesos.carroabandonado.util.JFactory - [JFactory][getQueryRunner] Retorno el objeto.
+2014-08-13 00:50:35,035 DEBUG main cl.cencosud.procesos.carroabandonado.dao.CarroAbandonadoDAO - [CarroAbandonadoDAO][getSeccionMasCara] Finaliza el metodo.
+2014-08-13 00:50:35,035 DEBUG main cl.cencosud.procesos.carroabandonado.dao.CarroAbandonadoDAO - [CarroAbandonadoDAO][getCuponSeccion] Ingreso al metodo
+2014-08-13 00:50:35,035 DEBUG main cl.cencosud.procesos.carroabandonado.dao.CarroAbandonadoDAO - [CarroAbandonadoDAO][getCuponSeccion] Recupero la query
+2014-08-13 00:50:35,035 DEBUG main cl.cencosud.procesos.carroabandonado.util.JFactory - [JFactory][getStringBuffer] Ingreso al método.
+2014-08-13 00:50:35,035 DEBUG main cl.cencosud.procesos.carroabandonado.util.JFactory - [JFactory][getStringBuffer] Borro su contenido.
+2014-08-13 00:50:35,035 DEBUG main cl.cencosud.procesos.carroabandonado.util.JFactory - [JFactory][getStringBuffer] Retorno el StringBuffer.
+2014-08-13 00:50:35,035 DEBUG main cl.cencosud.procesos.carroabandonado.util.Util - [Util][getPropertiesString] recupero el valor del properties para la key carro.cupon.prefijo
+2014-08-13 00:50:35,035 INFO  main cl.cencosud.procesos.carroabandonado.dao.CarroAbandonadoDAO - [CarroAbandonadoDAO][getCuponSeccion] la query a ejecutar es SELECT CD.ID_CUP_DTO, CD.CODIGO, CD.CANTIDAD, CD.DESCUENTO, CD.FECHA_FIN 
+FROM BODBA.BO_CUPON_DSCTO CD, BODBA.BO_CUPON_DSCTOXPRODS DP 
+WHERE CD.TIPO = 'S' 
+AND CD.ID_CUP_DTO = DP.ID_CUP_DTO 
+AND CD.CANTIDAD > 0 
+AND DP.ID_SECCION = 14 
+AND ((CD.FECHA_FIN >= CURRENT DATE) AND (CD.FECHA_INI <= CURRENT DATE)) 
+AND CD.CODIGO LIKE 'CA_%' 
+WITH UR 
+2014-08-13 00:50:35,035 DEBUG main cl.cencosud.procesos.carroabandonado.dao.CarroAbandonadoDAO - [CarroAbandonadoDAO][getCuponSeccion] Realizo llamado a obtener los datos
+2014-08-13 00:50:35,035 DEBUG main cl.cencosud.procesos.carroabandonado.util.JFactory - [JFactory][getQueryRunner] Ingreso al método.
+2014-08-13 00:50:35,035 DEBUG main cl.cencosud.procesos.carroabandonado.util.JFactory - [JFactory][getQueryRunner] Retorno el objeto.
+2014-08-13 00:50:35,092 DEBUG main cl.cencosud.procesos.carroabandonado.dao.CarroAbandonadoDAO - [CarroAbandonadoDAO][getCuponSeccion] Finaliza el metodo.
+2014-08-13 00:50:35,092 DEBUG main cl.cencosud.procesos.carroabandonado.dao.CarroAbandonadoDAO - [CarroAbandonadoDAO][getCuponSeccion] Ingreso al metodo
+2014-08-13 00:50:35,092 DEBUG main cl.cencosud.procesos.carroabandonado.dao.CarroAbandonadoDAO - [CarroAbandonadoDAO][getCuponSeccion] Recupero la query
+2014-08-13 00:50:35,092 DEBUG main cl.cencosud.procesos.carroabandonado.util.JFactory - [JFactory][getStringBuffer] Ingreso al método.
+2014-08-13 00:50:35,092 DEBUG main cl.cencosud.procesos.carroabandonado.util.JFactory - [JFactory][getStringBuffer] Borro su contenido.
+2014-08-13 00:50:35,092 DEBUG main cl.cencosud.procesos.carroabandonado.util.JFactory - [JFactory][getStringBuffer] Retorno el StringBuffer.
+2014-08-13 00:50:35,092 DEBUG main cl.cencosud.procesos.carroabandonado.util.Util - [Util][getPropertiesString] recupero el valor del properties para la key carro.cupon.prefijo
+2014-08-13 00:50:35,092 INFO  main cl.cencosud.procesos.carroabandonado.dao.CarroAbandonadoDAO - [CarroAbandonadoDAO][getCuponSeccion] la query a ejecutar es SELECT CD.ID_CUP_DTO, CD.CODIGO, CD.CANTIDAD, CD.DESCUENTO, CD.FECHA_FIN 
+FROM BODBA.BO_CUPON_DSCTO CD 
+WHERE CD.TIPO = 'D' 
+AND CD.CANTIDAD > 0 
+AND ((CD.FECHA_FIN >= CURRENT DATE) AND (CD.FECHA_INI <= CURRENT DATE)) 
+AND CD.CODIGO LIKE 'CA_%' 
+WITH UR 
+2014-08-13 00:50:35,092 DEBUG main cl.cencosud.procesos.carroabandonado.dao.CarroAbandonadoDAO - [CarroAbandonadoDAO][getCuponSeccion] Realizo llamado a obtener los datos
+2014-08-13 00:50:35,093 DEBUG main cl.cencosud.procesos.carroabandonado.util.JFactory - [JFactory][getQueryRunner] Ingreso al método.
+2014-08-13 00:50:35,093 DEBUG main cl.cencosud.procesos.carroabandonado.util.JFactory - [JFactory][getQueryRunner] Retorno el objeto.
+2014-08-13 00:50:35,100 DEBUG main cl.cencosud.procesos.carroabandonado.dao.CarroAbandonadoDAO - [CarroAbandonadoDAO][getCuponSeccion] Finaliza el metodo.
+2014-08-13 00:50:35,100 INFO  main cl.cencosud.procesos.carroabandonado.engine.Maestro - [Maestro][process] Realizo el llamado a generar el mail
+2014-08-13 00:50:35,100 DEBUG main cl.cencosud.procesos.carroabandonado.engine.Maestro - Fecha formato:30-09-2014
+2014-08-13 00:50:35,100 DEBUG main cl.cencosud.procesos.carroabandonado.util.Util - [Util][getPropertiesString] recupero el valor del properties para la key html.cupon.directorio
+2014-08-13 00:50:35,101 DEBUG main cl.cencosud.procesos.carroabandonado.util.Util - [Util][getPropertiesString] recupero el valor del properties para la key html.cupon.descuento
+2014-08-13 00:50:35,101 DEBUG main cl.cencosud.procesos.carroabandonado.util.Util - [Util][getPropertiesString] recupero el valor del properties para la key html.cupon.despacho
+2014-08-13 00:50:35,101 DEBUG main cl.cencosud.procesos.carroabandonado.util.Util - [Util][getPropertiesString] recupero el valor del properties para la key html.cupon.recuerda
+2014-08-13 00:50:35,169 INFO  main cl.cencosud.procesos.carroabandonado.engine.Maestro - [Maestro][process] Realizo el envio de los correos electronicos
+2014-08-13 00:50:35,169 DEBUG main cl.cencosud.procesos.carroabandonado.util.JFactory - [JFactory][getConnectionDB2] Ingreso al método.
+2014-08-13 00:50:35,170 DEBUG main cl.cencosud.procesos.carroabandonado.util.JFactory - [JFactory][getConnectionDB2] retorno la conexión.
+2014-08-13 00:50:35,170 DEBUG main cl.cencosud.procesos.carroabandonado.util.Util - [Util][getPropertiesString] recupero el valor del properties para la key jumbo.url.fo
+2014-08-13 00:50:35,170 DEBUG main cl.cencosud.procesos.carroabandonado.dao.CarroAbandonadoDAO - [CarroAbandonadoDAO][getCuponSeccion] Ingreso al metodo
+2014-08-13 00:50:35,170 DEBUG main cl.cencosud.procesos.carroabandonado.dao.CarroAbandonadoDAO - [CarroAbandonadoDAO][getInsertCarroAbandonado] Recupero la query
+2014-08-13 00:50:35,170 DEBUG main cl.cencosud.procesos.carroabandonado.util.JFactory - [JFactory][getStringBuffer] Ingreso al método.
+2014-08-13 00:50:35,171 DEBUG main cl.cencosud.procesos.carroabandonado.util.JFactory - [JFactory][getStringBuffer] Borro su contenido.
+2014-08-13 00:50:35,171 DEBUG main cl.cencosud.procesos.carroabandonado.util.JFactory - [JFactory][getStringBuffer] Retorno el StringBuffer.
+2014-08-13 00:50:35,171 INFO  main cl.cencosud.procesos.carroabandonado.dao.CarroAbandonadoDAO - [CarroAbandonadoDAO][getInsertCarroAbandonado] la query a ejecutar es INSERT INTO FODBA.FO_CARRO_ABANDONADO 
+	(CAR_CLI_ID, CAR_FEC_MAIL, CAR_TIPO_DCTO, CAR_CLI_NOMBRES, CAR_FECHA_FIN, CAR_MONTO_DCTO, CAR_CUPON, CAR_NOM_SECCION, CAR_ESTADO_MAIL) 
+VALUES 
+	( 448471, CURRENT TIMESTAMP, 'D', 'Cristian Alejandro', '2014-09-30', '13%', 'CA_TEST1', 'Perfumería', 0) 
+2014-08-13 00:50:35,171 DEBUG main cl.cencosud.procesos.carroabandonado.dao.CarroAbandonadoDAO - [CarroAbandonadoDAO][getInsertCarroAbandonado] Realizo llamado a obtener los datos
+2014-08-13 00:50:35,171 DEBUG main cl.cencosud.procesos.carroabandonado.util.JFactory - [JFactory][getQueryRunner] Ingreso al método.
+2014-08-13 00:50:35,171 DEBUG main cl.cencosud.procesos.carroabandonado.util.JFactory - [JFactory][getQueryRunner] Retorno el objeto.
+2014-08-13 00:50:35,937 DEBUG main cl.cencosud.procesos.carroabandonado.util.JFactory - [JFactory][getQueryRunner] Ingreso al método.
+2014-08-13 00:50:35,937 DEBUG main cl.cencosud.procesos.carroabandonado.util.JFactory - [JFactory][getQueryRunner] Retorno el objeto.
+2014-08-13 00:50:35,943 DEBUG main cl.cencosud.procesos.carroabandonado.dao.CarroAbandonadoDAO - [CarroAbandonadoDAO][getInsertCarroAbandonado] Finaliza el metodo.
+2014-08-13 00:50:35,952 DEBUG main cl.cencosud.procesos.carroabandonado.engine.Maestro - [Maestro][enviaEmail] Ingreso al método
+2014-08-13 00:50:35,952 DEBUG main cl.cencosud.procesos.carroabandonado.engine.Maestro - [Maestro][enviaEmail] Se realiza el envio de correo electronico
+2014-08-13 00:50:35,952 DEBUG main cl.cencosud.procesos.carroabandonado.util.Util - [Util][getPropertiesString] recupero el valor del properties para la key mail.smtp.host
+2014-08-13 00:50:35,952 DEBUG main cl.cencosud.procesos.carroabandonado.util.Util - [Util][getPropertiesString] recupero el valor del properties para la key mail.from
+2014-08-13 00:50:35,952 DEBUG main cl.cencosud.procesos.carroabandonado.util.Util - [Util][getPropertiesString] recupero el valor del properties para la key mail.subject
+2014-08-13 00:50:35,953 DEBUG main cl.cencosud.procesos.carroabandonado.util.Util - [Util][getPropertiesString] recupero el valor del properties para la key mail.send
+2014-08-13 00:50:35,953 INFO  main cl.cencosud.procesos.carroabandonado.engine.Maestro - [Maestro][enviaEmail] Conectando SMTP host[172.18.132.19]
+2014-08-13 00:50:35,953 DEBUG main cl.cencosud.procesos.carroabandonado.engine.Maestro - [Maestro][enviaEmail] host[172.18.132.19]
+2014-08-13 00:50:35,953 DEBUG main cl.cencosud.procesos.carroabandonado.engine.Maestro - [Maestro][enviaEmail] from[no-reply@cencosud.cl]
+2014-08-13 00:50:35,953 DEBUG main cl.cencosud.procesos.carroabandonado.engine.Maestro - [Maestro][enviaEmail] to[cristian.valdebenito@cencosud.cl]
+2014-08-13 00:50:35,953 DEBUG main cl.cencosud.procesos.carroabandonado.engine.Maestro - [Maestro][enviaEmail] cc[]
+2014-08-13 00:50:35,953 DEBUG main cl.cencosud.procesos.carroabandonado.engine.Maestro - [Maestro][enviaEmail] subject[Cristian Alejandro, tu carrito te está esperando [PRUEBA AMBIENTE DESARROLLO]]
+2014-08-13 00:50:35,953 DEBUG main cl.cencosud.procesos.carroabandonado.engine.Maestro - [Maestro][enviaEmail] bodyHtml[<html><head><title>Carro Jumbo.cl</title></head><body><table width="800" border="0" align="center" cellpadding="0" cellspacing="0">  <tr>    <td>    <p style="font-family:Arial, Helvetica, sans-serif; color:#000000; font-size:12px; text-align:center;">Si usted no visualiza bien este mail, haga<b> <a href="http://10.94.223.44:9080/FO/VerCuponMail?key=MjAz
+" style="color:#008000; text-decoration:none;"> click aqu&iacute;</a></b></font></p>    </td>  </tr>  <tr>    <td>                <table border="0" cellspacing="0" cellpadding="0">  <tr>    <td width="800" height="68"><img src="http://www.jumbo.cl/supermercado/mail/2014/0320_carro/carrito_2_01.jpg" width="800" height="68" border="0" usemap="#Map2" style="display:block"></td>  </tr>  <tr>    <td><table border="0" cellspacing="0" cellpadding="0">      <tr>        <td width="431" height="512"><img src="http://www.jumbo.cl/supermercado/mail/2014/0320_carro/carrito_09.jpg" width="431" height="512" border="0" usemap="#Map3" style="display:block"></td>        <td><table width="0" border="0" cellspacing="0" cellpadding="0">          <tr>            <td height="71"> <span style="font-weight:bold; font-size:21px; color:#666666; padding-left:17px; font-family:Arial, Helvetica, sans-serif"> Cristian Alejandro,</span></td>            </tr>          <tr>            <td>              <table width="340" border="0" cellspacing="0" cellpadding="0">                  </table>              </td>            </tr>          <tr>            <td width="366" height="160"><img style="display:block" src="http://www.jumbo.cl/supermercado/mail/2014/0320_carro/carrito_2_04.jpg" width="366" height="160" border="0"/></td>            </tr>          <tr>            <td height="98" align="center"><p style="font-weight:bold; font-size:30px; color:#333333; line-height:35px; font-family:Arial, Helvetica, sans-serif">costo de servicio a $1<br/>            </p></td>            </tr>                                <tr>            <td height="80" align="right"> <p style="line-height:1px; font-weight:medium; font-size:14px; color:#666666; padding-right:25px; margin-top:10px; font-family:Arial, Helvetica, sans-serif ">Ingresa el c&oacute;digo del cup&oacute;n al momento de pagar:</p>              <p style="line-height:1px; font-weight:medium; font-size:14px; color:#666666; padding-right:25px; font-family:Arial, Helvetica, sans-serif"><span style="font-weight:bold; font-size:30px; color:#333333; line-height:23px;"> <span style="font-weight:bold; font-size:16px; color:#666666; padding-left:17px; font-family:Arial, Helvetica, sans-serif text-transform: uppercase;"> CA_TEST1</span></p></td>            </tr>            <tr>            <td height="41" align="right"> <span style="font-weight:medium; font-size:12px; color:#666666; padding-right:25px; font-family:Arial, Helvetica, sans-serif">Dcto. v&aacute;lido hasta 30-09-2014</span></td>            </tr>                    <tr>            <td width="366" height="62"><img style="display:block" src="http://www.jumbo.cl/supermercado/mail/2014/0320_carro/carrito_2_08.jpg" width="366" height="62" border="0" usemap="#Map"></td>            </tr></table>        </td>      </tr>    </table></td>  </tr>  <tr>    <td width="800" height="20"><img style="display:block" src="http://www.jumbo.cl/supermercado/mail/2014/0320_carro/carrito_2_09.jpg" width="800" height="20" border="0"></td>  </tr></table>            </td>  </tr>  <tr>    <td><p  style="font-family:Arial, Helvetica, sans-serif; color:#333333; font-size:11px; text-align:center;">Descuento no acumulable con otras ofertas, en tal caso se aplicar&aacute; el descuento mayor.<br>      Cup&oacute;n v&aacute;lido hasta la fecha indicada anteriormente.<br>    </td>  </tr></table><map name="Map">  <area shape="rect" coords="3,-8,362,68" href="http://www.jumbo.cl/FO/LogonForm?utm_source=mail_carro_abandonado&utm_medium=mail_automatico&utm_campaign=despacho"></map><map name="Map2">  <area shape="circle" coords="57,64,52" href="http://www.jumbo.cl/FO/LogonForm?utm_source=mail_jumbo.cl_08ago2014&utm_medium=mail&utm_campaign=carrito_servicio&utm_content=header_logo_jumbo"></map><map name="Map3">  <area shape="circle" coords="58,-4,56" href="http://www.jumbo.cl/FO/LogonForm?utm_source=mail_jumbo.cl_08ago2014&utm_medium=mail&utm_campaign=carrito_servicio&utm_content=header_logo_jumbo"></map></body></html>]
+2014-08-13 00:50:35,953 DEBUG main cl.cencosud.procesos.carroabandonado.util.JFactory - [JFactory][getSendMail] Ingreso al método.
+2014-08-13 00:50:35,953 DEBUG main cl.cencosud.procesos.carroabandonado.util.JFactory - [JFactory][getSendMail] Realizo la instancia.
+2014-08-13 00:50:35,958 DEBUG main cl.cencosud.procesos.carroabandonado.util.JFactory - [JFactory][getSendMail] Retorno el objeto.
+2014-08-13 00:50:35,958 DEBUG main cl.cencosud.procesos.carroabandonado.util.SendMail - [SendMail][enviar] Ingreso al metodo
+2014-08-13 00:50:35,976 DEBUG main cl.cencosud.procesos.carroabandonado.util.SendMail - [SendMail][enviar] Mdestinatario SMTP: no-reply@cencosud.cl
+2014-08-13 00:50:35,976 DEBUG main cl.cencosud.procesos.carroabandonado.util.SendMail - [SendMail][enviar] Message.RecipientType.TO agregando: cristian.valdebenito@cencosud.cl
+2014-08-13 00:50:35,980 DEBUG main cl.cencosud.procesos.carroabandonado.util.SendMail - [SendMail][enviar] subject  :Cristian Alejandro, tu carrito te está esperando [PRUEBA AMBIENTE DESARROLLO]
+2014-08-13 00:50:35,980 DEBUG main cl.cencosud.procesos.carroabandonado.util.SendMail - [SendMail][enviar] DataHandler  :<html><head><title>Carro Jumbo.cl</title></head><body><table width="800" border="0" align="center" cellpadding="0" cellspacing="0">  <tr>    <td>    <p style="font-family:Arial, Helvetica, sans-serif; color:#000000; font-size:12px; text-align:center;">Si usted no visualiza bien este mail, haga<b> <a href="http://10.94.223.44:9080/FO/VerCuponMail?key=MjAz
+" style="color:#008000; text-decoration:none;"> click aqu&iacute;</a></b></font></p>    </td>  </tr>  <tr>    <td>                <table border="0" cellspacing="0" cellpadding="0">  <tr>    <td width="800" height="68"><img src="http://www.jumbo.cl/supermercado/mail/2014/0320_carro/carrito_2_01.jpg" width="800" height="68" border="0" usemap="#Map2" style="display:block"></td>  </tr>  <tr>    <td><table border="0" cellspacing="0" cellpadding="0">      <tr>        <td width="431" height="512"><img src="http://www.jumbo.cl/supermercado/mail/2014/0320_carro/carrito_09.jpg" width="431" height="512" border="0" usemap="#Map3" style="display:block"></td>        <td><table width="0" border="0" cellspacing="0" cellpadding="0">          <tr>            <td height="71"> <span style="font-weight:bold; font-size:21px; color:#666666; padding-left:17px; font-family:Arial, Helvetica, sans-serif"> Cristian Alejandro,</span></td>            </tr>          <tr>            <td>              <table width="340" border="0" cellspacing="0" cellpadding="0">                  </table>              </td>            </tr>          <tr>            <td width="366" height="160"><img style="display:block" src="http://www.jumbo.cl/supermercado/mail/2014/0320_carro/carrito_2_04.jpg" width="366" height="160" border="0"/></td>            </tr>          <tr>            <td height="98" align="center"><p style="font-weight:bold; font-size:30px; color:#333333; line-height:35px; font-family:Arial, Helvetica, sans-serif">costo de servicio a $1<br/>            </p></td>            </tr>                                <tr>            <td height="80" align="right"> <p style="line-height:1px; font-weight:medium; font-size:14px; color:#666666; padding-right:25px; margin-top:10px; font-family:Arial, Helvetica, sans-serif ">Ingresa el c&oacute;digo del cup&oacute;n al momento de pagar:</p>              <p style="line-height:1px; font-weight:medium; font-size:14px; color:#666666; padding-right:25px; font-family:Arial, Helvetica, sans-serif"><span style="font-weight:bold; font-size:30px; color:#333333; line-height:23px;"> <span style="font-weight:bold; font-size:16px; color:#666666; padding-left:17px; font-family:Arial, Helvetica, sans-serif text-transform: uppercase;"> CA_TEST1</span></p></td>            </tr>            <tr>            <td height="41" align="right"> <span style="font-weight:medium; font-size:12px; color:#666666; padding-right:25px; font-family:Arial, Helvetica, sans-serif">Dcto. v&aacute;lido hasta 30-09-2014</span></td>            </tr>                    <tr>            <td width="366" height="62"><img style="display:block" src="http://www.jumbo.cl/supermercado/mail/2014/0320_carro/carrito_2_08.jpg" width="366" height="62" border="0" usemap="#Map"></td>            </tr></table>        </td>      </tr>    </table></td>  </tr>  <tr>    <td width="800" height="20"><img style="display:block" src="http://www.jumbo.cl/supermercado/mail/2014/0320_carro/carrito_2_09.jpg" width="800" height="20" border="0"></td>  </tr></table>            </td>  </tr>  <tr>    <td><p  style="font-family:Arial, Helvetica, sans-serif; color:#333333; font-size:11px; text-align:center;">Descuento no acumulable con otras ofertas, en tal caso se aplicar&aacute; el descuento mayor.<br>      Cup&oacute;n v&aacute;lido hasta la fecha indicada anteriormente.<br>    </td>  </tr></table><map name="Map">  <area shape="rect" coords="3,-8,362,68" href="http://www.jumbo.cl/FO/LogonForm?utm_source=mail_carro_abandonado&utm_medium=mail_automatico&utm_campaign=despacho"></map><map name="Map2">  <area shape="circle" coords="57,64,52" href="http://www.jumbo.cl/FO/LogonForm?utm_source=mail_jumbo.cl_08ago2014&utm_medium=mail&utm_campaign=carrito_servicio&utm_content=header_logo_jumbo"></map><map name="Map3">  <area shape="circle" coords="58,-4,56" href="http://www.jumbo.cl/FO/LogonForm?utm_source=mail_jumbo.cl_08ago2014&utm_medium=mail&utm_campaign=carrito_servicio&utm_content=header_logo_jumbo"></map></body></html>
+2014-08-13 00:50:35,986 INFO  main cl.cencosud.procesos.carroabandonado.util.SendMail - [SendMail][enviar] Enviando correo
+2014-08-13 00:50:36,212 INFO  main cl.cencosud.procesos.carroabandonado.util.SendMail - [SendMail][enviar] SendMail - > Se envio Correo ...
+2014-08-13 00:50:36,212 INFO  main cl.cencosud.procesos.carroabandonado.engine.Maestro - [Maestro][enviaEmail]Correo enviado correctamente
+2014-08-13 00:50:36,212 DEBUG main cl.cencosud.procesos.carroabandonado.dao.CarroAbandonadoDAO - [CarroAbandonadoDAO][getUpdateCarroCompra] Ingreso al metodo
+2014-08-13 00:50:36,212 DEBUG main cl.cencosud.procesos.carroabandonado.dao.CarroAbandonadoDAO - [CarroAbandonadoDAO][getUpdateCarroCompra] Recupero la query
+2014-08-13 00:50:36,212 DEBUG main cl.cencosud.procesos.carroabandonado.util.JFactory - [JFactory][getStringBuffer] Ingreso al método.
+2014-08-13 00:50:36,212 DEBUG main cl.cencosud.procesos.carroabandonado.util.JFactory - [JFactory][getStringBuffer] Borro su contenido.
+2014-08-13 00:50:36,212 DEBUG main cl.cencosud.procesos.carroabandonado.util.JFactory - [JFactory][getStringBuffer] Retorno el StringBuffer.
+2014-08-13 00:50:36,212 INFO  main cl.cencosud.procesos.carroabandonado.dao.CarroAbandonadoDAO - [CarroAbandonadoDAO][getUpdateCarroCompra] la query a ejecutar es UPDATE FODBA.FO_CARRO_COMPRAS SET CAR_EST_MAIL=1 WHERE CAR_CLI_ID=448471 
+2014-08-13 00:50:36,212 DEBUG main cl.cencosud.procesos.carroabandonado.util.JFactory - [JFactory][getQueryRunner] Ingreso al método.
+2014-08-13 00:50:36,212 DEBUG main cl.cencosud.procesos.carroabandonado.util.JFactory - [JFactory][getQueryRunner] Retorno el objeto.
+2014-08-13 00:50:36,291 DEBUG main cl.cencosud.procesos.carroabandonado.dao.CarroAbandonadoDAO - [CarroAbandonadoDAO][getUpdateCarroCompra] Finaliza el metodo.
+2014-08-13 00:50:36,291 DEBUG main cl.cencosud.procesos.carroabandonado.dao.CarroAbandonadoDAO - [CarroAbandonadoDAO][getUpdateCarroAbandonado] Ingreso al metodo
+2014-08-13 00:50:36,291 DEBUG main cl.cencosud.procesos.carroabandonado.dao.CarroAbandonadoDAO - [CarroAbandonadoDAO][getUpdateCarroAbandonado] Recupero la query
+2014-08-13 00:50:36,291 DEBUG main cl.cencosud.procesos.carroabandonado.util.JFactory - [JFactory][getStringBuffer] Ingreso al método.
+2014-08-13 00:50:36,291 DEBUG main cl.cencosud.procesos.carroabandonado.util.JFactory - [JFactory][getStringBuffer] Borro su contenido.
+2014-08-13 00:50:36,291 DEBUG main cl.cencosud.procesos.carroabandonado.util.JFactory - [JFactory][getStringBuffer] Retorno el StringBuffer.
+2014-08-13 00:50:36,291 INFO  main cl.cencosud.procesos.carroabandonado.dao.CarroAbandonadoDAO - [CarroAbandonadoDAO][getUpdateCarroAbandonado] la query a ejecutar es UPDATE FODBA.FO_CARRO_ABANDONADO SET CAR_ESTADO_MAIL=1 WHERE CAR_ID=203 
+2014-08-13 00:50:36,291 DEBUG main cl.cencosud.procesos.carroabandonado.util.JFactory - [JFactory][getQueryRunner] Ingreso al método.
+2014-08-13 00:50:36,291 DEBUG main cl.cencosud.procesos.carroabandonado.util.JFactory - [JFactory][getQueryRunner] Retorno el objeto.
+2014-08-13 00:50:36,342 DEBUG main cl.cencosud.procesos.carroabandonado.dao.CarroAbandonadoDAO - [CarroAbandonadoDAO][getUpdateCarroAbandonado] Finaliza el metodo.
+2014-08-13 00:50:36,342 DEBUG main cl.cencosud.procesos.carroabandonado.engine.Maestro - [Maestro][process] Cierro conexiones
+2014-08-13 00:50:36,342 DEBUG main cl.cencosud.procesos.carroabandonado.util.ConnectionDB2 - [ConnectionDB2][getConnectionDB2] Ingreso al método.
+2014-08-13 00:50:36,342 DEBUG main cl.cencosud.procesos.carroabandonado.util.ConnectionDB2 - [ConnectionDB2][getConnectionDB2] Realizo el cierre de la conexión.
+2014-08-13 00:50:36,344 DEBUG main cl.cencosud.procesos.carroabandonado.util.ConnectionDB2 - [ConnectionDB2][getConnectionDB2] Fin del metodo. Mensaje null
+2014-08-13 00:50:36,344 INFO  main cl.cencosud.procesos.carroabandonado.engine.Maestro - [Maestro][process] Finaliza la ejecución del proceso 0 days 0:0:2
+2014-08-13 00:50:36,344 DEBUG main cl.cencosud.procesos.carroabandonado.engine.Maestro - [Maestro][process] Finaliza metodo
+2014-08-13 00:50:36,344 DEBUG main cl.cencosud.procesos.carroabandonado.main.CarroAbandonado - [CarroAbandonado][main] proceso terminado

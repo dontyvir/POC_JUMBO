@@ -1,0 +1,25 @@
+<script type="text/javascript" src="/FO_WebContent/js/menu_desplegable.js"></script>
+				
+				<ul id="menu">
+					<!-- BEGIN DYNAMIC: CATEGORIAS -->					
+					<li id="link_{numero}">
+						<a href="javascript:muestracabecera({cat_id},{numero});" onclick="chaordicCategorias('{cat_nombre}',id_cliente,nombre_cliente,email_cliente);" onmouseover="javascript:$j('#dropdown_{numero}').show();">{cat_nombre}</a>
+    					<div class="dropdown_{numero}" id="dropdown_{numero}">
+    					
+							<div class="col_4"></div>
+        					<!-- BEGIN DYNAMIC: INTERMEDIAS -->
+        					<div class="col_1">
+<!-- 13112012 VMatheu-->
+        						<h3><a href="javascript:muestraterminal({cat_padre},{cat_id},-1);" onclick="chaordicSubCategorias('{nombre_subcat}','{nombre_padre}',id_cliente,nombre_cliente,email_cliente);">{nombre_subcat}</a></h3>
+<!-- - 13112012 VMatheu-->    						
+            					<ul>
+               						<!-- BEGIN DYNAMIC: TERMINALES -->
+                					<li><a href="javascript:muestraterminal({cat_cab},{cat_padre},{cat_id},{numero});" onclick="chaordicSubSubCategorias('{nombre_subcat}','{nombre_padre}','{nombre_abuelo}',id_cliente,nombre_cliente,email_cliente);">{nombre_subcat}</a></li>
+                					<!-- END DYNAMIC: TERMINALES -->
+            					</ul>
+        					</div>
+        					<!-- END DYNAMIC: INTERMEDIAS -->
+    					</div>
+					</li>
+					<!-- END DYNAMIC: CATEGORIAS -->
+				</ul>

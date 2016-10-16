@@ -1,0 +1,68 @@
+.accordion_toggle {
+	background-image: url(/FO_IMGS/img/estructura/paso1/cerrado.gif);
+	background-repeat: no-repeat;
+	background-position: left bottom;
+	text-indent: 30px;
+	display: block;
+	height: 20px;
+	width: 162px;
+	margin-top: 0px;
+	margin-right: auto;
+	margin-bottom: 0px;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:11px;
+	color:#666;
+	cursor: pointer;
+	line-height: 20px;
+}
+.accordion_toggle_active {
+  background-image: url(/FO_IMGS/img/estructura/paso1/abierto.gif);
+	background-repeat: no-repeat;
+	background-position: left bottom;
+	text-indent: 30px;
+	display: block;
+	height: 20px;
+	width: 162px;
+	margin-top: 0px;
+	margin-right: auto;
+	margin-bottom: 0px;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:11px;
+	color:#FFF;
+	cursor: pointer;
+	line-height: 20px;
+}
+
+#seleccionar_todos  {
+  float: left;
+	width: 100%;
+	height: 35px;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:10px;
+	color:#000000;
+	background-color: #EEE;
+	margin-top: 20px;
+}
+	
+.tit_tb2{
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:12px;
+	color:#666;
+	font-weight: normal;
+}
+.tit_listas{
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:16px;
+	color:#1FA22E;
+	text-indent: 12px;
+	line-height: 28px;
+}
+
+.msj_vacio{
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:12px;
+	color:#999999;
+	text-indent: 28px;
+	font-weight:bold;
+	padding: 3px;
+}

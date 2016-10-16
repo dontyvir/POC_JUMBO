@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<meta name="viewport" content="width=320;initial-scale=1.0; maximum-scale=1.0; user-scalable=false;"/>
+<title>Jumbo Mobile</title>
+<style type="text/css">
+body {
+	background-color: #FFFFFF;
+	margin: 0px;
+	background-image: url(/FO_IMGS/images/mobi/fondo_intro.jpg) ! important;
+	background-repeat: no-repeat;
+	background-position: right bottom;
+	background-attachment: fixed;
+}
+</style>
+<link href="/FO_WebContent/mobi/css/home.css" rel="stylesheet" type="text/css" />
+<link href="/FO_WebContent/mobi/css/bordes_redondeados.css" rel="stylesheet" type="text/css" />
+</head>
+<body>	
+	<div id="contenedor_login">
+	  <div id="encabezado_login">
+	    <h1>Jumbo.cl mobile, m�s tiempo para ti</h1>
+		</div>
+		<div>
+		  	<div class="rounded-box-log">
+				<div class="top-left-corner-log"><div class="top-left-inside-log">&bull;</div></div>
+				<div class="bottom-left-corner-log"><div class="bottom-left-inside-log">&bull;</div></div>
+				<div class="top-right-corner-log"><div class="top-right-inside-log">&bull;</div></div>
+				<div class="bottom-right-corner-log"><div class="bottom-right-inside-log">&bull;</div></div>
+				<div class="box-contents-log">
+				<div class="tx_error" id="mensaje">&nbsp;</div>
+				<div class="modulo_rut_login">
+			  	  <label class="tx_login">Rut:</label>
+				  <input type="text" name="rut" id="rut" value="" maxlength="8" size="10" />
+				  <span class="guion">-</span>
+				  <input type="text" name="dv" id="dv" value="" size="3" maxlength="1" />
+				</div>
+				<div class="modulo_clave_login">
+				  <label class="tx_login">Clave:</label>
+				  <input name="clave" type="password" id="clave" size="17" onKeyDown="if(event.keyCode==13) logon();" />
+				</div>
+				<div class="bt_login"><a href="javascript:logon();"><img src="/FO_IMGS/images/mobi/bt_entrar.gif" name="entrar" border="0" id="entrar" alt="Entrar" /></a></div>
+				<div class="campo_login"><a href="RegisterFormMobi"><img src="/FO_IMGS/images/mobi/fl_naranjaa.gif" border="0" alt="Registro" /> Reg&iacute;strate aqu&iacute;</a></div>
+		  		</div>
+			</div>
+      </div>
+	</div>
+<script type="text/javascript" src="/FO_WebContent/mobi/js/prototype.js"></script>
+<script type="text/javascript" src="/FO_WebContent/mobi/js/global.js"></script>
+<script type="text/javascript" src="/FO_WebContent/mobi/js/login.js"></script>
+</body>
+</html>

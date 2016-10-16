@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap 
+   PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" 
+   "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap >
+	<resultMap id="resultAvailability" class="java.util.HashMap" >
+		<result property="key" column="row_id"/>
+		<result property="valor" column="col2"/>
+		<result property="estado" column="estado"/>
+	</resultMap>
+	
+	<select id="getAvailability"  resultMap="resultAvailability">
+	<![CDATA[
+      SELECT distinct(PRE.PRE_PRO_ID||'-'|| PRE.PRE_LOC_ID) AS row_id,
+             PRE.PRE_PRO_ID||'|'|| PRE.PRE_LOC_ID||'|'||NVL(PRG.PRO_PUBLICADO_MOVIL,0) AS col2,
+             'N' AS ESTADO
+        FROM fodba.FO_PRODUCTOS AS PRO 
+        left join fodba.FO_PROD_MOVIL AS PRG ON PRO.PRO_ID = PRG.PRO_ID_FO 
+        inner join fodba.fo_precios_locales pre on (PRE.PRE_PRO_ID = PRO.PRO_ID AND PRO.PRO_ESTADO = 'A' AND PRO.PRO_INTER_VALOR > 0  AND PRE.PRE_ESTADO = 'A' AND PRE.PRE_TIENESTOCK = 1)   
+        inner join fodba.fo_productos_categorias cat on cat.prca_pro_id = pro.pro_id 
+		inner join fodba.fo_marcas mar on mar.mar_id = pro.pro_mar_id           
+		inner join fodba.fo_unidades_medida uni on uni.uni_id = pro.pro_uni_id
+	]]>
+	</select>
+	<select id="getAvailabilityNov" resultMap="resultAvailability">
+	<![CDATA[
+	WITH DATOS
+	(
+	    ID_DAT_DISPONIBILIDAD,
+	    COL2
+	)
+	AS
+	(
+	  SELECT distinct(PRE.PRE_PRO_ID||'-'|| PRE.PRE_LOC_ID) AS ID_DAT_DISPONIBILIDAD,
+             PRE.PRE_PRO_ID||'|'|| PRE.PRE_LOC_ID||'|'||NVL(PRG.PRO_PUBLICADO_MOVIL,0) AS col2
+        FROM fodba.FO_PRODUCTOS AS PRO 
+        left join fodba.FO_PROD_MOVIL AS PRG ON PRO.PRO_ID = PRG.PRO_ID_FO 
+        inner join fodba.fo_precios_locales pre on (PRE.PRE_PRO_ID = PRO.PRO_ID AND PRO.PRO_ESTADO = 'A' AND PRO.PRO_INTER_VALOR > 0  AND PRE.PRE_ESTADO = 'A' AND PRE.PRE_TIENESTOCK = 1)   
+        inner join fodba.fo_productos_categorias cat on cat.prca_pro_id = pro.pro_id 
+		inner join fodba.fo_marcas mar on mar.mar_id = pro.pro_mar_id           
+		inner join fodba.fo_unidades_medida uni on uni.uni_id = pro.pro_uni_id
+	)
+	 SELECT PRE.ROW_ID, PRE.COL2, PRE.ESTADO
+	  FROM (
+	    /* MODIFICADOS */
+	    SELECT DATOS.ID_DAT_DISPONIBILIDAD AS ROW_ID, DATOS.COL2, 'M' AS ESTADO
+	      FROM DATOS
+          JOIN bodba.BO_INT_DISPONIBILIDAD AS DIS
+	        ON DIS.ID_INT_DISPONIBILIDAD = DATOS.ID_DAT_DISPONIBILIDAD
+	       AND DIS.INT_DATA != DATOS.COL2 
+	       
+	     UNION ALL
+	     /* NUEVOS */
+		SELECT D.ID_DAT_DISPONIBILIDAD AS ROW_ID, D.COL2, 'N' AS ESTADO
+	    FROM DATOS D LEFT JOIN bodba.BO_INT_DISPONIBILIDAD DPN on D.ID_DAT_DISPONIBILIDAD=DPN.ID_INT_DISPONIBILIDAD WHERE DPN.ID_INT_DISPONIBILIDAD is null             
+
+	     UNION ALL
+	     /* ELIMINADOS */
+	    SELECT DIS.ID_INT_DISPONIBILIDAD AS ROW_ID, DIS.INT_DATA AS COL2, 'E' AS ESTADO
+	      FROM bodba.BO_INT_DISPONIBILIDAD AS DIS
+	     WHERE NOT EXISTS
+	           (SELECT 1 
+	              FROM DATOS AS DAT
+                  JOIN bodba.BO_INT_DISPONIBILIDAD AS DPN
+                    ON DAT.ID_DAT_DISPONIBILIDAD = DPN.ID_INT_DISPONIBILIDAD )
+              UNION ALL
+	     /* ELIMINADOS cuando no viene en la estructura datos*/	    	
+		    SELECT DIS.ID_INT_DISPONIBILIDAD AS ROW_ID, DIS.INT_DATA AS COL2, 'E' AS ESTADO
+		    FROM bodba.BO_INT_DISPONIBILIDAD DIS LEFT JOIN DATOS D on DIS.ID_INT_DISPONIBILIDAD = D.ID_DAT_DISPONIBILIDAD WHERE D.ID_DAT_DISPONIBILIDAD is null
+	     ) AS PRE
+	]]>
+	</select>
+</sqlMap>

@@ -1,0 +1,859 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="EXPIRES" CONTENT="Mon, 22 Jul 2002 11:12:01 GMT">
+<title>Jumbo.cl</title>
+<style type="text/css">
+<!--
+.footer {font-family: Arial, Helvetica, sans-serif;
+	font-size: 9px;
+	font-style: normal;
+	line-height: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	color: #666666;
+	text-decoration: none;
+}
+.style1 {color: #000000}
+notas {
+	font-family: "Trebuchet MS";
+	font-size: 7pt;
+	font-style: normal;
+	line-height: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	color: #333333;
+	text-decoration: none;
+}
+.titulosVerdesCopy {
+	font-family: "Trebuchet MS";
+	font-size: 18px;
+	font-style: normal;
+	line-height: normal;
+	font-weight: bold;
+	font-variant: normal;
+	text-transform: none;
+	color: #93BE2E;
+	text-decoration: none;
+}
+.titulosLayers {
+	font-family: "Trebuchet MS";
+	font-size: 18px;
+	font-style: normal;
+	line-height: normal;
+	font-weight: bold;
+	font-variant: normal;
+	text-transform: none;
+	color: #779A25;
+	text-decoration: none;
+}
+.lectura {
+font-family: "Trebuchet MS";
+	font-size: 8.5pt;
+	font-style: normal;
+	line-height: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	color: #333333;
+	text-decoration: none;
+}
+.error {
+font-family: "Trebuchet MS";
+	font-size: 8.5pt;
+	font-style: normal;
+	line-height: normal;
+	font-weight: bold;
+	font-variant: normal;
+	text-transform: none;
+	color: #C70505;
+	text-decoration: none;
+}
+.footer {
+	font-family: "Arial";
+	font-size: 9px;
+	font-style: normal;
+	line-height: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	color: #666666;
+	text-decoration: none;
+}
+.NoDisponible {
+font-family: "Arial";
+	font-size: 8.5pt;
+	font-style: italic;
+	line-height: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	color: #333333;
+	text-decoration: none;
+	
+}	/* tabla: tiene una separaci�n de los  bordes de 3 px */
+.tabla {
+font-family: "Trebuchet MS";
+	font-size: 8.5pt;
+	font-style: normal;
+	line-height: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	color: #333333;
+	text-decoration: none;
+	padding-left: 3px;
+	padding-right: 3px; 
+	
+}	
+
+.formularios {
+font-family: "Trebuchet MS";
+	font-size: 8pt;
+	font-style: normal;
+	line-height: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	color: #333333;
+	text-decoration: none;
+	padding-left: 3px;
+	
+}
+
+.arriba {
+font-family: "Trebuchet MS";
+	font-size: 8pt;
+	font-style: normal;
+	line-height: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	color:#333333;
+	text-decoration: none;
+	padding-left: 3px;
+	
+}
+.arriba:link{
+color:#333333;
+}
+.arriba:visited{
+color:#333333;
+text-decoration: none;
+}
+
+.arriba:hover{
+color:#FB6E15;
+text-decoration: underline;
+}
+
+.arriba:active{
+color:#333333;
+}
+
+
+
+.carro {
+font-family: "Arial";
+	font-size: 7.5pt;
+	font-style: normal;
+	line-height: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	color: #333333;
+	text-decoration: none;
+	
+}
+.combocarro {
+font-family: "Arial";
+	font-size: 7.5pt;
+	font-style: normal;
+	line-height: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	color: #000000;
+	text-decoration: none;
+	border-color: #99cc33;
+	border-style: solid;
+	border-width: 1px;
+	
+}
+
+.carroGuardado {
+font-family: "Trebuchet MS";
+	font-size: 8.5pt;
+	font-style: normal;
+	line-height: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	color: #333333;
+	text-decoration: none;
+	padding-left: 5px;
+	padding-right: 10px;
+	}
+	
+.rescateCompras {
+font-family: "Trebuchet MS";
+	font-size: 9pt;
+	font-style: normal;
+	line-height: normal;
+	font-weight: bold;
+	font-variant: normal;
+	text-transform: none;
+	color: #ffffff;
+	text-decoration: none;
+	padding-left: 5px;
+	 
+	
+	}
+	
+.titulo {
+font-family: "Trebuchet MS";
+	font-size: 12pt;
+	font-style: normal;
+	line-height: normal;
+	font-weight: bold;
+	font-variant: normal;
+	text-transform: none;
+	color: #333333;
+	text-decoration: none;
+	
+}	
+.tituloNaranjo {
+font-family: "Trebuchet MS";
+	font-size: 12pt;
+	font-style: normal;
+	line-height: normal;
+	font-weight: bold;
+	font-variant: normal;
+	text-transform: none;
+	color: #FF6600;
+	text-decoration: none;
+	padding-right: 10px; 
+	
+	
+}
+
+	
+.chica	{
+font-family: "Trebuchet MS";
+	font-size: 9px;
+	font-style: normal;
+	line-height: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	color: #333333;
+	text-decoration: none;
+}
+.campo {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 8.5pt;
+	font-style: normal;
+	line-height: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	color: #333333;
+	border-color: #99cc33;
+	border-style: solid;
+	border-width: 1px;
+}
+.campoblanco {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 9px;
+	font-style: normal;
+	line-height: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	color: #666666;
+	border-color: #ffffff;
+	border-style: solid;
+	border-width: 1px;
+}
+.campoblancoTotal {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	font-style: bold;
+	text-align: right;
+	line-height: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	color: #000000;
+	border-color: #ffffff;
+	border-style: solid;
+	border-width: 1px;
+}
+
+.calendario {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	font-style: normal;
+	line-height: normal;
+	font-weight: bold;
+	text-transform: none;
+	color: #507B06;
+	text-decoration: none;
+}
+.titulolectura {
+font-family: "Trebuchet MS";
+	font-size: 10 pt;
+	font-style: normal;
+	line-height: normal;
+	font-weight: bold;
+	font-variant: normal;
+	text-transform: none;
+	color: #333333;
+	text-decoration: none;
+	
+}
+.TablaCentral{
+border-style: none solid none ;
+border-width: 1px;
+border-color: #9F9D9D;
+}
+.TablaFicha{
+border-style: none solid none ;
+border-width: 1px;
+border-color: #7ABD09;
+}
+
+.TablaCentralb{
+border-style: none none none solid ;
+border-width: 1px;
+border-color: #9DCA44;
+}
+.TablaCarro{
+border-style: none solid none none ;
+border-width: 1px;
+border-color: #9F9D9D;
+}
+
+.TablaDiponiblePaso1 {
+	font-family: "Trebuchet MS";
+	font-size: 8.5pt;
+	border-bottom:1px dashed #7ABD09;
+	border-collapse:collapse;
+	padding: 2px;
+	
+}
+.RescateInternet{
+   font-family: "Trebuchet MS";
+	font-size: 8.5pt;
+	border-bottom:1px dashed #7ABD09;
+	border-collapse:collapse;
+	padding: 2px;
+	background-color:#FFFFCC
+}
+
+
+.celda1 {
+    font-family:"Trebuchet MS";
+    border-left:1px dashed #7ABD09;
+	font-size: 8.5pt;
+	font-style: normal;
+	line-height: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	text-decoration: none;
+	padding-left: 3px;
+	padding-right: 3px;
+	}
+.TablaNoDiponiblePaso1 {
+	border-bottom:1px dashed #5E93B5;
+    border-collapse:collapse;
+	padding: 2px;
+	background-color: #F4F4F4;
+}
+
+.celda1NoDisponible {
+    font-family: "Arial";
+	font-size: 8.5pt;
+	font-style: italic;
+	line-height: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	color: #333333;
+	text-decoration: none;
+    border-right:1px dashed #5E93B5;
+	padding-left: 3px;
+	padding-right: 3px;
+	}
+body {
+
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	scrollbar-bace-color:#EFEFEF;
+   scrollbar-face-color:#9DCA44;
+   scrollbar-arrow-color:#FFFFFF;
+   scrollbar-track-color:#EFEFEF;
+   scrollbar-shadow-color:#9DCA44;
+   scrollbar-highlight-color:#C8E78B;
+   scrollbar-3dlight-color:#C8E78B;
+   scrollbar-darkshadow-Color:#9DCA44;
+  
+  }
+.calendarioactivo{
+width:55px;
+height:20px;
+font-family: "Arial";
+font-size: 9pt;
+text-decoration: none;
+border-left:1px dashed #7ABD09;
+text-align:center;
+color:#333333;
+background:#ffffff;
+
+}
+.calendarioSeleccion{
+width:55px;
+height:20px;
+font-family: "Arial";
+font-size: 9pt;
+text-decoration:none;
+border-left:1px dashed #7ABD09;
+text-align:center;
+color:#FC4B05;
+background:#FFF964;
+
+}
+.calendarioOnMouseOver {
+width:55px;
+height:20px;
+font-family: "Arial";
+text-align:center;
+font-size: 9pt;
+color:#FC4B05;
+text-decoration:none;
+background:#FBF8BB;
+border-left:1px dashed #7ABD09;
+
+}
+.calendariocandado{
+width:55px;
+height:20px;
+border-left:1px dashed #7ABD09;
+color:#333333;
+
+
+}
+.resumencompra{
+font-family: "Trebuchet MS";
+font-size: 9pt;
+font-weight: normal;
+text-decoration: none;
+border-left:1px dashed #7ABD09;
+border-bottom:1px dashed #7ABD09;
+color:#333333;
+padding-left: 10px;
+padding-right: 3px; 
+
+}
+.resumencompraobscuro{
+width:200px;
+height:30px;
+font-family: "Trebuchet MS";
+font-size: 9pt;
+text-decoration: none;
+border-bottom:1px dashed #7ABD09;
+color:#333333;
+background:#DEF7AD;
+
+}
+
+.imprimirobscuro{
+width:200px;
+height:30px;
+font-family: "Trebuchet MS";
+font-size: 9pt;
+padding-left: 5px;
+text-decoration: none;
+border-bottom:1px dashed #7ABD09;
+color:#333333;
+background:#DEF7AD;
+
+}
+
+.imprimirobscurob{
+
+border-style: none solid none solid ;
+border-width: 1px;
+border-color: #7ABD09;
+font-family: "Trebuchet MS";
+font-size: 9pt;
+padding-left: 5px;
+padding-right: 10px;
+text-decoration: none;
+color:#333333;
+background:#DEF7AD;
+
+
+
+
+}
+.ficha-descripcion {
+    font-family:"Arial";
+    font-size: 8.5pt;
+	font-style: normal;
+	color:#ffffff;
+	line-height: normal;
+	font-weight: bold;
+	font-variant: normal;
+	text-transform: none;
+	text-decoration: none;
+	padding-left: 3px;
+	padding-right: 3px;
+	background:#A9D246;
+	padding-left: 10px;
+	}
+	
+.TablaPaso2SepHorizontal {
+	border-bottom:1px dashed #5E93B5;
+    border-collapse:collapse;
+}
+
+.celda1Paso2SepVertical {
+    font-family: "Arial";
+	font-size: 8.5pt;
+	line-height: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	text-decoration: none;
+    border-left:1px solid #D2E2ED;
+	padding-top: 4px;
+	padding-left: 4px;
+	padding-right: 4px;
+	border-bottom:1px dashed #5E93B5;
+    border-collapse:collapse;
+	}
+	.Marca{
+	font-family: "Arial";
+	font-size: 8.5pt;
+	line-height: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	text-decoration: none;
+	color:#FB6E15;
+	}
+.mouselapiz {
+font-family: "Trebuchet MS";
+	font-size: 8.5pt;
+	font-style: normal;
+	line-height: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	color: #333333;
+	text-decoration: none;
+	padding-left: 3px;
+	padding-right: 3px; 
+	cursor: url('/FO_IMGS/img/estructura/paso2/lapiz.cur');
+	
+}	
+-->
+</style>
+<style type="text/css">
+<!--
+.Estilo2 {font-family: "Trebuchet MS"; font-size: 12px; font-style: normal; line-height: normal; font-weight: bold; font-variant: normal; text-transform: none; color: #333333; text-decoration: none; }
+.Estilo3 {color: #FFFFFF}
+.lectura1 {font-family: "Trebuchet MS";
+	font-size: 12px;
+	font-style: normal;
+	line-height: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	color: #333333;
+	text-decoration: none;
+}
+-->
+</style>
+<script type="text/JavaScript">
+<!--
+function MM_swapImgRestore() { //v3.0
+  var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
+}
+
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];
+    }
+    }
+}
+
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+
+function MM_swapImage() { //v3.0
+  var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3)
+   if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
+}
+function init() {
+  {print_page}
+}
+//-->
+</script>
+</head>
+<body onLoad="focus();init();">
+<table width="670" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td colspan="2" valign="top" ><img src="/FO_IMGS/img/estructura/imprimir/imprimir-arriba.gif" width="670" height="81" /></td>
+  </tr>
+  <tr>
+    <td colspan="2" valign="top" ><table width="100%" height="44" border="0" cellpadding="0" cellspacing="0" class="TablaFicha">
+      <tr class="TablaCentral">
+        <td width="70%" height="44" valign="top"><table width="87%" border="0" cellspacing="0" cellpadding="13">
+            <tr>
+              <td height="44"><span class="titulosVerdesCopy">{nombre_cliente} </span></td>
+            </tr>
+        </table></td>
+        <td width="30%" height="49" align="right" valign="top">&nbsp;</td>
+      </tr>
+    </table></td>
+  </tr>
+  <tr>
+    
+<td width="673" height="14" valign="top"><table width="670" border="0" cellpadding="11" cellspacing="0" class="TablaFicha">
+  <tr class="TablaCentral">
+    <td width="645"><span class="lectura1">Gracias por comprar en JUMBO.cl !!<br />
+{msg_time_compra}</span><br />
+<br />
+<table width="645" border="0" cellspacing="0" cellpadding="0">
+	<tr>
+    	<td width="673" height="7" valign="top"><img src="/FO_IMGS/img/estructura/imprimir/imprimir-tabla-arriba.gif" width="645" height="7" /></td>
+	</tr>
+	<tr>
+		<td height="18" valign="top">
+			<table width="100%" height="35" border="0" cellpadding="0" cellspacing="0" class="imprimirobscurob" >
+				<tr>
+					<td  width="8%" height="35" ><strong class="tabla">Cantidad</strong></td>
+					<td width="40%" height="35" class="celda1"><strong class="tabla">Producto</strong></td>
+					<td width="20%" height="35" class="celda1"><strong class="tabla">Comentario</strong></td>
+					<td width="14%" height="35" class="celda1"><strong class="tabla">C&oacute;digo</strong></td>
+					<td width="8%" height="35"class="celda1"><strong class="tabla">*Precio<br />Unitario</strong></td>
+					<td width="10%" height="35" class="celda1"><strong class="tabla">Monto <br />Total </strong></td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top">
+			<table width="100%" border="0" cellpadding="0" cellspacing="0" class="TablaFicha">
+				<tr>
+					<td valign="top">
+						<table width="100%" border="0" cellpadding="0" cellspacing="0">
+							<tr>
+								<td>
+									<!-- BEGIN DYNAMIC: CATEGORIAS -->
+									<table width="100%" border="0" cellpadding="0" cellspacing="0">
+										<tr>
+											<td width="100%" height="20" valign="bottom" background="/FO_IMGS/img/estructura/fondocategorias.gif" class="rescateCompras">{categoria}</td>
+										</tr>
+										<!-- BEGIN DYNAMIC: PRODUCTOS -->       		         
+										<tr id="fila{contador}">
+											<td>
+												<table width="640" border="0" cellpadding="0" cellspacing="0" class="{CLASE_TABLA}">
+													<tr>
+														<td width="8%">
+															<table border="0" cellpadding="0" cellspacing="0">
+																<tr>
+																	<td>
+																		<!-- BEGIN DYNAMIC: INPUT_SEL -->
+																		<table border="0" cellspacing="0" cellpadding="0">
+																			<tr>
+																				<td class="NoDisponible"></td><td rowspan="2" class="NoDisponible">
+																					{valor}
+																				</td>
+																			</tr>
+																			<tr>
+																				<td></td>
+																			</tr>
+																		</table>
+																		<!-- END DYNAMIC: INPUT_SEL -->
+																	</td>
+																</tr>
+															</table>
+														</td>
+														<td width="40%" class="{CLASE_CELDA}">{descripcion} - <span class="Marca">{marca}</span> {NO_DISPONIBLE}</td>
+														<td width="20%" class="{CLASE_CELDA}">
+															<!-- BEGIN DYNAMIC: NOTA -->
+																<div class="cc">{nota}</div>
+															<!-- END DYNAMIC: NOTA -->
+														</td>
+														<td width="14%" class="{CLASE_CELDA}"><div align="center">{cod_sap}</div></td>
+														<td width="8%" class="{CLASE_CELDA}"><div align="right">{precio_unitario}</div></td>
+														<td width="10%" align="right" class="{CLASE_CELDA}">{precio_total}</td>
+													</tr>
+												</table>
+											</td>
+										</tr>
+										<!-- END DYNAMIC: PRODUCTOS -->
+									</table>
+									<!-- END DYNAMIC: CATEGORIAS -->
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+	<tr>
+		<td height="21" valign="top"><img src="/FO_IMGS/img/estructura/imprimir/imprimir-tabla-abajo.gif" width="645" height="7" /></td>
+	</tr>
+</table>
+</br>
+<table width="96%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><img src="/FO_IMGS/img/estructura/imprimir/tablainf-arriba.gif" width="645" height="6" /></td>
+  </tr>
+  <tr>
+    <td><table width="100%" border="0" cellpadding="0" cellspacing="0" class="TablaFicha">
+      <tr>
+        <td>
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td></td>
+          </tr>
+        </table>  
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td class="imprimirobscuro"><b>N&uacute;mero de pedido</b></td>
+            <td class="resumencompra">{idped}</td>
+          </tr>
+          <tr>
+            <td  class="imprimirobscuro"><b>Comercio</b></td>
+            <td class="resumencompra">Jumbo.cl</td>
+          </tr>
+          <tr>
+            <td  class="imprimirobscuro"><b>Tipo de transacci�n</b></td>
+            <td class="resumencompra">Venta</td>
+          </tr>
+          <!-- BEGIN DYNAMIC: PAGO_TRANSBANK -->
+          <tr>
+            <td  class="imprimirobscuro"><b>Tarjeta de Cr&eacute;dito</b></td>
+            <td class="resumencompra">{4_ultimos}</td>
+          </tr>
+          <tr>
+            <td  class="imprimirobscuro"><b>C&oacute;digo de autorizaci�n de la transacci�n</b></td>
+            <td class="resumencompra">{cod_aut_trx}</td>
+          </tr>
+          <tr>
+            <td  class="imprimirobscuro"><b>N� de cuotas</b></td>
+            <td class="resumencompra">{nro_cuotas}</td>
+          </tr>
+          <tr>
+            <td  class="imprimirobscuro"><b>Tipo de cuotas</b></td>
+            <td class="resumencompra">{tipo_cuotas}</td>
+          </tr>
+          <!-- END DYNAMIC: PAGO_TRANSBANK -->
+          <tr>
+            <td  class="imprimirobscuro"><b>Descripci�n de los bienes</b></td>
+            <td class="resumencompra">Productos de supermercado</td>
+          </tr>
+          <tr>
+            <td  class="imprimirobscuro"><b>Fecha de compra</b></td>
+            <td class="resumencompra">{fecha_hoy}</td>
+          </tr>
+          <tr>
+            <td class="imprimirobscuro"><b>Cantidad de productos</b></td>
+            <td class="resumencompra">{cantidad}&nbsp;</td>
+          </tr>
+          <tr>
+            <td class="imprimirobscuro"><b>Monto del pedido</b></td>
+            <td class="resumencompra">{monto_op}</td>
+          </tr>
+          <tr>
+            <td class="imprimirobscuro"><b>Monto del despacho</b></td>
+            <td class="resumencompra">{monto_desp}</td>
+          </tr>
+          <tr>
+            <td class="imprimirobscuro"><b>Monto reservado</b></td>
+            <td class="resumencompra">{monto_res}</td>
+          </tr>
+          <tr>
+            <td class="imprimirobscuro"><b>Forma de pago</b></td>
+            <td class="resumencompra">{forma_pago}&nbsp;</td>
+          </tr>
+          <tr>
+            <td class="imprimirobscuro"><b>Tipo documento</b></td>
+            <td class="resumencompra">{tip_doc}&nbsp;</td>
+          </tr>
+          <!-- BEGIN DYNAMIC: LUGAR_DESPACHO -->
+          <tr>
+            <td class="imprimirobscuro"><b>Lugar de despacho</b></td>
+            <td class="resumencompra">{lugar_despacho}</td>
+          </tr>
+          <!-- END DYNAMIC: LUGAR_DESPACHO -->
+          <!-- BEGIN DYNAMIC: LUGAR_RETIRO -->
+          <tr>
+            <td class="imprimirobscuro"><b>Forma de despacho</b></td>
+            <td class="resumencompra">{lugar_despacho}<br/>{dir_retiro_pedido}</td>
+          </tr>
+          <!-- END DYNAMIC: LUGAR_RETIRO -->
+          <tr>
+            <td class="imprimirobscuro"><b>{fc_hr_despacho}</b></td>
+            <td class="resumencompra">{fecha_tramo}</td>
+          </tr>
+          <!-- BEGIN DYNAMIC: SIN_GENTE_DESPACHO -->
+          <tr>
+            <td class="imprimirobscuro"><b>Persona autorizada <br />a recibir el despacho.</b></td>
+            <td class="resumencompra">{sin_gente_txt}</td>
+          </tr>
+          <!-- END DYNAMIC: SIN_GENTE_DESPACHO -->
+          <!-- BEGIN DYNAMIC: SIN_GENTE_RETIRO -->
+          <tr>
+            <td class="imprimirobscuro"><b>Persona autorizada a retirar el despacho</b></td>
+            <td class="resumencompra">{sin_gente_txt}</td>
+          </tr>
+          <tr>
+            <td class="imprimirobscuro"><b>RUT persona autorizada a retirar el despacho</b></td>
+            <td class="resumencompra">{sin_gente_rut}</td>
+          </tr>
+          <!-- END DYNAMIC: SIN_GENTE_RETIRO -->
+        </table>
+      </td>
+      </tr>
+    </table></td>
+  </tr>
+  <tr>
+    <td><img src="/FO_IMGS/img/estructura/imprimir/tablainf-abajo.gif" width="645" height="6" /></td>
+  </tr>
+</table><p>&nbsp; </p></td>
+  </tr>
+  
+</table>
+<img src="/FO_IMGS/img/estructura/imprimir/abajo.gif" width="670" height="14" /></td>
+  </tr>
+</table>
+ </td>
+   
+  </tr>
+  <tr>
+    <td height="11" colspan="3" align="left" valign="bottom">&nbsp;</td>
+  </tr>
+</table>
+</body>
+</html>

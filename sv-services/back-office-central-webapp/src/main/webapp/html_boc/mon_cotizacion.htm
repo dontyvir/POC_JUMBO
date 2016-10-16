@@ -1,0 +1,493 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html><!-- InstanceBegin template="/Templates/fullbody.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="EXPIRES" CONTENT="Mon, 22 Jul 2002 11:12:01 GMT">
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>Jumbo.cl Back Office Central</title>
+<!-- InstanceEndEditable -->
+
+<!-- InstanceBeginEditable name="head" -->
+<SCRIPT LANGUAGE="JavaScript" SRC="CalendarPopup.js"></SCRIPT>
+<SCRIPT LANGUAGE="JavaScript" SRC="validacion.js"></SCRIPT>	
+<SCRIPT LANGUAGE="JavaScript">document.write(getCalendarStyles());</SCRIPT>
+<!-- InstanceEndEditable -->
+
+<link href="estilos.css" rel="stylesheet" type="text/css">
+<!--link href="../default.css" rel="stylesheet" type="text/css"-->
+<style type="text/css">
+<!--
+.style1 {color: #666666}
+-->
+</style>
+</head>
+
+<body>
+<link rel="stylesheet" href="menu/menu.css">
+<script language="JavaScript" src="menu/menu.js"></script>
+<script language="JavaScript" src="menu/menu_tpl.js"></script>
+<script language="JavaScript" src="menu/menu_items.js"></script>
+<script language="JavaScript" src="popup.js"></script>
+<script language="JavaScript" src="funciones.js"></script>
+<table width="780" height="100%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+    <td height="78" valign="top">
+	
+	<TABLE width="100%" height=59 border=0 align="center" cellpadding="0" cellspacing="0" bgcolor="#ffffff">
+	  <TR>
+		<TD width=275 height="59" align=left class=user><img src="img/header2.jpg" width="275" height="60"></TD>
+		<TD width=505 align=left valign="bottom" background="img/bg-1.jpg" class=user><table width="90%"  border="0" align="center" cellpadding="0" cellspacing="2">
+          <tr>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td><div align="right" class="infoBL">Usuario: {hdr_nombre}&nbsp;&nbsp;| {hdr_fecha}</div></td>
+          </tr>
+        </table></TD>
+	  </TR>
+	</TABLE>
+	<TABLE width="100%" height=19 border=0 align="center" cellpadding="0" cellspacing="0" bgcolor="#f1f0e9" style="border-top:1px solid #ABABAB; border-bottom:1px solid #ABABAB">
+	  <TR>
+		<TD align=left bgcolor="#FFFFFF" class=user></TD>
+		</TR>
+	</TABLE>
+
+	
+	</td>
+  </tr>
+  <tr height="400">
+    <td valign="top" bgcolor="#FFFFFF">
+      <table border=0 width="100%" class='ContentTitle'>
+        <tr>
+          <td width="53%" height="20" class='HeaderTitle'><!-- InstanceBeginEditable name="Titulo" --> 
+          Monitor de Cotizaciones
+          
+          
+          <!-- InstanceEndEditable --></td>
+          <td width="47%" class='HeaderTitle'><!-- InstanceBeginEditable name="Botonera" -->
+          <div align="right">{usr_cot}</div>
+          <!-- InstanceEndEditable --></td>
+        </tr>
+      </table>
+	  <br>
+      <table width="100%"  border="0" cellspacing="2" cellpadding="2">
+        <tr valign="top">
+          <td width="71%"><!-- InstanceBeginEditable name="Izquierda" --> 
+          <SCRIPT LANGUAGE="JavaScript">window.name='winpedido'</SCRIPT>				          
+				<script language="JavaScript" src="calendario.js"></script>
+				<script language="JavaScript" src="funciones.js"></script>
+
+            <table width="100%"  border="0" align="center" cellpadding="0" cellspacing="0">
+            	<tr>
+            	<td align="center" class="infoRj"></td>
+            	</tr>
+              <tr>
+                <td>
+                <script language="JavaScript">
+
+	function addOption(text,value,sel) {
+	   var oOpt=new Option(text,value);
+	   var oSelect=sel;
+	   oSelect.options[oSelect.options.length]=oOpt;
+	}
+	function removeOption(index,sel) {
+		   var oSelect=sel;
+		   oSelect.options[index]=null;
+	} 
+
+	function procesaResp(texto) {
+		var response = texto.split("#");
+		var larcampo = document.frm_fec.sel_sucursal.length;
+		
+
+		for (i = 0; i < larcampo; i++ ){
+			removeOption(1, document.getElementById("sel_sucursal"));
+		}
+		for (a = 0 ; a < response.length; a++){
+			resp = response[a].split("|");
+			addOption((resp[1])?resp[1]:'',(resp[0])?resp[0]:'',document.getElementById("sel_sucursal") );
+		}
+		
+	}
+	
+	 function invocaAjax(){
+	 	var empresa= document.frm_fec.sel_empresa.value;
+		exec_AJAXRPC('GET', 'ViewComboEmpSucursalesAjax?id_empresa='+empresa, 'procesaResp');
+	 }
+
+
+                
+                
+                	function bus_num(form){
+                		if (form.num_cot.value == ""){ 
+                			alert("Debe ingresar Nº de cotización");
+                			return false;
+                		}
+                		if (validar_solonumero(form.num_cot, "Nº de cotización es un valor Numerico")) return false;
+	            		form.action.value='bus_num';
+	            		return true;
+                	}
+                	
+                	
+                	function bus_cli(form){
+						//var rut;
+						//var rut_sp="";
+						//var dv;
+						form.action.value='bus_cli';
+						if (form.busca_por.value == ""){
+							alert("Debe ingresar criterio de búsqueda");
+							return false;
+						}
+						if (form.rad_bus[0].checked == true || form.rad_bus[3].checked == true){
+						    if (validar_solonumero(form.busca_por, "Rut es un campo Numerico, Ingreselo sin puntos ni guión")) return false;
+							/*rut = form.busca_por.value.split("-");
+							// El Rut debe venir con DV, por lo tanto validamos que traiga solo un guión
+							if (rut.length != 2){
+								alert("Debe ingresar rut con Dígito Verificador. Ej.: 12345678-9 ");
+								return false;
+							}else{
+								dv = rut[1].toLowerCase(); // Pasamos el DV a Minuscula, porque en la funcion lo entrega en minusculas
+
+								//Recorremos el rut para saber si viene con puntos o espacios vacios														
+							    for ( i=0; i < rut[0].length ; i++ )
+								  if ( rut[0].charAt(i) != ' ' && rut[0].charAt(i) != '.' )
+								      rut_sp = rut_sp + rut[0].charAt(i);							
+								// Comparamos que el dv que ingreso sea = al correspondiente a ese rut      	
+								if ( dv == getDV(rut_sp)){
+									form.busca_por.value = rut_sp;
+									form.dv.value      = rut[1];
+								}else{
+									alert("El Rut Ingresado es Incorrecto!!");
+									return false;
+								}
+							}*/
+						}
+						if (form.rad_bus[1].checked == true){
+							if(validar_letranumero(form.busca_por,"La razón social solo permite letras y números")) return false;
+						}
+						return true;
+						
+                	}
+                	
+                	
+					function validar_fecha(form){
+				
+						if ((form.fec_ini.value == "" && form.fec_fin.value != "")||
+							(form.fec_ini.value != "" && form.fec_fin.value == "")){
+							alert("Debe ingresar Fecha de Inicio y Fecha de Fin");
+							return false;
+						}
+						if (form.fec_ini.value != "" && form.fec_fin.value != "" ){
+							var fecha1 = form.fec_ini.value.substring(6,10)+
+									form.fec_ini.value.substring(3,5)+
+									form.fec_ini.value.substring(0,2);
+							var fecha2 = form.fec_fin.value.substring(6,10)+
+									form.fec_fin.value.substring(3,5)+
+									form.fec_fin.value.substring(0,2);
+							if (fecha1 > fecha2){
+								alert("La fecha de inicio es mayor a la fecha de fin, revise por favor");
+								return false;
+							}
+						}
+						
+						return true;
+						
+					}
+					
+					
+					function limpiar_fechas(form){
+						form.fec_ini.value = ""
+						form.fec_fin.value = ""
+					}
+
+
+         	function abre_popup(){
+				valor="";
+				if ((valor = popUpWindowModalscroll('ViewEmpresasPopUp', 100, 100, 600, 400))> '0') {
+					if (valor != ""){
+						id = valor.split("|");
+						document.frm_fec.sel_empresa.value = id[0];
+						document.frm_fec.empresa.value = id[1];
+						document.frm_fec.sel_sucursal.value="";
+						document.frm_fec.sucursal.value="";
+					}
+				}
+			}
+          		
+          		
+          		function abre_popup_suc(emp_id){
+          		
+					if (emp_id == null || emp_id == "-1"){
+						alert("Primero debe seleccionar una empresa.");
+					}else{
+						valor="";
+						if ((valor = popUpWindowModalscroll('ViewSucursalesEmpPopUp?emp_id='+emp_id, 100, 100, 600, 400))> '0') {
+							if (valor != ""){
+								id = valor.split("|");
+								document.frm_fec.sel_sucursal.value = id[0];
+								document.frm_fec.sucursal.value = id[1];
+							}
+						}
+					}
+				}	            
+				
+				function limpiar(){
+					document.frm_fec.empresa.value='';
+					document.frm_fec.sel_empresa.value='-1';
+					document.frm_fec.sel_sucursal.value='-1';
+					document.frm_fec.sucursal.value='';
+				
+				}
+            
+                </script>
+							<!-- JScript Calendario -->
+
+				<SCRIPT LANGUAGE="JavaScript" ID="js17">
+					var ayer = new Date(30,4,2006,12,0,0,0);
+					var cal1 = new CalendarPopup("testdiv1");
+					cal1.offsetX = -140;
+					cal1.offsetY = 20;
+				</SCRIPT>			
+
+<fieldset>
+	<legend align="left">B&uacute;squeda de Cotizaciones</legend>    
+	<table width="96%"  border="0" align="center" cellpadding="0" cellspacing="0">
+		<tr valign="bottom" >
+			<td> 
+				<form name="frm_num" method="post" action="ViewMonCotizaciones" onsubmit="return bus_num(this);">
+				<table width="30%" border="0" cellspacing="0" cellpadding="0" align="left">
+				
+						<tr>
+							<td height="20" valign="bottom">Nº Cotización</td>
+						</tr>	  
+						<tr>
+							<td>
+								<input name="num_cot" type="text" size="15" maxlength="9" value="{num_cot}">
+								<input name="btn_numcot" type="submit" class="cmd" value=" Buscar " >
+							</td>
+						</tr>				
+				</table>
+				</form>
+				<form name="frm_cli" method="post" action="ViewMonCotizaciones" onSubmit="return bus_cli(frm_cli);">
+				<input type="hidden" name="action" value="bus_cli">
+				<table width="*"  border="0" cellspacing="0" cellpadding="0" align="left">
+				<!--input type="hidden" name="dv"     value=""-->			
+						<tr>
+							<td height="20" > 
+								<input type="radio" name="rad_bus" value="rut_emp" checked >Rut Empresa
+								<input type="radio" name="rad_bus" value="raz_soc" {check_2} >Razon Social
+								<input type="radio" name="rad_bus" value="nom_emp" {check_3} >Nombre Empresa
+								<input type="radio" name="rad_bus" value="rut_comp" {check_4} >Rut Comprador <font size="1">(Ingrese rut sin dígito verificador)</font>
+							</td>
+						</tr>	  
+						<tr>
+							<td>
+								<input name="busca_por" type="text" size="50" maxlength="50" value="{busca_por}" title="Si busca por Rut ingreselo sin puntos ni guión">
+								<input name="but_cli" type="submit" class="cmd" value=" Buscar " >
+							</td>
+						</tr>
+				</table>
+				</form>
+
+			</td>
+		</tr>
+		<tr>
+  		  <td>
+		<form name="frm_fec" method="post" action="ViewMonCotizaciones" onsubmit="return validar_fecha(this);">
+			<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+						<tr>
+			                <td width="30%" valign="bottom">Empresa</td>
+			                <td width="28%" valign="bottom">Sucursal</td>
+							<td width="19%" valign="bottom">Local</td>
+			                <td width="15%" valign="bottom">Estado</td>
+							<td width="8%" valign="bottom"></td>
+						</tr>
+						<tr>
+                      		<td>
+                     		 	<input name="sel_empresa" type="hidden" value="{sel_empresas}" size="50" >
+					 		 	<input name="empresa" type="text"  value="{empresa}" size="30" readOnly onclick="javascript:abre_popup();" >
+                     			 <a href="javascript:abre_popup();"><img title="Buscar empresa" src="img/magnify.jpg" width="16" height="16" border="0"></a> 
+                     			<a href="#"> 
+	                     			<img title="Limpiar campo empresa" src="img/empty.gif" width="16" height="16" border="0" onclick="javascript:limpiar();">
+                     			</a>
+                     			  
+                  			</td>
+                      		<td>
+						      <input name="sel_sucursal" type="hidden" value="{sel_sucursales}"  >
+							  <input name="sucursal" type="text"  value="{sucursal}" size="30" readOnly onclick="javascript:abre_popup_suc(document.frm_fec.sel_empresa.value);">
+                                <a href="javascript:abre_popup_suc(document.frm_fec.sel_empresa.value);">
+                                <img title="Buscar sucursales de la empresa" src="img/magnify.jpg" width="16" height="16" border="0" alt="Seleccionar Sucursal">	
+                                </a> 
+							</td>
+ 							<td ><select name="sel_locales"  class="letracombo" >
+                              <option value="T">TODOS</option>
+      						 <!-- BEGIN DYNAMIC: LOCALES -->      
+                              <option value={loc_id} {sel_loc} >{loc_nombre}</option>
+							 <!-- END DYNAMIC: LOCALES -->      
+                            </select></td>
+							<td><select name="sel_estados"  class="letracombo" >
+                              <option value="T">TODOS</option>
+      						 <!-- BEGIN DYNAMIC: ESTADOS -->                                 
+                              <option value={est_id} {sel_est} >{est_nombre}</option>
+							 <!-- END DYNAMIC: ESTADOS -->     
+                            </select></td>
+							<td>&nbsp;</td>
+						</tr>
+
+						<tr>
+							<td colspan="2" valign="bottom">
+							    <div align="left">Fecha
+    						<input type="radio" name="rad_fecha" value="ninguno"  onclick="javascript: limpiar_fechas(frm_fec);" checked >
+							Ninguna
+						          <input type="radio" name="rad_fecha" value="ing" {check_fecha1} >
+							      Ingreso
+								  <input type="radio" name="rad_fecha" value="venc" {check_fecha2} >
+								Vencimiento 
+								<input type="radio" name="rad_fecha" value="desp" {check_fecha3} >
+								Despacho 
+	
+							</div></td>			                
+			                <td valign="bottom">&nbsp;</td>
+			                <td valign="bottom">&nbsp;</td>
+							<td>&nbsp;</td>
+						</tr>
+						<tr>
+							<td colspan="2">			      
+								<div align="left">Entre 
+								  <input name="fec_ini" type="text" size="12" maxlength="20" value="{fec_ini}" readonly
+								onClick="cal1.select(document.frm_fec.fec_ini,'anchor1','dd-MM-yyyy'); return false;" title="Fecha de Inicio">
+								  <a href="#"
+								 onClick="cal1.select(document.frm_fec.fec_ini,'anchor1','dd-MM-yyyy'); return false;"
+								 name="anchor1" id="anchor1"> <img src="img/cal.gif" width="16"
+								 height="16" border="0" alt="Debe ingresar Fecha de Inicio y Fecha de Fin" > </a>
+								y 
+								<input name="fec_fin" type="text" size="12" maxlength="20" value="{fec_fin}" readonly
+								onClick="cal1.select(document.frm_fec.fec_fin,'anchor2','dd-MM-yyyy'); return false;" title="Fecha de Fin">
+								<a href="#"
+								 onClick="cal1.select(document.frm_fec.fec_fin,'anchor2','dd-MM-yyyy'); return false;"
+								 name="anchor2" id="anchor2"> <img src="img/cal.gif" width="16"
+								 height="16" border="0" alt="Debe ingresar Fecha de Inicio y Fecha de Fin" > </a>
+       					      </div></td>
+							<td>&nbsp;</td>
+							<td>&nbsp;							</td>
+							<td><input name="Button" type="submit" class="cmd" id="buscar" value=" Buscar "></td>
+						</tr>
+
+				</table>
+				  </form>
+			   </td>
+			</tr>
+		</table>		
+		</fieldset>
+							
+                </td>
+              </tr>
+            </table>
+            <div align="center"><font color=red>{msje}</font>&nbsp;{mje1}&nbsp;
+            <br>
+      <!--form name="frm_mot" method="get" action="ViewMonOP" >
+      <input name=action type=hidden value="">
+      <input name=rad_bus type=hidden value="">
+      <input name= type=hidden value="">
+      <input name=dv type=hidden value="{dv}">      
+      <input name=rad_fec type=hidden value="">
+      <input name=fec_ini type=hidden value="">
+      <input name=fec_fin type=hidden value="">
+      <input name=sel_mot type=hidden value="-1"-->
+                        
+      <table width="733"  border="0" align="center" cellpadding="2" cellspacing="0" class="tabla2">
+
+        <tr>
+          <th width="56">N&deg; Cotización </th>
+          <th width="78">Rut Empresa<br>            </th>
+          <th width="108">Empresa </th>
+          <th width="101">Sucursal</th>
+          <th width="67">Fecha Despacho</th>
+          <th width="70">Fecha Vencimiento </th>
+          <th width="69">Cantidad Productos</th>
+          <th width="84">Estado</th>
+          <th width="64">Acciones</th>
+        </tr>
+        <!-- BEGIN DYNAMIC: MON_COTIZACION -->       
+        <tr valign="top">
+          <td><div align="center">{num_cotizacion}</div></td>
+          <td><div align="center">{rut_emp}</div></td>
+          <td><div align="left">{nom_emp}</div></td>
+          <td>{nom_sucursal}</td>
+          <td><div align="center">{fec_despacho}</div></td>
+          <td><div align="center">{fec_vencimiento}</div></td>
+          <td><div align="right">{cant_prod}</div></td>
+          <td><div align="right">{estado}</div></td>
+          <td>
+          <div align="center">
+          	<a href="ViewCotizacionesForm?cot_id={num_cotizacion}">ver</a> {pipe}
+          	<a href="AsignaCotizacion?cot_id={num_cotizacion}&id_usuario_cot={user}&url=ViewCotizacionesForm?cot_id={num_cotizacion}">{editar}</a>
+		  </div>
+          </td>
+        </tr>
+        <!-- END DYNAMIC: MON_COTIZACION -->      
+ 
+     </table>
+      <!--/form-->
+      <center></center>
+      <form name="frm_pag" method="post" action="ViewMonCotizaciones" >
+			<input name=num_cot type=hidden value="{num_cot}">
+			<input name=rad_bus type=hidden value="{rad_bus}">
+			<input name=busca_por type=hidden value="{busca_por}">
+			<input name=rad_fecha type=hidden value="{rad_fecha}">
+			<input name=fec_ini type=hidden value="{fec_ini}">
+			<input name=fec_fin type=hidden value="{fec_fin}">
+			<input name=sel_empresa type=hidden value="{sel_empresas}">
+			<input name=sel_sucursal type=hidden value="{sel_sucursales}">   
+			<input name=sel_locales type=hidden value="{sel_locales}">   
+			<input name=sel_estados type=hidden value="{sel_estados}">   
+			<input name=sucursal type=hidden value="{sucursal}">
+			<input name=empresa type=hidden value="{empresa}">
+      <table width="752"  border="0" align="center" cellpadding="2" cellspacing="2">
+
+        <tr>
+          <td width="699"><div align="right">
+          		<a href="ViewMonCotizaciones?pagina={anterior}&rad_bus={rad_bus}&busca_por={busca_por}&rad_fecha={rad_fecha}&fec_ini={fec_ini}&fec_fin={fec_fin}&sel_empresa={sel_empresas}&sel_sucursal={sel_sucursales}&sel_locales={sel_locales}&sel_estados={sel_estados}&empresa={empresa}&sucursal={sucursal}">{anterior_label}&nbsp;</a>
+          		Páginas
+                  <select name="pagina" onchange="submit(this.form);" {dis}  >
+                  <!-- BEGIN DYNAMIC: PAGINAS -->
+                       <option value="{pag}" {sel}>{pag}</option>
+                  <!-- END DYNAMIC: PAGINAS -->           
+                  </select>
+                <a href="ViewMonCotizaciones?pagina={siguiente}&rad_bus={rad_bus}&busca_por={busca_por}&rad_fecha={rad_fecha}&fec_ini={fec_ini}&fec_fin={fec_fin}&sel_empresa={sel_empresas}&sel_sucursal={sel_sucursales}&sel_locales={sel_locales}&sel_estados={sel_estados}&empresa={empresa}&sucursal={sucursal}">{siguiente_label}&nbsp;</a>
+          </div></td>
+        </tr>
+        
+      </table>
+      </form>
+			<DIV ID="testdiv1"
+					STYLE="position:absolute;visibility:hidden;background-color:white;layer-background-color:white;"></DIV>
+			{mns}		
+					
+	<script>
+				document.frm_num.num_cot.onkeypress = KeyIsSoloNum;
+				document.frm_cli.busca_por.onkeypress = KeyNotCarExt;
+		//		invocaAjax();
+</script>					
+      <!-- InstanceEndEditable --></td>
+        </tr>
+      </table>
+      </td>
+  </tr>
+  <tr>
+    <td>
+	<TABLE width="100%" height=19 border=0 align="center" cellpadding="0" cellspacing="0" bgcolor="#f1f0e9" style="border-top:1px solid #ABABAB; border-bottom:1px solid #ABABAB">
+	  <TR>
+		<TD align=center bgcolor="#67b01a" class=infoBL><div align="center">Back Office Central - Jumbo.cl</div></TD>
+		</TR>
+	</TABLE>
+
+	
+	</td>
+  </tr>
+</table>
+</body>
+<!-- InstanceEnd --></html>

@@ -1,0 +1,120 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="EXPIRES" CONTENT="Mon, 22 Jul 2002 11:12:01 GMT">
+<title>Jumbo.cl Back Office Central</title>
+<link href="estilos.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+<!--
+body {
+	background-color: #FFFFFF;
+}
+-->
+</style>
+<script>
+	window.name = 'wincaldes'
+</script>
+<script language="JavaScript" src="CalendarPopup.js"></script>
+<script language="JavaScript">
+	document.write(getCalendarStyles());
+</script>
+<script language="JavaScript" ID="js17">
+	var ayer = new Date(30, 4, 2006, 12, 0, 0, 0);
+	var cal1 = new CalendarPopup("testdiv1");
+	cal1.offsetX = -140;
+	cal1.offsetY = -50;
+</script>
+<script language="JavaScript" src="funciones.js"></script>
+<script language="JavaScript">
+	function validar_fecha(form) {
+		var fecha = form.fecha.value.split("-");
+		if (fecha.length != 3) {
+			alert("Formato de fecha incorrecto (dd-mm-aaaa)");
+			return false;
+		}
+	}
+</script>
+
+
+</head>
+<body>
+	<br />
+	<table width="575" height="22" border="0" align="center"
+		cellpadding="0" cellspacing="0">
+		<tr class="tabla2">
+			<td>Fechas</td>
+			<td>{fechaCreacion}</td>
+		</tr>
+		<tr class="tabla2">
+			<td>N&deg; Pedido</td>
+			<td>{id_pedido}</td>
+		</tr>
+	</table>
+	<br />
+	<table width="446" border="0" align="center" cellpadding="0" cellspacing="0">
+		<tr valign="top">
+			<td height="17"><div align="center">Modificaci&oacute;n
+					fecha de creaci&oacute;n de OP</div>
+			</td>
+		</tr>
+		<tr valign="top">
+			<td width="310" height="17">Seleccione nueva fecha</td>
+		</tr>
+		<tr valign="top">
+			<td>
+				<form name="form2" method="get" action="ViewModFechOP" onsubmit="return validar_fecha(this);">
+					<input type="hidden" name="id_pedido" value="{id_pedido}" />
+					<input type="hidden" name="fecha_old" value="{fecha_old}" />
+					<input type="hidden" name="origen" value="{origen}" /> 
+					<input type="hidden" name="id_ruta" value="{id_ruta}" /> 
+					<input type="hidden" name="mod" value="1" /> 
+					
+					<input type="text"   name="fecha" id="txt_fecha" value="{fecha}" readOnly onClick="cal1.select(document.forms[0].txt_fecha,'anchor1','yyyy-MM-dd'); return false;" />
+					<a href="#" onClick="cal1.select(document.forms[0].txt_fecha,'anchor1','yyyy-MM-dd'); return false;" name="anchor1" id="anchor1"> 
+						<img src="img/cal.gif" width="16" height="16" border="0"> 
+					</a> 
+					<input type="submit" class="cmd" value="Modificar">
+				</form>
+			</td>
+		</tr>
+		
+	</table>
+	<br />
+	<table width="500" border="1" align="center" cellpadding="0" cellspacing="0">	
+		<tr valign="top">
+			<td height="17">
+			 <div align="center">
+				<center>
+					<font color="red" style="font-weight: bold;">ADVERTENCIA : VERIFICAR FECHA DE TÉRMINO DE RESERVA ANTES DE MODIFICAR FECHA DE INGRESO DE OP.</font>
+				</center>
+			  </div>
+			</td>
+		</tr>
+		
+		
+	</table>	
+	
+	
+	<br />	<br />
+	<!-- BEGIN DYNAMIC: BOTONES_MON_PEDIDO -->
+	<form name="cerrar" action="ViewOPFormPedido" target="winpedido1"
+		onsubmit="window.close();">
+		<input type="hidden" name="id_pedido" value="{id_pedido}" /> 
+		<input type="hidden" name="mod" value="1" />
+		<center>
+			<br />
+			<input type="submit" name="cerrar" value="Cerrar" />
+		</center>
+	</form>
+	<!-- END DYNAMIC: BOTONES_MON_PEDIDO -->
+	<br />
+	<center><font color="red">{mns}</font></center>
+
+	<div id="testdiv1" style="position: absolute; visibility: hidden; background-color: white; layer-background-color: white;"></div>
+
+</body>
+</html>

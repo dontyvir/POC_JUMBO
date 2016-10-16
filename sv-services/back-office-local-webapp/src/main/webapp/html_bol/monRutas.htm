@@ -1,0 +1,275 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="EXPIRES" CONTENT="Mon, 22 Jul 2002 11:12:01 GMT">
+<title>Jumbo.cl Back Office Local</title>
+
+<script language="JavaScript" src="prototype.js"></script>
+<script language="JavaScript" src="js/monitorRutas.js"></script>
+
+<script language="JavaScript" src="CalendarPopup.js"></script>
+<script language="JavaScript">document.write(getCalendarStyles());</script>
+<script language="JavaScript">
+var ayer = new Date(30,4,2006,12,0,0,0);
+var cal1 = new CalendarPopup("testdiv1");
+cal1.offsetX = -100;
+cal1.offsetY = 55;
+</script>
+<script language="JavaScript" src="funciones.js"></script>
+
+
+<link href="estilos.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+<!--
+.style1 {color: #666666}
+-->
+</style>
+</head>
+
+<body>
+<link rel="stylesheet" href="menu/menu.css">
+<script language="JavaScript" src="menu/menu.js"></script>
+<script language="JavaScript" src="menu/menu_tpl.js"></script>
+<script language="JavaScript" src="menu/menu_items.js"></script>
+<table width="780" height="100%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+    <td height="78" valign="top">
+
+	<TABLE width="100%" height=59 border=0 align="center" cellpadding="0" cellspacing="0" bgcolor="#ffffff">
+	  <TR>
+		<TD width=275 height="59" align=left class=user><img src="img/header2.jpg" width="275" height="60"></TD>
+		<TD width=505 align=left valign="bottom" background="img/bg-1.jpg" class=user><table width="90%"  border="0" align="center" cellpadding="0" cellspacing="2">
+          <tr>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td><div align="right" class="infoBL">Usuario: {hdr_nombre}&nbsp;&nbsp;| {hdr_fecha}</div></td>
+          </tr>
+        </table></TD>
+	  </TR>
+	</TABLE>
+	<TABLE width="100%" height=19 border=0 align="center" cellpadding="0" cellspacing="0" bgcolor="#f1f0e9" style="border-top:1px solid #ABABAB; border-bottom:1px solid #ABABAB">
+	  <TR>
+		<TD align=left bgcolor="#FFFFFF" class=user></TD>
+		</TR>
+	</TABLE>
+
+
+	</td>
+  </tr>
+  <tr>
+    <td valign="top" bgcolor="#FFFFFF">
+      <table border=0 width="100%" class='ContentTitle'>
+        <tr>
+          <td width="53%" height="20" class='HeaderTitle'> Monitor de Rutas</td>
+          <td width="47%" class='HeaderTitle'>
+          <div align="right"><a href="javascript:window.history.back()"><img src="img/volver.gif" width="32" height="32" border="0"></a></div>
+          </td>
+        </tr>
+      </table>
+	  <br>
+      <table width="90%" border="0" align="center" cellpadding="5" cellspacing="0" bgcolor="#f1f0e9" style="border:1px solid #ABABAB;">
+        <tr> 
+          <td> 
+		  	<form action="ViewMonitorRutas" method="post">
+            <table width="100%" border="0" cellspacing="5" cellpadding="0">
+              <tr> 
+                <td width="29%">Fecha Despacho<br> <input name="fecha_despacho" type="text" id="fecha_despacho" value="{fecha_despacho}" readOnly onClick="cal1.select(document.forms[0].fecha_despacho,'anchor1','yyyy-MM-dd'); return false;"> 
+                  <a href="#" onClick="cal1.select(document.forms[0].fecha_despacho,'anchor1','yyyy-MM-dd'); return false;" name="anchor1" id="anchor1"> 
+                  <img src="img/cal.gif" width="16" height="16" border="0"> </a> 
+                </td>
+                <td width="29%"> Jornada de Despacho<br> <select name="horas" id="horas" style="width:190px">
+                    <option value="">Todos</option>
+                    <!-- BEGIN DYNAMIC: JORNADAS -->
+                    <option value="{horas}" {selected}>{horas}</option>
+                    <!-- END DYNAMIC: JORNADAS -->
+                  </select> </td>
+                <td width="29%"> Zona de Despacho<br> <select name="id_zona" id="id_zona" style="width:190px">
+                    <option value="-1">Todos</option>
+                    <!-- BEGIN DYNAMIC: ZONAS -->
+                    <option value="{id_zona}" {selected}>{nombre}</option>
+                    <!-- END DYNAMIC: ZONAS -->
+                  </select> </td>
+				  <td width="13%"></td>
+              </tr>
+              <tr> 
+                <td>Chofer<br> <select name="id_chofer" id="id_chofer" style="width:190px">
+                    <option value="-1">Todos</option>
+                    <!-- BEGIN DYNAMIC: CHOFERES -->
+                    <option value="{id_chofer}" {selected}>{chofer}</option>
+                    <!-- END DYNAMIC: CHOFERES -->
+                  </select> </td>
+                <td>Patente<br> <select name="id_patente" id="id_patente" style="width:190px">
+                    <option value="-1">Todos</option>
+                    <!-- BEGIN DYNAMIC: PATENTES -->
+                    <option value="{id_patente}" {selected}>{patente}</option>
+                    <!-- END DYNAMIC: PATENTES -->
+                  </select> </td>
+                <td>Estado Ruta<br> <select name="id_estado" id="id_estado" style="width:190px">
+                    <option value="-1">Todos</option>
+                    <!-- BEGIN DYNAMIC: ESTADOS -->
+                    <option value="{id_estado}" {selected}>{estado}</option>
+                    <!-- END DYNAMIC: ESTADOS -->
+                  </select></td>
+				  <td align="center"><input type="submit" name="Submit" value="Filtrar" style="width:70px" /></td>
+              </tr>
+            </table>
+			</form>
+            <table width="100%" align="center" cellspacing="5">
+              <tr> 
+                <td width="32%">
+				
+				<form name="frm_ruta" method="post" action="ViewMonitorRutas" onsubmit="return validarFrmRuta(this);">
+                    <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+                      <tr> 
+                        <td>ID de Ruta</td>
+                      </tr>
+                      <tr> 
+                        <td>
+							<input type="text" name="id_ruta" id="id_ruta" value="{id_ruta}" style="width:90px " />
+							<input name="but_id_ruta" type="submit" class="cmd" value=" Buscar " />
+						</td>
+                      </tr>
+                    </table>
+                </form>
+				
+				</td>
+                <td width="35%">
+				
+				<form name="frm_op" method="post" action="ViewMonitorRutas" onsubmit="return validarFrmOp(this);">
+                    <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+                      <tr> 
+                        <td>N&deg; de OP</td>
+                      </tr>
+                      <tr> 
+                        <td><input type="text" name="id_pedido" id="id_pedido" value="{id_pedido}" style="width:90px "> 
+                          <input name="but_id_pedido" type="submit" class="cmd" value=" Buscar " ></td>
+                      </tr>
+                    </table>
+                </form>
+				
+				</td>
+                <td width="33%">
+				
+				<form name="frm_caso" method="post" action="ViewMonitorRutas">
+                    <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+                      <tr> 
+                        <td>Cliente 
+                          <input name="campo_cliente_sel" type="radio" value="RUT" {check_1}> 
+                          <span onClick="javascript:cambioCliSeleccion('RUT');">Rut</span> 
+						  &nbsp;&nbsp;&nbsp;
+                          <input name="campo_cliente_sel" type="radio" value="APE" {check_2}> 
+                          <span onClick="javascript:cambioCliSeleccion('APE');">Apellido</span></td>
+                      </tr>
+                      <tr> 
+                        <td>
+							<input type="text" name="campo_cliente" id="campo_cliente" value="{campo_cliente}" style="width:90px "> 
+							<input name="but_campo_cliente" type="submit" class="cmd" value=" Buscar " >
+						</td>
+                      </tr>
+                    </table>
+                  </form>
+				  
+				</td>
+              </tr>
+            </table>
+			</td>
+        </tr>
+      </table> 
+      <br>
+      <table width="770" border="0" align="center" cellpadding="2" cellspacing="0" class="tabla2">
+        <tr> 
+          <th width="70">ID Ruta</th>
+          <th width="70">Fono</th>
+          <th width="80">Chofer</th>
+          <th width="77">Patente</th>
+          <th width="95">Fecha/Hora Salida Local</th>
+          <th width="87">Zonas de Despacho</th>
+          <th width="77">Fecha</th>
+          <th width="77">Jornada de Despacho</th>
+          <th width="77">Estado Ruta</th>
+          <th width="60">Acciones</th>
+        </tr>
+        <!-- BEGIN DYNAMIC: RUTAS -->
+        <tr> 
+          <td height="30">{id_ruta}&nbsp;</td>
+          <td>{fono}&nbsp;</td>
+          <td>{chofer}&nbsp;</td>
+          <td>{patente}&nbsp;</td>
+          <td>{fechahoraout}&nbsp;</td>
+          <td>{zonas}&nbsp;</td>
+          <td align="center">{fecha}&nbsp;</td>
+          <td>{jornadas}&nbsp;</td>
+          <td>{estado}&nbsp;</td>
+          <td align="center"><a href="ViewRuta?id_ruta={id_ruta}">ver</a></td>
+        </tr>
+        <!-- END DYNAMIC: RUTAS -->
+      </table>
+	  <center>{mje1}</center>
+	  <br>
+	  
+	  <form name="frm_pag" method="get" action="ViewMonitorRutas" >
+	  <input name="fecha_despacho" type="hidden" value="{fecha_despacho}">
+      <input name="horas" type="hidden" value="{horas}">
+      <input name="id_zona" type="hidden" value="{id_zona}">
+	  <input name="id_chofer" type="hidden" value="{id_chofer}">
+      <input name="id_patente" type="hidden" value="{id_patente}">
+      <input name="id_estado" type="hidden" value="{id_estado}">
+      <input name="id_ruta" type="hidden" value="{id_ruta}">
+      <input name="id_pedido" type="hidden" value="{id_pedido}">
+      <input name="campo_cliente" type="hidden" value="{campo_cliente}">
+	  <input name="campo_cliente_sel" type="hidden" value="{campo_cliente_sel}"> 
+      <table width="752"  border="0" align="center" cellpadding="2" cellspacing="2">
+
+        <tr>
+          <td width="699"><div align="right">
+          		<a href="ViewMonitorRutas?pagina={anterior}&fecha_despacho={fecha_despacho}&horas={horas}&id_zona={id_zona}&id_chofer={id_chofer}&id_patente={id_patente}&id_estado={id_estado}&id_ruta={id_ruta}&id_pedido={id_pedido}&campo_cliente={campo_cliente}&campo_cliente_sel={campo_cliente_sel}">{anterior_label}&nbsp;</a>
+          		Páginas
+                  <select name="pagina" onchange="submit(this.form);" {dis} >
+                  <!-- BEGIN DYNAMIC: PAGINAS -->
+                    <option value="{pag}" {sel}>{pag}</option>
+                  <!-- END DYNAMIC: PAGINAS -->
+                   </select>
+                <a href="ViewMonitorRutas?pagina={siguiente}&fecha_despacho={fecha_despacho}&horas={horas}&id_zona={id_zona}&id_chofer={id_chofer}&id_patente={id_patente}&id_estado={id_estado}&id_ruta={id_ruta}&id_pedido={id_pedido}&campo_cliente={campo_cliente}&campo_cliente_sel={campo_cliente_sel}">{siguiente_label}&nbsp;</a>
+          </div></td>
+        </tr>
+        
+      </table>
+      </form>
+	  
+	  
+      <br>
+    </td>
+  </tr>
+  <tr>
+    <td>
+	<TABLE width="100%" height=19 border=0 align="center" cellpadding="0" cellspacing="0" bgcolor="#f1f0e9" style="border-top:1px solid #ABABAB; border-bottom:1px solid #ABABAB">
+	  <TR>
+		<TD align=center bgcolor="#67b01a" class=infoBL><div align="center">Back Office Central - Jumbo.cl</div></TD>
+		</TR>
+	</TABLE>
+
+
+	</td>
+  </tr>
+</table>
+
+<div id="loading" style="display:none">
+	<table style="Z-INDEX: 500; LEFT: 0; POSITION: absolute; TOP: 0" cellSpacing="0" cellPadding="0" border="0" id="tabla_loading">
+		<tr>
+			<td width="75" height="25" bgcolor="#FF0000">&nbsp;&nbsp;&nbsp;<font color="#FFFFFF"><b>Cargando...</b></font></td>
+		</tr>
+	</table>
+</div>
+<div id="testdiv1" style="position:absolute;visibility:hidden;background-color:white;layer-background-color:white;"></div>
+
+</body>
+<script>
+	document.frm_ruta.id_ruta.onkeypress = KeyIsNumber;
+	document.frm_op.id_pedido.onkeypress = KeyIsNumber;
+</script>
+</html>

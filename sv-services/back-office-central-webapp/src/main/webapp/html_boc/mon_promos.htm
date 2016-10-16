@@ -1,0 +1,185 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" 
+"http://www.w3.org/TR/html4/loose.dtd">
+<html><!-- InstanceBegin template="/Templates/fullbody.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="EXPIRES" CONTENT="Mon, 22 Jul 2002 11:12:01 GMT">
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>Jumbo.cl Back Office Central</title>
+<!-- InstanceEndEditable -->
+
+<!-- InstanceBeginEditable name="head" -->
+<SCRIPT LANGUAGE="JavaScript" SRC="CalendarPopup.js"></SCRIPT>
+<SCRIPT LANGUAGE="JavaScript" SRC="validacion.js"></SCRIPT>	
+<SCRIPT LANGUAGE="JavaScript">document.write(getCalendarStyles());</SCRIPT>
+<!-- InstanceEndEditable -->
+
+<link href="estilos.css" rel="stylesheet" type="text/css">
+<!--link href="../default.css" rel="stylesheet" type="text/css"-->
+<style type="text/css">
+<!--
+.style1 {color: #666666}
+-->
+</style>
+</head>
+
+<body>
+<link rel="stylesheet" href="menu/menu.css">
+<script language="JavaScript" src="menu/menu.js"></script>
+<script language="JavaScript" src="menu/menu_tpl.js"></script>
+<script language="JavaScript" src="menu/menu_items.js"></script>
+<script language="JavaScript" src="popup.js"></script>
+<script language="JavaScript" src="funciones.js"></script>
+<table width="780" height="100%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+    <td height="78" valign="top">
+	
+	<TABLE width="100%" height=59 border=0 align="center" cellpadding="0" cellspacing="0" bgcolor="#ffffff">
+	  <TR>
+		<TD width=275 height="59" align=left class=user><img src="img/header2.jpg" width="275" height="60"></TD>
+		<TD width=505 align=left valign="bottom" background="img/bg-1.jpg" class=user><table width="90%"  border="0" align="center" cellpadding="0" cellspacing="2">
+          <tr>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td><div align="right" class="infoBL">Usuario: {hdr_nombre}&nbsp;&nbsp;| {hdr_fecha}</div></td>
+          </tr>
+        </table></TD>
+	  </TR>
+	</TABLE>
+	<TABLE width="100%" height=19 border=0 align="center" cellpadding="0" cellspacing="0" bgcolor="#f1f0e9" style="border-top:1px solid #ABABAB; border-bottom:1px solid #ABABAB">
+	  <TR>
+		<TD align=left bgcolor="#FFFFFF" class=user></TD>
+		</TR>
+	</TABLE>
+
+	
+	</td>
+  </tr>
+  <tr height="400">
+    <td valign="top" bgcolor="#FFFFFF">
+      <table border=0 width="100%" class='ContentTitle'>
+        <tr>
+          <td width="53%" height="20" class='HeaderTitle'><!-- InstanceBeginEditable name="Titulo" --> Monitor de Promociones <!-- InstanceEndEditable --></td>
+          <td width="47%" class='HeaderTitle'><!-- InstanceBeginEditable name="Botonera" -->
+          <div align="right">
+          	<a href="ViewPromoDsctoColab">Descuento Colaborador</a><br />
+          </div>
+          <!-- InstanceEndEditable --></td>
+        </tr>
+      </table>
+	  <br>
+      <table width="100%"  border="0" cellspacing="2" cellpadding="2">
+        <tr valign="top">
+          <td width="71%"><!-- InstanceBeginEditable name="Izquierda" --> 
+          <SCRIPT LANGUAGE="JavaScript">window.name='winpedido'</SCRIPT>				          
+				<script language="JavaScript" src="calendario.js"></script>
+				<script language="JavaScript" src="funciones.js"></script>
+
+            <table width="750"  border="0" align="center" cellpadding="0" cellspacing="0">
+            	<tr>
+            	<td align="center" class="infoRj"></td>
+            	</tr>
+              <tr>
+                <td>
+                <script language="JavaScript">
+                
+             
+                
+                	function bus_num(form){
+                		//if (form.num_prom.value == ""){ 
+                		//	alert("Debe ingresar Nº de promoción");
+                		//	return false;
+                		//}
+                		if (validar_solonumero(form.num_prom, "Nº de promoción es un valor Numerico")) return false;
+	            		form.action.value='bus_num';
+	            		return true;
+                	}
+                	
+                	
+                	function bus_loc(form){
+						//var rut;
+						//var rut_sp="";
+						//var dv;
+						form.action.value='bus_loc';
+						//if (form.sel_loc.[1].checked == true){
+						//	if(validar_letranumero(form.cliente,"El apellido solo permite letras y números")) return false;
+						//}
+						return true;
+						
+                	}
+                	
+                </script>
+							
+                </td>
+              </tr>
+            </table>
+            <br>
+      <!--form name="frm_mot" method="get" action="ViewMonPromocion.htm" >
+      <input name=action type=hidden value="">
+      <input name=rad_cli type=hidden value="">
+      <input name=cliente type=hidden value="">
+      <input name=dv type=hidden value="{dv}">      
+      <input name=rad_fec type=hidden value="">
+      <input name=fec_ini type=hidden value="">
+      <input name=fec_fin type=hidden value="">
+      <input name=sel_mot type=hidden value="-1"-->
+                        
+      <table width="750"  border="0" align="center" cellpadding="2" cellspacing="0" class="tabla2">
+
+        <tr>
+		  <th width="8%">Código</th>
+		  <th width="12%">Local</th>
+		  <th width="8%">Tipo</th>
+		  <th width="20%">Descripción</th>
+		  <th width="10%">Fecha de inicio</th>
+		  <th width="10%">Fecha de fin</th>
+		  <th width="10%">Acciones</th>
+        </tr>
+       <!-- BEGIN DYNAMIC: PROMOS -->	
+        <tr>
+          <td><div align="center">{cod_promo}</div></td>
+          <td><div align="left">{nom_local}</div></td>
+          <td><div align="center">{tipo_promo}</div></td>
+          <td><div align="left">{descr_promo}</div></td>
+          <td><div align="center">{fini_promo}</div></td>
+          <td><div align="center">{ffin_promo}</div></td>
+          <td>
+          <div align="center">
+          	<a href="ViewPromoForm?codigo={cod_promo}&pagina=1">editar</a>
+		  </div>
+          </td>
+        </tr>
+        <!-- END DYNAMIC: PROMOS -->	
+
+	 </table>
+      <!--/form-->
+      <center></center>
+          
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+			<DIV ID="testdiv1"
+					STYLE="position:absolute;visibility:hidden;background-color:white;layer-background-color:white;"></DIV>
+					
+      <!-- InstanceEndEditable --></td>
+        </tr>
+      </table>
+      </td>
+  </tr>
+  <tr>
+    <td>
+	<TABLE width="100%" height=19 border=0 align="center" cellpadding="0" cellspacing="0" bgcolor="#f1f0e9" style="border-top:1px solid #ABABAB; border-bottom:1px solid #ABABAB">
+	  <TR>
+		<TD align=center bgcolor="#67b01a" class=infoBL><div align="center">Back Office Central - Jumbo.cl <br>
+	      BBR e-commerce & retail</div></TD>
+		</TR>
+	</TABLE>
+
+	
+	</td>
+  </tr>
+</table>
+</body>
+<!-- InstanceEnd --></html>

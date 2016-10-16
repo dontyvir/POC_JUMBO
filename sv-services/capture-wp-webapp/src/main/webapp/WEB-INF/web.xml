@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="WebApp_ID" version="2.4" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+	<display-name>CapturarPagoWP</display-name>
+	<servlet>
+	    <servlet-name>log4j-init</servlet-name>
+	    <servlet-class>cl.jumbo.capturar.log.Log4jInit</servlet-class>
+	    <init-param>
+	      <param-name>log4j-init-file</param-name>
+	      <param-value>/WEB-INF/classes/log4j_web.properties</param-value>
+	    </init-param>
+	    <load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet>
+		<description>SchedulerServlet</description>
+		<display-name>SchedulerServlet</display-name>
+		<servlet-name>SchedulerServlet</servlet-name>
+		<servlet-class>cl.jumbo.capturar.scheduler.SchedulerServlet</servlet-class>
+		<init-param>
+			<description>Intervalo de tiempo en segundos</description>
+			<param-name>interval</param-name>
+			<param-value>60</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>TestCapturaServlet</description>
+		<display-name>TestCapturaServlet</display-name>
+		<servlet-name>TestCapturaServlet</servlet-name>
+		<servlet-class>cl.jumbo.capturar.scheduler.TestCapturaServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>SchedulerServlet</servlet-name>
+		<url-pattern>/SchedulerServlet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>TestCapturaServlet</servlet-name>
+		<url-pattern>/TestCapturaServlet</url-pattern>
+	</servlet-mapping>
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+		<welcome-file>index.htm</welcome-file>
+		<welcome-file>index.jsp</welcome-file>
+		<welcome-file>default.html</welcome-file>
+		<welcome-file>default.htm</welcome-file>
+		<welcome-file>default.jsp</welcome-file>
+	</welcome-file-list>
+    <service-ref>
+        <description>WSDL Service BackendGatewayServerImplService</description>
+        <service-ref-name>service/BackendGatewayServerImplService</service-ref-name>
+        <service-interface>com.transbank.capturatrx.ws.BackendGatewayServerImplService</service-interface>
+        <wsdl-file>WEB-INF/wsdl/BackendGatewayServer.wsdl</wsdl-file>
+        <jaxrpc-mapping-file>WEB-INF/BackendGatewayServer_mapping.xml</jaxrpc-mapping-file>
+        <service-qname xmlns:pfx="http://ws.capturatrx.transbank.com/">pfx:BackendGatewayServerImplService</service-qname>
+        <port-component-ref>
+            <service-endpoint-interface>com.transbank.capturatrx.ws.BackendGatewayServer</service-endpoint-interface>
+        </port-component-ref>
+    </service-ref>
+    <resource-ref id="ResourceRef_1288969736468">
+    	<description>
+    	DB Connection DB2</description>
+    	<res-ref-name>jdbc/bodbaVE</res-ref-name>
+    	<res-type>javax.sql.DataSource</res-type>
+    	<res-auth>Container</res-auth>
+    	<res-sharing-scope>Shareable</res-sharing-scope>
+    </resource-ref>
+</web-app>

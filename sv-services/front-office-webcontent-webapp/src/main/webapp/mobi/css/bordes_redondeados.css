@@ -1,0 +1,97 @@
+/* BORDES REDONDEADOS */
+
+div.rounded-box {
+    position: relative;
+    width: 230px;
+    background-color: #ABD753;
+    margin: 10px auto;
+}
+
+div.bienvenidarounded-box {
+    position: relative;
+    width: 290px;
+    background-color: #ABD753;
+    margin: 10px auto;
+}
+
+/*********************
+Caja Exterior
+*********************/
+div.top-left-corner, div.top-right-corner  {
+	position: absolute;
+	width: 20px;
+	height: 20px;
+	background-color: #ffffff;
+	overflow: hidden;
+	z-index: 0;
+}
+div.bottom-right-corner, div.bottom-left-corner {
+	position: absolute;
+	width: 20px;
+	height: 20px;
+	background-color: #ffffff;
+	overflow: hidden;
+	z-index: 0;
+}
+
+div.bienvenida-bottom-left-corner, div.bienvenida-bottom-right-corner {
+	position: absolute;
+	width: 20px;
+	height: 20px;
+	background-color: #ffffff;
+	overflow: hidden;
+	z-index: 0;
+
+}
+
+
+div.top-left-inside, div.bottom-left-inside, div.top-right-inside, div.bottom-right-inside {
+	position: relative;
+	font-size: 150px;
+	font-family: arial;
+	color: #ABD753;
+	line-height: 40px;
+	z-index: 0;
+}
+
+/*********************
+Bordes
+*********************/
+
+div.top-left-corner { top: 0px; left: 0px; }
+div.bottom-left-corner {bottom: 0px; left: 0px;}
+div.bienvenida-bottom-left-corner {bottom: 0px; left: 0px;}
+div.top-right-corner {top: 0px; right: 0px;}
+div.bottom-right-corner {bottom: 0px; right: 0px;}
+div.bienvenida-bottom-right-corner {bottom: 0px; right: 0px;}
+div.top-left-inside {left: -8px;}
+div.bottom-left-inside {left: -8px; top: -17px;}
+div.top-right-inside {left: -25px;}
+div.bottom-right-inside {left: -25px; top: -17px;}
+
+/*********************
+Contenido (txt)
+*********************/
+
+div.box-contents {
+	font-family:Arial;
+	font-size:11px;
+	height: 130px;
+	width: 200px;
+	position: relative;
+	padding: 10px;
+	z-index: 1;
+	
+}
+
+div.bienvenidabox-contents {
+	font-family:Arial;
+	font-size:0.8em;
+	height: 90px;
+	width: 250px;
+	position: relative;
+	padding: 10px;
+	z-index: 1;
+	
+}
+/* CSS Document */

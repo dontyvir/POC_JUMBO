@@ -1,0 +1,72 @@
+/* BBR */
+.menu_categoria_normal_par{
+width:160px;
+height:20px;
+font-family: "Trebuchet MS";
+font-size: 9.5pt;
+text-decoration: none;
+text-align:left;
+color:#333333;
+padding-left: 16px;
+background-image:url('/WebFOVE/img/menu-a.gif');
+
+}
+.menu_categoria_normal_impar{
+width:160px;
+height:20px;
+font-family: "Trebuchet MS";
+font-size: 9.5pt;
+text-decoration: none;
+text-align:left;
+color:#333333;
+padding-left: 16px;
+background-image:url('/WebFOVE/img/menu-b.gif');
+
+}
+
+.menu_categoria_OnMouseOver {
+width:160px;
+height:20px;
+font-family: "Trebuchet MS";
+font-size: 9.5pt;
+font-weight:bold;
+text-decoration: none;
+text-align:left;
+color:#ffffff;
+padding-left: 16px;
+background-image:url('/WebFOVE/img/menu-c.gif');
+
+}
+
+.menu_subcategoria_normal{
+height:20px;
+padding-left: 25px;
+font-family: "Trebuchet MS";
+font-size: 8.5pt;
+text-decoration: none;
+text-align:left;
+color:#333333;
+background-image:url('/WebFOVE/img/menuflechita.gif')
+}
+
+.menu_subcategoria_OnMouseOver{
+height:20px;
+padding-left: 25px;
+font-family: "Trebuchet MS";
+font-size: 8.5pt;
+text-decoration: none;
+text-align:left;
+color:#FF860C;
+background-image:url('/WebFOVE/img/menuflechitab.gif')
+}
+
+.menu_subcategoria_Seleccionado{
+height:20px;
+padding-left: 25px;
+font-family: "Trebuchet MS";
+font-size: 8.5pt;
+text-decoration: none;
+text-align:left;
+color:#FF860C;
+background-image:url('/WebFOVE/img/menuflechitab.gif')
+}

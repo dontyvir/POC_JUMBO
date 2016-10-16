@@ -1,0 +1,326 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="EXPIRES" CONTENT="Mon, 22 Jul 2002 11:12:01 GMT">
+<title>Jumbo.cl Back Office Local</title>
+<link href="estilos.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+<!--
+.style1 {color: #666666}
+-->
+</style>
+<script language="JavaScript" src="funciones.js"></script>
+<script language="JavaScript">
+function validar_form( form ) {
+	if( validar_obligatorio( form.capac_lu, "Es Obligación ingresar "+form.capac_lu.label ) ) return false;
+	if(form.capac_lu.value < 0){
+		alert ("La capacidad debe ser mayor o igual a 0");
+		return false;
+	}
+	if( validar_obligatorio( form.capac_ma, "Es Obligación ingresar "+form.capac_ma.label ) ) return false;
+	if(form.capac_ma.value < 0){
+		alert ("La capacidad debe ser mayor o igual a 0");
+		return false;
+	}
+	if( validar_obligatorio( form.capac_mi, "Es Obligación ingresar "+form.capac_mi.label ) ) return false;
+	if(form.capac_mi.value < 0){
+		alert ("La capacidad debe ser mayor o igual a 0");
+		return false;
+	}
+	if( validar_obligatorio( form.capac_ju, "Es Obligación ingresar "+form.capac_ju.label ) ) return false;
+	if(form.capac_ju.value < 0){
+		alert ("La capacidad debe ser mayor o igual a 0");
+		return false;
+	}
+	if( validar_obligatorio( form.capac_vi, "Es Obligación ingresar "+form.capac_vi.label ) ) return false;
+	if(form.capac_vi.value < 0){
+		alert ("La capacidad debe ser mayor o igual a 0");
+		return false;
+	}
+	if( validar_obligatorio( form.capac_sa, "Es Obligación ingresar "+form.capac_sa.label ) ) return false;
+	if(form.capac_sa.value < 0){
+		alert ("La capacidad debe ser mayor o igual a 0");
+		return false;
+	}
+	if( validar_obligatorio( form.capac_do, "Es Obligación ingresar "+form.capac_do.label ) ) return false;
+	if(form.capac_do.value < 0){
+		alert ("La capacidad debe ser mayor o igual a 0");
+		return false;
+	}
+	if(validar_obligatorio(form.hras_val_lu, "Dato Obligatorio")) return false;
+	if(validar_obligatorio(form.hras_val_ma, "Dato Obligatorio")) return false;
+	if(validar_obligatorio(form.hras_val_mi, "Dato Obligatorio")) return false;
+	if(validar_obligatorio(form.hras_val_ju, "Dato Obligatorio")) return false;
+	if(validar_obligatorio(form.hras_val_vi, "Dato Obligatorio")) return false;
+	if(validar_obligatorio(form.hras_val_sa, "Dato Obligatorio")) return false;
+	if(validar_obligatorio(form.hras_val_do, "Dato Obligatorio")) return false;
+	if(validar_obligatorio(form.hras_web_lu, "Dato Obligatorio")) return false;
+	if(validar_obligatorio(form.hras_web_ma, "Dato Obligatorio")) return false;
+	if(validar_obligatorio(form.hras_web_mi, "Dato Obligatorio")) return false;
+	if(validar_obligatorio(form.hras_web_ju, "Dato Obligatorio")) return false;
+	if(validar_obligatorio(form.hras_web_vi, "Dato Obligatorio")) return false;
+	if(validar_obligatorio(form.hras_web_sa, "Dato Obligatorio")) return false;
+	if(validar_obligatorio(form.hras_web_do, "Dato Obligatorio")) return false;
+	if(form.hras_val_lu.value < 0 || form.hras_val_ma.value < 0 || form.hras_val_mi.value < 0 || form.hras_val_ju.value < 0 || form.hras_val_vi.value < 0 || form.hras_val_sa.value < 0 || form.hras_val_do.value < 0 ){
+		alert("La hora debe ser mayor o igual a 0");
+		return false;
+	}
+	if(form.hras_web_lu.value < 0 || form.hras_web_ma.value < 0 || form.hras_web_mi.value < 0 || form.hras_web_ju.value < 0 || form.hras_web_vi.value < 0 || form.hras_web_sa.value < 0 || form.hras_web_do.value < 0 ){
+		alert("La hora debe ser mayor o igual a 0");
+		return false;
+	}
+	return true;
+}
+</script>
+</head>
+<body>
+<link rel="stylesheet" href="menu/menu.css">
+<script language="JavaScript" src="menu/menu.js"></script>
+<script language="JavaScript" src="menu/menu_tpl.js"></script>
+<script language="JavaScript" src="menu/menu_items.js"></script>
+<table width="780" height="100%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+    <td height="78" valign="top">
+
+	<TABLE width="100%" height=59 border=0 align="center" cellpadding="0" cellspacing="0" bgcolor="#ffffff">
+	  <TR>
+		<TD width=275 height="59" align=left class=user><img src="img/header2.jpg" width="275" height="60"></TD>
+		<TD width=505 align=left valign="bottom" background="img/bg-1.jpg" class=user><table width="90%"  border="0" align="center" cellpadding="0" cellspacing="2">
+          <tr>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td><div align="right" class="infoBL">Usuario: {hdr_nombre} | Local: {hdr_local} | {hdr_fecha} </div></td>
+          </tr>
+        </table></TD>
+	  </TR>
+	</TABLE>
+	<TABLE width="100%" height=19 border=0 align="center" cellpadding="0" cellspacing="0" bgcolor="#f1f0e9" style="border-top:1px solid #ABABAB; border-bottom:1px solid #ABABAB">
+	  <TR>
+		<TD align=left bgcolor="#FFFFFF" class=user></TD>
+		</TR>
+	</TABLE>
+
+
+	</td>
+  </tr>
+  <tr height="400">
+    <td valign="top" bgcolor="#FFFFFF">
+      <table border=0 width="100%" class='ContentTitle'>
+        <tr>
+          <td width="53%" height="20" class='HeaderTitle'>Editar Jornada de Picking</td>
+          <td width="47%" class='HeaderTitle'></td>
+        </tr>
+      </table>
+	  <br>
+      <table width="100%"  border="0" cellspacing="2" cellpadding="2">
+        <tr valign="top">
+          <td width="71%">
+       
+
+            <div align="center"><br>
+              <form name="forma1" method="post" action="ModJornadaPicking" onSubmit="return validar_form(this);">
+              <input type="hidden" name="id_hor_pick" value="{id_hor_pick}">
+              <input type="hidden" name="h_ini" value="{h_ini}">
+              <input type="hidden" name="h_fin" value="{h_fin}">
+              <input type="hidden" name="url" value="ViewJornadasPicking?fecha={fecha_param}">
+                <table width="400" border="0" cellpadding="0" cellspacing="0" class="tabla2">
+                  <tr>
+                    <td width="105"><div align="left">Hora Inicio </div></td>
+                    <td width="195"><div align="left">{h_ini} </div></td>
+                  </tr>
+                  <tr>
+                    <td><div align="left">Hora Fin </div></td>
+                    <td><div align="left">{h_fin}</div></td>
+                  </tr>
+                </table>
+                <br>
+                <table width="400" border="0" cellpadding="0" cellspacing="0" class="tabla2">
+                  <tr>
+                    <th width="81">&nbsp;</th>
+                    <th width="78">&nbsp;</th>
+                    <th width="50"><div align="center">Capacidad Picking </div></th>
+                    <th width="70"><div align="center">Hras. Minim. Validación </div></th>
+                    <th width="70"><div align="center">Hras. Minim. ofrecido en Web</div></th>
+                  </tr>
+                  <tr>
+                    <td><div align="left">Lunes</div></td>
+                    <td><div align="center">{f_lu}</div></td>
+                    <td><div align="center">
+                        <input name="capac_lu" type="text" value="{capac_lu}" size="10" maxlength = "6" onpaste = "return false;" onKeydown="if (event.ctrlKey && (String.fromCharCode(event.keyCode).toLowerCase() == 'c' || String.fromCharCode(event.keyCode).toLowerCase() == 'v')) { event.keyCode = 0; }">
+                    </div></td>
+                    <td><div align="center">
+                        <input name="hras_val_lu" type="text" value="{hras_val_lu}" size="10" maxlength = "6" onpaste = "return false;" onKeydown="if (event.ctrlKey && (String.fromCharCode(event.keyCode).toLowerCase() == 'c' || String.fromCharCode(event.keyCode).toLowerCase() == 'v')) { event.keyCode = 0; }">
+                    </div></td>
+                    <td><div align="center">
+                        <input name="hras_web_lu" type="text" value="{hras_web_lu}" size="10" maxlength = "6" onpaste = "return false;" onKeydown="if (event.ctrlKey && (String.fromCharCode(event.keyCode).toLowerCase() == 'c' || String.fromCharCode(event.keyCode).toLowerCase() == 'v')) { event.keyCode = 0; }">
+                    </div></td>
+                  </tr>
+                  <tr>
+                    <td><div align="left">Martes</div></td>
+                    <td><div align="center">{f_ma}</div></td>
+                    <td><div align="center">
+                        <input name="capac_ma" type="text" value="{capac_ma}" size="10" maxlength = "6" onpaste = "return false;" onKeydown="if (event.ctrlKey && (String.fromCharCode(event.keyCode).toLowerCase() == 'c' || String.fromCharCode(event.keyCode).toLowerCase() == 'v')) { event.keyCode = 0; }">
+                    </div></td>
+                    <td><div align="center">
+                        <input name="hras_val_ma" type="text" value="{hras_val_ma}" size="10" maxlength = "6" onpaste = "return false;" onKeydown="if (event.ctrlKey && (String.fromCharCode(event.keyCode).toLowerCase() == 'c' || String.fromCharCode(event.keyCode).toLowerCase() == 'v')) { event.keyCode = 0; }">
+                    </div></td>
+                    <td><div align="center">
+                        <input name="hras_web_ma" type="text" value="{hras_web_ma}" size="10" maxlength = "6" onpaste = "return false;" onKeydown="if (event.ctrlKey && (String.fromCharCode(event.keyCode).toLowerCase() == 'c' || String.fromCharCode(event.keyCode).toLowerCase() == 'v')) { event.keyCode = 0; }">
+                    </div></td>
+                  </tr>
+                  <tr>
+                    <td><div align="left">Mi&eacute;rcoles</div></td>
+                    <td><div align="center">{f_mi}</div></td>
+                    <td><div align="center">
+                        <input name="capac_mi" type="text" value="{capac_mi}" size="10" maxlength = "6" onpaste = "return false;" onKeydown="if (event.ctrlKey && (String.fromCharCode(event.keyCode).toLowerCase() == 'c' || String.fromCharCode(event.keyCode).toLowerCase() == 'v')) { event.keyCode = 0; }">
+                    </div></td>
+                    <td><div align="center">
+                        <input name="hras_val_mi" type="text" value="{hras_val_mi}" size="10" maxlength = "6" onpaste = "return false;" onKeydown="if (event.ctrlKey && (String.fromCharCode(event.keyCode).toLowerCase() == 'c' || String.fromCharCode(event.keyCode).toLowerCase() == 'v')) { event.keyCode = 0; }">
+                    </div></td>
+                    <td><div align="center">
+                        <input name="hras_web_mi" type="text" value="{hras_web_mi}" size="10" maxlength = "6" onpaste = "return false;" onKeydown="if (event.ctrlKey && (String.fromCharCode(event.keyCode).toLowerCase() == 'c' || String.fromCharCode(event.keyCode).toLowerCase() == 'v')) { event.keyCode = 0; }">
+                    </div></td>
+                  </tr>
+                  <tr>
+                    <td><div align="left">Jueves</div></td>
+                    <td><div align="center">{f_ju}</div></td>
+                    <td><div align="center">
+                        <input name="capac_ju" type="text" value="{capac_ju}" size="10" maxlength = "6" onpaste = "return false;" onKeydown="if (event.ctrlKey && (String.fromCharCode(event.keyCode).toLowerCase() == 'c' || String.fromCharCode(event.keyCode).toLowerCase() == 'v')) { event.keyCode = 0; }">
+                    </div></td>
+                    <td><div align="center">
+                        <input name="hras_val_ju" type="text" value="{hras_val_ju}" size="10" maxlength = "6" onpaste = "return false;" onKeydown="if (event.ctrlKey && (String.fromCharCode(event.keyCode).toLowerCase() == 'c' || String.fromCharCode(event.keyCode).toLowerCase() == 'v')) { event.keyCode = 0; }">
+                    </div></td>
+                    <td><div align="center">
+                        <input name="hras_web_ju" type="text" value="{hras_web_ju}" size="10" maxlength = "6" onpaste = "return false;" onKeydown="if (event.ctrlKey && (String.fromCharCode(event.keyCode).toLowerCase() == 'c' || String.fromCharCode(event.keyCode).toLowerCase() == 'v')) { event.keyCode = 0; }">
+                    </div></td>
+                  </tr>
+                  <tr>
+                    <td><div align="left">Viernes</div></td>
+                    <td><div align="center">{f_vi}</div></td>
+                    <td><div align="center">
+                        <input name="capac_vi" type="text" value="{capac_vi}" size="10" maxlength = "6" onpaste = "return false;" onKeydown="if (event.ctrlKey && (String.fromCharCode(event.keyCode).toLowerCase() == 'c' || String.fromCharCode(event.keyCode).toLowerCase() == 'v')) { event.keyCode = 0; }">
+                    </div></td>
+                    <td><div align="center">
+                        <input name="hras_val_vi" type="text" value="{hras_val_vi}" size="10" maxlength = "6" onpaste = "return false;" onKeydown="if (event.ctrlKey && (String.fromCharCode(event.keyCode).toLowerCase() == 'c' || String.fromCharCode(event.keyCode).toLowerCase() == 'v')) { event.keyCode = 0; }">
+                    </div></td>
+                    <td><div align="center">
+                        <input name="hras_web_vi" type="text" value="{hras_web_vi}" size="10" maxlength = "6" onpaste = "return false;" onKeydown="if (event.ctrlKey && (String.fromCharCode(event.keyCode).toLowerCase() == 'c' || String.fromCharCode(event.keyCode).toLowerCase() == 'v')) { event.keyCode = 0; }">
+                    </div></td>
+                  </tr>
+                  <tr>
+                    <td><div align="left">S&aacute;bado</div></td>
+                    <td><div align="center">{f_sa}</div></td>
+                    <td><div align="center">
+                        <input name="capac_sa" type="text" value="{capac_sa}" size="10" maxlength = "6" onpaste = "return false;" onKeydown="if (event.ctrlKey && (String.fromCharCode(event.keyCode).toLowerCase() == 'c' || String.fromCharCode(event.keyCode).toLowerCase() == 'v')) { event.keyCode = 0; }">
+                    </div></td>
+                    <td><div align="center">
+                        <input name="hras_val_sa" type="text" value="{hras_val_sa}" size="10" maxlength = "6" onpaste = "return false;" onKeydown="if (event.ctrlKey && (String.fromCharCode(event.keyCode).toLowerCase() == 'c' || String.fromCharCode(event.keyCode).toLowerCase() == 'v')) { event.keyCode = 0; }">
+                    </div></td>
+                    <td><div align="center">
+                        <input name="hras_web_sa" type="text" value="{hras_web_sa}" size="10" maxlength = "6" onpaste = "return false;" onKeydown="if (event.ctrlKey && (String.fromCharCode(event.keyCode).toLowerCase() == 'c' || String.fromCharCode(event.keyCode).toLowerCase() == 'v')) { event.keyCode = 0; }">
+                    </div></td>
+                  </tr>
+                  <tr>
+                    <td><div align="left">Domingo</div></td>
+                    <td><div align="center">{f_do}</div></td>
+                    <td><div align="center">
+                        <input name="capac_do" type="text" value="{capac_do}" size="10" maxlength = "6" onpaste = "return false;" onKeydown="if (event.ctrlKey && (String.fromCharCode(event.keyCode).toLowerCase() == 'c' || String.fromCharCode(event.keyCode).toLowerCase() == 'v')) { event.keyCode = 0; }">
+                    </div></td>
+                    <td><div align="center">
+                        <input name="hras_val_do" type="text" value="{hras_val_do}" size="10" maxlength = "6" onpaste = "return false;" onKeydown="if (event.ctrlKey && (String.fromCharCode(event.keyCode).toLowerCase() == 'c' || String.fromCharCode(event.keyCode).toLowerCase() == 'v')) { event.keyCode = 0; }">
+                    </div></td>
+                    <td><div align="center">
+                        <input name="hras_web_do" type="text" value="{hras_web_do}" size="10" maxlength = "6" onpaste = "return false;" onKeydown="if (event.ctrlKey && (String.fromCharCode(event.keyCode).toLowerCase() == 'c' || String.fromCharCode(event.keyCode).toLowerCase() == 'v')) { event.keyCode = 0; }">
+                    </div></td>
+                  </tr>
+              </table>
+              <br>
+              <table width="244" border="0" align="center" cellpadding="0" cellspacing="2">
+                <tr>
+                  <td width="117"><div align="center">
+                        <input type="button" name="Button" value="Cancelar" onClick="location.href='ViewJornadasPicking?fecha={fecha_param}'">
+                    </div></td>
+                  <td width="121"><div align="center">
+                        <input type="submit" name="Submit" value="Grabar">
+                    </div></td>
+                </tr>
+              </table>
+              <table width="400" border="0" align="center" cellpadding="0" cellspacing="2">
+                <tr>
+                  <td colspan=2><br>Nota: Las horas de validacion y las horas ofrecidas en web deben ser mayor a cero.</td>
+                </tr>
+              </table>
+            </form>
+            </div>
+            <p align="center">&nbsp;</p>
+              <br>
+              <br>
+			  {mns}
+<td>
+        </tr>
+      </table>
+      </td>
+  </tr>
+  <tr>
+    <td>
+	<TABLE width="100%" height=19 border=0 align="center" cellpadding="0" cellspacing="0" bgcolor="#f1f0e9" style="border-top:1px solid #ABABAB; border-bottom:1px solid #ABABAB">
+	  <TR>
+		<TD align=center bgcolor="#67b01a" class=infoBL><div align="center">Back Office Local - Jumbo.cl</div></TD>
+		</TR>
+	</TABLE>
+
+	</td>
+  </tr>
+</table>
+</body>
+<script language="JavaScript">
+	document.forma1.capac_lu.numerico=true;
+	document.forma1.capac_lu.label = 'Capacidad Lunes';
+	document.forma1.capac_lu.onkeypress = KeyIsNumber;
+
+	document.forma1.capac_ma.numerico=true;
+	document.forma1.capac_ma.label = 'Capacidad Martes';
+	document.forma1.capac_ma.onkeypress = KeyIsNumber;
+
+	document.forma1.capac_mi.numerico=true;
+	document.forma1.capac_mi.label = 'Capacidad Miercoles';
+	document.forma1.capac_mi.onkeypress = KeyIsNumber;
+
+	document.forma1.capac_ju.numerico=true;
+	document.forma1.capac_ju.label = 'Capacidad Jueves';
+	document.forma1.capac_ju.onkeypress = KeyIsNumber;
+
+	document.forma1.capac_vi.numerico=true;
+	document.forma1.capac_vi.label = 'Capacidad Viernes';
+	document.forma1.capac_vi.onkeypress = KeyIsNumber;
+
+	document.forma1.capac_sa.numerico=true;
+	document.forma1.capac_sa.label = 'Capacidad Sabado';
+	document.forma1.capac_sa.onkeypress = KeyIsNumber;
+
+	document.forma1.capac_do.numerico=true;
+	document.forma1.capac_do.label = 'Capacidad Domingo';
+	document.forma1.capac_do.onkeypress = KeyIsNumber;
+
+	document.forma1.hras_val_lu.onkeypress = KeyIsNumber;
+	document.forma1.hras_val_ma.onkeypress = KeyIsNumber;
+	document.forma1.hras_val_mi.onkeypress = KeyIsNumber;
+	document.forma1.hras_val_ju.onkeypress = KeyIsNumber;
+	document.forma1.hras_val_vi.onkeypress = KeyIsNumber;
+	document.forma1.hras_val_sa.onkeypress = KeyIsNumber;
+	document.forma1.hras_val_do.onkeypress = KeyIsNumber;
+
+	document.forma1.hras_web_lu.onkeypress = KeyIsNumber;
+	document.forma1.hras_web_ma.onkeypress = KeyIsNumber;
+	document.forma1.hras_web_mi.onkeypress = KeyIsNumber;
+	document.forma1.hras_web_ju.onkeypress = KeyIsNumber;
+	document.forma1.hras_web_vi.onkeypress = KeyIsNumber;
+	document.forma1.hras_web_sa.onkeypress = KeyIsNumber;
+	document.forma1.hras_web_do.onkeypress = KeyIsNumber;
+</script>
+</html>

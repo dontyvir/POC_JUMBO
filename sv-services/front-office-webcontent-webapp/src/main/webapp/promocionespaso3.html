@@ -1,0 +1,117 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="EXPIRES" CONTENT="Mon, 22 Jul 2002 11:12:01 GMT">
+<title>Ficha de Producto</title>
+<link href="/FO_WebContent/css/estilostextos.css" rel="stylesheet" type="text/css" />
+<script language="JavaScript" src="/FO_WebContent/js/funciones.js"></script>
+<style type="text/css">
+<!--
+body {
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+}
+.style1 {color: #FFFFFF}
+.style2 {font-size: 8pt}
+-->
+</style>
+</head>
+<body onLoad="focus();top.showPromoPaso3();" bgcolor="#ffffff">
+<table width="395" height="300" border="0" cellspacing="0" cellpadding="0">
+	<tr>
+		<td>
+			<table width="100%" border="0" cellspacing="0" cellpadding="0" class="TablaFicha">
+				<tr>
+					<td>
+						<div style="overflow:auto; width:100%; height:304px" >
+							<table width="100%" border="0" cellpadding="0" cellspacing="0">
+								<tr>
+									<td valign="top" width="100%">
+										<table width="394" border="0" cellspacing="0" cellpadding="0">
+											<tr>
+            									<th width="75%" bgcolor="#def7ad" class="titulolectura" scope="col">&nbsp;</th>
+            									<th width="25%" bgcolor="#def7ad" class="titulolectura style2" scope="col">AHORRO</th>
+          									</tr>
+        								</table>
+		  								<table id="t_promociones">
+											<tr>
+												<td width="82%"></td>
+												<td width="18%"></td>
+											</tr>
+										</table>
+										<table id="total_promociones">
+											<tr>	
+												<td>
+													<div align="right">TOTAL CON PROMOCIONES</div>
+												</td>
+		    									<td width="100px" background="/FO_IMGS/img/estructura/fondo_total_ahorro.gif">
+		    										<div id="total_descuentos" align="center">$0</div>
+												</td>
+											</tr>
+										</table>
+										<br>
+									</td>
+								</tr>
+							</table>
+							<!-- BEGIN DYNAMIC: CLIENTE_MISPROMO -->
+							<table width="394" border="0" cellpadding="3" cellspacing="0" bgcolor="#ff860c">
+          						<tr>
+            						<th class="titulolectura style1" scope="col">
+										<div align="left" class="style2">Mis Promociones </div>
+									</th>
+          						</tr>
+        					</table>
+							<table width="394" border="0" cellspacing="0" cellpadding="0">
+          						<tr>
+            						<th width="79%" bgcolor="#ffe1b1" class="titulolectura" scope="col">&nbsp;</th>
+            						<th width="21%" bgcolor="#ffe1b1" class="titulolectura style2" scope="col">&nbsp;</th>
+          						</tr>
+								<tr>
+									<td>
+										<ul>	
+											<!-- BEGIN DYNAMIC: L_PROMOCIONES_TCP -->
+											<li class="lectura">{descripcion}</li>
+											<!-- END DYNAMIC: L_PROMOCIONES_TCP -->
+										</ul>
+									</td>
+								</tr>
+        					</table>
+							<br>
+							<!-- END DYNAMIC: CLIENTE_MISPROMO -->
+						</div>
+					</td>
+  				</tr>
+			</table>
+			<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  				<tr>
+					<td width="5" height="5" align="left" valign="bottom"><img src="/FO_IMGS/img/ficha/tabla-inf-izq.gif" width="5" height="5" /></td>
+					<td background="/FO_IMGS/img/ficha/tabla-inferior.gif"><img src="/FO_IMGS/img/ficha/tabla-inferior.gif" width="1" height="5" /></td>
+					<td background="/FO_IMGS/img/ficha/tabla-inferior.gif"><img src="/FO_IMGS/img/ficha/tabla-inferior.gif" width="1" height="5" /></td>
+					<td width="6" height="5" align="right" valign="bottom"><img src="/FO_IMGS/img/ficha/tabla-inf-der.gif" width="6" height="5" /></td>
+  				</tr>
+			</table>
+		</td>
+	</tr>
+</table>			
+<script>
+	var promo = top.document.ftotal_desc._total_desc_{tipotarjeta}_txt.value.split("#");
+	//alert(promo.length + " {tipotarjeta}");
+	var total = 0;
+	for( var i = 0; i < promo.length-1; i++ ) {
+		//alert(promo[i]);
+		datos = promo[i].split("--");
+		var x=window.document.getElementById('t_promociones').insertRow(-1);
+		var c1=x.insertCell(0);
+		var c2=x.insertCell(1);
+		c1.innerHTML=datos[0];		
+		c2.innerHTML=datos[1];
+	}
+	
+	document.getElementById('total_descuentos').innerHTML = top.document.ftotal_desc._total_desc_{tipotarjeta}.value
+</script>
+</body>
+</html>

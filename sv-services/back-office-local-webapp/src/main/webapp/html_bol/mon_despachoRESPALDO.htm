@@ -1,0 +1,268 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html><!-- InstanceBegin template="/Templates/fullbody.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="EXPIRES" CONTENT="Mon, 22 Jul 2002 11:12:01 GMT">
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>Jumbo.cl Back Office Local</title>
+<!-- InstanceEndEditable -->
+
+<!-- InstanceBeginEditable name="head" -->
+<SCRIPT LANGUAGE="JavaScript" SRC="CalendarPopup.js"></SCRIPT>
+<SCRIPT LANGUAGE="JavaScript">document.write(getCalendarStyles());</SCRIPT>
+<SCRIPT LANGUAGE="JavaScript" SRC="funciones.js"></SCRIPT>
+<!-- InstanceEndEditable -->
+
+<link href="estilos.css" rel="stylesheet" type="text/css">
+<!--link href="../Prototipo/default.css" rel="stylesheet" type="text/css"-->
+<style type="text/css">
+<!--
+.style1 {color: #666666}
+-->
+</style>
+</head>
+
+<body>
+<link rel="stylesheet" href="menu/menu.css">
+<script language="JavaScript" src="menu/menu.js"></script>
+<script language="JavaScript" src="menu/menu_tpl.js"></script>
+<script language="JavaScript" src="menu/menu_items.js"></script>
+<table width="780" height="100%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+    <td height="78" valign="top">
+	
+	<TABLE width="100%" height=59 border=0 align="center" cellpadding="0" cellspacing="0" bgcolor="#ffffff">
+	  <TR>
+		<TD width=275 height="59" align=left class=user><img src="img/header2.jpg" width="275" height="60"></TD>
+		<TD width=505 align=left valign="bottom" background="img/bg-1.jpg" class=user><table width="90%"  border="0" align="center" cellpadding="0" cellspacing="2">
+          <tr>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td><div align="right" class="infoBL">Usuario: {hdr_nombre} | Local: {hdr_local} | {hdr_fecha} </div></td>
+          </tr>
+        </table></TD>
+	  </TR>
+	</TABLE>
+	<TABLE width="100%" height=19 border=0 align="center" cellpadding="0" cellspacing="0" bgcolor="#f1f0e9" style="border-top:1px solid #ABABAB; border-bottom:1px solid #ABABAB">
+	  <TR>
+		<TD align=left bgcolor="#FFFFFF" class=user></TD>
+		</TR>
+	</TABLE>
+
+	
+	</td>
+  </tr>
+  <tr height="400">
+    <td valign="top" bgcolor="#FFFFFF">
+      <table border=0 width="100%" class='ContentTitle'>
+        <tr>
+          <td width="53%" height="20" class='HeaderTitle'><!-- InstanceBeginEditable name="Titulo" -->
+				Monitor de Despachos <!-- InstanceEndEditable --></td>
+          <td width="47%" class='HeaderTitle'><!-- InstanceBeginEditable name="Botonera" --><!-- InstanceEndEditable --></td>
+        </tr>
+      </table>
+	  <br>
+      <table width="100%"  border="0" cellspacing="2" cellpadding="2">
+        <tr valign="top">
+          <td width="71%"><!-- InstanceBeginEditable name="Izquierda" -->
+      <script src="validacion.js"></script>
+      <script>
+      function submitForm1(flag){
+	  		df = document.form1;
+	  		if(forma3.id_pedido.value==""){
+	  			alert("Debe ingresar un nro. de pedido");
+	  			forma3.id_pedido.focus();
+	  			return false;
+	  		}
+	  		df.id_pedido.value = document.getElementById('txt_id_pedido').value;
+			// reglas de validacion
+			//df.id_jornada.obligatorio=true;
+			df.id_pedido.numerico=true;
+			df.id_pedido.label='Nº Pedido';
+			
+			if(verify(flag,df)) df.submit();
+
+	  	}
+	  	function submitForm2(){
+	  		df=document.form2;
+	  		if(forma3.fecha.value==""){
+	  			alert("Debe ingresar una fecha.");
+	  			forma3.fecha.focus();
+	  			return false;
+	  		}
+	  		
+	  		df.fecha.value = document.getElementById('txt_fecha').value;
+	  		
+	  		df.submit();
+	  	}	  		  			  	
+	  </script> <!-- Formulario buscar por id_pedido -->
+		<form name="form1" method="get" action="ViewMonitorDespacho"><input
+			type="hidden" name="id_pedido" value=""></form>
+		<!-- Formulario buscar por fecha -->
+		<form name="form2" method="get" action="ViewMonitorDespacho"><input
+			type="hidden" name="fecha" value=""></form>
+		<!-- Fin formularios -->
+          
+				<table width="90%" border="0" align="center" cellpadding="0" cellspacing="0">
+					<tr>
+						<td>
+						<fieldset><legend>Buscador de Despachos </legend>
+						<table width="100%" border="0" cellspacing="2" cellpadding="0">
+							<tr>
+								<td width="44%">Nº Pedido</td>
+								<td width="31%">Fecha Despacho</td>
+								<td width="25%">&nbsp;</td>
+							</tr>
+
+							<tr>
+							<!--<form name="form1" method="get" action="ViewMonitorDespacho">
+								<td><input name = "id_pedido" type="text" id="txt_id_pedido" value="{id_pedido}" onKeydown="if (event.ctrlKey && (String.fromCharCode(event.keyCode).toLowerCase() == 'c' || String.fromCharCode(event.keyCode).toLowerCase() == 'v')) { event.keyCode = 0; }"> <input
+									type="button" class="cmd" value="Buscar"
+									onClick="submitForm1(0);"></td>							
+							</form>-->
+							<!-- JScript Calendario -->
+		                  	<SCRIPT LANGUAGE="JavaScript" ID="js17">
+							var ayer = new Date(30,4,2006,12,0,0,0);
+							var cal1 = new CalendarPopup("testdiv1");
+							cal1.offsetX = -140;
+							cal1.offsetY = -50;
+							</SCRIPT>
+							
+							<form name="forma3">
+							<td><input name = "id_pedido" type="text" id="txt_id_pedido" value="{id_pedido}" maxlength = "10" onpaste = "return false;" onKeydown="if (event.ctrlKey && (String.fromCharCode(event.keyCode).toLowerCase() == 'c' || String.fromCharCode(event.keyCode).toLowerCase() == 'v')) { event.keyCode = 0; }"> <input
+									type="button" class="cmd" value="Buscar"
+									onClick="submitForm1(0);"></td>							
+		                    <td>
+		                    <input name = "fecha" type="text" id="txt_fecha" value="{fecha}" onClick="cal1.select(document.forms[2].txt_fecha,'anchor1','yyyy-MM-dd'); return false;" readonly="true">
+		                        <a href="#" onClick="cal1.select(document.forms[2].txt_fecha,'anchor1','yyyy-MM-dd'); return false;" name="anchor1" id="anchor1">
+		                        <img src="img/cal.gif" width="16" height="16" border="0">
+		                        </a>
+		                        <input type="button" class="cmd" value="Buscar" onClick="submitForm2();"></td>
+		                    <td>&nbsp;</td>
+		                  </tr> 
+		                  </form>         
+						</table>
+						<DIV ID="testdiv1"
+					STYLE="position:absolute;visibility:hidden;background-color:white;layer-background-color:white;"></DIV>
+						</fieldset>
+						</td>
+					</tr>
+					<tr><td><a href = "ViewMonitorDespacho?fecha={anterior}">{anterior_label}</a>
+						 {despacho} {fecha_despacho} 
+						<a href = "ViewMonitorDespacho?fecha={siguiente}">{siguiente_label}</a></td>
+					</tr>
+				</table>
+				<br>
+				<form name="forma1" method="get" action="ViewMonitorDespacho">
+				<input type=hidden name=fecha value="{fecha}" >
+				<table width="700" border="0" align="center" cellpadding="2"
+					cellspacing="0" class="tabla2">
+					<tr>
+						<th width="52">N&deg; OP</th>
+						<th width="164">Dir Despacho</th>
+						<th width="90">Hora Despacho<br>
+						<select name="h_despacho" onchange="submit(this.form);">
+							<option value="" {sel}>Todos</option>
+							<!-- BEGIN DYNAMIC: select_hora_despacho -->
+							<option value="{h_inicio}"{sel}>{h_total}</option>
+							<!-- END DYNAMIC: select_hora_despacho -->
+						</select></th>
+						<th width="70">Cant Bins</th>
+						<th width="76">Zona Despacho</th>
+						<th width="85">Comuna<br>
+						<select name="id_comuna" onchange="submit(this.form);">
+							<option value = "-1" {sel3}>Todas</option>
+							<!-- BEGIN DYNAMIC: select_comunas -->
+							<option value="{id_comuna}"{sel3}>{comuna}</option>
+							<!-- END DYNAMIC: select_comunas -->							
+						</select></th>
+						<th width="80">Estado<br>
+					<!-- 	<select name="id_estado" onchange="submit(this.form);">
+							<option value="-1" {sel2}>Todos</option>  -->						
+							<!-- BEGIN DYNAMIC: select_estado -->
+					<!-- 		<option value="{id_estado}"{sel2}>{estado}</option>  -->
+							<!-- END DYNAMIC: select_estado -->
+					<!--   </select></th> -->
+						<th width="61">Acciones</th>
+					</tr>
+					<!-- BEGIN DYNAMIC: listado -->
+					
+					
+					<tr>
+						<td {borderstyle}>
+						<div align="center" >{cam_color1}{id_pedido}{cam_color2}</div>
+						</td>
+						<td {borderstyle}>
+						<div align="left">{cam_color1}{dir_calle} {dir_numero}{dir_depto}{cam_color2}</div>
+						</td>
+						<td {borderstyle}>
+						<div align="center">{cam_color1}{hora_ini} - {hora_fin}{cam_color2}</div>
+						</td>
+						<td {borderstyle}>
+						<div align="center">{cam_color1}{cant_bin}{cam_color2}</div>
+						</td>
+						<td {borderstyle}>
+						<div align="left">{cam_color1}{zona_desp}{cam_color2}</div>
+						</td>
+						<td {borderstyle}>
+						<div align="left">{cam_color1}{comuna_desp}{cam_color2}</div>
+						</td>
+						<td {borderstyle}>
+						<div align="left">{cam_color1}{estado_desp}{cam_color2}</div>
+						</td>
+						<td {borderstyle}>
+						<div align="center">{cam_color1}<a
+							href="ViewDespacho?id_pedido={id_pedido}">ver</a>{cam_color2}</div>
+						</td>
+						</font>
+					</tr>
+					
+					<!-- END DYNAMIC: listado -->					
+				</table>
+				</form>
+				<table width="680" border="0" align="center" cellpadding="2"
+					cellspacing="2">
+					<tr>
+					<td width="600" height="30" align="center"><font color="red"><b>{mensaje}</b></font></td>
+						<td>
+						<!-- <form name="pagform" method="get" action="ViewMonitorDespacho">
+						<div align="right">P&aacute;g <select name="pag" onChange="submit(this.form);">  -->
+							<!-- BEGIN DYNAMIC: select_paginacion -->
+						<!-- <option value="{pag}"{sel1}>{pag}</option>  -->
+							<!-- END DYNAMIC: select_paginacion -->							
+						<!-- </select></div>
+					    </form>  -->	
+						</td>
+					</tr>
+				</table>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				
+				<script>
+			document.forma3.id_pedido.numerico=true;
+			document.forma3.id_pedido.label = 'Id pedido';	
+			document.forma3.id_pedido.onkeypress = KeyIsNumber;
+		</script>
+				<!-- InstanceEndEditable --></td>
+        </tr>
+      </table>
+      </td>
+  </tr>
+  <tr>
+    <td>
+	<TABLE width="100%" height=19 border=0 align="center" cellpadding="0" cellspacing="0" bgcolor="#f1f0e9" style="border-top:1px solid #ABABAB; border-bottom:1px solid #ABABAB">
+	  <TR>
+		<TD align=center bgcolor="#67b01a" class=infoBL><div align="center">Back Office Local - Jumbo.cl</div></TD>
+		</TR>
+	</TABLE>
+
+	
+	</td>
+  </tr>
+</table>
+</body>
+<!-- InstanceEnd --></html>

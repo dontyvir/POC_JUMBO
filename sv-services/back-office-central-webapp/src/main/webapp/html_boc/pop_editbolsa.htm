@@ -1,0 +1,115 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html><!-- InstanceBegin template="/Templates/print.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+	<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+	<META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+	<META HTTP-EQUIV="EXPIRES" CONTENT="Mon, 22 Jul 2002 11:12:01 GMT">
+	<!-- InstanceBeginEditable name="doctitle" -->
+	<title>Jumbo.cl Back Office Central</title>
+	<!-- InstanceEndEditable -->
+	<!-- InstanceBeginEditable name="head" --><!-- InstanceEndEditable -->
+	<link href="estilos.css" rel="stylesheet" type="text/css">
+	<style type="text/css">
+	<!--
+	body {
+		background-color: #FFFFFF;
+	}
+	-->
+	</style>
+</head>
+<body>
+	<br>		
+		
+	<script language="JavaScript" src="funciones.js"></script>		
+	<SCRIPT LANGUAGE="JavaScript">window.name='winmodal'</SCRIPT>
+	
+	<script>
+		function validar_form(){
+			try{
+				var flag = false;
+				if(esVacio(document.form1.desc_bolsa.value)){
+					alert("El campo Descripci\u00F3n Bolsa es de tipo obligatorio");
+					document.form1.desc_bolsa.focus();
+					flag = true;
+				}
+				if(esVacio(document.form1.cod_barra_bolsa.value)){
+					alert("El campo C\u00F3digo Barra Bolsa es de tipo obligatorio");
+					document.form1.cod_barra_bolsa.focus();
+					flag = true;
+				}
+				if(!flag){
+					valor = document.form1.cod_bolsa.value + "|" + document.form1.desc_bolsa.value + "|" + document.form1.cod_barra_bolsa.value;
+					window.returnValue = valor;
+					window.close();
+				}
+			}catch(e){
+				alert(e);
+			}
+		}
+
+		function esNumero(valor){
+			if (!/^([0-9])*$/.test(valor)){
+				return true;
+			}else{
+				return false;
+			}
+		}
+		
+		function esVacio(valor){
+			if (valor == "" && !(/^\s+$/.test(valor))){
+				return true;
+			}else{
+				return false;
+			}
+		}
+	
+	</script>			
+    <table width="95%"  border="0" align="center" cellpadding="0" cellspacing="2">
+      <tr>
+        <td><fieldset>
+        <legend>Editar Bolsa</legend>
+	<br>
+	<form name="form1" method="post" action="XXX">
+		<table width="95%"  border="0" align="center" cellpadding="0" cellspacing="0">
+			<tr>
+				<td>Código sap</td>
+				<td> : </td>
+				<td><input type="text" name="cod_sap" id="cod_sap" readonly="readonly" disabled="disabled" value="{cod_sap}" /></td>
+			</tr>
+			<tr>
+				<td>Código bolsa</td>
+				<td> : </td>
+				<td><input type="text" name="cod_bolsa" id="cod_bolsa" readonly="readonly" disabled="disabled" value="{cod_bolsa}" /></td>
+			</tr>
+			<tr>
+				<td>ID producto</td>
+				<td> : </td>
+				<td><input type="text" name="id_producto" id="id_producto" readonly="readonly" disabled="disabled" value="{id_producto}" /></td>
+			</tr>
+			<tr>
+				<td>Descripción</td>
+				<td> : </td>
+				<td><input type="text" name="desc_bolsa" id="desc_bolsa" value="{desc_bolsa}"/></td>
+			</tr>
+			<tr>
+				<td>Código barra</td>
+				<td> : </td>
+				<td><input type="text" name="cod_barra_bolsa" id="cod_barra_bolsa" value="{cod_barra_bolsa}"/></td>
+			</tr>
+			<tr>
+				<td><br/></td>
+				<td><br/></td>
+				<td><br/></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td colspan="2"><input type="button" value="Guardar" onclick="javascript:validar_form();"/></td>
+				<td></td>
+			</tr>
+		</table>
+	</form>
+
+</body>
+</html>

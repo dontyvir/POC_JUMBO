@@ -1,0 +1,33 @@
+<form action="PreciosUpdate" method="get">
+	<input name="codsap" type="hidden" value="{codsap}" />
+	<div>
+		{msg}
+	</div>
+	<fieldset>
+		<legend> Actualizar precios y desbloquear</legend>
+		<!-- BEGIN DYNAMIC: PRODUCTOS -->
+		<div>
+			<label>IdBo: </label> {id} 
+			<label>Descripción: </label>{descripcion} 
+			<label>Unidad: </label>{unidad}
+			<table>
+				<tr>
+					<th>local</th>
+					<th>precio</th>
+					<th>bloqueado</th>
+				</tr>
+				<!-- BEGIN DYNAMIC: PRECIOS -->
+				<tr>
+					<td>{local_nom}</td>
+					<td><input name="precio_{id}_{local_id}" type="text" value="{precio}" /></td>
+					<td><input name="bloqueo_{id}_{local_id}" type="checkbox" {bloqueado} /></td>
+				</tr>
+				<!-- END DYNAMIC: PRECIOS -->
+			</table>
+		</div>
+		<!-- END DYNAMIC: PRODUCTOS --> 
+		<input type="submit" value="Grabar" />
+		<br />
+	</fieldset>
+	<a href="PreciosIndex"> Volver </a>
+</form>

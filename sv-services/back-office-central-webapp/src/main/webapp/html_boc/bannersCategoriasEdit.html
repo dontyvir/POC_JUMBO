@@ -1,0 +1,50 @@
+<div>
+	<div style="font-size: 9pt; float: left;">
+		Categor&iacute;a : {nombre}
+	</div>
+	<div align="right">
+		<a class="HeaderTitle" id="banners_volver" href="#">Volver</a>
+	</div>
+</div>
+<div id="contenedor">
+	<ul>
+		<li><a href="#div_banner"><span>Banners</span></a></li>
+	</ul>
+	<div id="div_banner">
+		<div>
+			<div id="activo">
+				<input type="hidden" id="categoria_id" name="categoria_id" value="{bca_cat_id}"/>
+				Estado de visualización
+				<SELECT id="bca_estado" name="bca_estado">
+					<OPTION value="1" {activo_banner1}>Activado</OPTION>
+					<OPTION value="0" {activo_banner0}>Desactivado</OPTION>
+				</SELECT>
+			</div>
+			<div id="multi1">
+				Fecha Inicio <input id="bca_fch_inicio" type="text" value="{bca_fch_inicio}"/> 
+				<button type="button">
+					<img width="16" height="16" border="0" alt="Debe ingresar Fecha de Inicio y Fecha de Termino" src="img/cal.gif"/>
+				</button>
+			</div>
+			<div id="multi2">
+				Fecha Termino <input id="bca_fch_termino" type="text" value="{bca_fch_termino}"/>
+				<button type="button">
+					<img width="16" height="16" border="0" alt="Debe ingresar Fecha de Inicio y Fecha de Termino" src="img/cal.gif"/>
+				</button>
+			</div>
+		</div>
+		<table width="700"  border="0" align="center" cellpadding="2" cellspacing="0" class="tabla2">
+			<tr>
+				<th>Nombre</th>
+				<th>Imagen</th>
+				<th>Acción</th>
+			</tr>
+			<tr>
+				<td>Principal</td>
+				<td><div id="b1" class="dbanner">{bca_banner_principal}</div></td>
+				<td><a id="ab1" class="preview" href="#">Vista Previa</a></td>
+			</tr>
+		</table>	
+		<div id="banner_preview"></div>	
+	</div>
+</div>

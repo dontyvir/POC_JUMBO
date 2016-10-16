@@ -1,0 +1,2852 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app id="WebApp_ID" version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+	<display-name>FO</display-name>
+	<servlet>
+		<servlet-name>log4j-init</servlet-name>
+		<servlet-class>cl.bbr.log.Log4jInit</servlet-class>
+		<init-param>
+			<param-name>log4j-init-file</param-name>
+			<param-value>/WEB-INF/classes/log4j.properties</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet>
+		<description>Controler para el registro de cliente</description>
+		<display-name>RegisterForm</display-name>
+		<servlet-name>RegisterForm</servlet-name>
+		<servlet-class>cl.bbr.fo.command.RegisterForm</servlet-class>
+		<init-param>
+			<description>Template para el registro de clientes</description>
+			<param-name>pag_form</param-name>
+			<param-value>/registro.html</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Controler para el registro de cliente</description>
+		<display-name>RegisterFormListDes</display-name>
+		<servlet-name>RegisterFormListDes</servlet-name>
+		<servlet-class>cl.bbr.fo.command.RegisterFormListDes</servlet-class>
+		<init-param>
+			<description>Template para el registro de direcciones de despacho</description>
+			<param-name>pag_form</param-name>
+			<param-value>/registro_list.html</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Crea un nuevo cliente</description>
+		<display-name>RegisterNew</display-name>
+		<servlet-name>RegisterNew</servlet-name>
+		<servlet-class>cl.bbr.fo.command.RegisterNew</servlet-class>
+		<init-param>
+			<description>Template para mail</description>
+			<param-name>arc_mail</param-name>
+			<param-value>/mail/mailbienvenida.html</param-value>
+		</init-param>
+		<init-param>
+			<description>Template para mail sin cobertura</description>
+			<param-name>mail_sc</param-name>
+			<param-value>/mail/mailBienvenidaSinCobertura.html</param-value>
+		</init-param>
+		<init-param>
+			<description>Redireccion exito</description>
+			<param-name>dis_ok</param-name>
+			<param-value>BienvenidaRegisterForm</param-value>
+		</init-param>
+		<init-param>
+			<description>Redireccion Error</description>
+			<param-name>dis_er</param-name>
+			<param-value>/RegisterForm</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Desinscribe un cliente de la lista de mails</description>
+		<display-name>DesinscribeMail</display-name>
+		<servlet-name>DesinscribeMail</servlet-name>
+		<servlet-class>cl.bbr.fo.command.DesinscribeMail</servlet-class>
+		<init-param>
+			<description>Redireccion exito</description>
+			<param-name>dis_ok</param-name>
+			<param-value>desinscripcion-exito.html</param-value>
+		</init-param>
+		<init-param>
+			<description>Redireccion Error</description>
+			<param-name>dis_err</param-name>
+			<param-value>desinscripcion-error.html</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Modifica un cliente</description>
+		<display-name>RegisterUpdate</display-name>
+		<servlet-name>RegisterUpdate</servlet-name>
+		<servlet-class>cl.bbr.fo.command.RegisterUpdate</servlet-class>
+	</servlet>
+	<servlet>
+		<description>Formulario de logon de un cliente</description>
+		<display-name>LogonForm</display-name>
+		<servlet-name>LogonForm</servlet-name>
+		<servlet-class>cl.bbr.fo.command.LogonForm</servlet-class>
+		<init-param>
+			<description>Template para el registro de clientes</description>
+			<param-name>pag_form</param-name>
+			<param-value>/inicio.html</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Prueba Get</description>
+		<display-name>pruebaGet</display-name>
+		<servlet-name>pruebaGet</servlet-name>
+		<servlet-class>cl.bbr.fo.command.pruebaGet</servlet-class>
+		
+	</servlet>
+	<servlet>
+		<description>Logon de un cliente</description>
+		<display-name>Logon</display-name>
+		<servlet-name>Logon</servlet-name>
+		<servlet-class>cl.bbr.fo.command.Logon</servlet-class>
+		<init-param>
+			<description>Redireccion OK por defecto</description>
+			<param-name>dis_ok</param-name>
+			<param-value>BienvenidaForm</param-value>
+		</init-param>
+		<init-param>
+			<description>Redireccion Error</description>
+			<param-name>dis_er</param-name>
+			<param-value>/LogonForm</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Chequea Login de un cliente</description>
+		<display-name>CheckLogin</display-name>
+		<servlet-name>CheckLogin</servlet-name>
+		<servlet-class>cl.bbr.fo.command.CheckLogin</servlet-class>
+	</servlet>
+	<servlet>
+		<description>Logoff de un cliente</description>
+		<display-name>Logoff</display-name>
+		<servlet-name>Logoff</servlet-name>
+		<servlet-class>cl.bbr.fo.command.Logoff</servlet-class>
+		<init-param>
+			<description>Redireccion OK</description>
+			<param-name>dis_ok</param-name>
+			<param-value>LogonForm</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Test ORM</description>
+		<display-name>TestDB</display-name>
+		<servlet-name>TestDB</servlet-name>
+		<servlet-class>cl.bbr.fo.command.TestDB</servlet-class>
+	</servlet>
+	<servlet>
+		<description>Formulario para direcciones de despacho</description>
+		<display-name>AddressForm</display-name>
+		<servlet-name>AddressForm</servlet-name>
+		<servlet-class>cl.bbr.fo.command.AddressForm</servlet-class>
+		<init-param>
+			<description>Template para formulario</description>
+			<param-name>pag_form</param-name>
+			<param-value>/lugaresDespacho.html</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Nuevo formulario para datos personales</description>
+		<display-name>DatosPersonalesForm</display-name>
+		<servlet-name>DatosPersonalesForm</servlet-name>
+		<servlet-class>cl.bbr.fo.command.DatosPersonalesForm</servlet-class>
+		<init-param>
+			<description>Template para formulario</description>
+			<param-name>pag_form</param-name>
+			<param-value>/datosPersonales.html</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Modifica un cliente</description>
+		<display-name>DatosPersonalesUpdate</display-name>
+		<servlet-name>DatosPersonalesUpdate</servlet-name>
+		<servlet-class>cl.bbr.fo.command.DatosPersonalesUpdate</servlet-class>
+	</servlet>
+	<servlet>
+		<description>Formulario para direcciones de despacho</description>
+		<display-name>AddressAdd</display-name>
+		<servlet-name>AddressAdd</servlet-name>
+		<servlet-class>cl.bbr.fo.command.AddressAdd</servlet-class>
+		<init-param>
+			<description>Template para formulario</description>
+			<param-name>dis_ok</param-name>
+			<param-value>AddressForm</param-value>
+		</init-param>
+		<init-param>
+			<description>Template para formulario</description>
+			<param-name>dis_er</param-name>
+			<param-value>/AddressForm</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Formulario para direcciones de despacho</description>
+		<display-name>AddressDelete</display-name>
+		<servlet-name>AddressDelete</servlet-name>
+		<servlet-class>cl.bbr.fo.command.AddressDelete</servlet-class>
+		<init-param>
+			<description>URL</description>
+			<param-name>dis_ok</param-name>
+			<param-value>UltComprasForm?opcion=1</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Formulario para direcciones de despacho</description>
+		<display-name>AddressUpdate</display-name>
+		<servlet-name>AddressUpdate</servlet-name>
+		<servlet-class>cl.bbr.fo.command.AddressUpdate</servlet-class>
+		<init-param>
+			<description>Redireccion en caso de exito</description>
+			<param-name>dis_ok</param-name>
+			<param-value>AddressForm</param-value>
+		</init-param>
+		<init-param>
+			<description>Redireccion en caso de error</description>
+			<param-name>dis_er</param-name>
+			<param-value>/AddressForm</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Comando para modificar la clave</description>
+		<display-name>ResetPasswordForm</display-name>
+		<servlet-name>ResetPasswordForm</servlet-name>
+		<servlet-class>cl.bbr.fo.command.ResetPasswordForm</servlet-class>
+		<init-param>
+			<description>Template para formulario desde el Home</description>
+			<param-name>pag_form0</param-name>
+			<param-value>/layers/nuevaclaveExito.html</param-value>
+		</init-param>
+		<init-param>
+			<description>Template para formulario desde Recuperacion de Clave</description>
+			<param-name>pag_form1</param-name>
+			<param-value>/layers/clave_recuperacion.html</param-value>
+		</init-param>
+		<init-param>
+			<description>Redireccion Error desde el Home</description>
+			<param-name>dis_er0</param-name>
+			<param-value>/layers/enviodatos-error.html</param-value>
+		</init-param>
+		<init-param>
+			<description>Redireccion Error desde Cambio de Clave</description>
+			<param-name>dis_er1</param-name>
+			<param-value>/layers/clave_error.html</param-value>
+		</init-param>
+		<init-param>
+			<description>Template para mail</description>
+			<param-name>arc_mail</param-name>
+			<param-value>/mail/mailenvio_recuperacionclave.html</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Comando que checkea y almacena una lista de compra</description>
+		<display-name>SaveList</display-name>
+		<servlet-name>SaveList</servlet-name>
+		<servlet-class>cl.bbr.fo.command.SaveList</servlet-class>
+	</servlet>
+	<servlet>
+		<description>Comando que elimina una lista de compra</description>
+		<display-name>DeleteList</display-name>
+		<servlet-name>DeleteList</servlet-name>
+		<servlet-class>cl.bbr.fo.command.DeleteList</servlet-class>
+	</servlet>
+	<servlet>
+		<description>Comando de modificacion de clave</description>
+		<display-name>SendAnswerQuestion</display-name>
+		<servlet-name>SendAnswerQuestion</servlet-name>
+		<servlet-class>cl.bbr.fo.command.SendAnswerQuestion</servlet-class>
+		<init-param>
+			<description>Template para mail</description>
+			<param-name>arc_mail</param-name>
+			<param-value>/mail/mailenviorespuesta.html</param-value>
+		</init-param>
+		<init-param>
+			<description>Template para formulario</description>
+			<param-name>dis_ok</param-name>
+			<param-value>/layers/respuestapreguntaExito.html</param-value>
+		</init-param>
+		<init-param>
+			<description>Redireccion Error</description>
+			<param-name>dis_er</param-name>
+			<param-value>/layers/enviodatos-error.html</param-value>
+		</init-param>
+	</servlet>
+
+	<servlet>
+		<description>Bienvenida Form</description>
+		<display-name>BienvenidaForm</display-name>
+		<servlet-name>BienvenidaForm</servlet-name>
+		<servlet-class>cl.bbr.fo.command.BienvenidaForm</servlet-class>
+		<init-param>
+			<description>Template para formulario</description>
+			<param-name>pag_form</param-name>
+			<param-value>/bienvenida.html</param-value>
+		</init-param>
+		<init-param>
+			<description>Cliente con sin cobertura</description>
+			<param-name>pag_form_sc</param-name>
+			<param-value>/bienvenidaSinCobertura.html</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Bienvenida Register Form</description>
+		<display-name>BienvenidaRegisterForm</display-name>
+		<servlet-name>BienvenidaRegisterForm</servlet-name>
+		<servlet-class>cl.bbr.fo.command.BienvenidaRegisterForm</servlet-class>
+		<init-param>
+			<description>Template para formulario</description>
+			<param-name>pag_form</param-name>
+			<param-value>/bienvenida_registro.html</param-value>
+		</init-param>
+		<init-param>
+			<description>Bienvenida sin cobertura</description>
+			<param-name>bnv_sc</param-name>
+			<param-value>/bienvenida_registroSinCobertura.html</param-value>
+		</init-param>		
+	</servlet>
+	<servlet>
+		<description>Formulario Ultimas compras</description>
+		<display-name>UltComprasForm</display-name>
+		<servlet-name>UltComprasForm</servlet-name>
+		<servlet-class>cl.bbr.fo.command.UltComprasForm</servlet-class>
+		<init-param>
+			<description>Template para formulario</description>
+			<param-name>pag_form</param-name>
+			<param-value>/paso1.html</param-value>
+		</init-param>
+		<init-param>
+			<description>Si hay que borrar carro de compras</description>
+			<param-name>dis_del</param-name>
+			<param-value>OrderItemDeleteAll</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Ultimas compras Display form</description>
+		<display-name>UltComprasDisplayForm</display-name>
+		<servlet-name>UltComprasDisplayForm</servlet-name>
+		<servlet-class>cl.bbr.fo.command.UltComprasDisplayForm</servlet-class>
+		<init-param>
+			<description>Template para formulario</description>
+			<param-name>pag_form</param-name>
+			<param-value>/RescateComprasPaso1b.html</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Listas de ultimas compras</description>
+		<display-name>UltComprasProList</display-name>
+		<servlet-name>UltComprasProList</servlet-name>
+		<servlet-class>cl.bbr.fo.command.UltComprasProList</servlet-class>
+		<init-param>
+			<description>Template para formulario</description>
+			<param-name>pag_form</param-name>
+			<param-value>/RescateComprasPaso1.html</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Listas producstos del carro</description>
+		<display-name>OrderItemDisplay</display-name>
+		<servlet-name>OrderItemDisplay</servlet-name>
+		<servlet-class>cl.bbr.fo.command.OrderItemDisplay</servlet-class>
+		<init-param>
+			<description>Template para formulario</description>
+			<param-name>pag_form</param-name>
+			<param-value>/carro.html</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Lista Mi Carro</description>
+		<display-name>MiCarro</display-name>
+		<servlet-name>MiCarro</servlet-name>
+		<servlet-class>cl.bbr.fo.command.MiCarro</servlet-class>
+		<init-param>
+			<description>Template para formulario</description>
+			<param-name>pag_form</param-name>
+			<param-value>/micarro.html</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Trae los productos del carro</description>
+		<display-name>AjaxMiCarro</display-name>
+		<servlet-name>AjaxMiCarro</servlet-name>
+		<servlet-class>cl.bbr.fo.command.AjaxMiCarro</servlet-class>
+		<init-param>
+			<description>Template para formulario</description>
+			<param-name>pag_form</param-name>
+			<param-value>/ajaxmicarro.html</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Actualiza Totalizador Mi carro</description>
+		<display-name>ActualizaTotalesMiCarro</display-name>
+		<servlet-name>ActualizaTotalesMiCarro</servlet-name>
+		<servlet-class>cl.bbr.fo.command.ActualizaTotalesMiCarro</servlet-class>
+		<init-param>
+			<description>Template para formulario</description>
+			<param-name>pag_form</param-name>
+			<param-value>/totalesmicarro.html</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Eliminar Producto desde Micarro</description>
+		<display-name>EliminarProductoMiCarro</display-name>
+		<servlet-name>EliminarProductoMiCarro</servlet-name>
+		<servlet-class>cl.bbr.fo.command.EliminarProductoMiCarro</servlet-class>
+	</servlet>
+	<servlet>
+		<description>Consultar cliente por rut</description>
+		<display-name>AjaxExisteCliente</display-name>
+		<servlet-name>AjaxExisteCliente</servlet-name>
+		<servlet-class>cl.bbr.fo.command.AjaxExisteCliente</servlet-class>
+	</servlet>
+	<servlet>
+		<description>Modificar Cantidad Producto Micarro</description>
+		<display-name>ModificarCantidadProductoMiCarro</display-name>
+		<servlet-name>ModificarCantidadProductoMiCarro</servlet-name>
+		<servlet-class>cl.bbr.fo.command.ModificarCantidadProductoMiCarro</servlet-class>
+	</servlet>
+	<servlet>
+		<description>Limpia Mi Carro</description>
+		<display-name>LimpiarMiCarro</display-name>
+		<servlet-name>LimpiarMiCarro</servlet-name>
+		<servlet-class>cl.bbr.fo.command.LimpiarMiCarro</servlet-class>
+		<init-param>
+			<description>Redireccion OK</description>
+			<param-name>dis_ok</param-name>
+			<param-value>MiCarro</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Productos Carro</description>
+		<display-name>BienvenidaCarDisplay</display-name>
+		<servlet-name>BienvenidaCarDisplay</servlet-name>
+		<servlet-class>cl.bbr.fo.command.BienvenidaCarDisplay</servlet-class>
+		<init-param>
+			<description>Template para Carro</description>
+			<param-name>pag_form</param-name>
+			<param-value>/carroguardado.html</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Guarda Criterios Mi Carro</description>
+		<display-name>GuardaCriteriosMiCarro</display-name>
+		<servlet-name>GuardaCriteriosMiCarro</servlet-name>
+		<servlet-class>cl.bbr.fo.command.GuardaCriteriosMiCarro</servlet-class>
+		<init-param>
+			<description>Redireccion OK</description>
+			<param-name>dis_ok</param-name>
+			<param-value>Despacho</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Pagina de Despacho</description>
+		<display-name>Despacho</display-name>
+		<servlet-name>Despacho</servlet-name>
+		<servlet-class>cl.bbr.fo.command.Despacho</servlet-class>
+		<init-param>
+			<description>Template para despacho</description>
+			<param-name>pag_form</param-name>
+			<param-value>/despacho.html</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Pagina de Ingreso Cliente KCC</description>
+		<display-name>IngresoClienteKcc</display-name>
+		<servlet-name>IngresoClienteKcc</servlet-name>
+		<servlet-class>cl.bbr.fo.command.ClienteKCC</servlet-class>
+		<init-param>
+			<description>Template para ingreso cliente kcc</description>
+			<param-name>pag_form</param-name>
+			<param-value>/clienteKcc.html</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Pagina de Preventa Sanmsung S6</description>
+		<display-name>PreventaSG6</display-name>
+		<servlet-name>PreventaSG6</servlet-name>
+		<servlet-class>cl.bbr.fo.command.PreventaSG6</servlet-class>
+		<init-param>
+			<description>Template para ingreso preventa SG6</description>
+			<param-name>pag_form</param-name>
+			<param-value>/preventaSG6.html</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Pagina de Ingreso Cliente PR</description>
+		<display-name>IngresoClientePR</display-name>
+		<servlet-name>IngresoClientePR</servlet-name>
+		<servlet-class>cl.bbr.fo.command.ClientePR</servlet-class>
+		<init-param>
+			<description>Template para ingreso cliente kcc</description>
+			<param-name>pag_form</param-name>
+			<param-value>/clientePR.html</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Guarda Datos de Despacho</description>
+		<display-name>GuardaDatosDespacho</display-name>
+		<servlet-name>GuardaDatosDespacho</servlet-name>
+		<servlet-class>cl.bbr.fo.command.GuardaDatosDespacho</servlet-class>
+		<init-param>
+			<description>Redireccion OK</description>
+			<param-name>dis_ok</param-name>
+			<param-value>Pago</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Pagina de Pago</description>
+		<display-name>Pago</display-name>
+		<servlet-name>Pago</servlet-name>
+		<servlet-class>cl.bbr.fo.command.Pago</servlet-class>
+		<init-param>
+			<description>Template para pago</description>
+			<param-name>pag_form</param-name>
+			<param-value>/pago.html</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Pagina de Pago Mobile</description>
+		<display-name>MobilePago</display-name>
+		<servlet-name>MobilePago</servlet-name>
+		<servlet-class>cl.bbr.fo.command.MobilePago</servlet-class>
+		<init-param>
+			<description>Template para pago</description>
+			<param-name>pag_form</param-name>
+			<param-value>/mobilepago.html</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Ajax Pagina de Pago</description>
+		<display-name>AjaxPago</display-name>
+		<servlet-name>AjaxPago</servlet-name>
+		<servlet-class>cl.bbr.fo.command.AjaxPago</servlet-class>
+		<init-param>
+			<description>Template para formulario</description>
+			<param-name>pag_form</param-name>
+			<param-value>/ajaxpago.html</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Controler para modificacion de cliente</description>
+		<display-name>RegisterUpdForm</display-name>
+		<servlet-name>RegisterUpdForm</servlet-name>
+		<servlet-class>cl.bbr.fo.command.RegisterUpdForm</servlet-class>
+		<init-param>
+			<description>Template para la modificacion de clientes</description>
+			<param-name>pag_form</param-name>
+			<param-value>/actualizardatos.html</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Registros de clientes en sesion</description>
+		<display-name>RegisterNewSes</display-name>
+		<servlet-name>RegisterNewSes</servlet-name>
+		<servlet-class>cl.bbr.fo.command.RegisterNewSes</servlet-class>
+	</servlet>
+	<servlet>
+		<description>Comunas de las regiones</description>
+		<display-name>ComunasList</display-name>
+		<servlet-name>ComunasList</servlet-name>
+		<servlet-class>cl.bbr.fo.command.ComunasList</servlet-class>
+	</servlet>
+	<servlet>
+		<description>Comunas de las regiones</description>
+		<display-name>AjaxComunasList</display-name>
+		<servlet-name>AjaxComunasList</servlet-name>
+		<servlet-class>cl.bbr.fo.command.AjaxComunasList</servlet-class>
+		<init-param>
+			<description>Template para las comunas</description>
+			<param-name>pag_form</param-name>
+			<param-value>/ajaxcomunas.html</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Agrega Dirección del cliente</description>
+		<display-name>AjaxAgregaDireccion</display-name>
+		<servlet-name>AjaxAgregaDireccion</servlet-name>
+		<servlet-class>cl.bbr.fo.command.AjaxAgregaDireccion</servlet-class> 
+		<init-param>
+			<description>Template para traer las direcciones del cliente</description>
+			<param-name>pag_form</param-name>
+			<param-value>/ajaxdirecciones.html</param-value>
+		</init-param>
+	</servlet>
+	
+	<servlet>
+		<description>Modifica Dirección del cliente</description>
+		<display-name>AjaxModificaDireccionRegSencillo</display-name>
+		<servlet-name>AjaxModificaDireccionRegSencillo</servlet-name>
+		<servlet-class>cl.bbr.fo.command.AjaxModificaDireccionRegSencillo</servlet-class>
+	</servlet>
+	<servlet>
+		<description>Agrega Dirección del cliente</description>
+		<display-name>AjaxLlenaFormDireccionRegSencillo</display-name>
+		<servlet-name>AjaxLlenaFormDireccionRegSencillo</servlet-name>
+		<servlet-class>cl.bbr.fo.command.AjaxLlenaFormDireccionRegSencillo</servlet-class>
+	</servlet>
+	<servlet>
+		<description>Recupera la lista de Tipos de Calle</description>
+		<display-name>AjaxTiposCalle</display-name>
+		<servlet-name>AjaxTiposCalle</servlet-name>
+		<servlet-class>cl.bbr.fo.command.AjaxTiposCalle</servlet-class>
+	</servlet>
+	
+	
+	<servlet>
+		<description>Muestra Mensaje de Registro Exitoso despues del Loggin</description>
+		<display-name>AjaxMensajeRegistrar</display-name>
+		<servlet-name>AjaxMensajeRegistrar</servlet-name>
+		<servlet-class>cl.bbr.fo.command.AjaxMensajeRegistrar</servlet-class>
+	</servlet>
+	
+	<servlet>
+		<description>Modifica Dirección del cliente</description>
+		<display-name>AjaxModificaDireccion</display-name>
+		<servlet-name>AjaxModificaDireccion</servlet-name>
+		<servlet-class>cl.bbr.fo.command.AjaxModificaDireccion</servlet-class>
+		<init-param>
+			<description>Template para traer las direcciones del cliente</description>
+			<param-name>pag_form</param-name>
+			<param-value>/ajaxdirecciones.html</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Trae los datos de una dirección del cliente</description>
+		<display-name>AjaxTraeDireccion</display-name>
+		<servlet-name>AjaxTraeDireccion</servlet-name>
+		<servlet-class>cl.bbr.fo.command.AjaxTraeDireccion</servlet-class>
+	</servlet>
+	<servlet>
+		<description>Registros de clientes en sesion</description>
+		<display-name>RegisterNewSesDel</display-name>
+		<servlet-name>RegisterNewSesDel</servlet-name>
+		<servlet-class>cl.bbr.fo.command.RegisterNewSesDel</servlet-class>
+		<init-param>
+			<description>Template para formulario</description>
+			<param-name>dis_ok</param-name>
+			<param-value>RegisterFormListDes</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Trae la Zona de una comuna (polígono cero)</description>
+		<display-name>AjaxGetZona</display-name>
+		<servlet-name>AjaxGetZona</servlet-name>
+		<servlet-class>cl.bbr.fo.command.AjaxGetZona</servlet-class>
+	</servlet>
+	<servlet>
+		<description>Get Registros de despachos en sesion</description>
+		<display-name>RegisterFormGetDes</display-name>
+		<servlet-name>RegisterFormGetDes</servlet-name>
+		<servlet-class>cl.bbr.fo.command.RegisterFormGetDes</servlet-class>
+	</servlet>
+	<servlet>
+		<description>Modifica Carro de Compras</description>
+		<display-name>OrderItemUpdate</display-name>
+		<servlet-name>OrderItemUpdate</servlet-name>
+		<servlet-class>cl.bbr.fo.command.OrderItemUpdate</servlet-class>
+		<init-param>
+			<description>Redireccion OK</description>
+			<param-name>dis_ok</param-name>
+			<param-value>OrderItemDisplay</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Agregar producto al Carro de Compras</description>
+		<display-name>OrderItemAdd</display-name>
+		<servlet-name>OrderItemAdd</servlet-name>
+		<servlet-class>cl.bbr.fo.command.OrderItemAdd</servlet-class>
+		<init-param>
+			<description>Redireccion OK</description>
+			<param-name>dis_ok</param-name>
+			<param-value>OrderItemDisplay</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Pasar por caja</description>
+		<display-name>CheckoutForm</display-name>
+		<servlet-name>CheckoutForm</servlet-name>
+		<servlet-class>cl.bbr.fo.command.CheckoutForm</servlet-class>
+		<init-param>
+			<description>Template para formulario</description>
+			<param-name>pag_form</param-name>
+			<param-value>/paso3.html</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Listado de productos</description>
+		<display-name>CheckoutProList</display-name>
+		<servlet-name>CheckoutProList</servlet-name>
+		<servlet-class>cl.bbr.fo.command.CheckoutProList</servlet-class>
+		<init-param>
+			<description>Template para formulario</description>
+			<param-name>pag_form</param-name>
+			<param-value>/carro-paso3.html</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Modificacion de Direccion</description>
+		<display-name>CheckoutAddressForm</display-name>
+		<servlet-name>CheckoutAddressForm</servlet-name>
+		<servlet-class>cl.bbr.fo.command.CheckoutAddressForm</servlet-class>
+		<init-param>
+			<description>Confirmacion</description>
+			<param-name>pag_confirmacion</param-name>
+			<param-value>/layers/advertenciamodificardatos.html</param-value>
+		</init-param>
+		<init-param>
+			<description>Template para formulario</description>
+			<param-name>pag_form</param-name>
+			<param-value>/layers/cambiardireccion.html</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Modifica Forma Desapcho (Ajax)</description>
+		<display-name>CheckoutAddressUpdate</display-name>
+		<servlet-name>CheckoutAddressUpdate</servlet-name>
+		<servlet-class>cl.bbr.fo.command.CheckoutAddressUpdate</servlet-class>
+	</servlet>
+	<servlet>
+		<description>Categorias nuevo paso2</description>
+		<display-name>CategoryDisplay</display-name>
+		<servlet-name>CategoryDisplay</servlet-name>
+		<servlet-class>cl.bbr.fo.command.CategoryDisplay</servlet-class>
+		<init-param>
+			<description>Template para formulario</description>
+			<param-name>pag_form</param-name>
+			<param-value>/paso2/principal.html</param-value>
+		</init-param>
+		<init-param>
+			<description>Template para formulario con categorias</description>
+			<param-name>pag_form_cat</param-name>
+			<param-value>/paso2/principal.html</param-value>
+		</init-param>
+	</servlet>
+	<!-- NSepulveda: INICIO NUEVO SERVLET PARA CATALOGO EXTERNO -->
+	<servlet>
+		<description>Categorias nuevo paso2 Catalogo Externo</description>
+		<display-name>CategoryDisplays</display-name>
+		<servlet-name>CategoryDisplays</servlet-name>
+		<servlet-class>cl.bbr.fo.command.CategoryDisplays</servlet-class>
+		<init-param>
+			<description>Template para formulario</description>
+			<param-name>pag_form</param-name>
+			<param-value>/paso2/principal.html</param-value>
+		</init-param>
+		<init-param>
+			<description>Template para formulario con categorias</description>
+			<param-name>pag_form_cat</param-name>
+			<param-value>/paso2/principal.html</param-value>
+		</init-param>
+	</servlet>	
+	<!-- NSepulveda: FIN NUEVO SERVLET PARA CATALOGO EXTERNO -->
+	<servlet>
+		<description>Header del Home</description>
+		<display-name>AjaxLogonForm</display-name>
+		<servlet-name>AjaxLogonForm</servlet-name>
+		<servlet-class>cl.bbr.fo.command.AjaxLogonForm</servlet-class>
+		<init-param>
+			<description>Template para formulario</description>
+			<param-name>pag_form</param-name>
+			<param-value>/ajaxheaderhome.html</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Listado de Categorias Barra Superior</description>
+		<display-name>AjaxCategoriasTop</display-name>
+		<servlet-name>AjaxCategoriasTop</servlet-name>
+		<servlet-class>cl.bbr.fo.command.AjaxCategoriasTop</servlet-class>
+		<init-param>
+			<description>Template para formulario</description>
+			<param-name>pag_form</param-name>
+			<param-value>/categoriasTop.html</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Listado de Categorias Barra Lateral Izquierda</description>
+		<display-name>AjaxCategoriasLeft</display-name>
+		<servlet-name>AjaxCategoriasLeft</servlet-name>
+		<servlet-class>cl.bbr.fo.command.AjaxCategoriasLeft</servlet-class>
+		<init-param>
+			<description>Template para formulario</description>
+			<param-name>pag_form</param-name>
+			<param-value>/paso2/categoriasLeft.html</param-value>
+		</init-param>
+		<init-param>
+			<description>Template para formulario con categorias</description>
+			<param-name>pag_form_cat</param-name>
+			<param-value>/paso2/principal.html</param-value>
+		</init-param>
+	</servlet>
+	
+	<servlet>
+		<description>Categorias paso2</description>
+		<display-name>CategoryDisplayOld</display-name>
+		<servlet-name>CategoryDisplayOld</servlet-name>
+		<servlet-class>cl.bbr.fo.command.CategoryDisplay</servlet-class>
+		<init-param>
+			<description>Template para formulario</description>
+			<param-name>pag_form</param-name>
+			<param-value>/paso2.html</param-value>
+		</init-param>
+		<init-param>
+			<description>Template para formulario con categorias</description>
+			<param-name>pag_form_cat</param-name>
+			<param-value>/paso2b.html</param-value>
+		</init-param>
+	</servlet>
+	
+	
+	<servlet>
+		<description>Paso dos mostrar publicidad en categorias</description>
+		<display-name>PasoDosPub</display-name>
+		<servlet-name>PasoDosPub</servlet-name>
+		<servlet-class>cl.bbr.fo.command.PasoDosPub</servlet-class>
+		<init-param>
+			<description></description>
+			<param-name>pag_form</param-name>
+			<param-value>/paso2/pub.html</param-value>
+		</init-param>
+		<init-param>
+			<description></description>
+			<param-name>default</param-name>
+			<param-value>/paso2/default.html</param-value>
+		</init-param>
+		<init-param>
+			<description></description>
+			<param-name>solobanner</param-name>
+			<param-value>/paso2/solobanner.html</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Categorias Mostrar productos (nuevo paso 2)</description>
+		<display-name>PasoDosResultado</display-name>
+		<servlet-name>PasoDosResultado</servlet-name>
+		<servlet-class>cl.bbr.fo.command.PasoDosResultado</servlet-class>
+		<init-param>
+			<description>Template para formulario</description>
+			<param-name>pag_form</param-name>
+			<param-value>/paso2/productos.html</param-value>
+		</init-param>
+	</servlet>
+	
+	<servlet>
+		<description>Paso dos autocompletar</description>
+		<display-name>PasoDosAutocompletar</display-name>
+		<servlet-name>PasoDosAutocompletar</servlet-name>
+		<servlet-class>cl.bbr.fo.command.mobi.PasoDosAutocompletar</servlet-class>
+	</servlet>
+	
+	<servlet>
+		<description>Productos paso2</description>
+		<display-name>CategoryProList</display-name>
+		<servlet-name>CategoryProList</servlet-name>
+		<servlet-class>cl.bbr.fo.command.CategoryProList</servlet-class>
+		<init-param>
+			<description>Template para formulario</description>
+			<param-name>pag_form</param-name>
+			<param-value>/categorias/bebidasgasificadas.html</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Resumen</description>
+		<display-name>OrderDisplay</display-name>
+		<servlet-name>OrderDisplay</servlet-name>
+		<servlet-class>cl.bbr.fo.command.OrderDisplay</servlet-class>
+		<init-param>
+			<description>Template para formulario</description>
+			<param-name>pag_form</param-name>
+			<param-value>/resumencompra.html</param-value>
+		</init-param>
+		<init-param>
+			<description>Template usuario logueado</description>
+			<param-name>pag_form_logueado</param-name>
+			<param-value>/resumen.html</param-value>
+		</init-param>
+		<init-param>
+			<description>Template para usuario invitado</description>
+			<param-name>pag_form_invitado</param-name>
+			<param-value>/resumeninvitado.html</param-value>
+		</init-param>
+		
+	</servlet>
+	<servlet>
+		<description>Confirmar Compra</description>
+		<display-name>OrderProcess</display-name>
+		<servlet-name>OrderProcess</servlet-name>
+		<servlet-class>cl.bbr.fo.command.OrderProcess</servlet-class>
+		<init-param>
+			<description>Redireccion OK</description>
+			<param-name>dis_ok</param-name>
+			<param-value>OrderDisplay</param-value>
+		</init-param>
+		<init-param>
+			<description>Redireccion Error</description>
+			<param-name>dis_er</param-name>
+			<param-value>/CheckoutForm</param-value>
+		</init-param>
+		<init-param>
+			<description>Template para mail</description>
+			<param-name>arc_mail</param-name>
+			<param-value>/mail/mailresumen.html</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Guarda Pedido</description>
+		<display-name>OrderSetList</display-name>
+		<servlet-name>OrderSetList</servlet-name>
+		<servlet-class>cl.bbr.fo.command.OrderSetList</servlet-class>
+		<init-param>
+			<description>Redireccion OK</description>
+			<param-name>dis_ok</param-name>
+			<param-value>Logoff</param-value>
+		</init-param>
+		<init-param>
+			<description>Redireccion OK</description>
+			<param-name>dis_ok_fono</param-name>
+			<param-value>FonoCliLogonForm</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Guarda Pedido</description>
+		<display-name>OrderSetListInvitado</display-name>
+		<servlet-name>OrderSetListInvitado</servlet-name>
+		<servlet-class>cl.bbr.fo.command.OrderSetListInvitado</servlet-class>
+		<init-param>
+			<description>Redireccion OK</description>
+			<param-name>dis_ok</param-name>
+			<param-value>Logoff</param-value>
+		</init-param>
+		<init-param>
+			<description>Redireccion OK</description>
+			<param-name>dis_ok_fono</param-name>
+			<param-value>FonoCliLogonForm</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Revisa si existe order</description>
+		<display-name>OrderSet</display-name>
+		<servlet-name>OrderSet</servlet-name>
+		<servlet-class>cl.bbr.fo.command.OrderSet</servlet-class>
+	</servlet>
+	<servlet>
+		<description>Ficha de Producto</description>
+		<display-name>ProductDisplay</display-name>
+		<servlet-name>ProductDisplay</servlet-name>
+		<servlet-class>cl.bbr.fo.command.ProductDisplay</servlet-class>
+		<init-param>
+			<description>Template para formulario</description>
+			<param-name>pag_form</param-name>
+			<param-value>/ficha.html</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Busqueda de Producto</description>
+		<display-name>SearchItemDisplay</display-name>
+		<servlet-name>SearchItemDisplay</servlet-name>
+		<servlet-class>cl.bbr.fo.command.SearchItemDisplay</servlet-class>
+		<init-param>
+			<description>Template para formulario</description>
+			<param-name>pag_form</param-name>
+			<param-value>/busqueda_avanzada_resultado.html</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Cambio de clave Olvidada</description>
+		<display-name>ChangeForgottenPasswordForm</display-name>
+		<servlet-name>ChangeForgottenPasswordForm</servlet-name>
+		<servlet-class>cl.bbr.fo.command.ChangeForgottenPasswordForm</servlet-class>
+		<init-param>
+			<description>Template para formulario</description>
+			<param-name>pag_form</param-name>
+			<param-value>/layers/clave_nuevaclave.html</param-value>
+		</init-param>
+		<init-param>
+			<description>Respuesta Incorrecta</description>
+			<param-name>resp_inc</param-name>
+			<param-value>ResetPasswordForm</param-value>
+		</init-param>
+		<init-param>
+			<description>Redireccion Error</description>
+			<param-name>dis_er</param-name>
+			<param-value>/layers/clave_error.html</param-value>
+		</init-param>
+		<init-param>
+			<description>Respuesta Incorrecta - Usuario ya modifico Clave</description>
+			<param-name>resp_inc2</param-name>
+			<param-value>/layers/clave_codigoexpirado.html</param-value>
+		</init-param>		
+	</servlet>
+	<servlet>
+		<description>Cambio de clave olvidada</description>
+		<display-name>ChangeForgottenPassword</display-name>
+		<servlet-name>ChangeForgottenPassword</servlet-name>
+		<servlet-class>cl.bbr.fo.command.ChangeForgottenPassword</servlet-class>
+		<init-param>
+			<description>Template para formulario</description>
+			<param-name>dis_ok</param-name>
+			<param-value>/FO_WebContent/layers/clave_exito.html</param-value>
+		</init-param>
+		<init-param>
+			<description>Template para formulario</description>
+			<param-name>dis_er_para</param-name>
+			<param-value>ChangeForgottenPasswordForm</param-value>
+		</init-param>
+		<init-param>
+			<description>Template para formulario</description>
+			<param-name>dis_er</param-name>
+			<param-value>ChangeForgottenPasswordForm</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Actualiza datos cliente paso3</description>
+		<display-name>ChangeDatosPaso3</display-name>
+		<servlet-name>ChangeDatosPaso3</servlet-name>
+		<servlet-class>cl.bbr.fo.command.ChangeDatosPaso3</servlet-class>
+		<init-param>
+			<description>Template para formulario</description>
+			<param-name>dis_ok</param-name>
+			<param-value>/layers/act_mail_exito.html</param-value>
+		</init-param>
+		<init-param>
+			<description>Template para formulario</description>
+			<param-name>dis_err</param-name>
+			<param-value>layers/act_mail_error.html</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Busqueda Avanzada de Producto</description>
+		<display-name>SearchDisplay</display-name>
+		<servlet-name>SearchDisplay</servlet-name>
+		<servlet-class>cl.bbr.fo.command.SearchDisplay</servlet-class>
+		<init-param>
+			<description>Template para formulario</description>
+			<param-name>pag_form</param-name>
+			<param-value>/busqueda_avanzada.html</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Despliegue de productos por Marca</description>
+		<display-name>SearchItemList</display-name>
+		<servlet-name>SearchItemList</servlet-name>
+		<servlet-class>cl.bbr.fo.command.SearchItemList</servlet-class>
+		<init-param>
+			<description>Template para formulario</description>
+			<param-name>pag_form</param-name>
+			<param-value>/paso2c.html</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Busqueda por Marca</description>
+		<display-name>SearchItemBList</display-name>
+		<servlet-name>SearchItemBList</servlet-name>
+		<servlet-class>cl.bbr.fo.command.SearchItemBList</servlet-class>
+		<init-param>
+			<description>Template para formulario</description>
+			<param-name>pag_form</param-name>
+			<param-value>/paso2d.html</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Busqueda por seccion</description>
+		<display-name>SearchProductDisplay</display-name>
+		<servlet-name>SearchProductDisplay</servlet-name>
+		<servlet-class>cl.bbr.fo.command.SearchProductDisplay</servlet-class>
+		<init-param>
+			<description>Template para formulario</description>
+			<param-name>pag_form</param-name>
+			<param-value>/searche.html</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Productos por seccion</description>
+		<display-name>SearchProList</display-name>
+		<servlet-name>SearchProList</servlet-name>
+		<servlet-class>cl.bbr.fo.command.SearchProList</servlet-class>
+		<init-param>
+			<description>Template para formulario</description>
+			<param-name>pag_form</param-name>
+			<param-value>/searchf.html</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Busqueda del rut</description>
+		<display-name>RegisterCheck</display-name>
+		<servlet-name>RegisterCheck</servlet-name>
+		<servlet-class>cl.bbr.fo.command.RegisterCheck</servlet-class>
+	</servlet>
+	<servlet>
+		<description>Valida cuenta en el checkout</description>
+		<display-name>ValidaCuentaCheck</display-name>
+		<servlet-name>ValidaCuentaCheck</servlet-name>
+		<servlet-class>cl.bbr.fo.command.ValidaCuentaCheck</servlet-class>
+	</servlet>
+	<servlet>
+		<description>Formulario de conexion para Fono Compras</description>
+		<display-name>FonoLogonForm</display-name>
+		<servlet-name>FonoLogonForm</servlet-name>
+		<servlet-class>cl.bbr.fo.command.FonoLogonForm</servlet-class>
+		<init-param>
+			<description>Template para formulario</description>
+			<param-name>pag_form</param-name>
+			<param-value>/inicio-call.html</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Conexion para Fono Compras</description>
+		<display-name>FonoLogon</display-name>
+		<servlet-name>FonoLogon</servlet-name>
+		<servlet-class>cl.bbr.fo.command.FonoLogon</servlet-class>
+		<init-param>
+			<description>Redireccion en caso de error</description>
+			<param-name>dis_er</param-name>
+			<param-value>/FonoLogonForm</param-value>
+		</init-param>
+		<init-param>
+			<description>Redireccion en caso de exito</description>
+			<param-name>dis_ok</param-name>
+			<param-value>FonoCliLogonForm</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Desconexion para Fono Compras</description>
+		<display-name>FonoLogoff</display-name>
+		<servlet-name>FonoLogoff</servlet-name>
+		<servlet-class>cl.bbr.fo.command.FonoLogoff</servlet-class>
+		<init-param>
+			<description>Redireccion</description>
+			<param-name>dis_ok</param-name>
+			<param-value>FonoLogonForm</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Formulario de conexion para clientes de Fono Compras</description>
+		<display-name>FonoCliLogonForm</display-name>
+		<servlet-name>FonoCliLogonForm</servlet-name>
+		<servlet-class>cl.bbr.fo.command.FonoCliLogonForm</servlet-class>
+		<init-param>
+			<description>Template para formulario</description>
+			<param-name>pag_form</param-name>
+			<param-value>/log-cliente-call.html</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Formulario de registro para clientes de Fono Compras</description>
+		<display-name>FonoCliRegisterForm</display-name>
+		<servlet-name>FonoCliRegisterForm</servlet-name>
+		<servlet-class>cl.bbr.fo.command.FonoCliRegisterForm</servlet-class>
+		<init-param>
+			<description>Template para el registro de clientes</description>
+			<param-name>pag_form</param-name>
+			<param-value>/registro.html</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Formulario de registro para clientes de Fono Compras</description>
+		<display-name>FonoCliLogon</display-name>
+		<servlet-name>FonoCliLogon</servlet-name>
+		<servlet-class>cl.bbr.fo.command.FonoCliLogon</servlet-class>
+		<init-param>
+			<description>Redireccion en caso de error</description>
+			<param-name>dis_er</param-name>
+			<param-value>/FonoCliLogonForm</param-value>
+		</init-param>
+		<init-param>
+			<description>Redireccion en caso de error</description>
+			<param-name>dis_er_para</param-name>
+			<param-value>/FonoCliLogonForm</param-value>
+		</init-param>
+		<init-param>
+			<description>Redireccion en caso de exito</description>
+			<param-name>dis_ok</param-name>
+			<param-value>UltComprasForm?opcion=1</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Formulario de registro para clientes de Fono Compras</description>
+		<display-name>FonoCliRegisterNew</display-name>
+		<servlet-name>FonoCliRegisterNew</servlet-name>
+		<servlet-class>cl.bbr.fo.command.FonoCliRegisterNew</servlet-class>
+		<init-param>
+			<description>Redireccion en caso de error</description>
+			<param-name>dis_er</param-name>
+			<param-value>/FonoCliRegisterForm</param-value>
+		</init-param>
+		<init-param>
+			<description>Redireccion en caso de error</description>
+			<param-name>dis_er_para</param-name>
+			<param-value>/FonoCliRegisterForm</param-value>
+		</init-param>
+		<init-param>
+			<description>Redireccion en caso de exito</description>
+			<param-name>dis_ok</param-name>
+			<param-value>BienvenidaRegisterForm</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Imprimir Resumen y lista de Compra</description>
+		<display-name>OrderPrint</display-name>
+		<servlet-name>OrderPrint</servlet-name>
+		<servlet-class>cl.bbr.fo.command.OrderPrint</servlet-class>
+		<init-param>
+			<description>Template para formulario</description>
+			<param-name>pag_form</param-name>
+			<param-value>/imprimir.html</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Elimina todos los productos del carro de compras</description>
+		<display-name>OrderItemDeleteAll</display-name>
+		<servlet-name>OrderItemDeleteAll</servlet-name>
+		<servlet-class>cl.bbr.fo.command.OrderItemDeleteAll</servlet-class>
+		<init-param>
+			<description>Redireccion en caso de exito</description>
+			<param-name>dis_ok</param-name>
+			<param-value>/UltComprasForm</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Presenta cuadro de despachos</description>
+		<display-name>DespachoChart</display-name>
+		<servlet-name>DespachoChart</servlet-name>
+		<servlet-class>cl.bbr.fo.command.DespachoChart</servlet-class>
+		<init-param>
+			<description>Template para formulario</description>
+			<param-name>pag_form</param-name>
+			<param-value>/layers/calendario.html</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Presenta cuadro de despachos</description>
+		<display-name>AjaxDespachoChart</display-name>
+		<servlet-name>AjaxDespachoChart</servlet-name>
+		<servlet-class>cl.bbr.fo.command.AjaxDespachoChart</servlet-class>
+		<init-param>
+			<description>Template para formulario</description>
+			<param-name>pag_form</param-name>
+			<param-value>/layers/calendario_despacho.html</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+        <description>Confirmación del Cliente de su Dirección en el Mapa</description>
+        <display-name>AjaxMapa</display-name>
+        <servlet-name>AjaxMapa</servlet-name>
+        <servlet-class>cl.bbr.fo.command.AjaxMapa</servlet-class>
+    </servlet>	
+	<servlet>
+		<description>Categorias Faq</description>
+		<display-name>FaqDisplay</display-name>
+		<servlet-name>FaqDisplay</servlet-name>
+		<servlet-class>cl.bbr.fo.command.FaqDisplay</servlet-class>
+		<init-param>
+			<description>Template para formulario</description>
+			<param-name>pag_form</param-name>
+			<param-value>/faqcat.html</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Pregunta Faq</description>
+		<display-name>FaqrespDisplay</display-name>
+		<servlet-name>FaqrespDisplay</servlet-name>
+		<servlet-class>cl.bbr.fo.command.FaqrespDisplay</servlet-class>
+		<init-param>
+			<description>Template para formulario</description>
+			<param-name>pag_form</param-name>
+			<param-value>/faqresp.html</param-value>
+		</init-param>
+	</servlet>	
+	<servlet>
+		<description>Marketing</description>
+		<display-name>ViewElemento</display-name>
+		<servlet-name>ViewElemento</servlet-name>
+		<servlet-class>cl.bbr.fo.command.ViewElemento</servlet-class>
+		<init-param>
+			<description>Redireccion en caso de exito</description>
+			<param-name>dis_ok</param-name>
+			<param-value>/UltComprasForm</param-value>
+		</init-param>
+		<init-param>
+			<description>Redireccion en caso de error</description>
+			<param-name>dis_er</param-name>
+			<param-value>/layers/enviodatos-error.html</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+        <description>Valida los productos del carro de compras (Ajax)</description>
+        <display-name>ValidaCarroCompras</display-name>
+        <servlet-name>ValidaCarroCompras</servlet-name>
+        <servlet-class>cl.bbr.fo.command.ValidaCarroCompras</servlet-class>
+		<!-- INDRA 2012-11-13 -->
+	    <init-param>
+			<description>LightBox Productos Despublicados</description>
+			<param-name>pag_form</param-name>
+			<param-value>/ltbxValidacion/lightBoxProdSinStock.html</param-value>
+		</init-param>
+		<!-- INDRA 2012-11-13 -->
+	</servlet>
+	<servlet>
+		<description>Exportar lista de ultimas compras</description>
+		<display-name>ExportarUltComprasProList</display-name>
+		<servlet-name>ExportarUltComprasProList</servlet-name>
+		<servlet-class>cl.bbr.fo.command.ExportarUltComprasProList</servlet-class>
+	</servlet>
+
+	<servlet>
+		<description>Enviar correo con listado de productos de mis listas</description>
+		<display-name>EnviarCorreoComprasProList</display-name>
+		<servlet-name>EnviarCorreoComprasProList</servlet-name>
+		<servlet-class>cl.bbr.fo.command.EnviarCorreoComprasProList</servlet-class>
+		<init-param>
+			<description>Template para mail</description>
+			<param-name>list_mail</param-name>
+			<param-value>/mail/listaPorMail.html</param-value>
+		</init-param>
+	</servlet>	
+
+	<servlet>
+		<description>Promociones</description>
+		<display-name>ViewPromociones</display-name>
+		<servlet-name>ViewPromociones</servlet-name>
+		<servlet-class>cl.bbr.fo.command.ViewPromociones</servlet-class>
+		<init-param>
+			<description>Template para formulario</description>
+			<param-name>pag_form</param-name>
+			<param-value>
+				/promociones.html
+			</param-value>
+		</init-param>
+	</servlet>	
+	<servlet>
+		<description>Resumen Promociones Carro de Compra</description>
+		<display-name>ViewPromocionesCh</display-name>
+		<servlet-name>ViewPromocionesCh</servlet-name>
+		<servlet-class>cl.bbr.fo.command.ViewPromocionesCh</servlet-class>
+		<init-param>
+			<description>Template para formulario</description>
+			<param-name>pag_form</param-name>
+			<param-value>/promocionesch.html</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Resumen Promociones Paso3</description>
+		<display-name>ViewPromocionesP3</display-name>
+		<servlet-name>ViewPromocionesP3</servlet-name>
+		<servlet-class>cl.bbr.fo.command.ViewPromocionesP3</servlet-class>
+		<init-param>
+			<description>Template para formulario</description>
+			<param-name>pag_form</param-name>
+			<param-value>
+				/promocionespaso3.html
+			</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Mis Promociones</description>
+		<display-name>ViewTcpPromociones</display-name>
+		<servlet-name>ViewTcpPromociones</servlet-name>
+		<servlet-class>cl.bbr.fo.command.ViewTcpPromociones</servlet-class>
+		<init-param>
+			<description>Template para formulario</description>
+			<param-name>pag_form</param-name>
+			<param-value>
+				/mispromociones.html
+			</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Upd Cupon</description>
+		<display-name>CuponUpd</display-name>
+		<servlet-name>CuponUpd</servlet-name>
+		<servlet-class>cl.bbr.fo.command.CuponUpd</servlet-class>
+		<init-param>
+			<description>Redireccion en caso de exito</description>
+			<param-name>dis_ok</param-name>
+			<param-value>CheckoutProList</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+        <description>Resumen Mis Promociones</description>
+        <display-name>ViewMisPromociones</display-name>
+        <servlet-name>ViewMisPromociones</servlet-name>
+        <servlet-class>cl.bbr.fo.command.ViewMisPromociones</servlet-class>
+        <init-param>
+           <description>Template para formulario</description>
+           <param-name>pag_form</param-name>
+           <param-value>/mispromociones.html</param-value>
+        </init-param>
+    </servlet>
+    
+    <!-- INI - SERVLETS PARA MOBILE -->
+    <servlet>
+		<description>Formulario de logon de un cliente - mobile</description>
+		<display-name>LogonFormMobi</display-name>
+		<servlet-name>LogonFormMobi</servlet-name>
+		<servlet-class>cl.bbr.fo.command.LogonForm</servlet-class>
+		<init-param>
+			<description>Template para el registro de clientes</description>
+			<param-name>pag_form</param-name>
+			<param-value>/mobi/inicio.html</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Bienvenida Form - mobile</description>
+		<display-name>BienvenidaFormMobi</display-name>
+		<servlet-name>BienvenidaFormMobi</servlet-name>
+		<servlet-class>cl.bbr.fo.command.BienvenidaForm</servlet-class>
+		<init-param>
+			<description>Template para formulario</description>
+			<param-name>pag_form</param-name>
+			<param-value>/mobi/bienvenida.html</param-value>
+		</init-param>
+		<init-param>
+			<description>Cliente con sin cobertura</description>
+			<param-name>pag_form_sc</param-name>
+			<param-value>/bienvenidaSinCobertura.html</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Formulario para direcciones de despacho - mobile</description>
+		<display-name>AddressFormMobi</display-name>
+		<servlet-name>AddressFormMobi</servlet-name>
+		<servlet-class>cl.bbr.fo.command.AddressForm</servlet-class>
+		<init-param>
+			<description>Template para formulario</description>
+			<param-name>pag_form</param-name>
+			<param-value>/mobi/lugaresDespacho.html</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Formulario para direcciones de despacho - mobile</description>
+		<display-name>AddressUpdateMobi</display-name>
+		<servlet-name>AddressUpdateMobi</servlet-name>
+		<servlet-class>cl.bbr.fo.command.AddressUpdate</servlet-class>
+		<init-param>
+			<description>Redireccion en caso de exito</description>
+			<param-name>dis_ok</param-name>
+			<param-value>AddressFormMobi</param-value>
+		</init-param>
+		<init-param>
+			<description>Redireccion en caso de error</description>
+			<param-name>dis_er</param-name>
+			<param-value>/AddressFormMobi</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Formulario para direcciones de despacho - mobile</description>
+		<display-name>AddressAddMobi</display-name>
+		<servlet-name>AddressAddMobi</servlet-name>
+		<servlet-class>cl.bbr.fo.command.AddressAdd</servlet-class>
+		<init-param>
+			<description>Template para formulario</description>
+			<param-name>dis_ok</param-name>
+			<param-value>AddressFormMobi</param-value>
+		</init-param>
+		<init-param>
+			<description>Template para formulario</description>
+			<param-name>dis_er</param-name>
+			<param-value>/AddressFormMobi</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Formulario para direcciones de despacho - mobi</description>
+		<display-name>AddressDeleteMobi</display-name>
+		<servlet-name>AddressDeleteMobi</servlet-name>
+		<servlet-class>cl.bbr.fo.command.AddressDelete</servlet-class>
+		<init-param>
+			<description>URL</description>
+			<param-name>dis_ok</param-name>
+			<param-value>AddressFormMobi</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Formulario Ultimas compras - mobile</description>
+		<display-name>UltComprasFormMobi</display-name>
+		<servlet-name>UltComprasFormMobi</servlet-name>
+		<servlet-class>cl.bbr.fo.command.mobi.UltComprasForm</servlet-class>
+		<init-param>
+			<description>Template para formulario</description>
+			<param-name>pag_form</param-name>
+			<param-value>/mobi/paso1.html</param-value>
+		</init-param>
+		<init-param>
+			<description>Si hay que borrar carro de compras</description>
+			<param-name>dis_del</param-name>
+			<param-value>OrderItemDeleteAllMobi</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Elimina todos los productos del carro de compras - mobile</description>
+		<display-name>OrderItemDeleteAllMobi</display-name>
+		<servlet-name>OrderItemDeleteAllMobi</servlet-name>
+		<servlet-class>cl.bbr.fo.command.OrderItemDeleteAll</servlet-class>
+		<init-param>
+			<description>Redireccion en caso de exito</description>
+			<param-name>dis_ok</param-name>
+			<param-value>/UltComprasFormMobi</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Listas de ultimas compras - mobile</description>
+		<display-name>UltComprasProListMobi</display-name>
+		<servlet-name>UltComprasProListMobi</servlet-name>
+		<servlet-class>cl.bbr.fo.command.mobi.UltComprasProList</servlet-class>
+		<init-param>
+			<description>Template para formulario</description>
+			<param-name>pag_form</param-name>
+			<param-value>/mobi/rescateComprasPaso1.html</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Agregar producto al Carro de Compras - mobile</description>
+		<display-name>OrderItemAddMobi</display-name>
+		<servlet-name>OrderItemAddMobi</servlet-name>
+		<servlet-class>cl.bbr.fo.command.OrderItemAdd</servlet-class>
+		<init-param>
+			<description>Redireccion OK</description>
+			<param-name>dis_ok</param-name>
+			<param-value>PasoDosFormMobi</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Listas productos del carro - mobile</description>
+		<display-name>OrderItemDisplayMobi</display-name>
+		<servlet-name>OrderItemDisplayMobi</servlet-name>
+		<servlet-class>cl.bbr.fo.command.mobi.OrderItemDisplay</servlet-class>
+		<init-param>
+			<description>Template para formulario</description>
+			<param-name>pag_form</param-name>
+			<param-value>/mobi/carro.html</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Modifica Carro de Compras - mobile</description>
+		<display-name>OrderItemUpdateMobi</display-name>
+		<servlet-name>OrderItemUpdateMobi</servlet-name>
+		<servlet-class>cl.bbr.fo.command.mobi.OrderItemUpdate</servlet-class>
+		<init-param>
+			<description>Redireccion OK</description>
+			<param-name>dis_ok</param-name>
+			<param-value>OrderItemDisplayMobi</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Entrega total de carro (Ajax) - mobile</description>
+		<display-name>TotalCarro</display-name>
+		<servlet-name>TotalCarro</servlet-name>
+		<servlet-class>cl.bbr.fo.command.mobi.TotalCarro</servlet-class>
+	</servlet>
+	
+	<servlet>
+		<description>Agregar o modifica producto al carro - mobile</description>
+		<display-name>PasoDosAgregarCarro</display-name>
+		<servlet-name>PasoDosAgregarCarro</servlet-name>
+		<servlet-class>cl.bbr.fo.command.mobi.PasoDosAgregarCarro</servlet-class>
+	</servlet>
+	
+	
+	<servlet>
+		<description>Muestra pagina del paso 2 - mobile</description>
+		<display-name>PasoDosFormMobi</display-name>
+		<servlet-name>PasoDosFormMobi</servlet-name>
+		<servlet-class>cl.bbr.fo.command.mobi.PasoDosForm</servlet-class>
+		<init-param>
+			<description>Pagina del paso 2</description>
+			<param-name>pag_form</param-name>
+			<param-value>/mobi/paso2.html</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Muestra resultado busqueda del paso 2 - mobile</description>
+		<display-name>PasoDosResultadoFormMobi</display-name>
+		<servlet-name>PasoDosResultadoFormMobi</servlet-name>
+		<servlet-class>cl.bbr.fo.command.mobi.PasoDosResultadoForm</servlet-class>
+		<init-param>
+			<description>Pagina del resultado de paso 2</description>
+			<param-name>pag_form</param-name>
+			<param-value>/mobi/paso2_resultado.html</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Modificar Nota del carro (Ajax) - mobile</description>
+		<display-name>UpdateNotaCarro</display-name>
+		<servlet-name>UpdateNotaCarro</servlet-name>
+		<servlet-class>cl.bbr.fo.command.mobi.UpdateNotaCarro</servlet-class>
+	</servlet>
+	<servlet>
+		<description>Muestra pagina del paso 3 - mobile</description>
+		<display-name>PasoTresFormMobi</display-name>
+		<servlet-name>PasoTresFormMobi</servlet-name>
+		<servlet-class>cl.bbr.fo.command.mobi.PasoTresForm</servlet-class>
+		<init-param>
+			<description>Pagina del paso 3</description>
+			<param-name>pag_form</param-name>
+			<param-value>/mobi/paso3.html</param-value>
+		</init-param>
+	</servlet>
+		<servlet>
+		<description>Presenta cuadro de despachos - mobile</description>
+		<display-name>CalendarioDespacho</display-name>
+		<servlet-name>CalendarioDespacho</servlet-name>
+		<servlet-class>cl.bbr.fo.command.mobi.CalendarioDespacho</servlet-class>
+		<init-param>
+			<description>Template para formulario</description>
+			<param-name>pag_form</param-name>
+			<param-value>/mobi/calendarioDespacho.html</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Cambia datos cliente (Ajax) - mobile</description>
+		<display-name>ChangeDatosPaso3mobi</display-name>
+		<servlet-name>ChangeDatosPaso3mobi</servlet-name>
+		<servlet-class>cl.bbr.fo.command.mobi.ChangeDatosPaso3</servlet-class>
+	</servlet>
+	<servlet>
+		<description>Confirmar Compra - mobile</description>
+		<display-name>OrderProcessMobi</display-name>
+		<servlet-name>OrderProcessMobi</servlet-name>
+		<servlet-class>cl.bbr.fo.command.OrderProcess</servlet-class>
+		<init-param>
+			<description>Redireccion OK</description>
+			<param-name>dis_ok</param-name>
+			<param-value>OrderDisplayMobi</param-value>
+		</init-param>
+		<init-param>
+			<description>Redireccion Error</description>
+			<param-name>dis_er</param-name>
+			<param-value>PasoTresFormMobi</param-value>
+		</init-param>
+		<init-param>
+			<description>Template para mail</description>
+			<param-name>arc_mail</param-name>
+			<param-value>/mail/mailresumen.html</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Resumen - mobile</description>
+		<display-name>OrderDisplayMobi</display-name>
+		<servlet-name>OrderDisplayMobi</servlet-name>
+		<servlet-class>cl.bbr.fo.command.OrderDisplay</servlet-class>
+		<init-param>
+			<description>Template para formulario</description>
+			<param-name>pag_form</param-name>
+			<param-value>/mobi/resumen.html</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Controler para el registro de cliente - mobile</description>
+		<display-name>RegisterFormMobi</display-name>
+		<servlet-name>RegisterFormMobi</servlet-name>
+		<servlet-class>cl.bbr.fo.command.RegisterForm</servlet-class>
+		<init-param>
+			<description>Template para el registro de clientes</description>
+			<param-name>pag_form</param-name>
+			<param-value>/mobi/registro.html</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Crea un nuevo cliente - mobile</description>
+		<display-name>RegisterNewMobi</display-name>
+		<servlet-name>RegisterNewMobi</servlet-name>
+		<servlet-class>cl.bbr.fo.command.RegisterNew</servlet-class>
+		<init-param>
+			<description>Template para mail</description>
+			<param-name>arc_mail</param-name>
+			<param-value>/mail/mailbienvenida.html</param-value>
+		</init-param>
+		<init-param>
+			<description>Template para mail sin cobertura</description>
+			<param-name>mail_sc</param-name>
+			<param-value>/mail/mailBienvenidaSinCobertura.html</param-value>
+		</init-param>
+		<init-param>
+			<description>Redireccion exito</description>
+			<param-name>dis_ok</param-name>
+			<param-value>BienvenidaFormMobi</param-value>
+		</init-param>
+		<init-param>
+			<description>Redireccion Error</description>
+			<param-name>dis_er</param-name>
+			<param-value>RegisterFormMobi</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Guarda Pedido - mobile</description>
+		<display-name>OrderSetListMobi</display-name>
+		<servlet-name>OrderSetListMobi</servlet-name>
+		<servlet-class>cl.bbr.fo.command.OrderSetList</servlet-class>
+		<init-param>
+			<description>Redireccion OK</description>
+			<param-name>dis_ok</param-name>
+			<param-value>LogoffMobi</param-value>
+		</init-param>
+		<init-param>
+			<description>Redireccion OK</description>
+			<param-name>dis_ok_fono</param-name>
+			<param-value>FonoCliLogonForm</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Logoff de un cliente - mobile</description>
+		<display-name>LogoffMobi</display-name>
+		<servlet-name>LogoffMobi</servlet-name>
+		<servlet-class>cl.bbr.fo.command.Logoff</servlet-class>
+		<init-param>
+			<description>Redireccion OK</description>
+			<param-name>dis_ok</param-name>
+			<param-value>LogonFormMobi</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Subcategorias (Ajax) - mobile</description>
+		<display-name>SubCategorias</display-name>
+		<servlet-name>SubCategorias</servlet-name>
+		<servlet-class>cl.bbr.fo.command.mobi.SubCategorias</servlet-class>
+	</servlet>
+	<!-- FIN - SERVLETS PARA MOBILE -->
+	
+	<servlet>
+		<description>Agregar producto al Carro de Compras - Ajax </description>
+		<display-name>AddProductosCarroPaso1</display-name>
+		<servlet-name>AddProductosCarroPaso1</servlet-name>
+		<servlet-class>cl.bbr.fo.command.AddProductosCarroPaso1</servlet-class>
+	</servlet>
+	<servlet>
+		<description>Valida Productos Despublicados en Carro - Ajax </description>
+		<display-name>ValidaProductosDespublicadosCarro</display-name>
+		<servlet-name>ValidaProductosDespublicadosCarro</servlet-name>
+		<servlet-class>cl.bbr.fo.command.ValidaProductosDespublicadosCarro</servlet-class>
+		<init-param>
+			<description>Template para el Lista de Productos Despublicados</description>
+			<param-name>pag_form</param-name>
+			<param-value>/ltbxValidacion/lightBoxProdSinStock.html</param-value>
+		</init-param>		
+	</servlet>
+	<servlet>
+		<description>Valida Productos Despublicados en Listas - Ajax </description>
+		<display-name>ValidaProductosDespublicadosListas</display-name>
+		<servlet-name>ValidaProductosDespublicadosListas</servlet-name>
+		<servlet-class>cl.bbr.fo.command.ValidaProductosDespublicadosListas</servlet-class>
+		<init-param>
+			<description>LightBox 1</description>
+			<param-name>lightBox1</param-name>
+			<param-value>/ltbxValidacion/lightBoxProdSinStock.html</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Elimina Productos Despublicados del Carro - Ajax </description>
+		<display-name>EliminaProductosCarro</display-name>
+		<servlet-name>EliminaProductosCarro</servlet-name>
+		<servlet-class>cl.bbr.fo.command.EliminaProductosCarro</servlet-class>
+	</servlet>
+	<servlet>
+		<description>Modifica Carro de Compras - Ajax</description>
+		<display-name>ModProductosCarroPaso1</display-name>
+		<servlet-name>ModProductosCarroPaso1</servlet-name>
+		<servlet-class>cl.bbr.fo.command.ModProductosCarroPaso1</servlet-class>
+	</servlet>
+	<servlet>
+		<description>Sustitutos del cliente</description>
+		<display-name>SustitutosForm</display-name>
+		<servlet-name>SustitutosForm</servlet-name>
+		<servlet-class>cl.bbr.fo.command.SustitutosForm</servlet-class>
+		<init-param>
+			<description>Template para el registro de clientes</description>
+			<param-name>pag_form</param-name>
+			<param-value>/sustitutos.html</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Guardar sustitutos del cliente</description>
+		<display-name>SaveSustitutos</display-name>
+		<servlet-name>SaveSustitutos</servlet-name>
+		<servlet-class>cl.bbr.fo.command.SaveSustitutos</servlet-class>
+		<init-param>
+			<description>Redireccion OK</description>
+			<param-name>dis_ok</param-name>
+			<param-value>SustitutosForm</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Actualiza Datos de Contacto - Ajax</description>
+		<display-name>ChangeDatosContacto</display-name>
+		<servlet-name>ChangeDatosContacto</servlet-name>
+		<servlet-class>cl.bbr.fo.command.ChangeDatosContacto</servlet-class>
+	</servlet>
+	<servlet>
+		<description>Despligue de listas especiales</description>
+		<display-name>ListasForm</display-name>
+		<servlet-name>ListasForm</servlet-name>
+		<servlet-class>cl.bbr.fo.command.ListasForm</servlet-class>
+		<init-param>
+			<description>Template</description>
+			<param-name>pag_form</param-name>
+			<param-value>/listas.html</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Listas Especiales form</description>
+		<display-name>ListasDisplayForm</display-name>
+		<servlet-name>ListasDisplayForm</servlet-name>
+		<servlet-class>cl.bbr.fo.command.ListasDisplayForm</servlet-class>
+		<init-param>
+			<description>Template para formulario</description>
+			<param-name>pag_form</param-name>
+			<param-value>/listasEspecialesDisplay.html</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Listas de productos de listas especiales</description>
+		<display-name>ProListasEspeciales</display-name>
+		<servlet-name>ProListasEspeciales</servlet-name>
+		<servlet-class>cl.bbr.fo.command.ProListasEspeciales</servlet-class>
+		<init-param>
+			<description>Template para formulario</description>
+			<param-name>pag_form</param-name>
+			<param-value>/productosListasEspecialesDisplay.html</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Modificar un producto del carro</description>
+		<display-name>ModProductoCarro</display-name>
+		<servlet-name>ModProductoCarro</servlet-name>
+		<servlet-class>cl.bbr.fo.command.ModProductoCarro</servlet-class>
+	</servlet>
+	<servlet>
+		<description>Sustituto Cliente por Producto</description>
+		<display-name>SustitutoClienteByProducto</display-name>
+		<servlet-name>SustitutoClienteByProducto</servlet-name>
+		<servlet-class>cl.bbr.fo.command.SustitutoClienteByProducto</servlet-class>
+	</servlet>
+	<servlet>
+		<description>Guarda un Sustituto</description>
+		<display-name>SaveSustituto</display-name>
+		<servlet-name>SaveSustituto</servlet-name>
+		<servlet-class>cl.bbr.fo.command.SaveSustituto</servlet-class>
+	</servlet>
+	<servlet>
+		<description>Tracking OP para clientes</description>
+		<display-name>TrackingOP</display-name>
+		<servlet-name>TrackingOP</servlet-name>
+		<servlet-class>cl.bbr.fo.command.TrackingOP</servlet-class>
+		<init-param>
+			<description>Pagina de tracking</description>
+			<param-name>pag_form</param-name>
+			<param-value>/trackingOp.htm</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Llena un combo con comunas</description>
+		<display-name>ComunasByRegion</display-name>
+		<servlet-name>ComunasByRegion</servlet-name>
+		<servlet-class>cl.bbr.fo.command.ComunasByRegion</servlet-class>
+	</servlet>
+	<servlet>
+		<description>Envia informacion de los formularios de contacto</description>
+		<display-name>ContactoWeb</display-name>
+		<servlet-name>ContactoWeb</servlet-name>
+		<servlet-class>cl.bbr.fo.command.ContactoWeb</servlet-class>
+		<init-param>
+			<description>Template para mail</description>
+			<param-name>mail</param-name>
+			<param-value>/mail/mailContacto.html</param-value>
+		</init-param>
+		<init-param>
+			<description>Template para mail de Auspicios</description>
+			<param-name>mail_auspicios</param-name>
+			<param-value>/mail/mailAuspicios.html</param-value>
+		</init-param>
+		<init-param>
+			<description>Template para mail de proveedores</description>
+			<param-name>mail_proveedores</param-name>
+			<param-value>/mail/mailProveedores.html</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Suscripcion de mail en el Home</description>
+		<display-name>MailHome</display-name>
+		<servlet-name>MailHome</servlet-name>
+		<servlet-class>cl.bbr.fo.command.MailHome</servlet-class>
+	</servlet>
+	<servlet>
+		<description>Captcha GIF</description>
+		<display-name>GifCaptcha</display-name>
+		<servlet-name>GifCaptcha</servlet-name>
+		<servlet-class>cl.bbr.fo.command.GifCaptcha</servlet-class>
+	</servlet>
+	<servlet>
+		<description>Valida Captcha GIF</description>
+		<display-name>ValidaGifCaptcha</display-name>
+		<servlet-name>ValidaGifCaptcha</servlet-name>
+		<servlet-class>cl.bbr.fo.command.ValidaGifCaptcha</servlet-class>
+	</servlet>
+	<servlet>
+		<description>Elimina Suscripcion Encuesta Satisfaccion</description>
+		<display-name>EliminaSuscripcionEncuesta</display-name>
+		<servlet-name>EliminaSuscripcionEncuesta</servlet-name>
+		<servlet-class>cl.bbr.fo.command.EliminaSuscripcionEncuesta</servlet-class>
+	</servlet>
+	<servlet>
+		<description>Valida Hora Compra</description>
+		<display-name>ValidaHoraCompra</display-name>
+		<servlet-name>ValidaHoraCompra</servlet-name>
+		<servlet-class>cl.bbr.fo.command.ValidaHoraCompra</servlet-class>
+	</servlet>
+	<servlet>
+		<description>Pre ingresar una orden</description>
+		<display-name>OrderCreate</display-name>
+		<servlet-name>OrderCreate</servlet-name>
+		<servlet-class>cl.bbr.fo.command.OrderCreate</servlet-class>		
+	</servlet>
+	<servlet>
+		<description>Ingresar una orden preingresada</description>
+		<display-name>OrderComplete</display-name>
+		<servlet-name>OrderComplete</servlet-name>
+		<servlet-class>cl.bbr.fo.command.OrderComplete</servlet-class>
+		<init-param>
+			<description>Redireccion OK</description>
+			<param-name>dis_ok</param-name>
+			<param-value>OrderDisplay</param-value>
+		</init-param>
+			
+		<init-param>
+			<description>Template para mail resumen de desapacho</description>
+			<param-name>arc_mail</param-name>
+			<param-value>/mail/mailresumen.html</param-value>
+		</init-param>
+		<init-param>
+			<description>Template para mail resumen de retiro</description>
+			<param-name>arc_mail_retiro</param-name>
+			<param-value>/mail/mailresumen_retiro.html</param-value>
+		</init-param>
+	
+	</servlet>
+	<servlet>
+		<description>Ingresar una orden preingresada desde Mobile</description>
+		<display-name>MobileOrderComplete</display-name>
+		<servlet-name>MobileOrderComplete</servlet-name>
+		<servlet-class>cl.bbr.fo.command.MobileOrderComplete</servlet-class>
+		<init-param>
+			<description>Redireccion OK</description>
+			<param-name>dis_ok</param-name>
+			<param-value>/FO_WebContent/finCompraMobile.html</param-value>
+		</init-param>
+		<init-param>
+			<description>Template para mail resumen de desapacho</description>
+			<param-name>arc_mail</param-name>
+			<param-value>/mail/mailresumen.html</param-value>
+		</init-param>
+		<init-param>
+			<description>Template para mail resumen de retiro</description>
+			<param-name>arc_mail_retiro</param-name>
+			<param-value>/mail/mailresumen_retiro.html</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Webpay Create</description>
+		<display-name>WebpayCreate</display-name>
+		<servlet-name>WebpayCreate</servlet-name>
+		<servlet-class>cl.bbr.fo.command.WebpayCreate</servlet-class>		
+	</servlet>
+	<servlet>
+		<description>Informe Estadisticas Webpay</description>
+		<display-name>ViewInformeEstadisticasWebpay</display-name>
+		<servlet-name>ViewInformeEstadisticasWebpay</servlet-name>
+		<servlet-class>cl.bbr.fo.command.ViewInformeEstadisticasWebpay</servlet-class>
+		<init-param>
+			<description>Pagina de informe</description>
+			<param-name>pag_form</param-name>
+			<param-value>/infEstadisticasWebpay.htm</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>Regiones Con Cobertura</description>
+		<display-name>RegionesConCobertura</display-name>
+		<servlet-name>RegionesConCobertura</servlet-name>
+		<servlet-class>cl.bbr.fo.command.RegionesConCobertura</servlet-class>		
+	</servlet>
+	<servlet>
+		<description>Comunas Con Cobertura By Region</description>
+		<display-name>ComunasConCoberturaByRegion</display-name>
+		<servlet-name>ComunasConCoberturaByRegion</servlet-name>
+		<servlet-class>cl.bbr.fo.command.ComunasConCoberturaByRegion</servlet-class>		
+	</servlet>
+	<servlet>
+		<description>Change Comuna de Session</description>
+		<display-name>ChangeComunaSession</display-name>
+		<servlet-name>ChangeComunaSession</servlet-name>
+		<servlet-class>cl.bbr.fo.command.ChangeComunaSession</servlet-class>		
+	</servlet>
+	<servlet>
+		<description>Validar si Producto esta en Local</description>
+		<display-name>ValidarProductoByLocal</display-name>
+		<servlet-name>ValidarProductoByLocal</servlet-name>
+		<servlet-class>cl.bbr.fo.command.ValidarProductoByLocal</servlet-class>		
+	</servlet>
+	
+	<!-- Carro Abandonado -->
+	<servlet>
+		<description>Validar si Producto tiene stock en Local</description>
+		<display-name>ValidarProductoSinStock</display-name>
+		<servlet-name>ValidarProductoSinStock</servlet-name>
+		<servlet-class>cl.bbr.fo.command.ValidarProductoSinStock</servlet-class>		
+	</servlet>
+		<servlet>
+		<description>Pagina de Ver Cupon Email</description>
+		<display-name>VerCuponMail</display-name>
+		<servlet-name>VerCuponMail</servlet-name>
+		<servlet-class>cl.bbr.fo.command.VerCuponCarroAbandonado</servlet-class>
+		<init-param>
+			<description>Pagina que visualiza mail con cupon dcto</description>
+			<param-name>pag_dcto</param-name>
+			<param-value>/carro_abandonado/carro_dcto.html</param-value>
+		</init-param>
+		<init-param>
+			<description>Pagina que visualiza mail con cupon dcto despacho</description>
+			<param-name>pag_despacho</param-name>
+			<param-value>/carro_abandonado/carro_despacho.html</param-value>
+		</init-param>
+		<init-param>
+			<description>Pagina que visualiza mail con dcto despacho</description>
+			<param-name>pag_recuerda</param-name>
+			<param-value>/carro_abandonado/carro_recuerda.html</param-value>
+		</init-param>
+	</servlet>
+	
+	<!-- Fin Carro Abandonado -->
+	
+	<servlet>
+		<description>Change Direccion de Session</description>
+		<display-name>ChangeDireccionSession</display-name>
+		<servlet-name>ChangeDireccionSession</servlet-name>
+		<servlet-class>cl.bbr.fo.command.ChangeDireccionSession</servlet-class>		
+	</servlet>
+	<servlet>
+		<description>
+		Verifica parámetro Override Web Pay</description>
+		<display-name>
+		CheckOverrideWebPay</display-name>
+		<servlet-name>CheckOverrideWebPay</servlet-name>
+		<servlet-class>
+		cl.jumbo.fo.servlet.services.CheckOverrideWebPay</servlet-class>
+	</servlet>
+	<servlet>
+		<description>Servlet nativo que permite generar el excel a descargar</description>
+		<display-name>EnviarCorreoExcel</display-name>
+		<servlet-name>EnviarCorreoExcel</servlet-name>
+		<servlet-class>cl.bbr.fo.command.EnviarCorreoExcel</servlet-class>
+	</servlet>	
+<!-- +20112012 VMatheu -->	
+	<servlet>
+		<description>Despliegue excel</description>
+		<display-name>EnviarCorreoExcelDespliegue</display-name>
+		<servlet-name>EnviarCorreoExcelDespliegue</servlet-name>
+		<servlet-class>cl.bbr.fo.command.EnviarCorreoExcelDespliegue</servlet-class>
+		<init-param>
+			<description>Pagina descarga Exitosa</description>
+			<param-name>pag_exitosa</param-name>
+			<param-value>/mail/descarga_lista_exitosa.html</param-value>
+		</init-param>
+	</servlet>
+
+	
+	<servlet>
+		<description>Despliegue despachos disponibles</description>
+		<display-name>DespachosDisponibles</display-name>
+		<servlet-name>DespachosDisponibles</servlet-name>
+		<servlet-class>cl.bbr.fo.command.DespachosDisponibles</servlet-class>
+		<init-param>
+			<description>Pagina con horario de despachos disponibles</description>
+			<param-name>pag_despachos</param-name>
+			<param-value>/despachos_disponibles.html</param-value>
+		</init-param>
+		<init-param>
+			<description>Pagina con calendario de despachos disponibles</description>
+			<param-name>pag_cal_despachos</param-name>
+			<param-value>/calendario_despachos_disponibles.html</param-value>
+		</init-param>
+	</servlet>
+		
+	<servlet>
+		<description>Valida login con facebook</description>
+		<display-name>RouterFacebookLogin</display-name>
+		<servlet-name>RouterFacebookLogin</servlet-name>
+		<servlet-class>cl.bbr.fo.command.RouterFacebookLogin</servlet-class>
+	</servlet>
+	
+	<servlet>
+		<description>Valida y construye cupon de descuento</description>
+		<display-name>CuponDsctoCheck</display-name>
+		<servlet-name>CuponDsctoCheck</servlet-name>
+		<servlet-class>cl.bbr.fo.command.CuponDsctoCheck</servlet-class>
+	</servlet>	
+	
+	<!-- MAPPING -->	
+	<servlet-mapping>
+		<servlet-name>pruebaGet</servlet-name>
+		<url-pattern>/pruebaGet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>RegisterForm</servlet-name>
+		<url-pattern>/RegisterForm</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>RegisterNew</servlet-name>
+		<url-pattern>/RegisterNew</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>DesinscribeMail</servlet-name>
+		<url-pattern>/DesinscribeMail</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>RegisterUpdate</servlet-name>
+		<url-pattern>/RegisterUpdate</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>LogonForm</servlet-name>
+		<url-pattern>/LogonForm</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>Logon</servlet-name>
+		<url-pattern>/Logon</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>CheckLogin</servlet-name>
+		<url-pattern>/CheckLogin</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>SaveList</servlet-name>
+		<url-pattern>/SaveList</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>DeleteList</servlet-name>
+		<url-pattern>/DeleteList</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>Logoff</servlet-name>
+		<url-pattern>/Logoff</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>TestDB</servlet-name>
+		<url-pattern>/TestDB</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>AddressForm</servlet-name>
+		<url-pattern>/AddressForm</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>AddressAdd</servlet-name>
+		<url-pattern>/AddressAdd</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>AddressDelete</servlet-name>
+		<url-pattern>/AddressDelete</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>AddressUpdate</servlet-name>
+		<url-pattern>/AddressUpdate</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ResetPasswordForm</servlet-name>
+		<url-pattern>/ResetPasswordForm</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>SendAnswerQuestion</servlet-name>
+		<url-pattern>/SendAnswerQuestion</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>BienvenidaForm</servlet-name>
+		<url-pattern>/BienvenidaForm</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>BienvenidaRegisterForm</servlet-name>
+		<url-pattern>/BienvenidaRegisterForm</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>UltComprasForm</servlet-name>
+		<url-pattern>/UltComprasForm</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>BienvenidaCarDisplay</servlet-name>
+		<url-pattern>/BienvenidaCarDisplay</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>RegisterUpdForm</servlet-name>
+		<url-pattern>/RegisterUpdForm</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>RegisterNewSes</servlet-name>
+		<url-pattern>/RegisterNewSes</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>RegisterNewSesDel</servlet-name>
+		<url-pattern>/RegisterNewSesDel</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ComunasList</servlet-name>
+		<url-pattern>/ComunasList</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>AjaxComunasList</servlet-name>
+		<url-pattern>/AjaxComunasList</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>AjaxAgregaDireccion</servlet-name>
+		<url-pattern>/AjaxAgregaDireccion</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>AjaxModificaDireccionRegSencillo</servlet-name>
+		<url-pattern>/AjaxModificaDireccionRegSencillo</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>AjaxLlenaFormDireccionRegSencillo</servlet-name>
+		<url-pattern>/AjaxLlenaFormDireccionRegSencillo</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>AjaxTiposCalle</servlet-name>
+		<url-pattern>/AjaxTiposCalle</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>AjaxMensajeRegistrar</servlet-name>
+		<url-pattern>/AjaxMensajeRegistrar</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>AjaxModificaDireccion</servlet-name>
+		<url-pattern>/AjaxModificaDireccion</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>AjaxTraeDireccion</servlet-name>
+		<url-pattern>/AjaxTraeDireccion</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>AjaxGetZona</servlet-name>
+		<url-pattern>/AjaxGetZona</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>RegisterFormListDes</servlet-name>
+		<url-pattern>/RegisterFormListDes</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>RegisterFormGetDes</servlet-name>
+		<url-pattern>/RegisterFormGetDes</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>UltComprasDisplayForm</servlet-name>
+		<url-pattern>/UltComprasDisplayForm</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>UltComprasProList</servlet-name>
+		<url-pattern>/UltComprasProList</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>OrderItemDisplay</servlet-name>
+		<url-pattern>/OrderItemDisplay</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>MiCarro</servlet-name>
+		<url-pattern>/MiCarro</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>AjaxMiCarro</servlet-name>
+		<url-pattern>/AjaxMiCarro</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ActualizaTotalesMiCarro</servlet-name>
+		<url-pattern>/ActualizaTotalesMiCarro</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>EliminarProductoMiCarro</servlet-name>
+		<url-pattern>/EliminarProductoMiCarro</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>AjaxExisteCliente</servlet-name>
+		<url-pattern>/AjaxExisteCliente</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ModificarCantidadProductoMiCarro</servlet-name>
+		<url-pattern>/ModificarCantidadProductoMiCarro</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>LimpiarMiCarro</servlet-name>
+		<url-pattern>/LimpiarMiCarro</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>GuardaCriteriosMiCarro</servlet-name>
+		<url-pattern>/GuardaCriteriosMiCarro</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>Despacho</servlet-name>
+		<url-pattern>/Despacho</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>IngresoClienteKcc</servlet-name>
+		<url-pattern>/ClienteKCC</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>PreventaSG6</servlet-name>
+		<url-pattern>/PreventaSG6</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>IngresoClientePR</servlet-name>
+		<url-pattern>/ClientePR</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>GuardaDatosDespacho</servlet-name>
+		<url-pattern>/GuardaDatosDespacho</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>Pago</servlet-name>
+		<url-pattern>/Pago</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>MobilePago</servlet-name>
+		<url-pattern>/MobilePago</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>AjaxPago</servlet-name>
+		<url-pattern>/AjaxPago</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>OrderItemUpdate</servlet-name>
+		<url-pattern>/OrderItemUpdate</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>OrderItemAdd</servlet-name>
+		<url-pattern>/OrderItemAdd</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>CheckoutForm</servlet-name>
+		<url-pattern>/CheckoutForm</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>CheckoutProList</servlet-name>
+		<url-pattern>/CheckoutProList</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>CheckoutAddressForm</servlet-name>
+		<url-pattern>/layers/CheckoutAddressForm</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>CheckoutAddressUpdate</servlet-name>
+		<url-pattern>/CheckoutAddressUpdate</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>AjaxLogonForm</servlet-name>
+		<url-pattern>/AjaxLogonForm</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>AjaxCategoriasTop</servlet-name>
+		<url-pattern>/AjaxCategoriasTop</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>AjaxCategoriasLeft</servlet-name>
+		<url-pattern>/AjaxCategoriasLeft</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>CategoryDisplay</servlet-name>
+		<url-pattern>/CategoryDisplay</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>CategoryDisplayOld</servlet-name>
+		<url-pattern>/CategoryDisplayOld</url-pattern>
+	</servlet-mapping>
+	<!-- NSepulveda: INICIO NUEVO SERVLET-MAPPING PARA CATALOGO EXTERNO -->
+	<servlet-mapping>
+		<servlet-name>CategoryDisplays</servlet-name>
+		<url-pattern>/CategoryDisplays</url-pattern>
+	</servlet-mapping>
+	<!-- NSepulveda: FIN NUEVO SERVLET-MAPPING PARA CATALOGO EXTERNO -->
+
+	<servlet-mapping>
+		<servlet-name>PasoDosPub</servlet-name>
+		<url-pattern>/PasoDosPub</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>PasoDosResultado</servlet-name>
+		<url-pattern>/PasoDosResultado</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>PasoDosAutocompletar</servlet-name>
+		<url-pattern>/PasoDosAutocompletar</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>CategoryProList</servlet-name>
+		<url-pattern>/categorias/CategoryProList</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>OrderDisplay</servlet-name>
+		<url-pattern>/OrderDisplay</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>OrderProcess</servlet-name>
+		<url-pattern>/OrderProcess</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>OrderSetList</servlet-name>
+		<url-pattern>/OrderSetList</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>OrderSetListInvitado</servlet-name>
+		<url-pattern>/OrderSetListInvitado</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>OrderSet</servlet-name>
+		<url-pattern>/OrderSet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ProductDisplay</servlet-name>
+		<url-pattern>/ProductDisplay</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>SearchItemDisplay</servlet-name>
+		<url-pattern>/SearchItemDisplay</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ChangeForgottenPasswordForm</servlet-name>
+		<url-pattern>/ChangeForgottenPasswordForm</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ChangeDatosPaso3</servlet-name>
+		<url-pattern>/ChangeDatosPaso3</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ChangeForgottenPassword</servlet-name>
+		<url-pattern>/ChangeForgottenPassword</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>SearchDisplay</servlet-name>
+		<url-pattern>/SearchDisplay</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>SearchItemList</servlet-name>
+		<url-pattern>/SearchItemList</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>SearchItemBList</servlet-name>
+		<url-pattern>/SearchItemBList</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>SearchProductDisplay</servlet-name>
+		<url-pattern>/SearchProductDisplay</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>SearchProList</servlet-name>
+		<url-pattern>/SearchProList</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>RegisterCheck</servlet-name>
+		<url-pattern>/RegisterCheck</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>FonoLogonForm</servlet-name>
+		<url-pattern>/FonoLogonForm</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>FonoLogon</servlet-name>
+		<url-pattern>/FonoLogon</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>FonoLogoff</servlet-name>
+		<url-pattern>/FonoLogoff</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>FonoCliLogonForm</servlet-name>
+		<url-pattern>/FonoCliLogonForm</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>FonoCliRegisterForm</servlet-name>
+		<url-pattern>/FonoCliRegisterForm</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>FonoCliLogon</servlet-name>
+		<url-pattern>/FonoCliLogon</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>FonoCliRegisterNew</servlet-name>
+		<url-pattern>/FonoCliRegisterNew</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>OrderPrint</servlet-name>
+		<url-pattern>/OrderPrint</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>OrderItemDeleteAll</servlet-name>
+		<url-pattern>/OrderItemDeleteAll</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>DespachoChart</servlet-name>
+		<url-pattern>/layers/DespachoChart</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>AjaxDespachoChart</servlet-name>
+		<url-pattern>/AjaxDespachoChart</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+        <servlet-name>AjaxMapa</servlet-name>
+        <url-pattern>/AjaxMapa</url-pattern>
+    </servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>FaqDisplay</servlet-name>
+		<url-pattern>/FaqDisplay</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>FaqrespDisplay</servlet-name>
+		<url-pattern>/FaqrespDisplay</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ViewElemento</servlet-name>
+		<url-pattern>/ViewElemento</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ValidaCuentaCheck</servlet-name>
+		<url-pattern>/ValidaCuentaCheck</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ValidaCarroCompras</servlet-name>
+		<url-pattern>/ValidaCarroCompras</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ExportarUltComprasProList</servlet-name>
+		<url-pattern>/ExportarUltComprasProList</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>EnviarCorreoComprasProList</servlet-name>
+		<url-pattern>/EnviarCorreoComprasProList</url-pattern>
+	</servlet-mapping>		
+	<!-- fin magno aperez -->
+	<servlet-mapping>
+		<servlet-name>ViewPromociones</servlet-name>
+		<url-pattern>/ViewPromociones</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ViewPromocionesCh</servlet-name>
+		<url-pattern>/ViewPromocionesCh</url-pattern>
+	</servlet-mapping>	
+	<servlet-mapping>
+		<servlet-name>ViewPromocionesP3</servlet-name>
+		<url-pattern>/ViewPromocionesP3</url-pattern>
+	</servlet-mapping>	
+	<servlet-mapping>
+		<servlet-name>ViewTcpPromociones</servlet-name>
+		<url-pattern>/ViewTcpPromociones</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>CuponUpd</servlet-name>
+		<url-pattern>/CuponUpd</url-pattern>
+	</servlet-mapping>	
+	<servlet-mapping>
+        <servlet-name>ViewMisPromociones</servlet-name>
+        <url-pattern>/ViewMisPromociones</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+		<servlet-name>LogonFormMobi</servlet-name>
+		<url-pattern>/LogonFormMobi</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>BienvenidaFormMobi</servlet-name>
+		<url-pattern>/BienvenidaFormMobi</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>AddressFormMobi</servlet-name>
+		<url-pattern>/AddressFormMobi</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>AddressUpdateMobi</servlet-name>
+		<url-pattern>/AddressUpdateMobi</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>AddressAddMobi</servlet-name>
+		<url-pattern>/AddressAddMobi</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>AddressDeleteMobi</servlet-name>
+		<url-pattern>/AddressDeleteMobi</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>UltComprasFormMobi</servlet-name>
+		<url-pattern>/UltComprasFormMobi</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>OrderItemDeleteAllMobi</servlet-name>
+		<url-pattern>/OrderItemDeleteAllMobi</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>UltComprasProListMobi</servlet-name>
+		<url-pattern>/UltComprasProListMobi</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>OrderItemAddMobi</servlet-name>
+		<url-pattern>/OrderItemAddMobi</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>OrderItemDisplayMobi</servlet-name>
+		<url-pattern>/OrderItemDisplayMobi</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>OrderItemUpdateMobi</servlet-name>
+		<url-pattern>/OrderItemUpdateMobi</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>TotalCarro</servlet-name>
+		<url-pattern>/TotalCarro</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>PasoDosAgregarCarro</servlet-name>
+		<url-pattern>/PasoDosAgregarCarro</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>PasoDosFormMobi</servlet-name>
+		<url-pattern>/PasoDosFormMobi</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>PasoDosResultadoFormMobi</servlet-name>
+		<url-pattern>/PasoDosResultadoFormMobi</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>UpdateNotaCarro</servlet-name>
+		<url-pattern>/UpdateNotaCarro</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>PasoTresFormMobi</servlet-name>
+		<url-pattern>/PasoTresFormMobi</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>CalendarioDespacho</servlet-name>
+		<url-pattern>/CalendarioDespacho</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ChangeDatosPaso3mobi</servlet-name>
+		<url-pattern>/ChangeDatosPaso3mobi</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>OrderProcessMobi</servlet-name>
+		<url-pattern>/OrderProcessMobi</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>OrderDisplayMobi</servlet-name>
+		<url-pattern>/OrderDisplayMobi</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>RegisterFormMobi</servlet-name>
+		<url-pattern>/RegisterFormMobi</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>RegisterNewMobi</servlet-name>
+		<url-pattern>/RegisterNewMobi</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>OrderSetListMobi</servlet-name>
+		<url-pattern>/OrderSetListMobi</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>LogoffMobi</servlet-name>
+		<url-pattern>/LogoffMobi</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>SubCategorias</servlet-name>
+		<url-pattern>/SubCategorias</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>AddProductosCarroPaso1</servlet-name>
+		<url-pattern>/AddProductosCarroPaso1</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ValidaProductosDespublicadosCarro</servlet-name>
+		<url-pattern>/ValidaProductosDespublicadosCarro</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ValidaProductosDespublicadosListas</servlet-name>
+		<url-pattern>/ValidaProductosDespublicadosListas</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>EliminaProductosCarro</servlet-name>
+		<url-pattern>/EliminaProductosCarro</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ModProductosCarroPaso1</servlet-name>
+		<url-pattern>/ModProductosCarroPaso1</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>SustitutosForm</servlet-name>
+		<url-pattern>/SustitutosForm</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>SaveSustitutos</servlet-name>
+		<url-pattern>/SaveSustitutos</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ChangeDatosContacto</servlet-name>
+		<url-pattern>/ChangeDatosContacto</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ListasForm</servlet-name>
+		<url-pattern>/ListasForm</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ListasDisplayForm</servlet-name>
+		<url-pattern>/ListasDisplayForm</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ProListasEspeciales</servlet-name>
+		<url-pattern>/ProListasEspeciales</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ModProductoCarro</servlet-name>
+		<url-pattern>/ModProductoCarro</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>SustitutoClienteByProducto</servlet-name>
+		<url-pattern>/SustitutoClienteByProducto</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>SaveSustituto</servlet-name>
+		<url-pattern>/SaveSustituto</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>TrackingOP</servlet-name>
+		<url-pattern>/TrackingOP</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ComunasByRegion</servlet-name>
+		<url-pattern>/ComunasByRegion</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ContactoWeb</servlet-name>
+		<url-pattern>/ContactoWeb</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>MailHome</servlet-name>
+		<url-pattern>/MailHome</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>GifCaptcha</servlet-name>
+		<url-pattern>/GifCaptcha</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ValidaGifCaptcha</servlet-name>
+		<url-pattern>/ValidaGifCaptcha</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>EliminaSuscripcionEncuesta</servlet-name>
+		<url-pattern>/EliminaSuscripcionEncuesta</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ValidaHoraCompra</servlet-name>
+		<url-pattern>/ValidaHoraCompra</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>OrderCreate</servlet-name>
+		<url-pattern>/OrderCreate</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>OrderComplete</servlet-name>
+		<url-pattern>/OrderComplete</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>MobileOrderComplete</servlet-name>
+		<url-pattern>/MobileOrderComplete</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>WebpayCreate</servlet-name>
+		<url-pattern>/WebpayCreate</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ViewInformeEstadisticasWebpay</servlet-name>
+		<url-pattern>/ViewInformeEstadisticasWebpay</url-pattern>
+	</servlet-mapping>	
+	<servlet-mapping>
+		<servlet-name>RegionesConCobertura</servlet-name>
+		<url-pattern>/RegionesConCobertura</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ComunasConCoberturaByRegion</servlet-name>
+		<url-pattern>/ComunasConCoberturaByRegion</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ChangeComunaSession</servlet-name>
+		<url-pattern>/ChangeComunaSession</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ValidarProductoByLocal</servlet-name>
+		<url-pattern>/ValidarProductoByLocal</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ValidarProductoSinStock</servlet-name>
+		<url-pattern>/ValidarProductoSinStock</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ChangeDireccionSession</servlet-name>
+		<url-pattern>/ChangeDireccionSession</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>DatosPersonalesForm</servlet-name>
+		<url-pattern>/DatosPersonalesForm</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>DatosPersonalesUpdate</servlet-name>
+		<url-pattern>/DatosPersonalesUpdate</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>CheckOverrideWebPay</servlet-name>
+		<url-pattern>services/CheckOverrideWebPay</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>log4j-init</servlet-name>
+		<url-pattern>services/Log4JCommand</url-pattern> 
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>EnviarCorreoExcel</servlet-name>
+		<url-pattern>/EnviarCorreoExcel</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>EnviarCorreoExcelDespliegue</servlet-name>
+		<url-pattern>/EnviarCorreoExcelDespliegue</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>DespachosDisponibles</servlet-name>
+		<url-pattern>/DespachosDisponibles</url-pattern>
+	</servlet-mapping>
+		
+	<servlet-mapping>
+		<servlet-name>RouterFacebookLogin</servlet-name>
+		<url-pattern>/Rfl</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>CuponDsctoCheck</servlet-name>
+		<url-pattern>/CuponDsctoCheck</url-pattern>
+	</servlet-mapping>
+	<!-- Mapping Carro Abandonado -->
+	<servlet-mapping>
+		<servlet-name>VerCuponMail</servlet-name>
+		<url-pattern>/VerCuponMail</url-pattern>
+	</servlet-mapping>
+	<!-- Fin Mapping Carro Abandonado -->
+	
+	<!--  RESOURCE -->
+	
+	
+	<resource-ref id="ResourceRef_1176415568265">
+		<res-ref-name>jdbc/fodbaVE</res-ref-name>
+		<res-type>javax.sql.DataSource</res-type>
+		<res-auth>Container</res-auth>
+		<res-sharing-scope>Shareable</res-sharing-scope>
+	</resource-ref>
+	<resource-ref id="ResourceRef_1182976525296">
+		<description>DB Connection DB2</description>
+		<res-ref-name>jdbc/vthdba</res-ref-name>
+		<res-type>javax.sql.DataSource</res-type>
+		<res-auth>Container</res-auth>
+		<res-sharing-scope>Shareable</res-sharing-scope>
+	</resource-ref>
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+		<welcome-file>index.htm</welcome-file>
+		<welcome-file>index.jsp</welcome-file>
+		<welcome-file>default.html</welcome-file>
+		<welcome-file>default.htm</welcome-file>
+		<welcome-file>default.jsp</welcome-file>
+	</welcome-file-list>
+</web-app>

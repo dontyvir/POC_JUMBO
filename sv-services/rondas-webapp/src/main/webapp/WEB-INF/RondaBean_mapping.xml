@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<java-wsdl-mapping xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.1" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://www.ibm.com/webservices/xsd/j2ee_jaxrpc_mapping_1_1.xsd">
+    <package-mapping>
+        <package-type>cl.bbr.ws.beans</package-type>
+        <namespaceURI>http://beans.ws.bbr.cl</namespaceURI>
+    </package-mapping>
+    <java-xml-type-mapping>
+        <java-type>java.lang.String</java-type>
+        <root-type-qname xmlns:rtq="http://www.w3.org/2001/XMLSchema">rtq:string</root-type-qname>
+        <qname-scope>simpleType</qname-scope>
+    </java-xml-type-mapping>
+    <java-xml-type-mapping>
+        <java-type>int</java-type>
+        <root-type-qname xmlns:rtq="http://www.w3.org/2001/XMLSchema">rtq:int</root-type-qname>
+        <qname-scope>simpleType</qname-scope>
+    </java-xml-type-mapping>
+    <service-interface-mapping>
+        <service-interface>cl.bbr.ws.beans.RondaBeanService</service-interface>
+        <wsdl-service-name xmlns:sim="http://beans.ws.bbr.cl">sim:RondaBeanService</wsdl-service-name>
+        <port-mapping>
+            <port-name>RondaBean</port-name>
+            <java-port-name>RondaBean</java-port-name>
+        </port-mapping>
+    </service-interface-mapping>
+    <service-endpoint-interface-mapping>
+        <service-endpoint-interface>cl.bbr.ws.beans.RondaBean</service-endpoint-interface>
+        <wsdl-port-type xmlns:seimwpt="http://beans.ws.bbr.cl">seimwpt:RondaBean</wsdl-port-type>
+        <wsdl-binding xmlns:seimwb="http://beans.ws.bbr.cl">seimwb:RondaBeanSoapBinding</wsdl-binding>
+        <service-endpoint-method-mapping>
+            <java-method-name>getCargaRondaLdap</java-method-name>
+            <wsdl-operation>getCargaRondaLdap</wsdl-operation>
+            <wrapped-element></wrapped-element>
+            <method-param-parts-mapping>
+                <param-position>0</param-position>
+                <param-type>java.lang.String</param-type>
+                <wsdl-message-mapping>
+                    <wsdl-message xmlns:mppm="http://beans.ws.bbr.cl">mppm:getCargaRondaLdapRequest</wsdl-message>
+                    <wsdl-message-part-name>NRonda</wsdl-message-part-name>
+                    <parameter-mode>IN</parameter-mode>
+                </wsdl-message-mapping>
+            </method-param-parts-mapping>
+            <method-param-parts-mapping>
+                <param-position>1</param-position>
+                <param-type>java.lang.String</param-type>
+                <wsdl-message-mapping>
+                    <wsdl-message xmlns:mppm="http://beans.ws.bbr.cl">mppm:getCargaRondaLdapRequest</wsdl-message>
+                    <wsdl-message-part-name>login</wsdl-message-part-name>
+                    <parameter-mode>IN</parameter-mode>
+                </wsdl-message-mapping>
+            </method-param-parts-mapping>
+            <method-param-parts-mapping>
+                <param-position>2</param-position>
+                <param-type>java.lang.String</param-type>
+                <wsdl-message-mapping>
+                    <wsdl-message xmlns:mppm="http://beans.ws.bbr.cl">mppm:getCargaRondaLdapRequest</wsdl-message>
+                    <wsdl-message-part-name>password</wsdl-message-part-name>
+                    <parameter-mode>IN</parameter-mode>
+                </wsdl-message-mapping>
+            </method-param-parts-mapping>
+            <method-param-parts-mapping>
+                <param-position>3</param-position>
+                <param-type>int</param-type>
+                <wsdl-message-mapping>
+                    <wsdl-message xmlns:mppm="http://beans.ws.bbr.cl">mppm:getCargaRondaLdapRequest</wsdl-message>
+                    <wsdl-message-part-name>tipo_aut</wsdl-message-part-name>
+                    <parameter-mode>IN</parameter-mode>
+                </wsdl-message-mapping>
+            </method-param-parts-mapping>
+            <wsdl-return-value-mapping>
+                <method-return-value>java.lang.String</method-return-value>
+                <wsdl-message xmlns:wrvm="http://beans.ws.bbr.cl">wrvm:getCargaRondaLdapResponse</wsdl-message>
+                <wsdl-message-part-name>getCargaRondaLdapReturn</wsdl-message-part-name>
+            </wsdl-return-value-mapping>
+        </service-endpoint-method-mapping>
+        <service-endpoint-method-mapping>
+            <java-method-name>getDescargaRonda</java-method-name>
+            <wsdl-operation>getDescargaRonda</wsdl-operation>
+            <wrapped-element></wrapped-element>
+            <method-param-parts-mapping>
+                <param-position>0</param-position>
+                <param-type>java.lang.String</param-type>
+                <wsdl-message-mapping>
+                    <wsdl-message xmlns:mppm="http://beans.ws.bbr.cl">mppm:getDescargaRondaRequest</wsdl-message>
+                    <wsdl-message-part-name>TablaDetalle_PedidoXML</wsdl-message-part-name>
+                    <parameter-mode>IN</parameter-mode>
+                </wsdl-message-mapping>
+            </method-param-parts-mapping>
+            <method-param-parts-mapping>
+                <param-position>1</param-position>
+                <param-type>java.lang.String</param-type>
+                <wsdl-message-mapping>
+                    <wsdl-message xmlns:mppm="http://beans.ws.bbr.cl">mppm:getDescargaRondaRequest</wsdl-message>
+                    <wsdl-message-part-name>TablaDetalle_PickingXML</wsdl-message-part-name>
+                    <parameter-mode>IN</parameter-mode>
+                </wsdl-message-mapping>
+            </method-param-parts-mapping>
+            <method-param-parts-mapping>
+                <param-position>2</param-position>
+                <param-type>java.lang.String</param-type>
+                <wsdl-message-mapping>
+                    <wsdl-message xmlns:mppm="http://beans.ws.bbr.cl">mppm:getDescargaRondaRequest</wsdl-message>
+                    <wsdl-message-part-name>TablaBin_OpXML</wsdl-message-part-name>
+                    <parameter-mode>IN</parameter-mode>
+                </wsdl-message-mapping>
+            </method-param-parts-mapping>
+            <method-param-parts-mapping>
+                <param-position>3</param-position>
+                <param-type>java.lang.String</param-type>
+                <wsdl-message-mapping>
+                    <wsdl-message xmlns:mppm="http://beans.ws.bbr.cl">mppm:getDescargaRondaRequest</wsdl-message>
+                    <wsdl-message-part-name>TablaRegistro_PickingXML</wsdl-message-part-name>
+                    <parameter-mode>IN</parameter-mode>
+                </wsdl-message-mapping>
+            </method-param-parts-mapping>
+            <wsdl-return-value-mapping>
+                <method-return-value>java.lang.String</method-return-value>
+                <wsdl-message xmlns:wrvm="http://beans.ws.bbr.cl">wrvm:getDescargaRondaResponse</wsdl-message>
+                <wsdl-message-part-name>getDescargaRondaReturn</wsdl-message-part-name>
+            </wsdl-return-value-mapping>
+        </service-endpoint-method-mapping>
+        <service-endpoint-method-mapping>
+            <java-method-name>getCargaRonda</java-method-name>
+            <wsdl-operation>getCargaRonda</wsdl-operation>
+            <wrapped-element></wrapped-element>
+            <method-param-parts-mapping>
+                <param-position>0</param-position>
+                <param-type>java.lang.String</param-type>
+                <wsdl-message-mapping>
+                    <wsdl-message xmlns:mppm="http://beans.ws.bbr.cl">mppm:getCargaRondaRequest</wsdl-message>
+                    <wsdl-message-part-name>NRonda</wsdl-message-part-name>
+                    <parameter-mode>IN</parameter-mode>
+                </wsdl-message-mapping>
+            </method-param-parts-mapping>
+            <method-param-parts-mapping>
+                <param-position>1</param-position>
+                <param-type>java.lang.String</param-type>
+                <wsdl-message-mapping>
+                    <wsdl-message xmlns:mppm="http://beans.ws.bbr.cl">mppm:getCargaRondaRequest</wsdl-message>
+                    <wsdl-message-part-name>login</wsdl-message-part-name>
+                    <parameter-mode>IN</parameter-mode>
+                </wsdl-message-mapping>
+            </method-param-parts-mapping>
+            <method-param-parts-mapping>
+                <param-position>2</param-position>
+                <param-type>java.lang.String</param-type>
+                <wsdl-message-mapping>
+                    <wsdl-message xmlns:mppm="http://beans.ws.bbr.cl">mppm:getCargaRondaRequest</wsdl-message>
+                    <wsdl-message-part-name>password</wsdl-message-part-name>
+                    <parameter-mode>IN</parameter-mode>
+                </wsdl-message-mapping>
+            </method-param-parts-mapping>
+            <wsdl-return-value-mapping>
+                <method-return-value>java.lang.String</method-return-value>
+                <wsdl-message xmlns:wrvm="http://beans.ws.bbr.cl">wrvm:getCargaRondaResponse</wsdl-message>
+                <wsdl-message-part-name>getCargaRondaReturn</wsdl-message-part-name>
+            </wsdl-return-value-mapping>
+        </service-endpoint-method-mapping>
+    </service-endpoint-interface-mapping>
+</java-wsdl-mapping>

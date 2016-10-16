@@ -1,0 +1,351 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html><!-- InstanceBegin template="/Templates/fullbody.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="EXPIRES" CONTENT="Mon, 22 Jul 2002 11:12:01 GMT">
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>Jumbo.cl Back Office Local</title>
+<!-- InstanceEndEditable -->
+
+<!-- InstanceBeginEditable name="head" --><!-- InstanceEndEditable -->
+
+<link href="estilos.css" rel="stylesheet" type="text/css">
+<!--link href="../Prototipo/default.css" rel="stylesheet" type="text/css"-->
+<style type="text/css">
+<!--
+.style1 {color: #666666}
+-->
+</style>
+</head>
+
+<body>
+<link rel="stylesheet" href="menu/menu.css">
+<script language="JavaScript" src="menu/menu.js"></script>
+<script language="JavaScript" src="menu/menu_tpl.js"></script>
+<script language="JavaScript" src="menu/menu_items.js"></script>
+
+<table width="780" height="100%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+    <td height="78" valign="top">
+	
+	<TABLE width="100%" height=59 border=0 align="center" cellpadding="0" cellspacing="0" bgcolor="#ffffff">
+	  <TR>
+		<TD width=275 height="59" align=left class=user><img src="img/header2.jpg" width="275" height="60"></TD>
+		<TD width=505 align=left valign="bottom" background="img/bg-1.jpg" class=user><table width="90%"  border="0" align="center" cellpadding="0" cellspacing="2">
+          <tr>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td><div align="right" class="infoBL">Usuario: {hdr_nombre} | Local: {hdr_local} | {hdr_fecha} </div></td>
+          </tr>
+        </table></TD>
+	  </TR>
+	</TABLE>
+	<TABLE width="100%" height=19 border=0 align="center" cellpadding="0" cellspacing="0" bgcolor="#f1f0e9" style="border-top:1px solid #ABABAB; border-bottom:1px solid #ABABAB">
+	  <TR>
+		<TD align=left bgcolor="#FFFFFF" class=user></TD>
+		</TR>
+	</TABLE>
+
+	
+	</td>
+  </tr>
+  <tr height="400">
+    <td valign="top" bgcolor="#FFFFFF">
+      <table border=0 width="100%" class='ContentTitle'>
+        <tr>
+          <td width="53%" height="20" class='HeaderTitle'><!-- InstanceBeginEditable name="Titulo" -->
+				  Picking de Ronda N&ordm;{id_ronda}<!-- InstanceEndEditable --></td>
+          <td width="47%" class='HeaderTitle'>
+          <!-- InstanceBeginEditable name="Botonera" -->
+		   <a href="ViewFormPicking?id_ronda={id_ronda}"><img src="img/1b.gif" width="40" height="40" border="0" ></a>
+           <a href="javascript: location.href='RelacionAutomaticaFormPicking?id_ronda={id_ronda}&url='+escape('ViewFormPickingSustitutos?id_ronda={id_ronda}');"><img src="img/2a.gif" width="40" height="40" border="0" ></a>
+           <img src="img/3a.gif" width="40" height="40" border="0" disabled>
+          <!-- InstanceEndEditable --></td>
+        </tr>
+      </table>
+	  <br>
+      <table width="100%"  border="0" cellspacing="2" cellpadding="2">
+        <tr valign="top">
+          <td width="71%"><!-- InstanceBeginEditable name="Izquierda" -->
+          <script language="JavaScript" src="popup.js"></script>
+<script language="JavaScript" src="funciones.js"></script>
+<script language="JavaScript" src="validacion.js"></script>
+<script>
+var bin_id    = new Array();
+var cod_bin   = new Array();
+var cod_ubica = new Array();
+var bin_op    = new Array();
+var bin_tipo  = new Array();
+
+<!-- BEGIN DYNAMIC: BINS -->
+    bin_id[{i}]    = '{id_bin}';
+    cod_bin[{i}]   = '{cod_bin}';
+    cod_ubica[{i}] = '{cod_ubica}';
+    bin_op[{i}]    = '{op}';
+    bin_tipo[{i}]  = '{tipo}';
+    
+<!-- END DYNAMIC: BINS -->
+
+function mostrar_datosBin(){
+	var formulario = document.ing_pick;
+	var fijo = false;
+	//
+	formulario.tipo_bin[0].disabled =true;
+	formulario.tipo_bin[1].disabled =true;
+    valor = formulario.sel_bin.value;    
+   	for( i = 0; i < bin_id.length; i++ ){
+        if( bin_id[i] == valor ) {
+           formulario.cod_bin.value = cod_bin[i];
+           formulario.cod_ubica.value = cod_ubica[i];
+           formulario.op.value = bin_op[i];
+           formulario.id_pedido.value = bin_op[i];
+
+           if (bin_tipo[i] == "F"){
+               formulario.tipo_bin[0].checked = true;
+           }else{
+               formulario.tipo_bin[1].checked = true;
+           }
+           
+        }
+    }
+    if (valor == 0){
+   	   formulario.cod_bin.value = "";
+       formulario.cod_ubica.value = "";
+       formulario.op.value = "";
+       formulario.id_pedido.value ="";
+	   formulario.tipo_bin[0].disabled =false;
+	   formulario.tipo_bin[1].disabled =false;     
+	   //formulario.tipo_bin[0].checked;      
+    }
+}
+
+
+function valida_ingreso(form){
+	if (form.sel_bin.value == "" || form.cod_barra.value == "" || form.cantidad.value == ""
+	    || form.cod_bin.value == "" ||  form.id_pedido.value==""){
+	    alert("Debe ingresar todos los datos.");
+	    return false;
+	}
+	if (form.tipo_flujo.value == "N" &&  form.cod_ubica.value == ""){
+	    alert("Debe ingresar todos los datos.");
+	    return false;
+	}
+	
+	if (validar_numero(form.cantidad,"Cantidad es un campo numerico.")) return false;
+	if (validar_numero(form.id_pedido,"OP es un campo numerico.")) return false;
+
+	if (form.sel_bin.value != "0"){
+		//mostrar_datosBin();
+		if (form.op.value != form.id_pedido.value){
+			alert("Este bin esta asociado a otra OP, favor revisar.");
+			return false;
+		}
+	}else{
+		if (!form.tipo_bin[0].checked && !form.tipo_bin[1].checked){
+			alert("Debe seleccionar un tipo de bin");
+			return false;
+		}
+	}	
+
+	if (form.tipo_bin[0].checked)
+		form.tipobin.value = form.tipo_bin[0].value;
+	else{
+		form.tipobin.value = form.tipo_bin[1].value;
+		//Confirmar uso de bin virtual
+		if (!confirm("¿Esta seguro de utilizar un bin Virtual?")){
+			return false;
+		}
+	}
+		
+	return true;
+	    
+}
+
+
+function abre_popup(){
+	valor="";
+	if ((valor = popUpWindowModalscroll('ViewBusqProdForm', 100, 100, 600, 400))> '0') {
+		if (valor != ""){
+		//	id = valor.split("|");
+			document.ing_pick.cod_barra.value = valor;
+		}
+	}else{
+			document.ing_pick.cod_barra.value = "";
+	}
+}
+
+function addOption(text,value,sel) {
+	   var oOpt=new Option(text,value);
+	   var oSelect=sel;
+	   oSelect.options[oSelect.options.length]=oOpt;
+	}
+	function removeOption(index,sel) {
+		   var oSelect=sel;
+		   oSelect.options[index]=null;
+	} 
+
+	function procesaResp(texto) {
+		var response = texto.split("-");
+		document.ing_pick.cod_barra.value = response[0];
+		document.ing_pick.id_pedido.value = response[1];
+				
+	}
+	
+	 function invocaAjax(){
+
+	 	var valor = document.ing_pick.lista_prod.value.split("-");
+	 	var codigo= valor[0];
+	 	var op= valor[1];
+		exec_AJAXRPC('GET', 'ViewCodBarraAjax?cod_barra='+codigo+"&op="+op, 'procesaResp');
+	 }
+
+
+</script>
+			<br>
+			<fieldset><legend>Ingreso Producto</legend>
+			<form name="ing_pick" method="post" action="AgregaRegBinFormPickRonda" onsubmit="return valida_ingreso(this);" >		
+			<input type="hidden" name="op" value="{op_bn}" >	
+			<input type="hidden" name="url" value="ViewFormPicking" >	
+			<input type="hidden" name="posicion" value="{posicion_bin}" >
+			<input type="hidden" name="tipo_flujo" value="{tipo_flujo}" >
+			<input type="hidden" name="tipobin" value="" >			
+			<input type="hidden" name="id_ronda" value="{id_ronda}" >
+
+			<table width="95%" border="0" align="center" cellpadding="0" cellspacing="0" >
+				<tr>
+					<td>Producto</td>
+				</tr>
+				<tr>
+					<td>
+						<select name="lista_prod" onchange="invocaAjax();" >
+						<option value="">---</option>
+						<!-- BEGIN DYNAMIC: PROD -->
+						<option value="{cbarra}">{cod_prod} {desc} {umed} OP={op} Cant={cant}</option>
+						<!-- END DYNAMIC: PROD -->
+						
+						</select>
+					</td>	
+				</tr>
+			</table>
+			<table width="95%" border="0" align="center" cellpadding="0" cellspacing="0" >				
+				<tr>
+					<td width="50%">Codigo de Barra</td>
+					<td>Cantidad</td>	
+				</tr>
+				<tr>
+					<td width="50%">
+						<input type="text" name="cod_barra" maxlength="13" size="50">
+						<a href='javascript:abre_popup();'>  <img src="img/magnify.jpg" width="16" height="16" border="0" title="Busca Producto"></a>
+					</td>
+					<td><input type="text" name="cantidad" size="8" maxlength="9"></td>
+					
+				</tr>
+			</table>		
+			<table width="95%" border="0" align="center" cellpadding="0" cellspacing="0">
+			<tr valign="top">
+			<td>Tipo Bin: 
+			<input type="radio" name="tipo_bin" value="F" {check_F}  {dis_rad} >Físico
+			<input type="radio" name="tipo_bin" value="V" {check_V}  {dis_rad} >Virtual
+			</td>
+			<td>OP</td>					
+			<td>Bin</td>
+			<td>Ubicación</td>
+			<td></td>
+			</tr>			
+			<tr>
+				<td>
+				<select name="sel_bin" onchange="mostrar_datosBin();" >			
+				<option value="0" >--- Nuevo Bin ----</option>
+				<!-- BEGIN DYNAMIC: BINS -->
+				<option value="{id_bin}" {sel_bin} >Cod.Bin={cod_bin} Tipo={tipo} Ubicacion={cod_ubica} OP={op} </option>
+				<!-- END DYNAMIC: BINS -->			
+				</select>
+			</td>		
+			<td>
+			<!--input type="text" name="id_pedido"  value="{op}" size="6" maxlength="20"-->
+			<select name="id_pedido">
+				<option value="">---</option>	
+				<!-- BEGIN DYNAMIC: PEDIDOS -->
+				<option value="{id_op}" {sel_ped} >{id_op}</option>
+				<!-- END DYNAMIC: PEDIDOS -->
+			</select>
+			</td>
+				<td><input type="text" name="cod_bin"  value="{cod_bin_ing}" size="6" maxlength="20"></td>
+				<td><input type="text" name="cod_ubica"  value="{cod_ubica_ing}" size="10" maxlength="20" {hab_ubica} ></td>
+				<td><input type="submit" name="bingpick" value="Ingresa Picking"></td>
+			</tr>
+			</table>
+			</form>
+			</fieldset>
+			<br>
+			<center><font color=red>{mensaje}</font></center>
+			<br>
+			<table width=750 border="0" align="center" cellpadding="2" cellspacing="0" class="tabla2" >
+				<tr>
+				  <th width="19">&nbsp;</th>
+				   <th width="125">Id Prod</th>
+				   <th width="75">Cod SAP</th>
+				   <th width="65">Unid</th>
+				   <th width="341">Descripci&oacute;n</th>
+				   <th width="101">CodBarra</th>
+				   <th width="101">Cod. Bin</th>
+				   <th width="101">Cant Pick.</th>
+				</tr>
+				<!-- BEGIN DYNAMIC: DET_PICK -->
+				<tr valign="top">
+				  <td>
+				  <a href='javascript:validar_eliminar("Esta seguro que desea eliminar?","ReversaPickingFormPicking?id_pick={id_pick}&url="+escape("ViewFormPicking?id_ronda={id_ronda}"));'>
+				  <img src="img/trash.gif" width="16" height="16" border="0" >
+				  </a></td>
+					<td>{id_prod}</td>
+					<td>{cod_sap}</td>
+					<td align=center>{uni_med}</td>
+					<td>{desc}</td>
+					<td>{codbarra}</td>
+					<td>{cod_bin}</td>
+					<td align="right">{cant_pickeada}</td>
+				  </tr>				  				  
+				<!-- END DYNAMIC: DET_PICK -->
+			  <tr valign="top" align=center>
+					<td colspan=13>
+					<form name="form_rel" method="get" action="RelacionAutomaticaFormPicking" >
+						<input type="hidden" name="id_ronda" value="{id_ronda}" > 
+						<input type="hidden" name="url" value="ViewFormPickingSustitutos?id_ronda={id_ronda}" > 
+					<input type="submit" name="guardar" value="Aceptar" >
+					</form>
+					</td>
+					
+				  </tr>
+				  
+			</table>
+			{mns}
+			<script>
+				document.ing_pick.cod_barra.onkeypress = KeyIsSoloNum;
+				document.ing_pick.cantidad.onkeypress = KeyIsDecimal;
+			</script>
+
+			<br>
+
+          <!-- InstanceEndEditable --></td>
+        </tr>
+      </table>
+      </td>
+  </tr>
+  <tr>
+    <td>
+	<TABLE width="100%" height=19 border=0 align="center" cellpadding="0" cellspacing="0" bgcolor="#f1f0e9" style="border-top:1px solid #ABABAB; border-bottom:1px solid #ABABAB">
+	  <TR>
+		<TD align=center bgcolor="#67b01a" class=infoBL><div align="center">Back Office Local - Jumbo.cl</div></TD>
+		</TR>
+	</TABLE>
+
+	
+	</td>
+  </tr>
+</table>
+</body>
+<!-- InstanceEnd --></html>

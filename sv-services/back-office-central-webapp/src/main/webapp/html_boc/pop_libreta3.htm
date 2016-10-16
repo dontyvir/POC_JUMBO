@@ -1,0 +1,59 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html><!-- InstanceBegin template="/Templates/print.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="EXPIRES" CONTENT="Mon, 22 Jul 2002 11:12:01 GMT">
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>Jumbo.cl Back Office Central</title>
+<!-- InstanceEndEditable -->
+<!-- InstanceBeginEditable name="head" --><!-- InstanceEndEditable -->
+<link href="estilos.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+<!--
+body {
+	background-color: #FFFFFF;
+}
+-->
+</style></head>
+
+<body>
+<!-- InstanceBeginEditable name="Body" -->Editar Indicaci&oacute;n <br>
+<br>
+<br>		
+            <form name="frmCambiaIndic" method="get" action="ModPedidoIndic" target="winpedido1">
+			<input name=url type=hidden value="ViewOPFormPedido?id_pedido={id_pedido}&mod={mod}">
+			<input name=id_pedido type=hidden value="{id_pedido}">
+			<table width="39%"  border="0" align="center" cellpadding="0" cellspacing="2">
+              <tr>
+                <td align="right"><div align="left">Indicaci&oacute;n:</div></td>
+              </tr>
+              <tr>
+                <td width="71%" align="right"><div align="left">
+                    <textarea name="indicacion" cols="45" rows="5" onchange="if(this.value.length > 254){ this.value=this.value.substring(0,255); window.event.keyCode=0; alert('Se permite un máximo de 255 caracteres en la descripción, se eliminaran los caracteres sobrantes.                               Presione Ingresar para agregar registro al Log.'); }">{indicacion}</textarea>
+                </div></td>
+              </tr>
+			 <tr>
+                <td align="right"><div align="left">Observaciones:</div></td>
+              </tr>              
+              <tr>
+                <td width="71%" align="right"><div align="left">
+                    <textarea name="obs" cols="45" rows="5" onchange="if(this.value.length > 254){ this.value=this.value.substring(0,255); window.event.keyCode=0; alert('Se permite un máximo de 255 caracteres en la observación, se eliminaran los caracteres sobrantes.                               Presione Ingresar para agregar registro al Log.'); }">{obs}</textarea>
+                </div></td>
+              </tr>              
+              <tr>
+                <td align="right">&nbsp;</td>
+              </tr>
+              <tr>
+                <td align="right">
+                    <div align="center">
+                      <input name="Button" type="button" class="cmd" value="Guardar " onClick="javascript:frmCambiaIndic.submit(); window.close();">
+                      <input name="Button" type="button" class="cmd" value="Cancelar" onClick="window.close();">
+                    </div></td>
+              </tr>
+            </table>
+			</form>
+<!-- InstanceEndEditable --></body>
+<!-- InstanceEnd --></html>

@@ -1,0 +1,53 @@
+	
+	<table width="700"  border="0" align="center" cellpadding="2" cellspacing="0" class="tabla2">
+		<tr>
+		<td style="text-align: right;">
+			<input type="button" value="Agregar Categoria" id="agregarCategoria" onclick="javascript:agregarcategoria();">
+		</td>
+		</tr>
+	</table>		
+	<br/>
+	<table id="tabla_banners" width="700"  border="0" align="center" cellpadding="2" cellspacing="0" class="tabla2">
+		<tr>
+			<th style="text-align:left;">
+				ID
+			</th>
+			<th style="text-align:left;">
+				Categor&iacute;a
+			</th>
+			<th style="text-align:left;">
+				Banners
+			</th>
+			<th style="text-align:center;">
+				Fecha de inicio
+			</th>
+			<th style="text-align:center;">
+				Fecha de t&eacute;rmino
+			</th>
+			<th>
+				Acciones
+			</th>
+		</tr>
+		<!-- BEGIN DYNAMIC: CATEGORIAS -->
+		<tr>
+			<td>
+				{bca_cat_id}
+			</td>
+			<td>
+				{nombre}
+			</td>
+			<td>
+				{bca_estado}
+			</td>
+			<td style="text-align:center;">
+				{fechaInicio}
+			</td>
+			<td style="text-align:center;">
+				{fechaTermino}
+			</td>
+			<td style="text-align:center;">
+				<a id="{bca_cat_id}" href="#">editar</a>
+			</td>
+		</tr>
+		<!-- END DYNAMIC: CATEGORIAS -->
+	</table>

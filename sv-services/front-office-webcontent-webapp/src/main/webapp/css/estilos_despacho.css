@@ -1,0 +1,68 @@
+@charset "UTF-8";
+/* CSS Document */
+
+.col_despacho {
+    color: #666666;
+    float: left;
+    font-family: Arial,Helvetica,sans-serif;
+    font-size: 12px;
+    height: auto;
+    padding-bottom: 10px;
+    padding-top: 0px;
+    text-align: left;
+    width: 425px;
+}
+.cont_fondo_color {
+	background-color:#f7faf4;
+	width: 425px;
+	height: 130px;
+	padding-top: 10px;
+		
+}
+.cont_img_camion {
+	width: 100px;
+	height: 100px;
+	float:left;
+	background-image:url(../img/icono_camion.png);
+	background-repeat: no-repeat;
+}
+.cont_img_jumbo_auto {
+	width: 100px;
+	height: 100px;
+	float:left;
+	background-image: url(http://www.jumbo.cl/supermercado/click-auto/img/icono_click_auto_flujo_despacho.png);
+	background-repeat: no-repeat;
+}
+
+.cont_datos_despacho_retiro {
+	width: 325px;
+	height: 100px;
+	float:left;
+	
+}
+.linea_datos {
+	width: auto;
+	height: 30px;
+
+}
+.col_form_linea {
+    float: left;
+    height: 60px;
+    padding-bottom: 5px;
+    padding-right: 5px;
+    text-align: left;
+    width: 400px;
+}
+.txt_indicaciones_jumbo_auto {
+    color: #666666;
+    float: left;
+    font-family: Arial,Helvetica,sans-serif;
+    font-size: 12px;
+    height: auto;
+    margin-top: 3px;
+    text-align: left;
+    width: 394px;
+	text-align:justify;
+	padding-left: 20px;
+	line-height:normal;
+}

@@ -1,0 +1,120 @@
+<script type="text/javascript">
+	try {
+		mxTracker._trackPageview('Carro de Compras');	
+	} catch(err) {}
+	
+	
+</script>
+
+<script type="text/javascript">
+	jQuery().ready(
+		function() {
+			pos(document.fc.id_prod_add);
+		}
+	);
+</script>
+<form  name="fc" method="post" action="" >
+
+<table width="210" border="0" cellspacing="2" cellpadding="0"> <!-- -20120330 dcm cambio del ancho del despliegue de 190 a 210px -->
+	<tr>
+		<td>
+			
+				<input type="hidden" name="cant_reg" id="cant_reg" value="{cant_reg}" />
+				<input type="hidden" name="total_carro_compras" id="total_carro_compras" value="{total}" />
+				<input type="hidden" name="total_desc_carro_compras" id="total_desc_carro_compras" value="{total_desc}" />
+				<input type="hidden" name="total_desc_carro_compras_sf" id="total_desc_carro_compras_sf" value="{total_desc_sf}" />
+<!-- +20120216coh -->
+				<input type="hidden" name="total_desc_carro_compras_tc" id="total_desc_carro_compras_tc" value="{total_desc_tc}" />
+				<input type="hidden" name="total_desc_carro_compras_tc_sf" id="total_desc_carro_compras_tc_sf" value="{total_desc_tc_sf}" />
+<!-- -20120216coh -->
+				<input type="hidden" name="promo_desc_carro_compras" id="promo_desc_carro_compras" value="{promo_desc}" />
+				<input type="hidden" name="id_prod_add" id="id_prod_add" value="{id_prod_add}" />
+				<!-- BEGIN DYNAMIC: lista_carro_img -->
+				<center><img src="/FO_IMGS/img/estructura/carro/carrovacio.gif" /></center>
+				<!-- END DYNAMIC: lista_carro_img -->
+				 
+			
+				<!-- BEGIN DYNAMIC: CATEGORIAS -->
+				<table width="100%" border="0" cellspacing="0" cellpadding="2">
+ 				       <tr>
+						     <td class="cc_text_categoria" title="{cat_descripcion}" colspan="5" >
+								{link_categoria}
+								<!-- <a style="color:#FFF;" href="javascript:muestracabecera({cat_id},{numero})" id="{cat_id}" class="cabecera" >{cat_nombre}</a> -->
+							 </td>
+					   </tr>
+					   <tr>
+						  <td> 
+							<!-- BEGIN DYNAMIC: lista_carro -->	
+							<div id="Inner_{pro_id}" >		
+							<table width="100%" border="0" cellspacing="0" cellpadding="2">			
+						     <tr id="Itemcarro_{pro_id}" class="{style_fila}">
+									<td class="cc_text" title="{nommarca}" colspan="2" style="padding-left: 2px;">
+										<a name="anchor_{pro_id}"></a>
+										<a href="javascript:ficha({pro_id});" class="cc_text_link">{nombrepro} </a>
+										<input type="hidden" id="nota_{pro_id}" value="{nota}"/>
+									</td>
+									<td width="56" class="cc_text">
+										<!-- BEGIN DYNAMIC: LISTA_SEL -->
+										<select name="cantidad_l{contador}" class="cc" onchange="mc({id}, this, {maximo}, {pro_id} )" ></select>&nbsp;{unidad}
+										<script>hl( document.fc.cantidad_l{contador}, {intervalo}, {maximo}, {valor} );</script>
+										<!-- END DYNAMIC: LISTA_SEL -->
+										<!-- BEGIN DYNAMIC: INPUT_SEL -->
+										<table border="0" cellspacing="0" cellpadding="2" >
+											<tr align="center">
+												<td>
+													<a href="javascript:add(document.fc.cantidad_l{contador},{intervalo},{maximo},{id}, {pro_id} );">
+														<img src="/FO_IMGS/img/estructura/carro/flechasuperior.gif" border="0" />
+													</a>
+												</td>
+												<td rowspan="2">
+													<input style="width:20px; height: 20px; margin-left:4px; margin-right:3px;" name="cantidad_l{contador}" id="cantidad_l{contador}" value="{valor}" type="text" class="cc" size="1" maxlength="4" onkeypress="javascript:return bloqueaCaracteres(event,/[0-9.\b]/);" onchange="javascript:cambia_cantidad('cantidad_l{contador}',{intervalo},{maximo},{id},{pro_id});" style="width:20px; height: 20px;" /> <!--20120330 dcm-->
+												</td>
+												<td rowspan="2">
+													<font style="font-size: 7.5pt">{unidad}</font>
+												</td>
+											</tr>
+											<tr>
+												<td>
+													<a href="javascript:del(document.fc.cantidad_l{contador},{intervalo},{maximo},{id}, {pro_id} )">
+														<img src="/FO_IMGS/img/estructura/carro/flechainferior.gif" border="0"/>
+													</a>
+												</td>
+											</tr>
+										</table>
+										<!-- END DYNAMIC: INPUT_SEL -->
+									</td>
+									<td width="33" class="cc_text" align="right" style="padding-left:4px;">{subtotal}</td>
+									<td width="8" class="cc_text">
+										<a href="javascript:del(document.fc.cantidad_l{contador},1000,1,{id}, {pro_id})">
+											<img style="padding-right: 5px;" src="/FO_IMGS/img/estructura/carro/d.gif" style="padding-right: 20px;" border="0" width="8" height="6" alt="Eliminar Producto" title="Eliminar Producto">
+										</a>
+										<!-- ORIGINAL DCADIZ
+										<img src="/FO_IMGS/img/estructura/carro/d.gif" border="0" width="8" height="6" alt="Eliminar Producto" title="Eliminar Producto"/>
+										-->
+									</td>
+								</tr>
+						</table>
+						    <!-- END DYNAMIC: lista_carro -->
+						    </div>
+						</td>	
+						</tr> 
+				<!-- END DYNAMIC: CATEGORIAS -->
+					
+				</table>
+				 
+			
+		</td>
+	</tr>
+</table>
+<script>
+//Arreglo para generación de chaordic_meta 
+var chaordic_item = new Array();
+var cant=0;
+<!-- BEGIN DYNAMIC: CHAORDIC_PROD -->
+chaordic_item[cant] = ['{id_prod}','{precio}','{cantidad}'];
+++cant;
+<!-- END DYNAMIC: CHAORDIC_PROD -->
+
+chaordicActualizaCarro("{id_carro}",chaordic_item);
+</script>
+</form>

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="WebApp_ID" version="2.4" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+	<display-name>Purchase</display-name>
+	
+	<servlet>
+	    <servlet-name>log4j-init</servlet-name>
+	    <servlet-class>cl.jumbo.ventamasiva.log.Log4jInit</servlet-class>
+	    <init-param>
+	      <param-name>log4j-init-file</param-name>
+	      <param-value>/WEB-INF/classes/log4j_app.properties</param-value>
+	    </init-param>
+	    <load-on-startup>1</load-on-startup>
+	</servlet>
+	
+    <!-- FILTER --> 	
+	<!--filter>
+		<description>Permite acceso a la aplicacion	</description>
+		<display-name>RefererFilter</display-name>
+		<filter-name>RefererFilter</filter-name>
+		<filter-class>cl.jumbo.ventamasiva.filter.RefererFilter</filter-class>
+		<init-param>
+       		<param-name>enable</param-name>
+       		<param-value>1</param-value>
+      	</init-param>
+	</filter-->
+	
+	<!-- FILTER MAPPING -->	
+	<!--filter-mapping>
+		<filter-name>RefererFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping-->
+	
+	
+	<!-- SERVLET -->	
+	<servlet>
+		<description></description>
+		<servlet-name>PurchasePay</servlet-name>
+		<servlet-class>cl.jumbo.ventamasiva.ctrl.CtrlPurchasePay</servlet-class>
+	</servlet>	
+	<servlet>
+		<description></description>
+		<servlet-name>PurchaseEnd</servlet-name>
+		<servlet-class>cl.jumbo.ventamasiva.ctrl.CtrlPurchaseEnd</servlet-class>
+	</servlet>
+	<servlet>
+		<description></description>
+		<servlet-name>PurchaseOrder</servlet-name>
+		<servlet-class>cl.jumbo.ventamasiva.ctrl.CtrlPurchaseOrder</servlet-class>
+	</servlet>	
+	<servlet>
+		<description></description>
+		<servlet-name>PurchaseValidate</servlet-name>
+		<servlet-class>cl.jumbo.ventamasiva.ctrl.CtrlPurchaseValidate</servlet-class>
+	</servlet>
+	<servlet>
+		<description></description>
+		<servlet-name>TestServlet</servlet-name>
+		<servlet-class>cl.jumbo.ventamasiva.ctrl.TestServlet</servlet-class>
+	</servlet>
+	
+	<!-- SERVLET MAPPING -->
+	<servlet-mapping>
+		<servlet-name>PurchasePay</servlet-name>
+		<url-pattern>/PurchasePay</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>PurchaseEnd</servlet-name>
+		<url-pattern>/PurchaseEnd</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>PurchaseOrder</servlet-name>
+		<url-pattern>/PurchaseOrder</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>PurchaseValidate</servlet-name>
+		<url-pattern>/PurchaseValidate</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>TestServlet</servlet-name>
+		<url-pattern>/TestServlet</url-pattern>
+	</servlet-mapping>
+	
+	<!-- 404 Not Found -->
+	<error-page>
+		<error-code>404</error-code>
+		<location>/HTTP_404?http_error=404</location>
+	</error-page>	
+	
+    <resource-ref id="ResourceRef_1288969736468">
+    	<description>DB Connection DB2</description>
+    	<res-ref-name>jdbc/bodbaVE</res-ref-name>
+    	<res-type>javax.sql.DataSource</res-type>
+    	<res-auth>Container</res-auth>
+    	<res-sharing-scope>Shareable</res-sharing-scope>
+    </resource-ref>
+   
+</web-app>

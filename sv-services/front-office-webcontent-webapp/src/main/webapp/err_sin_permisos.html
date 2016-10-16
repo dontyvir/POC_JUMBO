@@ -1,0 +1,9 @@
+<script>
+var agent = navigator.userAgent.toLowerCase();
+var is_iphone = (agent.indexOf('iphone') != -1);
+if (is_iphone) {
+	top.document.location.replace( "/FO/LogonFormMobi" );
+} else {
+	top.document.location.replace( "/FO/LogonForm" );
+}
+</script>

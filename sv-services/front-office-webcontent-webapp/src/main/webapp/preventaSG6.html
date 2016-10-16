@@ -1,0 +1,486 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//ES" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="CACHE-CONTROL" content="NO-CACHE" />
+<meta http-equiv="PRAGMA" content="NO-CACHE" />
+<meta http-equiv="EXPIRES" content="Mon, 22 Jul 2002 11:12:01 GMT" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Formulario Preventa Samsung S6</title>
+<link rel="shortcut icon" href="/FO_IMGS/img/favicon.ico" />
+<script type="text/javascript" src="/FO_WebContent/js/jquery.min.js"></script>
+<script type="text/javascript" src="/FO_WebContent/js/funciones.js"></script>
+<script type="text/javascript" src="/FO_WebContent/js/preventaSG6.js"></script>
+<script type="text/javascript" src="/FO_WebContent/js/checkrut.js"></script>
+<script type="text/javascript" src="/FO_WebContent/js/registro_sencillo.js"></script>
+<script type="text/javascript" src="/FO_WebContent/js/thickbox.js"></script>
+<script type="text/javascript" src="/FO_WebContent/js/codigosTelefonicos.js"></script>
+<script type="text/javascript" src="/FO_WebContent/js/aphanumeric.js"></script>
+<script type="text/javascript" src="/FO_WebContent/js/registro_sencillo.js"></script>
+<script type="text/javascript" src="/FO_WebContent/js/prototype.js"></script>
+<script src="/FO_WebContent/js/SpryValidationSelect.js" type="text/javascript"></script>
+<script src="/FO_WebContent/js/SpryEffects.js" type="text/javascript"></script>
+<link href="/FO_WebContent/css/SpryValidationSelect.css" rel="stylesheet" type="text/css" />
+<link type="text/css" rel="stylesheet" href="/FO_WebContent/css/thickbox.css" media="screen" />
+<link type="text/css" rel="stylesheet" href="/FO_WebContent/css/light_box.css" />
+
+<style type="text/css">
+
+body {
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+}
+#form01 {
+	text-align: center;
+}
+#form_todo {
+	vertical-align: top;
+	padding-top: 300px;
+}
+#form2_der {
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 9px;
+	font-weight: lighter;
+	color: #F90;
+}
+#form1 table {
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 12px;
+	color: #0063be;
+	text-align: center;
+	font-weight: bold;
+}
+.text_der_form_02 {
+	font-family: "VAG Rounded Black";
+	font-size: 9px;
+	color: #402F76;
+}
+#form_rojo {
+	color: #FF0000;
+}
+.aste_rojo {
+	color: #FF0000;
+}
+.boton_enviar {
+	border: 0px;
+	border-image-source: initial;
+	border-image-slice: initial;
+	border-image-width: initial;
+	border-image-outset: initial;
+	border-image-repeat: initial;
+	color: rgb(255, 255, 255);
+	float: right;
+	padding: 5px;
+	cursor: pointer;
+	width: 108px;
+	height: 22px;
+	font-weight: bold;
+	text-align: center;
+	background-image: url(/FO_IMGS/images/preventaS6/btn_03.png);
+	background-repeat: no-repeat;
+	background-position: 0% 0%;
+}
+.boton_ficha {
+	border: 0px;
+	border-image-source: initial;
+	border-image-slice: initial;
+	border-image-width: initial;
+	border-image-outset: initial;
+	border-image-repeat: initial;
+	color: rgb(255, 255, 255);
+	float: right;
+	padding: 5px;
+	cursor: pointer;
+	width: 108px;
+	height: 22px;
+	font-weight: bold;
+	text-align: center;
+}
+.for2 {
+	font-weight: normal;
+}
+.form_txt {
+	background-repeat: no-repeat;
+	padding: 3px;
+	clear: right;
+	float: left;
+	height: 20px;
+	width: 220px;
+	position: static;
+	border: 2px solid #00388a;
+	border-radius: 12px;
+}
+.tabla_02 {
+	padding-right: 70px;
+	width: 420px;
+}
+.Img_txt_03 {
+	background-image: none;
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+.punto {
+	color: #FF0000;
+	font-size: 9px;
+}
+.cuadro_aviso {
+	position: fixed;
+	background-repeat: no-repeat;
+	vertical-align: middle;
+}
+.rojo_02 {
+	font-size: 10px;
+	vertical-align: top;
+	height: 2px;
+	font-family: Verdana, Geneva, sans-serif;
+}
+
+#apDiv1 {
+	position: absolute;
+	width: 457px;
+	height: 445px;
+	z-index: 1;
+	top: 115px;
+	left: 655px;
+	visibility: hidden;
+	background-image: url(/FO_IMGS/images/preventaS6/cuadro_02.png);
+}
+.coco_01 {
+	color: #FFFFFF;
+	font-family: Arial;
+	font-size: 16px;
+	font-weight: bold;
+	padding-right: 10px;
+	padding-left: 10px;
+}
+.form_txt_02 {
+	background-repeat: no-repeat;
+	padding: 3px;
+	clear: right;
+	float: left;
+	height: 26px;
+	width: 200px;
+	position: static;
+	border: 2px solid #00388a;
+	border-radius: 12px;
+}
+.fondo_02 {
+	background-image: url(http://www.jumbo.cl/supermercado/samsung/fondo.jpg);
+	background-repeat: no-repeat;
+	background-position: center top;
+}
+.seleccionar {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 9px;
+	font-weight: normal;
+	color: #009;
+	text-align: left;
+}
+.bases_02 {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #009;
+	text-decoration: underline;
+}
+a:link {
+	text-decoration: none;
+}
+a:visited {
+	text-decoration: none;
+}
+a:hover {
+	text-decoration: none;
+	color: #09F;
+}
+a:active {
+	text-decoration: none;
+}
+.form_txt_022 {
+	background-repeat: no-repeat;
+	padding: 3px;
+	clear: right;
+	float: left;
+	height: 26px;
+	width: 220px;
+	position: static;
+	border: 2px solid #00388a;
+	border-radius: 12px;
+}
+</style>
+</head>
+
+<body onload="validaFechaCaducidad();"> 
+
+<div class="fondo_02" style="width:1000px; height:800px; margin-left:auto; margin-right:auto; float:none; clear:both;">
+	
+	<div class="cont_main_central">
+
+
+<table width="960" height="725" border="0" align="left" cellspacing="5" style="">
+  <tr>
+  	<td width="520">&nbsp;</td>
+    <td valign="top">
+    <form action="#" method="post"  name="form1" class="form_todo" id="form1"  onsubmit="javascript:return false;">
+      <div class="Img_txt_03">
+      <div class="cuadro_aviso" id="apDiv1">
+        <table width="480" height="373" border="0" align="left" cellpadding="0" cellspacing="0">
+          <tr>
+            <td width="115" height="74">&nbsp;</td>
+            <td>&nbsp;</td>
+            <td width="82" align="left" valign="bottom"><img src="/FO_IMGS/images/preventaS6/bot_cerrar.png" width="32" height="31"  border="0" id="btnCerrar"/></td>
+          </tr>
+          <tr>
+            <td height="260">&nbsp;</td>
+            <td width="269" class="coco_01" id="coco_01"></td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+          </tr>
+        </table>
+      </div>
+        <table width="420" border="0" align="left" cellspacing="5" class="tabla_02">
+          <tr>
+            <td colspan="3" align="left" id="form8">&nbsp;</td>
+          </tr>
+          <tr>
+            <td colspan="3" align="left" id="form6">&nbsp;</td>
+          </tr>
+          <tr>
+            <td colspan="3" align="left" id="form16">&nbsp;</td>
+          </tr>
+          <tr>
+            <td colspan="3" align="left" id="form12">&nbsp;</td>
+          </tr>
+          <tr>
+            <td colspan="3" align="left" id="form12">&nbsp;</td>
+          </tr>
+          <tr>
+            <td colspan="3" align="left" id="form12">&nbsp;</td>
+          </tr>
+          <tr>
+            <td colspan="3" align="left" id="form12">&nbsp;</td>
+          </tr>
+          <tr>
+            <td colspan="2" align="right" id="form24" >Rut</td>
+            <td valign="middle" id="form24">
+            <input name="rut" type="text" class="form_txt" onfocus="if (this.value=='12345678-9') this.value='';cleanDatosPreventa();" onclick="cleanDatosPreventa();" onblur="if (this.value=='') this.value='12345678-9';cargarDatosCliente();" id="rut" style="color: #999; padding-left: 5px;" value="12345678-9" size="30" maxlength="10" vspace="4" /></td>
+           </tr>
+          <tr>
+            <td width="443" colspan="2" align="right" valign="middle" id="form5">Nombre</td>
+            <td width="231" valign="middle" id="form5">
+            <input name="nombres" type="text" class="form_txt" id="nombres" style="color: #999; padding-left: 5px;" value="Nombre" size="30" maxlength="60" vspace="4"; readonly="readonly"/></td>
+          </tr>
+          <tr>
+            <td colspan="2" align="right" valign="middle" id="form10"> Apellido</td>
+            <td valign="middle" id="form10">
+            <input name="apellido" type="text" class="form_txt" id="apellido" style="color: #999; padding-left: 5px;" value="Apellido" size="30" maxlength="60" vspace="4" readonly="readonly"/></td>
+          </tr>
+          <tr>
+            <td colspan="2" align="right" valign="middle" id="form26">Email</td>
+            <td valign="middle" id="form26">
+            <input name="email" type="text" class="form_txt" id="email" style="color: #999; padding-left: 5px;" onfocus="if (this.value=='sucorreo@dominio.com') this.value='';" onblur="if (this.value=='') this.value='sucorreo@dominio.com';" value="sucorreo@dominio.com" size="30" maxlength="100" vspace="4" readonly="readonly"/></td>
+            </tr>
+          <tr>
+            <td colspan="2" align="right" valign="middle" id="form10"> Tel&eacute;fono</td>
+            <td valign="middle" id="form11">
+            <input name="telefono" type="text" class="form_txt" id="telefono" style="color: #999; padding-left: 5px;" size="30" maxlength="60" vspace="4" readonly="readonly"/></td>
+          </tr>
+          <tr>
+            <td colspan="2" align="right" valign="middle" id="form10">Selecciona el modelo</td>
+            <td valign="middle" id="form12">
+            <select name="modeloGalaxy" class="form_txt_022" id="modelo" onchange="validaModelo();">
+            	<!-- BEGIN DYNAMIC: MODELOS_GALAXY -->
+            	<option value={idGalaxy}>{descripcionGalaxy}</option>
+            	<!-- END DYNAMIC: MODELOS_GALAXY -->
+            	
+            	</select>
+            </td>
+          </tr>
+        
+		  <tr>
+		  <tr>
+		  	<td colspan="2"></td>
+		  	<td colspan="2" class="seleccionar"><a style="margin-left:35px;" href="http://www.jumbo.cl/supermercado/samsung/ficha.pdf" target="_blank">Ver Ficha Producto</a></td>
+		  <tr>
+		  
+
+		  <tr>
+		    <td colspan="2" align="right" valign="middle" id="form7">&nbsp;</td>
+		    <td colspan="2" align="left" valign="middle" class="seleccionar" id="form7">
+		    <input type="checkbox" id="acepta" name="acepta" value="aceptabases" />
+		    Acepto <a href="/FO_IMGS/images/preventaS6/TERMINOS Y CONDICIONES.pdf" target="_blank">T&eacute;rminos y Condiciones</a></td>
+		    </tr>
+		    <tr></tr>
+          <tr>
+          
+            <td colspan="3" height="44" align="center" id="form01">
+                 <span id="btnContinuar"><a href="#" id="continuarFormSG6" class="boton_enviar"></a></span>
+                 <span id="btnContinuarloader"><img src="/FO_IMGS/images/\preventaS6/ajaxloader.gif"  border="0" /></span>
+            </td>
+          </tr>
+          
+          <tr>
+            <td colspan="3" align="left" >&nbsp;</td>
+          </tr>
+          <tr>
+            <td colspan="3" align="center" >&nbsp;</td>
+            </tr>
+        </table>
+      </div>
+    </form></td>
+  </tr>
+</table>
+
+</div>
+</div>
+ <div id="hiddenModalContent" >
+	 <div id="registra_cliente" class="contenedor_lightbox_registro_2" style="display: none;">
+      <form id="RegistroSencillo" name="RegistroSencillo" method="post" action="">
+        <input type="hidden" name="url_to" id="url_to" value="" />
+        <div id="cont_inputs_close2" class="cont_inputs_close2"> <a href="javascript:closeLBoxWin();"> <img  src="/FO_IMGS/images/html/btn_cerrar.gif" border="0" alt="Cerrar"/> </a> </div>
+        <div class="col_1_registro_2_2012_RS">
+          <div class="fila_registro_2_2012_titulo_RS">Registrate en Jumbo.cl</div>
+          <div class="fila_registro_2012_name_RS">Rut:</div>
+          <div class="linea_registro_2012_RS">
+            <div class="fila_registro_2012_form_RS"  style="height:auto;">
+              <label for="textfield3"></label>
+              <input id="cli_rut_reg" name="cli_rut_reg" type="text" class="form_registro_2012" maxlength="12" onchange="checkRutValue(this);" onkeypress="javascript:return bloqueaCaracteres(event,/[0-9kK\-\.\b]/);" onfocus="javascript: $j('#error_rut_existe').hide();"/>
+              <div id="error_rut_existe" class="error_rut_existe" style="display: none;">Este RUT ya se encuentra registrado. Ingresa tu RUT nuevamente o inicia sesi&oacute;n.</div>
+            </div>
+          </div>
+          <div class="fila_registro_2012_name_RS">Nombre</div>
+          <div class="linea_registro_2012_RS">
+            <div class="fila_registro_2012_form_RS">
+              <label for="textfield2"></label>
+              <input id="nombre" name="nombre" type="text" class="form_registro_2012" maxlength="30" size="30" />
+            </div>
+          </div>
+          <div class="fila_registro_2012_name_RS">Apellido:</div>
+          <div class="linea_registro_2012_RS">
+            <div class="fila_registro_2012_form_RS">
+              <label for="textfield3"></label>
+              <input id="ape_pat" name="ape_pat" type="text" class="form_registro_2012" maxlength="30" size="30" />
+            </div>
+          </div>
+          <div class="fila_registro_2012_name_RS">Regi&oacute;n:</div>
+          <div class="linea_registro_2012_RS">
+            <div class="fila_registro_2012_form_RS">
+              <label for="textfield3"></label>
+              <select id="id_region_reg" name="id_region" onChange="javascript:getComunasByRegionRegistro(this.value);" style="width: 180px;">
+                <option value="">Seleccione</option>
+              </select>
+            </div>
+          </div>
+          <div class="fila_registro_2012_name_RS">Comuna:</div>
+          <div class="linea_registro_2012_RS">
+            <div class="fila_registro_2012_form_RS">
+              <label for="textfield3"></label>
+              <select id="id_comuna_reg" name="id_comuna" disabled="disabled" style="width: 180px;">
+                <option>Seleccione</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="fila_registro_2_2012_titulo_RS"></div>
+        <div class="col_2_registro_2_2012_RS">
+          <div class="fila_registro_2012_name_RS">Mail:</div>
+          <div class="linea_registro_2012_RS">
+            <div class="fila_registro_2012_form_RS">
+              <label for="textfield3"></label>
+              <input id="email_reg" name="email_reg" type="text" class="form_registro_2012" size="30" />
+            </div>
+          </div>
+          <div class="linea_registro_2012_RS" style="height:auto;">
+            <div class="fila_registro_2012_form_RS"  style="height:auto;">
+              <div style="float:left;">
+                <input id="envioEMail" name="envioEMail" type="checkbox" value="true" />
+              </div>
+              <div class="cont_acepto_info">Acepto recibir ofertas y novedades<br />
+                de Jumbo en mi mail</div>
+            </div>
+          </div>
+          <div class="fila_registro_2012_name_RS">Tel&eacute;fono:</div>
+          <div class="linea_registro_2012_RS">
+            <div class="fila_registro_2012_form_RS">
+              <div style="float:left; margin-right:8px; margin-top:3px;">
+                <select id="fon_cod" name="fon_cod" class="form_registro_2012" style="width:47px" onchange="javascript: ocultaEnvioSMS();">
+                                  
+                </select>
+              </div>
+              <div style="float: left; width: 100px;">
+                <label for="textfield3"></label>
+                <input id="fon_num" name="fon_num" type="text" class="form_registro_2012" size="20" />
+				<div class="cont_acepto_info" id="fon_num_1_info"></div>	
+              </div>
+            </div>
+          </div>
+          <div id="DIVenvioSMS" class="linea_registro_2012_RS" style="height:auto;">
+            <div class="fila_registro_2012_form_RS"  style="height:auto;">
+              <div style="float:left;">
+                <input id="envioSMS" name="envioSMS" type="checkbox" value="true" />
+              </div>
+              <div class="cont_acepto_info">Acepto recibir ofertas y novedades<br />
+                de Jumbo en mi celular</div>
+            </div>
+          </div>
+          <div class="fila_registro_2012_name_RS">Clave:</div>
+          <div class="linea_registro_2012_RS">
+            <div class="fila_registro_2012_form_RS">
+              <label for="textfield3"></label>
+              <input id="clave1" name="clave1" type="password" class="form_registro_2012" maxlength="12" />
+            </div>
+          </div>
+          <div class="fila_registro_2012_name_RS">Confirmar Clave:</div>
+          <div class="linea_registro_2012_RS">
+            <div class="fila_registro_2012_form_RS">
+              <label for="textfield3"></label>
+              <input id="clave2" name="clave2" type="password" class="form_registro_2012" maxlength="12" />
+            </div>
+            <div class="fila_registro_2012_form_RS"  style="height:auto;">
+              <div style="float:left;">
+                <input type="checkbox" name="terminos" id="terminos" />
+              </div>
+              <div class="cont_acepto_info">Acepto <a href="http://www.jumbo.cl/FO_WebContent/terminos.html" target="_blank">T&eacute;rminos y Condiciones</a></div>
+            </div>
+          </div>
+        </div>
+        <div class="bt_ingresar_2012_RS"> <img src="/FO_IMGS/img/bt_ingresar_2012.gif" width="159" height="30" onClick="javascript:Registrar();"/> </div>
+      </form>
+    </div>
+</div>
+<form name="clientePreventaS6Form" id="clientePreventaS6Form">
+	<input type="hidden" name="rutHdn" id="rutHdn" value="" />
+	<input type="hidden" name="dvHdn" id="dvHdn" value="" />
+	<input type="hidden" name="nombreHdn" id="nombreHdn" value="" />
+	<input type="hidden" name="cli_idHdn" id="cli_idHdn" value="" />
+	<input type="hidden" name="apellidoHdn" id="apellidoHdn" value="" />
+	<input type="hidden" name="emailHdn" id="emailHdn" value="" />
+	<input type="hidden" name="telefonoHdn" id="telefonoHdn" value="" />
+	<input type="hidden" name="modeloHdn" id="modeloHdn" value="" />
+	<input type="hidden" name="id_modelohdn" id="id_modelohdn" value="" />
+	<input type="hidden" name="acepta_basesHdn" id="acepta_basesHdn" value="nulo" />
+	<input type="hidden" name="criteria" id="criteria" value="" />
+    <input type="hidden" name="caducada" id="caducada" value={FECHA_CADUCADA} />
+</form>
+<script type="text/javascript">
+	jQuery("#fon_cod").append(getAllCodPhones());
+	initialize("fon_cod","fon_num");
+	onChange("fon_cod","fon_num","fon_num_1_info");
+	var PASO_ACTUAL = 1;
+</script>
+<map name="Map" id="Map">
+	<area shape="rect" coords="430,31,464,62" href="#"
+		onclick="MM_effectAppearFade('apDiv1', 1000, 100, 0, false)" />
+</map>
+<map name="Map2" id="Map2">
+	<area shape="rect" coords="-1,0,30,29" href="#"
+		onclick="MM_effectAppearFade('apDiv1', 1000, 100, 0, false)" />
+</map>
+</body>
+</html>
+

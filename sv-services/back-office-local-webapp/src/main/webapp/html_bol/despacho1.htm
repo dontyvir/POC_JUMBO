@@ -1,0 +1,370 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html><!-- InstanceBegin template="/Templates/fullbody.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="EXPIRES" CONTENT="Mon, 22 Jul 2002 11:12:01 GMT">
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>Jumbo.cl Back Office Local</title>
+<!-- InstanceEndEditable -->
+
+<!-- InstanceBeginEditable name="head" -->
+<script language="JavaScript" src="funciones.js"></script>
+<script language="JavaScript" src="prototype.js"></script>
+
+<!-- InstanceEndEditable -->
+
+<link href="estilos.css" rel="stylesheet" type="text/css">
+<!--link href="../Prototipo/default.css" rel="stylesheet" type="text/css"-->
+<style type="text/css">
+<!--
+.style1 {color: #666666}
+-->
+</style>
+</head>
+
+<body>
+<link rel="stylesheet" href="menu/menu.css">
+<script language="JavaScript" src="menu/menu.js"></script>
+<script language="JavaScript" src="menu/menu_tpl.js"></script>
+<script language="JavaScript" src="menu/menu_items.js"></script>
+
+
+<table width="780" height="100%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+    <td height="78" valign="top">
+	
+	<TABLE width="100%" height=59 border=0 align="center" cellpadding="0" cellspacing="0" bgcolor="#ffffff">
+	  <TR>
+		<TD width=275 height="59" align=left class=user><img src="img/header2.jpg" width="275" height="60"></TD>
+		<TD width=505 align=left valign="bottom" background="img/bg-1.jpg" class=user><table width="90%"  border="0" align="center" cellpadding="0" cellspacing="2">
+          <tr>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td><div align="right" class="infoBL">Usuario: {hdr_nombre} | Local: {hdr_local} | {hdr_fecha} </div></td>
+          </tr>
+        </table></TD>
+	  </TR>
+	</TABLE>
+	<TABLE width="100%" height=19 border=0 align="center" cellpadding="0" cellspacing="0" bgcolor="#f1f0e9" style="border-top:1px solid #ABABAB; border-bottom:1px solid #ABABAB">
+	  <TR>
+		<TD align=left bgcolor="#FFFFFF" class=user></TD>
+		</TR>
+	</TABLE>
+
+	
+	</td>
+  </tr>
+  <tr height="400">
+    <td valign="top" bgcolor="#FFFFFF">
+      <table border=0 width="100%" class='ContentTitle'>
+        <tr>
+          <td width="53%" height="20" class='HeaderTitle'><!-- InstanceBeginEditable name="Titulo" -->
+				Detalle del Despacho de Pedido <!-- InstanceEndEditable --></td>
+          <td width="47%" class='HeaderTitle'><!-- InstanceBeginEditable name="Botonera" -->
+				<div align="right"><a href="javascript:window.history.back()"><img
+					src="img/volver.gif" width="32" height="32" border="0"></a></div>
+				<!-- InstanceEndEditable --></td>
+        </tr>
+      </table>
+	  <br>
+      <table width="100%"  border="0" cellspacing="2" cellpadding="2">
+        <tr valign="top">
+          <td width="71%"><!-- InstanceBeginEditable name="Izquierda" -->
+           <script language="JavaScript">
+
+			function validar_form( form ) {
+				if( validar_obligatorio( form.log, "CAMPO OBLIGATORIO" ) ) return false;
+				return true;
+			}	
+          </script>
+          <br>
+			<link id="luna-tab-style-sheet" type="text/css" rel="stylesheet" href="js/tabs/tabpane.css" />
+			<script type="text/javascript" src="js/tabs/tabpane.js"></script>
+			<table width="95%" align="center" border="0">
+				<tr>
+					<td>
+						<div class="tab-page" id="modules-cpanel">
+							<script	type="text/javascript">var tabPane1 = new WebFXTabPane( document.getElementById( "modules-cpanel" ), 0 )
+						  	</script>
+							<div class="tab-page" id="modulo1">
+								<h2 class="tab">General</h2>
+								<div align="left"><strong>Datos del Pedido </strong><br />
+									<br>
+									<table width="660" border="0" cellspacing="2" cellpadding="2">
+										<tr>
+											<td width="200">N&deg; Pedido</td>
+											
+                          <td width="460">{id_pedido} {info_pedido}</td>
+										</tr>
+										<tr>
+											<td>Fecha de Ingreso</td>
+											<td>{fec_ing}</td>
+										</tr>
+										<tr>
+											<td>Fecha Despacho</td>
+											<td>{fec_desp} {hora_ini} - {hora_fin}</td>
+										</tr>
+										<tr>
+											<td>Estado</td>
+											<td><strong><font color="#00CC00">{estado}</font></strong></td>
+										</tr>
+										<tr>
+											<td>Total Bins Pedido</td>
+											<td>{tot_bin_ped}</td>
+										</tr>
+										<tr>
+											<td>&nbsp;</td>
+											<td>&nbsp;</td>
+										</tr>
+										<tr>
+											<td>Nombre Cliente</td>
+											<td>{nom_cli}</td>
+										</tr>
+										<tr>
+											<td>Direcci&oacute;n de Despacho</td>
+											<td>{dir_despacho} <input type="hidden" id="tipo_despacho" name="tipo_despacho" value="{tipo_despacho}"/></td>
+										</tr>
+										<tr id="comuna_desp">
+											<td>Comuna de Despacho</td>
+											<td>{dir_comuna}</td>
+										</tr>
+										{dir_conflictiva}
+										{dir_conflictiva_comentario}
+										<tr>
+											<td>Zona de Despacho</td>
+											<td>{dir_zona} {desc_zona}</td>
+										</tr>
+									</table><br>{com_izq_fpago}
+									<strong>Detalle del Documento de Pago </strong><br><br>
+									<table width="660" border="0" cellpadding="0" cellspacing="2">
+										<tr>
+											<td width="121">
+												Tipo de Documento								
+											</td>
+											<td width="306">
+												{tip_doc}								
+											</td>
+										</tr>
+										
+									</table>{com_der_fpago}
+									
+									<script language="JavaScript">
+									if ( $('tipo_despacho').value == 'R' ) {
+										$('comuna_desp').hide();
+									} else {
+										$('comuna_desp').show();
+									}
+									</script>	
+									<script type="text/javascript" src="popup.js"></script> <br>
+									<strong>Acciones sobre el Pedido </strong>
+									<table width="69%" border="0" align="center" cellpadding="0"
+										cellspacing="2">
+										<tr>
+											<td width="25%">
+											<div align="center">
+												{com_iz}
+												<a href="javascript:popUpWindow('ViewPrint?url='+escape('ViewHojaDespacho?id_pedido={id_pedido}'), 100, 100, 700, 500);" >  <!-- {imprime} -->
+													<img src="img/ico_print.gif" width="34" height="34" border="0">
+												</a>
+												{com_der}
+											</div>
+											</td>
+											<td width="25%">
+											<div align="center">
+												{com_iz}
+												<a href="javascript:popUpWindow('ViewPrint?url='+escape('ViewHojaDespacho2?id_pedido={id_pedido}'), 100, 100, 700, 500);" > <!-- {imprime} -->
+													<img src="img/ico_print.gif" width="34" height="34" border="0">
+												</a>
+												{com_der}
+											</div>
+											</td>
+											<td width="27%">
+											<div align="center">
+												{com_iz}
+												<a href="javascript:popUpWindow('ViewPopGuiaDespacho?id_pedido={id_pedido}', 100, 100, 700, 500);" >  <!-- {imprime} -->
+													<img src="img/ico_print.gif" width="34" height="34" border="0">
+												</a>
+												{com_der}
+											</div>
+											</td>
+											<td width="25%">
+											
+											<div style="{show_btn_pago_despacho}" align="center">
+												<input type="button" value="Imprimir Hoja de Despacho" title="Imprimir Hoja de Despacho - Pago Rechazado" name="Button" onclick="javascript:pagoDepacho({id_pedido});">
+												<!-- {com_iz_pd} -->
+												<!-- 
+												<a href="javascript:pagoDepacho({id_pedido});" > -->  
+												<!-- {imprime} -->
+													<!--  <img src="img/ico_print.gif" width="34" height="34" border="0">-->
+												</a>
+												<!-- {com_der_pd} -->
+											</div>
+											</td>
+											<td width="26%">
+											<div align="center">
+											<!--input  name="Button" type="button" class="cmd" value="Cambiar Estado" onClick="javascript:popUpWindow('ViewCambEstDesp?id_pedido={id_pedido}', 100, 100, 470, 320);" {enabled_est} -->
+											</div>
+											</td>
+										</tr>
+										<tr>
+											<td>{com_iz}
+											<div align="center">Imprimir Hoja de Despacho (1 de 2)</div>{com_der}
+											</td>
+											<td>{com_iz}
+											<div align="center">Imprimir Hoja de Despacho (2 de 2)</div>{com_der}
+											</td>
+											<td>{com_iz}
+											<div align="center">Imprimir Guía de Despacho</div>{com_der}
+											</td>
+											<td>
+											<!-- {com_iz_pd} -->
+												<!-- <div style="{show_btn_pago_despacho}" align="center">Imprimir Pago de Despacho</div>{com_der_pd} -->
+											</td>
+											<td>
+											<!--div align="center">Cambiar Estado</div-->
+											</td>
+										</tr>
+									</table>
+									<br>
+									<br />
+								</div>
+							</div>
+							<div class="tab-page" id="modulo1">
+								<h2 class="tab">Bodega</h2>
+								<div align="left"><strong>Datos Ubicaci&oacute;n Bodega </strong><br />
+									<br>
+									<table width="600" border="0" align="center" cellpadding="2"
+										cellspacing="0" class="tabla2">
+										<tr align=center>
+											<th width="70">Cod Bin</th>
+                                            <th width="75">Visualizado</th>
+                                            <th width="80">Cant. Prod. Auditados</th>
+                                            <th width="150">Auditor</th>
+											<th width="98">Tipo</th>
+										</tr>
+										<!-- BEGIN DYNAMIC: select_datos_bodega -->
+										<tr valign="top">
+											<td><div align="center">{cod_bin}</div></td>
+											<td><div align="center">{visualizado}</div></td>
+											<td><div align="center">{cant_prod_audit}</div></td>
+											<td><div align="center">{auditor}</div></td>
+											<td><div align="center">{tipo}</div></td>
+										</tr>
+										<!-- END DYNAMIC: select_datos_bodega -->							
+									</table>
+								</div>
+							</div>
+							<div class="tab-page" id="modulo1">
+								<h2 class="tab">Trx. Pago</h2>
+								<div align="left"><strong>Datos de Pago</strong><br />
+									<br>
+									<table width="750" border="0" align="center" cellpadding="2"
+										cellspacing="0" class="tabla2">
+										<tr align="center">
+											<th width="70">Nº Trx</th>
+											<th width="70">Monto</th>
+											<th width="70">Cant. Productos</th>
+											<th width="70">Estado</th>
+											<th width="70">Tipo Doc.</th>
+											<th width="70">Nº Doc.</th>
+											<th width="50">Nº Caja</th>
+											<th width="50">Monto POS</th>
+											<th width="50">Fecha POS</th>
+											<th width="50">Hora POS</th>
+											<th width="50">FP</th>
+											<th width="50">&nbsp;</th>
+										</tr>
+										<!-- BEGIN DYNAMIC: listado_trxmp -->
+										<tr valign="top">
+											<td>
+											<div align="center">{trxmp_nro}</div>
+											</td>
+											<td>
+											<div align="center">{trxmp_monto}</div>
+											</td>
+											<td>
+											<div align="center">{trxmp_qtyprods}</div>
+											</td>
+											<td>
+											<div align="center">{trxmp_estado}</div>
+											</td>
+											<td>
+											<div align="center">{trxmp_tipo_doc}</div>
+											</td>
+											<td>
+											<div align="center">{trxmp_num_doc}</div>
+											</td>
+											<td>
+											<div align="center">{trxmp_num_caja}</div>
+											</td>
+											<td>
+											<div align="center">{trxmp_pos_monto_fp}</div>
+											</td>
+											<td>
+											<div align="center">{trxmp_pos_fecha}</div>
+											</td>
+											<td>
+											<div align="center">{trxmp_pos_hora}</div>
+											</td>
+											<td>
+											<div align="center">{trxmp_pos_fp}</div>
+											</td>
+											<td>
+											<div align="center">
+											  <a href="javascript:popUpWindow('ViewPrint?url='+escape('ViewTrxMp?id_trx_mp={trxmp_nro}&id_pedido={id_pedido}'), 100, 100, 700, 500)">imprimir</a></div>
+											</td>
+										</tr>
+										<!-- END DYNAMIC: listado_trxmp -->
+									</table>
+									<BR>
+								</div>
+							</div>						
+							<div class="tab-page" id="modulo1">
+								<h2 class="tab">Log</h2>
+								<div align="left"><strong>Log de Despacho </strong><br />
+									<br>						
+									<iframe width="700" height="250" src="ViewLogDespacho?id_pedido={id_pedido}" scrolling="auto"
+										frameborder="0" name="logframe"></iframe> <br>
+									<br>
+									<strong>Agregar Registro </strong><br>
+									<form name="forma1" method="post" action="AgregaLogDespacho" target="logframe" onSubmit="setTimeout('document.forma1.reset()',100); return validar_form(this);">
+									<input type="hidden" name="url" value="ViewLogDespacho?id_pedido={id_pedido}">
+									<input type="hidden" name="id_pedido" value="{id_pedido}">
+									<table width="596" border="0" align="center" cellpadding="2"
+										cellspacing="2" class="textonormal">
+										<tr valign="top">
+											<td width="385"><textarea name="log" cols="60" onpaste = "return false;" onKeydown="if (event.ctrlKey && (String.fromCharCode(event.keyCode).toLowerCase() == 'c' || String.fromCharCode(event.keyCode).toLowerCase() == 'v')) { event.keyCode = 0; }" onkeypress='key = window.event.keyCode; keychar = String.fromCharCode(key); keychar = keychar.toLowerCase(); if (!(("áéíóúabcdefghijklmnñopqrstuvwxyz0123456789. ").indexOf(keychar) > -1)) window.event.keyCode = 0; if(this.value.length > 253){ this.value=this.value.substring(0,254); }'></textarea></td>
+											<td width="108" valign="bottom"><input type="submit"
+												name="Button" value="Ingresar"></td>
+										</tr>
+									</table>
+									</form>
+								</div>
+							</div>
+						</td>
+					</tr>
+				</table>
+				<p>&nbsp;</p>
+				<!-- InstanceEndEditable --></td>
+        </tr>
+      </table>
+      </td>
+  </tr>
+  <tr>
+    <td>
+	<TABLE width="100%" height=19 border=0 align="center" cellpadding="0" cellspacing="0" bgcolor="#f1f0e9" style="border-top:1px solid #ABABAB; border-bottom:1px solid #ABABAB">
+	  <TR>
+		<TD align=center bgcolor="#67b01a" class=infoBL><div align="center">Back Office Local - Jumbo.cl</div></TD>
+		</TR>
+	</TABLE>
+
+	
+	</td>
+  </tr>
+</table>
+</body>
+<!-- InstanceEnd --></html>

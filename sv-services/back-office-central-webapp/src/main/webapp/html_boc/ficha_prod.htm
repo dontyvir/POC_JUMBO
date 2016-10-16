@@ -1,0 +1,1405 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="EXPIRES" CONTENT="Mon, 22 Jul 2002 11:12:01 GMT">
+<title>Jumbo.cl Back Office Central</title>
+<script type="text/javascript" src="popup.js"></script>
+
+<SCRIPT LANGUAGE="JavaScript">window.name='winmodal'</SCRIPT>
+<script language="JavaScript">
+
+	var PATH_IMG = "{url_imgs}";
+
+	function previsualizarBanner() {
+		var imagen = $j("#ImgBanner").val();
+		if ( imagen.length <= 4 ) {
+			$j("#ButtonImgBanner").attr('disabled', 'disabled');//.disabled = false;
+			alert("Debe ingresar un nombre válido de archivo.");
+			$j("#ImgBanner").focus();
+		} else {
+			var exten = imagen.substring(imagen.length-4, imagen.length);
+			if (exten == '.gif' || exten == '.GIF' || exten == '.jpg' || exten == '.JPG') {
+				$j('#ImgBannerOk').attr('src', PATH_IMG + $j("#ImgBanner").val());
+				$j("#ButtonImgBanner").attr('disabled', 'disabled');//.disabled = false;
+			} else {
+				$j("#ButtonImgBanner").attr('disabled', 'disabled');//.disabled = false;
+				alert("La extensión del archivo no es válido.");
+				$j("#ImgBanner").focus();
+			}
+		}
+	}
+	
+	function muestraValidar(){
+		var imagen = $j("#ImgBanner").val();
+		if ( imagen.length > 0 ) {
+			$j("#ButtonImgBanner").removeAttr("disabled");
+		}
+	}
+
+
+
+	function abre_popup_mot(){
+		valor ="";
+		if ((valor = popUpWindowModalscroll('ViewMotivoDesp?id_producto={cod_prod}&tipo_prod={gen}', 100, 100, 600, 400))!= '') {
+			if (valor != ""){
+				document.productos.valor.value = valor;
+			}
+		}
+	}
+	function validar(form){
+			var checado = false;
+			$j("input[name='local_check']").each( function(){
+					checado = checado || $j(this).attr('checked');
+			});
+			if(!checado && $j('#motivo_des').val() == -1){
+				alert("Debe seleccionar un motivo de despublicación");
+				return false;
+			}
+
+
+
+		if (form.tipo.value == "" || form.marca.value=="" ||form.descr_corta.value == ""
+			|| form.fmedida.value =="" || form.contenido.value =="" || form.admite_com.value ==""
+			|| form.preparable.value == "" || form.interv_med.value =="" || form.maximo.value ==""){
+			alert("Debe ingresar todos los datos");
+			return false;
+		}
+		if (form.desc_larga.value.length > 255){
+			alert("El máximo de caracteres permitidos por Descripción Larga es 255");
+			return false;
+		}
+		//if (validar_letranumero(form.descr_corta, "La descripción Corta solo soporta letras y números ")) return false;
+		//if (validar_letranumero(form.desc_larga, "La descripción Larga solo soporta letras y números ")) return false;
+		//if (validar_letranumero(form.tipo, "El Tipo solo soporta letras y números ")) return false;
+		if(validar_numero( form.contenido, "El contenido es un valor numérico"))
+			return false;
+		if(validar_numero( form.interv_med, "El intervalo de medida es un valor numérico"))
+			return false;
+		if(validar_numero( form.maximo, "El intervalo máximo es un valor numérico"))
+			return false;
+		var val = parseFloat(form.interv_med.value);
+		var max = parseFloat(form.maximo.value);
+
+		if(val >= max) {
+			alert("El intervalo máximo debe ser mayor a intervalo de medida");
+			form.maximo.focus();
+			return false;
+		}
+
+		for (var i=0; i < form.check_partic.length; i++) {
+			if (form.check_partic[i].checked) {
+				if (form.check_partic[i].value == 'S') {
+					if (form.particionable.value == '') {
+						alert("Debe ingresar el valor de la partición.");
+						form.particionable.focus();
+						return false;
+					}
+					if (form.particionable.value == 0) {
+						alert("El valor de la partición debe ser mayor a cero.");
+						form.particionable.focus();
+						return false;
+					}
+				} else {
+					form.particionable.value = '0';
+				}
+			}
+		}
+
+		var agree=confirm("¿Esta seguro(a) de guardar los cambios?");
+		if (agree) return true ;
+		else
+			return false ;
+
+		return true;
+	}
+	function guardar(form){
+		if(validar(form)) {
+			form.submit();
+		}
+	}
+
+	function cambioParticionable(rad) {
+		if (rad.value == 'N') {
+			document.getElementById("input_particionable").style.visibility = 'hidden';
+		} else {
+			document.getElementById("input_particionable").style.visibility = 'visible';
+		}
+	}
+
+	function val_publDesp(form){
+
+	var flag_publicar = '{flg_pub}';
+
+	if (form.tipo.value == "" || form.marca.value=="" ||form.descr_corta.value == ""
+			|| form.fmedida.value =="" || form.contenido.value =="" || (!form.admite_com[0].checked && !form.admite_com[1].checked )
+			|| form.preparable.value == "" || form.interv_med.value =="" || form.maximo.value ==""){
+			alert("Antes de Publicar Debe ingresar todos los datos");
+			return false;
+		}
+
+		if(frmPubDesp.action.value==1){
+			if(validar_obligatorio( form.tipo, "El tipo es obligatorio para publicar"))
+				return false;
+			if(validar_obligatorio( form.descr_corta, "La descripción corta es obligatoria para publicar"))
+				return false;
+			if(validar_obligatorio( form.contenido, "El contenido es obligatorio para publicar"))
+				return false;
+		}
+
+		if(flag_publicar=='0'){
+			alert('El producto debe tener sector picking para todos los locales.');
+			return false;
+		}
+
+		if(validar(form)){
+			frmPubDesp.tipo.value 		= form.tipo.value;
+			frmPubDesp.id_marca.value 	= form.marca.options[form.marca.selectedIndex].value;
+			frmPubDesp.desc_corta.value = form.descr_corta.value;
+			frmPubDesp.desc_larga.value = form.desc_larga.value;
+			frmPubDesp.uni_med.value 	= form.fmedida.options[form.fmedida.selectedIndex].value;
+			frmPubDesp.contenido.value 	= form.contenido.value;
+			if(form.admite_com[0].checked){
+				frmPubDesp.adm_com.value 	= form.admite_com[0].value;
+			}
+			if(form.admite_com[1].checked){
+				frmPubDesp.adm_com.value 	= form.admite_com[1].value;
+			}
+			if(form.preparable[0].checked){
+				frmPubDesp.es_prep.value 	= form.preparable[0].value;
+			}
+			if(form.preparable[1].checked){
+				frmPubDesp.es_prep.value 	= form.preparable[1].value;
+			}
+			frmPubDesp.int_val.value 	= form.interv_med.value;
+			frmPubDesp.int_max.value 	= form.maximo.value;
+
+					frmPubDesp.submit();
+		}
+	}
+	function val_eliminar(form){
+		if(confirm("¿Esta seguro que desea eliminar este producto?"))
+			form.submit();
+	}
+
+	function agregar(form){
+		form.id_cat.value 	= form.sel_cat.options[form.sel_cat.selectedIndex].value;
+		form.nom_cat.value 	= form.sel_cat.options[form.sel_cat.selectedIndex].text;
+		form.sel_cat.value = form.busq_num_cat.value;
+		//form.submit();
+	}
+
+	function agrega_sug(form){
+		form.id_producto_sug.value = form.id_prod.value;
+		if  (form.id_prod.value =="")
+			alert("Debe ingresar Código de Sugerido");
+		else{
+			if (!validar_solonumero(form.id_prod, "Código de Sugerido es un Campo Numerico")){
+				form.submit();
+			}
+		}
+	}
+	function mostrar_log(form){
+			form.submit();
+	}
+
+	function abre_popup(){
+		valor="";
+		if ((valor = popUpWindowModalscroll('ViewBusqProdForm', 100, 100, 600, 400))> '0') {
+			if (valor != ""){
+				id = valor.split("|");
+				document.frmModItem.id_prod.value = id[0];
+				document.frmModItem.desc.value = id[1];
+			}
+		}
+	}
+	function abre_popup1(){
+		valor="";
+		if ((valor = popUpWindowModalscroll('ViewBusqProdForm', 100, 100, 600, 400))!= '') {
+			if (valor != ""){
+				id = valor.split("|");
+				document.frmModSug.id_prod.value = id[0];
+			}
+		}
+	}
+	function abre_popupC(){
+		valor= "";
+		if ((valor = popUpWindowModalscroll('ViewNavCatForm?tipo=T', 100, 100, 700, 400))> '0') {
+			if (valor != ""){
+				id = valor.split("|");
+				document.frmAgreCat.id_cat.value = id[0];
+				document.frmAgreCat.nom_cat.value = id[1];
+				document.frmAgreCat.nom_cate.value = id[1];
+			}
+		}
+	}
+</script>
+
+<script type="text/javascript" src="js/jquery/jquery-1.3.1.js"></script>
+<script language="javascript">
+	var $j = jQuery.noConflict();
+	jQuery().ready(function() {
+	  cargaPilasNutricionales({id_prod});
+	  var checado = false;
+	  $j("input[name='local_check']").each( function() {
+	    checado = checado || $j(this).attr('checked');
+	  });
+	  vistaMotivos(checado);
+
+	  $j('#checkAllAuto').click(function() {
+	    var checado = false;
+	    $j("input[name='local_check']").each( function() {
+	      this.checked = $j('#checkAllAuto').attr('checked');
+	      checado = checado || $j(this).attr('checked');
+	    });
+	  vistaMotivos(checado);
+   	});
+
+   	$j("input[name='local_check']").click(function(){
+   		var checado = false;
+   		var checado2 = true;
+			$j("input[name='local_check']").each( function(){
+					checado = checado || $j(this).attr('checked');
+					checado2 = checado2 && $j(this).attr('checked');
+			});
+			vistaMotivos(checado);
+			if(checado2)
+				$j('#checkAllAuto').attr('checked', true);
+			else
+				$j('#checkAllAuto').attr('checked', false);
+   	});
+  });
+
+  function vistaMotivos(checado){
+  	if(checado){
+				$j('#div_motivos').fadeOut("slow");
+		}
+		else{
+			$j('#div_motivos').fadeIn("slow");
+		}
+  }
+
+  function cambiarPorcion(id_prod) {
+    if ( $j.trim( $j('#porcion').val() ) == "" )  {
+      alert("Debe ingresar el valor de la porción");
+      return;
+    }
+    if ( !validaFloat( $j('#porcion').val() ) ) {
+      alert("El valor de la porción no es correcta");
+      return;
+    }
+
+    var params = { porcion: $j('#porcion').val(), id_producto:id_prod, unidad_porcion:$j('#unidad_porcion').val() };
+    $j.post("ModPorcionProducto", params,
+      function(data) {
+        $j(data).find('datos_objeto').each(function() {
+          respuesta = $j(this).text();
+          if ( respuesta == "OK" ) {
+            alert("Información agregada exitosamente");
+            window.location.reload();
+          } else {
+            alert(respuesta);
+          }
+        });
+      });
+  }
+
+  function borrarPila(id_prod,id_pila) {
+    if ( !confirm("Seguro que desea eliminar la pila nutricional del producto?") ) {
+      return;
+    }
+    var params = { id_producto:id_prod, id_pila:id_pila };
+    $j.post("DelPilaProducto", params,
+      function(data) {
+        $j(data).find('datos_objeto').each(function() {
+          respuesta = $j(this).text();
+          if ( respuesta == "OK" ) {
+            alert("Pila eliminada exitosamente");
+            cargaPilasNutricionales(id_prod);
+          } else {
+            alert(respuesta);
+          }
+        });
+      });
+  }
+
+  function agregarPila(id_prod) {
+
+    if ( $j.trim( $j('#nutriente_porcion').val() ) == "" )  {
+      alert("Debe ingresar el valor de Nutriente por porción");
+      return;
+    }
+    if ( !validaFloat( $j('#nutriente_porcion').val() ) ) {
+      alert("El valor de Nutriente por porción no es correcto");
+      return;
+    }
+
+    if ( $j.trim( $j('#porcentaje').val() ) == "" )  {
+      alert("Debe ingresar el valor de Porcentaje");
+      return;
+    }
+    if ( !validaFloat( $j('#porcentaje').val() ) ) {
+      alert("El valor de Porcentaje no es correcto");
+      return;
+    }
+
+    var params = { id_producto:id_prod, nutriente: $j('#nutriente').val(), nutriente_porcion:$j('#nutriente_porcion').val(), porcentaje:$j('#porcentaje').val() };
+    $j.post("AddPilaProducto", params,
+      function(data) {
+        $j(data).find('datos_objeto').each(function() {
+          respuesta = $j(this).text();
+          if ( respuesta == "OK" ) {
+            alert("Pila agregada exitosamente");
+            cargaPilasNutricionales(id_prod);
+          } else {
+            alert(respuesta);
+          }
+        });
+      });
+  }
+
+  function cargaPilasNutricionales(id_producto) {
+    var params = { id_producto:id_producto };
+    $j.post("ViewPilasNutricionalesProducto", params,
+	      function(data) {
+	        $j('#pilas_del_producto').html(data);
+      });
+  }
+
+  function validaFloat(numero) {
+    if (!/^\d+(\.\d{1,3})?$/.test(numero)) {
+      return false;
+    }
+    return true;
+  }
+
+</script>
+
+
+<link href="estilos.css" rel="stylesheet" type="text/css" />
+<link href="menu/menu.css" rel="stylesheet" type="text/css" />
+<link href="css/pila.css" rel="stylesheet" type="text/css" />
+<style type="text/css">
+<!--
+.style1 {color: #666666}
+-->
+</style>
+</head>
+
+<body>
+<script language="JavaScript" src="menu/menu.js"></script>
+<script language="JavaScript" src="menu/menu_tpl.js"></script>
+<script language="JavaScript" src="menu/menu_items.js"></script>
+<script language="JavaScript" src="popup.js"></script>
+<script language="JavaScript" src="funciones.js"></script>
+
+<table width="780" height="100%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+    <td height="78" valign="top">
+      <table width="100%" height=59 border=0 align="center" cellpadding="0" cellspacing="0" bgcolor="#ffffff">
+        <TR>
+          <TD width=275 height="59" align=left class=user><img src="img/header2.jpg" width="275" height="60"></TD>
+          <TD width=505 align=left valign="bottom" background="img/bg-1.jpg" class=user>
+            <table width="90%"  border="0" align="center" cellpadding="0" cellspacing="2">
+              <tr>
+                <td>&nbsp;</td>
+              </tr>
+              <tr>
+                <td><div align="right" class="infoBL">Usuario: {hdr_nombre}&nbsp;&nbsp;| {hdr_fecha}</div></td>
+              </tr>
+            </table>
+          </TD>
+        </TR>
+      </table>
+      <TABLE width="100%" height=19 border=0 align="center" cellpadding="0" cellspacing="0" bgcolor="#f1f0e9" style="border-top:1px solid #ABABAB; border-bottom:1px solid #ABABAB">
+        <TR>
+          <TD align=left bgcolor="#FFFFFF" class=user></TD>
+        </TR>
+      </TABLE>
+    </td>
+  </tr>
+  <tr height="400">
+    <td valign="top" bgcolor="#FFFFFF">
+      <table border=0 width="100%" class='ContentTitle'>
+        <tr>
+          <td width="53%" height="20" class='HeaderTitle'>Ficha de Producto</td>
+          <td width="47%" class='HeaderTitle'>
+            <div align="right"><a href="ViewMonProducts"><img src="img/back.png" width="32" height="32" border="0"></a></div>
+          </td>
+        </tr>
+      </table>
+	  <br />
+      <table width="100%"  border="0" cellspacing="2" cellpadding="2">
+        <tr valign="top">
+          <td width="71%">
+            <link id="luna-tab-style-sheet" type="text/css" rel="stylesheet" href="js/tabs/tabpane.css" />
+            <script type="text/javascript" src="js/tabs/tabpane.js"></script>
+            <table width="92%" align="center" border="0">
+              <tr>
+                <td>
+                  <div class="tab-page" id="modules-cpanel">
+                    <script type="text/javascript">
+                      var tabPane1 = new WebFXTabPane( document.getElementById( "modules-cpanel" ), true );
+                    </script>
+                    <div class="tab-page" id="modulo1">
+                      <h2 class="tab">Ficha</h2>
+                      <div align="left">
+
+                          <p><strong>Datos del Producto</strong></p>
+                          <table width="80%"  border="0" align="center" cellpadding="0" cellspacing="2">
+
+                          <form name="productos" method=post action="ModProduct" >
+                          <input type="hidden" name="id_producto" value="{id_prod}">
+                          <input type="hidden" name="url" value="ViewProductForm?cod_prod={id_prod}">
+                          <input type="hidden" name="valor" value="">
+                          <input type="hidden" name="tipo_form" value="{tipo_form}">
+                          <input type="hidden" name="non_food" value="{nonFood}">
+
+                            <tr>
+                              <td width="35%">Cod SAP</td>
+                              <td width="65%">{cod_sap}</td>
+                            </tr>
+                            <tr>
+                            	<td colspan="2">
+                            		<table width="100%" border="0" cellpadding="0" cellspacing="0">
+                            			<tr>
+											<td width="10%" >Estado</td>
+											<td width="40%">{estado}</td>
+											<td width="20%">Disponible en APP M&oacute;vil</td>
+											<td width="30%">
+												<input type="checkbox" name="publ_grability" disabled="disabled" {publ_grability_checked} >
+											</td>
+                            			</tr>
+                            		</table>
+                            	</td>
+                            </tr>
+                            <tr>
+                            	<td colspan="2">
+                            		<table width="100%" border="0" cellpadding="0" cellspacing="0">
+                            			<tr>
+											<td width="10%" >Gen&eacute;rico</td>
+											<td width="40%">{generico}</td>
+											<td width="20%">Ficha Nutricional</td>
+											<td width="30%">
+				                            	<input name="ficha_nutri" type="radio" value="1" {checkficnut_si} >S&iacute;
+				                                <input name="ficha_nutri" type="radio" value="0" {checkficnut_no} >No
+											</td>
+                            			</tr>
+                            		</table>
+                            	</td>
+                            </tr>
+                            <!-- Ficha tecnica Producto -->
+                            <tr style="{ocultarFila}" >
+                            	<td colspan="2">
+                            		<table width="100%" border="0" cellpadding="0" cellspacing="0">
+                            			<tr>
+											<td width="9%">Ficha Técnica</td>
+											<td width="41%">
+												<input name="ficha_tec" type="radio" value="1" {checkfic_1} >S&iacute;
+												<input name="ficha_tec" type="radio" value="0" onclick="handleClick(this);" {checkfic_2} >No
+											</td>
+											<td width="20%">Mostrar Alto En</td>
+											<td width="30%">
+				                            	<input name="alto_en" type="radio" value="1" {checkaltoen_si} >S&iacute;
+				                                <input name="alto_en" type="radio" value="0" {checkaltoen_no} >No
+											</td>
+                            			</tr>
+                            		</table>
+ 								</td>
+                            </tr>
+                            <tr>
+                              <td>&nbsp;</td>
+                              <td>&nbsp;</td>
+                            </tr>
+                            <tr>
+                              <td>Tipo</td>
+                              <td><input name="tipo" type="text" value="{tipo}" maxlength="50"></td>
+                            </tr>
+                            <tr>
+                              <td>Marca</td>
+                              <td><select name="marca">
+                              <option value="">---</option>
+                              <!-- BEGIN DYNAMIC: MARCAS -->
+                                <option value={mrc_id} {mrc_tip}>{mrc_nombre}</option>
+                              <!-- END DYNAMIC: MARCAS -->
+                                </select></td>
+                            </tr>
+                            <tr>
+                              <td>Descripci&oacute;n Corta </td>
+                              <td><input name="descr_corta" type="text" value="{desc_corta}" size="50" maxlength="255"></td>
+                            </tr>
+                            <tr>
+                              <td valign="top">Descripci&oacute;n Larga </td>
+                              <td>
+                                <textarea name="desc_larga" cols="80" rows="4" maxlength="255" onpaste="return false" onkeypress='key = window.event.keyCode; keychar = String.fromCharCode(key); keychar = keychar.toLowerCase(); if(this.value.length > 253){ this.value=this.value.substring(0,254); }' onKeydown="if (event.ctrlKey && (String.fromCharCode(event.keyCode).toLowerCase() == 'c' || String.fromCharCode(event.keyCode).toLowerCase() == 'v')) { event.keyCode = 0; }">{desc_larga}</textarea>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>&nbsp;</td>
+                              <td>&nbsp;</td>
+                            </tr>
+                            <tr>
+                              <td> Unidad Medida (PPM) </td>
+                              <td><select name="fmedida">
+                              <option value="">---</option>
+                              <!-- BEGIN DYNAMIC: UNI_MED -->
+                                <option value={ume_id} {ume_tip}>{ume_nombre}</option>
+                              <!-- END DYNAMIC: UNI_MED -->
+                                </select></td>
+                            </tr>
+                            <tr>
+                              <td> Contenido (PPM) </td>
+                              <td><input name="contenido" type="text" value="{contenido}" size="10" maxlength="5"></td>
+                            </tr>
+                            <tr>
+                              <td>&nbsp;</td>
+                              <td>&nbsp;</td>
+                            </tr>
+                            <tr>
+                              <td>Admite Comentarios</td>
+                              <td><input name="admite_com" type="radio" value="S" {checkcom_1} >
+                                S&iacute;
+                                <input name="admite_com" type="radio" value="N" {checkcom_2} >
+                                No</td>
+                            </tr>
+                            <tr>
+                              <td>Es Preparable</td>
+                              <td><input name="preparable" type="radio" value="S" {checkprep_1} >
+                                S&iacute;
+                                <input name="preparable" type="radio" value="N" {checkprep_2} >
+                                No </td>
+                            </tr>
+                            <tr>
+                              <td>&nbsp;</td>
+                              <td>&nbsp;</td>
+                            </tr>
+                            <tr>
+                              <td>Tiene Stock:</td>
+                              <td>&nbsp;</td>
+                            </tr>
+                            <tr>
+                            	<td colspan="2">
+                            		<table>
+                            			<tr><th>Locales</th></tr>
+	                            			<!-- BEGIN DYNAMIC: PUBLICACION -->
+	                            			<tr>
+	                            				<td>{local_nombre}</td>
+		                            			<td align="right"><input type="checkbox" name="local_tienestock_check" value="{local_id}" {local_tienestock_checked}></td>
+	                            			</tr>
+	                            			<!-- END DYNAMIC: PUBLICACION -->
+                            		</table>
+                            	</td>
+                            </tr>
+                            <tr>
+                              <td>&nbsp;</td>
+                              <td>&nbsp;</td>
+                            </tr>
+                            <tr>
+                              <td>Unidad de Venta </td>
+                              <td>{uni_vta}</td>
+                            </tr>
+                            <tr>
+                              <td>Intervalo Medida</td>
+                              <td><input name="interv_med" type="text" value="{interv_val}" size="10" maxlength="5"></td>
+                            </tr>
+                            <tr>
+                              <td>M&aacute;ximo</td>
+                              <td><input name="maximo" type="text" value="{interv_max}" size="10" maxlength="5"></td>
+                            </tr>
+                            <tr>
+                              <td>&nbsp;</td>
+                              <td>&nbsp;</td>
+                            </tr>
+                            <tr>
+                              <td>Imagen Minificha</td>
+                              <td><input name="img1" type="text" value="{img1}" maxlength="200"></td>
+                            </tr>
+                            <tr>
+                              <td>Imagen Ficha</td>
+                              <td><input name="img2" type="text" value="{img2}" maxlength="200"></td>
+                            </tr>
+                            
+                            <tr>
+                              <td>Banner distintivo</td>
+                              <td>
+	                              <input name="ImgBanner" id="ImgBanner" type="text" value="{ImgBanner}" size="50" maxlength="200" onchange="javascript:muestraValidar();">
+	                              <input name="ButtonImgBanner" type="button" class="cmd" id="ButtonImgBanner" value="Validar"  onClick="javascript:previsualizarBanner();" />
+	            	              <img src="{url_imgs}{ImgBanner}" alt="" id="ImgBannerOk"  width="30" height="30" onerror="this.src='img/1x1trans.gif'" />
+          						</td>
+                            </tr>
+                            <tr>
+                              <td>Descripci&oacute;n banner</td>
+                              <td><input name="descBanner" type="text" value="{descBanner}" size="50" maxlength="255"></td>
+                            </tr> 
+                            <tr>
+                              <td>Pantone banner</td>
+                              <td><input name="colorBanner" type="text" value="{colorBanner}" size="20" maxlength="255"></td>
+                            </tr>
+                            <tr>
+                              <td>&nbsp;</td>
+                              <td>&nbsp;</td>
+                            </tr>
+                            <tr>
+                              <td>Ranking</td>
+                              <td>{ranking}</td>
+                            </tr>
+                            <tr>
+                              <td height="35">Particionable</td>
+                              <td>
+
+								<table width="100%">
+									<tr>
+										<td width="15%">
+											<input name="check_partic" type="radio" value="S" onclick="javascript:cambioParticionable(this);" {checkpart_1} >
+											S&iacute;
+											<input name="check_partic" type="radio" value="N" onclick="javascript:cambioParticionable(this);" {checkpart_2} >
+											No
+										</td>
+										<td width="85%">
+											<div id="input_particionable" style="visibility:hidden;">
+											<input name="particionable" id="particionable" type="text" value="{particionable}" size="7" maxlength="5">
+											</div>
+										</td>
+									</tr>
+								</table>
+
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>&nbsp;</td>
+                              <td>&nbsp;</td>
+                            </tr>
+
+                            <tr height="35">
+                            	<td colspan="2">¿Evitar Publicaci&oacute;n/Despublicaci&oacute;n por bloqueo?<input type="checkbox" name="evitar_pub_des" {evitar_pub_des_checked}></td>
+                            </tr>
+
+                            <tr>
+                            	<td colspan="2">
+                            		<table>
+                            			<tr><th>Local</th><th>Publicado</th></tr>
+	                            			<!-- BEGIN DYNAMIC: PUBLICACION -->
+	                            			<tr>
+	                            				<td>{local_nombre}</td>
+		                            			<td align="right"><input type="checkbox" name="local_check" value="{local_id}" {local_checked}></td>
+	                            			</tr>
+	                            			<!-- END DYNAMIC: PUBLICACION -->
+	                            			<tr>
+	                            				<td colspan="3" align="right">Todos los Locales</td>
+	                            				<td><input type="checkbox" id="checkAllAuto" name="checkAllAuto"></td>
+	                            				<td><div id="div_motivos" style="display: none;">
+	                            						Motivo: <SELECT id="motivo_des" name="motivo_des">
+					                            			<!-- BEGIN DYNAMIC: MOTIVOS -->
+																							<OPTION value="{motivo_id}" {selected} >{motivo_nombre}</OPTION>
+	                  					          		<!-- END DYNAMIC: MOTIVOS -->
+	                            						</SELECT>
+	                            						Obs: <input type="text" id="obs" name="obs" maxlength="80" size="80"/>
+	                            						</div>
+	                            				</td>
+	                            			</tr>
+                            		</table>
+                            	</td>
+                            </tr>
+
+                            <tr>
+                              <td>Fecha Creaci&oacute;n </td>
+                              <td>{fec_crea}</td>
+                            </tr>
+                            <tr>
+                              <td>Fecha Ult. Modif. </td>
+                              <td>{fec_act}</td>
+                            </tr>
+                            <tr>
+
+                              <td>Usuario Ult. Mod.</td>
+                              <td>{usr_act}</td>
+                            </tr>
+                            <tr>
+                              <td>&nbsp;</td>
+                              <td>&nbsp;</td>
+                            </tr>
+                            <tr>
+                              <td>&nbsp;</td>
+                              <td><input name="Button" type="button" class="cmd" value="    Guardar    "
+                              onclick="javascript:guardar(productos)">
+
+                              <!-- Si el producto es de tipo generico, mostrar el boton Eliminar  -->
+                              <input name="Button" type="button" class="cmd" value="   Eliminar    "  {visible}
+                              onclick="javascript:val_eliminar(frmElim)" > </td>
+                            </tr>
+                          </form>
+                          <form name="frmPubDesp" method=post action="PubDespProduct" >
+                          <!--form name="frmPubDesp" method=post action="{direc_pubdesp}" -->
+                          <input type="hidden" name="id_producto" value="{id_prod}">
+                          <input type="hidden" name="action" value="{accion}">
+                          <input type="hidden" name="tipo_prod" value="{gen}">
+                          <input type="hidden" name="url" value="{url}">
+                          <input type="hidden" name="tipo" value="">
+                          <input type="hidden" name="id_marca" value="">
+                          <input type="hidden" name="desc_corta" value="">
+                          <input type="hidden" name="desc_larga" value="">
+                          <input type="hidden" name="uni_med" value="">
+                          <input type="hidden" name="contenido" value="0">
+                          <input type="hidden" name="adm_com" value="">
+                          <input type="hidden" name="es_prep" value="">
+                          <input type="hidden" name="int_val" value="0">
+                          <input type="hidden" name="int_max" value="0">
+                          </form>
+                          <form name="frmElim" method=post action="DelGenericProduct" >
+                          <input type="hidden" name="id_producto" value="{id_prod}">
+                          <input type="hidden" name="url" value="ViewMonProducts">
+                          </form>
+
+                          </table>
+                          <br>
+                          Proponer el valor m&aacute;ximo como 20 veces el intervalo
+                          <br>
+                        <br>
+                      </div>
+                    </div>
+    		<script>
+				document.productos.contenido.onkeypress = KeyIsDecimal;
+				document.productos.interv_med.onkeypress = KeyIsDecimal;
+				document.productos.maximo.onkeypress = KeyIsDecimal;
+				document.productos.particionable.onkeypress = KeyIsDecimal;
+
+				for (var i=0; i < document.productos.check_partic.length; i++) {
+					if (document.productos.check_partic[i].checked) {
+						cambioParticionable(document.productos.check_partic[i]);
+					}
+				}
+			</script>
+                    <div class="tab-page" id="modulo2">
+                      <h2 class="tab">Im&aacute;genes</h2>
+
+                          <div align="left"> <strong>Imágenes disponibles </strong><br />
+                          <br>
+                          <br>
+                          <br>
+                          <table width="95%"  border="0" align="center" cellpadding="0" cellspacing="2">
+                            <tr>
+                              <td width="33%">Im&aacute;gen Grande </td>
+                              <!--  td width="33%">Im&aacute;gen Mediana </td-->
+                              <td width="33%">Im&aacute;gen Chica </td>
+                            </tr>
+                            <tr>
+                              <td>&nbsp;</td>
+                              <!--td>&nbsp;</td-->
+                              <td>&nbsp;</td>
+                            </tr>
+                            <tr>
+                              <td><div align="center"><img name="img_minificha" src="{path_gr}{imagen2}" onError="this.src='img/transp.gif'"></div></td>
+                              <!--td><div align="center"><img name="img_minificha" src="{path_me}{imagen2}" onError="this.src='img/transp.gif'"></div></td-->
+                              <td><div align="center"><img name="img_minificha" src="{path_ch}{imagen1}" onError="this.src='img/transp.gif'"></div></td>
+                            </tr>
+                            <tr>
+                              <td>&nbsp;</td>
+                              <!--td>&nbsp;</td-->
+                              <td>&nbsp;</td>
+                            </tr>
+                          </table>
+                          <br>
+                          <br>
+                      </div>
+                    </div>
+					<script>
+						function val_agrega_cat(form){
+							form.id_cat.disabled=false;
+                    		form.Envnum.value = 'Agregar';
+
+							if ( form.id_cat.value == ""){
+								alert("Debe ingresar un Numero de Categoria");
+								return false;
+							}
+							if (validar_solonumero(form.id_cat,"Numero de Categoría es un Campo Numerico")) return false;
+							return true;
+						}
+					</script>
+                    <div class="tab-page" id="modulo3">
+                      <h2 class="tab">Categor&iacute;as</h2>
+
+                         <div align="left"> <strong>Listado de Categor&iacute;as a la que pertenece el producto</strong><br />
+                          <br>
+
+                          <table width="459"  border="0" align="center" cellpadding="0" cellspacing="2">
+                            <tr>
+                              <td width="25%">Id categor&iacute;a</td>
+                              <td width="25%">Nombre</td>
+                              <td width="20%">Orden</td>
+                              <td width="20%">Con pago</td>
+                              <td width="10%">&nbsp;</td>
+                            </tr>
+                          <form name="frmAgreCat" method=post action="AddProdCatWeb" target="prodcat" onsubmit="return val_agrega_cat(this);">
+                          <input type="hidden" name="url" value="ViewProdCatIframe?id_prod={id_prod}&tipo_prod={gen}">
+                          <input type="hidden" name="id_prod" value="{id_prod}">
+                          <input name="nom_cat" type="hidden" value="" >
+                          <input type="hidden" name="origen" value="PROD">
+                          <input type="hidden" name="procat_id" value="">
+ 						  <input type="hidden" name="action" value="{action}">
+
+                            <tr>
+
+                            <td><input name="id_cat" type="text" size="10" maxlength="9" >
+		                    <a href="javascript:abre_popupC();"><img src="img/magnify.jpg" width="16" height="16" border="0" ALT="Muestra Categorías"></a></td>
+		                    <td><input type="text" name="nom_cate" value="" disabled></td>
+        	                <td><input type="text" name="orden"  value=1000 maxlength="9" size="9"></td>
+                            <td>Si<input type="radio" name="rad_pago" value="S">
+                                No<input type="radio" name="rad_pago" value="N" checked></td>
+        	                <td><input name="Envnum" type="submit" class="cmd" value="Agregar" onclick='var agree=confirm("¿Esta seguro(a) de guardar los cambios?"); if (agree){return true ; } else {return false ;}'></td>
+
+                            </tr>
+                          </form>
+                            <tr>
+                              <!-- td>root &gt;&gt; Abarrotes</td-->
+                            </tr>
+                          </table>
+                          <br>
+                          <table width="570" border="0" align="center" cellpadding="2" cellspacing="0" class="tabla2">
+                            <tr>
+                              <th width="55">Cod Categ </th>
+                              <th width="172">Nombre</th>
+                              <th width="172">Cat. Padre</th>
+                              <th width="60">Orden</th>
+                              <th width="60">Con pago</th>
+                              <th width="51">Acciones</th>
+                            </tr>
+                          </table>
+                          <CENTER><IFRAME SRC="ViewProdCatIframe?id_prod={id_prod}&tipo_prod={gen}" NAME="prodcat" HEIGHT="194" WIDTH="572" border=0 >
+							</IFRAME></CENTER>
+                          <br>
+							<script>document.frmAgreCat.id_cat.onkeypress = KeyIsSoloNum;
+									document.frmAgreCat.orden.onkeypress = KeyIsSoloNum;
+							</script>
+                      </div>
+                    </div>
+
+		<!--	{com_item_ini}
+                    <div class="tab-page" id="modulo4">
+                      <h2 class="tab">Items</h2>
+
+				<script language="JavaScript">
+					function agrega_item(form){
+						if(validar_obligatorio( form.id_prod, "El código del producto item es obligatorio"))
+								return false;
+						if(validar_numero( form.id_prod, "El código del producto item es un valor numérico"))
+							return false;
+						if(validar_obligatorio( form.atrdiff_val, "El atributo diferenciador es obligatorio"))
+								return false;
+						form.id_prod_item.value = form.id_prod.value;
+						form.submit();
+					}
+				</script>
+
+                        <div align="left"> <strong>Items del producto </strong><br />
+                          <br>
+                          <form name="frmModItem" method=post action="ModGenericItem" target="proditem" >
+                          <input type="hidden" name="url" value="ViewProdItemIframe?id_prod={id_prod}">
+                          <input type="hidden" name="action" value="agregar">
+                          <input type="hidden" name="id_prod_gen" value="{id_prod}">
+                          <input type="hidden" name="id_prod_item" value="">
+                          <table width="64%"  border="0" align="center" cellpadding="0" cellspacing="2">
+                            <tr>
+                              <td width="34%">C&oacute;d Producto Item</td>
+                              <td width="29%">Desc</td>
+                              <td width="23%">Atributo Diferenciador</td>
+                              <td width="14%">&nbsp;</td>
+                            </tr>
+                            <tr>
+                              <td><input name="id_prod" type="text" value="" size="10">
+                              <a href="javascript:abre_popup();"><img src="img/magnify.jpg" width="16" height="16" border="0"></a> </td>
+                              <td><input name="desc" type="text" disabled value="" size="20"></td>
+                              <td><input name="atrdiff_val" type="text" size="20"></td>
+                              <td><input name="Button" type="button" class="cmd" value="Agregar" onClick="javascript:agrega_item(frmModItem)"></td>
+                            </tr>
+                          </table>
+                          <br>
+                          <table width="463" border="0" align="center" cellpadding="2" cellspacing="0" class="tabla2">
+                            <tr>
+                              <th width="69">Cod Categ </th>
+                              <th width="227"><div align="left">Descripci&oacute;n</div></th>
+                              <th width="94"><div align="left">Atributo Dif </div></th>
+                              <th width="57">Sel</th>
+                            </tr>
+                          </table>
+                          <CENTER><IFRAME SRC="ViewProdItemIframe?id_prod={id_prod}" NAME="proditem" HEIGHT="194" WIDTH="470" border=0 >
+							</IFRAME></CENTER>
+                          </form>
+                          <br>
+                          <br>
+                      </div>
+                    </div>
+			{com_item_fin}
+			{com_sug_ini}-->
+                    <div class="tab-page" id="modulo5">
+                      <h2 class="tab">Sugeridos</h2>
+                        <div align="left"> <strong>Productos sugeridos </strong><br />
+                          <br>
+                          <form name="frmModSug" method=post action="ModSugProduct"  target="prodsug">
+                          <input type="hidden" name="url" value="ViewProdSugIframe?id_prod={id_prod}">
+                          <input type="hidden" name="action" value="agregar">
+                          <input type="hidden" name="id_producto" value="{id_prod}">
+                          <input type="hidden" name="id_producto_sug" value="">
+                          <table width="51%"  border="0" align="center" cellpadding="0" cellspacing="2">
+                            <tr>
+                              <td width="42%">Id Producto Item </td>
+                              <td width="33%">Tipo Relaci&oacute;n </td>
+                              <td width="25%">&nbsp;</td>
+                            </tr>
+                            <tr>
+                              <td><input name="id_prod" type="text" size="20" maxlength="9">
+                                <a href="javascript:abre_popup1();"><img src="img/magnify.jpg" width="16" height="16" border="0"></a>                              </td>
+                              <td><select name="direccion">
+                                  <option value="U" selected>A =&gt; B</option>
+                                  <option value="B">A &lt;=&gt; B</option>
+                                </select>
+                                <img src="img/hint.gif" width="16" height="16"></td>
+                              <td><input name="Button" type="button" class="cmd" value="Agregar" onClick="javascript:agrega_sug(frmModSug)"></td>
+                            </tr>
+                          </table>
+                          <br>
+                          <table width="459" border="0" align="center" cellpadding="2" cellspacing="0" class="tabla2">
+                            <tr>
+                              <th width="74">Cod Suger </th>
+                              <th width="225"><div align="left">Descripci&oacute;n</div></th>
+                              <th width="100"><div align="left">Direcci&oacute;n</div></th>
+                              <th width="48"><div align="left">Sel</div></th>
+                            </tr>
+                          </table>
+                          <CENTER><IFRAME SRC="ViewProdSugIframe?id_prod={id_prod}" NAME="prodsug" HEIGHT="194" WIDTH="459" border=0 >
+							</IFRAME></CENTER>
+                          </form>
+                          <br>
+                          <script>document.frmModSug.id_prod.onkeypress = KeyIsSoloNum;</script>
+                      </div>
+                    </div>
+
+
+                    <div class="tab-page" id="modulo5">
+                      <h2 class="tab">Sectores</h2>
+                        <div align="left"> <strong>Sectores Picking </strong><br />
+                          <br>
+						   <table width="100%"  border="0" cellspacing="2" cellpadding="2">
+						        <tr valign="top">
+						          <td width="71%">
+
+						<form action="ModSectoresxProd" method="get" name="forma1" onSubmit="return validar_form(this);">
+		                   <table width="50%" border="0" align="center" cellpadding="0" cellspacing="2">
+		                    <tr>
+		                     <td colspan=2><font color="red">{mensaje}</font><br></td>
+		                    </tr>
+		                    <tr>
+		                     <td width="220">Sectores</td>
+		                    </tr>
+		                    <!-- BEGIN DYNAMIC: select_sector -->
+		                    <tr>
+		                     <td width="220">
+		                      <input type="hidden" value="{id_bo}" 	name="id_bo">
+			                  <input type="hidden" value="{cod_prod}" 	name="cod_prod">
+			                  <!-- input type="hidden" value="{id_local}"	name="id_local" -->
+			                  <input type="hidden" value="ViewProductForm?cod_prod={cod_prod}" name="url">
+
+		                      <!-- select name="sectores" onchange="javascript:if(form.sectores.options[0].selected){ alert('Debe seleccionar una sección válida'); return false; }; submit(this.form);"-->
+			                  <select name="sector">
+			                   <option value = "-1">{sin_dato}</option>
+			                   <!-- BEGIN DYNAMIC: select_sectores -->
+			                   <option value = "{id_sector}" {sec_tip} >{id_sector} -> {sector}</option>
+			                   <!-- END DYNAMIC: select_sectores -->
+			                  </select>
+					         </td>
+					        </tr>
+					        <!-- END DYNAMIC: select_sector -->
+			               </table>
+			               <center>
+			                 <p><input type="button" name="boton" value="Guardar Sectores" onclick="validaSectores(this.form)" /></p>
+			               </center>
+			             </form>
+			             <SCRIPT>
+                         function validaSectores(obj) {
+                         	if (obj.sector.type == 'select-one') {
+                         		if (obj.sector.value == '-1') {
+                         			alert('Debe seleccionar una sección válida');
+                         			return;
+                         		}
+                         	} else {
+                         		for ( var i=0; i < obj.sector.length; i++ ) {
+                         			if ( obj.sector[i].options[0].selected ) {
+                         				alert('Debe seleccionar una sección válida');
+                         				return;
+                         			}
+                         		}
+                         	}
+                         	obj.submit();
+                         }
+			             </SCRIPT>
+		                <br>
+					    </td>
+				                 </tr>
+						      </table>
+    					 <br>
+                      </div>
+                    </div>
+
+                    <div class="tab-page" id="modulo6">
+                      <h2 class="tab">Log</h2>
+                      <div align="left">
+                        <strong>Log del Producto </strong>
+                        <br /><br />
+                        <form name="frmLog" method=post action="ViewProdLogIframe"  target="prodlog">
+                          <input type="hidden" name="id_prod" value="{id_prod}" />
+                          <table width="669" border="0" align="center" cellpadding="2" cellspacing="0" >
+                            <tr>
+                              <td><input name="Button" type="button" class="cmd" value="Actualizar" onClick="javascript:mostrar_log(frmLog)"></td>
+                            </tr>
+                          </table>
+                          <table width="669" border="0" align="center" cellpadding="2" cellspacing="0" class="tabla2">
+                            <tr>
+                              <th width="145">Fecha </th>
+                              <th width="84"><div align="left">Usuario</div></th>
+                              <th width="309">Descripci&oacute;n</th>
+                            </tr>
+                          </table>
+                          <CENTER><IFRAME SRC="ViewProdLogIframe?id_prod={id_prod}" NAME="prodlog" HEIGHT="194" WIDTH="669" border=0></IFRAME></CENTER>
+                          <br /><br /><br />
+                        </form>
+                      </div>
+                    </div>
+
+                    <div class="tab-page" id="modulo7">
+					  <h2 class="tab">Pilas</h2>
+					  <div align="left">
+					    <p>
+					      <strong>PILAS NUTRICIONALES DEL PRODUCTO</strong>
+					    </p>
+						<div>
+						  <div>
+						    <p>
+						      <strong>Información de la porción</strong>
+						    </p>
+						  </div>
+						  <div>Porción:</div>
+						  <div><input type="text" name="porcion" id="porcion" value="{porcion_nutriente}" onkeyup="var pattern = /[^0-9\.]/g; this.value = this.value.replace(pattern, '');" /></div>
+						  <div>Unidad de porción:</div>
+						  <div>
+						    <select name="unidad_porcion" id="unidad_porcion">
+						      <!-- BEGIN DYNAMIC: UNIDADES_PORCION -->
+						      <option value="{id_unidad}" {select_unidad} >{descripcion}</option>
+						      <!-- END DYNAMIC: UNIDADES_PORCION -->
+						    </select>
+						  </div>
+
+						  <div><input type="button" name="btn" value="Guardar Cambios de Porción" onClick="javascript:cambiarPorcion({id_prod});" /></div>
+
+						  <br/>
+						  <br/>
+
+						  <div>
+						    <p>
+						      <strong>Pilas Actuales del producto</strong>
+						    </p>
+						  </div>
+
+						  <div id="pilas_del_producto"></div>
+
+						  <br/>
+						  <br/>
+
+						  <div id="add_pila">
+						    <div>
+						      <p>
+						        <strong>Agregar Pila</strong>
+						      </p>
+						    </div>
+						    <div>
+						      <div>Tipo Nutriente (Pila):</div>
+						      <div>
+						        <select name="nutriente" id="nutriente">
+						          <!-- BEGIN DYNAMIC: NUTRIENTES -->
+						          <option value = "{id_pila}" >{nombre_nutriente} ({unidad})</option>
+						          <!-- END DYNAMIC: NUTRIENTES -->
+						        </select>
+						      </div>
+						      <div>Nutriente por porción:</div>
+						      <div><input type="text" name="nutriente_porcion" id="nutriente_porcion" value="" onkeyup="var pattern = /[^0-9\.]/g; this.value = this.value.replace(pattern, '');" /></div>
+						      <div>Porcentaje de dosis diaria:</div>
+						      <div><input type="text" name="porcentaje" id="porcentaje" value="" onkeyup="var pattern = /[^0-9\.]/g; this.value = this.value.replace(pattern, '');" /></div>
+						      <div><input type="button" name="btn" value="Guardar Nueva Pila" onClick="javascript:agregarPila({id_prod});" /></div>
+						    </div>
+						  </div>
+
+						</div>
+					  </div>
+                    </div>
+                                          
+                    <div class="tab-page" id="modulo8" >
+                      <h2 class="tab" style="{ocultarDiv}">Ficha T&eacute;cnica</h2>
+                      <div align="left">
+                          <p><strong>Datos de la ficha t&eacute;cnica</strong></p>                          
+                          <p align="center"><font color="red">{mensajeFichaTec}</font><br></p>
+                          
+                          <form name="ficha" method=post action="ModFichaTecnica" >                                                                          
+                          <input type="hidden" name="id_producto" value="{id_prod}">
+                          <input type="hidden" name="url" value="ViewProductForm?cod_prod={id_prod}">
+                          <input type="hidden" name="valor" value="">
+                          <input type="hidden" name="tipo_form" value="{tipo_form}">
+                          <input type="hidden" name="tiene_ficha">
+                          <input type="hidden" name="tieneFichaOld" value="{tieneFichaOld}">
+                          <input type="hidden" id="cantItems" name="cantItems" value="{cantItems}">
+                          <table id="idTableFicha" width="95%"  border="0" align="center" cellpadding="0" cellspacing="2">
+                          	<thead>
+                          		<tr>
+                          			<th></th>
+                          			<th align="center">Concepto</th>
+                          			<th align="center">Descripci&oacute;n</th>
+                          			<th><input id="addItem" type="button" value="Agregar Item" style="cursor: pointer;"  /></th>                          											
+                          		</tr>
+                          	</thead>
+                          	<tbody>
+                          	
+                          	  <!-- BEGIN DYNAMIC: MOSTRAR_FILA_FICHA -->
+                          		<tr id="{filaPadreItem}">
+                   			  		<td>Item 1</td>
+                             		<td><input name="item" id="item" type="text" maxlength="40" size="40"></td>
+                             		<td><input name="itemDescripcion" id="itemDescripcion" type="text" maxlength="50" size="50"></td>
+                             		<td class="eliminarItem"><input id="btnEliminar" name="btnEliminar" type="button" value="Eliminar"/></td>
+                                </tr>
+                                
+                          	  <!-- END DYNAMIC: MOSTRAR_FILA_FICHA -->
+                          	
+                          	  <!-- BEGIN DYNAMIC: MOSTRAR_FICHA -->
+                   			  	<tr>
+                   			  		<td>{itemSecuencia}</td>
+                             		<td><input name="item" id="item" type="text" value="{item}" maxlength="40" size="40"></td>
+                             		<td><input name="itemDescripcion" id="itemDescripcion" type="text" value="{itemDescripcion}" maxlength="50" size="50"></td>
+                             		<td class="eliminarItem"><input id="btnEliminar" name="btnEliminar" type="button" value="Eliminar"/></td>
+                                </tr>
+							  <!-- END DYNAMIC: MOSTRAR_FICHA -->
+                          	
+                            </tbody>                                                                     
+                          </table>                          
+                          <br>
+                          <div align="center">
+                          	<input type="button" id='botonGuardarFicha' name="botonGuardarFicha" value="Guardar" onclick="validaFichaTecnica(this.form)" />
+                         	 <input type="button" id="limpiarItems" name="botonLimpiarFicha" value="Limpiar"  />
+                          </div>     	
+                                                                         
+                          </form>
+                          <script>
+                                                   
+                          	/*Evento click de agregar una nuevo Item de Ficha Tecnica*/
+							$j('#addItem').click(function(e){
+								
+								var lastIndex = 0;
+								var largoTabla = $j("#idTableFicha tbody tr").length;
+		
+								//Se valida que solo se puedan agregar hasta 20 items (Definidos por el negocio) como maximo.
+								var cantidadItems = $j("#cantItems").val();
+
+								if(parseInt(largoTabla)<parseInt(cantidadItems)){
+									$j("#idTableFicha tbody tr").each(function (index) {
+										lastIndex = index + 2;										
+									});
+									var tituloNroItem = 'Item ';
+									tituloNroItem = tituloNroItem + lastIndex;
+													
+									//Se agrega una nueva fila en la tabla.
+									$j("#idTableFicha tbody").append( "<tr>"+ "<td>"+tituloNroItem+"</td>"+ "<td><input name='item' id='item' type='text' maxlength='40' size='40'></td>"+ "<td><input name='itemDescripcion' id='itemDescripcion' type='text' maxlength='50' size='50'></td>"+ "<td class='eliminarItem'><input id='btnEliminar_1' name='btnEliminar_1' type='button' value='Eliminar'/></td>"+ "</tr>"); 							
+								}else{
+									alert("Has alcanzado el limite máximo " + cantidadItems +   " de agregar items.");
+								}		
+							});
+							
+							/*Evento click de eliminar una fila seleccionada*/		
+							$j(".eliminarItem").live('click',function(){
+		
+								var agree = confirm("¿Esta seguro(a) de eliminar el item?");
+								if (agree){
+									if ($j('#idTableFicha >tbody >tr').length == 1){
+										alert("Debe quedar al menos un registro.");															
+									} else {
+										var parent = $j(this).parent();
+										$j(parent).remove();
+										
+										$j("#idTableFicha tbody tr").each(function (index) {
+											var indice = index + 1;
+    										$j(this).children(' td:nth-child(1)').text('Item ' + indice);
+										});
+									}
+								}
+							});
+							
+							/*Evento click que limpia todos los campos del formulario de Ficha Técnica*/
+							$j('#limpiarItems').click(function(e){
+								var agree = confirm("¿Esta seguro(a) que desea limpiar la Ficha Técnica?");
+        						if (agree) {
+									$j("#idTableFicha tbody tr").each(function (index) {								
+										$j(this).children(' td:nth-child(2)').find('input').val('');
+										$j(this).children(' td:nth-child(3)').find('input').val('');									
+							       });
+								}
+							});	
+
+                         	function validaFichaTecnica(obj) {  
+                         		var radios = document.getElementsByName('ficha_tec');
+                         		
+                         		for (var i = 0, length = radios.length; i < length; i++) {
+								    if (radios[i].checked) {
+								        obj.tiene_ficha.value = radios[i].value;
+								        break;
+								    }
+								}
+                            	
+                            	var agree=confirm("¿Esta seguro(a) de guardar los cambios?");
+								if (agree) {
+									var concepto, descripcion;
+									var countErrores = 0;
+									$j("#idTableFicha tbody tr").each(function (index) {
+										lastIndex = index + 2;
+										//Se valida que los campos no esten vacios.
+										$j(this).children("td").each(function (index2) {
+											switch (index2) {
+												case 2:
+													descripcion = $j.trim($j(this).children("input").val());
+													if (descripcion == "") {
+														countErrores++;
+													}
+													break;
+											}
+										});
+									});
+									/*
+									 * Se valida que el contador de errores sea mayor a cero,
+									 * si lo es se muestra un alert, de lo contrario se agrega una nueva fila.
+									 */
+									if (countErrores > 0){
+										alert("El campo Descripción es obligatorio.");
+										return false;
+									} else {
+										obj.submit();
+									}
+								} 
+									
+                         	}
+			             </script>
+                        <br>
+                      </div>
+                    </div>
+
+
+					<!-- INCIO FICHA NUTRICIONAL/SUPER8 -->
+                    <div class="tab-page" id="modulo9">
+					  <h2 class="tab">Info Nutricional</h2>
+                         <div align="left">
+						    <p><strong>Datos de la información nutricional</strong></p>						    
+						  </div>
+						 <form id="formLeySuper" name="formLeySuper" method=post action="FormLeySuperOcho?nameForm=formLeySuper" >
+						 	<input type="hidden" name="fo_idProducto" name="fo_idProducto" value="{id_prod}">
+						    <input type="hidden" name="url" value="ViewProductForm?cod_prod={id_prod}">                    
+	                    	<div id="contenedor" style=" text-align: center;">  	                    	  
+	                          <div style="display: inline-block;">
+	                            <img width="61" height="61" alt="Alto en Azúcares" title="Alto en Azúcares" src="img/azucar_on.png" />
+	                            <br/>
+	                            <input type="checkbox" value="EA" name="exceso_check" id="check_ea"  {checkEA} />
+	                          </div>
+	                          <div style="display: inline-block;">
+	                            <img width="61" height="61" alt="Alto en Calorías" title="Alto en Calorías" src="img/calorias_on.png" />
+	                            <br/>
+	                            <input type="checkbox" value="EC" name="exceso_check" id="check_ec"  {checkEC} />
+	                          </div>	
+	                          <div style="display: inline-block;">
+	                            <img width="61" height="61" alt="Alto en Grasas Saturadas" title="Alto en Grasas Saturadas" src="img/grasas_on.png" />
+	                            <br/>
+	                            <input type="checkbox" value="EGS" name="exceso_check" id="check_egs"  {checkEGS} />
+	                          </div>
+	                          <div style="display: inline-block;">
+	                            <img width="61" height="61" alt="Alto en Sodio" title="Alto en Sodio" src="img/sodio_on.png"> <br/>
+	                            <input type="checkbox" value="ES" name="exceso_check" id="check_es"  {checkES} />
+	                          </div>
+	                        </div>
+	                        <div>
+                            	<p align="center"><font color="red">{msjLeySuperOcho}</font><br></p>
+                            </div>  
+                            <div style="display: inline">                                                                     
+	                        <table id="idTableFichaNutricional" width="96%" border="0" align="center" cellpadding="0" cellspacing="2">
+	                          <thead>
+	                            <tr>
+	                              <th style="width:50%">&nbsp;</th>
+	                              <th align="left">Caracter&iacute;stica</th>
+	                              <th align="left">Por 100 g</th>
+	                              <th align="left">Por porci&oacute;n</th>
+	                              <td>
+	                                 <input type="button" id="addItemFN" name="addItemFN" value="Agregar Item" style="cursor: pointer;"  />                              	 
+	                              </td>	                              
+	                            </tr>
+	                          </thead>
+	                          <tbody>
+	                            <tr id="0">
+	                              <td style="width:50%">Item 1</td>
+	                              <td colspan="3">
+	                              	<input name="cabecera" id="cabecera" type="text" value="{itemCabecera}" maxlength="100" size="101">
+	                              </td>
+	                              <td>
+	                                <input id="delCabecera" name="delCabecera" type="button" value="Eliminar" onclick='javascript:getElementById("cabecera").value="";'/>
+	                                <input id="totalFN" name="totalFN" type="hidden" value="{totalFN}"/>
+	                              </td>
+	                            </tr>	
+	                            <!-- BEGIN DYNAMIC: MOSTRAR_FICHA_NUTRICIONAL -->
+	                            <tr>
+	                              <td style="width:50%">{itemSecuenciaFN}</td>
+	                              <td>
+	                              	<input name="itemFN[{itemContadorFN}]" id="itemFN" type="text" value="{itemFN}" maxlength="30" size="30">
+	                              </td>
+	                              <td>
+	                              	<input name="itemDescripFN[{itemContadorFN}]" id="itemDescripFN" type="text" value="{itemDescripcionFN}" title="22" maxlength="50" size="30">
+	                              </td>
+	                              <td>
+	                              	<input name="itemDescrip2FN[{itemContadorFN}]" id="itemDescrip2FN" type="text" value="{itemDescripcion2FN}" title="22" maxlength="50" size="30">
+	                              </td>
+	                              <td class="eliminarItemFN">
+	                                <input id="btnEliminarFN" name="btnEliminarFN" type="button" value="Eliminar"/>
+	                              	<input id="orderFN[{itemContadorFN}]" name="orderFN[{itemContadorFN}]" value="{itemContadorFN}" type="hidden">
+	                              </td>
+	                            </tr>
+	                             <!-- END DYNAMIC: MOSTRAR_FICHA_NUTRICIONAL  -->
+	                          </tbody>
+	                        </table>
+	                        </div>
+	                        <br>
+                            <div align="center">                        
+                              <input id="addSuper" type="button" onclick="javascript:guardarLeySuperOcho(this.form)" value="Guardar" style="cursor: pointer;"  />
+                            </div>     
+  	                      </form>
+  	                    <script language="JavaScript" src="fichaNutricional.js"></script>
+					</div>
+					<!-- FIN FICHA NUTRICIONAL/SUPER8 -->
+                  </div>
+                </td>
+              </tr>
+            </table>
+                       <div align="center"><br>
+                         <br>
+                         <br>
+                         <br>
+                       </div>
+                       {mns}
+          </td>
+        </tr>
+      </table>
+      </td>
+  </tr>
+  <tr>
+    <td>
+	<TABLE width="100%" height=19 border=0 align="center" cellpadding="0" cellspacing="0" bgcolor="#f1f0e9" style="border-top:1px solid #ABABAB; border-bottom:1px solid #ABABAB">
+	  <TR>
+		<TD align=center bgcolor="#67b01a" class=infoBL><div align="center">Back Office Central - Jumbo.cl</div></TD>
+		</TR>
+	</TABLE>
+
+
+	</td>
+  </tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<div id="programado" class="contenedor_calendario_2012"> 
+	<div align="left" class="msgCalendario">{msj_zona}
+	</div>
+	<table width="628" border="0" cellpadding="0" cellspacing="0" >
+		<tr>
+			<th width="80"><div class="tit_calendario"></div></th>
+			<!-- BEGIN DYNAMIC: CABECERA -->
+			<th width="{ancho}"><div class="tit_calendario"><strong>{dia}</strong><br/>{fc}</div></th>
+			<!-- END DYNAMIC:   CABECERA -->
+		</tr>
+		<!-- BEGIN DYNAMIC: VENTANAS -->
+		<tr>
+			<td width="80"><div class="side_calendario_green"><strong>{ventana}</strong></div></td>
+			<!-- BEGIN DYNAMIC: DIAS -->
+			<td width="{ancho}" class="{class}" style="border-bottom-width: 1px;border-bottom-style: dashed;border-bottom-color: #E9F1D9;" onclick="{onclick}" onmouseover="{onmouseover}" onmouseout="{onmouseout}">{view}</td>
+			<!-- END DYNAMIC:   DIAS -->
+		</tr>
+		<!-- END DYNAMIC:   VENTANAS -->
+		<tr>
+      		<td colspan="12"><div class="linea_abajo_calendario"></div></td>
+    	</tr>
+	</table>
+</div>
+
+<div id="economico" > 
+	<!-- BEGIN DYNAMIC: VENTANAS_ECO -->
+	<br/>
+	<div class="fila_direccion_2012">
+		<div class="nombre_form_2012">Despacho Económico</div>
+	</div>
+	<br/>
+	<table width="628" border="0" cellpadding="0" cellspacing="0">
+		<tr>
+			<th width="80"><div class="tit_calendario"></div></th>
+			<!-- BEGIN DYNAMIC: CABECERA -->
+			<th width="{ancho}"><div class="tit_calendario"><strong>{dia}</strong><br/>{fc}</div></th>
+			<!-- END DYNAMIC:   CABECERA -->
+		</tr>
+		<tr>
+			<td width="80"><div class="side_calendario_green"><strong>{ventana}</strong></div></td>
+    		<!-- BEGIN DYNAMIC: DIAS -->
+			<td width="{ancho}" class="calendarioActivoExtendido" onclick="{onclick}" onmouseover="{onmouseover}" onmouseout="{onmouseout}">{view}</td>
+			<!-- END DYNAMIC:   DIAS -->
+			</tr>
+		<tr>
+		<tr>
+      		<td colspan="11"><div class="linea_abajo_calendario"></div></td>
+    	</tr>
+	</table>
+	<!-- END DYNAMIC:   VENTANAS_ECO -->
+</div>
+
+<form name="t_picking" method="post" action="#">
+	<input type="hidden" name="jpicking" value="">
+	<input type="hidden" name="jprecio" value="">
+	<input type="hidden" name="jdespacho" value="">
+	<input type="hidden" name="jfecha" value="">
+	<input type="hidden" name="jsel" value="{sel}">
+	<input type="hidden" name="tipo_despacho" value="">
+	<input type="hidden" name="horas_economico" value="">
+	<input type="hidden" name="zona_despacho" value="{zona_id}">
+	<input type="hidden" name="jclave" value="">
+</form>

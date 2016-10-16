@@ -1,0 +1,423 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="EXPIRES" CONTENT="Mon, 22 Jul 2002 11:12:01 GMT">
+<title>Jumbo.cl Back Office Central</title>
+<style type="text/css">
+<!--
+#ventana_evento {
+	position:absolute;
+	width: 0px;
+	height: 0px;
+	left: 0px;
+	top: 0px;
+	visibility: hidden;
+	border: 1;
+	z-index: 10;
+}
+.titulosLayers {
+	font-family: "Trebuchet MS";
+	font-size: 14px;
+	font-style: normal;
+	line-height: normal;
+	font-weight: bold;
+	font-variant: normal;
+	text-transform: none;
+	vertical-align: top;
+	color: #779A25;
+	text-decoration: none;
+}
+-->
+</style>
+
+<link id="luna-tab-style-sheet" type="text/css" rel="stylesheet" href="js/tabs/tabpane.css" />
+<SCRIPT LANGUAGE="JavaScript" SRC="CalendarPopup.js"></SCRIPT>
+<SCRIPT LANGUAGE="JavaScript" SRC="validacion.js"></SCRIPT>
+<SCRIPT LANGUAGE="JavaScript">document.write(getCalendarStyles());</SCRIPT>
+<SCRIPT LANGUAGE="JavaScript">window.name='winpedido'</SCRIPT>
+<script language="JavaScript" src="calendario.js"></script>
+<script language="JavaScript" src="funciones.js"></script>
+<SCRIPT LANGUAGE="JavaScript" ID="js17">
+var ayer = new Date(30,4,2006,12,0,0,0);
+var cal1 = new CalendarPopup("testdiv1");
+cal1.offsetX = 20;
+cal1.offsetY = 0;
+
+function modificaLayer() {
+	if (!$("btn_aceptar").disabled) {
+		$("btn_aceptar").disabled = true;
+	}
+}
+
+function showEvento() {
+
+	flash = $("flash").value;
+
+	if (flash.length <= 4) {
+		hideEvento();
+		alert("Debe ingresar un nombre válido de Flash.");
+	} else {
+		var exten = flash.substring(flash.length-4, flash.length);
+		if (exten == '.swf' || exten == '.SWF') {
+			var directorio = "{fla_directorio}";
+			var cod_flash = '{codigo_html}';
+
+			cod_flash = cod_flash.replace('@nombre_archivo', directorio + flash);
+			cod_flash = cod_flash.replace('@nombre_archivo', directorio + flash);
+			$("swfevento").innerHTML = cod_flash;
+
+			var nombre	 = $("nombre_cliente").value;
+			var titEvent = $("titulo_evento").value;
+
+			if (titEvent.length == 0) {
+				alert("Debe ingresar el título");
+				$("titulo_evento").focus();
+				return;
+			}
+			if ( titEvent.indexOf('@nombre') != -1 ) {
+				titEvent = titEvent.replace('@nombre', nombre);
+			}
+			$("titulo_evento_ejemplo").innerHTML = titEvent;
+
+			MM_showHideLayers('ventana_evento','','show');
+			var layerEvento = document.getElementById('ventana_evento');
+			//var ancho = screen.availWidth;
+			var largo = screen.availHeight;
+			var ancho = document.documentElement.scrollWidth;
+			//var largo = document.documentElement.scrollHeight;
+			layerEvento.style.width = '400px';
+			layerEvento.style.height = '285px';
+			layerEvento.style.left = (ancho-400)/2 + 'px';
+			layerEvento.style.top = (largo-340)/2 + 'px';
+
+			$("btn_aceptar").disabled = false;
+
+		} else {
+			hideEvento();
+			alert("La extensión del archivo Flash no es válido.");
+		}
+	}
+}
+
+function hideEvento() {
+	MM_showHideLayers('ventana_evento','','hide');
+	var layerEvento = document.getElementById('ventana_evento');
+	layerEvento.style.width = '0px';
+	layerEvento.style.height = '0px';
+}
+
+function MM_swapImgRestore() { //v3.0
+  var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
+}
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+  	var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+  	if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];
+  	}
+  }
+}
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+function MM_swapImage() { //v3.0
+  var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3)
+   if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
+}
+function MM_openBrWindow(theURL,winName,features) { //v2.0
+  window.open(theURL,winName,features);
+}
+function MM_showHideLayers() { //v6.0
+  var i,p,v,obj,args=MM_showHideLayers.arguments;
+  for (i=0; i<(args.length-2); i+=3) if ((obj=MM_findObj(args[i]))!=null) { v=args[i+2];
+    if (obj.style) { obj=obj.style; v=(v=='show')?'visible':(v=='hide')?'hidden':v; }
+    obj.visibility=v; }
+}
+</SCRIPT>
+<script type="text/javascript" src="js/tabs/tabpane.js"></script>
+<script language="JavaScript" src="prototype.js"></script>
+<script type="text/javascript" src="js/flashobject.js"></script>
+<script type="text/javascript" src="js/layer.js"></script>
+<script language="JavaScript" src="js/eventoAddEdit.js"></script>
+
+<link href="estilos.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+<!--
+.style1 {color: #666666}
+-->
+</style>
+</head>
+
+<body>
+<link rel="stylesheet" href="menu/menu.css">
+<script language="JavaScript" src="menu/menu.js"></script>
+<script language="JavaScript" src="menu/menu_tpl.js"></script>
+<script language="JavaScript" src="menu/menu_items.js"></script>
+<script language="JavaScript" src="popup.js"></script>
+<script language="JavaScript" src="funciones.js"></script>
+<table width="780" height="100%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+    <td height="78" valign="top">
+
+	<TABLE width="100%" height=59 border=0 align="center" cellpadding="0" cellspacing="0" bgcolor="#ffffff">
+	  <TR>
+		<TD width=275 height="59" align=left class=user><img src="img/header2.jpg" width="275" height="60"></TD>
+		<TD width=505 align=left valign="bottom" background="img/bg-1.jpg" class=user><table width="90%"  border="0" align="center" cellpadding="0" cellspacing="2">
+          <tr>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td><div align="right" class="infoBL">Usuario: {hdr_nombre}&nbsp;&nbsp;| {hdr_fecha}</div></td>
+          </tr>
+        </table></TD>
+	  </TR>
+	</TABLE>
+	<TABLE width="100%" height=19 border=0 align="center" cellpadding="0" cellspacing="0" bgcolor="#f1f0e9" style="border-top:1px solid #ABABAB; border-bottom:1px solid #ABABAB">
+	  <TR>
+		<TD align=left bgcolor="#FFFFFF" class=user></TD>
+		</TR>
+	</TABLE>
+
+
+	</td>
+  </tr>
+  <tr height="400">
+    <td valign="top" bgcolor="#FFFFFF">
+      <table border=0 width="100%" class='ContentTitle'>
+        <tr>
+          <td width="53%" height="20" class='HeaderTitle'><span id="titulo">Crear un Nuevo Evento</span></td>
+          <td width="47%" class='HeaderTitle'>
+            <div align="right"><a href="ViewMonEventos"><img src="img/volver.gif" width="32" height="32" border="0"></a></div>
+          </td>
+        </tr>
+      </table>
+	  <br>
+      <table width="100%"  border="0" cellspacing="2" cellpadding="2">
+        <tr valign="top">
+          <td width="71%">
+
+	<form name="frm_add_evento" method="post" action="AddEvento">
+
+	          <table width="98%"  border="0" align="center" cellpadding="0" cellspacing="0" class="tabla3">
+                <tr> 
+                  <td width="3%">&nbsp;</td>
+                  <th width="18%">&nbsp;</th>
+                  <th width="3%">&nbsp;</th>
+                  <td width="76%">&nbsp;</td>
+                </tr>
+                <tr> 
+                  <td>&nbsp;</td>
+                  <th>Nombre</th>
+                  <th>:</th>
+                  <td> <input type="text" name="nombre" id="nombre" value="{nombre}" style="width:400px" maxlength="50" /> 
+                    <input type="hidden" name="id_evento" id="id_evento" value="{id_evento}" style="width:120px" /> 
+                    <input type="hidden" name="nombre_cliente" id="nombre_cliente" value="{nombre_pila_usuario}" />
+					<input type="hidden" name="validacion" id="validacion" value="{validacion}" />  
+                  </td>
+                </tr>
+                <tr> 
+                  <td>&nbsp;</td>
+                  <th>Descripci&oacute;n</th>
+                  <th>:</th>
+                  <td> <textarea class="nobord" id="descripcion" name="descripcion" style="width:400PX; height:60px; overflow:visible" onKeyDown="valida_longitud()" onKeyUp="valida_longitud()">{descripcion}</textarea> 
+                  </td>
+                </tr>
+                <tr height="42"> 
+                  <td>&nbsp;</td>
+                  <th>Título</th>
+                  <th>:</th>
+                  <td> <input type="text" name="titulo_evento" id="titulo_evento" value="{titulo}" style="width:400px" maxlength="40" onchange="javascript:modificaLayer();"> 
+                    <br />
+                    ( @nombre es el parámetro que se cambiará por el nombre del 
+                    cliente ) </td>
+                </tr>
+                <tr> 
+                  <td>&nbsp;</td>
+                  <th>Tipo Evento</th>
+                  <th>:</th>
+                  <td> <select name="tipo_evento" id="tipo_evento" class="letracombo" style="width:125px">
+                      <option value="0">Seleccione</option>
+                      <!-- BEGIN DYNAMIC: TIPOS_EVENTOS -->
+                      <option value="{id_tipo}" {sel_tipo}>{tipo}</option>
+                      <!-- END DYNAMIC: TIPOS_EVENTOS -->
+                    </select> </td>
+                </tr>
+                <tr>
+                  <td>&nbsp;</td>
+                  <th>Validaci&oacute;n Manual</th>
+                  <th>:</th>
+                  <td><input type="checkbox" name="checkbox" value="checkbox" onClick="javascript:cambioValidacion(this)" {validacion_checked}></td>
+                </tr>
+                <tr> 
+                  <td>&nbsp;</td>
+                  <th>Fecha Inicio</th>
+                  <th>:</th>
+                  <td> <input type="text" name="fecha_inicio" id="fecha_inicio" value="{fecha_inicio}" style="width:120px" readonly
+								onClick="cal1.select(document.frm_add_evento.fecha_inicio,'anchor1','dd/MM/yyyy'); return false;" title="Fecha Inicio"> 
+                    <a href="#" onClick="cal1.select(document.frm_add_evento.fecha_inicio,'anchor1','dd/MM/yyyy'); return false;" name="anchor1" id="anchor1"> 
+                    <img src="img/cal.gif" width="16" height="16" border="0" alt="Fecha Inicio" > 
+                    </a> <input type="hidden" name="fecha_inicio_old" id="fecha_inicio_old" value="{fecha_inicio_old}" style="width:120px"> 
+                    <input type="hidden" name="fecha_actual" id="fecha_actual" value="{fecha_actual}" style="width:120px"> 
+                  </td>
+                </tr>
+                <tr> 
+                  <td>&nbsp;</td>
+                  <th>Fecha Fin</th>
+                  <th>:</th>
+                  <td align="left"> <input type="text" name="fecha_fin" id="fecha_fin" value="{fecha_fin}" style="width:120px" readonly
+								onClick="cal1.select(document.frm_add_evento.fecha_fin,'anchor2','dd/MM/yyyy'); return false;" title="Fecha Fin"> 
+                    <a href="#" onClick="cal1.select(document.frm_add_evento.fecha_fin,'anchor2','dd/MM/yyyy'); return false;" name="anchor2" id="anchor2"> 
+                    <img src="img/cal.gif" width="16" height="16" border="0" alt="Fecha Fin" > 
+                    </a> </td>
+                </tr>
+                <tr> 
+                  <td>&nbsp;</td>
+                  <th>Ocurrencia</th>
+                  <th>:</th>
+                  <td><input type="text" name="ocurrencia" id="ocurrencia" value="{ocurrencia}" style="width:120px" maxlength="10"></td>
+                </tr>
+                <tr> 
+                  <td>&nbsp;</td>
+                  <th>Orden</th>
+                  <th>:</th>
+                  <td><input type="text" name="orden" id="orden" value="{orden}" style="width:120px" maxlength="10"></td>
+                </tr>
+                <tr id="tabla_estado"> 
+                  <td>&nbsp;</td>
+                  <th>Estado</th>
+                  <th>:</th>
+                  <td> <select name="estado" id="estado" class="letracombo" style="width:125px">
+                      <option value="0">Seleccione</option>
+                      <!-- BEGIN DYNAMIC: ESTADOS -->
+                      <option value="{id_estado}" {sel_estado}>{estado}</option>
+                      <!-- END DYNAMIC: ESTADOS -->
+                    </select> </td>
+                </tr>
+                <tr> 
+                  <td>&nbsp;</td>
+                  <th>Nombre de Flash </th>
+                  <th>:</th>
+                  <td> <input type="text" name="flash" id="flash" value="{flash}" style="width:400px" maxlength="50" onchange="javascript:modificaLayer();"></td>
+                </tr>
+                <tr> 
+                  <td>&nbsp;</td>
+                  <th>Pasos a desplegar </th>
+                  <th>:</th>
+                  <td> <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+                      <!-- BEGIN DYNAMIC: PASOS -->
+                      <tr> 
+                        <td width="7%"><input type="checkbox" name="check_{id_paso}" value="{id_paso}" {checked_paso}></td>
+                        <td width="93%">{paso}</td>
+                      </tr>
+                      <!-- END DYNAMIC: PASOS -->
+                    </table></td>
+                </tr>
+                <tr> 
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp; </td>
+                </tr>
+                <tr> 
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td> <input name="Button2" type="button" class="cmd" id="Button" value=" Previsualizar " onClick="javascript:showEvento();"> 
+                    &nbsp;&nbsp; <input name="Button2" type="button" class="cmd" id="btn_aceptar" value=" Aceptar " onClick="javascript:crearEvento();" disabled="disabled"> 
+                    &nbsp;&nbsp; <input name="Button3" type="button" class="cmd" id="Button2" value=" Cancelar " onClick="javascript:cancelarCreacion();"> 
+                  </td>
+                </tr>
+                <tr> 
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp; </td>
+                </tr>
+              </table>
+
+	</form>
+
+
+<DIV ID="testdiv1"
+					STYLE="position:absolute;visibility:hidden;background-color:white;layer-background-color:white;"></DIV>
+
+<script>
+document.frm_add_evento.ocurrencia.onkeypress = KeyIsSoloNum;
+document.frm_add_evento.orden.onkeypress = KeyIsSoloNum;
+</script>
+
+
+<div id="loading" style="display:none">
+<table style="Z-INDEX: 500; POSITION: absolute; LEFT: 0; TOP: 0" cellSpacing="0" cellPadding="0" border="0" id="tabla_loading">
+<tr>
+<td width="75" height="25" bgcolor="#FF0000">&nbsp;&nbsp;&nbsp;<font color="#FFFFFF"><b>Cargando...</b></font></td>
+</tr>
+</table>
+</div>
+
+<div id="ventana_evento" style="position:absolute;visibility:hidden;">
+  <div id="dragbar3" onmousedown="javascript:initializedrag(event,'ventana_evento','dragbar3');" style="cursor:move;">
+    <table width="400" border="0" cellpadding="0" cellspacing="0">
+      <tr>
+        <td width="8" height="7" valign="top"><img src="{ruta_img_layer}/FO_IMGS/img/estructura/layers/esquinaSupIzq.gif" width="8" height="7" alt=""/></td>
+        <td height="7" colspan="2" valign="top" style="background: url({ruta_img_layer}/FO_IMGS/img/estructura/layers/arriba.gif);"><img src="{ruta_img_layer}/FO_IMGS/img/estructura/layers/arriba.gif" width="1" height="7" alt=""/></td>
+        <td width="8" height="7" valign="top"><img src="{ruta_img_layer}/FO_IMGS/img/estructura/layers/esquinaSupDer.gif" width="8" height="7" alt=""/></td>
+      </tr>
+      <tr>
+        <td height="31" valign="top" style="background: url({ruta_img_layer}/FO_IMGS/img/estructura/layers/izquierdoArriba.gif);"><img src="{ruta_img_layer}/FO_IMGS/img/estructura/layers/izquierdoArriba.gif" width="8" height="1" alt=""/></td>
+        <td width="506" height="31" align="center" valign="top" style="background: url({ruta_img_layer}/FO_IMGS/img/estructura/layers/tramafondo.gif);"><span class="titulosLayers" id="titulo_evento_ejemplo"></span></td>
+        <td width="14" align="center" valign="top" style="background: url({ruta_img_layer}/FO_IMGS/img/estructura/layers/tramafondo.gif);"><a href="javascript:hideEvento();">
+          <img src="{ruta_img_layer}/FO_IMGS/img/estructura/bt_cerrar.gif" alt="cerrar ventana" border="0" width="29" height="23" align="right" /></a>
+        </td>
+        <td width="8" height="31" valign="top" style="background: url({ruta_img_layer}/FO_IMGS/img/estructura/layers/derechoArriba.gif);"><img src="{ruta_img_layer}/FO_IMGS/img/estructura/layers/derechoArriba.gif" width="8" height="1" alt=""/></td>
+      </tr>
+    </table>
+  </div>
+  <table width="400" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+      <td height="259" valign="top" style="background: url({ruta_img_layer}/FO_IMGS/img/estructura/layers/bordeIzq.gif);"></td>
+      <td colspan="2" valign="top" bgcolor="#FFFFFF">
+        <table width="95%" border="0" align="center" cellpadding="0" cellspacing="0">
+          <tr>
+            <td height="124" align="center" valign="top" bgcolor="#FFFFFF"><span id="swfevento"></span></td>
+          </tr>
+        </table>
+      </td>
+      <td width="8" height="259" valign="top" style="background: url({ruta_img_layer}/FO_IMGS/img/estructura/layers/bordeDer.gif);"></td>
+    </tr>
+    <tr>
+      <td width="8" height="7" valign="top"><img src="{ruta_img_layer}/FO_IMGS/img/estructura/layers/esquinaInfIzq.gif" width="8" height="7" alt=""/></td>
+      <td height="7" colspan="2" style="background: url({ruta_img_layer}/FO_IMGS/img/estructura/layers/abajo.gif);"><img src="{ruta_img_layer}/FO_IMGS/img/estructura/layers/abajo.gif" width="1" height="7" alt=""/></td>
+      <td width="8" height="7" valign="top"><img src="{ruta_img_layer}/FO_IMGS/img/estructura/layers/esquinaInfDer.gif" width="8" height="7" alt=""/></td>
+    </tr>
+  </table>
+</div>
+    </td>
+        </tr>
+      </table>
+      </td>
+  </tr>
+  <tr>
+    <td>
+	<TABLE width="100%" height=19 border=0 align="center" cellpadding="0" cellspacing="0" bgcolor="#f1f0e9" style="border-top:1px solid #ABABAB; border-bottom:1px solid #ABABAB">
+	  <TR>
+		<TD align=center bgcolor="#67b01a" class=infoBL><div align="center">Back Office Central - Jumbo.cl</div></TD>
+		</TR>
+	</TABLE>
+
+
+	</td>
+  </tr>
+</table>
+</body>
+<script>
+init();
+</script>
+</html>

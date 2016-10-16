@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap 
+   PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" 
+   "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap >
+	<resultMap id="resultRegion" class="java.util.HashMap">
+		<result property="key" column="row_id"/>
+		<result property="valor" column="col2"/>
+		<result property="estado" column="estado"/>
+	</resultMap>
+	
+	<select id="getRegion" resultMap="resultRegion" >
+	<![CDATA[
+		SELECT CAST(REGION.REG_ID AS VARCHAR(50)) AS row_id,
+		       REGION.REG_ID||'|'||TRIM(REPLACE(REGION.REG_NOMBRE,'|',' '))||'|'||REGION.REG_ORDEN AS col2,
+               'N' AS ESTADO
+		FROM
+			(
+             select r.REG_ID, r.REG_NOMBRE, r.REG_ORDEN 
+                         from bodba.bo_poligono p 
+                         inner join bodba.bo_comunas c on c.ID_COMUNA = p.ID_COMUNA 
+                         inner join bodba.bo_regiones r on r.REG_ID = c.REG_ID 
+                         group by r.REG_ID, r.REG_NOMBRE, r.REG_ORDEN 
+                        order by r.REG_ORDEN
+			) REGION
+	]]>
+	</select>
+	<select id="getRegionNov" resultMap="resultRegion" >
+	<![CDATA[
+	WITH DATOS
+	(
+	    ID_DAT_REGION,
+	    COL2
+	)
+	AS
+	(
+			SELECT CAST(REGION.REG_ID AS VARCHAR(50)) AS ID_DAT_REGION,
+		       REGION.REG_ID||'|'||TRIM(REPLACE(REGION.REG_NOMBRE,'|',' '))||'|'||REGION.REG_ORDEN AS col2
+		FROM
+			(
+             select r.REG_ID, r.REG_NOMBRE, r.REG_ORDEN 
+                         from bodba.bo_poligono p 
+                         inner join bodba.bo_comunas c on c.ID_COMUNA = p.ID_COMUNA 
+                         inner join bodba.bo_regiones r on r.REG_ID = c.REG_ID 
+                         group by r.REG_ID, r.REG_NOMBRE, r.REG_ORDEN 
+                        order by r.REG_ORDEN
+			) REGION
+    )
+	 SELECT PRE.ROW_ID,
+	        PRE.COL2,
+	        PRE.ESTADO
+	  FROM (
+	    /* MODIFICADOS */
+	    SELECT DATOS.ID_DAT_REGION AS ROW_ID, DATOS.COL2, 'M' AS ESTADO
+	      FROM DATOS, bodba.BO_INT_REGION AS DIS
+	     WHERE DIS.ID_INT_REGION = DATOS.ID_DAT_REGION
+	       AND DIS.INT_DATA != DATOS.COL2
+	     UNION ALL
+	     
+	     /* NUEVOS */
+	     SELECT D.ID_DAT_REGION AS ROW_ID, D.COL2, 'N' AS ESTADO
+	     FROM DATOS D LEFT JOIN bodba.BO_INT_REGION AS RGN on D.ID_DAT_REGION=RGN.ID_INT_REGION WHERE RGN.ID_INT_REGION  is null  
+	     UNION ALL
+	     
+	     /* ELIMINADOS */
+	    SELECT DIS.ID_INT_REGION AS ROW_ID, DIS.INT_DATA AS COL2, 'E' AS ESTADO
+	      FROM bodba.BO_INT_REGION AS DIS
+	     WHERE NOT EXISTS 
+	           (SELECT 1
+	              FROM DATOS AS DAT
+                  JOIN bodba.BO_INT_REGION AS RGN
+	                ON RGN.ID_INT_REGION = DAT.ID_DAT_REGION)
+	                
+	     UNION ALL
+	     /* ELIMINADOS cuando no viene en la estructura datos*/	    	
+		    SELECT DIS.ID_INT_REGION AS ROW_ID, DIS.INT_DATA AS COL2, 'E' AS ESTADO
+		    FROM bodba.BO_INT_REGION AS DIS LEFT JOIN DATOS D on DIS.ID_INT_REGION = D.ID_DAT_REGION  WHERE D.ID_DAT_REGION is null
+		    
+        ) AS PRE
+	]]>
+	</select>
+</sqlMap>

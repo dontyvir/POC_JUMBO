@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>cl.cencosud.jumbo</groupId>
+		<artifactId>parent-pom</artifactId>
+		<version>2.0.12-SNAPSHOT</version>
+	</parent>
+	<groupId>cl.cencosud.jumbo.services</groupId>
+	<artifactId>sv-services</artifactId>
+	<packaging>pom</packaging>
+	<name>Servicios JUMBO</name>
+	<modules>
+		<module>cat-webapp</module>
+		<module>cat-enterprise</module>
+		<module>autoriza-webapp</module>
+		<module>autoriza-enterprise</module>
+		<module>auditoria-webapp</module>
+		<module>auditoria-enterprise</module>
+		<module>rondas-webapp</module>
+		<module>rondas-enterprise</module>
+		<module>front-office-webapp</module>
+		<module>front-office-enterprise</module>
+		<module>back-office-central-webapp</module>
+		<module>back-office-central-enterprise</module>
+		<module>back-office-local-webapp</module>
+		<module>back-office-local-enterprise</module>
+		<module>capture-wp-webapp</module>
+		<module>capture-wp-enterprise</module>
+		<module>front-office-ventaempresa-webapp</module>
+		<module>front-office-ventaempresa-enterprise</module>
+		<module>front-office-fo-imgs-webapp</module>
+		<module>front-office-webcontent-webapp</module>
+		<module>front-office-webcontent-enterprise</module>
+		<module>grability-webapp</module>
+		<module>grability-webapp-enterprise</module>
+		<module>end-purchase-webapp</module>
+		<module>end-purchase-enterprise</module>
+		<module>venta-masiva-webapp</module>
+		<module>venta-masiva-enterprise</module>
+		<module>venta-ondemand-webapp</module>
+		<module>venta-ondemand-enterprise</module>
+	</modules>
+	<properties>
+		<j2ee.ear.version>1.4</j2ee.ear.version>
+	</properties>
+</project>

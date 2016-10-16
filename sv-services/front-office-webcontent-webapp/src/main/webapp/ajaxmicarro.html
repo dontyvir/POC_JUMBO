@@ -1,0 +1,179 @@
+<script type="text/javascript">
+var i;
+var count=0;
+var marca_;
+</script>
+<form name="criterios" method="post" action="">
+    		<input type="hidden" name="categorias" id="categorias"/>
+    		<input type="hidden" name="productos" id="productos"/>
+    		<input type="hidden" name="criterios" id="criterios"/>
+    		<!-- BEGIN DYNAMIC: INTERMEDIAS -->
+    		<div class="barra_categorias_carro_2012">
+      			<div class="fila_criterio_cat_carro_2012">
+        			<div class="titulos_categorias_carro">{nom_inter}</div>
+        			<input type="hidden" name="categoria_" id="categoria_" value="{nom_inter}"/>
+        			<div class="txt_criterio_categorias">Elige el criterio de sustitución para toda la categoría</div>
+        			<div class="modulo_sustitucion_categoria_2012">
+          				<div class="modulo_radio_carro_2012_b">
+            				<input name="intermedia_{id_inter}" type="radio" value="1" onclick="javascript:alertaPorCategoria({id_inter},1);"/>
+          				</div>
+          				<div class="txt_criterio_jumbo_3" style="width:130px;">Criterio Jumbo</div>
+          				<div class="modulo_radio_carro_2012_b">
+            				<input name="intermedia_{id_inter}" type="radio" value="2" onclick="javascript:alertaPorCategoria({id_inter},2);"/>
+          				</div>
+          				<div class="txt_criterio_jumbo_3" style="width:215px;">Misma marca distinto tamaño</div>
+          				<div class="modulo_radio_carro_2012_b">
+            				<input name="intermedia_{id_inter}" type="radio" value="3" onclick="javascript:alertaPorCategoria({id_inter},3);"/>
+          				</div>
+          				<div class="txt_criterio_jumbo_3" style="width:215px;">Mismo tamaño distinta marca</div>
+          				<div class="modulo_radio_carro_2012_b">
+            				<input name="intermedia_{id_inter}" type="radio" value="5" onclick="javascript:alertaPorCategoria({id_inter},5);"/>
+          				</div>
+          				<div class="txt_criterio_jumbo_3" style="width:150px;">No sustituir</div>
+        			</div>
+  	  			</div>
+  	  			<div class="col_productos_carro_2012">
+      				<!-- BEGIN DYNAMIC: TERMINALES -->
+      				<div class="fila_titulo_intermedia_2012">{nom_ter}</div>
+      				<!-- BEGIN DYNAMIC: PRODUCTOS -->
+      				<div class="fila_producto_carro_2012" id="producto_{i}">
+          				<div class="modulo_foto_130_carro">
+          					<img src="/FO_IMGS/gr/{imagen}" onerror="javascript:this.src='/FO_IMGS/img/gr/fotopreparacion.gif'" width="100" height="100" />
+          				<!-- BEGIN DYNAMIC: CON_PROMOCION -->
+          					<div class="promo_h">
+          						<img src="/FO_IMGS/img/promociones/{promo_img}" onerror="javascript:this.src='/FO_IMGS/img/promociones/promocion.gif'"/>
+          					</div>
+          				<!-- END DYNAMIC: CON_PROMOCION -->
+          				</div>
+          				<div class="modulo_descripcion_h">
+            				<div class="txt_marca_h_carro">{nommarca}</div>
+            				<script type="text/javascript"> 
+ 							marca_= '{nommarca}';
+ 							</script>
+            				<div class="txt_nombre_h_carro">{tipoprod}<br />{nombre}</div>
+            				<input type="hidden" id='namepro{i}' name='namepro{i}' value='{tipoprod}'/> 
+            				<!-- BEGIN DYNAMIC: CON_PROMOCION -->
+            				<div class="txt_promo_h_carro">{promo_desc}</div>
+            				<!-- END DYNAMIC: CON_PROMOCION -->
+          				</div>
+          				
+          				<div class="modulo_precio_h_carro_2012">
+            				<!-- BEGIN DYNAMIC: NO_TIENE_STOCK -->
+            				<div class="txt_precio_h_carro_sin_stock" id="subtotal{contador}">{subtotal}</div>
+            				<img src="/FO_IMGS/img/sin_stock.gif"/>
+            				<!-- END DYNAMIC: NO_TIENE_STOCK -->
+            				<!-- BEGIN DYNAMIC: INPUT_SEL -->
+            				<div class="txt_precio_h_carro" id="subtotal{contador}">{subtotal}</div>
+            				<!-- END DYNAMIC: INPUT_SEL -->
+            				<div class="txt_precio_medida_h_carro">{ppum}</div>
+            				<!-- BEGIN DYNAMIC: INPUT_SEL -->
+            				<div class="modulo_cantidad_h_carro">
+              					<div class="form_cantidad_style_carro" style="border:0px brown solid"><!-- width:30px; -->
+                					<label for="textfield2"></label>
+                  					<input name="producto{contador}" type="text" class="form_cantidad_style_carro" id="producto{contador}" value="{valor}" onkeypress="javascript:return bloqueaCaracteres(event,/[0-9.\b]/);" onchange="javascript:cambia_cantidad('{contador}',{intervalo},{maximo},{id},{precio});" />
+                  				</div>
+ <script type="text/javascript"> 
+// 05/10/2012 : INICIO COREMETRICS {MARIO LOAIZA: mario.loaiza@magnotechnology.com} 
+	var pro=$j('#productos').val();
+	var cate_=$j('#categoria_').val();
+	var nombre_ = $j('#namepro'+i).val();
+	producto2 = new producto('{pro_id}',marca_ + '/' + nombre_,'{valor}','{precio}', cate_);
+	productos[{contador}] = producto2;
+// 05/10/2012 : FIN COREMETRICS
+</script>
+
+  
+              					<div class="modulo_mas_menos_carro_compras">
+                					<div class="modulo_agregar_mas_carro"><a href="javascript:add({contador},{intervalo},{maximo},{id},{precio});"><img src="/FO_IMGS/img/mas_carro.gif" width="27" height="22" /></a></div>
+                					<div class="modulo_quitar_menos_carro"><a href="javascript:del({contador},{intervalo},{maximo},{id},{precio});"><img src="/FO_IMGS/img/menos_carro.gif" width="27" height="22" border="0" /></a></div>
+              					</div>
+            				</div>
+            				<!-- END DYNAMIC: INPUT_SEL -->
+							
+							
+							<div class="modulo_eliminar_carro_2012"><a href="javascript:confirmaEliminarProducto({i},{id});"><img src="/FO_IMGS/img/eliminar_producto.gif" width="96" height="34" /></a></div>
+          				</div>
+
+          				<!-- BEGIN DYNAMIC: SIN_CRITERIO -->
+          				<!--div class="modulo_prod_sin_criterio_sustitucion"><a href="javascript:showCriterios({i});" id="link_criterio{i}"><img src="/FO_IMGS/img/arrow2.gif" id="flecha_criterio{i}" width="25" height="15" /></a>producto sin criterio de sustituci&oacute;n asignado</div-->
+          				<div class="modulo_prod_sin_criterio_sustitucion" style="color:#1FA22E ;">Nuevo producto en carro. Seleccione el criterio.</div><!--Dcadiz Sin Criterio-->
+          				<!-- END DYNAMIC: SIN_CRITERIO -->
+          				<!-- BEGIN DYNAMIC: CON_CRITERIO -->
+          				<!--div class="modulo_prod_sin_criterio_sustitucion"><a href="javascript:showCriterios({i});" id="link_criterio{i}"><img src="/FO_IMGS/img/arrow.gif" id="flecha_criterio{i}" width="25" height="15" /></a>producto con criterio de sustituci&oacute;n asignado</div-->
+          				<div class="modulo_prod_sin_criterio_sustitucion">¿Quieres cambiar el criterio de este producto?</div><!--Dcadiz Con Criterio-->
+          				<!-- END DYNAMIC: CON_CRITERIO -->
+          				
+          				<!-- BEGIN DYNAMIC: SIN_CRITERIO -->
+          				<div id="lista_criterios{i}"><!--  style="display:none;" -->
+          				<!-- END DYNAMIC: SIN_CRITERIO -->
+          				<!-- BEGIN DYNAMIC: CON_CRITERIO -->
+          				<div id="lista_criterios{i}"><!--  style="display:none;" -->
+          				<!-- END DYNAMIC: CON_CRITERIO -->
+          				
+          				<div class="modulo_sustitucion_carro_2012_2">
+            				<div class="modulo_criterios_2012">
+            				    <!-- BEGIN DYNAMIC: INPUT_SEL -->
+              					<div class="modulo_radio_carro_2012_b">
+                					<input name="radiobutton_{id_inter}_{pro_id}" type="radio" value="2" {checked2} onclick="criterioSeleccionado('{id_inter}_{pro_id}')" />
+              					</div>
+              					<div class="txt_criterio_jumbo_2">Misma marca, distinto tamaño</div>
+              					<!-- END DYNAMIC: INPUT_SEL -->
+            				</div>
+            				<div class="modulo_criterios_2012">
+            				    <!-- BEGIN DYNAMIC: INPUT_SEL -->
+              					<div class="modulo_radio_carro_2012_b">
+                					<input name="radiobutton_{id_inter}_{pro_id}" type="radio" value="3" {checked3} onclick="criterioSeleccionado('{id_inter}_{pro_id}')" />
+              					</div>
+              					<div class="txt_criterio_jumbo_2">Mismo tamaño, distinta marca</div>
+              					<!-- END DYNAMIC: INPUT_SEL -->
+            				</div>
+            				<div class="modulo_criterios_2012">
+            				    <!-- BEGIN DYNAMIC: INPUT_SEL -->
+              					<div class="modulo_radio_carro_2012_b">
+                					<input name="radiobutton_{id_inter}_{pro_id}" type="radio" value="4" {checked4} onclick="criterioSeleccionado('{id_inter}_{pro_id}')" />
+              					</div>
+              					<div class="txt_criterio_jumbo_2">Otro <input name="text_{id_inter}_{pro_id}" type="text" class="form_criterios_otro" id="text_{id_inter}_{pro_id}" value="{sustituto_cliente}" onfocus="javascript:if (this.value == 'Ej: marca, sabor') {this.value = '';}" onblur="javascript:if (this.value == '') {this.value = 'Ej: marca, sabor';}" /></div>
+              					<!-- END DYNAMIC: INPUT_SEL -->
+            				</div>
+            				<!--div class="modulo_criterios_2012">
+              					<div class="modulo_radio_carro_2012_b"></div>
+              					<div class="txt_criterio_jumbo_2">
+              					    <- BEGIN DYNAMIC: INPUT_SEL ->
+                					<label for="textfield"><a href="#ancla_{id_inter}_{pro_id}"></a></label>
+                  					<input name="text_{id_inter}_{pro_id}" type="text" class="form_criterios_otro" id="text_{id_inter}_{pro_id}" value="{sustituto_cliente}" />
+                  					<- END DYNAMIC: INPUT_SEL ->
+                				</div>
+            				</div-->
+          				</div>
+          				<div class="modulo_sustitucion_carro_2012_2" style="width:130px;padding-left:0px;">
+          					<div class="modulo_criterios_2012" style="width:130px;">
+								<!-- BEGIN DYNAMIC: INPUT_SEL -->
+    							<div class="modulo_radio_carro_2012_b">
+						   	    	<input name="radiobutton_{id_inter}_{pro_id}" type="radio" value="1" {checked1} onclick="criterioSeleccionado('{id_inter}_{pro_id}')" />
+						       	</div>
+						   		<div class="txt_criterio_jumbo_2" style="width:110px;">Criterio Jumbo</div>
+						       	<!-- END DYNAMIC: INPUT_SEL -->
+							</div>
+            				<div class="modulo_criterios_2012" style="width:130px;">
+            				    <!-- BEGIN DYNAMIC: INPUT_SEL -->
+              					<div class="modulo_radio_carro_2012_b">
+                					<input name="radiobutton_{id_inter}_{pro_id}" type="radio" value="5" {checked5} onclick="criterioSeleccionado('{id_inter}_{pro_id}')" />
+              					</div>
+              					<div class="txt_criterio_jumbo_2" style="width:110px;">No sustituir</div>
+              					<!-- END DYNAMIC: INPUT_SEL -->
+            				</div>
+          				</div>
+          				<input type="hidden" name="seleccionado_{id_inter}_{pro_id}" id="seleccionado_{id_inter}_{pro_id}" value="{seleccionado}" />
+          				</div>
+        			</div>
+        			<!-- END DYNAMIC: PRODUCTOS -->
+        			<!-- END DYNAMIC: TERMINALES -->
+        			</div>
+        		</div>
+        		 <script type="text/javascript"> 
+        		 // 05/10/2012 : INICIO COREMETRICS {MARIO LOAIZA: mario.loaiza@magnotechnology.com} 
+        			coremetricsTagPreviewOrder("Carro de Compras",cate_,productos);
+        		// 05/10/2012 : FIN COREMETRICS
+                 </script>	
+        		<!-- END DYNAMIC: INTERMEDIAS -->
+        	</form>

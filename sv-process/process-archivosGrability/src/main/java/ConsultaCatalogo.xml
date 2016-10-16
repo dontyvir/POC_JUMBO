@@ -1,0 +1,426 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap 
+   PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" 
+   "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap >
+	<resultMap id="resultCatalog" class="java.util.HashMap">
+		<result property="key" column="row_id"/>
+		<result property="valor" column="col2"/>
+		<result property="estado" column="estado"/>
+	</resultMap>
+	<select id="getCatalog" resultMap="resultCatalog">
+	<![CDATA[
+		WITH
+			rquery  
+			(
+				PRO_ID,
+				CONT,
+				DESCRIPCION 
+			)
+			AS  
+			(	
+				SELECT
+					PRO_ID,
+					CONT,
+					DESC_ITEM
+				FROM
+					(	
+					SELECT
+							PFT.PFT_PRO_ID                                                                  
+							AS PRO_ID,
+							PFT.PFT_PFI_SECUENCIA                                                           
+							AS CONT,
+							
+							CAST('{"'||
+                            DECODE(IFP.PFI_DESCRIPCION,'',' ',
+                            NVL(REPLACE(REPLACE(TRIM(IFP.PFI_DESCRIPCION),'|',' '),'"',' '),' '))||
+                            '":"'|| 
+                            DECODE(PFT.PFT_DESCRIPCION_ITEM,'',' ',
+                            NVL(REPLACE(REPLACE(TRIM(PFT.PFT_DESCRIPCION_ITEM),'|',' '),'"',' '),' '))||
+                            '"}' AS VARCHAR(2000) ) AS DESC_ITEM
+		                FROM
+		                    fodba.FO_PRODUCTOS_FICHA_TEC      AS PFT,
+		                    fodba.FO_PRODUCTOS_ITEM_FICHA_TEC AS IFP,
+		                    fodba.FO_PRODUCTOS                AS PRD 
+		                WHERE
+		                    PFT.PFT_PFI_ITEM = IFP.PFI_ITEM AND
+		                    PFT.PFT_PRO_ID = PRD.PRO_ID AND 
+		                    PRD.PRO_ESTADO = 'A'
+					) BASE 
+		        WHERE CONT = 1 
+		            
+		    UNION ALL 
+		        SELECT
+		            t1.PRO_ID,
+		            t1.CONT,
+		            DESCRIPCION || ',' || t1.DESC_ITEM 
+		        FROM
+		            rquery t0,
+		            (	SELECT
+		                    PFT.PFT_PRO_ID                                                                  
+		                    AS PRO_ID,
+		                    PFT.PFT_PFI_SECUENCIA                                                           
+		                    AS CONT,
+		                    CAST('{"'||
+                            DECODE(IFP.PFI_DESCRIPCION,'',' ',
+                            NVL(REPLACE(REPLACE(REPLACE(TRIM(IFP.PFI_DESCRIPCION),'''',' '),'|',' '),'"',' '),' '))||
+                            '":"'|| 
+                            DECODE(PFT.PFT_DESCRIPCION_ITEM,'',' ',
+                            NVL(REPLACE(REPLACE(REPLACE(TRIM(PFT.PFT_DESCRIPCION_ITEM),'''',' '),'|',' '),'"',' '),' '))||
+                            '"}' AS VARCHAR(2000) ) AS DESC_ITEM 
+		                FROM
+		                    fodba.FO_PRODUCTOS_FICHA_TEC      AS PFT,
+		                    fodba.FO_PRODUCTOS_ITEM_FICHA_TEC AS IFP,
+		                    fodba.FO_PRODUCTOS                AS PRD 
+		                WHERE
+		                    PFT.PFT_PFI_ITEM = IFP.PFI_ITEM AND
+		                    PFT.PFT_PRO_ID = PRD.PRO_ID AND
+		                    PRD.PRO_ESTADO = 'A'
+		                ORDER BY 1, 2 
+		             ) t1 
+		        WHERE
+		            t0.PRO_ID = t1.PRO_ID AND
+		            t0.CONT + 1 = t1.CONT 		            
+		     ) 
+		     
+		SELECT 
+			 CAST(PRD.PRO_ID AS VARCHAR(50)) AS ROW_ID,
+			 PRD.PRO_ID||'|'||
+            TRIM(
+            CASE 
+                WHEN NVL(PRD.PRO_TIPRE,'') = 'null' OR TRIM(PRD.PRO_TIPRE) = ''
+                THEN '-'
+                ELSE
+                REPLACE(REPLACE(REPLACE(NVL(PRD.PRO_TIPRE,'-'),'|',' '),CHR(13),' '),CHR(10),' ')
+            END)||'|'||
+            TRIM(
+            CASE 
+                WHEN NVL(MAR.MAR_NOMBRE,'') = 'null' OR TRIM(MAR.MAR_NOMBRE) = ''
+                THEN '-'
+                ELSE
+                REPLACE(REPLACE(REPLACE(NVL(MAR.MAR_NOMBRE,'-'),'|',' '),CHR(13),' '),CHR(10),' ')
+            END)||'|'||
+            TRIM(
+            CASE 
+                WHEN NVL(PRD.PRO_TIPO_PRODUCTO,'') = 'null' OR TRIM(PRD.PRO_TIPO_PRODUCTO) = ''
+                THEN '-'
+                ELSE
+                REPLACE(REPLACE(REPLACE(NVL(PRD.PRO_TIPO_PRODUCTO,'-'),'|',' '),CHR(13),' '),CHR(10),' ')
+            END)||'|'|| 
+            TRIM(
+            CASE 
+                WHEN NVL(PRD.PRO_DES_CORTA,'') = 'null' OR TRIM(PRD.PRO_DES_CORTA) = ''
+                THEN '-'
+                ELSE
+                REPLACE(REPLACE(REPLACE(NVL(PRD.PRO_DES_CORTA,'-'),'|',' '),CHR(13),' '),CHR(10),' ')
+            END)||'|'|| 
+             
+            TRIM(
+            CASE 
+                WHEN CAST(PRO_INTER_MAX AS decimal(10,3))  = '.000' 
+                THEN '0.000'
+                WHEN SUBSTR(CAST(PRO_INTER_MAX AS decimal(10,3)) ,1 ,1) = '.' 
+                THEN '0'||CAST(PRO_INTER_MAX AS decimal(10,3))
+                ELSE
+                CAST(PRO_INTER_MAX AS decimal(10,3))
+            END)||'|'|| 
+
+            TRIM(
+            CASE 
+                WHEN CAST(PRO_INTER_VALOR AS decimal(10,3))  = '.000' 
+                THEN '0.000'
+                WHEN SUBSTR(CAST(PRO_INTER_VALOR AS decimal(10,3)) ,1 ,1) = '.' 
+                THEN '0'||CAST(PRO_INTER_VALOR AS decimal(10,3))
+                ELSE
+                CAST(PRO_INTER_VALOR AS decimal(10,3))
+            END)||'|'|| 
+                   
+            (CASE 
+				WHEN UPPER(TRIM(PRD.PRO_TIPRE)) = 'KG'
+				THEN 1 
+				ELSE 0 
+			END)||'|'||  
+            TRIM(
+			CASE 
+				WHEN NVL(PPR.PRM_DESC_BANNER,'') = 'null' OR TRIM(PPR.PRM_DESC_BANNER) = ''
+				THEN '-' 
+				ELSE 
+				REPLACE(REPLACE(REPLACE(NVL(PPR.PRM_DESC_BANNER,'-'),'|',' '),CHR(13),' '),CHR(10),' ')
+			END)||'|'|| 
+			TRIM(
+            CASE
+                WHEN NVL(PPR.PRM_NOM_BANNER,'') = 'null' OR TRIM(PPR.PRM_NOM_BANNER) = ''
+                THEN '-'
+                ELSE
+                TRIM(REPLACE(REPLACE(REPLACE(NVL(PPR.PRM_NOM_BANNER,'-'),'|',' '),CHR(13),' '),CHR(10),' '))
+            END)||'|'||
+            TRIM(
+            CASE
+                WHEN NVL(PRD.PRO_COD_SAP,'') = 'null' OR TRIM(PRD.PRO_COD_SAP) = ''
+                THEN '-'
+                ELSE
+                TRIM(REPLACE(REPLACE(REPLACE(NVL(PRD.PRO_COD_SAP,'-'),'|',' '),CHR(13),' '),CHR(10),' '))
+            END)||'|['||
+            (CASE 
+                WHEN (SELECT COUNT(PFT_PFI_ITEM)
+                        FROM fodba.FO_PRODUCTOS_FICHA_TEC
+                       WHERE PFT_PRO_ID = PRD.PRO_ID AND
+                             PRD.PRO_ESTADO = 'A') > 0 
+                THEN 
+                     (SELECT DATO.DESCRIPCION
+                        FROM rquery AS DATO,
+                            (SELECT Q.PRO_ID, MAX(Q.CONT) CANT
+                               FROM 
+                                    (SELECT PRO_ID, CONT, DESCRIPCION
+                                       FROM rquery 
+                                      ORDER BY 1,2 DESC) AS Q
+                              GROUP BY Q.PRO_ID) AS COND
+                       WHERE DATO.PRO_ID = COND.PRO_ID AND
+                             DATO.CONT = COND.CANT AND
+                             DATO.PRO_ID = PRD.PRO_ID) 
+                ELSE 
+                    '-' 
+                END)||']|'||
+                NVL(PRG.PRO_PUBLICADO_MOVIL,0) AS COL2,
+                'N' AS ESTADO
+                
+        FROM FODBA.FO_PRODUCTOS PRD
+        JOIN BODBA.BO_PRODUCTOS BPRO ON BPRO.ID_PRODUCTO = PRD.PRO_ID_BO AND PRD.PRO_ESTADO = 'A'        
+        LEFT OUTER JOIN FODBA.FO_PROD_MOVIL AS PRG ON PRD.PRO_ID = PRG.PRO_ID_FO
+        LEFT OUTER JOIN FODBA.FO_MARCAS MAR ON MAR.MAR_ID = PRD.PRO_MAR_ID
+        
+		LEFT OUTER JOIN (SELECT PRR.PRM_DESC_BANNER, PRR.PRM_NOM_BANNER,PRR.PRM_PROD_ID FROM 
+							FODBA.FO_PRODUCTOS_PROMO PRR 
+							WHERE PRR.PRM_NOM_BANNER IS NOT NULL AND TRIM(PRR.PRM_NOM_BANNER) != '') AS PPR ON PRD.PRO_ID = PPR.PRM_PROD_ID
+							
+        WHERE PRD.PRO_ID in (SELECT DISTINCT PRC.PRE_PRO_ID 
+        						FROM FODBA.FO_PRECIOS_LOCALES AS PRC, BODBA.BO_LOCALES AS LOC 
+                             	WHERE PRC.PRE_LOC_ID = LOC.ID_LOCAL AND PRC.PRE_ESTADO = 'A' AND PRC.PRE_TIENESTOCK = 1)
+    ]]>
+	</select>
+	<select id="getCatalogNov" resultMap="resultCatalog">
+	<![CDATA[	
+		WITH
+			rquery  
+			(
+				PRO_ID,
+				CONT,
+				DESCRIPCION 
+			)
+			AS  
+			(	
+				SELECT
+					PRO_ID,
+					CONT,
+					DESC_ITEM
+				FROM
+					(	
+					SELECT
+							PFT.PFT_PRO_ID                                                                  
+							AS PRO_ID,
+							PFT.PFT_PFI_SECUENCIA                                                           
+							AS CONT,
+							
+							CAST('{"'||
+                            DECODE(IFP.PFI_DESCRIPCION,'',' ',
+                            NVL(REPLACE(REPLACE(TRIM(IFP.PFI_DESCRIPCION),'|',' '),'"',' '),' '))||
+                            '":"'|| 
+                            DECODE(PFT.PFT_DESCRIPCION_ITEM,'',' ',
+                            NVL(REPLACE(REPLACE(TRIM(PFT.PFT_DESCRIPCION_ITEM),'|',' '),'"',' '),' '))||
+                            '"}' AS VARCHAR(2000) ) AS DESC_ITEM
+		                FROM
+		                    fodba.FO_PRODUCTOS_FICHA_TEC      AS PFT,
+		                    fodba.FO_PRODUCTOS_ITEM_FICHA_TEC AS IFP,
+		                    fodba.FO_PRODUCTOS                AS PRD 
+		                WHERE
+		                    PFT.PFT_PFI_ITEM = IFP.PFI_ITEM AND
+		                    PFT.PFT_PRO_ID = PRD.PRO_ID AND 
+		                    PRD.PRO_ESTADO = 'A'
+					) BASE 
+		        WHERE CONT = 1 
+		            
+		    UNION ALL 
+		        SELECT
+		            t1.PRO_ID,
+		            t1.CONT,
+		            DESCRIPCION || ',' || t1.DESC_ITEM 
+		        FROM
+		            rquery t0,
+		            (	SELECT
+		                    PFT.PFT_PRO_ID                                                                  
+		                    AS PRO_ID,
+		                    PFT.PFT_PFI_SECUENCIA                                                           
+		                    AS CONT,
+		                    CAST('{"'||
+                            DECODE(IFP.PFI_DESCRIPCION,'',' ',
+                            NVL(REPLACE(REPLACE(REPLACE(TRIM(IFP.PFI_DESCRIPCION),'''',' '),'|',' '),'"',' '),' '))||
+                            '":"'|| 
+                            DECODE(PFT.PFT_DESCRIPCION_ITEM,'',' ',
+                            NVL(REPLACE(REPLACE(REPLACE(TRIM(PFT.PFT_DESCRIPCION_ITEM),'''',' '),'|',' '),'"',' '),' '))||
+                            '"}' AS VARCHAR(2000) ) AS DESC_ITEM 
+		                FROM
+		                    fodba.FO_PRODUCTOS_FICHA_TEC      AS PFT,
+		                    fodba.FO_PRODUCTOS_ITEM_FICHA_TEC AS IFP,
+		                    fodba.FO_PRODUCTOS                AS PRD 
+		                WHERE
+		                    PFT.PFT_PFI_ITEM = IFP.PFI_ITEM AND
+		                    PFT.PFT_PRO_ID = PRD.PRO_ID AND
+		                    PRD.PRO_ESTADO = 'A'
+		                ORDER BY 1, 2 
+		             ) t1 
+		        WHERE
+		            t0.PRO_ID = t1.PRO_ID AND
+		            t0.CONT + 1 = t1.CONT 
+        ),
+        DATOS
+        (
+             ID_DAT_CATALOGO,
+             COL2
+        )
+        AS
+        (        
+        	SELECT 
+			 CAST(PRD.PRO_ID AS VARCHAR(50)) AS ID_DAT_CATALOGO,
+			 PRD.PRO_ID||'|'||
+            TRIM(
+            CASE 
+                WHEN NVL(PRD.PRO_TIPRE,'') = 'null' OR TRIM(PRD.PRO_TIPRE) = ''
+                THEN '-'
+                ELSE
+                REPLACE(REPLACE(REPLACE(NVL(PRD.PRO_TIPRE,'-'),'|',' '),CHR(13),' '),CHR(10),' ')
+            END)||'|'||
+            TRIM(
+            CASE 
+                WHEN NVL(MAR.MAR_NOMBRE,'') = 'null' OR TRIM(MAR.MAR_NOMBRE) = ''
+                THEN '-'
+                ELSE
+                REPLACE(REPLACE(REPLACE(NVL(MAR.MAR_NOMBRE,'-'),'|',' '),CHR(13),' '),CHR(10),' ')
+            END)||'|'||
+            TRIM(
+            CASE 
+                WHEN NVL(PRD.PRO_TIPO_PRODUCTO,'') = 'null' OR TRIM(PRD.PRO_TIPO_PRODUCTO) = ''
+                THEN '-'
+                ELSE
+                REPLACE(REPLACE(REPLACE(NVL(PRD.PRO_TIPO_PRODUCTO,'-'),'|',' '),CHR(13),' '),CHR(10),' ')
+            END)||'|'|| 
+            TRIM(
+            CASE 
+                WHEN NVL(PRD.PRO_DES_CORTA,'') = 'null' OR TRIM(PRD.PRO_DES_CORTA) = ''
+                THEN '-'
+                ELSE
+                REPLACE(REPLACE(REPLACE(NVL(PRD.PRO_DES_CORTA,'-'),'|',' '),CHR(13),' '),CHR(10),' ')
+            END)||'|'|| 
+             
+            TRIM(
+            CASE 
+                WHEN CAST(PRO_INTER_MAX AS decimal(10,3))  = '.000' 
+                THEN '0.000'
+                WHEN SUBSTR(CAST(PRO_INTER_MAX AS decimal(10,3)) ,1 ,1) = '.' 
+                THEN '0'||CAST(PRO_INTER_MAX AS decimal(10,3))
+                ELSE
+                CAST(PRO_INTER_MAX AS decimal(10,3))
+            END)||'|'|| 
+
+            TRIM(
+            CASE 
+                WHEN CAST(PRO_INTER_VALOR AS decimal(10,3))  = '.000' 
+                THEN '0.000'
+                WHEN SUBSTR(CAST(PRO_INTER_VALOR AS decimal(10,3)) ,1 ,1) = '.' 
+                THEN '0'||CAST(PRO_INTER_VALOR AS decimal(10,3))
+                ELSE
+                CAST(PRO_INTER_VALOR AS decimal(10,3))
+            END)||'|'|| 
+                   
+            (CASE 
+				WHEN UPPER(TRIM(PRD.PRO_TIPRE)) = 'KG'
+				THEN 1 
+				ELSE 0 
+			END)||'|'||  
+            TRIM(
+			CASE 
+				WHEN NVL(PPR.PRM_DESC_BANNER,'') = 'null' OR TRIM(PPR.PRM_DESC_BANNER) = ''
+				THEN '-' 
+				ELSE 
+				REPLACE(REPLACE(REPLACE(NVL(PPR.PRM_DESC_BANNER,'-'),'|',' '),CHR(13),' '),CHR(10),' ')
+			END)||'|'|| 
+			TRIM(
+            CASE
+                WHEN NVL(PPR.PRM_NOM_BANNER,'') = 'null' OR TRIM(PPR.PRM_NOM_BANNER) = ''
+                THEN '-'
+                ELSE
+                TRIM(REPLACE(REPLACE(REPLACE(NVL(PPR.PRM_NOM_BANNER,'-'),'|',' '),CHR(13),' '),CHR(10),' '))
+            END)||'|'||
+            TRIM(
+            CASE
+                WHEN NVL(PRD.PRO_COD_SAP,'') = 'null' OR TRIM(PRD.PRO_COD_SAP) = ''
+                THEN '-'
+                ELSE
+                TRIM(REPLACE(REPLACE(REPLACE(NVL(PRD.PRO_COD_SAP,'-'),'|',' '),CHR(13),' '),CHR(10),' '))
+            END)||'|['||
+            (CASE 
+                WHEN (SELECT COUNT(PFT_PFI_ITEM)
+                        FROM fodba.FO_PRODUCTOS_FICHA_TEC
+                       WHERE PFT_PRO_ID = PRD.PRO_ID AND
+                             PRD.PRO_ESTADO = 'A') > 0 
+                THEN 
+                     (SELECT DATO.DESCRIPCION
+                        FROM rquery AS DATO,
+                            (SELECT Q.PRO_ID, MAX(Q.CONT) CANT
+                               FROM 
+                                    (SELECT PRO_ID, CONT, DESCRIPCION
+                                       FROM rquery 
+                                      ORDER BY 1,2 DESC) AS Q
+                              GROUP BY Q.PRO_ID) AS COND
+                       WHERE DATO.PRO_ID = COND.PRO_ID AND
+                             DATO.CONT = COND.CANT AND
+                             DATO.PRO_ID = PRD.PRO_ID) 
+                ELSE 
+                    '-' 
+                END)||']|'||
+                NVL(PRG.PRO_PUBLICADO_MOVIL,0) AS COL2
+                
+        FROM FODBA.FO_PRODUCTOS PRD
+        JOIN BODBA.BO_PRODUCTOS BPRO ON BPRO.ID_PRODUCTO = PRD.PRO_ID_BO AND PRD.PRO_ESTADO = 'A'        
+        LEFT OUTER JOIN FODBA.FO_PROD_MOVIL AS PRG ON PRD.PRO_ID = PRG.PRO_ID_FO
+        LEFT OUTER JOIN FODBA.FO_MARCAS MAR ON MAR.MAR_ID = PRD.PRO_MAR_ID
+        
+		LEFT OUTER JOIN (SELECT PRR.PRM_DESC_BANNER, PRR.PRM_NOM_BANNER,PRR.PRM_PROD_ID FROM 
+							FODBA.FO_PRODUCTOS_PROMO PRR 
+							WHERE PRR.PRM_NOM_BANNER IS NOT NULL AND TRIM(PRR.PRM_NOM_BANNER) != '') AS PPR ON PRD.PRO_ID = PPR.PRM_PROD_ID
+							
+        WHERE PRD.PRO_ID in (SELECT DISTINCT PRC.PRE_PRO_ID 
+        						FROM FODBA.FO_PRECIOS_LOCALES AS PRC, BODBA.BO_LOCALES AS LOC 
+                             	WHERE PRC.PRE_LOC_ID = LOC.ID_LOCAL AND PRC.PRE_ESTADO = 'A' AND PRC.PRE_TIENESTOCK = 1)
+       )
+       
+   SELECT PRE.ROW_ID, PRE.COL2, PRE.ESTADO
+     FROM (
+	    /* MODIFICADOS */
+	    SELECT DATOS.ID_DAT_CATALOGO AS ROW_ID, DATOS.COL2, 'M' AS ESTADO
+	      FROM DATOS, bodba.BO_INT_CATALOGO AS DIS
+	     WHERE DIS.ID_INT_CATALOGO = DATOS.ID_DAT_CATALOGO
+	       AND DIS.INT_DATA != DATOS.COL2
+	       
+	     UNION ALL
+	     /* NUEVOS */
+	    SELECT D.ID_DAT_CATALOGO AS ROW_ID, D.COL2, 'N' AS ESTADO
+	    FROM DATOS D LEFT JOIN bodba.BO_INT_CATALOGO CAT  on D.ID_DAT_CATALOGO=CAT.ID_INT_CATALOGO WHERE CAT.ID_INT_CATALOGO is null
+                    
+	     UNION ALL
+	     /* ELIMINADOS */
+	    SELECT DIS.ID_INT_CATALOGO AS ROW_ID, DIS.INT_DATA AS COL2, 'E' AS ESTADO
+	      FROM bodba.BO_INT_CATALOGO AS DIS
+	     WHERE NOT EXISTS 
+	           (SELECT 1
+	              FROM DATOS AS DAT
+                  JOIN bodba.BO_INT_CATALOGO AS CAT
+                    ON DAT.ID_DAT_CATALOGO = CAT.ID_INT_CATALOGO)
+          UNION ALL
+	     /* ELIMINADOS cuando no viene en la estructura datos*/	    	
+	    SELECT DIS.ID_INT_CATALOGO AS ROW_ID, DIS.INT_DATA AS COL2, 'E' AS ESTADO
+	    FROM bodba.BO_INT_CATALOGO DIS LEFT JOIN DATOS D on DIS.ID_INT_CATALOGO = D.ID_DAT_CATALOGO WHERE D.ID_DAT_CATALOGO is null
+	     
+         ) AS PRE
+    ]]>
+	</select>
+</sqlMap>

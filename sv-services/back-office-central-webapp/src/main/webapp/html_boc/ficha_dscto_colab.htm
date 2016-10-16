@@ -1,0 +1,183 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html><!-- InstanceBegin template="/Templates/fullbody.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="EXPIRES" CONTENT="Mon, 22 Jul 2002 11:12:01 GMT">
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>Jumbo.cl Back Office Central</title>
+<script type="text/javascript" src="popup.js"></script>
+<!-- InstanceEndEditable -->
+
+<!-- InstanceBeginEditable name="head" --><!-- InstanceEndEditable -->
+
+<link href="estilos.css" rel="stylesheet" type="text/css">
+<!--link href="../default.css" rel="stylesheet" type="text/css"-->
+<style type="text/css">
+<!--
+.style1 {color: #666666}
+-->
+</style>
+</head>
+
+<body>
+<link rel="stylesheet" href="menu/menu.css">
+<script language="JavaScript" src="menu/menu.js"></script>
+<script language="JavaScript" src="menu/menu_tpl.js"></script>
+<script language="JavaScript" src="menu/menu_items.js"></script>
+<script language="JavaScript" src="popup.js"></script>
+<script language="JavaScript" src="funciones.js"></script>
+<table width="780" height="100%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+    <td height="78" valign="top">
+		<TABLE width="100%" height=59 border=0 align="center" cellpadding="0" cellspacing="0" bgcolor="#ffffff">
+		  <TR>
+			<TD width=275 height="59" align=left class=user><img src="img/header2.jpg" width="275" height="60"></TD>
+			<TD width=505 align=left valign="bottom" background="img/bg-1.jpg" class=user><table width="90%"  border="0" align="center" cellpadding="0" cellspacing="2">
+	          <tr>
+	            <td>&nbsp;</td>
+	          </tr>
+	          <tr>
+	            <td><div align="right" class="infoBL">Usuario: {hdr_nombre}&nbsp;&nbsp;| {hdr_fecha}</div></td>
+	          </tr>
+	        </table></TD>
+		  </TR>
+		</TABLE>
+		<TABLE width="100%" height=19 border=0 align="center" cellpadding="0" cellspacing="0" bgcolor="#f1f0e9" style="border-top:1px solid #ABABAB; border-bottom:1px solid #ABABAB">
+		  <TR>
+			<TD align=left bgcolor="#FFFFFF" class=user></TD>
+			</TR>
+		</TABLE>
+	</td>
+  </tr>
+  <tr height="400">
+    <td valign="top" bgcolor="#FFFFFF">
+      <table border=0 width="100%" class='ContentTitle'>
+        <tr>
+          <td width="53%" height="20" class='HeaderTitle'><!-- InstanceBeginEditable name="Titulo" --> Descuento Colaboradores<!-- InstanceEndEditable --></td>
+          <td width="47%" class='HeaderTitle'><!-- InstanceBeginEditable name="Botonera" -->
+          <div align="right">
+	          <table align="left">
+	          	<tr>
+	          		<td></td><td></td><td><b><a href="ViewPromoDsctoColabSE">---> SECCIONES EXCLUIDAS <---</a></b></td>
+	          	</tr>
+	          	<tr>
+	          		<td></td><td></td><td><b><a href="ViewPromoDsctoColabPE">---> EDICION DE PARAMETROS <---</a></b></td>
+	          	</tr>
+	          </table>
+	          <table>
+	          	<tr>
+	          		<td><a href="ViewMonPromos"><img src="img/back.png" width="32" height="32" border="0"/></a></td><td></td><td>&nbsp;</td>
+	          	</tr>
+	          </table>
+          </div>
+          <!-- InstanceEndEditable --></td>
+        </tr>
+      </table>
+	  <br>
+      <table width="100%"  border="0" cellspacing="2" cellpadding="2">
+        <tr valign="top">
+          <td width="71%"><!-- InstanceBeginEditable name="Izquierda" -->
+          <script>
+          	function guardar(form){
+				if(validar(form))
+					form.submit();
+			}
+			
+			function validar(form){
+				var extension = ".xls";
+				
+				if(form.colabFile.value == ""){
+					alert("Debe seleccionar un archivo");
+					return false;
+				}else if((form.colabFile.value.substring(form.colabFile.value.lastIndexOf("."))).toLowerCase() != extension){
+					alert("Compruebe la extensión del archivo a subir. \nSólo se puede subir archivo con extension:  " + extension);
+					return false;
+				}
+				var agree=confirm("¿Esta seguro(a) de cargar el archivo?\n" + form.colabFile.value);
+				if (agree) return true ;
+				else
+					return false ;
+				
+				return true;
+			}	
+			
+          </script>
+            <link id="luna-tab-style-sheet" type="text/css" rel="stylesheet" href="js/tabs/tabpane.css" />
+            <script type="text/javascript" src="js/tabs/tabpane.js"></script>
+            <table width="92%" align="center" border="0">
+              <tr>
+                <td>
+                <div class="tab-page" id="modules-cpanel">
+                    <script type="text/javascript">
+				   		var tabPane1 = new WebFXTabPane( document.getElementById( "modules-cpanel" ), 0 )
+				    </script>
+                    <div class="tab-page" id="modulo1">
+                      <h2 class="tab">&nbsp;</h2>
+                      <div align="left">
+					   <form name="frmGuardar" method="post" enctype="multipart/form-data" action="CargarColaboradores">
+                          <p><strong>Carga de Colaboradores</strong></p>
+                          <table width="90%"  border="0" align="center" cellpadding="0" cellspacing="2">
+                            <tr>
+                            	<td align="right">
+                            	<h3 style="color:red;">{cantidad}</h3>
+                            	</td>
+                            	<td align="left">
+                            	<h3 style="color:red;">{resultado}</h3>
+                            	</td>
+                            </tr>
+                            <tr>
+                              <td width="28%">Archivo de ejemplo:<br /><br /><br /></td>
+                              <td>
+                              	<br />
+                              	El archivo a cargar debe contener los campos: RUT (sin digito verificador), CODIGO EMPRESA y NOMBRE EMPRESA. (ningun campo o fila debe estar vacio)
+                              	<br /> <br /> 
+                              	Aqui puedes descargar el archivo de ejemplo a ser utilizado <a href="/JumboBOCentral/ejemplo_colaboradores.xls">Archivo de ejemplo</a><br /> &nbsp;
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>Seleccionar archivo de carga:</td>
+                              <td>&nbsp;<br /><input type="file" name="colabFile" id="colabFile" /><br />&nbsp;</td>
+                            </tr>
+                            <tr>
+                              <td></td>
+                              <td>
+                              	<input name="colabCargar" type="button" class="cmd" value="Cargar" onClick="javascript: guardar(frmGuardar)"/>
+                              </td>
+                            </tr>
+                          </table>
+                          <br>
+                        <br>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                  </td>
+              </tr>
+            </table>
+            <div align="center"><br>
+              <br>
+              <br>
+              <br>
+            </div>
+          <!-- InstanceEndEditable --></td>
+        </tr>
+      </table>
+      </td>
+  </tr>
+  <tr>
+    <td>
+	<TABLE width="100%" height=19 border=0 align="center" cellpadding="0" cellspacing="0" bgcolor="#f1f0e9" style="border-top:1px solid #ABABAB; border-bottom:1px solid #ABABAB">
+	  <TR>
+		<TD align=center bgcolor="#67b01a" class=infoBL><div align="center">Back Office Central - Jumbo.cl</div></TD>
+		</TR>
+	</TABLE>
+
+	
+	</td>
+  </tr>
+</table>
+</body>
+<!-- InstanceEnd --></html>

@@ -1,0 +1,197 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html><!-- InstanceBegin template="/Templates/fullbody.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="EXPIRES" CONTENT="Mon, 22 Jul 2002 11:12:01 GMT">
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>Jumbo.cl Back Office Central</title>
+<!-- InstanceEndEditable -->
+
+<!-- InstanceBeginEditable name="head" --><!-- InstanceEndEditable -->
+
+<link href="estilos.css" rel="stylesheet" type="text/css">
+<!--link href="../default.css" rel="stylesheet" type="text/css"-->
+<style type="text/css">
+<!--
+.style1 {color: #666666}
+-->
+</style>
+</head>
+
+<body>
+<link rel="stylesheet" href="menu/menu.css">
+<script language="JavaScript" src="menu/menu.js"></script>
+<script language="JavaScript" src="menu/menu_tpl.js"></script>
+<script language="JavaScript" src="menu/menu_items.js"></script>
+<script language="JavaScript" src="popup.js"></script>
+<script language="JavaScript" src="funciones.js"></script>
+<table width="780" height="100%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+    <td height="78" valign="top">
+	
+	<TABLE width="100%" height=59 border=0 align="center" cellpadding="0" cellspacing="0" bgcolor="#ffffff">
+	  <TR>
+		<TD width=275 height="59" align=left class=user><img src="img/header2.jpg" width="275" height="60"></TD>
+		<TD width=505 align=left valign="bottom" background="img/bg-1.jpg" class=user><table width="90%"  border="0" align="center" cellpadding="0" cellspacing="2">
+          <tr>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td><div align="right" class="infoBL">Usuario: {hdr_nombre}&nbsp;&nbsp;| {hdr_fecha}</div></td>
+          </tr>
+        </table></TD>
+	  </TR>
+	</TABLE>
+	<TABLE width="100%" height=19 border=0 align="center" cellpadding="0" cellspacing="0" bgcolor="#f1f0e9" style="border-top:1px solid #ABABAB; border-bottom:1px solid #ABABAB">
+	  <TR>
+		<TD align=left bgcolor="#FFFFFF" class=user></TD>
+		</TR>
+	</TABLE>
+
+	
+	</td>
+  </tr>
+  <tr height="400">
+    <td valign="top" bgcolor="#FFFFFF">
+      <table border=0 width="100%" class='ContentTitle'>
+        <tr>
+          <td width="53%" height="20" class='HeaderTitle'><!-- InstanceBeginEditable name="Titulo" --> Ficha Producto <!-- InstanceEndEditable --></td>
+          <td width="47%" class='HeaderTitle'><!-- InstanceBeginEditable name="Botonera" --><!-- InstanceEndEditable --></td>
+        </tr>
+      </table>
+	  <br>
+      <table width="100%"  border="0" cellspacing="2" cellpadding="2">
+        <tr valign="top">
+          <td width="71%"><!-- InstanceBeginEditable name="Izquierda" -->
+		  <form action="#" method="post" name="fprod">
+<fieldset><legend>Detalle del Producto</legend>
+            <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+              <tr>
+                <td>
+				
+								<table width="100%"  border="0" cellspacing="0" cellpadding="0" class="tabla2">
+								  <tr>
+									<td width="70%">C&oacute;digo SAP : XXXX &nbsp;&nbsp;&nbsp; 
+									Estado :<select name="estado">
+									<option>Nuevo</option>
+									<option>Catalogado</option>
+									<option>Publicado</option>
+									<option>Despublicado</option>										
+									</select>
+									</td>
+									<td width="30%">Fecha Creaci&oacute;n:<br/>10/05/2006 10:10:30</td>
+								  </tr>
+								  <tr>
+									<td>Descripci&oacute;n Corta: <br/><input name="descr_corta" type="text" size="50" maxlength="100"></td>
+									<td valign="top">Fecha de Ultima Actualización: <br/>11/05/2006 10:10:30</td>
+								  </tr>
+								  <tr>
+									<td>Descripci&oacute;n Larga: 
+									  <br/><textarea name="textarea" cols="80" rows="4" ></textarea></td>
+									<td valign="top">Actualizado por:<br/>
+									   abaeza</td>
+								  </tr>
+								  <tr>
+									<td valign="top">Imagen Minificha: 
+									  <br/><input name="img_minificha" type="text" size="100" maxlength="200"></td>
+									<td valign="top"><img name="img_minificha" src="img/logo2.jpg"></td>
+								  </tr>  
+								  <tr>
+									<td valign="top">Imagen Ficha: 
+									  <br/><input name="img_ficha" type="text" size="100" maxlength="200"></td>
+									<td valign="top"><img name="img_ficha" src="img/logo2.jpg"></td>
+								  </tr>    
+								  <tr>
+									<td valign="top">
+									Formato Medida:<input name="fmedida" type="text" size="10" maxlength="10">&nbsp;&nbsp;&nbsp;
+									Unidad de Medida:<input name="umedida" type="text" size="10" maxlength="10">&nbsp;&nbsp;&nbsp;
+									Ranking de Ventas:<input name="ranking" type="text" size="10" maxlength="10">
+									</td>
+									<td valign="top"></td>
+								  </tr>      
+								</table>
+
+                </td>
+              </tr>
+              <tr>
+                <td>
+				<fieldset><legend><input name="compuesto" type="checkbox" value="0">Producto Compuesto</legend>
+					<table width="100%"  border="0" cellspacing="0" cellpadding="0" class="tabla2">
+					  <tr>
+						<td>Formato Diferenciador: <input name="umedida" type="text" size="10" maxlength="10"></td>
+						<td>&nbsp;</td>
+					  </tr>
+					  <tr>
+						<td colspan="2">
+						<fieldset><legend>Productos Item</legend>
+						<table width="100%"  border="0" cellspacing="0" cellpadding="0" class="tabla2">
+						  <tr align="left">
+							<th>&nbsp;</th>
+							<th>Código SAP</th>
+							<th>Descripción</th>
+							<th>Categoría SAP</th>
+							<th>Código Categoría SAP</th>
+							<th>Estado</th>
+							<th>Acciones</th>
+						  </tr>
+						  <tr>
+							<td>&nbsp;</td>
+							<td>0012234</td>
+							<td>Tallarines 77 Carozzi</td>
+							<td>Fideos</td>
+							<td>04442062</td>
+							<td>Publicado</td>
+							<td>
+								<a href="#"><IMG SRC="img/info.gif" WIDTH="16" HEIGHT="16" BORDER="0" ALT="ver detalle"></a>
+								<a href="#"><IMG SRC="img/publish_x.png" WIDTH="12" HEIGHT="12" BORDER="0" ALT="Sacar del Mix"></a>
+							</td>
+						  </tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td>0044234</td>
+							<td>Tallarines 7 Carozzi</td>
+							<td>Fideos</td>
+							<td>04442062</td>
+							<td>Publicado</td>
+							<td>
+								<a href="#"><IMG SRC="img/info.gif" WIDTH="16" HEIGHT="16" BORDER="0" ALT="Ver Detalle"></a>
+								<a href="#"><IMG SRC="img/publish_x.png" WIDTH="12" HEIGHT="12" BORDER="0" ALT="Eliminar del Producto Compuesto"></a>
+							</td>
+				  		</tr>  
+						<tr>
+							<td colspan="7" align="right"><input name="agregar_items" type="button" value="Agregar productos Items"></td>
+				  		</tr>  						
+				  </table>
+				</fieldset>
+				</td>
+			  </tr>
+			</table>
+			</fieldset>
+		
+			</td>
+		  </tr>
+		</table>
+			</fieldset>
+		</form>
+          <!-- InstanceEndEditable --></td>
+        </tr>
+      </table>
+      </td>
+  </tr>
+  <tr>
+    <td>
+	<TABLE width="100%" height=19 border=0 align="center" cellpadding="0" cellspacing="0" bgcolor="#f1f0e9" style="border-top:1px solid #ABABAB; border-bottom:1px solid #ABABAB">
+	  <TR>
+		<TD align=center bgcolor="#67b01a" class=infoBL><div align="center">Back Office Central - Jumbo.cl</div></TD>
+		</TR>
+	</TABLE>
+
+	
+	</td>
+  </tr>
+</table>
+</body>
+<!-- InstanceEnd --></html>

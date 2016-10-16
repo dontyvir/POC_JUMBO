@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Class-Path: pedidos-module-1.0-SNAPSHOT.jar bolsas-module-1.0-SNAPSHOT
+ .jar shared-module-1.0-SNAPSHOT.jar common-module-1.0-SNAPSHOT.jar co
+ ntenidos-module-1.0-SNAPSHOT.jar clientes-module-1.0-SNAPSHOT.jar eve
+ ntos-personalizados-module-1.0-SNAPSHOT.jar usuarios-module-1.0-SNAPS
+ HOT.jar parametros-module-1.0-SNAPSHOT.jar promociones-carga-module-1
+ .0-SNAPSHOT.jar irs-promociones-module-1.0-SNAPSHOT.jar promociones-l
+ ibreria-module-1.0-SNAPSHOT.jar venta-empresas-module-1.0-SNAPSHOT.ja
+ r com.ibm.mq-5.307.jar com.ibm.mqjms-5.307.jar log4j-1.2.13.jar fastm
+ -1.0.jar sv-modules-1.0-SNAPSHOT.jar
+

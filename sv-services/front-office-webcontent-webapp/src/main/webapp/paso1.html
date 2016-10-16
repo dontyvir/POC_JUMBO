@@ -1,0 +1,554 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>Jumbo.cl - Mi Cuenta - Mis listas</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+	<meta name="description" content="Sitio online de la cadena de supermercados e hipermercados Jumbo. Venta online de productos" />
+	<meta name="keywords" content="Jumbo, Supermercado, supermercado, supermercado online, Mas Jumbo, Hipermercado, productos, comida, abastecimiento, puntos mas, Cencosud, Almacenes Paris, Paris, Santa Isabel, Easy, Circulo mas, vinos, carnes, frutas, verduras, lacteos, pescados, mariscos, abarrotes, mercaderia a domicilio, marcas propias jumbo, locales, ofertas, promociones, Servicios, Rincon Jumbo, Visitas Guiadas, Servicios Especiales, Jumbo Va, Seguridad, Venta Empresas, nuestros clubes jumbo, Club Madre e Hijo, Club Jumbito, Plug and Play, recetas, consejos utiles, 5 es vida, venta empresas, supercash, cajas de regalo, catalogo online de productos, compra online, jumbo mas, jumbo blog" />
+	<meta name="robots" content="index, follow" />
+	<meta http-equiv="CACHE-CONTROL" content="NO-CACHE" />
+	<meta http-equiv="PRAGMA" content="NO-CACHE" />
+	<meta http-equiv="EXPIRES" content="Mon, 22 Jul 2002 11:12:01 GMT" />
+	<meta http-equiv="X-UA-Compatible" content="IE=8" />
+	<link rel="Shortcut Icon" href="/FO_IMGS/img/favicon.ico" />
+	
+	<!-- + 20121207 REQ. Arreglar formato de lista de Compras anteriores IE FPenalozaP -->
+	<link type="text/css" rel="stylesheet" href="/FO_WebContent/css/jquery.ui.theme.css" />
+	<link type="text/css" rel="stylesheet" href="/FO_WebContent/css/jquery.ui.datepicker.css" />
+		<!-- + 20121207 REQ. Arreglar formato de lista de Compras anteriores IE FPenalozaP -->
+	
+	
+	<link type="text/css" rel="stylesheet" href="/FO_WebContent/css/paso1.css" />
+	<link type="text/css" rel="stylesheet" href="/FO_WebContent/css/simple.css" />
+	<link type="text/css" rel="stylesheet" href="/FO_WebContent/css/paso2pub.css" />
+	<link type="text/css" rel="stylesheet" href="/FO_WebContent/css/paso2.css" />
+	<link type="text/css" rel="stylesheet" href="/FO_WebContent/css/totalizador_carro.css" />
+	<link type="text/css" rel="stylesheet" href="/FO_WebContent/css/miscuentas_mislistas.css" />
+	<link type="text/css" rel="stylesheet" href="/FO_WebContent/css/acordeon_paso1b.css" />
+	<link type="text/css" rel="stylesheet" href="/FO_WebContent/css/footer_standar_ie.css" />
+	
+	<link type="text/css" rel="stylesheet" href="/FO_WebContent/css/thickbox.css" media="screen" />
+	<link rel="stylesheet" type="text/css" href="/FO_WebContent/css/tabla.css" />
+	<link rel="stylesheet" type="text/css" href="/FO_WebContent/css/jquery.ui.all.css" />
+	<link rel="stylesheet" type="text/css" href="/FO_WebContent/css/demos.css" />
+	<link rel="stylesheet" type="text/css" href="/FO_WebContent/css/zebra_accordion.css" />
+	<link type="text/css" rel="stylesheet" href="/FO_WebContent/css/acordeon_paso1b.css" />
+	<link type="text/css" rel="stylesheet" href="/FO_WebContent/css/light_box_PD.css" />
+	
+	
+	
+	<script type="text/javascript" src="/FO_WebContent/js/jquery.min.js"></script>
+	<script type="text/javascript" src="/FO_WebContent/js/carro.js"></script><!--  va aqui porque hace problema con calendario-->
+	<script type="text/javascript" src="/FO_WebContent/js/jquery.ui.core.js"></script>
+	<script type="text/javascript" src="/FO_WebContent/js/jquery.ui.widget.js"></script>
+	<script type="text/javascript" src="/FO_WebContent/js/jquery.ui.accordion.js"></script>
+    <script type="text/javascript" src="/FO_WebContent/js/zebra_accordion.src.js"></script>
+	<script type="text/javascript" src="/FO_WebContent/js/funciones.js"></script>
+	<script type="text/javascript" src="/FO_WebContent/js/layer.js"></script>
+	<script type="text/javascript" src="/FO_WebContent/js/criterioSustitucion.js"></script>
+	<script type="text/javascript" src="/FO_WebContent/js/pasos.js"></script>
+	<script type="text/javascript" src="/FO_WebContent/js/paso1.js"></script>
+	<script type="text/javascript" src="/FO_WebContent/js/prototype.js"></script>
+	<script type="text/javascript" src="/FO_WebContent/js/jquery.ui.datepicker.js"></script>
+</head>
+<body style="text-align:left;" onload="MM_preloadImages('/FO_IMGS/img/estructura/bt_cerrar-verde.gif','/FO_IMGS/img/estructura/paso1/bt_agregaralcarrob.gif','/FO_IMGS/img/estructura/carro/irpaso3-chicob.gif','/FO_IMGS/img/estructura/bt_mis_promociones_b.gif','/FO_IMGS/img/estructura/bt_promociones_agregadas_b.gif','/FO_IMGS/img/estructura/paso1/bt_irapaso2b.gif','/FO_IMGS/img/estructura/bt_mi_listab.gif')" class="bodyMargen">
+<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-PWPZN" 
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>
+var mx_user ='{ta_mx_user}';
+var mx_loc ='{ta_mx_loc}';
+var mx_content = '{mx_content}';
+(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PWPZN');</script>
+
+<a name="arriba"></a>
+
+	<input type="hidden" id="opcion" name="opcion" value="{opcion}" />
+<div style="width:960px; height:auto; margin-left:auto; margin-right:auto; float:none; clear:both;">
+	<div class="menu_superior_flujo_2012">
+	  <div class="logo_jumbo_2011" style="height:111px;"><a href="http://www.jumbo.cl/FO/LogonForm" target="_self"><img src="/FO_IMGS/images/header/logo_wht_bg.jpg" width="150" height="111" border="0" /></a></div>
+	  <div class="menu_arriba_2011">
+	    <div class="linea_menu_arriba_2011">
+	      <div class="menu_arriba_necesitas_ayuda"><a href="http://www.jumbo.cl/supermercado/preguntas/preguntas.html" target="_blank">Preguntas Frecuentes</a></div>
+	      <div class="menu_arriba_necesitas_ayuda">Necesitas Ayuda? <span style="color:#1FA22E"> 600 400 3000</span></div>
+	    </div>
+	    <div class="linea_menu_arriba_2011">
+	      <div class="menu_arriba_cerrar_sesion"><a href="Logoff">Cerrar Sesi&oacute;n</a></div>	      
+	      <div class="menu_arriba_nombre_cliente">{nombre_cliente}</div>
+	      <div class="link_disponibilidad_despacho2">
+	      	<span onclick="javascript:getOfficesAvailable('L')">
+<!-- 	      	<div class="cont_img_new2"></div> -->
+	      	&nbsp;Ver Disponibilidad de Despacho</span>
+	      </div>
+	    </div>
+	  </div>
+		<div class="menu_links_jumbo_2011">
+			<ul id="menunew">
+				<li class="micuenta"><a id="opcMiCuenta" href="UltComprasForm?opcion=1">Mi Cuenta</a></li>
+				<li class="mislistas"><a id="opcMisListas" href="UltComprasForm?opcion=2">Mis Listas</a></li>
+			  <li class="productos"><a href="CategoryDisplay">Agregar Productos</a></li><!-- javascript:ir_supermercado() -->
+				<li class="pagar"><a href="MiCarro">Pagar</a></li><!-- javascript:ir_pagar() -->
+			</ul>
+		</div>
+	</div>
+<!-- ----------------------------------------------------------------------------------------------- -->			
+		<div style="float: left; width:958px; border: 1px solid #CCC; margin-bottom:10px;">
+<!-- IZQUIERDA -->	
+
+    <!-- INI - CONTENT PAGE -->
+           <!-- inicio listados -->
+			<div>
+				<div id="div_main" style="border:0px green solid">
+				<!-- + 20121206 Modificar dise�o p�gina "Mis Listas FPenalozaP -->
+					<div id="div_main_izq" style="border:none;">
+				<!-- - 20121206 Modificar dise�o p�gina "Mis Listas FPenalozaP -->
+						<ul id="menuvertical2">
+						<!-- + 20121206 Modificar dise�o p�gina "Mis Listas FPenalozaP -->
+							<li><h2 class="accordion_toggle" id="cuenta"><a href="#" id="mListas1" class="cabecera">Mi Cuenta</a></h2></li>
+							<!-- - 20121206 Modificar dise�o p�gina "Mis Listas FPenalozaP -->
+							<li>
+							<!-- + 20121206 Modificar dise�o p�gina "Mis Listas FPenalozaP -->
+								<h2 class="accordion_toggle" id="listas" style="border: none;"><a href="#" id="mListas2" class="cabecera">Mis Listas</a></h2>
+								<!-- - 20121206 Modificar dise�o p�gina "Mis Listas FPenalozaP -->
+									<form action="UltComprasForm" method="post" name="form1" id="form1">
+										<input type="hidden" name="mostrar_evento" id="mostrar_evento" value="{mostrar_evento}" />
+										<div id="el_listado_de_compras"></div>
+									</form>
+<!-- 									<a name="producto_listado" id="producto_listado"></a>-->
+							</li>
+						</ul>
+					</div>
+					<div id="content_central" style="float:left; width: 795px;">
+						<form name="fp" id="fp" method="post" action="OrderItemAdd">
+							<div style="width:100%; float:left;border:0px #000000 solid">
+								<div id="el_listado_de_productos"  style="width: 100%; border: 0px solid #ccc;"></div>
+								<div id="datos_personales"  style="width: 100%; "></div>
+<!-- 								<div id="datos_direcciones"  style="width: 100%; "></div>-->
+							</div>
+						</form>
+					</div> 
+				</div>
+			</div>
+           <!-- fin listados -->
+           <!-- FIN - CONTENT PAGE -->
+<!-- FIN IZQUIERDA -->			
+<!-- DERECHA -->		
+
+<!-- FIN DERECHA -->			
+<!-- FOOTER -->
+<!-- 			<div id="footer3">-->
+
+    		<div style="background-color: #EEE; clear: both; color: #666; float: none; font-family: Arial,Helvetica,sans-serif; font-size: 11px; height: 180px; margin-left: auto; margin-right: auto; margin-top: 10px; padding-left: 20px; padding-top: 10px;">
+					<div style="font-family: Arial, Helvetica, sans-serif;font-size: 11px;color: #666; float: left; width: 170px; height: 170px;border-right: 1px dashed #CCC;">
+    		    <div class="fila_footer_2011"><strong>Nuestra Empresa</strong></div>
+    		    <div class="fila_footer_2011"><a href="http://www.cencosud.cl/" title="Cencosud" target="_blank">Cencosud</a></div>
+    		    <div class="fila_footer_2011"><a href="http://www.jumbo.cl/supermercado/locales/index.html" title="Locales Jumbo" target="_blank">Locales Jumbo</a></div>
+            <div class="fila_footer_2011"><a href="http://www.puntoscencosud.cl" title="Puntos Cencosud" target="_blank">Puntos Cencosud</a></div>
+            <div class="fila_footer_2011"><a href="http://www.tarjetamas.cl/TarjetaMasWEB/inicio.do" title="Tarjeta Mas y Cencosud" target="_blank">Tarjeta M&aacute;s y Cencosud</a></div>
+            <div class="fila_footer_2011"><a href="https://www.segurosparis.cl/vseg-paris/index.jsp" title="Seguros Cencosud" target="_blank">Seguros Cencosud</a></div>
+            <div class="fila_footer_2011"><a href="http://cencosud.trabajando.com" title="Trabaja en Jumbo" target="_blank">Trabaja en Jumbo</a></div>
+            <div class="fila_footer_2011"><a href="http://www.jumbo.cl/supermercado/contactenos/informacion_proveedores.html" title="Proveedores" target="_blank">Proveedores</a></div>
+        </div>
+        <div style="font-family: Arial, Helvetica, sans-serif;font-size: 11px;color: #666; float: left; width: 170px; height: 170px; border-right: 1px dashed #CCC;">
+            <div class="fila_footer_2011"><strong> Jumbo</strong></div>
+            <div class="fila_footer_2011"><a href="http://www.jumbo.cl/supermercado/compromisos_jumbo/index.html" title="Compromisos" target="_blank">Compromisos</a></div>
+            <div class="fila_footer_2011"><a href="http://www.jumbo.cl/supermercado/catalogos/index.html" title="Cat&aacute;logos" target="_blank">Cat&aacute;logos</a></div>
+            <div class="fila_footer_2011"><a href="http://www.jumbo.cl/supermercado/mundosjumbo/index.html" title="Mundos Jumbo" target="_blank">Mundos Jumbo</a></div>
+            <div class="fila_footer_2011"><a href="http://www.productojumbo.cl/" title="Productos Jumbo" target="_blank">Productos Jumbo</a></div>
+<!--FVR         <div class="fila_footer_2011"><a href="http://www.jumbo.cl/supermercado/productos_del_mundo/index.html" title="Productos del mundo" target="_blank">Productos del Mundo</a></div>-->
+            <div class="fila_footer_2011"><a href="http://www.jumbo.cl/supermercado/novedades/index.html" title="Novedades" target="_blank">Novedades</a></div>
+            <div class="fila_footer_2011"><a href="http://www.jumbo.cl/supermercado/familia_jumbo/index.html" title="Familia Jumbo" target="_blank">Familia Jumbo</a></div>
+            <div class="fila_footer_2011"><a href="http://www.ventaempresascencosud.cl" title="Venta Empresas" target="_blank">Venta Empresas</a></div>
+        </div>
+        <div style="font-family: Arial, Helvetica, sans-serif;font-size: 11px;color: #666; float: left; width: 170px; height: 170px; border-right: 1px dashed #CCC;">
+            <div class="fila_footer_2011"><strong>Nuestros Servicios</strong></div>
+            <div class="fila_footer_2011"><a href="http://www.jumbo.cl/supermercado/preguntas/preguntas.html" title="Recetas Jumbo Blog" target="_blank">Preguntas Frecuentes</a></div>
+            <div class="fila_footer_2011"><a href="http://www.jumbo.cl/supermercado/seguridad_y_privacidad/index.html" title="Seguridad y privacidad" target="_blank">Seguridad y Privacidad</a></div>
+            <div class="fila_footer_2011"><a href="http://www.jumbo.cl/supermercado/preguntas/preguntas.html#7" title="Formas de Pago" target="_blank">Formas de Pago</a></div>
+            <div class="fila_footer_2011"><a href="http://www.jumbo.cl/supermercado/preguntas/preguntas.html#5" title="Zonas de coberturas" target="_blank">Zonas de Cobertura</a></div>        
+				    <div class="fila_footer_2011"><a href="http://www.jumbo.cl/supermercado/preguntas/preguntas.html#13" title="Pol&iacute;ticas de Precio" target="_blank">Pol&iacute;ticas de Precio</a></div>
+				    <div class="fila_footer_2011"><a href="http://www.jumbo.cl/supermercado/terminos/terminos.html"  title="T&eacute;rminos y Condiciones" target="_blank">T&eacute;rminos y Condiciones</a></div>
+				    <div class="fila_footer_2011"><a href="http://www.giftcard.cl/" title="Consultas Gift Card" target="_blank">Consultas Gift Card</a></div>
+				    <div class="fila_footer_2011"><a href="http://litev2.custodium.com/PortalBoleta/Boleta.do" title="Consulta tu Boleta" target="_blank">Consulta tu Boleta</a></div>
+    		</div>
+        <div style="font-family: Arial, Helvetica, sans-serif;font-size: 11px;color: #666; float: left; width: 170px; height: 170px;border-right: 1px dashed #CCC;">
+            <div class="fila_footer_2011"><strong>Contacto</strong></div>
+            <div class="fila_footer_2011"><a href="http://www.jumbo.cl/supermercado/contactenos/index.html" title="Cat�logos" target="_blank">Escr&iacute;benos</a></div>
+            <div class="fila_footer_2011"><a href="http://www.jumbo.cl/supermercado/telefonos/index.html" title="Familia Jumbo" target="_blank">Tel&eacute;fonos</a></div>
+            <div class="fila_footer_2011"><a href="http://www.jumbo.cl/supermercado/ganadores/index.html" title="Bases de Concursos" target="_blank">Concursos</a></div>
+            <div class="fila_footer_2011"><a href="http://www.jumbo.cl/supermercado/telefonos/index.html" title="Fono compras" target="_blank">Fono Compras<br/>600 400 3000</a></div>
+        </div>
+        <div style="font-family: Arial, Helvetica, sans-serif;font-size: 11px;color: #666; float: left; width: 230px; height: 170px;">
+             <div style="font-family: Arial, Helvetica, sans-serif;font-size: 11px;color: #666; float: left; width: 250px; height: 170px;">
+       			<div class="fila_footer_2011" style="width:240px !important; padding-left:14px;">
+       		 	<script>
+					function popupBalance(){
+						littleWindow = window.open("https://www.puntoscencosud.cl/portal/faces/consultar-puntos", "littleWindow", "location=no,width=390,height=350,scrollbars=no,resizable=NO,titlebar=no");
+					}
+				</script>
+       		 	<a href="javascript:popupBalance();" onclick="_gaq.push(['_trackEvent', 'Paso1', 'Footer', 'Consulta_Puntos_Cencosud']);" title="Consulta aquí tus Puntos Cencosud"><img src="http://www.jumbo.cl/FO_IMGS/img/btn_consulta_puntos_cencosud.png" alt="Consulta aqu&iacute; tus Puntos Cencosud" border="0" /></a>
+      		</div>
+            <div class="fila_footer_2011" style="margin-top:40px; padding-left: 8px; text-align:right;width: 230px;">
+                  S&iacute;guenos en
+                  <a href="https://www.facebook.com/jumbochile?fref=ts" target="_blank"><img src="http://www.jumbo.cl/FO_IMGS/img/facebook.jpg"></a>
+                  <a href="https://twitter.com/jumbochile" target="_blank"><img src="http://www.jumbo.cl/FO_IMGS/img/twitter.jpg"></a>
+                  <a href="http://www.youtube.com/user/SupermercadoJumbo" target="_blank"><img src="http://www.jumbo.cl/FO_IMGS/img/youtube.jpg"></a>
+            </div>
+            <div class="fila_footer_2011" style=" width:200px; padding-top:15px; height:60px;">
+               
+            </div>
+        </div>
+        <p>&nbsp;</p>
+        </div>
+	    <!-- // fin pie de pagina -->
+<!-- 			</div>-->
+<!-- FIN FOOTER -->			
+		</div>
+
+<!-- --------------------------------------------------------------------------------------------------------- -->
+	</div>
+</div>
+
+<!-- --------------------------------------------------------------------------------------------------------- -->
+<!-- --------------------------------------------------------------------------------------------------------- -->
+<!-- --------------------------------------------------------------------------------------------------------- -->
+<!-- --------------------------------------------------------------------------------------------------------- -->
+<!-- --------------------------------------------------------------------------------------------------------- -->
+<!-- --------------------------------------------------------------------------------------------------------- -->
+
+<div id="loading" style="display:none;">
+  <table cellpadding="0" cellspacing="0" border="0" style="font: 10px Verdana, Geneva, Arial, Helvetica, sans-serif; z-index: 500;">
+    <tr>
+	  <td height="50" width="6"><img src="/FO_IMGS/images/nuevojumbo/loading_left.gif" height="50" width="6" alt=""/></td>
+	  <td width="100" style="background: url(/FO_IMGS/images/nuevojumbo/loading_center.gif); width:100; text-align: center;vertical-align: middle;"><strong>Cargando...</strong></td>
+	  <td height="50" width="6"><img src="/FO_IMGS/images/nuevojumbo/loading_right.gif" height="50" width="6" alt=""/></td>
+	</tr>
+  </table>
+</div>
+
+<div id="ventana" style="position:absolute; visibility:hidden; z-index:100; background-color: #FFF; border:3px solid #CCC; box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);border-radius: 6px 6px 6px 6px; padding-bottom:15px;">
+  <div id="dragbar1" onmousedown="javascript:initializedrag(event,'ventana','dragbar1');" style="cursor:move;">
+    <table width="665" border="0" cellpadding="0" cellspacing="0">
+      <tr>
+        <td width="8" height="7" valign="top"></td>
+        <td height="7" colspan="2" valign="top"></td>
+        <td width="8" height="7" valign="top"></td>
+      </tr>
+      <tr>
+        <td height="31" valign="top"></td>
+				<td width="635" height="31" align="center" valign="top">
+					<!-- BEGIN DYNAMIC: MUESTRA_CAL_DESPACHO -->
+					<span class="titulosLayers">Disponibilidad de despacho</span>
+					<!-- END DYNAMIC: MUESTRA_CAL_DESPACHO -->
+					<!-- BEGIN DYNAMIC: MUESTRA_CAL_RETIRAR -->
+					<span class="titulosLayers">Horarios disponibles para retirar tu pedido</span>
+					<!-- END DYNAMIC: MUESTRA_CAL_RETIRAR -->
+				</td>
+        <td width="14" align="center" valign="top">
+          <a href="javascript:hideCalendario();"> <img src="/FO_IMGS/img/estructura/bt_cerrar.gif" alt="cerrar ventana" border="0" width="29" height="23" align="right" /></a>
+        </td>
+        <td width="8" height="31" valign="top"></td>
+      </tr>
+    </table>
+  </div>
+  <table width="665" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+      <td height="259" valign="top"></td>
+      <td colspan="2" valign="top" bgcolor="#FFFFFF"> <table width="95%" border="0" align="center" cellpadding="0" cellspacing="0">
+          <tr>
+            <td height="124" align="left" valign="top" bgcolor="#FFFFFF">
+				<div align="center">
+                <span class="lectura">
+				<br />La tabla siguiente s&oacute;lo muestra informaci&oacute;n.
+				<!-- BEGIN DYNAMIC: MUESTRA_CAL_DESPACHO -->
+				<br />Podr&aacute;s seleccionar el horario de despacho al final de la compra.<br />
+				<!-- END DYNAMIC: MUESTRA_CAL_DESPACHO -->
+				<!-- BEGIN DYNAMIC: MUESTRA_CAL_RETIRAR -->
+				<br />Podr&aacute;s seleccionar el horario para retirar tu pedido al final de la compra.<br />
+				<!-- END DYNAMIC: MUESTRA_CAL_RETIRAR -->
+                </span>
+				</div>
+              <div id="jcalendario"></div></td>
+          </tr>
+        </table></td>
+      <td width="8" height="259" valign="top"></td>
+    </tr>
+    <tr>
+      <td width="8" height="7" valign="top"></td>
+      <td height="7" colspan="2"></td>
+      <td width="8" height="7" valign="top"></td>
+    </tr>
+  </table>
+</div>
+
+
+
+
+
+
+
+
+
+
+<div id="ventanamispromo" style="position:relative; visibility:hidden; z-index:100; background-color: #FFF; border:3px solid #CCC; box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);border-radius: 6px 6px 6px 6px; padding-bottom:15px;">
+  <div id="dragbar11" onmousedown="javascript:initializedrag(event,'ventanamispromo','dragbar11');" style="cursor:move;">
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td width="3%" align="left" valign="top"></td>
+        <td width="79%" height="30" valign="middle"> <table width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+              <td width="35"></td>
+              <td valign="middle"><span style="font-family: Arial, Helvetica, sans-serif;font-size: 14px; color:#1FA22E; font-weight: bold;">MIS PROMOCIONES</span></td>
+            </tr>
+          </table></td>
+        <td width="15%" align="right"> <a href="javascript:top.hideMisPromo();">
+          <img src="/FO_IMGS/img/estructura/bt_cerrar.gif" name="Image12" width="30" height="25" border="0" id="Image12" alt=""/>
+          </a> </td>
+        <td width="3%" align="right" valign="top"></td>
+      </tr>
+    </table>
+  </div>
+  <iframe name="frm_mispromo" id="frm_mispromo" src="#" frameborder="0" width="0" height="0" scrolling="no"></iframe>
+</div>
+
+<div id="ventana_evento" style="position:absolute; visibility:hidden; z-index:100; background-color: #FFF; border:3px solid #CCC; box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);border-radius: 6px 6px 6px 6px; padding-bottom:15px;">
+  <div id="dragbar10" onmousedown="javascript:initializedrag(event,'ventana_evento','dragbar10');" style="cursor:move;">
+    <table width="400" border="0" cellpadding="0" cellspacing="0">
+      <tr>
+        <td width="8" height="7" valign="top"></td>
+        <td height="7" colspan="2" valign="top"></td>
+        <td width="8" height="7" valign="top"></td>
+      </tr>
+      <tr>
+        <td height="31" valign="top"></td>
+        <td width="506" height="31" align="center" valign="top"><span class="titulosLayersEventos">{titulo_evento}&nbsp;</span></td>
+        <td width="14" align="center" valign="top"><a href="javascript:hideEvento();">
+          <img src="/FO_IMGS/img/estructura/bt_cerrar.gif" alt="cerrar ventana" border="0" width="29" height="23" align="right" /></a>
+        </td>
+        <td width="8" height="31" valign="top"></td>
+      </tr>
+    </table>
+  </div>
+  <table width="400" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+      <td height="259" valign="top"></td>
+      <td colspan="2" valign="top"> <table width="95%" border="0" align="center" cellpadding="0" cellspacing="0">
+          <tr>
+            <td height="124" align="center" valign="top">{src_flash}</td>
+          </tr>
+        </table></td>
+      <td width="8" height="259" valign="top"></td>
+    </tr>
+    <tr>
+      <td width="8" height="7" valign="top"></td>
+      <td height="7" colspan="2"></td>
+      <td width="8" height="7" valign="top"></td>
+    </tr>
+  </table>
+</div>
+
+<!-- INI - LAYER CRITERIO SUSTITUCION -->
+<div id="criteriosustitucion" style="position:absolute; visibility:hidden; z-index:100; background-color: #FFF; border:3px solid #CCC; box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);border-radius: 6px 6px 6px 6px; padding-bottom:15px;">
+	<form name="f_cri_sus" id="f_cri_sus" action="">
+		<input type="hidden" name="id_prod_sustituto" id="id_prod_sustituto" value="0" />
+	  <table width="500" border="0" cellpadding="0" cellspacing="0">
+	    <tr>
+	      <td>
+		   		<div id="dragbar44" onmousedown="javascript:initializedrag(event,'criteriosustitucion','dragbar44');" style="cursor:move;">
+	          <table width="100%" border="0" cellspacing="0" cellpadding="0">
+	            <tr>
+	              <td width="5" align="left" valign="top" ></td>
+	              <td width="79%" height="30" valign="middle" ><span style="font-family: Arial, Helvetica, sans-serif;font-size: 14px; color:#1FA22E; font-weight: bold;">ELIGE TU CRITERIO DE SUSTITUCI&Oacute;N</span></td>
+	              <td width="15%" align="right"> <a href="javascript:hideCriSustitucion();">
+	                <img src="/FO_IMGS/img/estructura/bt_cerrar.gif" name="imageCriterioProd" width="30" height="25" border="0" id="imageCriterioProd" alt=""/>
+	                </a> </td>
+	              <td width="3%" align="right" valign="top"></td>
+	            </tr>
+	          </table>
+	        </div>
+	
+						<table width="100%" border="0" cellspacing="10" cellpadding="0">
+				      <tr>
+				        <td>
+									<table width="95%" border="0" cellspacing="5" cellpadding="0">
+									  <tr>
+											<td  valign="top"><img src="/FO_IMGS/img/estructura/sustitutos/icono.gif" border="0" alt="sustitutos" /></td>
+											<td><span class="lectura">En caso de no encontrar este producto al momento de hacer tu pedido, quieres que la sustituci&oacute;n sea por:</span></td>
+									  </tr>
+									</table>
+									<table width="100%" border="0" cellspacing="0" cellpadding="0">
+										<tr>
+											<td width="6" height="6"></td>
+											<td height="6"></td>
+											<td width="10" height="6"></td>
+										</tr>
+										<tr>
+											<td width="6"></td>
+											<td valign="top">
+												<table width="100%" border="0" cellspacing="0" cellpadding="0">
+													<tr>
+														<td height="30">
+															<div class="desp_producto">
+																<div class="ac2">
+																	<label>
+																		<input type="radio" name="radiobutton_cri_sus" value="1" checked />
+																		Criterio Jumbo
+																	</label>
+																</div>
+																<div class="ac3">
+																	<label>
+																		<input type="radio" name="radiobutton_cri_sus" value="2" />
+																		Misma marca distinto tama�o<br />
+																	</label>
+																	<label>
+																		<input type="radio" name="radiobutton_cri_sus" value="3" />
+																		Mismo tama�o distinta marca
+																	</label>
+																	<label><br />
+																		<input type="radio" name="radiobutton_cri_sus" value="4" />
+																		Otro
+																	</label>
+																	<label>
+																		<input type="text" class="campo" name="textfield_cri_sus" id="textfield_cri_sus" value="Ej: marca, sabor" maxlength="50" size="23" onclick="javascript:clicOtroCriSus(this, '1');" onblur="javascript:outOtroCriSus(this, '1');" onchange="javascript:cambioTextoCriSus('1')" />
+																	</label>
+																</div>
+																<div class="ac4">
+																	<label>
+																		<input type="radio" name="radiobutton_cri_sus" value="5" />
+																		No Sustituir
+																	</label>
+																</div>
+															</div>
+														</td>
+													</tr>
+												</table>
+											</td>
+											<td width="10"></td>
+										</tr>
+										<tr>
+											<td width="6" height="6"></td>
+											<td height="6"></td>
+											<td width="10" height="6"></td>
+										</tr>
+									</table>
+							</td>
+				    </tr>
+						<tr>
+							<td>
+								<span class="lectura">Puedes elegir criterios de sustituci&oacute;n para todos los productos de tu compra <a href="SustitutosForm?from=UltComprasForm" onclick="javascript:pageTracker._trackPageview('/FO/paso1/links/sustitucion')"><u>entrando aqu&iacute;</u></a><br />
+								<a href="/FO/sustitucion.html" target="_blank"><u>Ver criterio de sustituci&oacute;n Jumbo</u></a></span>
+							</td>
+						</tr>
+						<tr>
+							<td align="right"><a href="javascript:guardarSustituto('1');"><img src="/FO_IMGS/img/estructura/bt_guardar_solo.gif" name="guardar" border="0" id="guardar" alt="" /></a></td>
+						</tr>
+	        </table>
+	        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+	          <tr>
+	            <td width="5" height="5" align="left" valign="bottom"></td>
+	            <td></td>
+	            <td></td>
+	            <td width="6" height="5" align="right" valign="bottom"></td>
+	          </tr>
+	        </table>
+		   </td>
+	    </tr>
+	  </table>
+	</form>
+</div>
+<div id="ventana_ficha" style="position:absolute; visibility:hidden; z-index:100; background-color: #FFF; border:3px solid #CCC; box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);border-radius: 6px 6px 6px 6px; padding-bottom:15px;">
+  <div id="dragbar3" onmousedown="javascript:initializedrag(event,'ventana_ficha','dragbar3');" style="cursor:move;">
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td width="3%" align="left" valign="top"></td>
+        <td width="79%" height="30" valign="middle"><span style="font-family: Arial, Helvetica, sans-serif;font-size: 14px; color:#1FA22E; font-weight: bold;">PRODUCTO</span></td>
+        <td width="15%" align="right"><a href="javascript:hideFichaProducto();"><img src="/FO_IMGS/img/estructura/bt_cerrar.gif" name="imageFicha" border="0" id="imageFicha" alt=""/>
+          </a> </td>
+        <td width="3%" align="right" valign="top"></td>
+      </tr>
+    </table>
+  </div>
+  <div id="fichaproducto">
+    <iframe name="frm_ficha" id="frm_ficha" frameborder="0" width="0" height="0" scrolling="no"></iframe>
+  </div>
+</div>
+<iframe name="frm_print_prod" id="frm_print_prod" src="#" frameborder="0" width="450" height="5" scrolling="no" style="visibility:hidden;"></iframe>
+
+           <form action="ExportarUltComprasProList" method="post" name="exportar_excel" id="exportar_excel">
+             <input type="hidden" name="tupla" value="" />
+         </form>
+         <!-- inicio magno aperez -->
+         <form action="EnviarCorreoComprasProList" method="post" name="enviar_correo" id="enviar_correo">
+             <input type="hidden" name="tupla" id="tupla" value="" />
+             <input type="hidden" name="cli_rut" id="cli_rut" value="{rut}" />             
+             <input type="hidden" name="cli_email1" id="cli_email1" value="{email1}" />
+         </form>
+         <!-- fin magno -->
+
+<script type="text/javascript">
+//----- INI - DATOS PARA EL CHAT -----
+NOMBRE = "{nom_cliente}";
+APELLIDO = "{ape_cliente}";
+DIA = "{dia_actual}";
+HORA = {hora_actual};
+//----- FIN - DATOS PARA EL CHAT -----
+
+PASO_ACTUAL = 2;
+
+$j("#loading").show();
+$j("#loading").css({position:'absolute'});
+$j("#loading").css({width:'112px'});
+$j("#loading").css({height:'50px'});
+$j("#loading").css({zIndex:'50'});
+
+var globalCallbacks = {
+  onCreate: function() {
+    var ypos = document.documentElement.scrollTop ? document.documentElement.scrollTop : document.body.scrollTop;
+    $j("loading").css({left:(screen.availWidth-112)/2 + 'px'});
+//    $j("#loading").css({left:'300px'});
+//    $j("loading").style.left = (screen.availWidth-112)/2 + 'px';
+//    $j("loading").style.top = (screen.availHeight-200)/2 + ypos - 50 + 'px';
+    $j("loading").css({top:(screen.availHeight-200)/2 + ypos - 50 + 'px'});
+//    $j("#loading").css({top: '300px'});
+    $j("#loading").show();
+  },
+  onComplete: function() {
+    if(Ajax.activeRequestCount == 0) {
+      $j("#loading").hide();
+    }
+  }
+};
+Ajax.Responders.register( globalCallbacks );
+</script>
+<!-- Tag for Activity Group: Jumbo Compra Gratis, Activity: Paso 1 -->
+
+<!-- Start of DoubleClick Spotlight Tag: Please do not remove-->
+<!-- Activity Name for this tag is:Paso 1 -->
+<!-- Web site URL where tag should be placed: http://www.jumbo.cl -->
+<!-- Creation Date:11/6/2007 -->
+<script type="text/javascript">
+var axel = Math.random()+"";
+var a = axel * 10000000000000;
+document.write('<img src="http://ad.cl.doubleclick.net/activity;src=1463301;type=jumbcpgr;cat=jbcgrpa1;ord=1;num='+ a + '?" width="1" height="1" border="0" alt="" />');
+</script>
+<noscript>
+<img src="http://ad.cl.doubleclick.net/activity;src=1463301;type=jumbcpgr;cat=jbcgrpa1;ord=1;num=1?" width="1" height="1" border="0" alt="" />
+</noscript>
+<!-- End of DoubleClick Spotlight Tag: Please do not remove-->
+
+
+<script type="text/javascript">
+			/*+ 20121206 Modificar dise�o p�gina "Mis Listas FPenalozaP*/
+			document.getElementById("listas").style.border="#ccc solid 0px";
+			document.getElementById("cuenta").style.borderBottom="#ccc solid 1px";
+			document.getElementById("cuenta").style.borderRight="#ccc solid 1px";
+			/*- 20121206 Modificar dise�o p�gina "Mis Listas FPenalozaP*/
+</script>
+<!-- INDRA 2012-11-13 -->
+<div id="respuestaLightBox" style="display:none;"></div>
+<!-- INDRA 2012-11-13 -->
+</body>
+</html>

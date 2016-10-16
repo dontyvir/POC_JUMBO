@@ -1,0 +1,195 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html><!-- InstanceBegin template="/Templates/fullbody.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="EXPIRES" CONTENT="Mon, 22 Jul 2002 11:12:01 GMT">
+<title>Jumbo.cl Back Office Central</title>
+
+<link href="estilos.css" rel="stylesheet" type="text/css">
+<link id="luna-tab-style-sheet" type="text/css" rel="stylesheet" href="js/tabs/tabpane.css" />
+
+<style type="text/css">
+<!--
+.style1 {color: #666666}
+-->
+</style>
+<script>
+   function validar_comuna(form){
+         <!-- BEGIN DYNAMIC: LST_ZONAS_COMUNA -->
+         if (validar_solonumero(form.orden_{i}, "Orden es un Campo Numerico")) 
+            return false;
+      if (validar_obligatorio(form.orden_{i}, "Antes de Grabar Debe Ingresar Orden")) 
+         return false;
+      <!-- END DYNAMIC: LST_ZONAS_COMUNA -->
+      return true;
+   }
+   
+   function EliminaPoligono(id_comuna, id_poligono){
+      if (confirm("¿Estas seguro que deseas Eliminar el Poligono?")) {
+         window.parent.location.href = "DelPoligono?id_comuna=" + id_comuna + "&id_poligono=" + id_poligono;
+      }
+   }
+</script>
+
+</head>
+
+<body>
+<link rel="stylesheet" href="menu/menu.css">
+<script language="JavaScript" src="menu/menu.js"></script>
+<script language="JavaScript" src="menu/menu_tpl.js"></script>
+<script language="JavaScript" src="menu/menu_items.js"></script>
+<script language="JavaScript" src="popup.js"></script>
+<script language="JavaScript" src="funciones.js"></script>
+<script type="text/javascript" src="js/tabs/tabpane.js"></script>
+
+<table width="780" height="100%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+    <td height="78" valign="top">
+      <TABLE width="100%" height=59 border=0 align="center" cellpadding="0" cellspacing="0" bgcolor="#ffffff">
+        <TR>
+          <TD width=275 height="59" align=left class=user><img src="img/header2.jpg" width="275" height="60"></TD>
+          <TD width=505 align=left valign="bottom" background="img/bg-1.jpg" class=user>
+            <table width="90%"  border="0" align="center" cellpadding="0" cellspacing="2">
+              <tr>
+                <td>&nbsp;</td>
+              </tr>
+              <tr>
+                <td><div align="right" class="infoBL">Usuario: {hdr_nombre}&nbsp;&nbsp;| {hdr_fecha}</div></td>
+              </tr>
+            </table>
+          </TD>
+        </TR>
+      </TABLE>
+      <TABLE width="100%" height=19 border=0 align="center" cellpadding="0" cellspacing="0" bgcolor="#f1f0e9" style="border-top:1px solid #ABABAB; border-bottom:1px solid #ABABAB">
+        <TR>
+          <TD align=left bgcolor="#FFFFFF" class=user></TD>
+        </TR>
+      </TABLE>
+    </td>
+  </tr>
+  <tr height="400">
+    <td valign="top" bgcolor="#FFFFFF">
+      <table border=0 width="100%" class='ContentTitle'>
+        <tr>
+          <td width="53%" height="20" class='HeaderTitle'>Zonas de Despacho por Comuna: {comuna}</td>
+          <td width="47%" class='HeaderTitle'>
+            <div align="right"><a href="ViewPoligonoNewForm?id_comuna={id_comuna}">Nuevo Poligono</a></div>
+          </td>
+        </tr>
+      </table>
+	  <br>
+      <table width="100%" border="0" cellspacing="2" cellpadding="2">
+        <tr valign="top">
+          <td width="71%">
+            <center><font color="red">{mensaje1}</font></center>
+            <table width="95%" align="center" border="0">
+              <tr>
+                <td>
+                  <div class="tab-page" id="modules-cpanel">
+                    <script type="text/javascript">
+                       var tabPane1 = new WebFXTabPane( document.getElementById( "modules-cpanel" ), true );
+                    </script>
+                    <div class="tab-page" id="modulo1">
+                      <h2 class="tab">Zonas</h2>
+                      <div align="left">
+                        <table width="95%" border="0" cellspacing="2" cellpadding="2">
+                          <tr valign="top">
+                            <td width="71%">
+                              <form name = "FormEdita" Method = "Post"><!--  action = "ModZonaxComuna" onsubmit="return validar_comuna(this);"  -->
+                                <input type = "hidden" name = "id_comuna" value = "{id_comuna}">
+                                <input type = "hidden" name = "url" value = "{url}">
+                                <br>
+                                <table width="688"  border="0" align="center" cellpadding="2" cellspacing="0" class="tabla2">
+                                  <tr>
+                                    <th width="70" align="center">Local</th>
+                                    <th width="70" align="center">Id de Zona</th>
+                                    <th width="285">Nombre de  Zona</th>
+                                  </tr>
+                                  <!-- BEGIN DYNAMIC: LST_ZONAS_COMUNA -->
+                                  <tr>
+                                    <td><div align="center">{nom_local}</div></td>
+                                    <td><div align="center">{id_zona}</div></td>
+                                    <td><div align="left">{descripcion}</div></td>
+                                  </tr>
+                                  <!-- END DYNAMIC: LST_ZONAS_COMUNA -->              
+                                </table>             
+                                <table align = "center">
+                                  <tr align = "center">
+                                    <td>
+                                      <!-- input type = "submit" value = "Grabar" name = "Grabar"-->
+                                      <input type = "button" value = "Volver" onClick="location.href='ViewListComunas'">
+                                    </td>
+                                  </tr>    
+                                </table>   
+                              </form>    
+                              <br>
+                              <p align="left"><br><br><br></p>
+                            </td>
+                          </tr>
+                        </table>
+                      </div>
+                    </div>
+                    <div class="tab-page" id="modulo1">
+                      <h2 class="tab">Poligonos</h2>
+                      <div align="left">
+                        <table width="95%" border="0" cellspacing="2" cellpadding="2">
+                          <tr valign="top">
+                            <td width="71%">
+                              <form name = "FormEdita" Method = "Post" action = "ModZonaxComuna" onsubmit="return validar_comuna(this);" >
+                                <input type = "hidden" name = "id_comuna" value = "{id_comuna}">
+                                <input type = "hidden" name = "url" value = "{url}">
+                                <br>
+                                <table width="688"  border="0" align="center" cellpadding="2" cellspacing="0" class="tabla2">
+                                  <tr>
+                                    <th width="80" align="center">Num. Poligono</th>
+                                    <th width="288" align="left">Descripción</th>
+                                    <th width="100" align="left">Local</th>
+                                    <th width="170" align="left">Zona</th>
+                                    <th width="50" align="right">Acciones</th>
+                                  </tr>
+                                  <!-- BEGIN DYNAMIC: LST_POLIGONOS_COMUNA -->
+                                  <tr>
+                                    <!-- input type = "hidden" name = "id_poligono_{i}" value = "{id_zona}"-->
+                                    <td><div align="center">{num_poligono}</div></td>
+                                    <td><div>{desc_poligono}</div></td>
+                                    <td><div>{nom_local}</div></td>
+                                    <td><div>{nom_zona}</div></td>
+                                    <td><div align="right"><a href="ViewEditarPoligono?id_poligono={id_poligono}"><img src="img/editicon.gif" alt="Editar" border="0"></a>&nbsp;<!-- a href="DelPoligono?id_comuna={id_comuna}&id_poligono={id_poligono}"--><img src="img/trash.gif" alt="Eliminar" border="0" onclick="javascript: EliminaPoligono({id_comuna}, {id_poligono});"><!-- /a-->&nbsp;</div></td>
+                                  </tr>
+                                  <!-- END DYNAMIC: LST_POLIGONOS_COMUNA -->              
+                                  </table>             
+                              </form>    
+                              <br>
+                              <p align="left"><br><br><br></p>
+                            </td>
+                          </tr>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+      <br>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <TABLE width="100%" height=19 border=0 align="center" cellpadding="0" cellspacing="0" bgcolor="#f1f0e9" style="border-top:1px solid #ABABAB; border-bottom:1px solid #ABABAB">
+        <TR>
+          <TD align=center bgcolor="#67b01a" class=infoBL>
+            <div align="center">Back Office Central - Jumbo.cl</div>
+          </TD>
+        </TR>
+      </TABLE>
+    </td>
+  </tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<link href="/FO_WebContent/css/estilos_jumbo_auto.css" rel="stylesheet" type="text/css" />
+<link type="text/css" rel="stylesheet" href="/FO_WebContent/css/estilostextos.css">
+<link type="text/css" rel="stylesheet" href="/FO_WebContent/css/paso2.css">
+<div id="cont_cuerpo_DP">
+	<div class="txt">Ind&iacute;canos d&oacute;nde quieres que enviemos tu compra para mostrarte las fechas y horarios que en este
+		momento se encuentran disponibles para despacho.</div>
+	<div class="cont_direccion">
+		<div class="fila_direccion"	style="width: 526px; background-color: #F7FAF4;">
+			<div class="cont_img_camion"></div>
+			<div class="radio_direccion">
+				<input name="tipodespacho" id="tipodespacho" type="radio" value="D"
+					onclick="javascript:getOfficesAvailable('RD');$j('#cont_pie_DP').show();" />
+			</div>
+			<div class=""><strong>En mi Domicilio:</strong> Recuerda cambiar tu direcci&oacute;n de verano antes de armar tu carro</div>
+			<div class="form_direccion"	style="padding-right: 7px;padding_left:100px; margin-top: 5px;margin-left: 20px">
+				<select name="direccion_despacho" id="direccion_despacho" {cdd_is_combobox_cd} class="form_direccion_2012" onchange="javascript:getOfficesAvailable('CD');">
+					<!-- BEGIN DYNAMIC: DIR_DESPACHOS -->
+					<option value="{id_direccion}"{selected}>{dir_calle} {dir_numero}, {dir_comuna}, {dir_region}</option>
+					<!-- END DYNAMIC: DIR_DESPACHOS -->
+				</select>
+			</div>
+			<div class="link_agregar_direccion"	style="padding-top: 10px !important; float: right; padding-right: 7px;">
+				<a href="UltComprasForm?opcion=1" target="_self" style="color: #1FA22E;">Agregar direcci&oacute;n</a>
+			</div>
+		</div>
+		<div class="fila_direccion"	style="width: 526px; background-color: #F7FAF4;">
+			<div class="cont_img_autojumbo" style=></div>
+			<div class="radio_direccion">
+				<input name="tipodespacho" id="tipodespacho" type="radio" value="R"	onclick="javascript:getOfficesAvailable('RR');cambiaDireccion();" />
+			</div>
+			<div class="txt_tit">Retiro en tu auto / Retiro en Tienda</div>
+			<div class="form_direccion"	style="padding-right: 7px; margin-top: 5px;">
+				<select name="retiro_local" id="retiro_local" {cdd_is_combobox_cr} class="form_direccion_2012"	onchange="javascript:cambiaDireccion();javascript:getOfficesAvailable('CR');$j('#cont_pie_DP').show();">
+					<option>Seleccione el local Jumbo para retirar tu pedido</option>
+					<!-- BEGIN DYNAMIC: LOCALES_RETIRO -->
+					<option value="{id_zona_retiro}">{nom_local}</option>
+					<!-- END DYNAMIC: LOCALES_RETIRO -->
+				</select>
+			</div>
+			</br>
+			<div class="nombre_form_2012" >
+				<h3	style="text-align:justify;;float: left; width: 400px; padding-top: 4px; color: #333; font-weight: bold; font-size: 16px;">
+					<font style="color: #666; font-weight: normal; font-size: 12px; line-height: normal;">
+						
+							<strong>&#8226;  Retiro en tu auto:</strong> Disponible en La Dehesa, Los Dominicos, La Reina y Vi&ntilde;a del Mar. Llevaremos tu pedido a tu auto en el <strong>estacionamiento</strong> del local Jumbo que hayas elegido.</br></br>
+							<strong>&#8226;  Retiro en Tienda:</strong> Disponible en La Serena, Puerto Montt y Temuco. Retira tu pedido en la zona habilitada <strong>dentro del Jumbo</strong> que hayas elegido.</br><strong>*Nuevo* La Florida</strong> 
+							
+						
+					</font>
+				</h3>
+			</div>
+			<div id="indicacion" class="link_agregar_direccion"	style="float: right; padding-right: 7px">
+				<a href="http://www.jumbo.cl/supermercado/click-auto/index.html" onclick="_gaq.push(['_trackEvent', 'Auto_Jumbo', 'Mis_Listas', 'link_Indicaciones']);" target="_blank" style="color: #1FA22E;">Ver indicaciones</a>
+			</div>
+		</div>
+		
+	</div>
+</div>
+
+
+<div id="cont_pie_DP">{calendario_despachos_disponibles}</div>
+
+<div class="cont_warning">
+	<strong>IMPORTANTE:</strong> La elecci&oacute;n de los horarios de
+	despacho se realizan al finalizar el pedido, por lo que estas ventanas
+	disponibles podr&iacute;an variar al t&eacute;rmino de tu compra.
+</div>
+<script type="text/javascript">
+	$j("#cont_pie_DP").hide();
+</script>

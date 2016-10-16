@@ -1,0 +1,187 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html><!-- InstanceBegin template="/Templates/fullbody.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="EXPIRES" CONTENT="Mon, 22 Jul 2002 11:12:01 GMT">
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>Jumbo.cl Back Office Central</title>
+<!-- InstanceEndEditable -->
+
+<!-- InstanceBeginEditable name="head" --><!-- InstanceEndEditable -->
+
+<link href="estilos.css" rel="stylesheet" type="text/css">
+<!--link href="../default.css" rel="stylesheet" type="text/css"-->
+<style type="text/css">
+<!--
+.style1 {color: #666666}
+-->
+</style>
+</head>
+
+<body>
+<link rel="stylesheet" href="menu/menu.css">
+<script language="JavaScript" src="menu/menu.js"></script>
+<script language="JavaScript" src="menu/menu_tpl.js"></script>
+<script language="JavaScript" src="menu/menu_items.js"></script>
+<script language="JavaScript" src="popup.js"></script>
+<script language="JavaScript" src="funciones.js"></script>
+<table width="780" height="100%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+    <td height="78" valign="top">
+	
+	<TABLE width="100%" height=59 border=0 align="center" cellpadding="0" cellspacing="0" bgcolor="#ffffff">
+	  <TR>
+		<TD width=275 height="59" align=left class=user><img src="img/header2.jpg" width="275" height="60"></TD>
+		<TD width=505 align=left valign="bottom" background="img/bg-1.jpg" class=user><table width="90%"  border="0" align="center" cellpadding="0" cellspacing="2">
+          <tr>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td><div align="right" class="infoBL">Usuario: {hdr_nombre}&nbsp;&nbsp;| {hdr_fecha}</div></td>
+          </tr>
+        </table></TD>
+	  </TR>
+	</TABLE>
+	<TABLE width="100%" height=19 border=0 align="center" cellpadding="0" cellspacing="0" bgcolor="#f1f0e9" style="border-top:1px solid #ABABAB; border-bottom:1px solid #ABABAB">
+	  <TR>
+		<TD align=left bgcolor="#FFFFFF" class=user></TD>
+		</TR>
+	</TABLE>
+
+	
+	</td>
+  </tr>
+  <tr height="400">
+    <td valign="top" bgcolor="#FFFFFF">
+      <table border=0 width="100%" class='ContentTitle'>
+        <tr>
+          <td width="53%" height="20" class='HeaderTitle'><!-- InstanceBeginEditable name="Titulo" -->
+				  Administraci&oacute;n de Perfiles <!-- InstanceEndEditable --></td>
+          <td width="47%" class='HeaderTitle'><!-- InstanceBeginEditable name="Botonera" -->
+            <div align="right"></div>
+          <!-- InstanceEndEditable --></td>
+        </tr>
+      </table>
+	  <br>
+      <table width="100%"  border="0" cellspacing="2" cellpadding="2">
+        <tr valign="top">
+          <td width="71%"><!-- InstanceBeginEditable name="Izquierda" -->
+          <script language="JavaScript" src="funciones.js"></script>
+          <script language="JavaScript">
+          	function actualiza(form){
+          		if( validar_obligatorio( form.per_nom, "El nombre es obligatorio" ) ) return false;
+          		if( form.per_nom.value.length==1 && form.nombre.value.indexOf(" ")>-1 ){
+          			alert("Debe ingresar un nombre de perfil válido");
+          			return false;
+          		}
+          		if( validar_obligatorio( form.per_des, "La descripción es obligatoria" ) ) return false;
+				if (validar_letranumero(form.per_nom, "Nombre solo permite letras y números")) return false;
+				if (validar_letranumero(form.per_des, "Descripción solo permite letras y números")) return false;		
+				
+				//llenar el atributo de los comandos seleccionados
+				var val_chk ="";
+				var cant_cmd = 0;
+				for(i=0; i<frmComandos.com_id.length; i++){
+					if(frmComandos.com_id[i].checked){
+						val_chk = val_chk + "," + frmComandos.com_id[i].value;
+						cant_cmd = cant_cmd +1;
+					}
+				}
+				val_chk = val_chk.substring(1,val_chk.length);
+				frmActPerfil.com_id.value = val_chk;
+				frmActPerfil.cant_cmd.value = cant_cmd;
+				//document.writeln('cant_cmd:'+cant_cmd+', frmActPerfil.com_id.value:'+frmActPerfil.com_id.value);
+				//alert('cant_cmd:'+cant_cmd+', frmActPerfil.com_id.value:'+frmActPerfil.com_id.value);
+				return true;
+          	}
+          </script>
+          <script type="text/javascript">
+			function checkUncheckAll(theElement) {
+     		var theForm = theElement.form, z = 0;
+	 		for(z=0; z<theForm.length;z++){
+      			if(theForm[z].type == 'checkbox' && theForm[z].name != 'checkall'){
+	  				theForm[z].checked = theElement.checked;
+	  			}
+     		}
+    		}
+</script>
+          <form name="frmActPerfil" method="post" action="ModPerfil" onsubmit="return actualiza(this);" >
+          <input type=hidden name=url value="ViewPerfilForm?per_cod={per_cod}">
+          <input type=hidden name=per_cod value="{per_cod}">
+          <input type=hidden name=com_id value="">
+          <input type=hidden name=cant_cmd value="">
+          <table width="76%"  border="0" align="center" cellpadding="2" cellspacing="2">
+            <tr>
+              <td width="17%">Id Perfil </td>
+              <td width="83%">{per_cod}</td>
+            </tr>
+            <tr>
+              <td>Nombre</td>
+              <td><input name="per_nom" type="text" value="{per_nom}" maxlength="50">
+              </td>
+            </tr>
+            <tr>
+              <td>Descripci&oacute;n</td>
+              <td><input name="per_des" type="text" value="{per_des}" size="50" maxlength="50"></td>
+            </tr>
+            <tr>
+              <td>&nbsp;</td>
+              <td><input type="submit" name="Button" value="Guardar" > 
+              <input type="button" name="Button" value="Cancelar" onclick="javascript:history.back();"></td>
+            </tr>
+          </table>
+          </form>
+			<div style="overflow:auto; width:750px; height:200px; align:center;">
+              <form method=post name=frmComandos>
+		      <table width="688"  border="0" align="center" cellpadding="2" cellspacing="0" class="tabla2">
+                <tr>
+                  <th width="131">Comando</th>
+                  <th width="483">Descripci&oacute;n</th>
+                  <th width="62">Seleccionar</th>
+                </tr>
+                <tr>
+                  <td>Seleccionar Todos</td>
+                  <td></td>
+                  <td><div align="center">
+                    <input name="checkall" type="checkbox" onclick="checkUncheckAll(this);">
+                  </div></td>
+                </tr>
+                <!-- BEGIN DYNAMIC: LST_CMDS -->
+                <tr>
+                  <td>{com_nom}</td>
+                  <td>{com_des} </td>
+                  <td><div align="center">
+                    <input name="com_id" type="checkbox" value="{com_id}" {com_chk}>
+                  </div></td>
+                </tr>
+                <!-- END DYNAMIC: LST_CMDS --> 
+              </table>
+              </form>
+              </div>
+		      <br>
+			<script>
+				document.frmActPerfil.per_nom.onkeypress = KeyIsTexto;
+				document.frmActPerfil.per_des.onkeypress = KeyIsTexto;
+			</script>
+	      <!-- InstanceEndEditable --></td>
+        </tr>
+      </table>
+      </td>
+  </tr>
+  <tr>
+    <td>
+	<TABLE width="100%" height=19 border=0 align="center" cellpadding="0" cellspacing="0" bgcolor="#f1f0e9" style="border-top:1px solid #ABABAB; border-bottom:1px solid #ABABAB">
+	  <TR>
+		<TD align=center bgcolor="#67b01a" class=infoBL><div align="center">Back Office Central - Jumbo.cl</div></TD>
+		</TR>
+	</TABLE>
+
+	
+	</td>
+  </tr>
+</table>
+</body>
+<!-- InstanceEnd --></html>

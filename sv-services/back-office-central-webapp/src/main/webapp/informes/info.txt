@@ -1,0 +1,12 @@
+##seguir orden informe y luego prefijo
+informe=base masiva de registrados
+prefijo=base
+
+informe=clientes nuevos
+prefijo=nuevos
+
+informe=clientes frecuentes
+prefijo=frecuentes
+
+informe=clientes fugados
+prefijo=fugados

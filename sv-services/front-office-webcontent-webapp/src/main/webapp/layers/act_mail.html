@@ -1,0 +1,206 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><!-- InstanceBegin template="/Templates/layer.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<meta http-equiv="CACHE-CONTROL" content="NO-CACHE" />
+<meta http-equiv="PRAGMA" content="NO-CACHE" />
+<meta http-equiv="EXPIRES" content="Mon, 22 Jul 2002 11:12:01 GMT" />
+<title>Jumbo.cl</title>
+<style type="text/css">
+<!--
+body {
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+}
+
+.lectura1 {
+	font-family: "Trebuchet MS";
+	font-size: 12px;
+	font-style: normal;
+	line-height: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	color: #333333;
+	text-decoration: none;
+}
+-->
+</style>
+<script type="text/JavaScript">
+<!--
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+//-->
+</script>
+<script type="text/JavaScript">
+<!--
+function MM_swapImgRestore() { //v3.0
+  var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
+}
+
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+
+function MM_swapImage() { //v3.0
+  var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3)
+   if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
+}
+//-->
+</script>
+<script type="text/javascript" src="/FO_WebContent/js/funciones.js"></script>
+<script type="text/javascript">
+	function validarEmailDominio(valor,dominio){
+		validRegExp = /^[^@]+@[^@]+.[a-z]{2,}$/i;
+		strEmail = valor.value + '@' + dominio.value;
+	
+		if (strEmail.search(validRegExp) == -1) {
+	    	alert("La direccion de email es incorrecta o está mal escrita. Ingrésala nuevamente");
+		    valor.focus();
+		    return (false);
+		}else
+		return (true);
+	}
+
+	function valida_act_datos(){
+		var f1 = document.actdatos;
+		if ((!f1.email1.value) || (!f1.dominio1.value)){
+			alert('Debes ingresar el campo e-mail');
+			f1.email1.focus();
+			return;
+		}
+		if(!validarEmailDominio(f1.email1,f1.dominio1)){
+			return;
+		}
+		if ((!f1.email2.value) || (!f1.dominio2.value)){
+			alert('Por favor ingresar tu dirección de email en el campo Confirmar E-mail');
+			f1.email2.focus();
+			return;
+		}
+		if(!validarEmailDominio(f1.email2,f1.dominio2)){
+			return;
+		}
+		if ((f1.email1.value != f1.email2.value) || (f1.dominio1.value != f1.dominio2.value)) {
+			alert("El e-mail y su confirmación deben ser iguales");
+			return;
+		}
+		if ((f1.fon_num_2.value != '') && (f1.fon_num_2.value.lenght < 7)){
+			alert('Ingrese correctamente su teléfono celular');
+			f1.fon_num_2.focus();
+			return;
+		}		
+        f1.submit();
+	}
+</script>
+<link href="/FO_WebContent/css/estilostextos.css" rel="stylesheet" type="text/css" />
+</head>
+<body onload="MM_preloadImages('/FO_IMGS/img/estructura/bt_irB.gif','/FO_IMGS/img/estructura/bt_cancelarB.gif')">
+<form id="actdatos" name="actdatos" method="post" action="../ChangeDatosPaso3">	
+<table width="350" border="0" cellpadding="0" cellspacing="0">
+	<tr>
+    	<td rowspan="2" valign="top" style="background: url(/FO_IMGS/img/estructura/layers/bordeIzq.gif);">&nbsp;</td>
+        <td height="31" align="center" valign="top" bgcolor="#FFFFFF"><!-- InstanceBeginEditable name="titulo" -->
+        	<span class="titulosLayers">Actualizar Datos </span>
+		</td>
+        <td width="8" rowspan="2" valign="top" style="background: url(/FO_IMGS/img/estructura/layers/bordeDer.gif);">&nbsp;</td>
+	</tr>
+    <tr>
+	    <td width="350" height="124" valign="top" bgcolor="#FFFFFF">
+			<table width="97%" border="0" align="center" cellpadding="0" cellspacing="0">
+				<tr>
+                	<td align="left" valign="top" bgcolor="#FFFFFF"><!-- InstanceBeginEditable name="contenido" -->
+                    	<div align="center"><span class="lectura1">Ingresa tus datos</span>
+                        </div>
+                        <div align="center">
+                        	<table border="0" cellspacing="0" cellpadding="0">
+                            	<tr>
+                                	<td width="6" height="6"><img src="/FO_IMGS/img/estructura/tablasupizq.gif" width="6" height="6" alt=""/></td>
+                                    <td height="6" style="background: url(/FO_IMGS/img/estructura/tablasup.gif);"><img src="/FO_IMGS/img/estructura/tablasup.gif" width="1" height="6" alt=""/></td>
+                                    <td width="6" height="6"><img src="/FO_IMGS/img/estructura/tablasupder.gif" width="6" height="6" alt=""/></td>
+                                </tr>
+                                <tr>
+                                    <td width="6" height="44" style="background: url(/FO_IMGS/img/estructura/tablaizq.gif);">
+										<img src="/FO_IMGS/img/estructura/tablaizq.gif" width="6" height="1" alt=""/>
+									</td>
+                                    <td valign="middle" width="100%" height="100%">
+										<table width="100%" border="0" cellspacing="0" cellpadding="2">
+	                                    	<tr>
+    	                                 		<td valign="middle" align="right">
+													<span class="formularios">* E-mail:</span>
+												</td>
+												<td valign="middle">
+													<input name="email1" type="text" class="campo" id="email1" size="15" maxlength="25" />
+													<span class="formularios">@</span>
+                                                 	<input name="dominio1" type="text" class="campo" id="dominio1" size="10" maxlength="25" />
+                                              	</td>
+                                            </tr>
+	                                    	<tr>
+    	                                 		<td valign="middle" align="right">
+													<span class="formularios">* Confirmar E-mail:</span>
+												</td>
+												<td valign="middle">
+													<input name="email2" type="text" class="campo" id="email2" size="15" maxlength="25" />
+													<span class="formularios">@</span>
+                                                 	<input name="dominio2" type="text" class="campo" id="dominio2" size="10" maxlength="25" />
+                                              	</td>
+                                            </tr>
+	                                    	<tr>
+    	                                 		<td valign="middle" align="right">
+													<span class="formularios">Teléfono</span>
+													<span class="footer"><em>(celular)</em></span>
+													<span class="formularios">:</span>	
+												</td>
+												<td>		
+													<select name="fon_cod_2" class="campo" id="fon_cod_2">
+														<option value="6" >6</option>
+														<option value="7" >7</option>
+														<option value="8" >8</option>
+														<option value="9" selected="selected">9</option>
+													</select>
+													<input name="fon_num_2" type="text" class="campo" id="fon_num_2" size="7" maxlength="7" onkeypress="javascript:return bloqueaCaracteres(event,/[0-9\b]/);"/>
+                                              	</td>
+                                            </tr>
+                                        </table>
+										<div align="right">
+											<a href="bienvenida.html" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image18','','/FO_IMGS/img/estructura/bt_entrarB.gif',1)"></a>
+										</div>
+									</td>
+                                    <td width="10" style="background: url(/FO_IMGS/img/estructura/tablader.gif);"><img src="/FO_IMGS/img/estructura/tablader.gif" width="6" height="1" alt=""/></td>
+								</tr>
+                                <tr>
+                                	<td width="6" height="6"><img src="/FO_IMGS/img/estructura/tablainfizq.gif" width="6" height="6" alt=""/></td>
+                                    <td height="6" style="background: url(/FO_IMGS/img/estructura/tablainf.gif);"><img src="/FO_IMGS/img/estructura/tablainf.gif" width="1" height="6" alt=""/></td>
+                                    <td width="6" height="6"><img src="/FO_IMGS/img/estructura/tablainfder.gif" width="6" height="6" alt=""/></td>
+                                </tr>
+							</table>
+                            <br />
+							<a href="javascript:valida_act_datos();" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Guardar','','/FO_IMGS/img/estructura/bt_guardarB.gif',1)"><img src="/FO_IMGS/img/estructura/bt_guardar.gif" name="Guardar" width="50" height="21" border="0" id="Guardar" alt="Guardar" title="Guardar"/></a>
+                            <a href="javascript:top.hideActualizaDatosveLayer();" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image35','','/FO_IMGS/img/estructura/bt_cancelarB.gif',1)"><img src="/FO_IMGS/img/estructura/bt_cancelar.gif" name="Image35" width="50" height="21" border="0" id="Image35" alt="Cancelar" title="Cancelar"/></a>
+							<br />
+						</div>
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+    <tr>
+    	<td width="8px" height="7px"><img src="/FO_IMGS/img/estructura/layers/esquinaInfIzq.gif" width="8px" height="7px" alt=""/></td>
+        <td height="7px" style="background: url(/FO_IMGS/img/estructura/layers/abajo.gif);"><img src="/FO_IMGS/img/estructura/layers/abajo.gif" width="1px" height="7px" alt=""/></td>
+        <td width="8px" height="7px"><img src="/FO_IMGS/img/estructura/layers/esquinaInfDer.gif" width="8px" height="7px" alt=""/></td>
+    </tr>
+</table>
+</form>
+<script type="text/javascript">
+<!-- document.actdatos.email1.focus();-->
+</script>
+</body>
+</html>

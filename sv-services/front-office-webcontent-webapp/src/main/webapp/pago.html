@@ -1,0 +1,510 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=8" />
+		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+		<meta http-equiv="CACHE-CONTROL" content="NO-CACHE" />
+		<meta http-equiv="PRAGMA" content="NO-CACHE" />
+		<meta http-equiv="EXPIRES" content="Mon, 22 Jul 2002 11:12:01 GMT" />
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>Jumbo.cl - Pago</title>
+		<link rel="shortcut icon" href="/FO_IMGS/img/favicon.ico" />
+		<link type="text/css" rel="stylesheet" href="/FO_WebContent/css/despliegue_productos.css"/>
+		<link type="text/css" rel="stylesheet" href="/FO_WebContent/css/flujo_de_compras.css"/>
+		<link type="text/css" rel="stylesheet" href="/FO_WebContent/css/3niveles.css"/>
+		<link type="text/css" rel="stylesheet" href="/FO_WebContent/css/factura.css" />
+		<link type="text/css" rel="stylesheet" href="/FO_WebContent/css/estilostextos.css"/>
+		<link type="text/css" rel="stylesheet" href="/FO_WebContent/css/light_box.css" />
+		<link type="text/css" rel="stylesheet" href="/FO_WebContent/css/thickbox.css" media="screen" />
+		<style type="text/css">
+			.cont_pago_info {
+			font-family: Arial, Helvetica, sans-serif;
+			font-size: 10px;
+			color: #999;
+			width: 235px;
+			float: left;
+			height: auto;
+			padding-left: 6px;
+			/* padding-top: 5px; */
+		}
+
+	</style>
+				
+		<script type="text/javascript" src="/FO_WebContent/js/chaordic.js"></script>
+		<script type="text/javascript" src="/FO_WebContent/js/jquery-1.6.2.min.js"></script>
+		<script type="text/javascript" src="/FO_WebContent/js/aphanumeric.js"></script>
+		<script type="text/javascript" src="/FO_WebContent/js/codigosTelefonicos.js"></script>
+		<script type="text/javascript" src="/FO_WebContent/js/jquery.min.js"></script>
+		<script type="text/javascript" src="/FO_WebContent/js/pago.js"></script>
+		<script type="text/javascript">
+			jQuery().ready(
+				function() {
+
+					if( {error} == 1 ) {
+						alert( "{mensaje_error}" );
+					} else if( {error} == 2 ) {
+						alert( "{mensaje_error}" );
+						document.location.replace("CategoryDisplay");
+					}
+		    
+					var msg_cupon= $j("#msg_cupon").val();
+					if(msg_cupon != ""){
+					  alert("El cupon no esta asociado");
+					}
+					$j("#continuar_compra_pago_cal").click(
+						function(e) {
+							e.preventDefault();
+							var jpic = $j("form[name='t_picking'] > input[name='jpicking']").val();
+							var jpre = $j("form[name='t_picking'] > input[name='jprecio']").val();
+							var jdes = $j("form[name='t_picking'] > input[name='jdespacho']").val();
+	    
+							if ( jpic == "" || jpre == "" || jdes == "" ) {
+								alert( "Debes seleccionar un nuevo horario de despacho." );
+								return false;
+							}
+							else{
+								$j.ajax({type:"POST",url:"GuardaDatosDespacho",beforeSend:function(r){r.setRequestHeader("MyFOReferer", "Pago");},data:$j("form[name='t_picking']").serialize(),
+								        success: function(response) {
+								        	var presp = eval('('+response+')');
+								            var status = parseInt(presp.status);
+								            switch(status){
+														case 200:
+															window.location.reload(true);
+															$j("form[name='frmPedido'] > input[name='jpicking']").val($j("form[name='t_picking'] > input[name='jpicking']").val());
+															$j("form[name='frmPedido'] > input[name='jprecio']").val($j("form[name='t_picking'] > input[name='jprecio']").val());
+															$j("form[name='frmPedido'] > input[name='jdespacho']").val($j("form[name='t_picking'] > input[name='jdespacho']").val());
+															$j("form[name='frmPedido'] > input[name='jfecha']").val($j("form[name='t_picking'] > input[name='jfecha']").val());
+															$j("form[name='frmPedido'] > input[name='tipo_despacho']").val($j("form[name='t_picking'] > input[name='tipo_despacho']").val());
+															$j("form[name='frmPedido'] > input[name='horas_economico']").val($j("form[name='t_picking'] > input[name='horas_economico']").val());
+															break;
+														case 500:
+															alert(response.msg);
+															window.location.href="/FO/Despacho";
+															break;
+														default:
+															window.location.href="/FO/LogonForm";
+													} 
+								        },
+								        error: function(msg){window.location.href="Despacho";}
+								    });									  
+							}		
+						}
+					);
+				}
+			);
+		
+		</script>
+		
+		<script type="text/javascript" src="/FO_WebContent/js/funciones.js"></script>
+		<script type="text/javascript" src="/FO_WebContent/js/funciones_teclado.js"></script>
+		
+		<script type="text/javascript" src="/FO_WebContent/js/checkrut.js"></script>
+		<script type="text/javascript" src="/FO_WebContent/js/prototype.js"></script>
+		<script type="text/javascript" src="/FO_WebContent/js/thickbox.js"></script>
+		<script type="text/javascript" src="/FO_WebContent/js/checkout.js"></script>
+
+		<script src="//static.chaordicsystems.com/static/loader.js" data-initialize="true" data-apikey="jumbochile"> </script>
+		<script type="text/javascript">
+			var PASO_ACTUAL = 5; //PAGO
+			
+			function carga(laAction) {
+			  document.getElementById('redirect').action = laAction;
+			  tag_evento_google("OK TBK Luego de boton pagar",document.frmPedido.rut_cli.value);
+			  document.getElementById('redirect').submit();
+			}
+			
+			function cargaErr(laAction) {
+			  tag_evento_google('Error luego de boton pagar' + laAction,document.frmPedido.rut_cli.value);
+			  window.location = laAction;
+			}
+		
+			function cargaMas(laAction, tipoAutorizacion, numeroTarjeta, rutCliente, usoClave, glosaRespuesta, codigoRespuesta) {
+			  document.getElementById('redirect').action = laAction;
+			  if ( "null" != tipoAutorizacion ) document.getElementById('idTipoAutorizacion').value = tipoAutorizacion;
+			  if ( "null" != numeroTarjeta ) document.getElementById('idNumeroTarjeta').value = numeroTarjeta;
+			  if ( "null" != rutCliente ) document.getElementById('idRutCliente').value = rutCliente;
+			  if ( "null" != usoClave ) document.getElementById('idUsoClave').value = usoClave;
+			  if ( "null" != glosaRespuesta ) document.getElementById('idGlosaRespuesta').value = glosaRespuesta;
+			  if ( "null" != codigoRespuesta ) document.getElementById('idCodigoRespuesta').value = codigoRespuesta;
+			  tag_evento_google("OK CAT Luego de boton pagar",document.frmPedido.rut_cli.value);
+			  document.getElementById('redirect').submit();
+			}
+		
+		</script>
+		<script type="text/javascript">
+			jQuery(document).ready(function(){
+					jQuery("#fon_cod_1").append(getAllCodPhones());
+					initialize("fon_cod_1","fac_fono");
+					onChange("fon_cod_1","fac_fono","fon_num_1_info");
+		});	
+		</script>
+</head>
+<body>
+	<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-PWPZN" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+	<script>
+		var mx_user='{ta_mx_user}';
+		var mx_loc='{ta_mx_loc}';
+		var mx_content = '/Compra/Pago';
+		var mx_criterio = '{mx_criterio}';
+		var mx_despacho = '{mx_despacho}';
+		(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+		new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+		j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+		})(window,document,'script','dataLayer','GTM-PWPZN');
+	</script>
+
+	<form id="redirect">
+	    <input type="hidden" name="tipoAutorizacion" id="idTipoAutorizacion"/>
+	    <input type="hidden" name="numeroTarjeta" id="idNumeroTarjeta"/>
+	    <input type="hidden" name="rutCliente" id="idRutCliente"/>
+	    <input type="hidden" name="usoClave" id="idUsoClave"/>
+	    <input type="hidden" name="glosaRespuesta" id="idGlosaRespuesta"/>
+	    <input type="hidden" name="codigoRespuesta" id="idCodigoRespuesta"/>
+	</form>
+	
+	<form name="frmPedido" id="frmPedido" method="post" action="OrderProcess">
+		<input type="hidden" name="total_compra" value="0" />
+	    <input type="hidden" name="num_tja" value="" />
+	    <input type="hidden" name="num_cuotas" value="" />
+		<input type="hidden" name="jpicking" id="jpicking" value="{jpicking}" />
+	    <input type="hidden" name="jprecio" value="{jprecio}" />
+	    <input type="hidden" name="jdespacho" id="jdespacho" value="{jdespacho}" />
+	    <input type="hidden" name="jfecha" value="{jfecha}" />
+	    <input type="hidden" name="tipo_despacho" id="tipo_despacho" value="{tdespacho}" />
+	    <input type="hidden" name="horas_economico" value="{hh_economico}" />
+	    <input type="hidden" name="zona_despacho" value="{zona_despacho}" />
+	    <input type="hidden" name="cant_prod" value="" />
+	    <input type="hidden" name="t_auxano" value="{t_auxano}" />
+	    <input type="hidden" name="t_auxmes" value="{t_auxmes}" />
+	    <input type="hidden" name="t_auxcuotas" value="{t_auxcuotas}" />
+	    <input type="hidden" name="pol_sustitucion" value="1--S&iacute;" />
+	    <input type="hidden" name="rut_cli" value="{rut_cli}" />
+	    <input type="hidden" name="dv_cli" value="{dv_cli}" />
+	    <input type="hidden" name="empleado" value="{empleado}" />
+	    <input type="hidden" name="flag_valcta" value="0" />
+	    <input type="hidden" name="cod_valcta" value="0" />
+	    <input type="hidden" name="tipo_paris" value="" />
+	    <input type="hidden" name="sin_gente_txt" value="{sin_gente_txt}" />
+	    <input type="hidden" name="sin_gente_rut" value="{sin_gente_rut}" />
+	    <input type="hidden" name="sin_gente_dv" value="{sin_gente_dv}" />
+	    <input type="hidden" name="retira_txt" value="{retira_txt}" />
+	    <input type="hidden" name="observacion" value="{observacion}" />
+    
+		<div style="width:960px; height:auto; margin-left:auto; margin-right:auto; float:none; clear:both;">
+			<div class="menu_superior_flujo_2012">
+    			<div class="logo_jumbo_2011">
+				  <a title="JUMBO" onfocus="blur();" href="/FO/LogonForm">
+				    <img src="/FO_IMGS/images/header/logo_wht_bg.jpg" width="150" height="111" alt="JUMBO">
+				  </a>
+  				</div>
+
+		    	<div class="menu_arriba_2011">
+		    		<div class="linea_menu_arriba_2011">
+		      			<!-- BEGIN DYNAMIC: MOSTRAR_LOGUEADO -->
+		      			<div class="menu_arriba_necesitas_ayuda"><a href="/FO/UltComprasForm?opcion=2" target="_parent">Mis Listas</a></div>
+		      			<div class="menu_arriba_necesitas_ayuda"><a href="/FO/UltComprasForm?opcion=1" target="_parent">Mi Cuenta</a></div>
+		      			<!-- END DYNAMIC: MOSTRAR_LOGUEADO -->
+		      			<!-- BEGIN DYNAMIC: MOSTRAR_NO_LOGUEADO -->
+		      			<div class="menu_arriba_necesitas_ayuda"><a href="http://www.jumbo.cl/supermercado/preguntas/preguntas.html" target="_blank">Preguntas Frecuentes</a></div>
+		      			<!-- END DYNAMIC: MOSTRAR_NO_LOGUEADO -->
+		      			<div class="menu_arriba_necesitas_ayuda">Necesitas Ayuda? <span style="color:#1FA22E"> 600 400 3000</span></div>
+		    		</div>
+		    		<div class="linea_menu_arriba_2011">
+		      			<!-- BEGIN DYNAMIC: MOSTRAR_LOGUEADO -->
+		      			<div class="menu_arriba_cerrar_sesion"><a href="Logoff">Cerrar Sesi&oacute;n</a><input type="hidden" name="comuna_user_id" id="comuna_user_id" value="{comuna_usuario_id}"/></div>
+		      			<!-- END DYNAMIC: MOSTRAR_LOGUEADO -->
+		      			<!-- BEGIN DYNAMIC: MOSTRAR_LOGUEADO_INVITADO -->
+						<div class="menu_arriba_cerrar_sesion"><a href="Logoff">Cerrar Sesi&oacute;n</a><input type="hidden" name="comuna_user_id" id="comuna_user_id" value="{comuna_usuario_id}"/></div>
+		    			<!-- END DYNAMIC: MOSTRAR_LOGUEADO_INVITADO -->
+		      			<!-- BEGIN DYNAMIC: MOSTRAR_NO_LOGUEADO -->
+		      			<!--div class="menu_arriba_cerrar_sesion"><a href="javascript:justLogin();">Ingresar</a></div>
+		      			<div class="menu_arriba_cerrar_sesion"><a href="javascript:showRegistro();">Registrar</a></div-->
+		      			<div class="menu_arriba_cerrar_sesion" id="comuna_user_str">{comuna_usuario}<input type="hidden" name="comuna_user_id" id="comuna_user_id" value="{comuna_usuario_id}"/><!--a href="javascript:showRegionesCobertura();">[Cambiar]</a--></div>
+		      			<!-- END DYNAMIC: MOSTRAR_NO_LOGUEADO -->
+		      			<div class="menu_arriba_nombre_cliente">{nombre_cliente}</div>
+		    		</div>
+					<div class="select_paso_pago"><img src="/FO_IMGS/img/pago_pasos.gif" width="960" height="49" /></div>
+		    	</div>
+  			</div>
+  			<div class="cont_main_central_flujo">
+  				<div class="contenedor_carro_2012" id="cuerpo3" style="visibility:block;">
+    				<div class="titulo_direccion_despacho">Cup&oacute;n de Descuento</div>
+		    		<div class="fila_cupon_dcto_2012" style="display:{check_1};">
+		      			<div class="txt_codigo_dcto_2012">Ingresa C&oacute;digo de Cup&oacute;n</div>
+		      			<div class="nombre_form__dcto_2012">
+		       				<label for="textfield"></label>
+		       				<input name="cupon" type="text" class="form_direccion_2012" id="cupon" size="40" maxlength="30"/>
+		       				<input name="cupones" type="hidden" id="cupones" />
+		      			</div>
+		      			<div class="cupon_dcto_pago"><a href="javascript:add_cupon();"><img src="/FO_IMGS/img/bt_aplicar.gif" width="88" height="33" /></a></div>
+		      			<table id="t_cupones" width="100%" align="left"  border="0" cellpadding="0" cellspacing="0">
+		                	<tr>
+		                		<td width="20%" height="1"></td>
+		                    	<td width="25%"></td>
+		                        <td width="55%" align="left"></td>
+		                    </tr>
+		                </table>
+		    		</div>
+					<div id="btnBorrar" style="text-align: center; width: 100%; display:{check_2};" class="txt_codigo_dcto_2012">
+						{tipoCupon}
+					</div>
+					<div id="btnBorrar" style="text-align: center; width: 100%; display:{check_2};" class="cupon_dcto_pago">
+						<a href="Despacho"><img src="/FO_IMGS/img/bt_anular.gif" width="88" height="33" /></a>
+					</div>
+					<input name="msg_cupon" type="hidden" id="msg_cupon" value="{msg_cupon}" />
+    				<br/>
+    				<div class="contenedor_direccion_2012">
+      					<div class="titulo_direccion_despacho">Elige tu medio de pago</div>
+		      			<div class="fila_direccion_2012">
+		        			<div class="modulo_radio_carro_2012">
+		          				<input name="tipo_documento" type="radio" value="B" id="tipo_documento" checked="checked" onclick="javascript:$j('#contenedor_factura').hide();"/>
+		        			</div>
+		        			<div class="nombre_form_2012">Boleta</div>
+		        			<div class="modulo_radio_carro_2012" style="margin-left:125px;">
+		          				<input name="tipo_documento" type="radio" value="F" id="tipo_documento" onclick="javascript:$j('#contenedor_factura').show();"/>
+		        			</div>
+		        			<div class="nombre_form_2012">Factura</div>
+		        			
+		        			<div id="contenedor_factura" class="contenedor_factura" style="position: relative;display:none;">
+		  						<div class="tit_factura">Datos Facturaci&oacute;n</div>
+		    					<div class="cont_campos">
+		    						<div class="tit_campos">RUT</div>
+		    							<div class="cont_txtfields">
+		    								<input name="fac_rut" type="text" class="campo" size="9" maxlength="10" value="">&nbsp;-&nbsp;<input name="fac_dv" type="text" class="campo" size="1" maxlength="1" value="">
+		    							</div>
+		    						</div>
+		    						<div class="cont_campos">
+		    							<div class="tit_campos">Raz&oacute;n Social</div>
+		    							<div class="cont_txtfields"><input name="fac_razon" type="text" class="campo" size="18" maxlength="100" value=""></div>
+		    						</div>
+		    						<div class="cont_campos">
+		    							<div class="tit_campos">Giro</div>
+		    							<div class="cont_txtfields"><input name="fac_giro" type="text" class="campo" size="18" maxlength="50" value=""></div>
+		    						</div>
+		    						<div class="cont_campos">
+		    							<div class="tit_campos">Direcci&oacute;n</div>
+		    							<div class="cont_txtfields"><input name="fac_direccion" type="text" class="campo" size="18" maxlength="50" value=""></div>
+		    						</div>
+		    						<div class="cont_campos">
+		    							<div class="tit_campos">Tel&eacute;fono</div>
+		    							<div class="cont_txtfields">
+		        							<select name="fac_cod_1" class="cod_telefono" id="fon_cod_1"></select> 
+		        						<!-- 	<select name="fon_cod_1" class="cod_telefono" id="fon_cod_1"> </select>-->
+											
+											<input name="fac_fono" id="fac_fono" type="text" size="9" class="campo"  />
+		    							</div>
+		    							 <div class="cont_pago_info" id="fon_num_1_info"></div>
+		    						</div>
+		     						<div class="cont_campos">
+		    							<div class="tit_campos">Comuna</div>
+		    							<div class="cont_txtfields"><input name="fac_comuna" type="text" class="campo" size="18" maxlength="100" value=""></div>
+		    						</div>
+		     						<div class="cont_campos">
+		    							<div class="tit_campos">Ciudad</div>
+		    							<div class="cont_txtfields"><input name="fac_ciudad" type="text" class="campo" size="18" maxlength="100" value=""></div>
+		    						</div>
+								</div>
+		        			</div>
+      					</div>
+      			
+    					<div class="fila_direccion_2012" id="totales"> 			
+							<!-- BEGIN DYNAMIC: TOTALIZADOR_TMAS -->
+	  						<input type="hidden" name="totaltmas" id="totaltmas" value="{total}">
+	    					<input type="hidden" name="costodespachotmas" id="costodespachotmas" value="{costo_despacho}">
+	    					<div class="modulo_tmas_pago">
+						    	<div class="fila_tmas_pago">
+									<div class="modulo_radio_carro_2012">
+						  				<input name="forma_pago" type="radio" value="1" id="ronline" checked="checked"/>
+									</div>
+									<div class="nombre_form_pago">
+						            	<div>Tarjeta Cencosud</div>
+						                <div style="margin-top:5px;">Tarjeta Cencosud Visa</div>
+						                <div style="margin-top:5px;">Tarjeta Cencosud Mastercard</div>
+						            </div>
+									<div style="width: 120px; float:left;"><img src="/FO_IMGS/img/tarjeta_cencosud_mas.gif" width="121" height="19" /></div>
+						      	</div>
+							    <div class="fila_tmas_pago">
+							    	<div class="modulo_radio_carro_2012"></div>
+							    	<div class="col_pago_uno_2012">Subtotal a pagar:</div>
+							    	<div class="col_pago_dos_2012">{subtotal}</div>
+							    </div>
+							    <div class="fila_tmas_pago">
+							    	<div class="modulo_radio_carro_2012"></div>
+							    	<div class="col_pago_uno_2012">Costo de Despacho:</div>
+							    	<div class="col_pago_dos_2012">{costo_despacho}</div>
+							    </div>
+    						<!-- END DYNAMIC: TOTALIZADOR_TMAS -->
+    
+								<div class="fila_detalle_dcto">
+						            <div class="modulo_radio_carro_2012"></div>
+								    <div class="col_pago_uno_2012_detalle_dcto">
+						                <div style="float:left; width:120px; text-align:right; padding-bottom:2px; font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#666;">Descuentos:</div>
+						               	<div class="ver_detalle_dcto"><a href="javascript:DescuentosPromoTMAS();" class="ver_detalle_dcto">ver detalles</a></div>
+						            </div>
+						            <!-- BEGIN DYNAMIC: TOTALIZADOR_TMAS -->
+								    <div class="col_pago_dos_2012">{total_desc_sf}</div>
+								    <!-- END DYNAMIC: TOTALIZADOR_TMAS -->
+						            <div id="PromocionesTMAS" class="cont_detalles_dctos" style="width: 360px; height: 100px; overflow: auto; display: none;">      
+						                 <table width="100%">
+						                <!-- BEGIN DYNAMIC: PROMOCIONES_TMAS -->
+						                	<tr style="font-size:11px; color:#1FA22E;"><td>{promo_descripcion}</td><td>{promo_descuento}</td></tr>	
+						                	<tr><td>&nbsp;</td></tr>			      
+								        <!-- END DYNAMIC: PROMOCIONES_TMAS -->
+								        </table>
+						            </div>
+								</div>
+
+								<!-- BEGIN DYNAMIC: TOTALIZADOR_TMAS -->
+								    <div class="fila_total_tmas">
+								    	<div class="modulo_radio_carro_2012"></div>
+								    	<div class="col_pago_uno_2012_red">Total a pagar:</div>
+								    	<div class="col_pago_dos_2012_red">{total}</div>
+								    </div>
+							    <!-- END DYNAMIC: TOTALIZADOR_TMAS -->
+							    <div style="float:left; padding-top: 10px; padding-left: 28px; color: #999999; font-family: Arial,Helvetica,sans-serif; font-size: 10px;">Si a&uacute;n no te has cambiado, puedes usar tu Tarjeta M&aacute;s</div>
+							    <div class="cont_terminos_cond">
+							      <!-- BEGIN DYNAMIC: MOSTRAR_NO_LOGUEADO -->
+						  			<div style="float:left;"><input type="checkbox" name="terminos" id="terminos"></div>
+						    		<div class="cont_acepto_info" style="padding-top:0px;">Acepto <a href="http://www.jumbo.cl/supermercado/terminos/terminos.html" target="_blank">T&eacute;rminos y Condiciones</a></div>     
+						  		  <!-- END DYNAMIC: MOSTRAR_NO_LOGUEADO -->
+						  		  <!-- BEGIN DYNAMIC: MOSTRAR_LOGUEADO -->
+						    		<div class="cont_acepto_info" style="padding-top:0px;"><a href="http://www.jumbo.cl/supermercado/terminos/terminos.html" target="_blank">T&eacute;rminos y Condiciones</a></div>     
+						          <!-- END DYNAMIC: MOSTRAR_LOGUEADO -->
+						  		</div>
+    						</div>
+   
+							<!-- BEGIN DYNAMIC: TOTALIZADOR_WEBPAY -->
+							<input type="hidden" name="totalwebpay" id="totalwebpay" value="{total}">
+							<input type="hidden" name="costodespachowebpay" id="costodespachowebpay" value="{costo_despacho}">
+							<div class="modulo_tmas_pago">
+						  		<div class="fila_tmas_pago">
+						    		<div class="modulo_radio_carro_2012">
+						    			<input name="forma_pago" type="radio" value="2" id="tbancaria"/>
+						    		</div>
+						    		<div class="nombre_form_pago">Tarjeta Bancaria</div>
+						    		<div class="nombre_form_pago"><img src="/FO_IMGS/img/webpay_pago.gif" width="172" height="19" /></div>
+						  		</div>
+						    	<div class="fila_tmas_pago">
+						    		<div class="modulo_radio_carro_2012"></div>
+						    		<div class="col_pago_uno_2012">Subtotal a pagar:</div>
+						    		<div class="col_pago_dos_2012">{subtotal}</div>
+						    	</div>
+						    	<div class="fila_tmas_pago">
+						    		<div class="modulo_radio_carro_2012"></div>
+						    		<div class="col_pago_uno_2012">Costo de Despacho:</div>
+						    		<div class="col_pago_dos_2012">{costo_despacho}</div>
+						    	</div>
+						    <!-- END DYNAMIC: TOTALIZADOR_WEBPAY -->
+						    
+								<div class="fila_detalle_dcto">
+						            <div class="modulo_radio_carro_2012"></div>
+								    <div class="col_pago_uno_2012_detalle_dcto">
+						                <div style="float:left; width:120px; text-align:right; padding-bottom:2px; font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#666;">Descuentos:</div>
+						               	<div class="ver_detalle_dcto"><a href="javascript:DescuentosPromoWEBPAY();" class="ver_detalle_dcto">ver detalles</a></div>
+						            </div>
+						            <!-- BEGIN DYNAMIC: TOTALIZADOR_WEBPAY -->
+								    <div class="col_pago_dos_2012">{total_desc_sf}</div>
+								    <!-- END DYNAMIC: TOTALIZADOR_WEBPAY -->
+						            <div id="PromocionesWEBPAY" class="cont_detalles_dctos" style="width: 360px; height: 100px; overflow: auto; display: none;">
+						              <table width="100%">
+						                 <!-- BEGIN DYNAMIC: PROMOCIONES_WEBPAY -->
+								        	<tr style="font-size:11px; color:#1FA22E;"><td>{promo_descripcion}</td><td>{promo_descuento}</td></tr>	
+						                	<tr><td>&nbsp;</td></tr>	
+								        <!-- END DYNAMIC: PROMOCIONES_WEBPAY -->
+								         </table>
+						            </div>
+								</div>
+							    
+						    <!-- BEGIN DYNAMIC: TOTALIZADOR_WEBPAY -->
+						    	<div class="fila_total_tmas">
+						        	<div class="modulo_radio_carro_2012"></div>
+						           	<div class="col_pago_uno_2012_black">Total a pagar:</div>
+						        	<div class="col_pago_dos_2012_black">{total}</div>
+						       	</div>
+							</div>
+							<!-- END DYNAMIC: TOTALIZADOR_WEBPAY -->			
+      					</div>
+      					
+		  				<!-- BEGIN DYNAMIC: FONO_COMPRA_MOBILE -->
+		                <div class="nota_mobile" style="background:url(/FO_IMGS/images/html/tipopedido.gif) top left no-repeat;">
+		                	<div style="width: 4%; margin-top: 33px; margin-left: 25px;">
+		                    	<input type="checkbox" name="mobile_fono" value="I" />
+		                    </div>
+		                    <div style="width: 26%; margin-top: 33px;"><b>Compra MOBILE</b></div>
+		                    <div style="width: 50%; margin-top: 28px;"><i>La selecci&oacute;n de compra mobile inhibir&aacute; el env&iacute;o del correo electr&oacute;nico de conformaci&oacute;n de la compra al cliente</i></div>
+		                </div>
+		                <!-- END DYNAMIC: FONO_COMPRA_MOBILE -->
+		                <div class="contenedor_botones_carro" id="botonera_pago">	
+			      			<div class="bt_continuar_pago" style="padding-top:0px;"><a href="javascript:orderprocess();" id="confirmar"><img src="/FO_IMGS/img/bt_continuar_pago.gif" width="147" height="29" /></a></div>
+		    	  			<div class="agregar_productos_carro"><a href="/FO/Despacho">&lt; volver</a></div>
+		    	  		</div>
+		    	  		<div style="float:left; margin-left:335px" id="load_botonera_pago"></div>
+    			</div>
+  		</div>
+  		<div id="cuerpo3Pago" class="contenedor_carro_2012" style="visibility:hidden;display:none;" align="center" style="padding:10px;">
+			<div class="titulo_direccion_despacho">Proceso de Pago <span style="text-align:right;margin-left:500px;" class="agregar_productos_carro"><a href="/FO/Pago">&lt; Volver</a></span></div>
+			<iframe src="/FO_WebContent/paso3loading.html" name="centroDePago" width="650px" height="500px" id="centroDePago" style="padding-top:10px;"></iframe>
+			<br/>
+			<div id="banner_pago"></div>
+			<img src="/FO_IMGS/img/banners/img_Inferior_ProcesoPago.jpg" width="852px" style="padding-bottom:10px;"/>
+		</div>
+	</div>
+</form>
+			
+	<!-- Inicio modal window login -->
+    <div id="hiddenModalContent" style="display:none"  style="border:0px">
+	    <div class="ModalContent_cal_pago" id="Content_cal_pago">	
+	    	<div id="Content_cal_pago_titulo" class="css_cal_pago_titulo">El horario de Despacho seleccionado se ha llenado, por favor elija uno nuevo:</div>
+			<div id="Content_cal_pago_horarios"></div>
+			<div id="Content_btn_cal_pago" class="css_btn_cal_pago">
+				<a href="#" id="continuar_compra_pago_cal"><img src="/FO_IMGS/img/continuar_compra.gif" width="169" height="29" /></a>
+			</div>
+		</div>
+	</div>
+    
+	<div id="loading" style="display:none;">
+  		<table cellpadding="0" cellspacing="0" border="0" style="font: 10px Verdana, Geneva, Arial, Helvetica, sans-serif; z-index: 500;">
+    		<tr>
+	  			<td><img src="/FO_IMGS/images/nuevojumbo/loading_left.gif" height="50" width="6" /></td>
+	  			<td style="background: url(/FO_IMGS/images/nuevojumbo/loading_center.gif); width:100px; text-align: center;vertical-align: middle;"><strong>Cargando...</strong></td>
+	  			<td><img src="/FO_IMGS/images/nuevojumbo/loading_right.gif" height="50" width="6" /></td>
+			</tr>
+  		</table>
+	</div>
+
+	<!-- WEBPAY -->
+	<form id="webpay" name="webpay" method="post" action="{webpay_url_kit}">
+	    <input type="hidden" id="TBK_TIPO_TRANSACCION"	name="TBK_TIPO_TRANSACCION"	value="TR_NORMAL" size="50" />
+	    <input type="hidden" id="TBK_URL_EXITO" 		name="TBK_URL_EXITO" 		value="{webpay_url}/FO/OrderComplete" size="50" />
+	    <input type="hidden" id="TBK_URL_FRACASO" 		name="TBK_URL_FRACASO" 		value="{webpay_url}/FO/Pago?err=1" size="50" />
+	    <input type="hidden" id="TBK_ID_SESION" 		name="TBK_ID_SESION" 		value="1" size="50" />
+	    <input type="hidden" id="TBK_ORDEN_COMPRA" 		name="TBK_ORDEN_COMPRA" 	value="0" size="50" />
+		<input type="hidden" id="TBK_MONTO" 			name="TBK_MONTO" 			value="0" size="50" />
+	</form>
+	
+	<!-- PAGOS CAT -->
+	<form id="cat" name="cat" method="post" action="{boton_url_kit}">
+	    <input type="hidden" name="numeroEmpresa" value="{numero_empresa}" size="50" />
+	    <input type="hidden" name="numeroTransaccion" id="numeroTransaccion" value="" size="50" />
+	    <input type="hidden" name="idCarroCompra" id="idCarroCompra" value="" size="50" />
+	    <input type="hidden" name="montoOperacion" id="montoOperacion" value="0" size="50" />
+	    <input type="hidden" name="urlNotificacion" value="{boton_url}/FO/paso4MasOK.jsp" size="50" />
+	    <input type="hidden" name="tiempoSesion" value="60" size="50" />
+	    <input type="hidden" name="tiempoNotificacion" value="60" size="50" />
+	</form>
+	
+	<script type="text/javascript">
+		window.document.frmPedido.fac_rut.onkeypress 		 = KeyIsNumber;
+	    window.document.frmPedido.fac_razon.onkeypress 		 = KeyIsTexto_Razon;
+	    window.document.frmPedido.fac_giro.onkeypress 		 = KeyIsTexto;
+	    window.document.frmPedido.fac_direccion.onkeypress 	 = KeyIsTexto;
+	    //window.document.frmPedido.fac_fono.onkeypress		 = KeyIsNumber;
+	    window.document.frmPedido.sin_gente_txt.onkeypress	 = KeyIsTexto;
+	    window.document.frmPedido.fac_comuna.onkeypress 	 = KeyIsTexto;
+	    window.document.frmPedido.fac_ciudad.onkeypress 	 = KeyIsTexto;
+	</script>
+	<script>
+		chaordicCheckOut('{ses_cli_id}','{ses_cli_nombre}','{ses_cli_email}');
+	</script>
+</body>
+</html>

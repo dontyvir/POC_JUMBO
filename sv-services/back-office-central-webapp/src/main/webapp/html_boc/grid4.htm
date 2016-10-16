@@ -1,0 +1,87 @@
+<html>
+<head>
+	<title>ActiveWidgets Grid :: Examples</title>
+	<style> body, html {margin:0px; padding: 0px; overflow: hidden;} </style>
+
+
+</head>
+<body>
+
+	<!-- ActiveWidgets stylesheet and scripts -->
+	<link href="runtime/styles/xp/grid.css" rel="stylesheet" type="text/css" ></link>
+	<script src="runtime/lib/grid.js"></script>
+
+	<!-- grid format -->
+	<style>
+		.active-controls-grid {height: 100%; font: menu;}
+
+		.active-column-0 {width:  100px;}
+		.active-column-1 {width: 80px;}
+		.active-column-2 {width: 450px; text-align: left;}
+		.active-column-3 {width: 100x; text-align: left;}
+		.active-column-4 {width: 100px; text-align: left;}
+		.active-column-5 {width: 40px; text-align: right;}
+		.active-column-6 {width: 50px; text-align: right;}
+		.active-column-7 {width: 60px; text-align: right;}
+		.active-column-8 {width: 40px; text-align: center;}
+		
+		.active-grid-column {border-right: 1px solid threedlightshadow;}
+		.active-grid-row {border-bottom: 1px solid threedlightshadow;}
+	</style>
+
+	<!-- grid data -->
+	<script>
+		var myData = [
+			["01/01/2005 12:32 ","SISTEMA","El validador automático genera alertas: Ingresada -> En Validación", "","00:Nada"],	
+			["01/01/2005 12:32 ","ZFLORES","Se llama al telefono del cliente para verificar su primer despacho","00:Nada", "03:No contesta"],
+			["01/01/2005 12:32 ","ABAEZA","Pide que lo llamen a las 3:00 pm","03:No contesta", "04:Fija hora de llamado"],
+			["01/01/2005 12:32 ","ZFLORES","Evento","",""],
+			["01/01/2005 12:32 ","ZFLORES","Evento","",""],
+			["01/01/2005 12:32 ","ZFLORES","Evento","",""],
+			["01/01/2005 12:32 ","ZFLORES","Evento","",""],
+			["01/01/2005 12:32 ","ZFLORES","Evento","",""],
+			["01/01/2005 12:32 ","ZFLORES","Evento","",""],
+			["01/01/2005 12:32 ","ZFLORES","Evento","",""],
+			["01/01/2005 12:32 ","ZFLORES","Evento","",""],
+			["01/01/2005 12:32 ","ZFLORES","Evento","",""],
+			["01/01/2005 12:32 ","ZFLORES","Evento","",""],
+			["01/01/2005 12:32 ","ZFLORES","Evento","",""],
+			["01/01/2005 12:32 ","ZFLORES","Evento","",""],
+			["01/01/2005 12:32 ","ZFLORES","Evento","",""],
+			["01/01/2005 12:32 ","ZFLORES","Evento","",""],
+			["01/01/2005 12:32 ","ZFLORES","Evento","",""],			
+		];
+
+		var myColumns = [
+			"Fecha", "Usuario", "Log", "Estado anterior", "Estado actual"
+		];
+	</script>
+
+
+	<script>
+
+	//	create ActiveWidgets Grid javascript object
+	var obj = new Active.Controls.Grid;
+
+	//	set number of rows/columns
+	obj.setRowProperty("count", 18);
+	obj.setColumnProperty("count",5 );
+
+	//	provide cells and headers text
+	obj.setDataProperty("text", function(i, j){return myData[i][j]});
+	obj.setColumnProperty("text", function(i){return myColumns[i]});
+
+	//	set headers width/height
+	obj.setRowHeaderWidth("28px");
+	obj.setColumnHeaderHeight("20px");
+
+	//	set click action handler
+	obj.setAction("click", function(src){window.status = src.getItemProperty("text")});
+
+	//	write grid html to the page
+	document.write(obj);
+
+	</script>
+
+</body>
+</html>

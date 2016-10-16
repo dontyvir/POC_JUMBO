@@ -1,0 +1,68 @@
+<div>
+	<div style="font-size: 9pt; float: left;">
+		Categor&iacute;a : {nombre}
+	</div>
+	<div align="right">
+		<a class="HeaderTitle" id="masv_volver" href="#">Volver</a>
+	</div>
+</div>
+<div id="contenedor">
+	<ul>
+		<li><a href="#div_masv"><span>M&aacute;s vendidos</span></a></li>
+	</ul>
+	<div id="div_masv">
+		<p>
+			<input type="hidden" id="categoria_id" name="categoria_id" value="{categoria_id}"/>
+			Estado de visualización	
+			<SELECT id="activo_masv" name="activo_masv">
+				<OPTION value="1" {activo_masv1}>Activado</OPTION>
+				<OPTION value="0" {activo_masv0}>Desactivado</OPTION>
+			</SELECT>
+	
+		</p>
+		<table width="700"  border="0" align="center" cellpadding="2" cellspacing="0" class="tabla2">
+			<tr>
+				<th>
+					SubCategor&iacute;a
+				</th>
+				<th>
+					Local
+				</th>
+				<th>
+					Marca
+				</th>
+				<th>
+					Producto
+				</th>
+				<th>
+					SAP
+				</th>
+				<th>
+					Cantidad
+				</th>
+			</tr>
+			<!-- BEGIN DYNAMIC: PRODUCTOS -->
+			<tr>
+				<td>
+					{subcat}
+				</td>
+				<td>
+					{local}
+				</td>
+				<td>
+					{marca}
+				</td>
+				<td>
+					{producto}
+				</td>
+				<td>
+					{sap}
+				</td>
+				<td>
+					{cantidad}
+				</td>
+			</tr>
+			<!-- END DYNAMIC: PRODUCTOS -->
+		</table>
+	</div>
+</div>

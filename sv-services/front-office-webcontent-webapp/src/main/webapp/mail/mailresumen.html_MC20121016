@@ -1,0 +1,201 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<body>
+<font face="Trebuchet MS" size="2" color="#333333">
+	<table width="670" align="center">
+		<tr>
+			<td width="673" colspan="2" valign="top">
+				<img src="http://www.jumbo.cl/FO_IMGS/img/estructura/imprimir/imprimir-arriba.jpg"/>
+				<table width="670" border="0" cellpadding="11">
+					<tr>
+						<td width="645">
+							<font face="Trebuchet MS" size="4" color="#82C12B">
+								<strong>
+									<img src="http://www.jumbo.cl/FO_IMGS/img/banners/bn-resumencompra.gif" width="630" height="50" />
+									<br /><br />
+									{nombre_cliente}
+								</strong>
+							</font>
+							<br/>Gracias por comprar en JUMBO.cl !!<br/>{msg_time_compra}<br/><br/>
+							<table width="100%" border="1" cellspacing="0" bordercolor="#CCE494">
+								<tr>
+									<td>
+										<table width="100%" cellspacing="0" cellpadding="5">
+										  <tr>
+										    <td width="196" bgcolor="#DEF7AD"><b>N&uacute;mero de pedido</b></td>
+										    <td>{idped}</td>
+										  </tr>
+										  <tr>
+										    <td bgcolor="#DEF7AD"><b>Comercio</b></td>
+										    <td>Jumbo.cl</td>
+										  </tr>
+										  <tr>
+										    <td bgcolor="#DEF7AD"><b>Tipo de transacción</b></td>
+										    <td>Venta</td>
+										  </tr>
+										  <!-- BEGIN DYNAMIC: PAGO_TRANSBANK -->
+										  <tr>
+										    <td bgcolor="#DEF7AD"><b>Tarjeta de Cr&eacute;dito</b></td>
+										    <td>{4_ultimos}</td>
+										  </tr>
+										  <tr>
+										    <td bgcolor="#DEF7AD"><b>C&oacute;digo de autorización de la transacción</b></td>
+										    <td>{cod_aut_trx}</td>
+										  </tr>
+										  <tr>
+										    <td bgcolor="#DEF7AD"><b>N° de cuotas</b></td>
+										    <td>{nro_cuotas}</td>
+										  </tr>
+										  <tr>
+										    <td bgcolor="#DEF7AD"><b>Tipo de cuotas</b></td>
+										    <td>{tipo_cuotas}</td>
+										  </tr>
+										  <!-- END DYNAMIC: PAGO_TRANSBANK -->
+										  <tr>
+										    <td bgcolor="#DEF7AD"><b>Descripción de los bienes</b></td>
+										    <td>Productos de supermercado</td>
+										  </tr>
+										  <tr>
+										    <td bgcolor="#DEF7AD"><b>Fecha de compra</b></td>
+										    <td>{fecha_hoy}</td>
+										  </tr>
+										  <tr>
+										    <td bgcolor="#DEF7AD"><b>Cantidad de productos</b></td>
+										    <td>{cantidad}&nbsp;</td>
+										  </tr>
+										  <tr>
+										    <td bgcolor="#DEF7AD"><b>Monto del pedido</b></td>
+										    <td>{monto_op}</td>
+										  </tr>
+										  <tr>
+										    <td bgcolor="#DEF7AD"><b>Monto del despacho</b></td>
+										    <td>{monto_desp}</td>
+										  </tr>
+										  <tr>
+										    <td bgcolor="#DEF7AD"><b>Monto reservado</b></td>
+										    <td>{monto_res}</td>
+										  </tr>
+										  <tr>
+										    <td bgcolor="#DEF7AD"><b>Forma de pago</b></td>
+										    <td>{forma_pago}&nbsp;</td>
+										  </tr>
+										  <tr>
+										    <td bgcolor="#DEF7AD"><b>Tipo documento</b></td>
+										    <td>{tip_doc}&nbsp;</td>
+										  </tr>
+										  <!-- BEGIN DYNAMIC: LUGAR_DESPACHO -->
+										  <tr>
+										    <td bgcolor="#DEF7AD"><b>Lugar de despacho</b></td>
+										    <td>{lugar_despacho}</td>
+										  </tr>
+										  <!-- END DYNAMIC: LUGAR_DESPACHO -->
+										  <!-- BEGIN DYNAMIC: LUGAR_RETIRO -->
+										  <tr>
+										    <td bgcolor="#DEF7AD"><b>Forma de despacho</b></td>
+										    <td>{lugar_despacho}<br/>{dir_retiro_pedido}</td>
+										  </tr>
+										  <!-- END DYNAMIC: LUGAR_RETIRO -->
+										  <tr>
+										    <td bgcolor="#DEF7AD"><b>{fc_hr_despacho}</b></td>
+										    <td>{fecha_tramo}</td>
+										  </tr>
+										  <!-- BEGIN DYNAMIC: SIN_GENTE_DESPACHO -->
+										  <tr>
+										    <td bgcolor="#DEF7AD"><b>Persona autorizada <br />a recibir el despacho.</b></td>
+										    <td>{sin_gente_txt}</td>
+										  </tr>
+										  <!-- END DYNAMIC: SIN_GENTE_DESPACHO -->
+										  <!-- BEGIN DYNAMIC: SIN_GENTE_RETIRO -->
+										  <tr>
+										    <td bgcolor="#DEF7AD"><b>Persona autorizada a retirar el despacho</b></td>
+										    <td>{sin_gente_txt}</td>
+										  </tr>
+										  <tr>
+										    <td bgcolor="#DEF7AD"><b>RUT persona autorizada a retirar el despacho</b></td>
+										    <td>{sin_gente_rut}</td>
+										  </tr>
+										  <!-- END DYNAMIC: SIN_GENTE_RETIRO -->
+										</table> 
+									</td>
+								</tr>
+							</table>
+							<br/>
+							<table width="645" border="1" cellspacing="0" bordercolor="#CCE494">
+								<tr>
+									<td valign="top">
+										<table width="100%" height="35" bgcolor="#DEF7AD" cellpadding="5">
+											<tr>
+												<td width="8%" height="35"><strong>Cantidad</strong></td>
+												<td width="40%" height="35"><strong>Producto</strong></td>
+												<td width="20%" height="35"><strong>Comentarios</strong></td>
+												<td width="14%" height="35" align="center"><strong>C&oacute;digo</strong></td>
+												<td width="8%" height="35"><strong>*Precio<br/>Unitario</strong></td>
+												<td width="10%" height="35"><strong>Monto<br/>Total</strong></td>
+											</tr>
+										</table>
+										<!-- BEGIN DYNAMIC: CATEGORIAS -->
+										<table width="100%" border="0" cellpadding="0" cellspacing="0">
+											<tr>
+												<td width="100%" height="20" valign="bottom" background="http://www.jumbo.cl/FO_IMGS/img/estructura/fondocategorias.gif"><font color="#ffffff" size="2" face="Trebuchet MS">{categoria}</font></td>
+											</tr>
+											<!-- BEGIN DYNAMIC: PRODUCTOS -->       		         
+											<tr id="fila{contador}">
+												<td>
+													<table width="640" border="0" cellpadding="0" cellspacing="0" class="{CLASE_TABLA}">
+														<tr>
+															<td width="8%">
+																<table border="0" cellpadding="0" cellspacing="0">
+																	<tr>
+																		<td>
+																			<!-- BEGIN DYNAMIC: INPUT_SEL -->
+																			<table border="0" cellspacing="0" cellpadding="0">
+																				<tr>
+																					<td class="NoDisponible"></td>
+																					<td rowspan="2" class="NoDisponible"><font color="#000000" size="2">{valor}</font></td>
+																				</tr>
+																				<tr>
+																					<td></td>
+																				</tr>
+																			</table>
+																			<!-- END DYNAMIC: INPUT_SEL -->
+																		</td>
+																	</tr>
+																</table>
+															</td>
+															<td width="40%" class="{CLASE_CELDA}"><font color="#000000" size="2">{descripcion} - <span class="Marca">{marca}</span> {NO_DISPONIBLE}</font></td>
+															<td width="20%" class="{CLASE_CELDA}">
+																<!-- BEGIN DYNAMIC: NOTA -->
+																<div class="cc"><font color="#000000" size="2">{nota}</font></div>
+																<!-- END DYNAMIC: NOTA -->
+															</td>
+															<td width="14%" class="{CLASE_CELDA}"><div align="center"><font color="#000000" size="2">{cod_sap}</font></div></td>
+															<td width="8%" class="{CLASE_CELDA}"><div align="right"><font color="#000000" size="2">{precio_unitario}</font></div></td>
+															<td width="10%" align="right" class="{CLASE_CELDA}"><font color="#000000" size="2">{precio_total}</font></td>
+														</tr>
+													</table>
+												</td>
+											</tr>
+											<!-- END DYNAMIC: PRODUCTOS -->
+										</table>
+										<!-- END DYNAMIC: CATEGORIAS -->
+									</td>
+								</tr>
+							</table>
+							<font color="#333333" size="1" face="Trebuchet MS">
+							*Los precios de los productos que se cobrar&aacute;n en la boleta, ser&aacute;n los mismos que aparecen en el resumen de la compra.<br/>
+							Para compras con Tarjetas Más, una vez confirmada la compra se enviarán los datos del crédito en un plazo no mayor a 10 días.
+							
+							</font>
+							<br/><br/>
+							<span class="lectura"><img src="http://www.jumbo.cl/FO_IMGS/img/estructura/fl.gif" width="6" height="7" border="0" alt="" />&nbsp;<a href="http://www.jumbo.cl/FO/preguntas.html#12" target="_blank">Ver pol&iacute;ticas de devoluci&oacute;n de productos</a></span>
+							<br/><br/>
+						</td>
+					</tr>
+				</table>
+				<img src="http://www.jumbo.cl/FO_IMGS/img/estructura/imprimir/abajo2.gif"/>
+			</td>
+		</tr>
+	</table>
+</font>
+</body>
+</html>

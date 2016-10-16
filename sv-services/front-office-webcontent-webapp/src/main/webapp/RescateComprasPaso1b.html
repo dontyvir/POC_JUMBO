@@ -1,0 +1,597 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Jumbo.cl</title>
+<script type="text/javascript" src="/FO_WebContent/js/jquery.tablesorter.min.js"></script> 
+<script type="text/javascript" src="/FO_WebContent/js/zebra_accordion.src.js"></script> 
+<script type="text/javascript" src="/FO_WebContent/js/thickbox.js"></script>
+
+<!-- <link type="text/css" rel="stylesheet" href="/FO_WebContent/css/thickbox.css" media="screen" /> -->
+<!-- <link rel="stylesheet" type="text/css" href="/FO_WebContent/css/tabla.css" /> -->
+<!-- <link rel="stylesheet" type="text/css" href="/FO_WebContent/css/jquery.ui.all.css" /> -->
+<!-- <link rel="stylesheet" type="text/css" href="/FO_WebContent/css/demos.css" /> -->
+<!-- <link rel="stylesheet" type="text/css" href="/FO_WebContent/css/zebra_accordion.css" /> -->
+<!-- <link type="text/css" rel="stylesheet" href="/FO_WebContent/css/acordeon_paso1b.css" /> -->
+<!-- <link type="text/css" rel="stylesheet" href="/FO_WebContent/css/light_box_PD.css" /> -->
+<style>
+.ui-widget-content a {
+color: #666/*{fcContent}*/;
+}
+a:hover {
+color: #1FA22E;
+text-decoration: none;
+}
+
+#TB_window {
+	color: #000000;
+}
+#TB_ajaxContent .cont_inputs_close { text-align: right; margin-right: -5px;  }
+
+.menu_list {	
+	width: 150px;
+}
+a img{
+	border:none;
+}
+.contenedor_lightbox{
+	text-align:center;
+	padding:20px 20px 20px 20px;
+	border:1px solid #CCC;
+	background:#FFFFFF;
+	width: 550px;
+	-moz-border-radius-bottomleft: 8px;
+	-webkit-border-bottom-left-radius: 8px;
+	-webkit-border-top-left-radius: 8px;
+	-webkit-border-top-right-radius: 8px;
+	border-bottom-left-radius: 8px;
+	-moz-border-radius-bottomright: 8px;
+	-webkit-border-bottom-right-radius: 8px;
+	border-bottom-right-radius: 8px;
+	-moz-box-shadow: 0px 4px 10px #CCC;
+	-webkit-box-shadow: 0px 4px 10px #CCC;
+	box-shadow: 0px 4px 10px #CCC;
+	height: 300px;
+}
+
+.fila_registro_2012_name{
+	height: 20px;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:14px;
+	color:#1FA22E;
+}
+
+.fila_registro_2012_name_b{
+	height: 20px;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:14px;
+	color:#1FA22E;
+	padding-left:3px;
+}
+.fila_registro_2012_name_c{
+	height: 20px;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:14px;
+	color:#1FA22E;
+	padding-left:10px;
+}
+.Estilo2 {
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:20px;
+	font-weight:bold;
+	color:#009A46;
+}
+.form_registro_2012 {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-style: normal;
+	line-height: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	color: #666;
+	border-color: #CCC;
+	border-style: solid;
+	border-width: 1px;
+	height: 15px;
+	width: 20px;
+}
+.form_registro_2012_b {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-style: normal;
+	line-height: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	color: #666;
+	border-color: #CCC;
+	border-style: solid;
+	border-width: 1px;
+	height: 15px;
+	width: 35px;
+}
+.form_registro_2012_c {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-style: normal;
+	line-height: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	color: #666;
+	border-color: #CCC;
+	border-style: solid;
+	border-width: 1px;
+	height: 100px;
+	width: 400px;
+}
+.newsletter {
+	text-decoration:none;
+	margin:0;
+	padding-left: 4px;;
+	width: 10px;
+	height: 10px;
+}
+.newsletter .bot_enviar {
+	background:url(http://static.jumbo.cl/FO_IMGS/images/html/bot_enviar.gif?Lo0P=90152583cb244a061eeac362c681cde7292) no-repeat;
+	margin:0;
+	padding:0;
+	cursor:pointer;
+	border:none;
+	text-decoration:none;
+	width: 29px;
+	height: 23px;
+	font-size: 1px;
+}
+</style>
+</head>
+<body>
+<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-PWPZN" 
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>
+var mx_user ='{ta_mx_user}';
+var mx_loc ='{ta_mx_loc}';
+var mx_content = '{ta_mx_content}';
+(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PWPZN');</script>
+
+	<input type="hidden" name="tupla" value="" />
+	<input type="hidden" id="cantreg" name="cantreg" value="{cantreg}" />
+	<input type="hidden" id="cant_listas_internet" name="cant_listas_internet" value="{cant_listas_internet}" />
+	<input type="hidden" id="cant_listas_mis" name="cant_listas_mis" value="{cant_listas_mis}" />
+	<input type="hidden" id="lista_seleccionada" name="lista_seleccionada" value="{lista_seleccionada}" />
+	
+	<div style="float:left" >
+	  <dl class="Zebra_Accordion"> <!--This is the first division of left-->
+	  	<dt id="opcion1">> Compras en Jumbo.cl</dt>
+			<dd id="opcion1" style="height:auto ;">
+				<table cellpadding="3" cellspacing="3" border="1" style="border: 0px solid violet;" width="100%" heigth="84px">
+					<!-- BEGIN DYNAMIC: ULT_COMPRAS_INTERNET -->
+					<tr>
+						<td>
+							<a class="zebra_link" style="line-height: 14px;" id="ficha1" href="javascript:muestraProductos2('{id}','{fecha}');" name="idultx_{i}">{nombre}<br />{fecha}<br></br></a>
+							<input type="hidden" id="ficha_nombre_{id}" name="ficha_nombre_{id}" value="{nombre}" />
+						</td>
+					</tr>
+					<!-- END DYNAMIC: ULT_COMPRAS_INTERNET -->
+					<tr>
+						<td>
+				    	<a class="zebra_link" href="javascript:prueba1();" name="ver2">Ver todas</a>
+						</td>
+					</tr>
+				</table>
+			</dd>
+			<dt id="opcion2">> Compras en Jumbo</dt>
+			<dd id="opcion2">
+				<table cellpadding="3" cellspacing="3" border="1" style="border: 0px solid violet;" width="100%" heigth="100%">
+					<!-- BEGIN DYNAMIC: ULT_COMPRAS_LOCAL -->
+					<tr>
+						<td>
+						<!--Dcadiz 17082012 se comenta presentacion de opcion duplicada -->
+						
+							<a class="zebra_link" id="ficha2" href="javascript:muestraProductos2('{id}','{fecha}');" name="idultx_{i}" style="display: none;">Compra en tienda</a>
+							<input type="hidden" id="ficha_nombre_{id}" name="ficha_nombre_{id}" value="{nombre}" />
+						
+						<!--Dcadiz 17082012 se comenta presentacion de opcion duplicada -->
+						
+						</td>
+					</tr>
+					<!-- END DYNAMIC: ULT_COMPRAS_LOCAL -->
+				</table>
+			</dd>
+			<dt id="opcion3">> Mis listas guardadas</dt>
+			<dd id="opcion3">
+				<table cellpadding="3" cellspacing="3" border="1" style="border: 0px solid violet;" width="100%" heigth="100%">
+					<!-- BEGIN DYNAMIC: MIS_LISTAS_INTERNET --> <!-- LISTAS_PREDEFINIDAS -->
+					<tr>
+						<td>
+				    	<a class="zebra_link" id="ficha3" href="javascript:muestraProductos2('{id}','{fecha}');" name="idultx_{i}">{nombre}<br />{fecha}<br></br></a>
+							<input type="hidden" id="ficha_nombre_{id}" name="ficha_nombre_{id}" value="{nombre}" />
+						</td>
+					</tr>
+					<!-- END DYNAMIC: MIS_LISTAS_INTERNET --> <!-- LISTAS_PREDEFINIDAS -->
+					<tr>
+						<td>
+				    	<a class="zebra_link" href="javascript:prueba2();" name="ver2">Ver todas</a>
+						</td>
+					</tr>
+				</table>
+	  	</dd>
+		</dl>  
+	</div>
+	
+<!-- Inicio modal window login -->
+<div id="hiddenModalContent1" style="display: none"  style="border:0px yellow solid">
+	<form id="acceso1" name="acceso1" method="post" action="Logon">
+		<div  style="border:0px red solid">
+			<table class="contenedor_lightbox" style="border:0px blue solid" cellpadding="2" cellspacing="2">
+				<tr>
+					<td colspan="4" class="Estilo2">AHORRA TIEMPO,</td>
+					<td><div  style="border:0px yellow solid;"><a style="float:right;" href="javascript:closeLBoxWin();"><img src="/FO_IMGS/images/html/btn_cerrar.gif" border="0" alt="Cerrar"/></a></div></td>
+				</tr>
+				<tr><td colspan="5" class="Estilo2"> busca tus listas guardadas.</td></tr>
+				<tr>
+					<td colspan="5"><img src="/FO_IMGS/img/logoJB.jpg" width="100%" height="15" /></td>
+				</tr>
+				<tr>
+					<td align="left" height="16" width="15%" class="fila_registro_2012_name">Desde</td>
+					<td align="left" width="30%">
+				    <input type="text" id="xxx1a" size="9" readonly/>
+					</td>
+					<td align="left" width="15%" class="fila_registro_2012_name_c">Hasta</td>
+					<td width="30%">
+						<input type="text" id="xxx2a" size="9" readonly/>			
+					</td>
+					<td width="10%" class="newsletter" style="border:0px red solid">
+						<input class="bot_enviar" name="enviar" id="enviar" type="button" value="&gt;" onclick="javascript:buscar1();">
+					</td>
+				</tr>
+				<tr>
+					<td colspan="5"><img src="/FO_IMGS/img/logoJB.jpg" width="100%" height="15" /></td>
+				</tr>
+				<tr>
+					<td colspan="5" align="center" valign="top" height="50">
+					
+					 <!-- +20121207 SBernal-->
+					  <div style="height: 250px; overflow: scroll">
+					 <!-- -20121207 SBernal-->
+						<table id="myTable1" class="tablesorter"  width="100%"  border="0" cellpadding="0" cellspacing="0" style="height:50;overflow:auto">
+							<thead> 
+								<tr> 
+									<th><div><input type="checkbox"  onClick="selectAllLists1(this);"/></div></th> 
+									<th>Lista</th>
+									<th>Unidades</th> 
+								</tr> 
+							</thead> 
+							<tbody> 
+					<!-- BEGIN DYNAMIC: ULT_COMPRAS_INTERNET_FULL -->
+					<tr>
+							<td class="celda_p1_izq" align="center" width="5%"><input name="idult_{i}" type="checkbox" value="{id}" {checked}/></td>
+							<td align="center" width="55%" class="celda_p1">{nombre_fecha}</td>
+							<td class="celda_p1" width="40%">{unidades}</td>
+<!-- 						<td class="celda_p1" width="10%" align="center">{elim}</td>-->
+					</tr>
+				<!-- END DYNAMIC: ULT_COMPRAS_INTERNET_FULL -->
+				
+							</tbody> 	
+						</table>
+						<!-- +20121207 SBernal-->
+						</div>
+						<!-- -20121207 SBernal-->
+					</td>
+				</tr>
+				<tr><td>&nbsp;</td></tr>
+				<tr>
+					<td colspan="5" style="text-align:right">
+						<a href="#" ><img src="/FO_IMGS/img/estructura/bt-volver.gif"  height="24"  onClick="closeLBoxWin();"/></a>
+						<a href="#" ><img src="/FO_IMGS/img/btn_agrlista.jpg"  onClick="actualizaListaProductos3(acceso1);closeLBoxWin();"/></a>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</form>
+</div>
+
+<!-- Inicio modal window login -->
+<div id="hiddenModalContent2" style="display: none"  style="border:0px yellow solid">
+	<form id="acceso2" name="acceso2" method="post" action="Logon">
+		<div  style="border:0px red solid">
+			<table class="contenedor_lightbox" style="border:0px blue solid" cellpadding="2" cellspacing="2">
+				<tr>
+					<td colspan="4" class="Estilo2">AHORRA TIEMPO,</td>
+					<td><div  style="border:0px yellow solid;"><a style="float:right;" href="javascript:closeLBoxWin();"><img src="/FO_IMGS/images/html/btn_cerrar.gif" border="0" alt="Cerrar"/></a></div></td>
+				</tr>
+				<tr><td colspan="5" class="Estilo2"> busca tus listas guardadas.</td></tr>
+				<tr>
+					<td colspan="5"><img src="/FO_IMGS/img/logoJB.jpg" width="100%" height="15" /></td>
+				</tr>
+				<tr>
+					<td align="left" height="16" width="15%" class="fila_registro_2012_name">Desde</td>
+					<td align="left" width="30%">
+				    <input type="text" id="xxx1b" size="9" readonly/>
+					</td>
+					<td align="left" width="15%" class="fila_registro_2012_name_c">Hasta</td>
+					<td width="30%">
+						<input type="text" id="xxx2b" size="9" readonly/>			
+					</td>
+					<td width="10%" class="newsletter" style="border:0px red solid">
+						<input class="bot_enviar" name="enviar" id="enviar" type="button" value="&gt;" onclick="javascript:buscar2(); ">
+					</td>
+				</tr>
+				<tr>
+					<td colspan="5"><img src="/FO_IMGS/img/logoJB.jpg" width="100%" height="15" /></td>
+				</tr>
+				<tr>
+					<td colspan="5" align="center" valign="top" height="50">
+					
+					 <!-- +20121207 SBernal-->
+					  <div style="height: 250px; overflow: scroll">
+					 <!-- -20121207 SBernal-->
+						<table id="myTable2" class="tablesorter"  width="100%"   border="0" cellpadding="0" cellspacing="0" style="height:50;overflow:auto;">
+							<thead> 
+								<tr> 
+									<th><div><input type="checkbox"  onClick="selectAllLists2(this);"/></div></th> 
+									<th>Lista</th>
+									<th>Unidades</th> 
+								</tr> 
+							</thead> 
+							<tbody> 
+							
+					<!-- BEGIN DYNAMIC: MIS_LISTAS_INTERNET_FULL --> <!-- LISTAS_PREDEFINIDAS -->
+								<tr>
+									<td class="celda_p1_izq" align="center" width="5%"><input name="idult_{i}" type="checkbox" value="{id}" {checked}/></td>
+									<td align="center" width="80%" class="celda_p1">{nombre} - {fecha}</td>
+									<td class="celda_p1" width="15%">{unidades}</td>
+			<!-- 						<td class="celda_p1" width="10%" align="center">{elim}</td>-->
+								</tr>
+					<!-- END DYNAMIC: MIS_LISTAS_INTERNET_FULL --> <!-- LISTAS_PREDEFINIDAS -->
+							</tbody> 	
+						</table>
+						<!-- +20121207 SBernal-->
+						</div>
+						<!-- -20121207 SBernal-->
+					</td>
+				</tr>
+				<tr><td>&nbsp;</td></tr>
+				<tr>
+					<td colspan="5" style="text-align:right">
+						<a href="#" ><img src="/FO_IMGS/img/estructura/bt-volver.gif"  height="24"  onClick="closeLBoxWin();"/></a>
+						<a href="#" ><img src="/FO_IMGS/img/btn_agrlista.jpg"  onClick="actualizaListaProductos3(acceso2);closeLBoxWin();"/></a>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</form>
+</div> 
+<!--INICIO INDRA 2012-11-13 -->
+
+<!-- FIN INDRA 2012-11-13 -->
+</body>
+</html>
+<script language="javascript">
+var XBROWSER 		= navigator.appName;
+var status1=0;
+var status2=0;
+
+jQuery().ready(function() { 
+	if($j('#el_listado_de_compras').find('#ficha1').length>0){
+		var link=$j('#el_listado_de_compras').find('#ficha1').get(0) + '';
+		var ret = eval(link.replace(/javascript:/gi,''));
+	}
+	else 
+		muestraProductos2("","");
+//	$j('#el_listado_de_compras').find('#ficha').get(1).click(); //en mac y ios no funciona
+
+	$j("#xxx1a").datepicker({changeMonth:true, changeYear:true, maxDate: "+0D",dateFormat: "dd-mm-yy" , firstDay: 1 , dayNames: ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sabado"] ,dayNamesMin: ["Do", "Lu", "Ma", "Mi", "Ju", "Vi", "Sa"],monthNames: ["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"],monthNamesShort: ["Ene","Feb","Mar","Abr","May","Jun","Jul","Ago","Sep","Oct","Nov","Dic"] });
+	$j("#xxx2a").datepicker({changeMonth:true, changeYear:true, maxDate: "+0D",dateFormat: "dd-mm-yy" , firstDay: 1 , dayNames: ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sabado"] ,dayNamesMin: ["Do", "Lu", "Ma", "Mi", "Ju", "Vi", "Sa"],monthNames: ["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"],monthNamesShort: ["Ene","Feb","Mar","Abr","May","Jun","Jul","Ago","Sep","Oct","Nov","Dic"] });
+	$j("#xxx1b").datepicker({changeMonth:true, changeYear:true, maxDate: "+0D",dateFormat: "dd-mm-yy" , firstDay: 1 , dayNames: ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sabado"] ,dayNamesMin: ["Do", "Lu", "Ma", "Mi", "Ju", "Vi", "Sa"],monthNames: ["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"],monthNamesShort: ["Ene","Feb","Mar","Abr","May","Jun","Jul","Ago","Sep","Oct","Nov","Dic"] });
+	$j("#xxx2b").datepicker({changeMonth:true, changeYear:true, maxDate: "+0D",dateFormat: "dd-mm-yy" , firstDay: 1 , dayNames: ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sabado"] ,dayNamesMin: ["Do", "Lu", "Ma", "Mi", "Ju", "Vi", "Sa"],monthNames: ["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"],monthNamesShort: ["Ene","Feb","Mar","Abr","May","Jun","Jul","Ago","Sep","Oct","Nov","Dic"] });
+	var myAccordion = new $j.Zebra_Accordion('.Zebra_Accordion');
+
+	$j('.Zebra_Accordion dt').click(function(e) {
+		var strOpcion="0";
+		
+		id = $j(this).attr("id");
+		if(id =='opcion1'){
+			strTitulo='Mis Compras en Jumbo.cl';
+			strOpcion="1";
+			strImage="/FO_IMGS/img/no_compras_jumbo-cl.jpg";
+		}else if(id =='opcion2'){
+			strTitulo='Mis Compras en Jumbo';
+			strOpcion="2";
+			strImage="/FO_IMGS/img/no_compras_jumbo.jpg";
+		}else if(id =='opcion3'){
+			strTitulo='Mis listas guardadas';
+			strOpcion="3";
+			strImage="/FO_IMGS/img/no_listas.jpg";
+		}
+
+		if($j('#el_listado_de_compras').find('#ficha' + strOpcion).length>0){
+			var link=$j('#el_listado_de_compras').find('#ficha' + strOpcion).get(0) + '';
+			var ret = eval(link.replace(/javascript:/gi,''));
+		}
+		else{
+			muestraProductos2("","");
+			//alert($j('#img_sinlista').attr("src"));
+			//$j('#img_sinlista').attr("src",strImage);
+		}
+		//$j('#texto_titulo1').html(strTitulo);
+		
+	});
+
+
+	$j('.Zebra_Accordion dd').click(function(e) {
+		id = $j(this).attr("id");
+		if(id =='opcion1'){
+			strTitulo='Mis Compras en Jumbo.cl';
+		}else if(id =='opcion2'){
+			strTitulo='Mis Compras en Jumbo';
+		}else if(id =='opcion3'){
+			strTitulo='Mis listas guardadas';
+		}
+		
+		$j('#texto_titulo').html(strTitulo);
+			
+	});
+});
+
+
+
+function prueba1(){
+  upWeb();
+  showLightBoxCategories1();
+//  greenBack();
+	$j("#myTable1").tablesorter({widgets: ['zebra'], headers: { 0: { sorter: false }}});
+	
+  $j(document).click(function(e){
+	  id = $j(this).val();
+	  if(e.target.id=='TB_overlay') //cierra si hace clic fuera de la ventana
+		  closeLBoxWin();
+  });
+}
+
+function prueba2(){
+  upWeb();
+  showLightBoxCategories2(); 
+//  greenBack();
+	$j("#myTable2").tablesorter({widgets: ['zebra'], headers: { 0: { sorter: false }}});
+	
+  $j(document).click(function(e){
+	  id = $j(this).val();
+	  if(e.target.id=='TB_overlay') //cierra si hace clic fuera de la ventana
+		  closeLBoxWin();
+  });
+}
+function upWeb() {
+  if ( XBROWSER == "Microsoft Internet Explorer" ) {
+    window.scrollTo(0,0);
+  }
+}
+
+function showLightBoxCategories1() {
+//  tb_show('Jumbo.cl','#TB_inline?height=316&width=523&inlineId=hiddenModalContent&modal=true'); 
+  tb_show('Jumbo.cl','#TB_inline?height=500&width=700&inlineId=hiddenModalContent1&modal=true');   
+}
+
+function showLightBoxCategories2() {
+//  tb_show('Jumbo.cl','#TB_inline?height=316&width=523&inlineId=hiddenModalContent&modal=true'); 
+  tb_show('Jumbo.cl','#TB_inline?height=600&width=600&inlineId=hiddenModalContent2&modal=true');   
+}
+
+function closeLBoxWin() {
+  tb_remove();  
+}
+function selectAllLists1(obj){
+	if (status1==0)
+		status1=1;
+	else
+		status1=0;
+	$j('table#myTable1 tbody tr').each(function(row) {
+		var strObj=$j(this).find('input:checkbox');
+		if (status1==0)
+			strObj.attr('checked', '');
+		else
+			strObj.attr('checked', 'checked');
+	});
+}
+function selectAllLists2(obj){
+	if (status2==0)
+		status2=1;
+	else
+		status2=0;
+	$j('table#myTable2 tbody tr').each(function(row) {
+		var strObj=$j(this).find('input:checkbox');
+		if (status2==0)
+			strObj.attr('checked', '');
+		else
+			strObj.attr('checked', 'checked');
+	});
+}
+function buscar1(){
+	var i=0;
+	
+	if(datoToNumber($j('#xxx1a').val())>fechaToNumber()){
+		alert("Las fecha de busqueda no debe ser mayor a la fecha de hoy.");
+		$j('#xxx1a').val("");
+		return;
+	}
+	
+	if(datoToNumber($j('#xxx2a').val())>fechaToNumber()){
+		alert("Las fecha de busqueda no debe ser mayor a la fecha de hoy.");
+		$j('#xxx2a').val("");
+		return;
+	}
+	
+	if(datoToNumber($j('#xxx1a').val())>datoToNumber($j('#xxx2a').val())){
+		alert("Las fecha de busqueda debe ser de menor a mayor.");
+		return;
+	}
+
+	$j('table#myTable1 tbody tr').each(function(row) {
+		var strFecha=$j(this).children(".celda_p1").text().substring(0,10);
+		
+		if(datoToNumber($j('#xxx1a').val())<=datoToNumber(strFecha) && datoToNumber($j('#xxx2a').val())>=datoToNumber(strFecha))
+			$j(this).show();
+		else
+			$j(this).hide();
+		i++;
+	});
+	$j("#myTable1").tablesorter({widgets: ['zebra']});
+}
+function buscar2(){
+	var i=0;
+	
+	if(datoToNumber($j('#xxx1b').val())>fechaToNumber()){
+		alert("Las fecha de busqueda no debe ser mayor a la fecha de hoy.");
+		$j('#xxx1b').val("");
+		return;
+	}
+	
+	if(datoToNumber($j('#xxx2b').val())>fechaToNumber()){
+		alert("Las fecha de busqueda no debe ser mayor a la fecha de hoy.");
+		$j('#xxx2b').val("");
+		return;
+	}
+	
+	if(datoToNumber($j('#xxx1b').val())>datoToNumber($j('#xxx2b').val())){
+		alert("Las fecha de busqueda debe ser de menor a mayor.");
+		return;
+	}
+	$j('table#myTable2 tbody tr').each(function(row) {
+		var strFecha=$j(this).children(".celda_p1").text().substring(0,10);
+		
+		if(datoToNumber($j('#xxx1b').val())<=datoToNumber(strFecha) && datoToNumber($j('#xxx2b').val())>=datoToNumber(strFecha))
+			$j(this).show();
+		else
+			$j(this).hide();
+		i++;
+	});
+	$j("#myTable2").tablesorter({widgets: ['zebra']});
+}
+
+function datoToNumber(str){
+	if(str.length==10){
+		var ano=str.substring(6);
+		var mes=str.substring(3,5);
+		var dia=str.substring(0,2);
+		return ano.concat(mes,dia);
+	}
+	else
+		return "";
+}
+
+function fechaToNumber(){
+	var currentDate=new Date();
+	var strFecha='';
+	var ano=currentDate.getFullYear();
+	var mes='0' + (currentDate.getMonth()+1);
+	var dia='0' + currentDate.getDate();
+	mes=mes.substr(mes.length-2,mes.length);
+	dia=dia.substr(dia.length-2,dia.length);
+	return strFecha.concat(ano,mes,dia);
+}
+</script>

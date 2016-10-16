@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap 
+   PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" 
+   "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap >
+	<resultMap id="resultCriterio" class="java.util.HashMap">
+		<result property="key" column="row_id"/>
+		<result property="valor" column="col2"/>
+		<result property="estado" column="estado"/>
+	</resultMap>
+	
+	<select id="getCriterio" resultMap="resultCriterio" >
+	<![CDATA[
+		SELECT CAST(ID_CRITERIO AS VARCHAR(50)) AS row_id,
+		       ID_CRITERIO||'|'||
+               DECODE(LOCATE(' ', DESCRIPCION),0,
+                   TRIM(REPLACE((UPPER(SUBSTR(DESCRIPCION,1,1))||LOWER(SUBSTR(DESCRIPCION,2,(LENGTH(DESCRIPCION)-1)))),'|',' ')),
+                   TRIM(REPLACE(DESCRIPCION,'|',' '))) AS col2,
+                   'N' AS ESTADO
+		  FROM fodba.FO_SUSTITUTOS_CRITERIO
+	]]>
+	</select>
+	<select id="getCriterioNov" resultMap="resultCriterio" >
+	<![CDATA[	
+	WITH DATOS
+	(
+	    ID_DAT_CRITERIO,
+	    COL2
+	)
+	AS
+	(
+		SELECT CAST(ID_CRITERIO AS VARCHAR(50)) AS ID_DAT_CRITERIO,
+		       ID_CRITERIO||'|'||
+               DECODE(LOCATE(' ', DESCRIPCION),0,
+                   TRIM(REPLACE((UPPER(SUBSTR(DESCRIPCION,1,1))||LOWER(SUBSTR(DESCRIPCION,2,(LENGTH(DESCRIPCION)-1)))),'|',' ')),
+                   TRIM(REPLACE(DESCRIPCION,'|',' '))) AS col2
+		  FROM fodba.FO_SUSTITUTOS_CRITERIO
+    )
+	 SELECT PRE.ROW_ID,
+	        PRE.COL2,
+	        PRE.ESTADO
+	  FROM (
+	  
+	    /* MODIFICADOS */
+	    SELECT DATOS.ID_DAT_CRITERIO AS ROW_ID, DATOS.COL2, 'M' AS ESTADO
+	      FROM DATOS, bodba.BO_INT_CRITERIO AS DIS
+	     WHERE DIS.ID_INT_CRITERIO = DATOS.ID_DAT_CRITERIO
+	       AND DIS.INT_DATA != DATOS.COL2
+	     UNION ALL
+	     
+	     /* NUEVOS */
+	    SELECT D.ID_DAT_CRITERIO AS ROW_ID, D.COL2, 'N' AS ESTADO
+	    FROM DATOS D LEFT JOIN bodba.BO_INT_CRITERIO AS CRT on D.ID_DAT_CRITERIO=CRT.ID_INT_CRITERIO WHERE CRT.ID_INT_CRITERIO  is null            
+	                
+	     UNION ALL
+	     
+	     /* ELIMINADOS */
+	    SELECT DIS.ID_INT_CRITERIO AS ROW_ID, DIS.INT_DATA AS COL2, 'E' AS ESTADO
+	      FROM bodba.BO_INT_CRITERIO AS DIS
+	     WHERE NOT EXISTS 
+	           (SELECT 1
+	              FROM DATOS AS DAT
+                  JOIN bodba.BO_INT_CRITERIO AS CRT
+	                ON CRT.ID_INT_CRITERIO = DAT.ID_DAT_CRITERIO)
+	                
+	    UNION ALL
+	     /* ELIMINADOS cuando no viene en la estructura datos*/	    	
+		    SELECT DIS.ID_INT_CRITERIO AS ROW_ID, DIS.INT_DATA AS COL2, 'E' AS ESTADO
+		    FROM bodba.BO_INT_CRITERIO AS DIS LEFT JOIN DATOS D on DIS.ID_INT_CRITERIO = D.ID_DAT_CRITERIO  WHERE D.ID_DAT_CRITERIO is null
+         ) AS PRE
+	]]>
+	</select>
+</sqlMap>

@@ -1,0 +1,236 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html><!-- InstanceBegin template="/Templates/fullbody.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="EXPIRES" CONTENT="Mon, 22 Jul 2002 11:12:01 GMT">
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>Jumbo.cl Back Office Central</title>
+<!-- InstanceEndEditable -->
+
+<!-- InstanceBeginEditable name="head" -->
+<!-- InstanceEndEditable -->
+
+<link href="estilos.css" rel="stylesheet" type="text/css">
+<!--link href="../default.css" rel="stylesheet" type="text/css"-->
+<style type="text/css">
+<!--
+.style1 {color: #666666}
+-->
+</style>
+<SCRIPT LANGUAGE="JavaScript">
+function valida_form(){
+	var formulario = document.form2;
+
+	if (formulario.fecha.value == ''){
+		alert("Debe ingresar una fecha");
+		return false;
+	}
+
+	if(!validar_fecha()){
+		alert("La fecha de despacho debe ser mayor o igual a la fecha actual");
+		return false;
+	}
+	
+	if (formulario.hora_desp.value == '---'){
+	    alert("El Local no posee Jornadas de Despacho.");
+		return false;
+	}
+}
+
+function validar_fecha(){
+	var formulario = document.form2;
+	var myDate=new Date();
+	var now=new Date();
+	var mes=formulario.fecha.value.substring(3, 5)-1;
+	var dia=formulario.fecha.value.substring(0, 2);
+	var ano=formulario.fecha.value.substring(6,10);
+
+	myDate.setFullYear(ano,mes,dia);
+	var today = new Date();
+	if (myDate >= today){
+		return true;
+	 }else{
+		return false;
+	 }
+}
+
+function fecha_actual(){
+	var formulario = document.form2;
+	var mydate=new Date();
+	var year=mydate.getYear();
+	if (year < 1000)
+		year+=1900;
+
+	var day=mydate.getDay();
+	var month=mydate.getMonth()+1;
+	if (month<10)
+		month="0"+month;
+
+	var daym=mydate.getDate();
+	if (daym<10)
+		daym="0"+daym;
+
+	var fecha_actual = daym+"/"+month+"/"+year;
+	formulario.fecha.value = fecha_actual;
+}
+
+	//	exec_AJAXRPC('GET', 'ViewComboAjax?comuna={com}', 'procesaResp');
+	function addOption(text,value,sel) {
+	   var oOpt=new Option(text,value);
+	   var oSelect=sel;
+	   oSelect.options[oSelect.options.length]=oOpt;
+	}
+	function removeOption(index,sel) {
+	   var oSelect=sel;
+	   oSelect.options[index]=null;
+	}
+
+	function procesaResp(texto) {
+	    var larcampo = document.form2.hora_desp.length;
+		if (texto != ""){
+		    var response = texto.split("#");
+            for (i = 0; i < larcampo; i++ ){
+			    removeOption(0, document.getElementById("hora_desp"));
+		    }
+		    for (a = 0 ; a < response.length; a++){
+			    //resp = response[a].split("|");
+			    //addOption((resp[1])?resp[1]:'',(resp[0])?resp[0]:'',document.getElementById("hora_desp") );
+			    addOption((response[a])?response[a]:'',(response[a])?response[a]:'',document.getElementById("hora_desp") );
+		    }
+		}else{
+			for (i = 0; i < larcampo; i++ ){
+				removeOption(0, document.getElementById("hora_desp"));
+			}
+			addOption('No hay Jornadas', '---', document.getElementById("hora_desp"));
+		}
+	}
+	
+	function invocaAjax(){
+	 	var fecha = document.form2.fecha.value;
+	 	var local = document.form2.local.value;
+		exec_AJAXRPC('GET', 'ViewHorasDespachoAjax?fecha='+fecha+'&local='+local, 'procesaResp');
+		document.form2.hora_desp.focus();
+	}
+</script>
+<link rel="stylesheet" href="menu/menu.css">
+<!-- link rel="stylesheet" href="style2.css"-->
+</head>
+
+<body bgcolor="#ffffff">
+<link rel="stylesheet" href="menu/menu.css">
+<script language="JavaScript" src="menu/menu.js"></script>
+<script language="JavaScript" src="menu/menu_tpl.js"></script>
+<script language="JavaScript" src="menu/menu_items.js"></script>
+<script language="JavaScript" src="popup.js"></script>
+<script language="JavaScript" src="funciones.js"></script>
+<script language="javascript" src="calendario.js"></script>
+<script language="javascript" src="validacion.js"></script>
+<table width="780" height="100%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+    <td height="78" valign="top">
+	
+	<TABLE width="100%" height=59 border=0 align="center" cellpadding="0" cellspacing="0" bgcolor="#ffffff">
+	  <TR>
+		<TD width=275 height="59" align=left class=user><img src="img/header2.jpg" width="275" height="60"></TD>
+		<TD width=505 align=left valign="bottom" background="img/bg-1.jpg" class=user><table width="90%"  border="0" align="center" cellpadding="0" cellspacing="2">
+          <tr>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td><div align="right" class="infoBL">Usuario: {hdr_nombre}&nbsp;&nbsp;| {hdr_fecha}</div></td>
+          </tr>
+        </table></TD>
+	  </TR>
+	</TABLE>
+	<TABLE width="100%" height=19 border=0 align="center" cellpadding="0" cellspacing="0" bgcolor="#f1f0e9" style="border-top:1px solid #ABABAB; border-bottom:1px solid #ABABAB">
+	  <TR>
+		<TD align=left bgcolor="#FFFFFF" class=user></TD>
+		</TR>
+	</TABLE>
+	</td>
+  </tr>
+  <tr height="400">
+    <td valign="top" bgcolor="#FFFFFF">
+      <table border=0 width="100%" class='ContentTitle'>
+        <tr>
+          <td width="53%" height="20" class='HeaderTitle'>Genera Planilla de Despacho</td>
+        </tr>
+      </table>
+	  <br>
+      <table width="100%"  border="0" cellspacing="2" cellpadding="2">
+        <tr valign="top">
+          <td width="71%"><!-- InstanceBeginEditable name="Izquierda" -->
+		  <form name="form2" method="post" action="GeneraPlanilla" onsubmit="return valida_form();">
+            <table width="90%"  border="0" align="center" cellpadding="0" cellspacing="0">
+              <tr>
+                <td>
+                  <table width="240"  border="0" cellspacing="2" cellpadding="0" align="center">
+                    <tr>
+                      <td width="50%">Local</td>
+                      <td width="50%">
+                          <select name="local" onchange="javascript: invocaAjax();">
+                          <!-- option value="0">Todos</option-->
+                          <!-- BEGIN DYNAMIC: LOCALES -->
+                          <option value="{id_local}">{nom_local}</option>
+                          <!-- END DYNAMIC: LOCALES -->
+                        </select>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Fecha de Despacho</td>
+                      <td>
+                        <table  border="0" cellspacing="0" cellpadding="1">
+                          <tr>
+                            <td><input name="fecha" type="text" id="fecha" value="" size="12" maxlength="10" readonly onFocus="cambiar_color_on(this);" onBlur="cambiar_color_off(this);" onpaste="return false;"></td>
+                            <td><A HREF="javascript:calendario(500,160,'fecha','document.form2.fecha');"><img src="img/cal.gif" width="16" height="16" border="0"></a></td>
+                          </tr>
+                        </table>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Jornada de Despacho</td>
+				      <td>
+                        <select name="hora_desp" id="hora_desp">
+                              <!-- option value="todos"> Todos </option-->
+						    <!-- BEGIN DYNAMIC: HORA_DESPACHO -->
+							  <option value="{h_total}">{h_total}</option>
+						    <!-- END DYNAMIC: HORA_DESPACHO -->
+						</select>
+					  </td>
+                    </tr>
+                    <tr align="center">
+                      <td colspan="2"><br><input name="Button" type="submit" class="cmd" value="Generar" ></td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+            </form>
+            <br>
+            <script>
+		       fecha_actual();
+		    </script>
+            <div id="PopUpCalendar" style="position:absolute; left:0px; top:30px; z-index:7; width:150px; height:100px; overflow: visible; visibility: hidden; border:5px none #000000" ></div>
+            <!-- center>{msg}</center-->
+          </td>
+        </tr>
+      </table>
+      </td>
+  </tr>
+  <tr>
+    <td>
+	<TABLE width="100%" height=19 border=0 align="center" cellpadding="0" cellspacing="0" bgcolor="#f1f0e9" style="border-top:1px solid #ABABAB; border-bottom:1px solid #ABABAB">
+	  <TR>
+		<TD align=center bgcolor="#67b01a" class=infoBL><div align="center">Back Office Central - Jumbo.cl</div></TD>
+		</TR>
+	</TABLE>
+
+	
+	</td>
+  </tr>
+</table>
+</body>
+<!-- InstanceEnd --></html>

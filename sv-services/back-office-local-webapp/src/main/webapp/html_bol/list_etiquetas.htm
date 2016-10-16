@@ -1,0 +1,211 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>Jumbo.cl Back Office Local</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="EXPIRES" CONTENT="Mon, 22 Jul 2002 11:12:01 GMT">
+
+<object id="factory" viewastext  style="display:none"
+  classid="clsid:1663ed61-23eb-11d2-b92f-008048fdd814"
+  codebase="/JumboBOLocal/smsx.cab#Version=6,3,435,20">
+</object>
+
+<style type="text/css">
+<!--
+body {
+	background-color: #FFFFFF;
+	/*padding: 10px;*/
+	/*line-height: 1.33;*/
+	font-family: Arial, Helvetica, sans-serif;
+	/*line-height: 24px;*/
+	color: #000000;
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	font-size		: 12px;	
+}
+
+#titulo {
+	font-size		: 15px; 
+	font-weight 	: bold;
+}
+
+#pedido {
+	font-size: 40px; 
+	font-weight: bold;
+}
+
+#jornada {
+	font-size: 20px; 
+	font-weight: bold;
+}
+
+#fecha {
+	font-size: 15px; 
+	font-weight: bold;
+}
+
+#zona {
+	font-size: 25px; 
+	font-weight: bold;
+}
+
+#ronda {
+	font-size: 19px; 
+	font-weight: bold;
+}
+
+#sector_camara {
+	font-size: 19px; 
+	font-weight: bold;
+}
+
+#bin {
+	font-size: 32px; 
+	font-weight: bold;
+}
+
+#producto {
+	font-size: 15px; 
+	font-weight: bold;
+}
+
+// -->
+</style>
+<style media='print' type='text/css'>
+<!--
+body {
+	background-color: #FFFFFF;
+	padding: 0px;
+           /*line-height: 1.33;*/
+}
+.noprint {display: none;}
+//-->
+</style>
+
+<script language="Javascript"><!--
+
+top.topFrame.impresion_etiquetas = true;
+
+function imprimir(){
+
+var efooter = "&bPágina &p de &P&b";
+var eheader = "izquierda&bcentro&bderecha";
+
+factory.printing.portrait = true; //false: horizontal; true: vertical
+factory.printing.footer = ""; //pie
+factory.printing.header = ""; //encabezado
+
+
+factory.printing.leftMargin = 0.0;
+factory.printing.topMargin = 0.0;
+factory.printing.rightMargin = 0.0;
+factory.printing.bottomMargin = 0.0;
+
+
+factory.printing.Print(true); //manda a imprimir
+}
+//--></script>
+
+</head>
+<body>
+<table border="0" cellpadding="8" cellspacing="0">
+<tr>
+<!-- BEGIN DYNAMIC: lista_bins -->
+<td valign="top">
+	<table width="155" border="0" cellpadding="1" cellspacing="0" style="border:#000000 solid 1px;">
+	  <tr align="center">
+		<td style="border:#000000 solid 2px;">
+			<div id="titulo">Pedido</div>
+			<div id="pedido">{num_op}</div>
+		</td>
+	  </tr>
+	  <tr align="center">
+		<td style="border:#000000 solid 2px;">
+			<div id="titulo">Jornada</div>
+			<div id="jornada">{hora_ini} a {hora_fin}</div>
+			<div id="fecha">{fecha_desp}</div>
+		</td>	
+	  </tr>
+	  <tr align="center" height="60px" valign="top">
+		<td style="border:#000000 solid 2px;">
+			<div id="zona">{zona_des}</div>
+		</td>
+	  </tr>
+	  <tr align="center" height="68px" valign="top">
+		<td style="border:#000000 solid 2px;">
+<!-- BEGIN DYNAMIC: nom_pro_sin -->		
+			<div id="ronda">R: {id_ronda}</div>
+			<div id="bin">{cod_bin}</div>
+			<div id="sector_camara">{sector_camara}</div>
+<!-- END DYNAMIC: nom_pro_sin -->
+<!-- BEGIN DYNAMIC: nom_pro -->
+			<div id="producto">{nom_producto}</div>
+<!-- END DYNAMIC: nom_pro -->
+		</td>
+	  </tr>
+	  <tr align="center" height="30px" valign="top">
+		<td style="border:#000000 solid 2px;">
+			<div id="ap_pat_cli"><b>{ap_paterno_cli}</b></div>
+			<div id="nom_cli"><b>{nombre_cli}</b></div>
+		</td>
+	  </tr>
+	</table>
+</td>
+{siguiente_fila}
+<!-- END DYNAMIC: lista_bins -->
+</table>
+
+<table border="0" cellpadding="0" cellspacing="0">
+<tr>
+	<td height="20" bgcolor="#FFFFFF"><img src="img/1x1trans.gif" width="1" height="1"></td>
+</tr>
+</table>
+
+<table width="320" border="0" cellpadding="2" cellspacing="0" style="border:#000000 solid 2px;">
+  <tr>
+	<td width="130">Nº Ronda</td>
+	<td width="3">:</td>
+	<td>{id_ronda} </td>
+  </tr>
+  <tr>
+	<td width="130">Cantidad Bin</td>
+	<td width="3">:</td>
+	<td>{cant_bin} </td>
+  </tr>
+  <tr>
+	<td width="130">Nombre Pickeador</td>
+	<td width="3">:</td>
+	<td>{pick_nombre} </td>
+  </tr>
+<!-- BEGIN DYNAMIC: lista_man -->
+  <tr>
+	<td width="130">Nº Bin - Nº OP</td>
+	<td width="3">:</td>
+	<td>{nro_bin} - {nro_op} {zona}</td>
+  </tr>
+<!-- END DYNAMIC: lista_man -->
+  <tr>
+	<td width="130">Productividad Ronda</td>
+	<td width="3">:</td>
+	<td>{productividad_ronda}</td>
+  </tr>
+<!-- BEGIN DYNAMIC: lista_zonas -->
+  <tr>
+	<td colspan="3">Zona {mensaje_zona} todo en bodega.</td>
+  </tr>
+<!-- END DYNAMIC: lista_zonas -->
+{productos_sueltos}
+<!-- BEGIN DYNAMIC: lista_prod_s -->
+  <tr>
+	<td colspan="3">{cant_prod}.- {desc_prod}.</td>
+  </tr>
+<!-- END DYNAMIC: lista_prod_s -->
+</table>
+
+</body>
+</html>

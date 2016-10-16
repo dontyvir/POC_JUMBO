@@ -1,0 +1,129 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<meta name="viewport" content="width=320;initial-scale=1.0; maximum-scale=1.0; user-scalable=false;"/>
+<title>Jumbo Mobile - Modificar direcciones</title>
+<link href="/FO_WebContent/mobi/css/lugaresdespacho.css" rel="stylesheet" type="text/css" />
+<link href="/FO_WebContent/mobi/css/bordes_redondeados.css" rel="stylesheet" type="text/css" />
+</head>
+<body onload="muestraDireccion();">
+<div id="contenedor_b">
+	<div id="encabezado_b">
+  		<h2>Jumbo.cl mobile, m�s tiempo para ti</h2>
+	</div>
+	<div id="boton_b">
+		<img src="/FO_IMGS/images/mobi/bt_modif_direccion.gif" alt="Bienvenida" />
+	</div>
+	<div id="margen_verde">
+		<div class="top-right-corner_b">
+			<div class="top-right-inside_b">&bull;</div>
+		</div>
+	</div>
+	<div id="contenido">
+		<form method="post" name="form1" id="form1">
+		<div class="tx_nombre">{nombre_cliente}</div>
+		<div class="tit_md"> Tus direcciones de despacho son:
+			<select name="sel_dir_desp" id="sel_dir_desp" onChange="muestraDireccion();">
+			<!-- BEGIN DYNAMIC: dir_despachos -->
+	  			<option value="{dir_valor}">{dir_opcion}</option>
+			<!-- END DYNAMIC: dir_despachos -->	  
+			</select>
+			<!-- BEGIN DYNAMIC: dir_despachos -->
+				<input name="nombre_{dir_valor}" id="nombre_{dir_valor}" type="hidden" value="{dir_opcion}" />
+				<input name="calle_{dir_valor}"  id="calle_{dir_valor}" type="hidden" value="{dir_calle}" />
+				<input name="numero_{dir_valor}" id="numero_{dir_valor}" type="hidden" value="{dir_numero}" />
+				<input name="dpto_{dir_valor}"   id="dpto_{dir_valor}" type="hidden" value="{dir_dpto}" />
+				<input name="comuna_{dir_valor}" id="comuna_{dir_valor}" type="hidden" value="{dir_id_comuna}" />
+				<input name="comuna_txt_{dir_valor}" id="comuna_txt_{dir_valor}" type="hidden" value="{dir_comuna}" />
+				<input name="region_{dir_valor}" id="region_{dir_valor}" type="hidden" value="{dir_id_region}" />
+				<input name="region_txt_{dir_valor}" id="region_txt_{dir_valor}" type="hidden" value="{dir_region}" />
+				<input name="tipocalle_{dir_valor}" id="tipocalle_{dir_valor}" type="hidden" value="{dir_tipid}" />
+				<input name="comentario_{dir_valor}" id="cometario_{dir_valor}" type="hidden" value="{dir_comentario}" />
+			<!-- END DYNAMIC: dir_despachos -->	
+		</div>
+		<div></div>
+		<div id="mod_direccion_md">
+			<div class="campos_md">Nombre: <span id="nombre_txt"></span></div>
+			<div class="campos_md">Direcci&oacute;n: <span id="direccion_txt"></span></div>
+			<div class="campos_md">Comuna: <span id="comuna_txt"></span></div>
+			<div class="campos_md">Regi&oacute;n: <span id="region_txt"></span></div>
+			<div class="bt_edit_md"><a href="javascript:editaDireccion();"><img src="/FO_IMGS/images/mobi/bt_editar.gif" alt="cambiar alg&uacute;n deto de tu direcci&oacute;n" name="editar" border="0" id="editar" /></a></div>
+			<div class="bt_del_md"><a href="javascript:eliminaDireccion();"><img src="/FO_IMGS/images/mobi/bt-eliminar.gif" alt="eliminar esta direcci&oacute;n" name="del"  border="0" id="del" /></a></div>
+		</div>
+		</form>
+		<form action="" method="post" name="despachos" id="despachos">
+		<input type="hidden" name="accion" value="" />
+		<input type="hidden" name="dir_id" value="" />
+      <a name="ancla_modificar" id="ancla_modificar"></a> 
+      <div class="tit_md">Agregar/Modificar tus direcciones de despacho:</div>
+		<div id="mod_direccion_md">
+			<div class="campos_modif_md">
+				<div class="iz_campos_modif_md">Tipo: </div>
+				<div>
+					<select name="tipo_calle" class="campo" id="tipo_calle">
+						<option value="" selected="true">--</option>
+						<!-- BEGIN DYNAMIC: select_tipocalle -->
+						<option value="{option_calle_id}">{option_calle_nombre}</option>
+						<!-- END DYNAMIC: select_tipocalle -->
+					</select>
+				</div>
+			</div>
+			<div class="campos_modif_md">
+				<div class="iz_campos_modif_md">Calle: </div>
+				<input name="calle" value="{calle}" type="text" class="campo" size="25" maxlength="50" onpaste="return false;"/>
+			</div>
+			<div class="campos_modif_md">
+				<div class="iz_campos_modif_md">N&uacute;mero: </div>
+		  		<input name="numero" value="{numero}" type="text" class="campo" size="7" maxlength="20" onpaste="return false;"/>
+			</div>
+			<div class="campos_modif_md">
+				<div class="iz_campos_modif_md">Dpto./Casa: </div>
+		  		<input name="departamento" value="{departamento}" type="text" class="campo" size="7" maxlength="20" onpaste="return false;"/>
+			</div>
+			<div class="campos_modif_md">
+				<div class="iz_campos_modif_md">Regi&oacute;n: </div>
+				<select name="region" class="campo" id="region" onchange="buscar_comunas()">
+					<option selected="selected" value="0">Seleccionar</option>
+					<!-- BEGIN DYNAMIC: select_regiones -->	
+					<option value="{option_reg_id}">{option_reg_nombre}</option>
+					<!-- END DYNAMIC: select_regiones -->
+				</select>
+			</div>
+			<div class="campos_modif_md">
+			    <div class="iz_campos_modif_md">Comuna: </div>
+				<select name="comuna" class="campo" id="comuna" >
+					<option value="0">Seleccionar</option>
+				</select>
+			</div>
+			<div class="campos_modif_md">
+				<div class="iz_campos_modif_md">Guardar Como: </div>
+				<input name="alias" value="{alias}" type="text" class="campo" size="12" maxlength="20" onpaste="return false;"/>
+			</div>
+			<div class="iz_campos_modif_md">Observaciones para el despacho</div>
+			<div class="ult_campo_modif_md">
+				<textarea name="comentario" cols="23" rows="5" class="campoblanco" id="comentario" onfocus="vaciar_comentario();" onkeydown="javascript:checklength(this)">{comentario}</textarea>
+			</div>
+		</div>
+		<div class="bt_final_md">
+			<div class="bt_volver">
+				<a href="javascript:cancelar_despachos();"><img src="/FO_IMGS/images/mobi/bt_volver.gif" alt="volver" name="volver" border="0" id="volver" /></a>
+			</div>
+			<div class="bt_guardar_md">
+				<a href="javascript:submit_despachos();"><img src="/FO_IMGS/images/mobi/bt_guardar_datos.gif" name="guardar" border="0" id="guardar" /></a>
+			</div>
+		</div>
+		</form>
+	</div>
+</div>
+<script>					
+_com_inicial = {_com_inicial};
+if( {error} == 1 ) alert( "{mensaje_error}" );
+</script>
+<iframe name="ifcomuna" id="ifcomuna" src="" frameborder="0" width="0" height="0" scrolling="yes" style='visibility: hidden;'></iframe>
+<script type="text/javascript" src="/FO_WebContent/mobi/js/prototype.js"></script>
+<script type="text/javascript" src="/FO_WebContent/mobi/js/global.js"></script>
+<script type="text/javascript" src="/FO_WebContent/mobi/js/listas.js"></script>
+<script type="text/javascript" src="/FO_WebContent/mobi/js/despachos.js"></script>
+</body>
+</html>

@@ -1,0 +1,663 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="EXPIRES" CONTENT="Mon, 22 Jul 2002 11:12:01 GMT">
+<title>Jumbo.cl Back Office Local</title>
+<script language="JavaScript" src="funciones.js"></script>
+<script type="text/javascript" src="js/layer.js"></script>
+<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+<link href="estilos.css" rel="stylesheet" type="text/css">
+<link href="html_bol/estilostextos.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+<!--
+.style1 {color: #666666}
+#alertamontofuerarango {
+	position:absolute;
+	width: 0px;
+	height: 0px;
+	left: 0px;
+	top: 0px;
+	visibility: hidden;
+	border: 1;
+	z-index: 10;
+}
+.Estilo1 {
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight: bold;
+	font-size: 14px;
+	color: #003399;
+}
+-->
+</style>
+
+<script language="JavaScript" type="text/javascript">
+	function MM_findObj(n, d) { //v4.01
+	  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+	    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+	  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+	  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+	  if(!x && d.getElementById) x=d.getElementById(n); return x;
+	}
+
+	function MM_showHideLayers() { //v6.0
+		var i,p,v,obj,args=MM_showHideLayers.arguments;
+		for (i=0; i<(args.length-2); i+=3) if ((obj=MM_findObj(args[i]))!=null) { v=args[i+2];
+			if (obj.style){
+				obj=obj.style;
+				v=(v=='show')?'visible':(v=='hide')?'hidden':v;
+			}
+			obj.visibility=v;
+		}
+	}
+
+	function ValidaGeneraTrxPago(form) {
+	  /*var MontoTotalPedido = {MontoTotalPedido};
+	  var MontoTotalPicking = {MontoTotalPicking};
+	  var alertaMonto = {alertaMonto};
+	  var retorno = false;
+	  var mensaje = "El monto total resultante no se encuentra dentro del rango\n"
+					+ "del monto inicial solicitado por el cliente.\n\n"
+					+ "Compruebe que no exista una alta cantidad de productos faltantes,\n "
+					+ "Bines duplicados, mal uso de códigos de productos pesables, etc."
+					;
+	  if ( alertaMonto ) {
+	    showAlertaMontoFueraRango();
+	    return;
+	  }*/
+	  form.submit();
+	}
+
+	function ir_paso2() {
+		// Se revisa si hay productos en el carro de compras y existen compras anteriores
+		var cantreg = document.fc.cant_reg.value; // Cantidad de productos en el carro de compras
+	
+		var cantult = document.form1.cantreg.value; // Cantidad de ultimas compras
+		if(cantreg == 0 && cantult > 0 ) {
+		   showAlertaMontoFueraRango();
+		}else {
+			location.href= "CategoryDisplay";
+		}
+	}
+
+	function showAlertaMontoFueraRango() {
+		var layerAlertaMontoFueraRango = document.getElementById('alertamontofuerarango');
+		var ancho = screen.availWidth;
+		var largo = screen.availHeight;
+		var ypos = document.body.scrollTop;
+		//alert("ancho: " + ancho + "\nlargo: " + largo + "\nypos: " + ypos);
+		layerAlertaMontoFueraRango.style.width = '400px';
+		layerAlertaMontoFueraRango.style.height = '180px';
+		//layerAlertaMontoFueraRango.style.left = (ancho-400)/2 + 'px';
+		//layerAlertaMontoFueraRango.style.top = (largo-400)/2 + ypos + 'px';
+		layerAlertaMontoFueraRango.style.left = 190 + 'px';
+		layerAlertaMontoFueraRango.style.top = 260 + 'px';
+		//alert("left: " + (ancho-400)/2 + "\ntop: " + ((largo-400)/2 + ypos));
+		MM_showHideLayers('alertamontofuerarango','','show');
+	}
+	
+	function hideAlertaMontoFueraRango() {
+		MM_showHideLayers('alertamontofuerarango','','hide');
+		var layerAlertaMontoFueraRango = document.getElementById('alertamontofuerarango');
+		layerAlertaMontoFueraRango.style.width = '0px';
+		layerAlertaMontoFueraRango.style.height = '0px';
+	}
+	
+	function validar_form( form ) {
+		if( validar_obligatorio( form.log, "CAMPO OBLIGATORIO" ) ) return false;
+		return true;
+	}
+
+	function excesoAccion(accion) {
+	
+		var op = $("#id_pedido_trx_exceso").val();
+		
+		if(accion == "c"){
+			var strJs = "La OP " + op + " ha sido pickeada con exceso. Confirme esta acci\u00f3n para corregir el exceso de forma automatica.";
+		}
+		else if(accion == "mxn"){
+			var strJs = "El bot\u00f3n `Generar Transacci\u00f3n` del pedido " + op + " ha sido bloqueado debido a que existen productos con valor a $1, que no se pueden corregir automaticamente. Confirme esta acci\u00f3n para notificar a sistemas.";
+		}	
+		else{
+			var strJs = "El bot\u00f3n `Generar Transacci\u00f3n` del pedido " + op + " ha sido bloqueado debido a que existen productos pickeados con exceso que no se pueden corregir automaticamente. Confirme esta acci\u00f3n para notificar a sistemas.";
+		}	
+			
+		if (confirm(strJs)) {
+
+			$("#cont_data").hide();
+			$("#cont_exceso").empty().show().html("<h3>Procesando solicitud...</h3> <img src=\"img/loader_progress.gif\" border=\"0\" alt=\"\">");
+			
+			var bind = {cache: false,
+                        success:function (data, textStatus, jqXHR){
+                           	var status = parseInt(data.status);
+                           	$("#cont_exceso").empty().hide();	
+							$("#cont_data").show();
+							switch(status){
+								case 200:				
+									alert('Exceso corregido correctamente! \n Espere mientras se generan las TRX de pago.');
+									$("#btn_trx_pago").hide();
+									$("#btn_trx_pago_process").empty().show().html("<h3>Generando TRX de pago...</h3> <img src=\"img/loader_progress.gif\" border=\"0\" alt=\"\">");							
+									$("#f_genera").submit();
+								break;
+								case 500:
+									alert('Error al corregir el exceso generado. \n Un email ha sido enviado a sistemas informando el error.');
+								break;
+								case 202:				
+									alert('Email notificando el exceso, ha sido enviado correctamente a sistemas.');
+									$("#btn_genrar_trx_pago").attr('disabled','disabled');
+								break;
+								default:
+									alert('No es posible procesar su solicitud.');
+									window.location.href="/JumboBOLocal/ViewMonitorPedidos";
+							} 
+                        },
+                        error:function(jqXHR, textStatus, errorThrown){
+                        	alert('No es posible procesar su solicitud.\n'+ errorThrown);
+                        }
+                     }          
+                     $.ajax("CorreccionExcesos?accion="+accion,bind); 
+		} else {
+			return false;
+		}
+	}
+	
+	function validaBotones(){
+		var e = document.getElementById('id_estado').value;
+		if (e == 70){
+			document.getElementById('btnBodega').disabled = false;
+			document.getElementById('btnRepick').disabled = false;
+		}
+		else {
+			document.getElementById('btnBodega').disabled =  true;
+			document.getElementById('btnRepick').disabled =  true;
+		}
+	}
+	var prod_faltantes_apickear=[];
+	function showSelectFaltantes() {
+		popup=	window.open("SeleccionRevisionFaltante?id_pedido={id_pedido}","mywindow","status=1,resizable=0,scrollbars=1,menubar=0,width=630,height=580");
+	}
+	function addprod(idprod){
+		prod_faltantes_apickear[prod_faltantes_apickear.length]=idprod;
+	}
+	function deleteprodpick(idprod){
+		var i=0;
+		while(i < prod_faltantes_apickear.length && prod_faltantes_apickear[i]!= idprod){
+			i++;
+		}
+		if(i<prod_faltantes_apickear.length){
+			prod_faltantes_apickear.splice(i,1);
+		}
+	}
+	function repickearSeleccionados(){
+		document.getElementById("formRepick").action += "&prodPick="+prod_faltantes_apickear;
+		document.getElementById("formRepick").submit();
+	}	
+	function seleccionaRepickeo(){
+		if(prod_faltantes_apickear.length>0){
+			return true;
+		}
+		return false;
+	}
+	function cierre(){
+		popup.close();
+	}
+	var popup;
+</script>
+</head>
+<body onload="validaBotones()" onunload="cierre();" >
+
+		<link rel="stylesheet" href="menu/menu.css" />
+		<script language="JavaScript" src="menu/menu.js"></script>
+		<script language="JavaScript" src="menu/menu_tpl.js"></script>
+		<script language="JavaScript" src="menu/menu_items.js"></script>
+		<table width="780" height="100%" border="0" cellpadding="0" cellspacing="0">
+			<tr>
+				<td height="78" valign="top">
+					<table width="100%" height="59" border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#ffffff">
+						<tr>
+							<td width="275" height="59" align="left" class="user"><img src="img/header2.jpg" width="275" height="60" /></td>
+							<td width="505" align="left" valign="bottom" background="img/bg-1.jpg" class="user">
+								<table width="90%" border="0" align="center" cellpadding="0" cellspacing="2">
+									<tr>
+										<td>&nbsp;</td>
+									</tr>
+									<tr>
+										<td><div align="right" class="infoBL">Usuario: {hdr_nombre} | Local: {hdr_local} | {hdr_fecha} </div></td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+					</table>
+					<table width="100%" height="19" border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#f1f0e9" style="border-top:1px solid #ABABAB; border-bottom:1px solid #ABABAB">
+						<tr>
+							<td align="left" bgcolor="#FFFFFF" class="user"></td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+			<tr height="400">
+				<td valign="top" bgcolor="#FFFFFF">
+					<div id="cont_exceso"></div>
+					<div id="cont_data">
+						<table border="0" width="100%" class="ContentTitle">
+							<tr>
+								<td width="53%" height="20" class="HeaderTitle">Detalle del Pedido Nº {id_pedido}</td>
+								<td width="47%" class="HeaderTitle">
+									<div align="right">
+										<a href="ViewMonitorPedidos"><img src="img/volver.gif" alt="Volver" width="32" height="32" border="0"></a>
+									</div>
+								</td>
+							</tr>
+						</table>
+						<br />
+						<table width="100%" border="0" cellspacing="2" cellpadding="2">
+							<tr valign="top">
+								<td width="71%">
+									<br />
+									<link id="luna-tab-style-sheet" type="text/css" rel="stylesheet" href="js/tabs/tabpane.css" />
+									<script type="text/javascript" src="js/tabs/tabpane.js"></script>
+									<center><font color="red">{mensaje_rc}</font></center>
+									<table width="95%" align="center" border="0">
+										<tr>
+											<td>
+												<div class="tab-page" id="modules-cpanel">
+													<script type="text/javascript">
+														var tabPane1 = new WebFXTabPane( document.getElementById( "modules-cpanel" ), true );
+													</script>
+													<div class="tab-page" id="modulo1">
+														<h2 class="tab">General</h2>
+														<div align="left">
+															<strong>Datos del Pedido </strong><br /><br />
+															<table width="660" border="0" cellspacing="2" cellpadding="2">
+																<tr>
+																	<td width="121">N&deg; Pedido</td>
+																	<td width="306">{id_pedido} {info_pedido}</td>
+																</tr>
+																<tr>
+																	<br>
+																	<input type="hidden" id="id_estado" value={id_estado}>
+																	<td>Fecha de Ingreso</td>
+																	<td>{f_ingreso}</td>
+																</tr>
+																<tr>
+																	<td>Fecha Despacho</td>															
+			                            							<td>{f_despacho} {h_despacho}-{h_findespacho}</td>
+																</tr>
+																<tr>
+																	<td>Fecha Picking</td>														
+			                            							<td>{f_picking} {h_picking}-{h_finpicking}</td>
+																</tr>
+																<tr>
+																	<td>Local Facturación</td>
+																	<td>{local_fact}</td>
+																</tr>
+																<tr>
+																	<td>Jornada Nº</td>
+																	<td><a href="ViewJornada?id_jornada={id_jornada}">{id_jornada}</a></td>
+																</tr>
+																<tr>
+																	<td>Estado</td>
+																	<td><strong><font color="#00CC00">{estado}{imgEstado}</font></strong></td>
+																</tr>
+																<tr>
+																<tr>
+																	<td>Completitud Monto</td>
+																	<td>{negritaRojo}{porcent_monto}%</b></font></strong></td>
+																</tr>
+																<tr>
+																<tr>
+																	<td>Completitud Unidades</td>
+																	<td>{negritaRojo}{porcent_unidad}%</b></font></strong></td>
+																</tr>
+																<tr>														
+																	<td>Tipo de Doc.</td>
+																	<td><strong>{tipo_doc}</strong></td>
+																</tr>
+																<tr>
+																	<td>Tipo de Despacho</td>
+																	<td><strong>{tipo_despacho}</strong></td>
+																</tr>
+																<tr> 
+																	<td>Fono Contacto M&oacute;vil</td>
+																	<td>{fono_trans}</td>
+																  </tr>
+																  <tr> 
+																	<td>Chofer</td>
+																	<td>{chofer_trans}</td>
+																  </tr>
+																  <tr> 
+																	<td>M&oacute;vil</td>
+																	<td>{patente_trans}</td>
+																  </tr>
+																  <tr> 
+																	<td>Hora Salida Local</td>
+																	<td>{hr_out_local}</td>
+																  </tr>
+																  <tr>
+																	<td>Hora Llegada Domicilio </td>
+																	<td>{hr_in_dom}</td>
+																  </tr>
+																  <tr> 
+																	<td>Hora Salida Domicilio</td>
+																	<td>{hr_out_dom}</td>
+																  </tr>
+																<tr>
+																	<td>&nbsp;</td>
+																	<td>&nbsp;</td>
+																</tr>
+																<tr>
+																	<td>Total Productos Pedido</td>
+																	<td>{tot_prods}</td>
+																</tr>
+																<tr>
+																	<td>Observaciones Medio de Pago</td>
+																	<td>{observaciones_mp}</td>
+																</tr>
+															</table>
+															<script type="text/javascript" src="popup.js"></script>
+															<br />
+															
+															<div id="btn_trx_pago_process"></div>
+															<div id="btn_trx_pago">
+																<strong>Acciones sobre el Pedido </strong><br>													
+																<table width="63%" border="0" align="left" cellpadding="0" cellspacing="3">
+																	<tr>
+																		<td width="33%" align="center" valign="bottom">
+																			<form name="f_genera" id="f_genera" method="POST" action="GeneraTrxPago">
+																				<input type="hidden" name="id_pedido" value="{id_pedido}"> 
+																				<input type="hidden" name="id_pedido_trx_exceso" id="id_pedido_trx_exceso" value="{id_pedido}">
+																				<input type="hidden" name="url" value="ViewDetallePedido?id_pedido={id_pedido}"> 
+																				<input {hab_gentrxpago} id="btn_genrar_trx_pago" type="button" name="b_gtrx" value="Generar Trx. Pago" onclick="javascript:{accion_btn};" align="bottom">
+																			</form>
+																		</td>
+																		<td width="33%" valign="bottom">
+																			<FORM name="repickear" id="formRepick" method="POST" action="RevisionFaltante?id_pedido={id_pedido}&btn=R&id_jornada={id_jornada}">
+																				<INPUT type="button" name="btnRepick" value="Repickear Faltante" id="btnRepick" align="bottom" onclick="showSelectFaltantes();" >
+																				<INPUT  {hab_repickear} type="submit" id="repickSelected" style="display:none;visibility:hidden;">
+																			</FORM>
+																		</td>
+																		<td width="33%" valign="bottom">&nbsp;
+																			<FORM name="enBodega" method="POST" action="RevisionFaltante?id_pedido={id_pedido}&btn=B&id_jornada={id_jornada}">
+																				<INPUT {hab_bodega} type="submit" name="btnBodega" value="Pasar a Bodega" id="btnBodega" align="bottom"  >
+																			</FORM>
+																		</td>
+																	</tr>
+																	<tr>
+																		<td valign="bottom" colspan="3"><div align="center">Generar Transacciones de Pago</div></td>														
+																	</tr>
+																</table>
+															</div>
+															<br /><br />
+														</div>
+													</div>
+													<div class="tab-page" id="modulo1">
+														<h2 class="tab">Productos</h2>
+														<div align="left">
+															<strong>Listado de Productos del Pedido </strong>
+															<br /><br />
+															<table width="710" border="0" align="center" cellpadding="2" cellspacing="0" class="tabla2">
+																<tr>
+																	<th width="39"></th>
+																	<th width="59">Cod Sap</th>
+																	<th width="39">U .Med </th>
+																	<th width="78">Sector Picking</th>
+																	<th width="225">Descripci&oacute;n</th>
+																	<th width="32" align="center">Cant Ped.</th>
+																	<th width="32" align="center">Cant Pick.</th>
+																	<th width="32" align="center">Cant Falt.</th>
+																	<th width="32" align="center">Cant S/Pick.</th>
+																	<th width="77">Obs</th>
+																	<th width="62" align="center">¿Dist. Crit. Jumbo?</th>
+																	<th width="42" align="center">Acciones</th>
+																	
+																</tr>
+																<!-- BEGIN DYNAMIC: select_listado_productos -->
+																<tr valign="top" >
+																	
+																	<td><div align="center">{ale_img}</div></td>
+																	<td><div align="center">{cod_prod}</div></td>
+																	<td>{u_med}</td>
+																	<td>{sector}</td>
+																	<td><div align="left">{descripcion}</div></td>
+																	<td><div align="center">{cant_ped}</div></td>
+																	<td><div align="center">{cant_pick}</div></td>
+																	<td><div align="center">{cant_faltan}</div></td>
+																	<td><div align="center">{cant_spick}</div></td>
+																	<td><p>{observaciones}&nbsp;</p></td>
+																	<td><div align="center">{crit_distinto_jumbo}</div></td>
+																	<td align="center"><a href="javascript:popUpWindow('ViewProductSapForm?cod_prod={id_prod}', 100, 100, 600, 475);">ver</a></td>
+																</tr>
+																<!-- END DYNAMIC: select_listado_productos -->
+															</table>
+															<br /><br /><br /><br />
+														</div>
+													</div>
+													<div class="tab-page" id="modulo1">
+														<h2 class="tab">S&amp;F</h2>
+														<div align="left">
+															<strong>Sustitutos</strong>
+															<br /><br />
+															<table width="664" border="0" align="center" cellpadding="2" cellspacing="0" class="tabla2">
+																<tr>
+																	<th>Cod Prod</th>
+																	<th>U Med </th>
+																	<th>Descripci&oacute;n</th>
+																	<th>Cant</th>
+																	<th>&nbsp;</th>
+																	<th>Cod Sustituto</th>
+																	<th>Descripci&oacute;n</th>
+																	<th>Cant</th>
+																	<th>U Med </th>
+																	<th>Acciones </th>
+																</tr>
+																<!-- BEGIN DYNAMIC: select_sustitutos -->
+																<tr valign="top">
+																	<td><div align="center">{cod_prod1}</div></td>
+																	<td><div align="center">{uni_med1}</div></td>
+																	<td><div align="left">{descr1}</div></td>
+																	<td><div align="center">{cant1}</div></td>
+																	<td><div align="center">&rarr;</div></td>
+																	<td><div align="center">{cod_prod2}</div></td>
+																	<td>{descr2}</td>
+																	<td><div align="center">{cant2}</div></td>
+																	<td>{uni_med2}</td>
+																	<td>{comm_edit_iz}<a href="javascript:popUpWindow('ViewSustitutosCambioFormato?id_detalle={id_detalle}',120,120,400,120)">editar</a>{comm_edit_de}</td>
+																</tr>
+																<!-- END DYNAMIC: select_sustitutos -->
+															</table>
+															<p><strong>Faltantes</strong><br /></p>
+															<table width="465" border="0" align="center" cellpadding="2" cellspacing="0" class="tabla2">
+																<tr>
+																	<th width="76">Cod Prod</th>
+																	<th width="185">Descripci&oacute;n</th>
+																	<th width="112">Cant. Faltante</th>
+																</tr>
+																<!-- BEGIN DYNAMIC: select_faltantes -->
+																<tr valign="top">
+																	<td><div align="center">{cod_prod}</div></td>
+																	<td><div align="left">{descripcion}</div></td>
+																	<td><div align="center">{cant}</div></td>
+																</tr>
+																<!-- END DYNAMIC: select_faltantes -->
+															</table>
+															<br /><br />
+														</div>
+													</div>
+													<div class="tab-page" id="modulo1">
+														<h2 class="tab">Rondas</h2>
+														<div align="left">
+															<strong>Listado de Rondas del Pedido </strong>
+															<br /><br />
+															<table width="613" border="0" align="center" cellpadding="2" cellspacing="0" class="tabla2">
+																<tr>
+																	<th width="74" align="center">N&deg; Ronda</th>
+																	<th width="200" align="center">Sector</th>
+																	<th width="60" align="center">Cant Prods.</th>
+																	<th width="131" align="center">Estado</th>
+																	<th width="128" align="center">Acciones</th>
+																</tr>
+																<!-- BEGIN DYNAMIC: select_rondas -->
+																<tr>
+																	<td><div align="center">{id_ronda}</div></td>
+																	<td><div align="center">{sector}</div></td>
+																	<td><div align="center">{cant_prods}</div></td>
+																	<td><div align="center">{estado}</div></td>
+																	<td><div align="center"><a href="ViewRonda?id_ronda={id_ronda}">ver</a></div></td>
+																</tr>
+																<!-- END DYNAMIC: select_rondas -->
+															</table>
+															<br /><br /><br /><br />
+														</div>
+													</div>
+													<div class="tab-page" id="modulo1">
+														<h2 class="tab">Bodega</h2>
+														<div align="left">
+															<strong>Datos Ubicaci&oacute;n Bodega </strong>
+															<br /><br />
+															<table width="600" border="0" align="center" cellpadding="2" cellspacing="0" class="tabla2">
+																<tr align="center">
+																	<th width="70">Cod Bin</th>
+																	<th width="75">Visualizado</th>
+																	<th width="80">Cant. Prod. Auditados</th>
+																	<th width="150">Auditor</th>
+																	<th width="88">Tipo</th>
+																	<th width="88">&nbsp;</th>
+																</tr>
+																<!-- BEGIN DYNAMIC: select_bodega -->
+																<tr valign="top">
+																	<td><div align="center">{cod_bin}</div></td>
+																	<td><div align="center">{visualizado}</div></td>
+																	<td><div align="center">{cant_prod_audit}</div></td>
+																	<td><div align="center">{auditor}</div></td>
+																	<td><div align="center">{tipo}</div></td>
+																	<td><div align="center"><a href="javascript:popUpWindow('ViewPrint?url='+escape('ViewProductosBin?id_bp={id_bp}'), 100, 100, 700, 500)">ver contenido</a></div></td>
+																</tr>
+																<!-- END DYNAMIC: select_bodega -->
+															</table>
+															<br /><br /><br /><br />
+														</div>
+													</div>
+													<div class="tab-page" id="modulo1">
+														<h2 class="tab">Trx. Pago</h2>
+														<div align="left">
+															<strong>Datos de Pago</strong>
+															<br /><br />
+															<table width="750" border="1" align="center" cellpadding="2" cellspacing="0" class="tabla2">
+																<tr>
+																	<th width="70">Nº Trx</th>
+																	<th width="70">Monto</th>
+																	<th width="50">Cant. Productos</th>
+																	<th width="50">Estado</th>
+																	<th width="70">Tipo Doc.</th>
+																	<th width="50">Nº Doc.</th>
+																	<th width="50">Nº Caja</th>
+																	<th width="50">Monto POS</th>
+																	<th width="50">Fecha POS</th>
+																	<th width="50">Hora POS</th>
+																	<th width="50">FP</th>
+																	<th width="80">Acciones</th>
+																</tr>
+																<!-- BEGIN DYNAMIC: listado_trxmp -->
+																<tr valign="top">
+																	<td><div align="center">{trxmp_nro}</div></td>
+																	<td><div align="center">{trxmp_monto}</div></td>
+																	<td><div align="center">{trxmp_qtyprods}</div></td>
+																	<td><div align="center">{trxmp_estado}</div></td>
+																	<td><div align="center">{trxmp_tipo_doc}</div></td>
+																	<td><div align="center">{trxmp_num_doc}</div></td>
+																	<td><div align="center">{trxmp_num_caja}</div></td>
+																	<td><div align="center">{trxmp_pos_monto_fp}</div></td>
+																	<td><div align="center">{trxmp_pos_fecha}</div></td>
+																	<td><div align="center">{trxmp_pos_hora}</div></td>
+																	<td><div align="center">{trxmp_pos_fp}</div></td>
+																	<td>
+																		<div align="left">
+																	  		<a title="editar" href="javascript:popUpWindow('ViewPrint?url='+escape('ViewTrxMpDetalle?id_trx_mp={trxmp_nro}&id_pedido={id_pedido}'), 100, 100, 700, 500)">
+																	  		<img src="img/editicon.gif" border="0"></a>
+																	  		{disable_print_izq}<a title="imprimir" href="javascript:popUpWindow('ViewPrint?url='+escape('ViewTrxMp?id_trx_mp={trxmp_nro}&id_pedido={id_pedido}'), 100, 100, 700, 500)">
+																	  		<img src="img/ico_print.gif" width="16" height="16" border="0"></a>{disable_print_der}
+																	  </div>
+																	</td>
+																</tr>
+																<!-- END DYNAMIC: listado_trxmp -->
+															</table>
+															<br />
+														</div>
+													</div>
+													<div class="tab-page" id="modulo1">
+														<h2 class="tab">Log</h2>
+														<div align="left">
+															<strong>Log del Pedido </strong>
+															<br /><br />
+															<table width="100%" border="0" align="center" cellpadding="2" cellspacing="0" class="tabla2">
+																<tr>
+																	<th width="93">Fecha</th>
+																	<th width="131">Usuario</th>
+																	<th width="412">Log</th>
+																</tr>
+															</table>
+															<iframe width="700" height="250" src="ViewLogPedido?id_pedido={id_pedido}" scrolling="auto" frameborder="0" name="logframe"></iframe>
+															<br /><br />
+															<strong>Agregar Registro</strong>
+															<br />
+															<form name="forma1" method="post" action="AgregaLogPedido" target="logframe" onSubmit="setTimeout('document.forma1.reset()',100); return validar_form(this);">
+																<input type="hidden" name="url" value="ViewLogPedido?id_pedido={id_pedido}">
+																<input type="hidden" name="id_pedido" value="{id_pedido}">
+																<table width="596" border="0" align="center" cellpadding="2" cellspacing="2" class="textonormal">
+																	<tr valign="top">
+																		<td width="385"><textarea name="log" cols="60" onpaste = "return false;" onKeydown="if (event.ctrlKey && (String.fromCharCode(event.keyCode).toLowerCase() == 'c' || String.fromCharCode(event.keyCode).toLowerCase() == 'v')) { event.keyCode = 0; }" onkeypress='key = window.event.keyCode; keychar = String.fromCharCode(key); keychar = keychar.toLowerCase(); if (!(("áéíóúabcdefghijklmnñopqrstuvwxyz0123456789. ").indexOf(keychar) > -1)) window.event.keyCode = 0; if(this.value.length > 253){ this.value=this.value.substring(0,254); }'></textarea></td>
+																		<td width="108" valign="bottom"><input type="submit" name="Button" value="Ingresar"></td>
+																	</tr>
+																</table>
+															</form>
+														</div>
+													</div>
+												</div>
+											</td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+						</table>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<table width="100%" height="19" border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#f1f0e9" style="border-top:1px solid #ABABAB; border-bottom:1px solid #ABABAB">
+						<tr>
+							<td align="center" bgcolor="#67b01a" class="infoBL">
+								<div align="center">Back Office Local - Jumbo.cl</div>
+							</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+		</table>
+
+	<div id="alertamontofuerarango" style="visibility: hidden">
+	  <div id="dragbar6" onmousedown="javascript:initializedrag(event,'alertamontofuerarango','dragbar6');" style="cursor:move;">
+	    <table width="400" border="0" cellpadding="0" cellspacing="0">
+	      <tr>
+	        <td width="8" height="7" valign="top"><img src="http://www.jumbo.cl/FO_IMGS/img/estructura/layers/esquinaSupIzq.gif" width="8" height="7" alt=""/></td>
+	        <td height="7" colspan="2" valign="top" style="background: url(http://www.jumbo.cl/FO_IMGS/img/estructura/layers/arriba.gif);"><img src="http://www.jumbo.cl/FO_IMGS/img/estructura/layers/arriba.gif" width="1" height="7" alt=""/></td>
+	        <td width="8" height="7" valign="top"><img src="http://www.jumbo.cl/FO_IMGS/img/estructura/layers/esquinaSupDer.gif" width="8" height="7" alt=""/></td>
+	      </tr>
+	      <tr>
+	        <td height="31" valign="top" style="background: url(http://www.jumbo.cl/FO_IMGS/img/estructura/layers/izquierdoArriba.gif);"><img src="http://www.jumbo.cl/FO_IMGS/img/estructura/layers/izquierdoArriba.gif" width="8" height="1" alt=""/></td>
+	        <td width="400" height="31" align="center" valign="top" style="background: url(http://www.jumbo.cl/FO_IMGS/img/estructura/layers/tramafondo.gif);">
+	          <span class="Estilo1">Fuera de Rango</span> </td>
+	        <td width="14" align="center" valign="top" style="background: url(http://www.jumbo.cl/FO_IMGS/img/estructura/layers/tramafondo.gif);">
+	          <!-- a href="javascript:hideAlertaMontoFueraRango();"> <img src="http://www.jumbo.cl/FO_IMGS/img/estructura/bt_cerrar.gif" alt="cerrar ventana" border="0" width="29" height="23" align="right" /></a-->
+	        </td>
+	        <td width="8" height="31" valign="top" style="background: url(http://www.jumbo.cl/FO_IMGS/img/estructura/layers/derechoArriba.gif);"><img src="http://www.jumbo.cl/FO_IMGS/img/estructura/layers/derechoArriba.gif" width="8" height="1" alt=""/></td>
+	      </tr>
+	    </table>
+	    <iframe name="texto" id="texto2" src="html_bol/alertamontofueraderango.html" frameborder="0" width="400" height="132" scrolling="no"></iframe>
+	  </div>
+	</div>
+</body>
+</html>

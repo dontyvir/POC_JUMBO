@@ -1,0 +1,228 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html><!-- InstanceBegin template="/Templates/fullbody.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="EXPIRES" CONTENT="Mon, 22 Jul 2002 11:12:01 GMT">
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>Jumbo.cl Back Office Central</title>
+<script type="text/javascript" src="popup.js"></script>
+<!-- InstanceEndEditable -->
+
+<!-- InstanceBeginEditable name="head" --><!-- InstanceEndEditable -->
+
+<link href="estilos.css" rel="stylesheet" type="text/css">
+<!--link href="../default.css" rel="stylesheet" type="text/css"-->
+<style type="text/css">
+<!--
+.style1 {color: #666666}
+-->
+</style>
+</head>
+
+<body>
+<link rel="stylesheet" href="menu/menu.css">
+<script language="JavaScript" src="menu/menu.js"></script>
+<script language="JavaScript" src="menu/menu_tpl.js"></script>
+<script language="JavaScript" src="menu/menu_items.js"></script>
+<script language="JavaScript" src="popup.js"></script>
+<script language="JavaScript" src="funciones.js"></script>
+<table width="780" height="100%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+    <td height="78" valign="top">
+	
+	<TABLE width="100%" height=59 border=0 align="center" cellpadding="0" cellspacing="0" bgcolor="#ffffff">
+	  <TR>
+		<TD width=275 height="59" align=left class=user><img src="img/header2.jpg" width="275" height="60"></TD>
+		<TD width=505 align=left valign="bottom" background="img/bg-1.jpg" class=user><table width="90%"  border="0" align="center" cellpadding="0" cellspacing="2">
+          <tr>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td><div align="right" class="infoBL">Usuario: {hdr_nombre}&nbsp;&nbsp;| {hdr_fecha}</div></td>
+          </tr>
+        </table></TD>
+	  </TR>
+	</TABLE>
+	<TABLE width="100%" height=19 border=0 align="center" cellpadding="0" cellspacing="0" bgcolor="#f1f0e9" style="border-top:1px solid #ABABAB; border-bottom:1px solid #ABABAB">
+	  <TR>
+		<TD align=left bgcolor="#FFFFFF" class=user></TD>
+		</TR>
+	</TABLE>
+
+	
+	</td>
+  </tr>
+  <tr height="400">
+    <td valign="top" bgcolor="#FFFFFF">
+      <table border=0 width="100%" class='ContentTitle'>
+        <tr>
+          <td width="53%" height="20" class='HeaderTitle'><!-- InstanceBeginEditable name="Titulo" --> Ficha de Producto Nuevo<!-- InstanceEndEditable --></td>
+          <td width="47%" class='HeaderTitle'><!-- InstanceBeginEditable name="Botonera" -->
+            <div align="right"><a href="ViewMonProducts"><img src="img/back.png" width="32" height="32" border="0"></a></div>
+          <!-- InstanceEndEditable --></td>
+        </tr>
+      </table>
+	  <br>
+      <table width="100%"  border="0" cellspacing="2" cellpadding="2">
+        <tr valign="top">
+          <td width="71%"><!-- InstanceBeginEditable name="Izquierda" -->
+          <script>
+          	function guardar(form){
+				if(validar(form))
+					form.submit();
+			}
+			
+			function validar(form){
+				if (form.marca.value == "" || form.tipo.value == ""
+				 || form.desc_corta.value=="" || form.atr_difer.value == ""){
+					alert("Debe ingresar todos los datos");
+					return false;
+				}
+				if (form.desc_larga.value.length > 255){
+					alert("El máximo de caracteres permitidos por Descripción Larga es 255");
+					return false;
+				}				
+				if(form.desc_larga.value == "")alert("No se ingresó una Descripción Larga");
+				if(form.img1.value == "")alert("No se ingresó una Imagen Minificha");
+				//if (validar_letranumero(form.tipo, "El Tipo solo soporta letras y números ")) return false;
+				//if (validar_letranumero(form.desc_corta, "La descripción Corta solo soporta letras y números ")) return false;
+				//if (validar_letranumero(form.desc_larga, "La descripción Larga solo soporta letras y números ")) return false;
+				//if (validar_letranumero(form.atr_difer, "El atributo diferenciador solo soporta letras y números ")) return false;
+				var agree=confirm("¿Esta seguro(a) de crear el producto?");
+				if (agree) return true ;
+				else
+					return false ;
+				
+				return true;
+			}	
+			
+			
+			
+			
+					
+          </script>
+            <link id="luna-tab-style-sheet" type="text/css" rel="stylesheet" href="js/tabs/tabpane.css" />
+            <script type="text/javascript" src="js/tabs/tabpane.js"></script>
+            <table width="92%" align="center" border="0">
+              <tr>
+                <td><div class="tab-page" id="modules-cpanel">
+                    <script type="text/javascript">
+				   		var tabPane1 = new WebFXTabPane( document.getElementById( "modules-cpanel" ), 0 )
+				    </script>
+                    <div class="tab-page" id="modulo1">
+                      <h2 class="tab">Ficha</h2>
+                      <div align="left">
+					   <Form name="frmGuardar" method="get" action="NewGenericProduct">
+					   	  <input type=hidden name=url value="ViewMonProducts">
+					   	  <input type=hidden name=cod_sap value="{cod_sap}">
+                          <p><strong>Datos del Producto</strong></p>
+                          <table width="80%"  border="0" align="center" cellpadding="0" cellspacing="2">
+                            <tr>
+                              <td width="25%">Cod SAP</td>
+                              <td>{cod_sap}</td>
+                            </tr>
+                            <tr>
+                              <td>Estado</td>
+                              <td>{estado}</td>
+                            </tr>
+                            <tr>
+                              <td>Gen&eacute;rico</td>
+                              <td><strong>{generico}</strong></td>
+                            </tr>
+                            <tr>
+                              <td>&nbsp;</td>
+                              <td>&nbsp;</td>
+                            </tr>
+                            <tr>
+                              <td>Tipo</td>
+                              <td><input name="tipo" type="text" value="{tipo}" maxlength="50"></td>
+                            </tr>
+                            <tr>
+                              <td>Marca</td>
+                              <td><select name="marca">
+                              <option value="">---</option>
+                              <!-- BEGIN DYNAMIC: MARCAS -->
+                                <option value={mrc_id} {mrc_tip}>{mrc_nombre}</option>
+                              <!-- END DYNAMIC: MARCAS -->  
+                                </select></td>
+                            </tr>
+                            <tr>
+                              <td>Descripci&oacute;n Corta </td>
+                              <td><input name="desc_corta" type="text" value="{desc_corta}" size="50" maxlength="255"></td>
+                            </tr>
+                            <tr>
+                              <td valign="top">Descripci&oacute;n Larga </td>
+                              <td><textarea name="desc_larga" cols="75" rows="4" maxlength="255" onpaste = "return false" 
+                              onkeypress='key = window.event.keyCode; 
+                              		keychar = String.fromCharCode(key); 
+                              		keychar = keychar.toLowerCase(); 
+                              		if(this.value.length > 253){ this.value=this.value.substring(0,254); }' 
+                              onKeydown="if (event.ctrlKey && (String.fromCharCode(event.keyCode).toLowerCase() == 'c' || String.fromCharCode(event.keyCode).toLowerCase() == 'v')) { event.keyCode = 0; }">{desc_larga}</textarea></td>
+                              <!--		if (!(("áéíóúabcdefghijklmnñopqrstuvwxyz0123456789 .").indexOf(keychar) > -1)) window.event.keyCode = 0; -->
+                            </tr>
+                            <tr>
+                              <td valign="top">Atributo diferenciador </td>
+                              <td><input name="atr_difer" type="text" value="{atr_difer}" size="50" maxlength="200"></td>
+                            </tr>
+                            <tr>
+                              <td valign="top">Imagen Minificha </td>
+                              <td><input name="img1" type="text" value="{img1}" size="50" maxlength="200"></td>
+                            </tr>
+                            <tr>
+                              <td valign="top">Imagen Ficha</td>
+                              <td><input name="img2" type="text" value="{img2}" size="50" maxlength="200"></td>
+                            </tr>
+                            <tr>
+                              <td>&nbsp;</td>
+                              <td>&nbsp;</td>
+                            </tr>
+                            <tr>
+                              <td>Fecha Creaci&oacute;n </td>
+                              <td>{fec_crea}</td>
+                            </tr>
+                            <tr>
+                              <td>&nbsp;</td>
+                              <td>&nbsp;</td>
+                            </tr>
+                            <tr>
+                              <td>&nbsp;</td>
+                              <td><input name="Guardar" type="button" class="cmd" value="    Guardar    " 
+                              	onClick="javascript: guardar(frmGuardar)"></td>
+                            </tr>
+                          </table>
+                          <br>
+                        <br>
+                        </Form>
+                      </div>
+                    </div>
+					
+                    </div></td>
+              </tr>
+            </table>
+                       <div align="center"><br>
+                         <br>
+                         <br>
+                         <br>
+                       </div>
+          <!-- InstanceEndEditable --></td>
+        </tr>
+      </table>
+      </td>
+  </tr>
+  <tr>
+    <td>
+	<TABLE width="100%" height=19 border=0 align="center" cellpadding="0" cellspacing="0" bgcolor="#f1f0e9" style="border-top:1px solid #ABABAB; border-bottom:1px solid #ABABAB">
+	  <TR>
+		<TD align=center bgcolor="#67b01a" class=infoBL><div align="center">Back Office Central - Jumbo.cl</div></TD>
+		</TR>
+	</TABLE>
+
+	
+	</td>
+  </tr>
+</table>
+</body>
+<!-- InstanceEnd --></html>

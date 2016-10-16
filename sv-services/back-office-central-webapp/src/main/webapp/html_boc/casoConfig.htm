@@ -1,0 +1,297 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html><!-- InstanceBegin template="/Templates/fullbody.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="EXPIRES" CONTENT="Mon, 22 Jul 2002 11:12:01 GMT">
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>Jumbo.cl Back Office Central</title>
+<!-- InstanceEndEditable -->
+
+<!-- InstanceBeginEditable name="head" -->
+
+<link rel="stylesheet" type="text/css" href="js/tabs/tabpane.css" id="luna-tab-style-sheet" />
+<link rel="stylesheet" type="text/css" href="impresion.css" media="print" />
+<link rel="stylesheet" type="text/css" href="js/themes/default.css" />
+<SCRIPT LANGUAGE="JavaScript">window.name='winpedido1'</SCRIPT>				          
+<script src="validacion.js"></script>
+<script type="text/javascript" src="js/tabs/tabpane.js"></script>
+<script language="JavaScript" src="prototype.js"></script>
+<script type="text/javascript" src="js/window.js"></script>
+<script language="JavaScript" src="js/casoConfig.js"></script>
+
+<!-- InstanceEndEditable -->
+
+<link href="estilos.css" rel="stylesheet" type="text/css">
+<!--link href="../default.css" rel="stylesheet" type="text/css"-->
+<style type="text/css">
+<!--
+.style1 {color: #666666}
+-->
+</style>
+</head>
+
+<body>
+<link rel="stylesheet" href="menu/menu.css">
+<script language="JavaScript" src="menu/menu.js"></script>
+<script language="JavaScript" src="menu/menu_tpl.js"></script>
+<script language="JavaScript" src="menu/menu_items.js"></script>
+<script language="JavaScript" src="popup.js"></script>
+<script language="JavaScript" src="funciones.js"></script>
+<table width="780" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+    <td height="60" valign="top">
+	
+	<TABLE width="100%" height=59 border=0 align="center" cellpadding="0" cellspacing="0" bgcolor="#ffffff" id="cabecera_001">
+	  <TR>
+		<TD width=275 height="59" align=left class=user><img src="img/header2.jpg" width="275" height="60"></TD>
+		<TD width=505 align=left valign="bottom" background="img/bg-1.jpg" class=user><table width="90%"  border="0" align="center" cellpadding="0" cellspacing="2">
+          <tr>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td><div align="right" class="infoBL">Usuario: {hdr_nombre}&nbsp;&nbsp;| {hdr_fecha}</div></td>
+          </tr>
+        </table></TD>
+	  </TR>
+	</TABLE>
+	<TABLE width="100%" height=19 border=0 align="center" cellpadding="0" cellspacing="0" bgcolor="#f1f0e9" style="border-top:1px solid #ABABAB; border-bottom:1px solid #ABABAB">
+	  <TR>
+		<TD align=left bgcolor="#FFFFFF" class=user></TD>
+		</TR>
+	</TABLE>
+
+	
+	</td>
+  </tr>
+  <tr height="400">
+    <td valign="top" bgcolor="#FFFFFF">
+      <table border=0 width="100%" class='ContentTitle' id="cabecera_002">
+        <tr>
+          <td width="53%" height="20" class='HeaderTitle'><!-- InstanceBeginEditable name="Titulo" --> Configuraci&oacute;n de Casos <!-- InstanceEndEditable --></td>
+          <td width="47%" class='HeaderTitle'><!-- InstanceBeginEditable name="Botonera" -->
+            <div align="right"><!--a href="ViewMonCasos"><img src="img/volver.gif" width="32" height="32" border="0"></a--></div>
+          <!-- InstanceEndEditable --></td>
+        </tr>
+      </table>
+	  <br>
+      <table width="100%"  border="0" cellspacing="2" cellpadding="2">
+        <tr valign="top">
+          <td width="71%"><!-- InstanceBeginEditable name="Izquierda" -->
+	
+	<center><font color=red><b><span id="mensaje1"></span></b></font><font color=blue><b><span id="mensaje2"></span></b></font></center>
+		  <input type="hidden" id="cantQuiebres" name="cantQuiebres" value="{cantQuiebres}" />
+		  <input type="hidden" id="cantResponsables" name="cantResponsables" value="{cantResponsables}" />
+		  <input type="hidden" id="cantJornadas" name="cantJornadas" value="{cantJornadas}" />
+		  <input type="hidden" id="cantMotivos" name="cantMotivos" value="{cantMotivos}" />
+	<table width="95%" align="center" border="0">
+		<tr>
+			<td>
+				<div class="tab-page" id="modules-cpanel">
+				<script type="text/javascript">
+				var tabPane1 = new WebFXTabPane( document.getElementById( "modules-cpanel" ), true )
+				</script>
+					<div class="tab-page" id="modulo1">
+						<h2 class="tab" id="caso_001">Quiebres</h2>
+				        <div align="left"> 
+							<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
+								<tr height="25" valign="middle">
+									<td align="left"><b>Edici&oacute;n de los Tipos de Quiebres de Casos </b></td>
+									<td align="right"><a href="javascript:ventanaObjeto('Nuevo Tipo de Quiebre','','0','0','Q','0');">NUEVO</a></td>
+								</tr>
+							</table>
+							<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" class="tabla2">
+                              <tr>
+								<th width="5%" align="center">ID</th>		 
+								<th width="50%" align="center">Descripci&oacute;n de Tipo Quiebre</th>
+								<th width="15%" align="center">Puntaje</th>
+								<th width="15%" align="center">Activado</th>
+								<th width="15%" align="center">Acción</th>
+							  </tr>
+							  <tbody id="tabla_quiebre"></tbody>
+							  <!-- BEGIN DYNAMIC: LIST_QUIEBRES -->
+							  <tbody id="qui_{id_quiebre}">
+							  <tr>
+								<td align="left">{id_quiebre}&nbsp;</td>
+								<td align="left">{descripcion_quiebre}&nbsp;</td>
+								<td align="left">{puntaje_quiebre}&nbsp;</td>
+								<td align="center">{activado}&nbsp;</td>
+								<td align="center" nowrap><a href="javascript:ventanaObjeto('Modificar Quiebre','{descripcion_quiebre}','{puntaje_quiebre}','{id_quiebre}','Q',{est_activado});"><img src="img/editicon.gif" border="0" height="17" width="19" title="Editar Tipo de Quiebre"></a>&nbsp;<a href="javascript:aEliminar('{id_quiebre}','Q');"><img src="img/trash.gif" border="0" height="16" width="16" title="Eliminar Tipo de Quiebre"></a></td>
+							  </tr>
+							  </tbody>
+							  <!-- END DYNAMIC: LIST_QUIEBRES -->  							  
+                            </table>
+							<center><span id="msj_quiebre">{msj_quiebre}</span></center>
+							<br><br><br>
+					  </div>
+					</div>
+					
+					<div class="tab-page" id="modulo2">
+						<h2 class="tab" id="moti_001">Motivos</h2>
+				        <div align="left"> 
+							<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
+                              <tr height="25" valign="middle">
+                                <td align="left"><strong>Edici&oacute;n de los Motivos de Quiebres</strong></td>
+                                <td align="right"><a href="javascript:ventanaObjeto('Nuevo Motivo','','0','0','M','0');">NUEVO</a></td>
+                              </tr>
+                            </table>
+							
+							<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" class="tabla2">
+                              <tr>
+                                <th width="5%" align="center">ID</th>
+                                <th width="65%" align="center">Descripción del Motivo</th>
+								<th width="15%" align="center">Activado</th>
+								<th width="15%" align="center">Acción</th>
+                              </tr>
+                             <tbody id="tabla_motivo"></tbody>
+							  <!-- BEGIN DYNAMIC: LIST_MOTIVOS -->
+							  <tbody id="mot_{id_motivo}">
+							  <tr>
+								<td align="left">{id_motivo}&nbsp;</td>
+								<td align="left">{descripcion_motivo}&nbsp;</td>
+								<td align="center">{activado}&nbsp;</td>
+								<td align="center" nowrap><a href="javascript:ventanaObjeto('Modificar Motivo','{descripcion_motivo}','','{id_motivo}','M',{est_activado});"><img src="img/editicon.gif" border="0" height="17" width="19" title="Editar Motivo"></a>&nbsp;<a href="javascript:aEliminar('{id_motivo}','M');"><img src="img/trash.gif" border="0" height="16" width="16" title="Eliminar Motivo"></a></td>
+							  </tr>
+							  </tbody>
+							  <!-- END DYNAMIC: LIST_MOTIVOS -->  							  
+                            </table>
+							<center><span id="msj_motivo">{msj_motivo}</span></center>
+							<br><br><br>
+					  </div>
+					</div>
+					
+					<div class="tab-page" id="modulo3">
+						<h2 class="tab" id="log_001">Responsable</h2>
+						<div align="left">
+							
+							<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
+                              <tr height="25" valign="middle">
+                                <td align="left"><strong>Edici&oacute;n de los Responsables de un Caso</strong></td>
+                                <td align="right"><a href="javascript:ventanaObjeto('Nuevo Responsable','','0','0','R','0');">NUEVO</a></td>
+                              </tr>
+                            </table>
+							
+							<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" class="tabla2">
+                              <tr>
+                                <th width="5%" align="center">ID</th>
+                                <th width="65%" align="center">Descripción del Responsable</th>
+								<th width="15%" align="center">Activado</th>
+								<th width="15%" align="center">Acción</th>
+                              </tr>
+                             <tbody id="tabla_responsable"></tbody>
+							  <!-- BEGIN DYNAMIC: LIST_RESPONSABLES -->
+							  <tbody id="res_{id_responsable}">
+							  <tr>
+								<td align="left">{id_responsable}&nbsp;</td>
+								<td align="left">{descripcion_responsable}&nbsp;</td>
+								<td align="center">{activado}&nbsp;</td>
+								<td align="center" nowrap><a href="javascript:ventanaObjeto('Modificar Responsable','{descripcion_responsable}','','{id_responsable}','R',{est_activado});"><img src="img/editicon.gif" border="0" height="17" width="19" title="Editar Responsable"></a>&nbsp;<a href="javascript:aEliminar('{id_responsable}','R');"><img src="img/trash.gif" border="0" height="16" width="16" title="Eliminar Responsable"></a></td>
+							  </tr>
+							  </tbody>
+							  <!-- END DYNAMIC: LIST_RESPONSABLES -->  							  
+                            </table>
+							<center><span id="msj_responsable">{msj_responsable}</span></center>
+							<br><br><br>
+					  </div>
+					</div>
+					
+					<div class="tab-page" id="modulo4">
+						<h2 class="tab" id="log_001">Jornadas</h2>
+						<div align="left">
+							
+							<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
+                              <tr height="25" valign="middle">
+                                <td align="left"><strong>Edici&oacute;n de las Jornadas</strong></td>
+                                <td align="right"><a href="javascript:ventanaObjeto('Nueva Jornada','','0','0','J','0');">NUEVO</a></td>
+                              </tr>
+                            </table>
+							
+							<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" class="tabla2">
+                              <tr>
+                                <th width="5%" align="center">ID</th>
+                                <th width="65%" align="center">Descripci&oacute;n de la Jornada</th>
+								<th width="15%" align="center">Activado</th>
+								<th width="15%" align="center">Acción</th>
+                              </tr>
+							  <tbody id="tabla_jornada"></tbody>
+							  <!-- BEGIN DYNAMIC: LIST_JORNADAS -->
+							  <tbody id="jor_{id_jornada}">
+							  <tr>
+								<td align="left">{id_jornada}&nbsp;</td>
+								<td align="left">{descripcion_jornada}&nbsp;</td>
+								<td align="center">{activado}&nbsp;</td>
+								<td align="center" nowrap><a href="javascript:ventanaObjeto('Modificar Jornada','{descripcion_jornada}','0','{id_jornada}','J',{est_activado});"><img src="img/editicon.gif" border="0" height="17" width="19" title="Editar Jornada"></a>&nbsp;<a href="javascript:aEliminar('{id_jornada}','J');"><img src="img/trash.gif" border="0" height="16" width="16" title="Eliminar Jornada"></a></td>
+							  </tr>
+							  </tbody>
+							  <!-- END DYNAMIC: LIST_JORNADAS -->  							  
+                            </table>
+							<center><span id="msj_jornada">{msj_jornada}</span></center>
+							<br><br><br>
+					  </div>
+					</div>
+				
+				</div>
+			</td>
+		</tr>
+	</table>
+	<p align="center">&nbsp;
+	</p>
+
+<div id="loading" style="display:none">
+<table style="Z-INDEX: 500; LEFT: 0; POSITION: absolute; TOP: 0" cellSpacing="0" cellPadding="0" border="0">
+<tr>
+<td width="75" height="25" bgcolor="#FF0000">&nbsp;&nbsp;&nbsp;<font color="#FFFFFF"><b>Cargando...</b></font></td>
+</tr>
+</table>
+</div>
+
+
+<!--div id="agrega_modifica">
+<table style="Z-INDEX: 500; LEFT: 127px; POSITION: absolute; TOP: 150px; width: 515px;" cellSpacing="0" cellPadding="0" border="0">
+	<tr>
+		<td width="75" height="25" background="img/win_background.png">&nbsp;</td>
+	</tr>
+	<tr>
+		<td width="75" height="25">fgfgfgfg</td>
+	</tr>
+	<tr>
+		<td width="75" height="25" background="img/win_background_bottom.png">&nbsp;</td>
+	</tr>
+</table>
+</div-->
+
+
+    <!-- InstanceEndEditable --></td>
+        </tr>
+      </table>
+      </td>
+  </tr>
+  <tr id="footer">
+    <td>
+	<TABLE width="100%" height=19 border=0 align="center" cellpadding="0" cellspacing="0" bgcolor="#f1f0e9" style="border-top:1px solid #ABABAB; border-bottom:1px solid #ABABAB">
+	  <TR>
+		<TD align=center bgcolor="#67b01a" class=infoBL><div align="center">Back Office Central - Jumbo.cl</div></TD>
+		</TR>
+	</TABLE>
+
+	
+	</td>
+  </tr>
+</table>
+</body>
+<!-- InstanceEnd --></html>
+
+<script>
+var cantQuiebres 	 = $("cantQuiebres").value;
+var cantResponsables = $("cantResponsables").value;
+var cantJornadas 	 = $("cantJornadas").value;
+var cantMotivos 	 = $("cantMotivos").value;
+
+//alert(cantQuiebres + ' ' + cantResponsables + ' ' + cantJornadas);
+
+limpiarMsjAndWin();
+
+</script>
+

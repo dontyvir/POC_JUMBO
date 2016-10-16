@@ -1,0 +1,792 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="EXPIRES" CONTENT="Mon, 22 Jul 2002 11:12:01 GMT">
+<title>Jumbo.cl Back Office Central</title>
+
+<link id="luna-tab-style-sheet" type="text/css" rel="stylesheet" href="js/tabs/tabpane.css" />
+<link href="js/themes/default.css" rel="stylesheet" type="text/css"></link>
+
+<SCRIPT LANGUAGE="JavaScript" SRC="CalendarPopup.js"></SCRIPT>
+<SCRIPT LANGUAGE="JavaScript" SRC="validacion.js"></SCRIPT>
+<SCRIPT LANGUAGE="JavaScript">document.write(getCalendarStyles());</SCRIPT>
+<SCRIPT LANGUAGE="JavaScript">window.name='winpedido'</SCRIPT>
+<script language="JavaScript" src="calendario.js"></script>
+<script language="JavaScript" src="funciones.js"></script>
+<script type="text/javascript" src="js/tabs/tabpane.js"></script>
+<script language="JavaScript" src="prototype.js"></script>
+<script language="JavaScript" src="js/casoEdit.js"></script>
+<script type="text/javascript" src="js/window.js"></script>
+<script language="JavaScript" type="text/javascript" src="js/casoAdd.js"></script>
+<SCRIPT LANGUAGE="JavaScript" ID="js17">
+var ayer = new Date(30,4,2006,12,0,0,0);
+var cal1 = new CalendarPopup("testdiv1");
+cal1.offsetX = 20;
+cal1.offsetY = 0;
+
+var tabPane1 = new WebFXTabPane( document.getElementById( "modules-cpanel" ), true );
+</SCRIPT>
+<style type="text/css">
+.td_lista_de_productos {
+	border-right-width: 1px;
+	border-left-width: 1px;
+	border-right-style: solid;
+	border-left-style: solid;
+	border-right-color: #7EC011;
+	border-left-color: #7EC011;
+	background-color: white;
+}
+</style>
+
+<link href="estilos.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+<!--
+.style1 {color: #666666}
+-->
+</style>
+</head>
+
+<body>
+<link rel="stylesheet" href="menu/menu.css">
+<script language="JavaScript" src="menu/menu.js"></script>
+<script language="JavaScript" src="menu/menu_tpl.js"></script>
+<script language="JavaScript" src="menu/menu_items.js"></script>
+<script language="JavaScript" src="popup.js"></script>
+<script language="JavaScript" src="funciones.js"></script>
+<table width="780" height="100%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+    <td height="78" valign="top">
+
+	<TABLE width="100%" height=59 border=0 align="center" cellpadding="0" cellspacing="0" bgcolor="#ffffff">
+	  <TR>
+		<TD width=275 height="59" align=left class=user><img src="img/header2.jpg" width="275" height="60"></TD>
+		<TD width=505 align=left valign="bottom" background="img/bg-1.jpg" class=user><table width="90%"  border="0" align="center" cellpadding="0" cellspacing="2">
+          <tr>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td><div align="right" class="infoBL">Usuario: {hdr_nombre}&nbsp;&nbsp;| {hdr_fecha}</div></td>
+          </tr>
+        </table></TD>
+	  </TR>
+	</TABLE>
+	<TABLE width="100%" height=19 border=0 align="center" cellpadding="0" cellspacing="0" bgcolor="#f1f0e9" style="border-top:1px solid #ABABAB; border-bottom:1px solid #ABABAB">
+	  <TR>
+		<TD align=left bgcolor="#FFFFFF" class=user></TD>
+		</TR>
+	</TABLE>
+
+
+	</td>
+  </tr>
+  <tr height="400">
+    <td valign="top" bgcolor="#FFFFFF">
+      <table border=0 width="100%" class='ContentTitle'>
+        <tr>
+          <td width="53%" height="20" class='HeaderTitle'>Modificar el Caso N&deg; {id_caso}</td>
+          <td width="47%" class='HeaderTitle'>
+            <div align="right"><a href="ViewMonCasos"><img src="img/volver.gif" width="32" height="32" border="0"></a></div>
+          </td>
+        </tr>
+      </table>
+	  <br>
+      <table width="100%"  border="0" cellspacing="2" cellpadding="2">
+        <tr valign="top">
+          <td width="71%">
+
+	<center>
+	<font color=red>{mensaje1}</font><font color=blue>{mensaje2}</font>
+	<form name="frm_add_edit_caso" method="post" action="ModCaso">
+
+	<fieldset>
+	<legend align="left">Datos</legend>
+
+	<table width="98%"  border="0" align="center" cellpadding="0" cellspacing="0">
+		<tr>
+		  <td width="24%" align="left">N&deg; de Caso </td>
+		  <td width="1%">:</td>
+		  <td width="24%" align="left">{id_caso}<input type="hidden" name="id_caso" id="id_caso" value="{id_caso}"></td>
+			<td width="2%">&nbsp;</td>
+			<td width="24%" align="left">N&deg; de Orden de Pedido (OP) </td>
+			<td width="1%">:</td>
+			<td width="24%" align="left">{id_pedido}</td>
+		</tr>
+		<tr>
+		  <td align="left">Direcci&oacute;n</td>
+		  <td>:</td>
+		  <td align="left">{direccion}</td>
+		  <td>&nbsp;</td>
+		  <td align="left">Comuna</td>
+		  <td>:</td>
+		  <td align="left">{comuna}</td>
+	  </tr>
+		<tr>
+		  <td align="left">Fecha Pedido </td>
+		  <td>:</td>
+		  <td align="left">{fecha_pedido}</td>
+		  <td>&nbsp;</td>
+		  <td align="left">Fecha Despacho </td>
+		  <td>:</td>
+		  <td align="left">{fecha_despacho}</td>
+	  </tr>
+		<tr>
+		  <td align="left">Fecha Creaci&oacute;n del Caso </td>
+		  <td>:</td>
+		  <td align="left">{fecha_ingreso_caso}</td>
+		  <td>&nbsp;</td>
+		  <td align="left"><font color={color_escalamiento}>Caso en escalamiento</font></td>
+		  <td><font color={color_escalamiento}>:</font></td>
+		  <td align="left"><font color={color_escalamiento}>{escalamiento}</font></td>
+	  </tr>
+		<tr>
+		  <td align="left">Usuario Creador</td>
+		  <td>:</td>
+		  <td align="left">{usuario_creador}</td>
+		  <td>&nbsp;</td>
+		  <td align="left"><font color=red>Usuario que est&aacute; editando</font></td>
+		  <td><font color=red>:</font></td>
+		  <td align="left"><font color=red>{usuario_edit}</font></td>
+	  </tr>
+		<tr>
+		  <td align="left">Indicaciones</td>
+		  <td>:</td>
+		  <td colspan="5" align="left">
+		  		<textarea name="indicaciones" id="indicaciones" cols="65" rows="3" onkeyup="limitText(this, 2000, 'divCharDisp3');">{indicaciones}</textarea>
+                  <div id="divCharDisp3"><p>2000 Caracteres Disponibles</p></div>
+                  <input type="hidden" name="indicaciones_copia" id="indicaciones_copia" value="{indicaciones}" maxlength="2000">
+		  <!-- <input type="text" name="indicaciones" id="indicaciones" value="{indicaciones}" style="width:550px" maxlength="2000">
+		  <input type="hidden" name="indicaciones_copia" id="indicaciones_copia" value="{indicaciones}" maxlength="2000"></td> -->
+		  </tr>
+		<tr>
+		  <td>&nbsp;</td>
+		  <td>&nbsp;</td>
+		  <td>&nbsp;</td>
+		  <td>&nbsp;</td>
+		  <td>&nbsp;</td>
+		  <td>&nbsp;</td>
+		  <td>&nbsp;</td>
+	  </tr>
+		<tr>
+		  <td align="left">RUT Cliente </td>
+		  <td>:</td>
+		  <td align="left">{cli_rut}-{cli_dv}</td>
+		  <td>&nbsp;</td>
+		  <td align="left">Nombre Cliente </td>
+		  <td>:</td>
+		  <td align="left">{cli_nombre}</td>
+	  </tr>
+		<tr>
+		  <td align="left">Tel&eacute;fono 1 </td>
+		  <td>:</td>
+		  <td align="left">{cli_cod1}-{cli_fono1}</td>
+		  <td>&nbsp;</td>
+		  <td align="left">Tel&eacute;fono 2 </td>
+		  <td>:</td>
+		  <td align="left">{cli_cod2}-{cli_fono2}</td>
+	  </tr>
+		<tr>
+		  <td align="left">Tel&eacute;fono 3 </td>
+		  <td>:</td>
+		  <td align="left">{cli_cod3}-{cli_fono3}</td>
+		  <td>&nbsp;</td>
+		  <td align="left">Local</td>
+		  <td>:</td>
+		  <td align="left">{local}</td>
+	  </tr>
+		<tr>
+		  <td align="left">N&deg; de Compras del Cliente </td>
+		  <td>:</td>
+		  <td align="left">{nro_compras}</td>
+		  <td>&nbsp;</td>
+		  <td align="left">Canal de compra </td>
+		  <td>:</td>
+		  <td align="left">{teleoperador}</td>
+	  </tr>
+		<tr>
+		  <td align="left">N&deg; de Casos del Cliente </td>
+		  <td>:</td>
+		  <td align="left">{nro_casos}</td>
+		  <td>&nbsp;</td>
+		  <td align="left">&nbsp;</td>
+		  <td>&nbsp;</td>
+		  <td align="left">&nbsp;</td>
+		  </tr>
+	</table>
+
+
+
+
+	  <table width="98%"  border="0" align="center" cellpadding="0" cellspacing="0">
+        <tr>
+          <td width="24%" height="5"></td>
+          <td width="1%"></td>
+          <td width="24%"></td>
+          <td width="2%"></td>
+          <td width="24%"></td>
+          <td width="1%"></td>
+          <td width="24%"></td>
+        </tr>
+        <tr>
+          <td height="25" align="left">Estado del caso</td>
+          <td>:</td>
+          <td align="left">
+
+		  <select name="sel_estados" id="sel_estados" class="letracombo" onChange="cambioEstado();">
+			   <option value="0">Seleccione</option>
+			  <!-- BEGIN DYNAMIC: ESTADOS_CASOS -->
+				<option value="{id_estado}" {sel_est}>{estado}</option>
+			  <!-- END DYNAMIC: ESTADOS_CASOS -->
+		  </select>
+		   <input type="hidden" name="estado_actual" id="estado_actual" value="{estado_caso}">
+		  </td>
+          <td>&nbsp;</td>
+          <td align="left">&nbsp;</td>
+          <td>&nbsp;</td>
+          <td align="left">&nbsp;</td>
+        </tr>
+        <tr>
+          <td height="25" align="left">Fecha de Compromiso Solución</td>
+          <td>:</td>
+          <td align="left">
+
+		  <input type="text" name="fecha_resolucion" id="fecha_resolucion" value="{fecha_resolucion}" style="width:120px" readonly
+		  onClick="cal1.select(document.frm_add_edit_caso.fecha_resolucion,'anchor1','dd/MM/yyyy'); return false;" title="Fecha de Resolución">
+
+		  <a href="#" onClick="cal1.select(document.frm_add_edit_caso.fecha_resolucion,'anchor1','dd/MM/yyyy'); return false;" name="anchor1" id="anchor1">
+		  	<img src="img/cal.gif" width="16" height="16" border="0" alt="Fecha de Resolución" >
+		  </a>
+
+		  <input type="hidden" name="fecha_minima" id="fecha_minima" value="{fecha_resolucion_minima}">
+
+		  </td>
+          <td>&nbsp;</td>
+          <td align="left">Jornada de Compromiso Soluci&oacute;n</td>
+          <td>:</td>
+          <td align="left">
+
+		  <select name="sel_jornada" id="sel_jornada" class="letracombo" >
+			   <option value="0">Seleccione</option>
+			  <!-- BEGIN DYNAMIC: JORNADAS_CASOS -->
+				<option value="{id_jornada}" {sel_jorn}>{jornada}</option>
+			  <!-- END DYNAMIC: JORNADAS_CASOS -->
+		  </select>
+
+		  </td>
+        </tr>
+      </table>
+
+	  </fieldset>
+	  
+	<div align="left" style="display:{disp_link_call_center}" id="ver_comentario_call">&nbsp;&nbsp;<a href="javascript:showComentarioCall()">Ver comentario Call Center</a></div>
+	<div id="comentario_call_center" style="display:{disp_call_center}" align="left">
+		<fieldset>
+			<legend align="left">Comentario Call Center</legend>
+			{msj_call_center}
+			<div align="right"><a href="javascript:hideComentarioCall()">Ocultar comentario Call Center</a></div>
+		</fieldset>
+	</div>
+
+	<table width="100%" border="0" cellspacing="0" cellpadding="5">
+		<tr>
+		  <td width="70%" align="left"><input name="Button2" type="button" class="cmd" id="Button" value=" Agregar Producto " onClick="javascript:agregarProducto();"></td>
+		  <td width="10%" align="right"><input name="Button2" type="button" class="cmd" id="Button" value=" Anular Caso " onClick="javascript:anularCaso();"></td>
+		  <td width="10%" align="right"><input name="Button2" type="button" class="cmd" id="Button" value=" Guardar y Liberar Caso " onClick="javascript:vantanaComentario();"></td>
+		  <td width="10%" align="right"><input name="Button2" type="button" class="cmd" id="Button" value=" Salir " onClick="javascript:salir();"></td>
+		</tr>
+	</table>
+	<div id="add_edit_prod">
+	<fieldset>
+	<legend align="left">Agregar y Modificar producto</legend>
+	            <table width="100%" border="0" cellspacing="0" cellpadding="0" >
+                  <tr> 
+                    <td width="12%" height="25" align="left">Tipo</td>
+                    <td width="2%">:</td>
+                    <td colspan="3" align="left">
+						<select name="p_tipo_accion" id="p_tipo_accion" class="letracombo" onChange="javascript:cambioTipoProducto(this.value);" style="width:250px;">
+							<option value="0">Seleccione</option>
+							<option value="E">Enviar</option>
+							<option value="R">Retirar</option>
+							<option value="D">Documento</option>
+							<option value="P">Envío dinero</option>
+						</select>
+						<input type="hidden" name="id_producto" id="id_producto" value="" size="6" />
+                      </td>
+                    <td width="2%">&nbsp;</td>
+                    <td width="37%" align="right"><a href="javascript:viewBuscarProductos();">Buscar 
+                      Productos <img src="img/icono_lupa.gif" border="0" alt="Buscar Producto" /></a>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                  </tr>
+                  <tr> 
+                    <td height="25" align="left">Descripci&oacute;n</td>
+                    <td>:</td>
+                    <td colspan="5" align="left"> <input type="text" id="pp_descripcion" name="pp_descripcion" value="" style="width:480px" maxlength="255"></td>
+                  </tr>
+                  <tr id="tabla_cant_uni"> 
+                    <td height="25" align="left">Cantidad</td>
+                    <td>:</td>
+                    <td width="37%" align="left"><input type="text" value="" id="pp_cantidad" name="pp_cantidad" style="width:60px" maxlength="24" onKeyPress="SoloNumerosConDecimal(this)" onKeyUp="SoloNumerosConDecimal(this)"></td>
+                    <td width="2%">&nbsp;</td>
+                    <td width="12%" align="left">Unidad</td>
+                    <td>:</td>
+                    <td align="left"> <select name="pp_unidad" id="pp_unidad" class="letracombo" style="width:250px;">
+                        <option value="0">Seleccione</option>
+                        <option value="Kilos">Kilos</option>
+                        <option value="Unidades">Unidades</option>
+                      </select> </td>
+                  </tr>
+                  <tr> 
+                    <td height="25" align="left">Tipo Quiebre</td>
+                    <td>:</td>
+                    <td align="left"> <select name="sel_quiebre" id="sel_quiebre" class="letracombo" style="width:250px;">
+                        <option value="0">Seleccione</option>
+                        <!-- BEGIN DYNAMIC: QUIEBRES_CASOS -->
+                        <option value="{id_quiebre}">{quiebre}</option>
+                        <!-- END DYNAMIC: QUIEBRES_CASOS -->
+                      </select> </td>
+                    <td>&nbsp;</td>
+                    <td align="left">Motivo</td>
+                    <td>:</td>
+                    <td align="left"> <select name="sel_motivo" id="sel_motivo" class="letracombo" style="width:250px;">
+                        <!-- BEGIN DYNAMIC: MOTIVOS_CASOS -->
+                        <option value="{id_motivo}">{motivo}</option>
+                        <!-- END DYNAMIC: MOTIVOS_CASOS -->
+                      </select> </td>
+                  </tr>
+                  <tr> 
+                    <td height="25" align="left">Responsable</td>
+                    <td>:</td>
+                    <td align="left"> <select name="sel_responsable" id="sel_responsable" class="letracombo" style="width:250px;">
+                        <option value="0">Seleccione</option>
+                        <!-- BEGIN DYNAMIC: RESPONSABLES_CASOS -->
+                        <option value="{id_responsable}">{responsable}</option>
+                        <!-- END DYNAMIC: RESPONSABLES_CASOS -->
+                      </select> </td>
+                    <td>&nbsp;</td>
+                    <td align="left">&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td align="left">&nbsp;</td>
+                  </tr>
+                  <tr id="tabla_precio_retirar"> 
+                    <td height="25" align="left"><span id="txt_precio_enviar">Precio 
+                      por Unidad</span></td>
+                    <td>:</td>
+                    <td align="left"> <input type="text" name="precio_retirar" id="precio_retirar" value="" style="width:245px" maxlength="255" onKeyPress="SoloNumeros(this)" onKeyUp="SoloNumeros(this)"> 
+                    </td>
+                    <td>&nbsp;</td>
+                    <td align="left">&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td align="left">&nbsp;</td>
+                  </tr>
+                  <tr id="tabla_pickeador"> 
+                    <td height="25" align="left">Pickeador</td>
+                    <td>:</td>
+                    <td align="left"> <input type="text" name="pickeador" id="pickeador" value="" style="width:245px" maxlength="255"> 
+                    </td>
+                    <td>&nbsp;</td>
+                    <td align="left">&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td align="left">&nbsp;</td>
+                  </tr>
+                  <tr> 
+                    <td height="25" align="left">Gestión a Realizar</td>
+                    <td>:</td>
+                    <td colspan="5" align="left"><input type="text" id="comentario_boc" name="comentario_boc" value="" style="width:480px" maxlength="255"></td>
+                  </tr>
+                  <tr> 
+                    <td height="25" colspan="7" align="left"><b><span id="msj_prod_solucion">Producto 
+                      Alternativo</span></b></td>
+                  </tr>
+                  <tr id="tabla_descripcion_ps"> 
+                    <td height="25" align="left">Descripci&oacute;n</td>
+                    <td>:</td>
+                    <td colspan="5" align="left"> <input type="text" id="ps_descripcion" name="ps_descripcion" value="" style="width:480px" maxlength="255"> 
+                    </td>
+                  </tr>
+                  <tr id="tabla_cant_uni_ps"> 
+                    <td height="25" align="left">Cantidad</td>
+                    <td>:</td>
+                    <td align="left"><input type="text" value="" id="ps_cantidad" name="ps_cantidad" style="width:60px" maxlength="24" onKeyPress="SoloNumerosConDecimal(this)" onKeyUp="SoloNumerosConDecimal(this)"> 
+                    </td>
+                    <td>&nbsp;</td>
+                    <td align="left">Unidad</td>
+                    <td>:</td>
+                    <td align="left"> <select name="ps_unidad" id="ps_unidad" class="letracombo" style="width:250px;">
+                        <option value="0">Seleccione</option>
+                        <option value="Kilos">Kilos</option>
+                        <option value="Unidades">Unidades</option>
+                      </select> </td>
+                  </tr>
+                  <tr id="tabla_precio_enviar"> 
+                    <td height="25" align="left">Precio por Unidad</td>
+                    <td>:</td>
+                    <td align="left"> <input type="text" name="precio_enviar" id="precio_enviar" value="" style="width:245px" maxlength="255" onKeyPress="SoloNumeros(this)" onKeyUp="SoloNumeros(this)"> 
+                    </td>
+                    <td>&nbsp;</td>
+                    <td align="left">&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td align="left">&nbsp;</td>
+                  </tr>
+                  <tr> 
+                    <td height="25" align="left">Comentario BOL </td>
+                    <td>:</td>
+                    <td colspan="5" align="left"><input type="text" id="comentario_bol" name="comentario_bol" value="" style="width:480px" maxlength="255"></td>
+                  </tr>
+                  <tr> 
+                    <td height="5" colspan="7" align="left"></td>
+                  </tr>
+                  <tr> 
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td><span id="msj_add_prod"></span></td>
+                    <td>&nbsp;</td>
+                    <td colspan="3"> <input name="Button22" type="button" class="cmd" id="Button2" value=" Aceptar " onClick="javascript:guardarProducto();"> 
+                      &nbsp;&nbsp; <input name="Button23" type="button" class="cmd" id="Button22" value=" Cancelar " onClick="javascript:ocultarVentanas();"></td>
+                  </tr>
+                </table>
+	</fieldset>
+	</div>
+
+	<div id="anula_producto">
+	<fieldset >
+	<legend align="left">Anular Caso</legend>
+	<table width="100%" border="0" cellspacing="0" cellpadding="0" >
+		<tr>
+		  <td colspan="5" align="left" valign="middle" height="35"><input type="text" id="comentario_anular" name="comentario_anular" value="" style="width:750px" maxlength="255"></td>
+		  </tr>
+		<tr>
+		  <td width="24%">&nbsp;</td>
+		  <td width="1%">&nbsp;</td>
+		  <td width="24%">&nbsp;</td>
+		  <td width="2%">
+		  <input type="hidden" id="prodRetirar" name="prodRetirar" value="{prodRetirar}">
+		  <input type="hidden" id="prodEnviar" name="prodEnviar" value="{prodEnviar}">
+		  <input type="hidden" id="prodDocs" name="prodDocs" value="{prodDocs}">
+		  <input type="hidden" id="prodEnvioDinero" name="prodEnvioDinero" value="{prodEnvioDinero}">
+
+		  <input type="hidden" name="cod_escalamiento" id="cod_escalamiento" value="{cod_escalamiento}">
+		  <input type="hidden" name="satisfaccion" id="satisfaccion" value="{satisfaccion}">
+		  <input type="hidden" name="a_liberar" id="a_liberar" value="{a_liberar}">
+		  </td>
+		  <td>
+		  <input name="Button22" type="button" class="cmd" id="Button2" value=" Aceptar " onClick="javascript:anularCasoYSalir();">
+&nbsp;&nbsp;		  <input name="Button23" type="button" class="cmd" id="Button22" value=" Cancelar " onClick="javascript:ocultarVentanas();"></td>
+		  </tr>
+	</table>
+	</fieldset>
+	</div>
+
+
+	<div id="salir_comentario">
+		<fieldset>
+			<legend align="left">Comentario</legend>
+			<table width="100%" border="0" cellspacing="0" cellpadding="0" >
+				<tr>
+					<td colspan="5" align="left" valign="middle" height="35">
+					<input type="text" id="comentario_log" name="comentario_log" value="" style="width:750px" maxlength="255">
+					</td>
+				</tr>
+				<tr height="40" id="fila_escalamiento">
+				  <td align="left">Caso en escalamiento </td>
+				  <td align="left">:</td>
+				  <td align="left">
+
+					<select name="caso_escalamiento" id="caso_escalamiento" class="letracombo" {disabled_escalamiento} style="width:85px;">
+						<option value="S">Si</option>
+						<option value="N">No</option>
+					</select>
+
+				  </td>
+				  <td>&nbsp;</td>
+				  <td>&nbsp;</td>
+				</tr>
+				<tr height="40" id="fila_conformidad">
+					<td colspan="5" align="left">
+
+					<table width="100%"  border="0" cellspacing="0" cellpadding="0" id="fila_conformidad">
+						<tr height="40" >
+							<td width="15%" align="left">¿Cliente conforme?</td>
+							<td width="2%" align="left">:</td>
+							<td width="18%" align="left">
+							<select name="satisfaccion_cliente" id="satisfaccion_cliente" class="letracombo" style="width:85px;">
+							<option value="">Seleccione</option>
+							<option value="S">Si</option>
+							<option value="N">No</option>
+							</select>
+							</td>
+							<td width="5%">&nbsp;</td>
+							<td width="15%">&nbsp;</td>
+							<td width="2%">&nbsp;</td>
+							<td width="38%">&nbsp;</td>
+						</tr>
+						<tr height="40">
+							<td align="left">Fecha Entrega </td>
+							<td align="left">:</td>
+						  <td align="left">
+
+								<input type="text" name="fecha_entrega" id="fecha_entrega" value="{fecha_entrega}" style="width:80px" readonly
+								onClick="cal1.select(document.frm_add_edit_caso.fecha_entrega,'anchor2','dd/MM/yyyy'); return false;" title="Fecha de Entrega del Caso">
+								&nbsp;&nbsp;
+							  <a href="#" onClick="cal1.select(document.frm_add_edit_caso.fecha_entrega,'anchor2','dd/MM/yyyy'); return false;" name="anchor2" id="anchor2">
+							  <img src="img/cal.gif" width="16" height="16" border="0" alt="Fecha de Entrega del Caso" >
+							  </a>
+							</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;Hora de Entrega</td>
+							<td>:</td>
+							<td>
+
+							<input type="text" name="hora_entrega" id="hora_entrega" value="{hora_entrega}" style="width:80px" readonly onClick="javascript:ventanaHora();">
+							&nbsp;&nbsp;
+							<a href="#" onClick="javascript:ventanaHora();">
+							  <img src="img/clock.gif" width="19" height="19" border="0" alt="Hora de Entrega del Caso" >
+							  </a>
+							<input type="hidden" name="fecha_actual" id="fecha_actual" value="{fecha_actual}">
+							<input type="hidden" name="hora_actual" id="hora_actual" value="{hora_actual}">
+							</td>
+						</tr>
+                    </table>					</td>
+				  </tr>
+				<tr>
+					<td width="15%">&nbsp;</td>
+					<td width="2%">&nbsp;</td>
+					<td width="18%">&nbsp;</td>
+					<td width="5%">&nbsp;</td>
+					<td width="58%">
+					<input name="Button22" type="button" class="cmd" id="Button2" value=" Aceptar " onClick="javascript:guardarCaso();">
+					&nbsp;&nbsp;
+					<input name="Button23" type="button" class="cmd" id="Button22" value=" Cancelar " onClick="javascript:ocultarVentanas();">
+					</td>
+				</tr>
+			</table>
+		</fieldset>
+	</div>
+
+
+	</form>
+	<br>
+	        <table width="98%"  border="0" align="center" cellpadding="0" cellspacing="0" class="tabla2">
+              <thead>
+                <tr>
+                  <th colspan="9" align="center">PRODUCTOS A ENVIAR</th>
+                </tr>
+                <tr>
+                  <th width="15%">Producto Solicitado </th>
+                  <th width="15%">Producto Alternativo </th>
+                  <th width="11%">Tipo Quiebre</th>
+                  <th width="7%">Responsable</th>
+                  <th width="10%">Pickeador</th>
+                  <th width="15%">Gestión a Realizar</th>
+                  <th width="15%">Comentarios BOL</th>
+                  <th width="8%">Precio Unit.</th>
+                  <th width="4%">Acci&oacute;n</th>
+                </tr>
+              </thead>
+              <tbody id="tabla_enviar">
+              </tbody>
+              <!-- BEGIN DYNAMIC: PRDS_ENVIAR -->
+              <tbody id="prod_{id_producto}">
+                <tr>
+                  <td align="left">{producto} / {cantidad} / {unidad}&nbsp;</td>
+                  <td align="left">{ps_producto} / {ps_cantidad} / {ps_unidad}&nbsp;</td>
+                  <td align="left">{quiebre}&nbsp;</td>
+                  <td align="left">{responsable}&nbsp;</td>
+                  <td align="left">{pickeador}&nbsp;</td>
+                  <td align="left">{comentario_boc}&nbsp;</td>
+                  <td align="left">{comentario_bol}&nbsp;</td>
+                  <td align="right">{precio}&nbsp;</td>
+                  <td align="center" nowrap>
+				  	<a href="javascript:traerInfoProducto('{id_producto}');"><img src="img/editicon.gif" border="0" height="17" width="19" title="Editar Producto a Enviar"></a>&nbsp;
+					<a href="javascript:eliminarProducto('{id_producto}','E','{producto_desc_log}');"><img src="img/trash.gif" border="0" height="16" width="16" title="Eliminar Producto a Enviar"></a>&nbsp;
+					<a href="javascript:cambiarEnvioDinero('{id_producto}');"><img src="img/envio_dinero.gif" border="0" height="16" width="16" title="Cambiar a 'Envío de Dinero'"></a>
+				  </td>
+                </tr>
+              </tbody>
+              <!-- END DYNAMIC: PRDS_ENVIAR -->
+            </table>
+	<center><span id="msj_prods_enviar">{msj_prods_enviar}</span></center>
+	<br>
+	        <table width="98%"  border="0" align="center" cellpadding="0" cellspacing="0" class="tabla2">
+              <thead>
+                <tr>
+                  <th colspan="8" align="center">PRODUCTOS A RETIRAR </th>
+                </tr>
+                <tr>
+                  <th width="25%">Producto a Retirar </th>
+                  <th width="11%">Tipo Quiebre</th>
+                  <th width="6%">Responsable</th>
+                  <th width="10%">Pickeador</th>
+                  <th width="18%">Gestión a Realizar</th>
+                  <th width="18%">Comentarios BOL</th>
+                  <th width="8%">Precio Unit.</th>
+                  <th width="4%">Acci&oacute;n</th>
+                </tr>
+              </thead>
+              <tbody id="tabla_retirar">
+              </tbody>
+              <!-- BEGIN DYNAMIC: PRDS_RETIRAR-->
+              <tbody id="prod_{id_producto}">
+                <tr>
+                  <td align="left">{producto} / {cantidad} / {unidad}&nbsp;</td>
+                  <td align="left">{quiebre}&nbsp;</td>
+                  <td align="left">{responsable}&nbsp;</td>
+                  <td align="left">{pickeador}&nbsp;</td>
+                  <td align="left">{comentario_boc}&nbsp;</td>
+                  <td align="left">{comentario_bol}&nbsp;</td>
+                  <td align="right">{precio}&nbsp;</td>
+                  <td align="center" nowrap><a href="javascript:traerInfoProducto('{id_producto}');"><img src="img/editicon.gif" border="0" height="17" width="19" title="Editar Producto a Retirar"></a>&nbsp;<a href="javascript:eliminarProducto('{id_producto}','R','{producto_desc_log}');"><img src="img/trash.gif" border="0" height="16" width="16" title="Eliminar Producto a Retirar"></a></td>
+                </tr>
+              </tbody>
+              <!-- END DYNAMIC: PRDS_RETIRAR -->
+            </table>
+	<center><span id="msj_prods_retirar">{msj_prods_retirar}</span></center>
+	<br>
+
+	<table width="98%"  border="0" align="center" cellpadding="0" cellspacing="0" class="tabla2">
+	 <thead>
+	  <tr>
+		<th colspan="6" align="center">DOCUMENTOS</th>
+	  </tr>
+	  <tr>
+		<th width="36%">Documento</th>
+		<th width="12%">Tipo Quiebre</th>
+		<th width="7%">Responsable</th>
+		<th width="20%">Gestión a Realizar</th>
+		<th width="20%">Comentarios BOL</th>
+	    <th width="5%">Acci&oacute;n</th>
+	  </tr>
+	  </thead>
+	  <tbody id="tabla_documentos"></tbody>
+	   <!-- BEGIN DYNAMIC: PRDS_DOCS -->
+	   <tbody id="prod_{id_producto}">
+	  <tr>
+		<td align="left">{producto}&nbsp;</td>
+		<td align="left">{quiebre}&nbsp;</td>
+		<td align="left">{responsable}&nbsp;</td>
+		<td align="left">{comentario_boc}&nbsp;</td>
+		<td align="left">{comentario_bol}&nbsp;</td>
+	    <td align="center" nowrap><a href="javascript:traerInfoProducto('{id_producto}');"><img src="img/editicon.gif" border="0" height="17" width="19" title="Editar Documento"></a>&nbsp;<a href="javascript:eliminarProducto('{id_producto}','R','{producto_desc_log}');"><img src="img/trash.gif" border="0" height="16" width="16" title="Eliminar Documento"></a></td>
+	  </tr>
+	  </tbody>
+	  <!-- END DYNAMIC: PRDS_DOCS -->
+	</table>
+	<center><span id="msj_prods_docs">{msj_prods_docs}</span></center>
+	<br>
+	        <table width="98%"  border="0" align="center" cellpadding="0" cellspacing="0" class="tabla2">
+              <thead>
+                <tr>
+                  <th colspan="7" align="center">ENVÍO DE DINERO</th>
+                </tr>
+                <tr>
+                  <th width="30%">Producto</th>
+                  <th width="11%">Tipo Quiebre</th>
+                  <th width="6%">Responsable</th>
+                  <!--th width="10%">Pickeador</th-->
+                  <th width="23%">Gestión a Realizar</th>
+                  <th width="18%">Comentarios BOL</th>
+                  <th width="8%">Valor</th>
+                  <th width="4%">Acci&oacute;n</th>
+                </tr>
+              </thead>
+              <tbody id="tabla_envio_dinero">
+              </tbody>
+              <!-- BEGIN DYNAMIC: ENVIO_DINERO-->
+              <tbody id="prod_{id_producto}">
+                <tr>
+                  <td align="left">{producto} / {cantidad} / {unidad}&nbsp;</td>
+                  <td align="left">{quiebre}&nbsp;</td>
+                  <td align="left">{responsable}&nbsp;</td>
+                  <!--td align="left">{pickeador}&nbsp;</td-->
+                  <td align="left">{comentario_boc}&nbsp;</td>
+                  <td align="left">{comentario_bol}&nbsp;</td>
+                  <td align="right">{precio}&nbsp;</td>
+                  <td align="center" nowrap><a href="javascript:traerInfoProducto('{id_producto}');"><img src="img/editicon.gif" border="0" height="17" width="19" title="Editar Envío de Dinero"></a>&nbsp;<a href="javascript:eliminarProducto('{id_producto}','P','{producto_desc_log}');"><img src="img/trash.gif" border="0" height="16" width="16" title="Eliminar Envío de Dinero"></a></td>
+                </tr>
+              </tbody>
+              <!-- END DYNAMIC: ENVIO_DINERO -->
+            </table>
+	<center><span id="msj_envio_dinero">{msj_envio_dinero}</span></center>
+	<br/>
+
+<DIV ID="testdiv1"
+					STYLE="position:absolute;visibility:hidden;background-color:white;layer-background-color:white;"></DIV>
+
+<div id="loading" style="display:none">
+<table style="Z-INDEX: 500; LEFT: 0; POSITION: absolute; TOP: 0" cellSpacing="0" cellPadding="0" border="0" id="tabla_loading">
+<tr>
+<td width="75" height="25" bgcolor="#FF0000">&nbsp;&nbsp;&nbsp;<font color="#FFFFFF"><b>Cargando...</b></font></td>
+</tr>
+</table>
+</div>
+
+    </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td>
+	<TABLE width="100%" height=19 border=0 align="center" cellpadding="0" cellspacing="0" bgcolor="#f1f0e9" style="border-top:1px solid #ABABAB; border-bottom:1px solid #ABABAB">
+	  <TR>
+		<TD align=center bgcolor="#67b01a" class=infoBL><div align="center">Back Office Central - Jumbo.cl</div></TD>
+		</TR>
+	</TABLE>
+
+
+	</td>
+  </tr>
+</table>
+</body>
+</html>
+<script>
+
+//Esto deberia estar en una funcion onLoad
+$("add_edit_prod").hide();
+$("anula_producto").hide();
+$("salir_comentario").hide();
+
+var prodRetirar = $("prodRetirar").value;
+var prodEnviar = $("prodEnviar").value;
+var prodDocs = $("prodDocs").value;
+var prodEnviarDinero = $("prodEnvioDinero").value;
+
+if ($("cod_escalamiento").value == "S" || $("cod_escalamiento").value == "N") {
+	$("caso_escalamiento").value = $("cod_escalamiento").value;
+}
+
+if ($("satisfaccion").value == "S" || $("satisfaccion").value == "N") {
+	$("satisfaccion_cliente").value = $("satisfaccion").value;
+}
+if ($("a_liberar").value == "S") {
+	vantanaComentario();
+}
+
+//(13/10/2014) Req. Mejoras al Monitor de Casos (Extras) - NSepulveda:
+setTimeout(function(){
+	var max_length = 2000;//Largo configurado por el negocio (2.000 caracteres))
+	var divCharDisp = "divCharDisp3";
+	var valor = document.getElementById("indicaciones").value;
+	var disponibles = max_length - valor.length;
+	
+	if (disponibles < 0) {
+		valor = valor.substring(0, (max_length));
+		disponibles = max_length - valor.length;
+		document.getElementById("indicaciones").value = valor;
+	} 
+	
+	document.getElementById(divCharDisp).innerHTML = '<p>' +(disponibles < 0 ? 0 : disponibles) + ((disponibles <= 1 )? ' Caracter Disponible': ' Caracteres Disponibles') +'</p>';
+	
+},1000);
+
+/*
+var ancho = screen.availWidth;
+var largo = screen.availHeight;
+$("loading").style.position = 'absolute';
+$("loading").style.width = '112px';
+$("loading").style.height = '50px';
+$("loading").style.left = (ancho-112)/2;
+$("loading").style.top = (largo-400)/2;
+*/
+</script>

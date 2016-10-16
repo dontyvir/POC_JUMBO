@@ -1,0 +1,272 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="EXPIRES" CONTENT="Mon, 22 Jul 2002 11:12:01 GMT">
+<title>Jumbo.cl Back Office Local</title>
+<script language="JavaScript" src="prototype.js"></script>
+<script language="JavaScript" src="js/monitorDespacho.js"></script>
+<script language="JavaScript" src="js/mapa.js"></script>
+
+<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key={key}" type="text/javascript"></script>
+<script language="JavaScript" src="CalendarPopup.js"></script>
+<script language="JavaScript">document.write(getCalendarStyles());</script>
+<script language="JavaScript">
+var ayer = new Date(30,4,2006,12,0,0,0);
+var cal1 = new CalendarPopup("testdiv1");
+cal1.offsetX = -125;
+cal1.offsetY = 70;
+</script>
+<!--script language="JavaScript" src="funciones.js"></script>
+<script language="JavaScript" src="validacion.js"></script>
+<script language="JavaScript">
+function submitForm1(flag){
+	df = document.form1;
+	if(forma3.id_pedido.value==""){
+		alert("Debe ingresar un nro. de pedido");
+		forma3.id_pedido.focus();
+		return false;
+	}
+	df.id_pedido.value = document.getElementById('txt_id_pedido').value;
+	// reglas de validacion
+	//df.id_jornada.obligatorio=true;
+	df.id_pedido.numerico=true;
+	df.id_pedido.label='Nº Pedido';
+	if(verify(flag,df)) df.submit();
+}
+
+function submitForm2(){
+	df=document.form2;
+	if(forma3.fecha.value==""){
+		alert("Debe ingresar una fecha.");
+		forma3.fecha.focus();
+		return false;
+	}
+	df.fecha.value = document.getElementById('txt_fecha').value;
+	df.submit();
+}
+</script-->
+
+<link href="estilos.css" rel="stylesheet" type="text/css">
+</head>
+
+<body onload="initialize({latitud}, {longitud}, 13, '{nom_local}')" onunload="GUnload()">
+<link rel="stylesheet" href="menu/menu.css">
+<script language="JavaScript" src="menu/menu.js"></script>
+<script language="JavaScript" src="menu/menu_tpl.js"></script>
+<script language="JavaScript" src="menu/menu_items.js"></script>
+
+<table width="780" height="100%" border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td height="78" valign="top">
+			<table width="100%" height="59" border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#ffffff">
+				<tr>
+					<td width="275" height="59" align="left" class="user"><img src="img/header2.jpg" width="275" height="60"></td>
+					<td width="505" align="left" valign="bottom" background="img/bg-1.jpg" class="user">
+						<table width="90%" border="0" align="center" cellpadding="0" cellspacing="2">
+							<tr>
+								<td>&nbsp;</td>
+							</tr>
+							<tr>
+								<td><div align="right" class="infoBL">Usuario: {hdr_nombre} | Local: {hdr_local} | {hdr_fecha} </div></td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top" bgcolor="#FFFFFF">
+			<table border="0" width="100%" class="ContentTitle">
+				<tr> 
+					
+          <td width="72%" height="20" class="HeaderTitle">Monitor de Despachos para BOL</td>
+					<td width="21%" class="HeaderTitle" align="right">
+						<a href="ViewAgregaPedidoJumboVA">Agregar Jumbo VA</a><br>
+						<a href="ViewAgregaPedidoCaso">Agregar Caso</a>
+					</td>
+					<td width="7%" class="HeaderTitle"> <div align="right"><a href="javascript:window.history.back()"><img src="img/volver.gif" width="32" height="32" border="0"></a></div></td>
+				</tr>
+			</table>
+			<br />
+			<form name="viewMonitorDespacho" action="ViewMonitorDespacho">
+			<table width="90%" border="0" align="center" cellpadding="5" cellspacing="0" bgcolor="#f1f0e9" style="border:1px solid #ABABAB;">
+				<tr>
+					
+          <td> <table width="100%" border="0" cellspacing="5" cellpadding="0">
+              <tr>
+                <td width="33%">Fecha<br>
+                  <input name="fecha" type="text" id="fecha" value="{fecha}" readOnly onClick="cal1.select(document.forms[0].fecha,'anchor1','yyyy-MM-dd'); return false;"> 
+              <a href="#" onClick="cal1.select(document.forms[0].fecha,'anchor1','yyyy-MM-dd'); return false;" name="anchor1" id="anchor1"> 
+              <img src="img/cal.gif" width="16" height="16" border="0">
+			  </a>
+                </td>
+                <td width="33%"> Jornada de Despacho<br>
+					<select name="horas" id="horas" style="width:204px">
+						<option value="">Todos</option>
+						<!-- BEGIN DYNAMIC: JORNADAS -->
+						<option value="{horas}" {selected}>{horas}</option>
+						<!-- END DYNAMIC: JORNADAS -->
+					</select>
+				</td>
+                <td width="34%"> Zona de Despacho<br>
+					<select name="id_zona" id="id_zona" style="width:204px">
+						<option value="-1">Todos</option>
+						<!-- BEGIN DYNAMIC: ZONAS -->
+						<option value="{id_zona}" {selected}>{nombre}</option>
+						<!-- END DYNAMIC: ZONAS -->
+					</select>
+                </td>
+              </tr>
+              <tr>
+                  <td>Tipo de Pedido<br>
+						<select name="tipo" id="tipo" style="width:204px">
+							<option value="-1">Todos</option>
+							<!-- BEGIN DYNAMIC: TIPOS -->
+							<option value="{tipo}" {selected}>{nombre}</option>
+							<!-- END DYNAMIC: TIPOS -->
+						</select>
+				  </td>
+                <td>&iquest;Reprogramada?<br>
+                  <select name="reprogramada" id="reprogramada" style="width:204px">
+				  	<option value="-1">Todos</option>
+					<!-- BEGIN DYNAMIC: REPROGRAMADA -->
+					<option value="{rep}" {selected}>{desc}</option>
+					<!-- END DYNAMIC: REPROGRAMADA -->
+                  </select> </td>
+                <td><input type="submit" name="Submit" value="Filtrar" style="width:120px"></td>
+              </tr>
+            </table></td>
+				</tr>
+			</table>
+			</form>
+			<br />
+			<form name="f_grilla" method="get" action="ViewMonitorDespacho">
+				<input type="hidden" name="fecha" value="{fecha}" />
+				<input type="hidden" name="id_pedido" id="id_pedido" value="{id_pedido}" />
+				
+				<table width="770" border="0" align="center" cellpadding="2" cellspacing="0" class="tabla21">
+					<tr>
+						<th width="58" align="center">N&deg; OP</th>
+						<th width="130" align="center">Dir Despacho</th>
+						<th width="85" align="center">Comuna</th>
+						<th width="75" align="center">Zona Despacho</th>
+						<th width="131" align="center">Jornada Despacho</th>
+						<th width="68" align="center">Estado</th>
+						<th width="55" align="center">Tipo de<br>Pedido</th>
+						<th width="35" align="center">Bins</th>
+						<th width="47" align="center">¿Repr.?</th>
+						<th width="20" align="center">Doc</th>
+						<th width="33" align="center">Acci&oacute;n</th>
+						<th width="33" align="center">Selec.</th>
+					</tr>
+					<!-- BEGIN DYNAMIC: listado -->
+					<tr bgcolor="{color_fondo_op}">
+						<td {borderstyle} align="left"><font color="{color_texto_op}">{cam_color1} {id_pedido} {cam_color2}&nbsp;</font></td>
+						<td {borderstyle} align="left"><font color="{color_texto_op}">{cam_color1} {dir_calle} {dir_numero}{dir_depto} {cam_color2}&nbsp;</font></td>
+						<td {borderstyle} align="left"><font color="{color_texto_op}">{cam_color1} {comuna_desp} {cam_color2}&nbsp;</font></td>
+						<td {borderstyle} align="left"><font color="{color_texto_op}">{cam_color1} {zona_desp} {cam_color2}&nbsp;</font></td>
+						<td {borderstyle} align="left"><font color="{color_texto_op}">{cam_color1} {jdespacho} {cam_color2}&nbsp;</font></td>
+						<td {borderstyle} align="left"><font color="{color_texto_op}">{cam_color1} {estado_desp} {cam_color2}&nbsp;</font></td>
+						<td {borderstyle} align="left"><font color="{color_texto_op}">{cam_color1} {tipo_despacho} {cam_color2}&nbsp;</font></td>
+						<td {borderstyle} align="center"><font color="{color_texto_op}">{cam_color1} {cant_bin} {cam_color2}&nbsp;</font></td>
+						<td {borderstyle} align="center"><font color="{color_texto_op}">{cam_color1} {rep} {cam_color2}&nbsp;</font></td>
+						<td {borderstyle} align="center"><font color="{color_texto_op}">{cam_color1} {doc} {cam_color2}&nbsp;</font></td>
+						<td {borderstyle} align="center"><a href="ViewDespacho?id_pedido={id_pedido_real}">ver</a></td>
+						<td {borderstyle} align="center">
+							<input type="hidden" name="lat_{id_pedido_real}" id="lat_{id_pedido_real}" value="{lat}"/>
+							<input type="hidden" name="lng_{id_pedido_real}" id="lng_{id_pedido_real}" value="{lng}"/>
+							<input type="hidden" name="bins_{id_pedido_real}" id="bins_{id_pedido_real}" value="{cant_bin}"/>
+							<input type="hidden" name="fec_{id_pedido_real}" id="fec_{id_pedido_real}" value="{fecha}"/>
+							{checkbox}
+						</td>
+					</tr>
+					<!-- END DYNAMIC: listado -->
+				</table>
+				<table width="98%" border="0" align="center" cellpadding="2" cellspacing="0">
+					<tr>
+						<td align="left"><img src="img/leyenda.gif" alt=""/></td>
+						<td align="center">Bins seleccionados: <font style="font-size: 11px;font-weight: bold;" id="bins_seleccionados">0</font></td>
+					</tr>
+				</table>
+			</form>
+			<br />
+			
+			<table width="90%" border="0" align="center" cellpadding="5" cellspacing="0" bgcolor="#f1f0e9" style="border:1px solid #ABABAB;">
+               <tr>
+                  <td>
+                     <div id="map_canvas" style="width: 730px; height: 450px"></div>
+                  </td>
+               </tr>
+            </table>
+			<br />
+			<table width="90%" border="0" align="center" cellpadding="5" cellspacing="0" bgcolor="#f1f0e9" style="border:1px solid #ABABAB;">
+				<tr>
+				    <td>
+		  
+		  <table width="730" border="0" cellspacing="5" cellpadding="0">
+              <tr> 
+                <td width="179" height="50" valign="middle"> Chofer<br> <select name="chofer" id="chofer" style="width:160px" onChange="cambioChofer()">
+                    <option selected="selected" value="0">Seleccionar</option>
+                  </select>
+                </td>
+                <td width="179" valign="middle"> Fono Contacto M&oacute;vil<br> <select name="fono" id="fono" style="width:160px" onChange="cambioFono()">
+                    <option selected="selected" value="0">Seleccionar</option>
+                  </select>
+                </td>
+                <td width="179" valign="middle"> Patente <br> <select name="patente" id="patente" style="width:160px" onChange="cambioPatente()">
+                    <option selected="selected" value="0">Seleccionar</option>
+                  </select>
+                </td>
+				<td width="91" align="center">Cant. máx. Bins <br/><font style="font-size: 11px;font-weight: bold;" id="max_bins">0</font></td>
+                <td width="102" align="center"> 
+                  <input type="button" name="Submit2" value="Crear Ruta" style="width:90px" onClick="javascript:crearRuta();" />
+                </td>
+              </tr>
+              <tr> 
+                <td colspan="5" height="1" bgcolor="#CCCCCC"></td>
+              </tr>
+              <tr> 
+                <td>&nbsp;</td>
+                <td colspan="2" height="50" valign="middle">
+				Ruta Existente<br/>
+					<select name="id_ruta_existente" id="id_ruta_existente" style="width:350px" onChange="javascript:cambioRutaExistente();">
+						<option value="0">Seleccionar</option>
+						<!-- BEGIN DYNAMIC: RUTAS -->
+						<option value="{id_ruta}">{ruta}</option>
+						<!-- END DYNAMIC: RUTAS -->
+					</select>				  
+				  </td>
+				<td align="center">Bins disponibles<br/><font style="font-size: 11px;font-weight: bold;" id="bins_disponibles">0</font></td>
+                <td align="center"><input type="button" name="Submit22" value="Agregar a Ruta" style="width:90px" onClick="javascript:agregarARuta();"></td>
+              </tr>
+            </table></td>
+				</tr>
+			</table>
+			<br />
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#f1f0e9" style="border-top:1px solid #ABABAB; border-bottom:1px solid #ABABAB">
+				<tr>
+					<td align="center" bgcolor="#67b01a" class="infoBL"><div align="center">Back Office Local - Jumbo.cl</div></td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+<div id="loading" style="display:none">
+	<table style="Z-INDEX: 500; LEFT: 0; POSITION: absolute; TOP: 0" cellSpacing="0" cellPadding="0" border="0" id="tabla_loading">
+		<tr>
+			<td width="75" height="25" bgcolor="#FF0000">&nbsp;&nbsp;&nbsp;<font color="#FFFFFF"><b>Cargando...</b></font></td>
+		</tr>
+	</table>
+</div>
+<div id="testdiv1" style="position:absolute;visibility:hidden;background-color:white;layer-background-color:white;"></div>
+</body>
+</html>

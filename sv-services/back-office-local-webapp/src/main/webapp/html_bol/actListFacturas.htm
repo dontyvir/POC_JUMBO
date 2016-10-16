@@ -1,0 +1,109 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>Jumbo.cl Back Office Local</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="EXPIRES" CONTENT="Mon, 22 Jul 2002 11:12:01 GMT">
+
+<link href="estilos.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+<!--
+body {
+	background-color: #FFFFFF;
+}
+-->
+</style>
+<script language="JavaScript" src="funciones.js"></script>
+
+</head>
+
+<body topmargin="0" leftmargin="0" marginheight="0" marginwidth="0">
+
+<table width="350" border="0" cellpadding="0" cellspacing="0" style="border: 2px solid #000000;">
+    <tr>
+        <td valign="top" height="53" width="461">
+        <table width="100%" border="0" align="center" cellpadding="2" cellspacing="2">
+            <tr>
+                <td width="76%" class="HeaderTitle">
+                <table width="100%" height="100%" border="1" align="center" cellpadding="0" cellspacing="0" bordercolor="#666666" bgcolor="#FFFFFF">
+                    <tr>
+                        <td height="27">
+                        <div align="center"><font>INGRESO N&Uacute;MERO DE FACTURA </font size="+1"></div>
+                      </td>
+                    </tr>
+                </table>
+                </td>
+            </tr>
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top">
+        <table width="97%" border="0" align="center">
+          <tr>
+            <td width="20%">N&ordm; Pedido </td>
+            <td width="1%"><div align="center">:</div></td>
+            <td width="79%">{id_pedido}</td>
+          </tr>
+          <tr>
+            <td>Rason Social </td>
+            <td><div align="center">:</div></td>
+            <td>{rsocial}</td>
+          </tr>
+        </table>
+	  </td>
+    </tr>
+	<tr>
+	  <td>&nbsp;</td>
+	</tr>
+	<tr>
+	  <td>
+	    <table width="97%" align="center" border="0">
+		  <tr>
+		    <td colspan="2">Ingresar N&ordm; de Factura </td>
+		  </tr>
+		  <form name="ActListFacturas" action="ActListFacturas">
+		     <INPUT type="hidden" name="id_pedido" value="{id_pedido}">
+		     <INPUT type="hidden" name="accion"    value="agregar">
+		     <INPUT type="hidden" name="url"       value="ViewActListFacturas">
+		  <tr>
+		    <td width="53%">
+		      <div align="right">
+		        <input name="num_doc" type="text" size="15" maxlength="15">
+		      </div></td>
+		    <td width="47%"><input type="submit" name="Agregar" value="Agregar"></td>
+		  </tr>
+		  </form>
+		</table>
+	  </td>
+	</tr>
+	<tr>
+	  <td align="center"><font color="red">{mensaje}</font></td>
+	</tr>
+	<tr>
+	  <td>
+	    <table width="100%" class="tabla2">
+          <tr>
+            <th scope="col"><strong>#</strong></th>
+            <th scope="col"><strong>N&ordm; Factura </strong></th>
+            <th scope="col"><strong>Fecha ingreso </strong></th>
+            <th scope="col"><strong>Acciones</strong></th>
+          </tr>
+          <!-- BEGIN DYNAMIC: Facturas -->
+          <tr>
+            <td>{orden}</td>
+            <td>{num_doc}</td>
+            <td>{fingreso}</td>
+            <td><a href="javascript:validar_eliminar('esta seguro que desea eliminar?','ActListFacturas?id_pedido={id_pedido}&num_doc={num_doc}&url=ViewActListFacturas&accion=eliminar');" title="Eliminar"><img src="img/trash.gif" width="16" height="16" border="0"></a></td>
+          </tr>
+          <!-- END DYNAMIC: Facturas -->
+        </table>
+	  </td>
+	</tr>	
+</table>
+</body>
+</html>

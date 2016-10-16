@@ -1,0 +1,162 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<meta name="viewport" content="width=320;initial-scale=1.0; maximum-scale=1.0; user-scalable=false;"/>
+<title>Jumbo Mobile - Resumen de compra</title>
+<link href="/FO_WebContent/mobi/css/resumen.css" rel="stylesheet" type="text/css" />
+<link href="/FO_WebContent/mobi/css/bordes_redondeados.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<form id="frmGuardaCompra" name="frmGuardaCompra" method="post" action="">
+<div id="contenedor">
+	<div id="encabezado_general">
+  		Jumbo.cl mobile, más tiempo para ti
+	</div>
+	<div class="tit_resumen">
+  		&iexcl;Gracias por tu preferencia!
+	</div>
+  	<div class="rounded-box_resumen">
+    	<div class="top-left-corner"><div class="top-left-inside">&bull;</div></div>
+    	<div class="bottom-left-corner"><div class="bottom-left-inside">&bull;</div></div>
+    	<div class="top-right-corner"><div class="top-right-inside">&bull;</div></div>
+    	<div class="bottom-right-corner"><div class="bottom-right-inside">&bull;</div></div>
+	    <!-- Aqui va el contenido -->
+		<div class="box-resumen">
+			<div class="modulo_resumen">
+				<div class="iz">N&uacute;mero de pedido</div>
+				<div class="der">{idped}</div>
+			</div>
+			<div class="modulo_resumen">
+				<div class="iz">Comercio</div>
+				<div class="der">Jumbo.cl</div>
+			</div>
+			<div class="modulo_resumen">
+				<div class="iz">URL del comercio</div>
+				<div class="der">http://www.jumbo.cl</div>
+			</div>
+			<div class="modulo_resumen">
+				<div class="iz">Cliente</div>
+				<div class="der">{nombre_cliente}</div>
+			</div>
+			<div class="modulo_resumen">
+				<div class="iz">Tipo de transacción</div>
+				<div class="der">Venta</div>
+			</div>
+            <!-- BEGIN DYNAMIC: PAGO_TRANSBANK -->
+			<div class="modulo_resumen">
+				<div class="iz">Tarjeta de Cr&eacute;dito</div>
+				<div class="der">{4_ultimos}</div>
+			</div>
+            <div class="modulo_resumen">
+				<div class="iz">C&oacute;digo de autorización de la transacción</div>
+				<div class="der">{cod_aut_trx}</div>
+			</div>
+            <div class="modulo_resumen">
+				<div class="iz">N° de cuotas</div>
+				<div class="der">{nro_cuotas}</div>
+			</div>
+            <div class="modulo_resumen">
+				<div class="iz">Tipo de cuotas</div>
+				<div class="der">{tipo_cuotas}</div>
+			</div>
+            <!-- END DYNAMIC: PAGO_TRANSBANK -->
+            <div class="modulo_resumen">
+				<div class="iz">Descripción de los bienes</div>
+				<div class="der">Productos de supermercado</div>
+			</div>
+            <div class="modulo_resumen">
+				<div class="iz">Fecha de compra</div>
+				<div class="der">{fecha_hoy}</div>
+			</div>
+            <div class="modulo_resumen">
+				<div class="iz">Cantidad de productos</div>
+				<div class="der">{cantidad}</div>
+			</div>
+			<div class="modulo_resumen">
+				<div class="iz">Monto del pedido</div>
+				<div class="der">{monto_op}</div>
+			</div>
+			<div class="modulo_resumen">
+				<div class="iz">Monto del despacho</div>
+				<div class="der">{monto_desp}</div>
+			</div>
+			<div class="modulo_resumen">
+				<div class="iz">Monto total reservado *</div>
+				<div class="der">{monto_res}</div>
+			</div>
+			<div class="modulo_resumen">
+				<div class="iz">Forma de pago</div>
+				<div class="der">{forma_pago}</div>
+			</div>
+			<div class="modulo_resumen">
+				<div class="iz">Tipo documento</div>
+				<div class="der">{tip_doc}</div>
+			</div>
+			<!-- BEGIN DYNAMIC: LUGAR_DESPACHO -->
+			<div class="modulo_resumen">
+				<div class="iz">Lugar de despacho</div>
+				<div class="der">{lugar_despacho}</div>
+			</div>
+			<!-- END DYNAMIC: LUGAR_DESPACHO -->
+			<div class="modulo_resumen">
+				<div class="iz">{fc_hr_despacho}</div>
+				<div class="der">{fecha_tramo}</div>
+			</div>
+			<!-- BEGIN DYNAMIC: SIN_GENTE_DESPACHO -->
+			<div class="modulo_resumen">
+				<div class="iz_fin">Persona autorizada <br />a recibir el despacho.</div>
+				<div class="der_fin">{sin_gente_txt}</div>
+			</div>
+			<!-- END DYNAMIC: SIN_GENTE_DESPACHO -->
+		</div>
+    	<!-- fin contenido --> 
+	</div>
+	<div class="rounded-box_resumen">
+    	<div class="top-left-corner"><div class="top-left-inside">&bull;</div></div>
+    	<div class="bottom-left-corner"><div class="bottom-left-inside">&bull;</div></div>
+    	<div class="top-right-corner"><div class="top-right-inside">&bull;</div></div>
+    	<div class="bottom-right-corner"><div class="bottom-right-inside">&bull;</div></div>
+    	<!-- Aqui va el contenido -->
+		<div class="box-resumen2">
+			<div class="modulo_resumen">
+				<div class="iz_nom"> Elige un nombre<br />para tu compra </div>
+				<div class="der_nom">
+					<input type="text" name="txtNewNombre" value="ej: casa mam&aacute;" onclick="this.value=''"/>
+				</div>
+			</div>
+			<div class="modulo_resumen">
+				<div class="iz_nom"></div>
+				<div class="der_nom"><input name="opcioncheck" id="opcioncheck" type="checkbox" onclick="inhabilita_campo();"/> sin nombre </div>
+			</div>
+		</div>
+    	<!-- fin contenido --> 
+		</div>
+		<div align="center"><a href="javascript:guarda_compra();"><img src="/FO_IMGS/images/mobi/bt_terminar.gif" name="terminar" width="85" height="39" border="0" id="terminar" /></a></div>
+		<div id="footer_resumen">
+  			<a href="tel:+566004006400"><div id="img_abajo_resumen"></div></a>
+		</div>
+	</div>
+	<input type="hidden" name="opcionradio" id="opcionradio" value="1" />
+	<input name="unidades" type="hidden" value="{cantidad}" />
+	<input type="hidden" name="mostrar_evento" id="mostrar_evento" value="{mostrar_evento}" />
+</form>
+<script type="text/javascript" src="/FO_WebContent/mobi/js/funciones.js"></script>
+<script type="text/javascript" src="/FO_WebContent/mobi/js/resumencompra.js"></script>
+        <script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-1529321-1");
+pageTracker._initData();
+pageTracker._trackPageview('/FO/OrderDisplayMobi');
+pageTracker._addTrans("{order-id}","{affiliation}","{total}","{tax}","{shipping}","{city}","{state}","{country}");
+<!-- BEGIN DYNAMIC: LISTA_PROD -->
+pageTracker._addItem("{order-id}","{sku/code}","{productname}","{category}","{price}","{quantity}");
+<!-- END DYNAMIC: LISTA_PROD -->
+pageTracker._trackTrans();
+} catch(err) {}</script>
+</body>
+</html>

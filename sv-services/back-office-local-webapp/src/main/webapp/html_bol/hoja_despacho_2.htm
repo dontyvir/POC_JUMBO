@@ -1,0 +1,361 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=us-ascii">
+<style type="text/css">
+<!--
+body {
+	background-color: #FFFFFF
+}
+
+body,td,th {
+	font-family: Arial, Helvetica, sans-serif;
+	color: #555555
+}
+
+td ul {
+	font-size: 12px;
+	padding: 0;
+	margin: 0
+}
+
+.lectura {
+	font-family: "Trebuchet MS";
+	font-size: 12px;
+	font-style: normal;
+	line-height: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	color: #ccc;
+	text-decoration: none
+}
+
+.Estilo1 {
+	font-size: 12px;
+	font-weight: bold;
+	color: #009640
+}
+
+.tabla_despacho {
+	color: fuchsia;
+	font-size: 20px
+}
+-->
+</style>
+</head>
+<body topmargin="0" leftmargin="0" marginheight="0" marginwidth="0">
+	<table border="0" cellpadding="0" cellspacing="0">
+		<tbody>
+			<tr>
+				<td height="17" valign="top" width="670"><img
+					src="http://www.jumbo.cl/supermercado/mail/header_auto/bn_logo_jumbo_bn.jpg" alt="Jumbo.cl">
+				</td>
+			</tr>
+			<tr>
+				<td valign="top" height="350" width="670">
+					<table width="660" height="346" border="0" cellpadding="0"
+						cellspacing="0">
+						<tbody>
+							<tr>
+								<td height="36" valign="top" align="right"
+									class="detalle_despacho_txt">&nbsp;&nbsp;Hoja de Despacho
+									Pedido N&deg; {id_pedido}</td>
+							</tr>
+							<tr>
+								<td height="274" valign="top">
+									<table width="100%" border="0" cellspacing="2" cellpadding="2">
+										<tbody>
+											<tr>
+												<td height="20" colspan="3" class="titulosVerdes"><font
+													face="Arial, Helvetica, sans-serif" size="5"
+													color="#565656"><strong>{nombre_cliente} </strong><br>
+														&iexcl;Gracias por comprar en Jumbo.cl!</font>
+												</td>
+											</tr>
+											<tr>
+												<td>&nbsp;</td>
+											</tr>
+											<tr>
+												<td height="20" colspan="3" class="titulosVerdes">Aqu&iacute;
+													encontrar&aacute;s el detalle de los productos que van en
+													cada bolsa, para facilitar la revisi&oacute;n de tu compra:</td>
+											</tr>
+											<tr>
+												<td height="10">&nbsp;</td>
+											</tr>
+											<tr>
+												<td height="20" colspan="3" class="titulosVerdes"
+													style="border-bottom: 2px solid #565656"><font
+													face="Arial, Helvetica, sans-serif" size="4" color="#666"><strong>Detalle
+															de Productos</strong>
+												</font>
+												</td>
+											</tr>
+											<tr>
+												<td width="90%" colspan="3" valign="top">
+													<table width="650" border="0" align="center"
+														cellpadding="2" cellspacing="0" class="tabla2">
+														 <!-- BEGIN DYNAMIC: BINS -->
+														<tbody>
+															<tr>
+																<td height="10" width="111">&nbsp;</td>
+															</tr>
+															<tr>
+																<th height="15" colspan="9" align="left" valign="bottom"
+																	bgcolor="#f0f0f0"
+																	style="border-right: #ccc solid 1px; border-top: #ccc solid 1px; border-left: #ccc solid 1px">
+																	<ul>&nbsp;&nbsp;{cod_bin}
+																	</ul></th>
+															</tr>
+															
+															<tr>
+																<th width="111"
+																	style="border-top: #ccc solid 1px; border-right: #ccc solid 1px; border-bottom: #ccc solid 1px; border-left: #ccc solid 1px">
+																	<ul>C&oacute;digo
+																	</ul></th>
+																<th width="431" align="left"
+																	style="border-top: #ccc solid 1px; border-right: #ccc solid 1px; border-bottom: #ccc solid 1px">
+																	<ul>Descripci&oacute;n Producto
+																	</ul></th>
+																<th width="38"
+																	style="border-top: #ccc solid 1px; border-right: #ccc solid 1px; border-bottom: #ccc solid 1px">
+																	<ul>Cant
+																	</ul></th>
+																<th width="54"
+																	style="border-top: #ccc solid 1px; border-right: #ccc solid 1px; border-bottom: #ccc solid 1px">
+																	<ul>U. Vta
+																	</ul></th>
+															</tr>
+															<!-- BEGIN DYNAMIC: BIN -->
+															<tr valign="top">
+																<td align="center"
+																	style="border-right: #ccc solid 1px; border-bottom: #ccc solid 1px; border-left: #ccc solid 1px">
+																	<ul>{codigo}
+																	</ul></td>
+																<td
+																	style="border-right: #ccc solid 1px; border-bottom: #ccc solid 1px">
+																	<ul>{descripcion}&nbsp;
+																	</ul></td>
+																<td
+																	style="border-right: #ccc solid 1px; border-bottom: #ccc solid 1px">
+																	<ul>{cant}&nbsp;
+																	</ul></td>
+																<td
+																	style="border-right: #ccc solid 1px; border-bottom: #ccc solid 1px">
+																	<ul>{u_med}&nbsp;
+																	</ul></td>
+															</tr>
+															<!-- END DYNAMIC: BIN -->
+															<!-- END DYNAMIC: BINS -->
+														</tbody>
+													</table> <br> <br></td>
+											</tr>
+											<!-- BEGIN DYNAMIC: productos_sustitutos -->
+											<tr>
+												<td height="20" colspan="3" class="titulosVerdes"
+													style="border-bottom: 2px solid #565656"><font
+													face="Arial, Helvetica, sans-serif" size="4" color="#666"><strong>Detalle
+															de Productos Sustituidos</strong>
+												</font>
+												</td>
+											</tr>
+											<tr>
+												<td height="10">&nbsp;</td>
+											</tr>
+											<tr>
+												<td><font color="#333" size="2"
+													face="Arial, Helvetica, sans-serif">Al igual que
+														cuando vas al supermercado, algunos de los productos de tu
+														compra pueden no estar disponibles a la hora de preparar
+														tu pedido, por lo que te enviaremos productos sustitutos.
+														En caso de no estar conforme ll&aacute;manos al 600 400
+														3000 dentro de las siguientes 24 hrs. <br> <br>
+												</font>
+												</td>
+											</tr>
+											<tr>
+											</tr>
+											<tr>
+												<td width="650" height="40" align="center" valign="middle"><img
+													src="http://www.jumbo.cl/supermercado/mail/sustitucion/huincha_sustitucion_recuerda_bn.jpg" border="1"
+													width="650" height="100">
+												</td>
+											</tr>
+											<tr>
+												<td height="10">&nbsp;</td>
+											</tr>
+											<tr>
+												<td colspan="3">
+													<table width="650" border="0" align="center"
+														cellpadding="2" cellspacing="0" class="tabla2">
+														<tbody>
+															<tr>
+																<th width="67" align="center" height="27"
+																	style="border-top: #ccc solid 1px; border-right: #ccc solid 1px; border-bottom: #ccc solid 1px; border-left: #ccc solid 1px">
+																	<ul>Cod. Producto
+																	</ul></th>
+																<th width="158" align="center"
+																	style="border-top: #ccc solid 1px; border-right: #ccc solid 1px; border-bottom: #ccc solid 1px">
+																	<ul>Descripci&oacute;n
+																	</ul></th>
+																<th width="55" align="center"
+																	style="border-top: #ccc solid 1px; border-right: #ccc solid 1px; border-bottom: #ccc solid 1px">
+																	<ul>Cant.
+																	</ul></th>
+																<th width="15" align="center"
+																	style="border-top: #ccc solid 1px; border-right: #ccc solid 1px; border-bottom: #ccc solid 1px">&nbsp;
+																	</th>
+																<th width="67" align="center"
+																	style="border-top: #ccc solid 1px; border-right: #ccc solid 1px; border-bottom: #ccc solid 1px">
+																	<ul>Cod. Sustituto
+																	</ul></th>
+																<th width="158" align="center"
+																	style="border-top: #ccc solid 1px; border-right: #ccc solid 1px; border-bottom: #ccc solid 1px">
+																	<ul>Descripci&oacute;n
+																	</ul></th>
+																<th width="55" align="center"
+																	style="border-top: #ccc solid 1px; border-right: #ccc solid 1px; border-bottom: #ccc solid 1px">
+																	<ul>Cant.
+																	</ul></th>
+																<th width="75" align="center"
+																	style="border-top: #ccc solid 1px; border-right: #ccc solid 1px; border-bottom: #ccc solid 1px">
+																	<ul>Criterio de Sustituci&oacute;n
+																	</ul></th>
+															</tr>
+															<!-- BEGIN DYNAMIC: SUSTITUTOS -->
+															<tr valign="top">
+																<td width="67" height="18" align="center"
+																	style="border-right: #ccc solid 1px; border-bottom: #ccc solid 1px; border-left: #ccc solid 1px">
+																	<ul>{cod_prod1}-{uni_med1}&nbsp;
+																	</ul></td>
+																<td width="158"
+																	style="border-right: #ccc solid 1px; border-bottom: #ccc solid 1px">
+																	<ul>{descr1}&nbsp;
+																	</ul></td>
+																<td width="55" align="center"
+																	style="border-right: #ccc solid 1px; border-bottom: #ccc solid 1px">
+																	<ul>{cant1}&nbsp;
+																	</ul></td>
+																<td width="15" align="center"
+																	style="border-right: #ccc solid 1px; border-bottom: #ccc solid 1px">
+																	&#8594;</td>
+																<td width="67" align="center"
+																	style="border-right: #ccc solid 1px; border-bottom: #ccc solid 1px">
+																	<ul>{cod_prod2}-{uni_med2}&nbsp;
+																	</ul></td>
+																<td width="158"
+																	style="border-right: #ccc solid 1px; border-bottom: #ccc solid 1px">
+																	<ul>{descr2}&nbsp;
+																	</ul></td>
+																<td width="55" align="center"
+																	style="border-right: #ccc solid 1px; border-bottom: #ccc solid 1px">
+																	<ul>{cant2}&nbsp;
+																	</ul></td>
+																<td width="75"
+																	style="border-right: #ccc solid 1px; border-bottom: #ccc solid 1px">
+																	<ul>{criterio_sustitucion}&nbsp;
+																	</ul></td>
+															</tr>
+															<!-- END DYNAMIC: SUSTITUTOS -->	
+														</tbody>
+													</table> <br> <br></td>
+											</tr>
+											<!-- END DYNAMIC: productos_sustitutos -->
+											<!-- BEGIN DYNAMIC: productos_faltantes -->
+											<tr>
+												<td height="20" colspan="3" class="titulosVerdes"
+													style="border-bottom: 2px solid #565656"><font
+													face="Arial, Helvetica, sans-serif" size="4" color="#666"><strong>Detalle
+															de Productos Faltantes</strong>
+												</font>
+												</td>
+											</tr>
+											<tr>
+												<td height="10">&nbsp;</td>
+											</tr>
+											<tr>
+												<td><font color="#333333" size="2"
+													face="Arial, Helvetica, sans-serif">No se
+														encontr&oacute; un producto sustituto que cumpliera con
+														las caracter&iacute;sticas del producto solicitado.</font> <font
+													color="#333333" size="2"
+													face="Arial, Helvetica, sans-serif">Estos productos
+														no fueron cobrados.</font><font color="#333" size="2"
+													face="Arial, Helvetica, sans-serif"><br> <br>
+												</font>
+												</td>
+											</tr>
+											<tr>
+											</tr>
+											<tr>
+												<td colspan="3">
+													<table width="650" border="0" align="center"
+														cellpadding="2" cellspacing="0" class="tabla2">
+														<tbody>
+															<tr>
+																<th width="109" align="center"
+																	style="border-top: #ccc solid 1px; border-right: #ccc solid 1px; border-bottom: #ccc solid 1px; border-left: #ccc solid 1px">
+																	<ul>C&oacute;digo
+																	</ul></th>
+																<th width="341" align="left"
+																	style="border-top: #ccc solid 1px; border-right: #ccc solid 1px; border-bottom: #ccc solid 1px">
+																	<ul>Descripci&oacute;n Producto
+																	</ul></th>
+																<th width="66" align="center"
+																	style="border-top: #ccc solid 1px; border-right: #ccc solid 1px; border-bottom: #ccc solid 1px">
+																	<ul>Cant
+																	</ul></th>
+																<th width="118" align="center"
+																	style="border-top: #ccc solid 1px; border-right: #ccc solid 1px; border-bottom: #ccc solid 1px">
+																	<ul>Criterio de Sustituci&oacute;n
+																	</ul></th>
+															</tr>
+															<!-- BEGIN DYNAMIC: FALTANTES -->
+															<tr valign="top">
+																<td width="109" align="center"
+																	style="border-right: #ccc solid 1px; border-bottom: #ccc solid 1px; border-left: #ccc solid 1px">
+																	<ul>{codigo} - {u_med}&nbsp;
+																	</ul></td>
+																<td width="341" align="left"
+																	style="border-right: #ccc solid 1px; border-bottom: #ccc solid 1px">
+																	<ul>{descripcion}&nbsp;
+																	</ul></td>
+																<td width="66" align="center"
+																	style="border-right: #ccc solid 1px; border-bottom: #ccc solid 1px">
+																	<ul>{cant}&nbsp;
+																	</ul></td>
+																<td width="118" align="center"
+																	style="border-right: #ccc solid 1px; border-bottom: #ccc solid 1px">
+																	<ul>{criterio_sustitucion}
+																	</ul></td>
+															</tr>
+															<!-- END DYNAMIC: FALTANTES -->
+														</tbody>
+													</table></td>
+											</tr>
+											<!-- END DYNAMIC: productos_faltantes -->
+											<tr>
+												<td height="20" colspan="3">&nbsp;</td>
+											</tr>
+											<tr>
+												<td height="20" colspan="3">&nbsp;</td>
+											</tr>
+											<tr>
+												<td valign="middle" align="center" colspan="3"
+													style="padding-bottom: 15px; padding-top: 10px; border-bottom: 2px solid #565656; border-top: #565656 dashed 1px">
+													<ul>
+														Si tienes cualquier consulta ll&aacute;manos al
+														<strong>600 400 3000</strong> o escr&iacute;benos a
+														contacto@jumboweb.cl
+													</ul></td>
+											</tr>
+										</tbody>
+									</table></td>
+							</tr>
+						</tbody>
+					</table></td>
+			</tr>
+		</tbody>
+	</table>
+</body>
+</html>

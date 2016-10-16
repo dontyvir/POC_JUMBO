@@ -1,0 +1,55 @@
+
+
+	<table width="590"  border="0" align="center" cellpadding="1" cellspacing="0" class="tabla2">
+	  <tr>
+		<th width="100" align="right"><div align="center">&nbsp;</div></th>
+		<th width="70" align="right"><div align="center">Lunes<br>{f_lu}</div></th>
+		<th width="70" align="right"><div align="center">Martes<br>{f_ma}</div></th>
+		<th width="70" align="right"><div align="center">Mi&eacute;rcoles<br>{f_mi}</div></th>
+		<th width="70" align="right"><div align="center">Jueves<br>{f_ju}</div></th>
+		<th width="70" align="right"><div align="center">Viernes<br>{f_vi}</div></th>
+		<th width="70" align="right"><div align="center">S&aacute;bado<br>{f_sa}</div></th>
+		<th width="70" align="right"><div align="center">Domingo<br>{f_do}</div></th>
+	  </tr>
+	  <!-- BEGIN DYNAMIC: listado -->
+	  <tr>
+		<td align="right" height="27"><div align="center">{h_ini} - {h_fin}</div></td>
+		<td align="right">
+		  <input name="id_jdespacho" type="radio" value="{id_jdespacho_lu}" {disabled_lu} {sel_lu} onClick="activarCambio();" />{precio_lu}
+		  <input type="hidden" name="fecha_{id_jdespacho_lu}" id="fecha_{id_jdespacho_lu}" value="{fecha_lu}" />
+		  <input type="hidden" name="precio_{id_jdespacho_lu}" id="precio_{id_jdespacho_lu}" value="{precio2_lu}" />
+		</td>
+		<td align="right">
+		  <input name="id_jdespacho" type="radio" value="{id_jdespacho_ma}" {disabled_ma}  {sel_ma} onClick="activarCambio();" />{precio_ma}
+		  <input type="hidden" name="fecha_{id_jdespacho_ma}" id="fecha_{id_jdespacho_ma}" value="{fecha_ma}" />
+		  <input type="hidden" name="precio_{id_jdespacho_ma}" id="precio_{id_jdespacho_ma}" value="{precio2_ma}" />
+		</td>
+		<td align="right">
+		  <input name="id_jdespacho" type="radio" value="{id_jdespacho_mi}" {disabled_mi}  {sel_mi} onClick="activarCambio();" />{precio_mi}
+		  <input type="hidden" name="fecha_{id_jdespacho_mi}" id="fecha_{id_jdespacho_mi}" value="{fecha_mi}" />
+		  <input type="hidden" name="precio_{id_jdespacho_mi}" id="precio_{id_jdespacho_mi}" value="{precio2_mi}" />
+		</td>
+		<td align="right">
+		  <input name="id_jdespacho" type="radio" value="{id_jdespacho_ju}" {disabled_ju}  {sel_ju} onClick="activarCambio();" />{precio_ju}
+		  <input type="hidden" name="fecha_{id_jdespacho_ju}" id="fecha_{id_jdespacho_ju}" value="{fecha_ju}" />
+		  <input type="hidden" name="precio_{id_jdespacho_ju}" id="precio_{id_jdespacho_ju}" value="{precio2_ju}" />
+		</td>
+		<td align="right">
+		  <input name="id_jdespacho" type="radio" value="{id_jdespacho_vi}" {disabled_vi}  {sel_vi} onClick="activarCambio();" />{precio_vi}
+		  <input type="hidden" name="fecha_{id_jdespacho_vi}" id="fecha_{id_jdespacho_vi}" value="{fecha_vi}" />
+		  <input type="hidden" name="precio_{id_jdespacho_vi}" id="precio_{id_jdespacho_vi}" value="{precio2_vi}" />
+		</td>
+		<td align="right">
+		  <input name="id_jdespacho" type="radio" value="{id_jdespacho_sa}" {disabled_sa}  {sel_sa} onClick="activarCambio();" />{precio_sa}
+		  <input type="hidden" name="fecha_{id_jdespacho_sa}" id="fecha_{id_jdespacho_sa}" value="{fecha_sa}" />
+		  <input type="hidden" name="precio_{id_jdespacho_sa}" id="precio_{id_jdespacho_sa}" value="{precio2_sa}" />
+		</td>
+		<td align="right">
+		  <input name="id_jdespacho" type="radio" value="{id_jdespacho_do}" {disabled_do}  {sel_do} onClick="activarCambio();" />{precio_do}
+		  <input type="hidden" name="fecha_{id_jdespacho_do}" id="fecha_{id_jdespacho_do}" value="{fecha_do}" />
+		  <input type="hidden" name="precio_{id_jdespacho_do}" id="precio_{id_jdespacho_do}" value="{precio2_do}" />
+		</td>
+	  </tr>
+	  <!-- END DYNAMIC: listado -->
+	</table>
+	<br />

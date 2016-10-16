@@ -1,0 +1,242 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>Jumbo.cl Back Office Local</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="EXPIRES" CONTENT="Mon, 22 Jul 2002 11:12:01 GMT">
+
+<link href="estilos.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+<!--
+body {
+	background-color: #FFFFFF;
+}
+-->
+</style>
+<SCRIPT type="text/javascript" src="barcode.js"></SCRIPT>
+<script language="JavaScript">
+
+<!--
+
+function CalculateEAN13Checksum(messageString,checksumDigit)
+{
+ var csumTotal = 0; // The checksum working variable starts at zero
+
+ // If the source message string is less than 12 characters long, we make it 12 characters
+
+ if( messageString.value.length < 12 )
+  {
+  var holdString = '000000000000' + messageString.value;
+  messageString.value = holdString.substring(holdString.length - 12, holdString.length);
+  }
+
+ // Calculate the checksum value for the message
+
+ for( charPos = messageString.value.length - 1; charPos >= 0; charPos--) 
+  {
+  if( charPos / 2 == parseInt(charPos/2) )
+   csumTotal = csumTotal + (parseInt(messageString.value.substring(charPos,charPos+1)));
+  else
+   csumTotal = csumTotal + (3 * parseInt(messageString.value.substring(charPos,charPos+1)));
+  }
+
+ // Calculate the checksum digit
+
+ var remainder = csumTotal - parseInt(csumTotal/10) * 10;
+ if( remainder == 0 )
+  checksumDigit.value = '0';
+ else
+  checksumDigit.value = 10 - remainder;
+}
+
+//-->
+
+</script>
+<script LANGUAGE=JAVASCRIPT>
+function getEAN13(){
+    var bc = new Barcode();
+    var val = "{cod_barra}";
+    bc.setParentElement("codbarra");
+	bc.setHeight(80);
+	bc.setWidth(2);
+	bc.encode(val, "ean13", true, false, false);
+	//bc.encode(val, "ean13", true, false, false);
+	/*var dv;
+	dv = bc.getCheckDigit();  
+	//alert(val + dv);
+
+	var bc2 = new Barcode();
+	var val2 = val + dv;
+
+	//alert(val2);
+
+	bc2.setParentElement("codbarra");
+    
+	bc2.encode(val2, "ean13", true, false, false);
+*/
+  
+}
+
+</script>
+</head>
+
+<body topmargin="0" leftmargin="0" marginheight="0" marginwidth="0" onload="getEAN13();">
+
+<table width="660" height="560" border="0" cellpadding="0" cellspacing="0" style="border: 2px solid #000000;">
+  <tr>
+    <td valign="top" height="93">
+    <table width="100%"  border="0" align="center" cellpadding="2" cellspacing="2">
+      <tr>
+        <td width="10%" height="68">&nbsp;</td>
+        <td width="76%" class="HeaderTitle"> <table width="281" height="53" border="1" align="center" cellpadding="0" cellspacing="0" bordercolor="#666666" bgcolor="#FFFFFF">
+            <tr>
+              <td height="31"><div align="center"><font>Formulario de Pago</font size="+1"></div></td>
+            </tr>
+          </table></td>
+        <td width="14%">
+
+          <!-- {id_pedido} -->
+        </td>
+      </tr>
+    </table>
+    </td>
+  </tr>  
+  <tr>
+    <td valign="top" height="463">     
+		<!-- original
+		<table width="470" border="0" align="center" cellpadding="2" cellspacing="1" class="textonormal" bordercolor="#666666" bgcolor="#FFFFFF">
+			<tr>
+				<td class="userinput" BGCOLOR="LimeGreen" width="156">OP N&deg;:<FONT size="+1"> {id_pedido}</FONT></td>
+				<td class="userinput" BGCOLOR="LimeGreen" width="250">Nº de Transacción: <FONT size="+1">{id_trx_mp}</FONT></td>
+				<td width="70"><font color="red">&nbsp;</font><FONT color="red" size="+1">{tipo_doc}</FONT></td>
+			</tr>
+		</table>
+		-->
+		<!-- propuesta 1
+		<table width="650" border="0" align="center" cellpadding="2" cellspacing="1" class="textonormal" bordercolor="#666666" bgcolor="#FFFFFF">
+			<tr>
+				<td class="userinput" BGCOLOR="LimeGreen" width="120">OP N&deg;:<FONT size="+1"> {id_pedido}</FONT></td>
+				<td class="userinput" BGCOLOR="LimeGreen" width="260">Zona Desp.:<FONT size="+1"> {zona}</FONT></td>
+				<td class="userinput" BGCOLOR="LimeGreen" width="200">Nº de Transacción: <FONT size="+1">{id_trx_mp}</FONT></td>
+				<td width="70"><font color="red">&nbsp;</font><FONT color="red" size="+1">{tipo_doc}</FONT></td>
+			</tr>
+		</table>
+	-->		
+		<table width="550" border="0" align="center" cellpadding="2" cellspacing="1" class="textonormal" bordercolor="#666666" bgcolor="#FFFFFF">
+			<tr>
+				<td class="userinput" BGCOLOR="LimeGreen" width="105">OP N&deg;:<FONT size="+1"> {id_pedido}</FONT></td>
+				<td class="userinput" BGCOLOR="LimeGreen" width="260">Zona Desp.:<FONT size="+1"> {zona}</FONT></td>
+				<td class="userinput" BGCOLOR="LimeGreen" width="185">Nº de Transacción: <FONT size="+1">{id_trx_mp}</FONT></td>
+			</tr>
+			<tr>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td><font color="red">&nbsp;</font><FONT color="red" size="+1">{tipo_doc}</FONT></td>
+			</tr>
+		</table>
+
+		<table width="428" border="0" align="center" cellpadding="2" cellspacing="1" class="textonormal">
+		<tr>
+			<td width="100">&nbsp;</td>
+		</tr>
+      <tr>
+        <td width="100">Nombre del Cliente: </td>
+        <td class="userinput" style="border:#000066 solid 1px;" width="325">{nom_cliente}</td>
+      </tr>
+      <tr>
+        <td width="100">Monto Total: </td>
+        <td class="userinput" style="border:#000066 solid 1px;" width="325">{monto}</td>
+      </tr>
+    <!--   <tr>
+        <td>N&deg; de productos </td>
+        <td class="userinput">{cant_prod}</td>
+      </tr> -->
+     <!--  <tr>
+        <td>Forma de Pago </td>
+        <td class="userinput">{forma_pago} </td>
+      </tr>  -->
+     </table>
+     <table width="428" border="0" align="center" cellpadding="2" cellspacing="1" class="textonormal">
+      <tr>
+        <td width="98">Fecha Despacho: </td>
+        <td class="userinput" style="border:#000066 solid 1px;" width="119">{f_despacho}</td>
+        <td>Ventana de Despacho: </td>
+        <td class="userinput" style="border:#000066 solid 1px;">{ventana_desp}</td>
+      </tr>
+      <tr>
+        <td width="98">Tipo Despacho: </td>
+        <td class="userinput" style="border:#000066 solid 1px;" width="119">{tipo_despacho}</td>
+        <td>Medio de Pago: </td>
+        <td class="userinput" style="border:#000066 solid 1px;" width="119">{medio_pago}</td>
+      </tr>
+      </table>
+      <table width="428" border="0" align="center" cellpadding="2" cellspacing="1" class="textonormal">
+      <tr>
+        <td width="103">&nbsp;</td>
+        <td class="userinput" width="322" align= "center">
+          <FONT style="color:'#000099'; font-family:'Verdana, Tahoma, Arial, Sans-Sarif'; font-size:'15pt'; font-weight:'bold';">
+          <DIV id="code128" style="display:'block'; left:'50'; position:'relative';" align="center"></DIV>
+          </FONT>
+		  <br>
+          <br><div id="codbarra" style="display:'block'; left:'50'; position:'relative';"></div>
+          <br></td>
+          <td width="103">&nbsp;</td>
+      </tr>
+      <tr align="center">
+        <td width="103">&nbsp;</td>
+      	<td><font size="+1">{observaciones}</font></td>
+      </tr>
+      <tr align="left" height="20">
+      	<td colspan="3"><font size="-1">{notas_fact}</font></td>
+      </tr>   
+      <!-- <tr>
+        <td>&nbsp;</td>
+        <td class="userinput">Coordinador de Picking:<br>
+          <br>
+          <br>
+          <br>
+          _______________________________</td>
+      </tr> -->
+    </table>
+   <!--  <p>&nbsp;</p> -->
+    </td>
+  </tr>
+  <!-- <tr>
+    <td height="179" valign="top" style="border-top-color:#333333; border-top-style:dashed; border-top-width:thin "><br>
+      <table width="428" border="0" align="center" cellpadding="2" cellspacing="1" class="textonormal">
+      <tr>
+        <td width="97">&nbsp;</td>
+        <td width="320" class="userinput">OP N&deg;: {id_pedido}</td>
+      </tr>
+      <tr>
+        <td>Nombre del Cliente </td>
+        <td class="userinput">{nom_cliente}</td>
+      </tr>
+      <tr>
+        <td>Monto Total </td>
+        <td class="userinput">{monto}</td>
+      </tr>
+      <tr>
+        <td>Fecha Despacho </td>
+        <td class="userinput">{f_despacho} {h_ini} {h_fin} </td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+        <td class="userinput">Coordinador de Picking:<br>
+            <br>
+            <br>
+            <br>
+      _______________________________</td>
+      </tr>  
+    </table>
+    </td>
+  </tr>-->
+</table>
+
+
+</body>
+</html>

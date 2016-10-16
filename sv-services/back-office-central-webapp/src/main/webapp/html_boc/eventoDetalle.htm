@@ -1,0 +1,223 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html><!-- InstanceBegin template="/Templates/fullbody.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="EXPIRES" CONTENT="Mon, 22 Jul 2002 11:12:01 GMT">
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>Jumbo.cl Back Office Central</title>
+<!-- InstanceEndEditable -->
+
+<!-- InstanceBeginEditable name="head" -->
+
+<SCRIPT LANGUAGE="JavaScript" SRC="validacion.js"></SCRIPT>	
+<script language="JavaScript" src="funciones.js"></script>
+
+<!-- InstanceEndEditable -->
+
+<link href="estilos.css" rel="stylesheet" type="text/css">
+<!--link href="../default.css" rel="stylesheet" type="text/css"-->
+<style type="text/css">
+<!--
+.style1 {color: #666666}
+-->
+</style>
+</head>
+
+<body>
+<link rel="stylesheet" href="menu/menu.css">
+<script language="JavaScript" src="menu/menu.js"></script>
+<script language="JavaScript" src="menu/menu_tpl.js"></script>
+<script language="JavaScript" src="menu/menu_items.js"></script>
+<script language="JavaScript" src="popup.js"></script>
+<script language="JavaScript" src="funciones.js"></script>
+<table width="780" height="100%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+    <td height="78" valign="top">
+	
+	<TABLE width="100%" height=59 border=0 align="center" cellpadding="0" cellspacing="0" bgcolor="#ffffff">
+	  <TR>
+		<TD width=275 height="59" align=left class=user><img src="img/header2.jpg" width="275" height="60"></TD>
+		<TD width=505 align=left valign="bottom" background="img/bg-1.jpg" class=user><table width="90%"  border="0" align="center" cellpadding="0" cellspacing="2">
+          <tr>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td><div align="right" class="infoBL">Usuario: {hdr_nombre}&nbsp;&nbsp;| {hdr_fecha}</div></td>
+          </tr>
+        </table></TD>
+	  </TR>
+	</TABLE>
+	<TABLE width="100%" height=19 border=0 align="center" cellpadding="0" cellspacing="0" bgcolor="#f1f0e9" style="border-top:1px solid #ABABAB; border-bottom:1px solid #ABABAB">
+	  <TR>
+		<TD align=left bgcolor="#FFFFFF" class=user></TD>
+		</TR>
+	</TABLE>
+
+	
+	</td>
+  </tr>
+  <tr height="400">
+    <td valign="top" bgcolor="#FFFFFF">
+      <table border=0 width="100%" class='ContentTitle'>
+        <tr>
+          <td width="53%" height="20" class='HeaderTitle'><!-- InstanceBeginEditable name="Titulo" -->Detalle del Evento {id_evento} <!-- InstanceEndEditable --></td>
+          <td width="47%" class='HeaderTitle'><!-- InstanceBeginEditable name="Botonera" -->
+            <div align="right"><a href="ViewMonEventos"><img src="img/volver.gif" width="32" height="32" border="0"></a></div>
+          <!-- InstanceEndEditable --></td>
+        </tr>
+      </table>
+	  <br>
+      <table width="100%"  border="0" cellspacing="2" cellpadding="2">
+        <tr valign="top">
+          <td width="71%"><!-- InstanceBeginEditable name="Izquierda" -->
+	
+	<div id="loading" style="display:none">
+<table style="Z-INDEX: 500; POSITION: absolute; LEFT: 0; TOP: 0" cellSpacing="0" cellPadding="0" border="0" id="tabla_loading">
+<tr>
+<td width="75" height="25" bgcolor="#FF0000">&nbsp;&nbsp;&nbsp;<font color="#FFFFFF"><b>Cargando...</b></font></td>
+</tr>
+</table>
+</div>
+
+            <table width="98%"  border="0" align="center" cellpadding="0" cellspacing="0" class="tabla3">
+              <tr> 
+                <td width="3%">&nbsp;</td>
+                <th width="18%">&nbsp;</th>
+                <th width="3%">&nbsp;</th>
+                <td width="76%">&nbsp;</td>
+              </tr>
+              <tr> 
+                <td>&nbsp;</td>
+                <th>Nombre</th>
+                <th>:</th>
+                <td>{nombre}</td>
+              </tr>
+              <tr> 
+                <td>&nbsp;</td>
+                <th>Descripci&oacute;n</th>
+                <th>:</th>
+                <td>{descripcion}</td>
+              </tr>
+              <tr> 
+                <td>&nbsp;</td>
+                <th>T&iacute;tulo</th>
+                <th>:</th>
+                <td>{titulo}</td>
+              </tr>
+              <tr> 
+                <td>&nbsp;</td>
+                <th>Tipo Evento</th>
+                <th>:</th>
+                <td>{tipo_evento}</td>
+              </tr>
+              <tr>
+                <td>&nbsp;</td>
+                <th>Validaci&oacute;n Manual</th>
+                <th>:</th>
+                <td>{validacion}</td>
+              </tr>
+              <tr> 
+                <td>&nbsp;</td>
+                <th>Fecha Inicio</th>
+                <th>:</th>
+                <td>{fecha_inicio}</td>
+              </tr>
+              <tr> 
+                <td>&nbsp;</td>
+                <th>Fecha Fin</th>
+                <th>:</th>
+                <td>{fecha_fin}</td>
+              </tr>
+              <tr> 
+                <td>&nbsp;</td>
+                <th>Ocurrencia</th>
+                <th>:</th>
+                <td>{ocurrencia}</td>
+              </tr>
+              <tr> 
+                <td>&nbsp;</td>
+                <th>Orden</th>
+                <th>:</th>
+                <td>{orden}</td>
+              </tr>
+              <tr id="tabla_estado"> 
+                <td>&nbsp;</td>
+                <th>Estado</th>
+                <th>:</th>
+                <td>{estado}</td>
+              </tr>
+              <tr> 
+                <td>&nbsp;</td>
+                <th>Usuario Editor</th>
+                <th>:</th>
+                <td><span style="color: red">{usuario_editor}</span></td>
+              </tr>
+              <tr> 
+                <td>&nbsp;</td>
+                <th>Nombre de Flash </th>
+                <th>:</th>
+                <td>{flash}<br>
+                  <br>
+                  {codFlash}</td>
+              </tr>
+              <tr> 
+                <td>&nbsp;</td>
+                <th>Pasos a desplegar </th>
+                <th>:</th>
+                <td> <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+                    <!-- BEGIN DYNAMIC: PASOS -->
+                    <tr> 
+                      <td width="5%"><ul>
+                          <li></li>
+                        </ul></td>
+                      <td width="95%">{paso}</td>
+                    </tr>
+                    <!-- END DYNAMIC: PASOS -->
+                  </table></td>
+              </tr>
+            </table>
+<br>
+<br>
+    <table width="98%"  border="0" align="center" cellpadding="0" cellspacing="0" class="tabla2">
+      <tr valign="top">
+        <th width="14%" align="center" height="25">RUT Cliente </th>
+        <th width="23%" align="center">Ocurrencia m&aacute;xima por evento</th>
+        <th width="23%" align="center">Ocurrencia por Rut </th>
+        <th width="20%" align="center">Fecha Creaci&oacute;n </th>
+        <th width="20%" align="center">Fecha Modificaci&oacute;n </th>
+      </tr>
+	  <!-- BEGIN DYNAMIC: RUTS_EVENTO -->
+      <tr>
+        <td height="25" align="right">{cli_rut} - {cli_dv} &nbsp;&nbsp;</td>
+        <td align="center">{ocurrencia_max}</td>
+        <td align="center">{ocurrencia_por_rut}</td>
+        <td align="center">{fecha_creacion}</td>
+        <td align="center">{fecha_modificacion}</td>
+      </tr>   
+	  <!-- END DYNAMIC: RUTS_EVENTO --> 
+    </table>
+	<center>{msj_ruts}</center>
+          <br>
+          <!-- InstanceEndEditable --></td>
+        </tr>
+      </table>
+      </td>
+  </tr>
+  <tr>
+    <td>
+	<TABLE width="100%" height=19 border=0 align="center" cellpadding="0" cellspacing="0" bgcolor="#f1f0e9" style="border-top:1px solid #ABABAB; border-bottom:1px solid #ABABAB">
+	  <TR>
+		<TD align=center bgcolor="#67b01a" class=infoBL><div align="center">Back Office Central - Jumbo.cl</div></TD>
+		</TR>
+	</TABLE>
+
+	
+	</td>
+  </tr>
+</table>
+</body>
+<!-- InstanceEnd -->
+</html>

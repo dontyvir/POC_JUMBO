@@ -1,0 +1,598 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="EXPIRES" CONTENT="Mon, 22 Jul 2002 11:12:01 GMT">
+<title>Jumbo.cl Back Office Central</title>
+<SCRIPT LANGUAGE="JavaScript" SRC="funciones.js"></SCRIPT>
+<SCRIPT LANGUAGE="JavaScript" SRC="CalendarPopup.js"></SCRIPT>
+<SCRIPT LANGUAGE="JavaScript" SRC="MedioDePago.js"></SCRIPT>
+<SCRIPT LANGUAGE="JavaScript" SRC="checkrut.js"></SCRIPT>
+<SCRIPT LANGUAGE="JavaScript">document.write(getCalendarStyles());</SCRIPT>
+<SCRIPT LANGUAGE="JavaScript" SRC="autotab.js"></SCRIPT>
+<!--  <SCRIPT LANGUAGE="JavaScript">
+	<!-- Begin
+	var isNN = (navigator.appName.indexOf("Netscape")!=-1);
+	function autoTab(input,len, e) {
+	var keyCode = (isNN) ? e.which : e.keyCode; 
+	var filter = (isNN) ? [0,8,9] : [0,8,9,16,17,18,37,38,39,40,46];
+	if(input.value.length >= len && !containsElement(filter,keyCode)) {
+	input.value = input.value.slice(0, len);
+	input.form[(getIndex(input)+1) % input.form.length].focus();
+	}
+	function containsElement(arr, ele) {
+	var found = false, index = 0;
+	while(!found && index < arr.length)
+	if(arr[index] == ele)
+	found = true;
+	else
+	index++;
+	return found;
+	}
+	function getIndex(input) {
+	var index = -1, i = 0, found = false;
+	while (i < input.form.length && index == -1)
+	if (input.form[i] == input)index = i;
+	else i++;
+	return index;
+	}
+	return true;
+	}
+	//  End 
+</script> -->
+<script>
+<!--
+function formaDePagoLayer(value) {
+	//alert(value);
+	if (value == 'CAT') {
+		document.getElementById('jumbo2').style.visibility = 'visible';
+		document.getElementById('paris').style.visibility = 'hidden';
+		document.getElementById('paris-adicional').style.visibility = 'hidden';
+		document.getElementById('bancaria').style.visibility = 'hidden';
+		document.getElementById('formasDePago').style.height = '80px';
+	}else if (value == 'PAR') {
+		document.getElementById('paris').style.visibility = 'visible';
+		document.getElementById('jumbo2').style.visibility = 'hidden';
+		document.getElementById('paris-adicional').style.visibility = 'hidden';
+		document.getElementById('bancaria').style.visibility = 'hidden';
+		document.getElementById('formasDePago').style.height = '140px';
+	}else if (value == 'PAR_AD') {
+		document.getElementById('paris-adicional').style.visibility = 'visible';
+		document.getElementById('jumbo2').style.visibility = 'hidden';
+		document.getElementById('paris').style.visibility = 'hidden';
+		document.getElementById('bancaria').style.visibility = 'hidden';
+		document.getElementById('formasDePago').style.height = '240px';
+	}else if (value == 'TBK') {
+		document.getElementById('bancaria').style.visibility = 'visible';
+		document.getElementById('jumbo2').style.visibility = 'hidden';
+		document.getElementById('paris').style.visibility = 'hidden';
+		document.getElementById('paris-adicional').style.visibility = 'hidden';
+		document.getElementById('formasDePago').style.height = '120px';
+	}
+}
+
+function TitularAdicional(){
+	if (document.forma2.titular[1].checked){//Adicional
+		document.getElementById('formasDePago').style.height = '280px';
+		document.getElementById('tablaparis').style.height = '260px';
+    	document.getElementById('paris-adicional').style.visibility = 'visible';
+    	//window.outerHeight=600;
+    	window.resizeTo(350, 450);
+	} else {//Titular
+		document.getElementById('formasDePago').style.height = '140px';
+		document.getElementById('tablaparis').style.height = '100px';
+    	document.getElementById('paris-adicional').style.visibility = 'hidden';
+    }
+}
+
+function cerrar_popUp(){
+	//var opener = window.dialogArguments;
+	//opener.location.reload();
+	window.close();
+}
+-->
+</script>
+
+<link href="estilos.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+<!--
+body {
+	background-color: #FFFFFF;
+}
+
+.lectura1 {	font-family: "Trebuchet MS";
+	font-size: 12px;
+	font-style: normal;
+	line-height: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	color: #333333;
+	text-decoration: none;
+}
+.style11 {color: #507B06}
+.Estilo2 {font-family: "Trebuchet MS"; font-size: 12px; font-style: normal; line-height: normal; font-weight: bold; font-variant: normal; text-transform: none; color: #333333; text-decoration: none; }
+
+
+#jumbo2 {
+	position:absolute;
+	visibility:visible;
+	overflow:visible;
+	top:0px;
+	left:10px;
+	height:110px;
+	z-index:1;
+}
+#paris {
+	position:absolute;
+	visibility:hidden;
+	overflow:visible;
+	top:0px;
+	left:0px;
+	height:150px;
+	z-index:1;
+}
+
+#paris-adicional {
+	position:absolute;
+	visibility:hidden;
+	overflow:visible;
+	top:120px;
+	left:0px;
+	height:150px;
+	z-index:1;
+}
+#bancaria {
+	position:absolute;
+	visibility:hidden;
+	overflow:visible;
+	top:0px;
+	left:10px;
+	height:120px;
+	z-index:1;
+}
+-->
+</style>
+</head>
+<body>
+
+<table border=0 width="100%" class='ContentTitle'>
+  <tr>
+    <td width="53%" height="20" class='HeaderTitle'>Modificación Medio de Pago</td>
+    <td width="47%" class='HeaderTitle'>&nbsp;</td>
+  </tr>
+</table>
+<table width="95%" height="22" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr class="tabla2">
+    <td colspan="2" class="HeaderTitle">Datos Medio de Pago Actual</td>
+  </tr>
+  <!-- tr class="tabla2">
+    <td>Nombre del Titular</td>
+    <td>{nombre_titular}</td>
+  </tr>
+  <tr class="tabla2">
+    <td>Rut Titular</td>
+    <td>{rut_titular}</td>
+  </tr>
+  <tr class="tabla2">
+    <td width="132">Titular</td>
+    <td width="443">{titular}</td>
+  </tr-->
+  <tr class="tabla2">
+    <td>Medio de Pago actual</td>
+    <td>{tipo_pago}</td>
+  </tr>
+  {num_mp}
+  {num_cuotas}
+  {nom_tarj}
+  {expira}
+  <!-- {meses_librpago} -->
+</table>
+<script>
+	/*function validar_form(form){
+		if (form.mpago.value == "CAT"){
+			if (form.num_mp_jumbo_1.value == "" || form.num_mp_jumbo_2.value == "" || form.num_mp_jumbo_3.value == "" || form.num_mp_jumbo_4.value == "" || form.j_cuotas.value == "" ){				
+				document.getElementById('mensaje').style.visibility = 'hidden';
+				alert("Debe ingresar todos los datos");			
+				return false;
+			}else{	
+				form.submit();
+				
+			}
+		}
+		if (form.mpago.value == "TBK"){
+			if (form.nom_tban.value == "" || form.num_mp.value == "" || form.exp_mes.value == "" || form.exp_ano.value == "" || form.t_banco.value == "" ){
+				document.getElementById('mensaje').style.visibility = 'hidden';
+				alert("Debe ingresar todos los datos");
+				return false;
+			}else{	
+				form.submit();
+				
+			}
+		}
+
+	}*/
+</script>
+<script>window.name='winpopmpago'</script>
+
+<script>
+function validar_form_promos(form){
+	if ( confirm( 'Al cambiar el medio de pago es necesario RECALCULAR las promociones del pedido. ¿Esta seguro de modificar estos datos?' ) ) {
+    	return validar_form(form);
+    }    
+    return false;	
+}
+</script>
+  <form name="forma2" action="CambiarMedioPago" method="post" target="winpopmpago" onsubmit="return validar_form{promos}(this);">
+    <input type = "hidden" name = "num_tja"     value = "">
+    <input type = "hidden" name = "mpago_ant"   value = "{tipo_pago}">
+    <input type = "hidden" name = "tipo_TP_ant"   value = "{tipo_TP_ant}">
+    <input type = "hidden" name = "id_pedido"   value = "{id_pedido}">
+    <input type = "hidden" name = "rut_titular" value = "{rut_titular}">
+    <input type = "hidden" name = "url"         value = "ViewMPOPForm?id_pedido={id_pedido}"> <!-- ViewOPFormPedido?id_pedido={id_pedido}&mod=1 -->
+
+	<table width="100%" height="22" border="0" align="center">
+	  <tr class="tabla2">
+	    <td colspan="2" class="HeaderTitle" align = "center" id="mensaje"><font color="red">{mensaje}</font></td>
+	  </tr>
+	  <tr class="tabla2">
+	    <td colspan="2" class="HeaderTitle">Nuevos Datos Medio de Pago</td>
+	  </tr>
+	</table>
+	<table width="73%"  border="0" cellspacing="2" cellpadding="0">
+	   <tr>
+	     <td width="23%">&nbsp;&nbsp;&nbsp;Medio de Pago</td>
+	     <td width="77%">
+	         <select name="mpago" class="campo" onChange="formaDePagoLayer(this.value)">
+	             <option value="CAT" selected="selected">Tarjetas M&aacute;s</option>
+	             <option value="TBK">Tarjeta Bancaria</option>
+	             <option value="PAR">Tarjeta Paris</option>
+	             <!-- option value="PAR_AD">Tarjeta Paris Adicional</option-->
+	         </select>
+	     </td>
+	   </tr>
+	</table>
+	<div id="formasDePago" style="position:relative; height: 100px;">
+	    <div id="jumbo2">
+	      <table width="73%" border="0" cellspacing="0" cellpadding="0">
+	        <tr>
+	          <td height="74" valign="top">
+	            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+	              <tr>
+	                <td width="23%" height="30" class="TablaDiponiblePaso1"><span class="lectura">N&deg; de tu Tarjeta</span></td>
+	                <td width="77%">
+	                  <input name="num_mp_jumbo_1" onKeyUp="return autoTab(this, 4, event);" type="text" class="campo" size="4" maxlength="4" />
+	                  <input name="num_mp_jumbo_2" onKeyUp="return autoTab(this, 4, event);" type="text" class="campo" size="4" maxlength="4" />
+	                  <input name="num_mp_jumbo_3" onKeyUp="return autoTab(this, 4, event);" type="text" class="campo" size="4" maxlength="4" />
+	                  <input name="num_mp_jumbo_4" onKeyUp="return autoTab(this, 4, event);" type="text" class="campo" size="4" maxlength="4" />
+	                </td>
+	              </tr>
+	              <tr>
+	                <td width="23%" height="30" class="tabla"><span class="lectura">N&deg; de Cuotas</span></td>
+	                <td width="77%">
+	                  <select name="j_cuotas" class="campo">
+	                    <option value="" selected>cuotas</option>
+	                    <option value="0">sin cuotas</option>
+	                    <option value="4">4</option>
+	                    <option value="5">5</option>
+	                    <option value="6">6</option>
+	                    <option value="7">7</option>
+	                    <option value="8">8</option>
+	                    <option value="9">9</option>
+	                    <option value="10">10</option>
+	                    <option value="11">11</option>
+	                    <option value="12">12</option>
+	                    <option value="13">13</option>
+	                    <option value="14">14</option>
+	                    <option value="15">15</option>
+	                    <option value="16">16</option>
+	                    <option value="17">17</option>
+	                    <option value="18">18</option>
+	                    <option value="19">19</option>
+	                    <option value="20">20</option>
+	                    <option value="21">21</option>
+	                    <option value="22">22</option>
+	                    <option value="23">23</option>
+	                    <option value="24">24</option>
+	                    <option value="25">25</option>
+	                    <option value="26">26</option>
+	                    <option value="27">27</option>
+	                    <option value="28">28</option>
+	                    <option value="29">29</option>
+	                    <option value="30">30</option>
+	                    <option value="31">31</option>
+	                    <option value="32">32</option>
+	                    <option value="33">33</option>
+	                    <option value="34">34</option>
+	                    <option value="35">35</option>
+	                    <option value="36">36</option>
+	                  </select>
+	                </td>
+	              </tr>
+	            </table>
+	          </td>
+	        </tr>
+	      </table>
+	    </div>
+	    <div id="paris">
+	      <table id="tablaparis" width="73%" border="0" cellspacing="0" cellpadding="0">
+	        <tr>
+	          <td width="10" height="117"></td>
+	          <td height="74" valign="top">
+	            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+	              <tr>
+	                <td width="23%" height="30" class="TablaDiponiblePaso1"><span class="lectura">N&deg; de tu Tarjeta</span></td>
+	                <td width="77%" class="TablaDiponiblePaso1">
+	                  <input name="num_mp_paris" type="text" class="campo" size="16" maxlength="16" onkeypress="javascript:KeyIsNumber(event);"/>
+                    </td>
+	              </tr>
+	              <tr>
+	                <td width="23%" height="30" class="TablaDiponiblePaso1"><span class="lectura">N&deg; de Cuotas</span></td>
+	                <td width="77%" height="30" class="TablaDiponiblePaso1">
+	                   <select name="cuotas_tp" class="campo">
+                          <option value="" selected>cuotas</option>
+	                      <option value="1">sin cuotas</option>
+                          <option value="2">2</option>
+                          <option value="3">3</option>
+                          <option value="4">4</option>
+	                      <option value="5">5</option>
+	                      <option value="6">6</option>
+	                      <option value="7">7</option>
+	                      <option value="8">8</option>
+	                      <option value="9">9</option>
+	                      <option value="10">10</option>
+	                      <option value="11">11</option>
+	                      <option value="12">12</option>
+	                      <option value="13">13</option>
+	                      <option value="14">14</option>
+	                      <option value="15">15</option>
+	                      <option value="16">16</option>
+	                      <option value="17">17</option>
+	                      <option value="18">18</option>
+	                      <option value="19">19</option>
+	                      <option value="20">20</option>
+	                      <option value="21">21</option>
+	                      <option value="22">22</option>
+	                      <option value="23">23</option>
+	                      <option value="24">24</option>
+	                      <option value="25">25</option>
+	                      <option value="26">26</option>
+	                      <option value="27">27</option>
+	                      <option value="28">28</option>
+	                      <option value="29">29</option>
+	                      <option value="30">30</option>
+	                      <option value="31">31</option>
+	                      <option value="32">32</option>
+	                      <option value="33">33</option>
+	                      <option value="34">34</option>
+	                      <option value="35">35</option>
+	                      <option value="36">36</option>
+                        </select>
+                    </td>
+	              </tr>
+	              <!-- tr>
+	                <td width="23%" height="30" class="tabla"><span class="lectura">Meses Libres de Pago</span></td>
+	                <td width="77%" height="30" class="tabla">
+	                   <select name="meses_libre_pago_tp" class="campo">
+                          <option value="" selected>meses</option>
+                          <option value="0">0</option>
+                          <option value="1">1</option>
+                          <option value="2">2</option>
+                          <option value="3">3</option>
+                       </select>
+                    </td>
+	              </tr-->
+	            <tr>
+	               <td width="23%" height="30" class="tabla"><span class="lectura">Tipo de Tarjeta</span></td>
+                   <td width="77%" height="30" class="TablaDiponiblePaso1">
+					  <input type="radio" name="titular" id="titular" value="1" onclick="javascript:TitularAdicional();"><span class="lectura">Titular</span>
+                      <input type="radio" name="titular" id="titular" value="0" onclick="javascript:TitularAdicional();"><span class="lectura">Adicional</span>
+                   </td>
+                </tr>  
+	            </table>
+	            </td>
+	          <td width="10"></td>
+	        </tr>
+	      </table>
+	    </div>
+	    <div id="paris-adicional">
+	      <table width="73%" border="0" cellspacing="0" cellpadding="0">
+	        <tr>
+	          <td width="10"></td>
+	          <td valign="top">
+	            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+	              <tr>
+	                <td width="120" height="30" class="TablaDiponiblePaso1"><span class="lectura">RUT Titular</span>
+	                <td width="230" colspan="2"><input name="rut_tit" type="text" class="campo" size="12" maxlength="10" onkeypress="javascript:KeyIsNumber(event);"/> - <input name="dv_tit" type="text" class="campo" size="2" maxlength="1"/></td>
+	              </tr>
+	              <tr>
+	                <td width="120" height="30" class="TablaDiponiblePaso1"><span class="lectura">Nombre Titular</span>
+	                <td width="230" colspan="2"><input name="nombre_tit" type="text" class="campo" size="16" maxlength="30"/></td>
+	              </tr>
+	              <tr>
+	                <td width="120" height="30" class="TablaDiponiblePaso1"><span class="lectura">Apellido Paterno Titular</span></td>
+	                <td width="230" colspan="2"><input name="appaterno_tit" type="text" class="campo" size="16" maxlength="30" /></td>
+	              </tr>
+	              <tr>
+	                <td width="120" height="30" class="TablaDiponiblePaso1"><span class="lectura">Apellido Materno Titular</span></td>
+	                <td width="230" colspan="2"><input name="apmaterno_tit" type="text" class="campo" size="16" maxlength="30" /></td>
+	              </tr>
+	              <tr>
+	                <td width="120" height="30" class="TablaDiponiblePaso1"><span class="lectura">Direcci&oacute;n Titular</span></td>
+	                <td width="100" class="TablaDiponiblePaso1"><span class="lectura"><input name="direccion_tit" type="text" class="campo" size="16" maxlength="50" /></span></td>
+	                <td width="130" class="TablaDiponiblePaso1"><span class="lectura">N&uacute;mero <input name="numero_tit" type="text" class="campo" size="10" maxlength="16" onkeypress="javascript:KeyIsNumber(event);"/></span></td>
+	              </tr>
+	            </table>
+	          </td>
+	          <td width="10"></td>
+	        </tr>
+	      </table>
+	    </div>
+	    <div id="bancaria">
+	      <table width="90%" border="0" cellspacing="0" cellpadding="0" align="center">
+	        <tr>
+	          <td height="117" valign="top"><table width="100%" border="0" cellpadding="0" cellspacing="0">
+	              <tr>
+	                <td colspan=4 width="39%" height="38" class="TablaDiponiblePaso1"><label>
+	                  <input name="nom_tban" type="radio" value="Visa"/><span class="lectura">Visa</span>
+	                  <input name="nom_tban" type="radio" value="Dinners"/><span class="lectura">Dinners</span>
+	                  <input name="nom_tban" type="radio" value="MasterCard"/><span class="lectura">MasterCard</span>
+	                  <input name="nom_tban" type="radio" value="American Express"/><span class="lectura">American Express</span></label></td>
+	              </tr>
+	              <tr><td colspan=4><br></td></tr>
+	              <tr>
+	                <td height="19" class="TablaDiponiblePaso1"><span class="lectura">N&deg; de tu Tarjeta </span></td>
+	                <td><input name="num_mp" type="text" class="campo" size="16" maxlength="16" /></td><td>Mes Año Expiraci&oacute;n</td>
+	                <td> <select name="exp_mes" class="campo">
+	                   <option value ="" selected>mes</option>
+	                   <option value="01">Enero</option>
+	                   <option value="02">Febrero</option>
+	                   <option value="03">Marzo</option>
+	                   <option value="04">Abril</option>
+	                   <option value="05">Mayo</option>
+	                   <option value="06">Junio</option>
+	                   <option value="07">Julio</option>
+	                   <option value="08">Agosto</option>
+	                   <option value="09">Septiembre</option>
+	                   <option value="10">Octubre</option>
+	                   <option value="11">Noviembre</option>
+	                   <option value="12">Diciembre</option>
+	                 </select>
+	                 <select name="exp_ano" class="campo">
+	                   <option value ="">a&ntilde;o</option>
+	                   <option value="08">2008</option>
+	                   <option value="09">2009</option>
+	                   <option value="10">2010</option>
+	                   <option value="11">2011</option>
+	                   <option value="12">2012</option>
+	                   <option value="13">2013</option>
+	                   <option value="14">2014</option>
+	                   <option value="15">2015</option>
+	                   <option value="16">2016</option>
+	                   <option value="17">2017</option>
+	                   <option value="18">2018</option>
+	                   <option value="19">2019</option>
+	                   <option value="20">2020</option>
+	                   <option value="21">2021</option>
+	                   <option value="22">2022</option>
+	                   <option value="23">2023</option>
+	                   <option value="24">2024</option>
+	                   <option value="25">2025</option>
+	                   <option value="26">2026</option>
+	                   <option value="27">2027</option>
+	                   <option value="28">2028</option>
+	                   <option value="29">2029</option>
+	                   <option value="30">2030</option>
+	                 </select></td>
+	              </tr>
+	              <tr><td colspan=4><br></td></tr>
+	              <tr>
+	                <td height="25" class="TablaDiponiblePaso1"><span class="lectura">N&deg; de Cuotas</span></td>
+	                <td> <select name="t_cuotas" class="campo">
+	                    <option value="" selected>cuotas</option>
+	                    <option value="0">sin cuotas</option>
+	                    <option value="4">4</option>
+	                    <option value="5">5</option>
+	                    <option value="6">6</option>
+	                    <option value="7">7</option>
+	                    <option value="8">8</option>
+	                    <option value="9">9</option>
+	                    <option value="10">10</option>
+	                    <option value="11">11</option>
+	                    <option value="12">12</option>
+	                    <option value="13">13</option>
+	                    <option value="14">14</option>
+	                    <option value="15">15</option>
+	                    <option value="16">16</option>
+	                    <option value="17">17</option>
+	                    <option value="18">18</option>
+	                    <option value="19">19</option>
+	                    <option value="20">20</option>
+	                    <option value="21">21</option>
+	                    <option value="22">22</option>
+	                    <option value="23">23</option>
+	                    <option value="24">24</option>
+	                    <option value="25">25</option>
+	                    <option value="26">26</option>
+	                    <option value="27">27</option>
+	                    <option value="28">28</option>
+	                    <option value="29">29</option>
+	                    <option value="30">30</option>
+	                    <option value="31">31</option>
+	                    <option value="32">32</option>
+	                    <option value="33">33</option>
+	                    <option value="34">34</option>
+	                    <option value="35">35</option>
+	                    <option value="36">36</option>
+	                  </select></td>
+	                  <td><span class="tabla"><span class="lectura"> Banco</span></span></td>
+	                  <td><input name="t_banco" type="text" class="campo" size="20" maxlength="30" /></td>
+	              </tr>
+	              <tr><td colspan=4><br></td></tr>
+	            </table></td>
+	        </tr>
+	      </table>
+	    </div>
+	  </div>
+	<CENTER>
+    <TABLE>
+       <TR>
+          <TD><INPUT type="submit" name="cambiar" value="Cambiar Forma de Pago"></TD>	
+          </form>
+		  <FORM name="cerrar" action="ViewOPFormPedido" target="winpedido1" onsubmit="window.close();">
+		  <TD>
+		    <INPUT type="hidden" name="id_pedido" value="{id_pedido}">
+			<INPUT type="hidden" name="mod" value="1">
+			<INPUT type="submit" name="cerrar" value="Cerrar">		
+		  </TD>
+		  </FORM>
+	   </TR>
+    </TABLE>
+    </CENTER>
+<!-- Fin copy -->
+<script>
+	document.forma2.num_mp.numerico=true;
+	document.forma2.num_mp.label = 'N° Tarjeta';	
+	document.forma2.num_mp.onkeypress = KeyIsSoloNum;
+
+	document.forma2.num_mp_paris.numerico=true;
+	document.forma2.num_mp_paris.label = 'N° Tarjeta';	
+	document.forma2.num_mp_paris.onkeypress = KeyIsNumber;
+	
+	/*document.forma2.num_mp_paris_2.numerico=true;
+	document.forma2.num_mp_paris_2.label = 'N° Tarjeta';	
+	document.forma2.num_mp_paris_2.onkeypress = KeyIsNumber;
+	
+	document.forma2.num_mp_paris_3.numerico=true;
+	document.forma2.num_mp_paris_3.label = 'N° Tarjeta';	
+	document.forma2.num_mp_paris_3.onkeypress = KeyIsNumber;
+	
+	document.forma2.num_mp_paris_4.numerico=true;
+	document.forma2.num_mp_paris_4.label = 'N° Tarjeta';	
+	document.forma2.num_mp_paris_4.onkeypress = KeyIsNumber;
+	
+	document.forma2.num_mp_paris_5.numerico=true;
+	document.forma2.num_mp_paris_5.label = 'N° Tarjeta';	
+	document.forma2.num_mp_paris_5.onkeypress = KeyIsNumber;*/
+
+	document.forma2.num_mp_jumbo_1.numerico=true;
+	document.forma2.num_mp_jumbo_1.label = 'N° Tarjeta Jumbo Más';	
+	document.forma2.num_mp_jumbo_1.onkeypress = KeyIsSoloNum;
+	
+	document.forma2.num_mp_jumbo_2.numerico=true;
+	document.forma2.num_mp_jumbo_2.label = 'N° Tarjeta Jumbo Más';	
+	document.forma2.num_mp_jumbo_2.onkeypress = KeyIsSoloNum;
+	
+	document.forma2.num_mp_jumbo_3.numerico=true;
+	document.forma2.num_mp_jumbo_3.label = 'N° Tarjeta Jumbo Más';	
+	document.forma2.num_mp_jumbo_3.onkeypress = KeyIsSoloNum;
+	
+	document.forma2.num_mp_jumbo_4.numerico=true;
+	document.forma2.num_mp_jumbo_4.label = 'N° Tarjeta Jumbo Más';	
+	document.forma2.num_mp_jumbo_4.onkeypress = KeyIsSoloNum;
+</script>
+</body>
+</html>

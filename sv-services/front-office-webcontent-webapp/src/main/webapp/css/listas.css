@@ -1,0 +1,158 @@
+.accordion_toggle {
+	background-image: url(/FO_IMGS/img/estructura/paso1/cerrado.gif);
+	background-repeat: no-repeat;
+	background-position: left bottom;
+	text-indent: 30px;
+	display: block;
+	height: 20px;
+	width: 100%;
+	margin-top: 0px;
+	margin-right: auto;
+	margin-bottom: 0px;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:11px;
+	color:#999999;
+	cursor: pointer;
+	line-height: 20px;
+}
+.accordion_toggle_active {
+	background-image: url(/FO_IMGS/img/estructura/paso1/abierto.gif);
+	background-repeat: no-repeat;
+	background-position: left bottom;
+	text-indent: 30px;
+	display: block;
+	height: 20px;
+	width: 100%;
+	margin-top: 0px;
+	margin-right: auto;
+	margin-bottom: 0px;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:11px;
+	color:#FFFFFF;
+	cursor: pointer;
+	line-height: 20px;
+}
+
+#seleccionar_todos  {
+	background-image: url(/FO_IMGS/img/estructura/paso1/fn_tb2.gif);
+	width: 100%;
+	height: 35px;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:10px;
+	color:#000000;
+}
+	
+.tit_tb2{
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:10px;
+	color:#000000;
+}
+.tit_listas{
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:14px;
+	color:#FFFFFF;
+	font-weight: bold;
+	text-indent: 12px;
+	line-height: 28px;
+}
+
+.msj_vacio{
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:12px;
+	color:#999999;
+	text-indent: 28px;
+	font-weight:bold;
+	padding: 3px;
+}
+
+#el_listado_de_productos {
+	 height:220px;     
+     overflow:auto;
+}
+.td_lista_de_productos {
+	border-right-width: 1px;
+	border-left-width: 1px;
+	border-right-style: solid;
+	border-left-style: solid;
+	border-right-color: #7EC011;
+	border-left-color: #7EC011;
+}
+#el_listado_de_compras {
+	 height:115px;
+	 width:100%;  
+     overflow:auto;
+}
+.td_lista_de_compras {
+	border-right-width: 1px;
+	border-left-width: 1px;
+	border-right-style: solid;
+	border-left-style: solid;
+	border-right-color: #7EC011;
+	border-left-color: #7EC011;
+}
+
+.sel_combox {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	color: #006600;
+	height: 12px;
+}
+
+.celda_p1_izq {
+    font-family:"Trebuchet MS";
+	border-bottom:1px dashed #CCCCCC;
+	font-size: 8.5pt;
+	font-style: normal;
+	line-height: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	text-decoration: none;
+	padding-left: 3px;
+	padding-right: 3px;
+}
+
+.celda_p1 {
+	font-family:Arial, Helvetica, sans-serif;
+	border-left:1px dashed #7ABD09;
+	border-bottom:1px dashed #CCCCCC;
+	font-size: 8.5pt;
+	font-style: normal;
+	line-height: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	text-decoration: none;
+	padding-left: 3px;
+	padding-right: 3px;
+	color: #666;
+}
+
+#ventana_ficha {
+	position:absolute;
+	width: 0px;
+	height: 0px;
+	left: 0px;
+	top: 0px;
+	visibility: hidden;
+	border: 1;
+	z-index: 10;
+}
+#comentarioproducto {
+	position:absolute;
+	width: 0px;
+	height: 0px;
+	left: 0px;
+	top: 0px;
+	visibility: hidden;
+	border: 1;
+	z-index: 15;
+}
+#msg_respuesta { font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#FFF; text-indent: 28px; font-weight:bold; }
+div#msg{ margin: 0 4%;background: #7EC011; width: 290px;}
+b.rtop, b.rbottom{display:block;background: #FFF;}
+b.rtop b, b.rbottom b{display:block;height: 1px;overflow: hidden; background: #7EC011}
+b.r1{margin: 0 5px}
+b.r2{margin: 0 3px}
+b.r3{margin: 0 2px}
+b.rtop b.r4, b.rbottom b.r4{margin: 0 1px;height: 2px}

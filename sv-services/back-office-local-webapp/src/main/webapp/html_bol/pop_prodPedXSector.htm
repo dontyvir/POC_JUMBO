@@ -1,0 +1,91 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="EXPIRES" CONTENT="Mon, 22 Jul 2002 11:12:01 GMT">
+
+<title>Jumbo.cl Back Office Local</title>
+
+<link href="estilos.css" rel="stylesheet" type="text/css">
+<!--link href="../Prototipo/default.css" rel="stylesheet" type="text/css"-->
+<style type="text/css">
+<!--
+.style1 {color: #666666}
+-->
+</style>
+</head>
+
+<body>
+<table>
+  <tr height="50">
+    <td valign="top" bgcolor="#FFFFFF">
+      <table border=0 width="100%" class='ContentTitle'>
+        <tr>
+          <td width="53%" height="20" class='HeaderTitle'>
+          <!-- InstanceBeginEditable name="Titulo" -->
+          Productos del Pedido por Sector
+          <!-- InstanceEndEditable --></td>
+          <td width="47%" class='HeaderTitle'><!-- InstanceBeginEditable name="Botonera" --><!-- InstanceEndEditable --></td>
+        </tr>
+      </table>
+	</td>
+  </tr>
+  <tr height="400">
+    <td valign="top" bgcolor="#FFFFFF">
+	  <div align="center">
+	<table width="610" border="0" cellspacing="2" cellpadding="0" class="tabla2">
+	  <tr>
+	    <td align=left width="225">Pedido Nº</th>
+	    <td align=left width="385">{id_pedido}</th>
+	  </tr>
+	  <tr>
+	    <td align=left width="225">Sector</th>
+	    <td align=left width="385">{sector}</th>
+	  </tr>
+	</table>
+	<br>
+	<br>
+	<table width="610" border="0" cellspacing="2" cellpadding="0" class="tabla2">
+	  <tr>
+	    <th width="25">Id</td>
+	    <th width="25">Cod.Prod</td>
+	    <th width="25">Uni.Med</td>
+	    <th width="350">Descripcion</td>
+	    <th width="25">Cant.S.Pick.</td>
+	    <th width="25">Cant.Acumulada</td>
+	    <th width="125">Usuario</td>
+	  </tr>
+	  <!-- BEGIN DYNAMIC: productos -->
+	  <tr>
+	    <td>{id_producto}</td>
+	    <td>{cod_prod}</td>
+	    <td>{uni_med}</td>
+	    <td align= left>{descripcion}</td>
+	    <td>{cant_spick}</td>
+	    <td>{cant_tot}</td>
+	    <td>{NombreUsuario}</td>
+	  </tr>
+	  <!-- END DYNAMIC: productos -->
+	</table>
+	</div>
+	<br>
+	<div align="center">
+	<table width="610" border="0" align="left" cellpadding="0" cellspacing="2">
+	  <tr>
+	    <td colspan=6 >
+	      <input type="button" name="Button" value="Cerrar" onClick="window.close();">
+	    </td>
+	  </tr>
+	  <tr>
+	    <td>&nbsp;</td>
+	  </tr>
+	</table>
+	</div>
+<p>&nbsp;</p>
+	</td>
+	</tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,235 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<meta http-equiv="CACHE-CONTROL" content="NO-CACHE">
+<meta http-equiv="PRAGMA" content="NO-CACHE">
+<meta http-equiv="EXPIRES" content="Mon, 22 Jul 2002 11:12:01 GMT">
+<title>Jumbo.cl - {cat_nombre}</title>
+<style type="text/css">
+<!--
+body {
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	overflow-y:hidden;
+}
+-->
+</style>
+<link href="/FO_WebContent/css/estilostextos.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/FO_WebContent/js/funciones.js"></script>
+<script>
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;
+  if(!d)
+  	d=document;
+  if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all)
+  	x=d.all[n];
+  for (i=0;!x&&i<d.forms.length;i++)
+  	x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++)
+  	x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById)
+  	x=d.getElementById(n);
+  return x;
+}
+
+function MM_swapImage() { //v3.0
+  var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array;
+  for(i=0;i<(a.length-2);i+=3)
+   	if ((x=MM_findObj(a[i]))!=null) {
+		document.MM_sr[j++]=x;
+		if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];
+   }
+}
+
+function submit_form( form, id ) {
+	max_productos = form.max_productos.value;
+	var auxc = 0;
+	for ( i = 0 ; i < max_productos; ++i){
+		if( form.elements["maximo_l"+i] != 'undefined' && form.elements["maximo_l"+i] != null && top.validar_cantidad(form.elements["cantidad_l"+i], form.elements["maximo_l"+i].value) == false ) {
+			return;
+		}
+		auxc = auxc + parseFloat(form.elements["cantidad_l"+i].value,10);
+	}
+	if (auxc > 0) {
+		MM_swapImage('ImageSubmit_'+id,'','/FO_IMGS/img/estructura/paso2/modificar.gif',1);
+	} else { 
+		MM_swapImage('ImageSubmit_'+id,'','/FO_IMGS/img/estructura/paso2/agregar.gif',1);
+	}
+	top.hideFichaProducto();
+
+	if (form.nota != 'undefined' && form.nota != null){
+		if (form.nota.value != ''){
+			MM_swapImage('ImageComent_'+id,'','/FO_IMGS/img/estructura/paso2/notasb.gif',1);
+		}
+	}
+	form.submit();
+}
+
+function ficha(idprod, idform){
+	top.ficha_carro = false;
+	if (document.forms['fp' + idform].nota) {
+		var elem = document.forms['fp' + idform].nota;
+		top.nota_txt = elem.value;
+	} else {
+		top.nota_txt = "";
+	}
+	top.id_formulario = idform;
+	top.ficha_paso = '2b';
+	top.frames['frm_ficha'].location.href="../ProductDisplay?idprod="+idprod;
+
+	//top.mod_icon = idform;
+	//top.frames['frm_ficha'].location.href="../ProductDisplay?idprod="+idprod;
+}
+
+// Presenta layer con promociones
+function vp( idprod ) {
+
+	top.frames['frm_promoprod'].location.href="../ViewPromociones?idprod="+idprod;
+
+}
+
+
+if (top.document.f_filtros.sel_orden.value > 0){
+	top.document.f_filtros.orden.options[top.document.f_filtros.orden.selectedIndex].value = top.document.f_filtros.orden.value;
+	top.document.f_filtros.sel_orden.value = 0;
+}else{
+	top.document.f_filtros.reset();
+}
+
+
+for( var i = 0; i <= top.document.f_filtros.marcas.options.length; i++ )
+	top.document.f_filtros.marcas.options[i] = null;
+top.document.f_filtros.cai.value="{categoria_id}";
+top.document.f_filtros.marcas.length=0;
+top.makeOptionList(top.document.f_filtros.marcas, "Todas","", 0);
+<!-- BEGIN DYNAMIC: FIL_MARCAS -->
+top.makeOptionList(top.document.f_filtros.marcas, "{nombre}","{valor}", {seleccion});
+<!-- END DYNAMIC: FIL_MARCAS -->
+
+// Banner de la categoría
+if( "{banner}" != "" ) {
+	//alert( ancho_ventana() );
+	if( top.ancho_ventana() >= 990 )
+		top.document.images["cat_banner"].src="/FO_IMGS/bn/1024/{banner}";
+	else
+		top.document.images["cat_banner"].src="/FO_IMGS/bn/800/{banner}";
+}
+else
+	top.document.images["cat_banner"].src="/FO_IMGS/img/1x1trans.gif";
+
+
+// Totem de la categoría
+if( "{totem}" != "" )
+	top.document.images["cat_totem"].src="/FO_IMGS/bn/{totem}";
+else
+	top.document.images["cat_totem"].src="/FO_IMGS/img/1x1trans.gif";
+
+// Nombre de categoría
+top.document.getElementById("cat_nombre").innerHTML='{cat_nombre}';
+top.document.getElementById("idpadre").value='{idpadre}';
+</script>
+</head>
+<body>
+<table width="100%" border="0" cellpadding="3" cellspacing="0">
+	<!-- BEGIN DYNAMIC: PRODUCTOS -->
+	<form id="fp{contador_form}" name="fp{contador_form}" method="post" target="ifrm_carro" action="../OrderItemAdd">
+	<tr valign="top">
+		<td width="44" class="celda1Paso2SepVertical"><a href="javascript:ficha({pro_id}, {contador_form});"><img src="/FO_IMGS/ch/{pro_imagen}" width="50" height="50" border="0" onerror="this.src='/FO_IMGS/img/ch/fotopreparacion-chica.gif'" id="img_{pro_id}" onmouseover="javascript:top.desplegar_imagen('/FO_IMGS/gr/{pro_imagen}',this);" onmouseout="javascript:top.esconder_imagen();"/></a></td>
+		<td class="celda1Paso2SepVertical"><a href="javascript:ficha({pro_id}, {contador_form});" class="desc_productos">{pro_tipo} <span class="Marca">{pro_marca}</span><br />
+			{pro_desc}</a><br />
+		<!-- BEGIN DYNAMIC: SIN_ITEMS_UNI -->
+		<span class="chica">$x{pro_uni_med_ppum}:{pro_ppum}</span>
+		<!-- END DYNAMIC: SIN_ITEMS_UNI -->
+		<!-- BEGIN DYNAMIC: CON_PROMOCION -->
+		<div align="right"><span class="Marca">{promo_desc}</span>
+		<img src="/FO_IMGS/img/promociones/{promo_img}" border="0" onerror="this.src='/FO_IMGS/img/promociones/promocion.gif'" /></div>
+		<!-- END DYNAMIC: CON_PROMOCION -->
+		<!-- BEGIN DYNAMIC: CON_N_PROMOCION -->
+		<a href="javascript:vp('{pro_id}')">+ promociones</a>
+		<!-- END DYNAMIC: CON_N_PROMOCION -->
+		</td>
+		<td width="69" class="celda1Paso2SepVertical">
+			<div align="right">
+			<!-- BEGIN DYNAMIC: SIN_ITEMS -->
+			{precio} x {unidad}
+			<!-- END DYNAMIC: SIN_ITEMS -->
+			<!-- BEGIN DYNAMIC: ITEMS -->
+			{precio} x {unidad}<br>
+			<span class="chica">$x{pro_uni_med_ppum}:{pro_ppum}</span><br><br>
+			<!-- END DYNAMIC: ITEMS -->
+			</div>
+		</td>
+		<td width="140" class="celda1Paso2SepVertical" align="right">
+			<table border="0" cellpadding="0" cellspacing="0" style="width:100%;height:100%;">
+ 			<!-- BEGIN DYNAMIC: ITEMS_SEL -->
+				<tr valign="top">
+					<td class="NoDisponible" align="right" width="50%">{dif}</td>
+					<td align="right" width="30%">
+						<!-- BEGIN DYNAMIC: LISTA_SEL -->
+						<select name="cantidad_l{contador}" class="campo">
+						<!-- BEGIN DYNAMIC: CANTIDADES -->
+						<option value="{valor}" {selected}>{opcion}</option>
+						<!-- END DYNAMIC: CANTIDADES -->
+						</select>
+						<!-- END DYNAMIC: LISTA_SEL -->
+						<!-- BEGIN DYNAMIC: INPUT_SEL -->
+						<table border="0" cellspacing="0" cellpadding="0">
+							<tr valign="top">
+								<td><A HREF="javascript:top.up(document.fp{contador_form_aux}.cantidad_l{contador},{intervalo},{maximo});"><img src="/FO_IMGS/img/estructura/carro/flechasuperior.gif" border="0"></A></td>
+								<td rowspan="2">
+									<input name="maximo_l{contador}" value="{maximo}" type="hidden">
+									<input name="cantidad_l{contador}" id="fp{contador_form_aux}_cantidad_l{contador}" value="{valor}" type="text" class="cc" size="4" maxlength="4" onkeypress="javascript:return bloqueaCaracteres(event,/[0-9.\b]/);" onchange="javascript:valida_cantidad('fp{contador_form_aux}_cantidad_l{contador}',{intervalo},{maximo});">
+								</td>
+							</tr>
+							<tr>
+								<td><A HREF="javascript:top.down(document.fp{contador_form_aux}.cantidad_l{contador},{intervalo},{maximo})"><img src="/FO_IMGS/img/estructura/carro/flechainferior.gif" border="0"></A></td>
+							</tr>
+						</table>
+						<!-- END DYNAMIC: INPUT_SEL -->
+					</td>
+					<td class="NoDisponible" width="20%">{unidad}</td>
+				</tr>
+				<tr>
+					<td height="25px" colspan="3"></td>
+				</tr>
+			<input type="hidden" name="id_prod_{contador}" value="{pro_id}" />
+			<input type="hidden" name="lugar_compra{contador}" value="G" />
+			<!-- END DYNAMIC: ITEMS_SEL -->
+			</table>
+		</td>
+		<td width="46" align="center" class="celda5Paso2SepVertical">
+			<!-- BEGIN DYNAMIC: IMG_COMEN -->
+			<a href="javascript:top.show_nota( document.forms['fp{contador_form}'].nota,{contador_form} );"><img name="ImageComent_{contador_form}" id="ImageComent_{contador_form}" src="/FO_IMGS/img/estructura/paso2/notas.gif" border="0" ></a>
+			<input type="hidden" name="nota" value="{nota}">
+			<SCRIPT LANGUAGE="JavaScript">
+				top.cambia_img_nota(document.forms['fp{contador_form}'], {contador_form}, '1');
+			</SCRIPT>
+			<!-- END DYNAMIC: IMG_COMEN -->
+			<!-- BEGIN DYNAMIC: IMG_AGREGAR -->
+			<a href="javascript:submit_form( document.fp{contador_form},'{contador_form}' )"><img name="ImageSubmit_{contador_form}" src="/FO_IMGS/img/estructura/paso2/agregar.gif" alt="agregar o quitar unidades" title="agregar o quitar unidades" border="0"/></a>
+			<!-- END DYNAMIC: IMG_AGREGAR -->
+			<!-- BEGIN DYNAMIC: IMG_MODIFICAR -->
+			<a href="javascript:submit_form( document.fp{contador_form},'{contador_form}' )"><img name="ImageSubmit" src="/FO_IMGS/img/estructura/paso2/modificar.gif" alt="agregar o quitar unidades" title="agregar o quitar unidades" border="0" /></a>
+			<!-- END DYNAMIC: IMG_MODIFICAR -->
+		</td>
+	</tr>
+	<input type="hidden" name="max_productos" value="{total_productos}">
+	</form>
+	<!-- END DYNAMIC: PRODUCTOS -->
+	
+</table>
+<script>
+  alto = document.body.scrollHeight + 20;
+  if(alto <= 0)
+    alto = 500;
+  top.document.getElementById("ifrm_productos").style.height = alto;
+</script>
+<script type="text/javascript"> 
+top.urchinTracker('/FO/categorias/{cat_nombre}'); 
+</script> 
+</body>
+</html>

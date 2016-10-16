@@ -1,0 +1,128 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="EXPIRES" CONTENT="Mon, 22 Jul 2002 11:12:01 GMT">
+<title>Jumbo.cl Back Office Central</title>
+<script>
+<!--
+function validar_form(form){
+	var disponible = form.disp_actual.value;
+
+    if (disponible < 0){
+        //alert ('saldo insuficiente');
+        if(!confirm('Estas seguro que deseas Aceptar el cambio de Medio de Pago\n aun cuando el disponible de la Empresa no cubra el monto de la compra')){
+           return false;
+        }
+    }
+    return true;
+}
+
+
+function cerrar_popUp(){
+	//var opener = window.dialogArguments;
+	//opener.location.reload();
+	window.close();
+}
+-->
+</script>
+
+<link href="estilos.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+<!--
+body {
+	background-color: #FFFFFF;
+}
+-->
+</style>
+</head>
+<body>
+
+<table border=0 width="100%" class='ContentTitle'>
+  <tr>
+    <td height="20" class='HeaderTitle' width="69%">Modificación Medio de Pago a Credito</td>
+    <td class='HeaderTitle' width="31%">&nbsp;</td>
+  </tr>
+</table>
+<table width="95%" height="22" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr class="tabla2">
+    <td colspan="2" class="HeaderTitle">Datos Medio de Pago Actual</td>
+  </tr>
+  <tr class="tabla2">
+    <td>Medio de Pago actual</td>
+    <td>{tipo_pago}</td>
+  </tr>
+  {num_mp}
+  {num_cuotas}
+  {nom_tarj}
+  {expira}
+<!-- {meses_librpago} -->
+</table>
+<script>window.name='winpopmpagocre'</script>
+  <form name="forma2" action="CambiarMedioPagoCre" method="post" target="winpopmpagocre" onsubmit="return validar_form(this);">
+    <input type = "hidden" name = "id_pedido"       value = "{id_pedido}">
+    <input type = "hidden" name = "rut_titular"     value = "{rut_titular}">
+    <input type = "hidden" name = "url"             value = "ViewMPOPCreForm?id_pedido={id_pedido}"> <!-- ViewOPFormPedido?id_pedido={id_pedido}&mod=1 -->
+    <input type = "hidden" name = "saldo_pendiente" value = "{saldo_pendiente}">
+    <input type = "hidden" name = "monto_pedido"    value = "{monto_pedido}">
+    <input type = "hidden" name = "disp_actual"     value = "{disp_actual}">
+
+	<table width="95%" height="22" border="0" align="center">
+	  <tr class="tabla2">
+	    <td colspan="3" class="HeaderTitle" align = "center" id="mensaje"><font color="red">{mensaje}</font></td>
+	  </tr>
+	  <tr class="tabla2">
+	    <td colspan="3" class="HeaderTitle">Datos Empresa y su Disponible</td>
+	  </tr>
+	  <tr class="tabla2">
+	    <td>RUT Empresa</td>
+	    <td>:</td>
+	    <td>{rut_empresa}</td>
+	  </tr>
+	  <tr class="tabla2">
+	    <td>Razon Social</td>
+	    <td>:</td>
+	    <td>{rs_empresa}</td>
+	  </tr>
+	  <tr class="tabla2">
+	    <td>Saldo</td>
+	    <td>:</td>
+	    <td>{saldo}</td>
+	  </tr>
+	  <tr class="tabla2">
+	    <td>Saldo Pendiente</td>
+	    <td>:</td>
+	    <td>{saldo_pendiente}</td>
+	  </tr>
+	  <tr class="tabla2">
+	    <td>Monto del Pedido</td>
+	    <td>:</td>
+	    <td>{monto_pedido}</td>
+	  </tr>
+	  <tr class="tabla2">
+	    <td>Disponible Actual</td>
+	    <td>:</td>
+	    <td>{disp_actual}</td>
+	  </tr>
+	</table>
+    <CENTER>
+    <TABLE>
+       <TR>
+          <TD><INPUT type="submit" name="cambiar" value="Cambiar Forma de Pago"></TD>	
+          </form>
+		  <FORM name="cerrar" action="ViewOPFormPedido" target="winpedido1" onsubmit="window.close();">
+		  <TD>
+		    <INPUT type="hidden" name="id_pedido" value="{id_pedido}">
+			<INPUT type="hidden" name="mod" value="1">
+			<INPUT type="submit" name="cerrar" value="Cerrar">		
+		  </TD>
+		  </FORM>
+	   </TR>
+    </TABLE>
+    </CENTER>
+	
+</body>
+</html>

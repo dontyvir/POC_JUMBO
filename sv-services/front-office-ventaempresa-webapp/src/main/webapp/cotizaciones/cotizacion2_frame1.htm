@@ -1,0 +1,230 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>Venta Empresas</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="EXPIRES" CONTENT="Mon, 22 Jul 2002 11:12:01 GMT">
+
+<script language="javascript" src="/WebFOVE/funciones.js"></script>
+<link href="/WebFOVE/style.css" rel="stylesheet" type="text/css">
+<script>
+
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;
+  if(!d)
+  	d=document;
+  if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all)
+  	x=d.all[n];
+  for (i=0;!x&&i<d.forms.length;i++)
+  	x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++)
+  	x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById)
+  	x=d.getElementById(n);
+  return x;
+}
+
+function MM_swapImage() { //v3.0
+  var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array;
+  for(i=0;i<(a.length-2);i+=3)
+   	if ((x=MM_findObj(a[i]))!=null) {
+		document.MM_sr[j++]=x;
+		if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];
+   }
+}
+
+// Setear nombre en el paso 2
+if( '{cat_nombre}' != '' )
+	top.document.getElementById("cat_nombre").innerHTML='{cat_nombre}';
+
+// Cargas marcas sólo si estamos en una categoría y no es una búsqueda
+if( top.global_en_busqueda < 1 ) {
+	for( var i = 0; i <= top.document.f_filtros.marcas.options.length; i++ )
+		top.document.f_filtros.marcas.options[i] = null;
+	top.document.f_filtros.marcas.length=0;
+	makeOptionList(top.document.f_filtros.marcas, "Todas","0", 0);
+	<!-- BEGIN DYNAMIC: FIL_MARCAS -->
+	makeOptionList(top.document.f_filtros.marcas, "{nombre}","{valor}", {seleccion});
+	<!-- END DYNAMIC: FIL_MARCAS -->
+}
+
+function add_prod( form_id ) {
+
+	var tot_reg		 = document.forms["f_prod"+form_id].tot_reg.value;
+
+	for( i = 0; i < tot_reg; i++ ) {
+		if(document.forms["f_prod"+form_id].elements["valor"+i] != 'undefined' && document.forms["f_prod"+form_id].elements["valor"+i] != null){
+			if(document.forms["f_prod"+form_id].elements["valor"+i].value == '' ){
+				document.forms["f_prod"+form_id].elements["valor"+i].value = 0;
+			}
+		}
+	}
+
+	for( i = 0; i < tot_reg; i++ ) {
+		var intervalo  = document.forms["f_prod"+form_id].elements["intervalo"+i].value;
+		var pro_id = document.forms["f_prod"+form_id].elements["pro_id"+i].value;
+		//var valor  = document.forms["f_prod"+form_id].elements["valor"+i].value;
+		valor = setCantidad( document.forms["f_prod"+form_id].elements["valor"+i], intervalo );
+		document.forms["f_prod"+form_id].elements["valor"+i].value = valor;
+		var url = "";
+		url += "i="+i;
+		url += "&pro_id="+pro_id;
+		url += "&valor="+valor;
+		//alert(url);
+	}
+
+	//top.frames['ifrm_bolsa'].location.href="AddNewDetalle?"+url;
+	
+	MM_swapImage('ImageSubmit_'+form_id,'','/FO_IMGS/img/estructura/paso2/modificar.gif',1);
+	
+	document.forms["f_prod"+form_id].submit();
+	
+	//return true;
+
+}
+
+var i = 0;
+
+function del(id ) {
+
+	if(confirm("Este producto será eliminado del carro de compra\n ¿Esta seguro de realizar la operación?")){
+		var d = new Date();
+		window.location = "DelProdCotizacion?id="+id+"&tm="+d.getTime();
+		// Si existe categorias con productos => recarga
+		if( top.frames['ifrm_productos'] != 'undefined' && top.frames['ifrm_productos'] != null ) {	
+			top.frames['ifrm_productos'].location.reload();
+			top.frames['ifrm_bolsa'].location.reload();
+		}
+	}else{
+		document.fc.reset();
+	}
+
+}
+
+
+function mc(id, campo, intervalo, form){
+	var d = new Date();
+
+	if( campo.value == "" || campo.value == "." )
+		campo.value = 0;
+	
+	// Revisa si es multiplo del incremtento definido para el producto
+	campo.value = setCantidad( campo, intervalo );
+	
+	cantidadaux = campo.value; 
+
+	if (cantidadaux == 0){
+	    if (id > 0){
+            del(id);
+	    }
+		return false;
+	}
+
+    if (id > 0){
+	    //top.frames['ifrm_bolsa'].location.href="UpdProdCotizacion?id="+id+"&cantidad="+cantidadaux+"&tm="+d.getTime();
+	    form.submit();
+    }
+	
+
+	return true;
+}
+
+function push_enter( evt, id, campo, intervalo ) {
+
+    if (KeyIsCantidad(evt)){
+	    var isNav = (navigator.appName.indexOf("Netscape") != -1)
+	    var isIE = (navigator.appName.indexOf("Microsoft") != -1)
+
+	
+	    if (isNav) {
+	        //alert('Key: ' + evt.which);
+		    if( evt.which == 13 ) {
+			    mc( id, campo, intervalo );
+		    }	
+	    }else if (isIE) {
+		    evt = window.event;
+	        //alert('Key: ' + evt.keyCode);
+		    if ( evt.keyCode == 13 ) {
+			    mc( id, campo, intervalo );
+		    }
+        }
+    }
+	
+}
+
+
+</script>
+
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript"></script>
+<script type="text/javascript">
+   _uacct = "UA-1529321-3";
+   urchinTracker();
+</script>
+</head>
+
+<body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+
+<!-- BEGIN DYNAMIC: L_PRODUCTOS -->
+<!-- BEGIN DYNAMIC: SIN_ITEMS -->
+<table width="100%"  border="0" cellspacing="0" cellpadding="0" class="tabla_productos">
+<form name="f_prod{pro_id}" action="AddNewDetalle" METHOD="POST" TARGET="ifrm_bolsa" onSubmit="">
+<INPUT TYPE="hidden" name="pro_id0" value="{pro_id}">
+<INPUT TYPE="hidden" name="intervalo0" value="{intervalo}">
+  <tr>
+    <td width="60" align="center"><A HREF='javascript:winficha({pro_id})'><img src="/FO_IMGS/ch/{pro_imagen}" width="50" height="50" border="0" onError="this.src='/FO_IMGS/img/ch/fotopreparacion-chica.gif'" id="img_{pro_id}"/></A></td>
+    <td valign="top"><A HREF='javascript:winficha({pro_id})' class="texto_minificha">{pro_tipo} <span class="texto_minificha_marca">{pro_marca}</span><br>{pro_desc}</A><br><span class="texto_minificha_ppum">$x{ppum_med}:{ppum}</span></td>
+    <td width="90" align="right" class="texto_minificha">{precio} {unidad}</td>
+    <td width="60" align="center"><input name="valor0" type="text" value="{valor}" size="4" maxlength="4" onPaste="return false;" onkeypress="push_enter(this,{id},this,{intervalo},f_prod{pro_id});"> <span class="texto_minificha">Uni</span></td>
+    <td width="40" align="center"><A HREF="javascript:add_prod( '{pro_id}' );"><img name="ImageSubmit_{pro_id}" src="/WebFOVE/img/{img_fila}" alt="" border="0"></A></td>
+	<SCRIPT>//document.f_prod{pro_id}.valor0.onkeypress=KeyIsCantidad;</script>
+  </tr>
+<INPUT TYPE="hidden" name="tot_reg" value="1">    
+</form>
+</table>
+<!-- END DYNAMIC: SIN_ITEMS -->
+<!-- BEGIN DYNAMIC: CON_ITEMS -->
+<table width="100%"  border="0" cellspacing="0" cellpadding="0" class="tabla_productos">
+<form name="f_prod{pro_id}" action="AddNewDetalle" METHOD="POST" TARGET="ifrm_bolsa" onSubmit="">
+  <tr valign="top">
+    <td width="60" align="center"><A HREF='javascript:winficha({pro_id})'><img src="/FO_IMGS/ch/{pro_imagen}" width="50" height="50" border="0" onError="this.src='/FO_IMGS/img/ch/fotopreparacion-chica.gif'" id="img_{pro_id}"/></A></td>
+    <td><A HREF='javascript:winficha({pro_id})' class="texto_minificha">{pro_tipo} <span class="texto_minificha_marca">{pro_marca}</span><br>{pro_desc}</A></td>
+	<td width="155">
+		<table border="0" cellspacing="0" cellpadding="0" class="tabla_precios">
+		  <!-- BEGIN DYNAMIC: CON_ITEMS_PRECIOS -->		
+		  <INPUT TYPE="hidden" name="pro_id{contador}" value="{pro_id}">
+		  <INPUT TYPE="hidden" name="intervalo{contador}" value="{intervalo}">
+		  <tr>
+		    <td width="90" align="right" style="border-right:1px solid #def0b9;">
+				<span class="texto_minificha">{dif} {precio} {unidad}</span><br>
+			<span class="texto_minificha_ppum">$x{ppum_med}:{ppum}</span>			</td>
+		    <td width="60" align="center">
+				<input name="valor{contador}" type="text" value="{valor}" size="4" maxlength="4" onPaste="return false;" onkeypress="push_enter(this,{id},this,{intervalo},f_prod{pro_id});"> <span class="texto_minificha">Uni
+			    <SCRIPT>//document.f_prod{pro_id_P}.valor{contador}.onkeypress=KeyIsCantidad;</script>
+                </span></td>
+		  </tr>
+		  <!-- END DYNAMIC: CON_ITEMS_PRECIOS -->		  
+		</table>
+    </td>
+	<td width="40" align="center"><A HREF="javascript:add_prod( '{pro_id}' );"><img name="ImageSubmit_{pro_id}" src="/WebFOVE/img/{img_fila}" alt="" border="0"></A></td>
+  </tr>
+<INPUT TYPE="hidden" name="tot_reg" value="{tot_reg}">  
+</form>
+</table>
+<!-- END DYNAMIC: CON_ITEMS -->
+<!-- END DYNAMIC: L_PRODUCTOS -->
+<script>
+
+  alto = document.body.scrollHeight + 20;
+  if(alto <= 500)
+    alto = 500;
+  top.document.getElementById("ifrm_productos").style.height = alto + "px";
+
+</script>
+
+</body>
+</html>

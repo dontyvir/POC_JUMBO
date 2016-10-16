@@ -1,0 +1,86 @@
+<form name="form_pro" id="form_pro" action="OrderItemUpdate" method="post">
+<div id="acor_lista_de_productos">
+<!-- BEGIN DYNAMIC: CATEGORIAS -->
+	<h6 class="accordion_toggle">{categoria}</h6>
+	<div class="accordion_content">
+		<table width="100%" border="0" cellpadding="0" cellspacing="0">
+		 <!-- BEGIN DYNAMIC: PRODUCTOS -->       		         
+         <tr id="fila{contador}">
+           <td><table width="100%" border="0" cellpadding="0" cellspacing="0" class="{CLASE_TABLA}">
+               <tr>
+                 <td width="94">
+                 	<input type="hidden" name="carr_id{contador}" id="carr_id{contador}" value="{carr_id}" />
+                 	<input type="hidden" name="cantidad_old{contador}" value="{valor}" />
+					<table border="0" cellpadding="0" cellspacing="0">
+						<tr>
+							<td>
+								<!-- BEGIN DYNAMIC: LISTA_SEL -->                 
+								<select name="cantidad{contador}" class="formularios">
+								<!-- BEGIN DYNAMIC: CANTIDADES -->
+								<option value="{valor}" {selected}>{opcion}</option>
+								<!-- END DYNAMIC: CANTIDADES -->
+								</select>
+								<!-- END DYNAMIC: LISTA_SEL -->
+								<!-- BEGIN DYNAMIC: INPUT_SEL -->
+									<table border="0" cellspacing="0" cellpadding="0">
+										<tr>
+											<td>
+												<a href="javascript:sumar(document.form_pro.cantidad{contador},{intervalo},{maximo},{contador});"><img src="/FO_IMGS/img/estructura/carro/flechasuperior.gif" border="0"></a>
+											</td>
+											<td rowspan="2">
+												<input name="maximo{contador}" value="{maximo}" type="hidden" />
+												<input name="cantidad{contador}" id="cantidad{contador}" value="{valor}" type="text" class="cc" size="4" maxlength="4" onkeypress="javascript:return bloqueaCaracteres(event,/[0-9.\b]/);" onchange="javascript:cambiaCantidad('cantidad{contador}',{intervalo},{maximo},{contador});" />
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<a href="javascript:restar(document.form_pro.cantidad{contador},{intervalo},{maximo},{contador});"><img src="/FO_IMGS/img/estructura/carro/flechainferior.gif" border="0"></a>
+											</td>
+										</tr>
+									</table>
+								<!-- END DYNAMIC: INPUT_SEL -->
+							</td>
+							<td class="NoDisponible">{unidad}</td>
+						</tr>
+					</table>
+				 </td>
+                 <td class="{CLASE_CELDA}">{descripcion} - <span class="Marca">{marca}</span> {NO_DISPONIBLE} {input_no_disponible}</td>
+                 <td width="80" class="{CLASE_CELDA}">
+				 <!-- BEGIN DYNAMIC: NOTA -->
+					<input type="text" size="14" maxlength="250" name="nota{contador}" id="nota{contador}" value="{nota}" class="cc" onchange="document.form_pro.cantidad_old{contador}.value=0;actualizaProducto({contador});" />
+					<script>document.form_pro.nota{contador}.onkeypress=KeyIsTexto;</script>
+				 <!-- END DYNAMIC: NOTA -->
+				 </td>
+                 <td width="53" class="{CLASE_CELDA}"><div align="right">{precio_unitario}</div></td>
+                 <td width="50" class="{CLASE_CELDA}"><div align="center">{precio_total}</div></td>
+                 <td width="38" align="center" class="{CLASE_CELDA}">
+                 <input type="hidden" name="opcion{contador}" value="{OPCION_COMPRA}" />
+                 <a href="javascript:eliminar_prod({contador});" onmouseout="MM_swapImgRestore()">{btn_eliminar}</a>
+                 </td>
+               </tr>
+             </table>
+		   </td>
+         </tr>
+		<!-- END DYNAMIC: PRODUCTOS -->
+	</table>
+	</div>
+<!-- END DYNAMIC: CATEGORIAS -->
+<!-- BEGIN DYNAMIC: SIN_CATEGORIAS -->
+ <div class="msj_vacio">&nbsp;Sin productos en el carro</div>
+ <!-- END DYNAMIC: SIN_CATEGORIAS -->
+</div>
+<input type="hidden" name="total_actual" value="{total_actual}" />
+<input type="hidden" name="total_actual_sf" value="{total_actual_sf}" />
+<input type="hidden" name="registros" value="{total_registros}" />
+<input type="hidden" name="total_producto_pedido" value="{total_producto_pedido}" />
+<!-- <input type="hidden" name="url" value="CheckoutProList" /> -->
+<input type="hidden" name="url" value="/CuponUpd" />
+<input type="hidden" name="cupones" value="{cupones}" />
+
+<input type="hidden" id="text_total_desc_j_sf" name="text_total_desc_j_sf" value="{total_desc_j_sf}" />
+<input type="hidden" id="text_total_desc_j" name="text_total_desc_j" value="{total_desc_j}" />
+<input type="hidden" id="text_promo_desc_j" name="text_promo_desc_j" value="{promo_desc_j}" />
+<input type="hidden" id="text_total_desc_tc" name="text_total_desc_tc" value="{total_desc_tc}" />
+<input type="hidden" id="text_promo_desc_tc" name="text_promo_desc_tc" value="{promo_desc_tc}" />
+<input type="hidden" id="text_msg_cupon" name="text_msg_cupon" value="{msg_cupon}" />
+</form>

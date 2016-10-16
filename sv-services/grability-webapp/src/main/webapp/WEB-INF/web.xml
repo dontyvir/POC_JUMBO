@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app id="WebApp_ID" version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+	
+	<display-name>REST</display-name>
+	
+	<!-- FILTET --> 
+	
+	<filter>
+		<description>Permite acceso a la aplicacion	</description>
+		<display-name>RefererFilter</display-name>
+		<filter-name>RefererFilter</filter-name>
+		<filter-class>cl.cencosud.jumbo.filter.RefererFilter</filter-class>
+		<init-param>
+       		<param-name>enable</param-name>
+       		<param-value>1</param-value>
+      	</init-param>
+	</filter>
+	
+	<!-- FILTER MAPPING -->
+	
+	<filter-mapping>
+		<filter-name>RefererFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	
+	
+	<!-- SERVLET -->
+	
+	<servlet>
+		<description>Servlet de entrada a los servicios</description>
+		<servlet-name>View</servlet-name>
+		<servlet-class>cl.cencosud.jumbo.view.View</servlet-class>
+	</servlet>
+	
+	<servlet>
+		<description>Servlet de errores para servicios no validos</description>
+		<servlet-name>Error</servlet-name>
+		<servlet-class>cl.cencosud.jumbo.view.Error</servlet-class>
+	</servlet>
+	
+	<!-- SERVLET MAPPING -->
+	
+	<servlet-mapping>
+		<servlet-name>View</servlet-name>
+		<url-pattern>/Address</url-pattern>
+	</servlet-mapping>
+		
+	<servlet-mapping>
+		<servlet-name>View</servlet-name>
+		<url-pattern>/Client</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>View</servlet-name>
+		<url-pattern>/DeliveryWindow</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>View</servlet-name>
+		<url-pattern>/List</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>View</servlet-name>
+		<url-pattern>/Payment</url-pattern>
+	</servlet-mapping>
+		
+	<servlet-mapping>
+		<servlet-name>View</servlet-name>
+		<url-pattern>/PurchaseOrder</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>View</servlet-name>
+		<url-pattern>/ShoppingCart</url-pattern>
+	</servlet-mapping>	
+	
+	<servlet-mapping>
+		<servlet-name>View</servlet-name>
+		<url-pattern>/HTTP_404</url-pattern>
+	</servlet-mapping>
+	
+	<welcome-file-list>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
+	
+	<!-- 400 Bad Reques -->
+	<!--<error-page>
+		<error-code>400</error-code>
+		<location>/Error?http_error=400</location>
+	</error-page> -->
+	
+	<!-- 401 Unauthorized -->
+	<!--<error-page>
+		<error-code>401</error-code>
+		<location>/Error?http_error=401</location>
+	</error-page> -->
+	
+	<!-- 403 Forbidden -->
+	<!--<error-page>
+		<error-code>403</error-code>
+		<location>/Error?http_error=403</location>
+	</error-page> -->
+
+	<!-- 404 Not Found -->
+	<error-page>
+		<error-code>404</error-code>
+		<location>/HTTP_404?http_error=404</location>
+	</error-page>
+
+	<!--  500 Internal Server Error -->
+	<!--<error-page>
+		<error-code>500</error-code>
+		<location>/Error?http_error=500</location>
+	</error-page> -->
+	
+	<!-- Unsupported servlet method -->
+	<!--<error-page>    
+    	<error-code>503</error-code>
+    	<location>/Error?http_error=503</location>
+	</error-page>	 -->
+	
+	<resource-ref id="ResourceRef_1438781609603">
+		<res-ref-name>jdbc/bodbaVE</res-ref-name>
+		<res-type>javax.sql.DataSource</res-type>
+		<res-auth>Container</res-auth>
+		<res-sharing-scope>Shareable</res-sharing-scope>
+	</resource-ref>	
+	
+</web-app>

@@ -1,0 +1,152 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="EXPIRES" CONTENT="Mon, 22 Jul 2002 11:12:01 GMT">
+<script language="JavaScript" src="js/jquery/jquery-1.3.1.js"></script>
+<title>Jumbo.cl Back Office Central</title>
+<script language="JavaScript">
+function validarCarga(){
+			if($('#upFile').val() != ''){
+			
+				/* var id_cup_dto = document.form1.id_cup_dto.value;
+				document.getElementById("id_cup_dto").value=id_cup_dto;
+				
+				var cargando = document.form1.cargando.value;
+				document.getElementById("cargando").value=cargando;
+				 */
+				document.form1.submit();
+			
+			}else{
+				alert("Debe seleccionar un archivo para cargar");
+				return false;
+			}
+		}
+</script>
+
+<link href="estilos.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+<!--
+.style1 {
+	color: #666666
+}
+-->
+</style>
+</head>
+
+<body>
+	<link rel="stylesheet" href="menu/menu.css">
+	<script language="JavaScript" src="menu/menu.js"></script>
+	<script language="JavaScript" src="menu/menu_tpl.js"></script>
+	<script language="JavaScript" src="menu/menu_items.js"></script>
+	<script language="JavaScript" src="popup.js"></script>
+	<table width="780" height="100%" border="0" cellpadding="0"
+		cellspacing="0">
+		<tr>
+			<td height="78" valign="top">
+				<table width="100%" height=59 border=0 align="center"
+					cellpadding="0" cellspacing="0" bgcolor="#ffffff">
+					<tr>
+						<td width="275" height="59" align="left" class="user"><img
+							src="img/header2.jpg" width="275" height="60" />
+						</td>
+						<td width="505" align="left" valign="bottom"
+							background="img/bg-1.jpg" class="user">
+							<table width="90%" border="0" align="center" cellpadding="0"
+								cellspacing="2">
+								<tr>
+									<td>&nbsp;</td>
+								</tr>
+								<tr>
+									<td><div align="right" class="infoBL">Usuario:
+											{hdr_nombre}&nbsp;&nbsp;| {hdr_fecha}</div>
+									</td>
+								</tr>
+							</table></td>
+					</tr>
+				</table>
+				<table width="100%" height="19" border="0" align="center"
+					cellpadding="0" cellspacing="0" bgcolor="#f1f0e9"
+					style="border-top: 1px solid #ABABAB; border-bottom: 1px solid #ABABAB">
+					<tr>
+						<td align="left" bgcolor="#FFFFFF" class="user"></td>
+					</tr>
+				</table></td>
+		</tr>
+		<tr>
+			<td valign="top" bgcolor="#FFFFFF">
+				<table border="0" width="100%" class='ContentTitle'>
+					<tr>
+						<td width="53%" height="20" class='HeaderTitle'>Asociación masiva de rut</td>
+							<td align="right"><a href="ViewCuponDescuentoForm?id_cup_dto={id_cup_dto}"><img src="img/volver.gif" width="32" height="32" border="0"></a></td>
+					</tr>
+				</table> <br />
+				<table width="99%" border="0" align="center" cellpadding="0"
+					cellspacing="0">
+					
+					<tr>
+						<td align="center" class="infoRj">{mensaje}</td>
+					</tr>
+					<tr>
+						<td>
+							<fieldset>
+								<legend align="left">Cargar archivo</legend>
+								<table width="100%" border="0" align="center" cellpadding="0"
+									cellspacing="0">
+									<tr>
+										<td height="20" valign="bottom" width="15%" >Cantidad rut asociado : {cantidad_rut_asociado}</td>
+									</tr>
+									<tr valign="top">
+										<!-- Link descarga de excel -->
+										<td width="100%" align="right">
+											<A href="planilla_rut_masiva.xls">Descargar Excel Tipo <img src="img/ico_excel.gif" width="16" height="16" border="0" style="margin-left:  5px"></A> 
+										</td>
+										<!-- fin Link descarga de excel -->
+									</tr>
+									<tr>
+										<!-- carga de archivo -->
+										<td width="100%" align="center">
+											<FORM method="post" name="form1" action="ViewCuponAsociaRutForm?id_cup_dto={id_cup_dto}&cargando=1" enctype='multipart/form-data'>
+											<input id="id_cup_dto" type="hidden" name="id_cup_dto" value="{id_cup_dto}">
+											<input id="cargando" type="hidden" name="cargando" value="1">
+											<div style="padding-bottom: 10px; padding-top: 10px">
+												<span style="color: #000000; font-weight: bold">Asociación masiva: </span>
+												<SPAN style="padding-left: 2px">&nbsp</SPAN>
+												<INPUT type="file" id="upFile" name="upFile">
+											</div>
+											<DIV style="padding-bottom: 10px; padding-top: 10px; text-align: center; margin-left: 10px">
+												<INPUT type="button" onclick="javascript: validarCarga();" value="Asociar">
+											</DIV>
+											</FORM>	
+										</td>
+										<!-- fin de carga de archivo -->
+									</tr>
+								</table>
+							</fieldset>
+						</td>
+					</tr>
+					
+				</table>
+				<div id="testdiv1"
+					style="position: absolute; visibility: hidden; background-color: white; layer-background-color: white;"></div>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<table width="100%" height=19 border=0 align="center"
+					cellpadding="0" cellspacing="0" bgcolor="#f1f0e9"
+					style="border-top: 1px solid #ABABAB; border-bottom: 1px solid #ABABAB">
+					<tr>
+						<td align="center" bgcolor="#67b01a" class="infoBL"><div
+								align="center">Back Office Central - Jumbo.cl</div>
+						</td>
+					</tr>
+				</table></td>
+		</tr>
+	</table>
+</body>
+</html>
+

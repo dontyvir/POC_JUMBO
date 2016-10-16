@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<webappext:WebAppExtension xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:webappext="webappext.xmi" xmi:id="WebAppExtension_1184795292093">
+  <webApp href="WEB-INF/web.xml#WebApp_ID"/>
+  <resourceRefExtensions xmi:id="ResourceRefExtension_1184795292093" isolationLevel="TRANSACTION_REPEATABLE_READ" connectionManagementPolicy="Default">
+    <resourceRef href="WEB-INF/web.xml#ResourceRef_1184795292046"/>
+  </resourceRefExtensions>
+</webappext:WebAppExtension>

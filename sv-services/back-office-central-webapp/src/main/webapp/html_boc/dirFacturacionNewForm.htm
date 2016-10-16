@@ -1,0 +1,320 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html><!-- InstanceBegin template="/Templates/print.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="EXPIRES" CONTENT="Mon, 22 Jul 2002 11:12:01 GMT">
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>Jumbo.cl Back Office Central</title>
+<!-- InstanceEndEditable -->
+<!-- InstanceBeginEditable name="head" -->
+<!-- InstanceEndEditable -->
+<link href="estilos.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+<!--
+body {
+	background-color: #FFFFFF;
+}
+-->
+</style></head>
+
+<body>
+<!-- InstanceBeginEditable name="Body" -->
+<script language="JavaScript" src="funciones.js"></script>  
+<script src="validacion.js"></script>
+<script language="JavaScript" src="js/jquery-1.6.2.min.js"></script>
+<script language="JavaScript" src="js/aphanumeric.js"></script>
+<script language="JavaScript" src="js/codigosTelefonicos.js"></script>
+<SCRIPT LANGUAGE="JavaScript">window.name='winmodal'</SCRIPT>		
+<script>
+  <!--
+	//var response="";
+	//var valzona="";
+	
+	
+	//	exec_AJAXRPC('GET', 'ViewComboAjax?comuna={com}', 'procesaResp');
+	function addOption(text,value,sel) {
+	   var oOpt=new Option(text,value);
+	   var oSelect=sel;
+	   oSelect.options[oSelect.options.length]=oOpt;
+	}
+	function removeOption(index,sel) {
+		   var oSelect=sel;
+		   oSelect.options[index]=null;
+	} 
+
+	function procesaResp(texto) {
+		var response = texto.split("#");
+		var larcampo = document.form1.zona.length;
+		
+
+		for (i = 0; i < larcampo; i++ ){
+			removeOption(0, document.getElementById("zona"));
+		}
+		for (a = 0 ; a < response.length; a++){
+			resp = response[a].split("|");
+			addOption((resp[1])?resp[1]:'',(resp[0])?resp[0]:'',document.getElementById("zona") );
+		}
+		
+	}
+	
+	 function invocaAjax(){
+	 	var comuna= document.form1.comuna.value;
+		exec_AJAXRPC('GET', 'ViewComboAjax?comuna='+comuna, 'procesaResp');
+	 }	
+	 function validaFono(cod,num,campo){
+          		var codigo1 = cod;
+				var numero1 = num;
+				var tipofono;
+				if (codigo1==9){//si es celular
+					numero = numero1.slice(- 7);
+					codigo = numero1.substr(0,1);
+					if (codigo<5){
+						alert("El primer numero de un celular debe ser entre 5 y 9.");
+						campo.value="";
+						campo.focus();
+						return false;
+					}	
+					tipofono="celular";
+				}else if (codigo1==2){//si es telefono santiago
+					numero = numero1.slice (- 8);
+					codigo = codigo1;
+					tipofono="santiago";
+				}else{//si es telefono regiones
+					numero = numero1;
+					codigo = codigo1;
+					tipofono="region";
+				}
+				if ((Trim(numero)).length <7 &&(tipofono=="region")){
+					alert("Debe ingresar el número de fono correctamente.");
+					campo.focus();
+					return false;
+				}else if((Trim(numero1)).length <8 &&(tipofono!="region")){
+					alert("Debe ingresar el número de fono correctamente.");
+					campo.focus();
+					return false;
+				}
+				return true;
+          	}
+	 
+	 function validar_form(form){
+	    form.fono1.value=document.getElementById("fon_cod_1").value+document.getElementById("fon_num_1").value;
+	 	form.fono2.value=document.getElementById("fon_cod_2").value+document.getElementById("fon_num_2").value;
+	 	form.fono3.value=document.getElementById("fon_cod_3").value+document.getElementById("fon_num_3").value;
+		if(!(validaFono(document.getElementById("fon_cod_1").value,document.getElementById("fon_num_1").value,document.getElementById("fon_num_1"))))return false;
+		if(!(validaFono(document.getElementById("fon_cod_2").value,document.getElementById("fon_num_2").value,document.getElementById("fon_num_2"))))return false;
+		if (!(document.getElementById("fon_num_3").value=="")){
+			if(!(validaFono(document.getElementById("fon_cod_3").value,document.getElementById("fon_num_3").value,document.getElementById("fon_num_3"))))return false;
+		}
+		if (validar_letranumero(form.alias, "El Alias solo soporta letras y números")) return false;
+		if (validar_letranumero(form.calle, "La calle solo soporta letras y números")) return false;
+		if (validar_solonumero(form.numero, "Nº de casa es un Campo Numerico")) return false;
+		if (validar_letranumero(form.depto, "Departamento solo soporta letras y números")) return false;
+		if (validar_letranumero(form.comentario, "Comentario solo soporta letras y números")) return false;
+		if(!verify(document.form1))return false;
+				
+	//	window.opener.document.href="ViewSucursalForm?id_sucursal={id_sucursal}";
+		
+		window.close();
+		return true;
+
+	 }
+//-->
+</script>
+
+<br>			
+<br>
+
+<font color="red"><center></center></font>
+<form name="form1" method="post" action="AddDirFacturacion"  target="padre" onsubmit="return validar_form(this); ">
+<input type="hidden" name="url" value="ViewSucursalForm">
+<input type="hidden" name="dir_id" value="{dir_id}">
+<input type="hidden" name="id_sucursal" value="{id_sucursal}">
+<input type="hidden" name="UrlError" value="ViewSucursalForm">
+<table width="70%"  border="0" align="center" cellpadding="0" cellspacing="2">
+  <tr>
+    <td align="right" width="25%"><div align="left">Comuna</div></td>
+    <td align="right" width="75%"><div align="left">
+      <select name="comuna" id="comuna" >
+      <!-- BEGIN DYNAMIC: COMUNAS -->
+        <option value="{id_comuna}" {sel_com}>{nom_comuna}</option>
+       <!-- END DYNAMIC: COMUNAS -->
+      </select>
+    </div></td>
+  </tr>
+  <tr>
+    <td align="right"><div align="left">Tipo Calle </div></td>
+    <td align="right"><div align="left">
+      <select name="tipo_calle">
+      <!-- BEGIN DYNAMIC: T_CALLE -->
+        <option value="{id_tip_call}" {sel_tca}>{nom_tip_call}</option>
+       <!-- END DYNAMIC: T_CALLE -->      
+      </select>
+    </div></td>
+  </tr>
+  <tr>
+    <td align="right"><div align="left">Alias</div></td>
+    <td align="right"><div align="left">
+      <input name="alias" type="text" value=""  maxlength="20">
+    </div></td>
+  </tr>
+  <tr>
+    <td align="right"><div align="left">Calle</div></td>
+    <td align="right">
+      <div align="left">
+        <input name="calle" type="text" value="" size="40" maxlength="50">
+      </div></td>
+  </tr>
+  <tr>
+    <td align="right"><div align="left">N&deg; Casa</div></td>
+    <td align="right"><div align="left">
+      <input name="numero" type="text" value="" size="10" maxlength="20">
+    </div></td>
+  </tr>
+  <tr>
+    <td align="right"><div align="left">Nº Depto</div></td>
+    <td align="right"><div align="left">
+      <input name="depto" type="text" value="" size="10" maxlength="20">
+    </div></td>
+  </tr>
+  <tr>
+    <td align="right" valign="top"><div align="left">Comentarios</div></td>
+    <td align="right"><div align="left">
+      <textarea name="comentario" cols="50" rows="5"  onchange="if(this.value.length > 255){ alert('Has superado el tama&ntilde;o m&aacute;ximo permitido (255 Caracteres)'); return false; }"></textarea>
+    </div></td>
+  </tr>
+  <tr>
+    <td align="right"><div align="left">Ciudad</div></td>
+    <td align="right"><div align="left">
+      <input name="ciudad" type="text" value="" size="50" maxlength="50">
+    </div></td>
+  </tr>
+  <tr>
+    <td align="right"><div align="left">FAX</div></td>
+    <td align="right"><div align="left">
+      <input name="fax" type="text" value="" size="20" maxlength="20">
+    </div></td>
+  </tr>
+  <tr>
+    <td align="right"><div align="left">Nombre de Contacto</div></td>
+    <td align="right"><div align="left">
+      <input name="nom_cont" type="text" value="" size="80" maxlength="100">
+    </div></td>
+  </tr>
+  <tr>
+    <td align="right"><div align="left">Cargo</div></td>
+    <td align="right"><div align="left">
+      <input name="cargo" type="text" value="" size="50" maxlength="50">
+    </div></td>
+  </tr>
+  <tr>
+    <td align="right"><div align="left">Email</div></td>
+    <td align="right"><div align="left">
+      <input name="mail" type="text" value="" size="50" maxlength="50">
+    </div></td>
+  </tr>
+  <tr>
+    <td align="right"><div align="left">Telefono 1</div></td>
+    <td align="right"><div align="left">
+    <select name="fon_cod_1" class="campos" id="fon_cod_1" style="width:50px"></select>
+				              <input name="fon_num_1" type="text"  class="campo" id="fon_num_1" size="8" maxlength="8" style="margin-top:5px;" />
+				              <div class="cont_acepto_info" id="fon_num_1_info"></div>
+				              <div class="cont_alerta_error" id="fon_num_1_error"></div>
+				              
+      <input name="fono1" type="hidden" value="" size="10" maxlength="20">
+    </div></td>
+  </tr>
+  <tr>
+    <td align="right"><div align="left">Telefono 2</div></td>
+    <td align="right"><div align="left">
+    <select name="fon_cod_2" class="campos" id="fon_cod_2" style="width:50px"></select>
+				              <input name="fon_num_2" type="text"  class="campo" id="fon_num_2" size="8" maxlength="8" style="margin-top:5px;" />
+				              <div class="cont_acepto_info" id="fon_num_2_info"></div>
+				              <div class="cont_alerta_error" id="fon_num_2_error"></div>
+				              </td>
+      <input name="fono2" type="hidden" value="" size="10" maxlength="20">
+    </div></td>
+  </tr>
+  <tr>
+    <td align="right"><div align="left">Telefono 3</div></td>
+    <td align="right"><div align="left">
+    <select name="fon_cod_3" class="campos" id="fon_cod_3" style="width:50px"></select>
+				              <input name="fon_num_3" type="text"  class="campo" id="fon_num_3" size="8" maxlength="8" style="margin-top:5px;" />
+				              <div class="cont_acepto_info" id="fon_num_3_info"></div>
+				              <div class="cont_alerta_error" id="fon_num_3_error">
+      <input name="fono3" type="hidden" value="" size="10" maxlength="20">
+    </div></td>
+  </tr>
+  <tr>
+  <td align="right"><div align="left">Fecha Creaci&oacute;n </div></td>
+    <td align="right"><div align="left">{fecha}</div></td>
+  </tr>
+  <tr>
+    <td align="right">&nbsp;</td>
+    <td align="right">&nbsp;</td>
+  </tr>
+  </table>
+  <table width="52%"  border="0" align="center" cellpadding="0" cellspacing="2">
+  <tr>
+    <td align="center">
+        <input name="guardar" type="submit" class="cmd" value=" Guardar " >
+        <!--input name="cancelar" type="button" class="cmd" value="Cerrar" onClick="window.close();"-->  
+         </form></td>
+		<TD align=left>
+		    <FORM name="cerrar" action="ViewSucursalForm" target="padre" onsubmit="window.close();">
+			<INPUT type="hidden" name="id_sucursal" value="{id_sucursal}">
+			<INPUT type="submit" name="cerrar" value="  Cerrar  ">		
+		</FORM>        
+		</TD>        
+  </tr>
+   </table>
+
+
+ <SCRIPT LANGUAGE="JavaScript">
+ 				jQuery('#fon_cod_1').append(getAllCodPhones());
+				jQuery('#fon_cod_2').append(getAllCodPhones());
+				jQuery('#fon_cod_3').append(getAllCodPhones());
+
+				initialize('fon_cod_1', 'fon_num_1');
+				initialize('fon_cod_2', 'fon_num_2');
+				initialize('fon_cod_3', 'fon_num_3');
+				
+				onChange('fon_cod_1','fon_num_1','fon_num_1_info');
+				onChange('fon_cod_2','fon_num_2','fon_num_2_info');
+				onChange('fon_cod_3','fon_num_3','fon_num_3_info');
+<!--
+ document.form1.comuna.obligatorio=true;
+ document.form1.comuna.label = 'Comuna';
+ document.form1.alias.obligatorio=true;
+ document.form1.alias.label = 'Alias';
+ document.form1.calle.obligatorio=true;
+ document.form1.calle.label = 'Calle';
+ document.form1.comuna.obligatorio=true;
+ document.form1.comuna.label = 'Comuna';
+ document.form1.tipo_calle.obligatorio=true;
+ document.form1.tipo_calle.label = 'Tipo de Calle';
+ document.form1.numero.obligatorio=true;
+ document.form1.numero.label = 'Numero';
+ document.form1.ciudad.obligatorio=true;
+ document.form1.ciudad.label = 'Ciudad';
+ document.form1.fono1.obligatorio=true;
+ document.form1.fono1.label = 'Teléfono 1';
+ 
+ 
+/* document.form1.estado.obligatorio=true;
+ document.form1.estado.label = 'Estado';
+ */
+ window.document.form1.alias.onkeypress 		= KeyIsTexto; 
+ window.document.form1.numero.onkeypress 		= KeyIsNumber; 
+ window.document.form1.depto.onkeypress  		= KeyIsTexto;
+ window.document.form1.calle.onkeypress         = KeyIsTexto;
+ window.document.form1.comentario.onkeypress    = KeyIsTexto;
+
+//-->
+</SCRIPT>
+
+<br>
+<!-- InstanceEndEditable --></body>
+<!-- InstanceEnd --></html>

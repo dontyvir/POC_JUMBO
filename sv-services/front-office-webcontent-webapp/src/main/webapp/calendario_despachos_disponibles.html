@@ -1,0 +1,25 @@
+	 <div class="cont_calendario">
+		<table border="0" cellpadding="0" cellspacing="0" align="center">
+    		<tr>
+    			<th width="80"><div class="tit_calendario"></div></th>
+				<!-- BEGIN DYNAMIC: CABECERA -->
+				<th width="{ancho}"><div class="tit_calendario"><strong>{dia}</strong><br/>{fc}</div></th>
+				<!-- END DYNAMIC:   CABECERA -->   
+      		</tr>
+      		
+      		
+			<!-- BEGIN DYNAMIC: VENTANAS -->
+			<tr>
+				<td width="80"><div class="side_calendario_green"><strong>{ventana}</strong></div></td>
+			<!-- BEGIN DYNAMIC: DIAS -->
+				<td width="{ancho}" align="center">{view}</td>
+			<!-- END DYNAMIC:   DIAS -->
+			</tr>
+			<!-- END DYNAMIC:   VENTANAS -->
+    
+    <tr>
+      <td colspan="10"><div class="linea_abajo_calendario"></div></td>
+    </tr>
+  </table>
+        </div>
+	

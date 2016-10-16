@@ -1,0 +1,149 @@
+#header {
+	background: url(/FO_IMGS/images/header/header_multisitio_01.jpg);
+	background-repeat: repeat-x;
+	height: 25px;
+	width: auto;
+	
+}
+#visita {
+	float: left;
+	height: 25px;
+	width: 145px;
+	/*margin-left: 150px;*/
+	background: url(/FO_IMGS/images/header/header_multisitio_03.jpg) no-repeat center top;
+	display: block;
+}
+#paris a{
+	float: left;
+	height: 25px;
+	width: 79px;
+	margin-left: 25px;
+	background: url(/FO_IMGS/images/header/header_paris.jpg) no-repeat center top;
+	display: block;
+}
+#paris a:hover{
+	float: left;
+	height: 25px;
+	width: 79px;
+	margin-left: 25px;
+	background: url(/FO_IMGS/images/header/header_paris_hover.jpg) no-repeat center top;
+	display: block;
+}
+#paris a.active{
+	float: left;
+	height: 25px;
+	width: 79px;
+	margin-left: 25px;
+	background: url(/FO_IMGS/images/header/header_paris_hover.jpg) no-repeat center top;
+	display: block;
+}
+#jumbo a{
+	float: left;
+	height: 25px;
+	width: 80px;
+	background: url(/FO_IMGS/images/header/header_jumbo.jpg) no-repeat center top;
+	display: block;
+}
+#jumbo a:hover{
+	float: left;
+	height: 25px;
+	width: 80px;
+	background: url(/FO_IMGS/images/header/header_jumbo_hover.jpg) no-repeat center top;
+	display: block;
+}
+#jumbo a.active{
+	float: left;
+	height: 25px;
+	width: 80px;
+	background: url(/FO_IMGS/images/header/header_jumbo_hover.jpg) no-repeat center top;
+	display: block;
+}
+#easy a{
+	background: url(/FO_IMGS/images/header/header_easy.jpg) no-repeat center top;
+	display: block;
+	float: left;
+	height: 25px;
+	width: 79px;
+}
+#easy a:hover{
+	background: url(/FO_IMGS/images/header/header_easy_hover.jpg) no-repeat center top;
+	display: block;
+	float: left;
+	height: 25px;
+	width: 79px;
+}
+#easy a.active{
+	background: url(/FO_IMGS/images/header/header_easy_hover.jpg) no-repeat center top;
+	display: block;
+	float: left;
+	height: 25px;
+	width: 79px;
+}
+#tarjetas a{
+	background: url(/FO_IMGS/images/header/header_tarjetas.jpg) no-repeat center top;
+	display: block;
+	float: left;
+	height: 25px;
+	width: 100px;
+}
+#tarjetas a:hover{
+	background: url(/FO_IMGS/images/header/header_tarjetas_hover.jpg) no-repeat center top;
+	display: block;
+	float: left;
+	height: 25px;
+	width: 100px;
+}
+#tarjetas a.active{
+	background: url(/FO_IMGS/images/header/header_tarjetas_hover.jpg) no-repeat center top;
+	display: block;
+	float: left;
+	height: 25px;
+	width: 100px;
+}
+#seguros a{
+	background: url(/FO_IMGS/images/header/header_seguros.jpg) no-repeat center top;
+	display: block;
+	float: left;
+	height: 25px;
+	width: 80px;
+}
+#seguros a:hover{
+	background: url(/FO_IMGS/images/header/header_seguros_hover.jpg) no-repeat center top;
+	display: block;
+	float: left;
+	height: 25px;
+	width: 80px;
+}
+#seguros a.active{
+	background: url(/FO_IMGS/images/header/header_seguros_hover.jpg) no-repeat center top;
+	display: block;
+	float: left;
+	height: 25px;
+	width: 80px;
+}
+#nectar a{
+	background: url(/FO_IMGS/images/header/header_nectar_ho.jpg) no-repeat center top;
+	display: block;
+	float: left;
+	height: 25px;
+	width: 80px;
+}
+#nectar a:hover{
+	background: url(/FO_IMGS/images/header/header_nectar_hover_ho.jpg) no-repeat center top;
+	display: block;
+	float: left;
+	height: 25px;
+	width: 80px;
+}
+#nectar a.active{
+	background: url(/FO_IMGS/images/header/header_nectar_hover_ho.jpg) no-repeat center top;
+	display: block;
+	float: left;
+	height: 25px;
+	width: 80px;
+}
+#cont_headermulti {
+	height:25px;
+	margin:0 auto;
+	width: 670px;
+}

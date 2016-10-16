@@ -1,0 +1,1406 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<meta http-equiv="CACHE-CONTROL" content="NO-CACHE" />
+<meta http-equiv="PRAGMA" content="NO-CACHE" />
+<meta http-equiv="EXPIRES" content="Mon, 22 Jul 2002 11:12:01 GMT" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Jumbo.cl - Despacho</title>
+<link rel="shortcut icon" href="/FO_IMGS/img/favicon.ico" />
+<link href="/FO_WebContent/css/paso3.css" rel="stylesheet" type="text/css" />
+<link href="/FO_WebContent/css/despliegue_productos.css" rel="stylesheet" type="text/css" />
+<link href="/FO_WebContent/css/flujo_de_compras.css" rel="stylesheet" type="text/css" />
+<link href="/FO_WebContent/css/3niveles.css" rel="stylesheet" type="text/css" />
+<link href="/FO_WebContent/css/luna/tab.css" rel="stylesheet" type="text/css" />
+<link href="/FO_WebContent/css/estilostextos.css" rel="stylesheet" type="text/css" />
+<link type="text/css" rel="stylesheet" href="/FO_WebContent/css/light_box.css" />
+<link type="text/css" rel="stylesheet" href="/FO_WebContent/css/thickbox.css" media="screen" />
+<!-- 14-11-2012 INDRA -->
+<link type="text/css" rel="stylesheet" href="/FO_WebContent/css/tabla.css" />
+<link type="text/css" rel="stylesheet" href="/FO_WebContent/css/listas.css" />
+<link type="text/css" rel="stylesheet" href="/FO_WebContent/css/light_box_PD.css" />
+	<!-- 14-11-2012 INDRA -->
+		<!-- link type="text/css" rel="stylesheet" href="/FO_WebContent/css/paso1.css" /-->
+	<!-- 14-11-2012 INDRA -->
+<!-- 14-11-2012 INDRA -->
+
+<script type="text/javascript">
+	var rut_cliente = {rut_cli};
+	if (rut_cliente==123123){
+		var id_cliente = 1;
+	}else{
+		var id_cliente = {cli_id};
+	}
+	var cant = {cant_prod};
+	var PASO_ACTUAL = 4; //DESPACHO	
+</script>
+<script type="text/javascript" src="/FO_WebContent/js/chaordic.js"></script>
+<script type="text/javascript" src="/FO_WebContent/js/jquery-1.6.2.min.js"></script>
+<script type="text/javascript" src="/FO_WebContent/js/jquery.min.js"></script>
+<script type="text/javascript" src="/FO_WebContent/js/aphanumeric.js"></script>
+<script type="text/javascript" src="/FO_WebContent/js/codigosTelefonicos.js"></script>
+<script type="text/javascript" src="/FO_WebContent/js/despacho.js"></script>
+<script type="text/javascript" src="/FO_WebContent/js/funciones.js"></script>
+<script type="text/javascript" src="/FO_WebContent/js/logon.js"></script>
+<script type="text/javascript" src="/FO_WebContent/js/tabpane.js"></script>
+<script type="text/javascript" src="/FO_WebContent/js/checkrut.js"></script>
+<script type="text/javascript" src="/FO_WebContent/js/prototype.js"></script>
+<script type="text/javascript" src="/FO_WebContent/js/thickbox.js"></script>
+
+<script type="text/javascript" src="/FO_WebContent/js/registro_sencillo.js"></script>
+<script type="text/javascript" src="/FO_WebContent/js/funciones_teclado.js"></script>
+
+<script src="//static.chaordicsystems.com/static/loader.js" data-initialize="true" data-apikey="jumbochile"> </script>
+<script type="text/javascript">
+
+
+jQuery(document).ready(function(){
+<!-- BEGIN DYNAMIC: MOSTRAR_LOGUEADO -->
+	jQuery("#codigo").append(getAllCodPhones());//fon_cod_1inv fono_num_1inv
+	var codigo1 = jQuery("#codAux").val();
+	var numero1 = jQuery("#telefonoAux").val();
+	if (typeof numero1 != 'undefined'){
+	   if (numero1 !="" ){
+		if(!validateCorrectNumber(codigo1,numero1,"codigo","telefono")){
+			jQuery('#fon_num_1_error').html("Debe actualizar su n&uacute;mero de contacto");
+			jQuery('#telefono').removeClass('form_direccion_2012').addClass('error_campos');
+		}
+	  }
+	}else if(codigo1 !=""){
+		jQuery("#codigo option").each(function(){
+		    if (jQuery(this).val() == codigo1){
+		        jQuery(this).attr("selected",true);
+		    } 
+		});
+	}
+	initialize("codigo","telefono");
+	onChange("codigo","telefono","fon_num_1_info");
+	
+	<!-- END DYNAMIC: MOSTRAR_LOGUEADO -->
+    <!-- BEGIN DYNAMIC: DESPACHO_NOLOGUEADO -->
+	jQuery("#fon_cod_1inv").append(getAllCodPhones());
+	/* var codigo1 = jQuery("#codAux").val();
+	var numero1 = jQuery("#telefonoAux").val();
+	
+     if(codigo1 !=""){
+		jQuery("#fon_cod_1inv option").each(function(){
+		    if (jQuery(this).val() == codigo1){
+		        jQuery(this).attr("selected",true);
+		    } 
+		});
+	} */
+	initialize("fon_cod_1inv","fono_num_1inv");
+	onChange("fon_cod_1inv","fono_num_1inv","fon_num_1_info");
+	<!-- END DYNAMIC: DESPACHO_NOLOGUEADO -->
+});	
+
+</script>
+<style type="text/css">
+#Layer1 {
+	position:absolute;
+	left:360px;
+	top:300px;
+	width:300px;
+	height:300px;
+	z-index:1;
+	visibility: hidden;
+}	
+.error_campos{
+border-color: #1FA22E;
+border-style: solid;
+color: #666666;
+border-width: 1px;
+background-color: #e8f6e8;
+width: 160px;
+}
+.cont_alerta_error {
+float: left;
+width: 240px;
+padding-bottom: 5px;
+height: 16px;
+font-family: Arial, Helvetica, sans-serif;
+font-size: 12px;
+color: #1FA22E;
+padding-top: 5px;
+/* text-align: right; */
+padding-left: 10px;
+
+}
+</style>
+<link type="text/css" rel="stylesheet" href="/FO_WebContent/css/estilos_despacho.css">
+
+<style type="text/css">
+.footer {font-family: Arial, Helvetica, sans-serif;
+	font-size: 9px;
+	font-style: normal;
+	line-height: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	color: #666666;
+	text-decoration: none;
+}
+</style>
+</head>
+
+<body onload="javascript:MensajeRegistrar();">
+<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-PWPZN" 
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>
+var mx_content = '/Compra/Despacho';
+var mx_user='{ta_mx_user}';
+var mx_loc='{ta_mx_loc}';
+var mx_criterio = '{mx_criterio}';
+
+(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PWPZN');
+
+function pulsaEnterParaLogin(e) {
+  tecla = (document.all) ? e.keyCode : e.which;
+  if (tecla==13){
+  	logonInDespacho('LBOX_S');
+	}
+}
+
+</script>
+ 
+<div style="width:960px; height:auto; margin-left:auto; margin-right:auto; float:none; clear:both;">
+<div class="menu_superior_flujo_2012">
+  <div class="logo_jumbo_2011" style="height:111px;">
+  	<a href="/FO/LogonForm" target="_self"><!--logo linkea al home-->
+  		<img src="/FO_IMGS/images/header/logo_wht_bg.jpg" alt="Home" width="150" height="111" border="0" />
+	</a>
+  </div>
+  <div class="menu_arriba_2011">
+    <div class="linea_menu_arriba_2011" style="width:360px;">
+    	<!-- BEGIN DYNAMIC: MOSTRAR_LOGUEADO -->
+      	<div class="menu_arriba_necesitas_ayuda"><a href="/FO/UltComprasForm?opcion=2" target="_parent">Mis Listas</a></div>
+      	<div class="menu_arriba_necesitas_ayuda"><a href="/FO/UltComprasForm?opcion=1" target="_parent">Mi Cuenta</a></div>
+      	<!-- END DYNAMIC: MOSTRAR_LOGUEADO -->
+      	<!-- BEGIN DYNAMIC: MOSTRAR_NO_LOGUEADO -->
+      	<div class="menu_arriba_necesitas_ayuda"><a href="http://www.jumbo.cl/supermercado/preguntas/preguntas.html"target="_blank">Preguntas Frecuentes</a></div>
+      	<!-- END DYNAMIC: MOSTRAR_NO_LOGUEADO -->
+      	<div class="menu_arriba_necesitas_ayuda">Necesitas Ayuda? <span style="color:#1FA22E"> 600 400 3000</span></div>
+    </div>
+    <div class="linea_menu_arriba_2011">
+    	<!-- BEGIN DYNAMIC: MOSTRAR_LOGUEADO -->
+      	<div class="menu_arriba_cerrar_sesion"><a href="Logoff">Cerrar Sesi&oacute;n</a><input type="hidden" name="comuna_user_id" id="comuna_user_id" value="{comuna_usuario_id}"/></div>
+      	<!-- END DYNAMIC: MOSTRAR_LOGUEADO -->
+      	<!-- BEGIN DYNAMIC: MOSTRAR_LOGUEADO_INVITADO -->
+		<div class="menu_arriba_cerrar_sesion"><a href="Logoff">Cerrar Sesi&oacute;n</a><input type="hidden" name="comuna_user_id" id="comuna_user_id" value="{comuna_usuario_id}"/></div>
+    	<!-- END DYNAMIC: MOSTRAR_LOGUEADO_INVITADO -->
+      	<!-- BEGIN DYNAMIC: MOSTRAR_NO_LOGUEADO -->
+      	<!--<div class="menu_arriba_cerrar_sesion"><a href="javascript:justLogin();"style="color:#1FA22E"><strong>Ingresa a tu Cuenta</strong></a></div>
+		<div class="menu_arriba_cerrar_sesion"><a href="javascript:showRegistro();">Reg&iacute;</a></div>--><!--dcadiz--> 
+      	<div class="menu_arriba_cerrar_sesion" id="comuna_user_str">{comuna_usuario}<input type="hidden" name="comuna_user_id" id="comuna_user_id" value="{comuna_usuario_id}"/><!--  href="javascript:showRegionesCobertura();">[Cambiar]</a--></div>
+      	<!-- END DYNAMIC: MOSTRAR_NO_LOGUEADO -->
+      	<div class="menu_arriba_nombre_cliente">{nombre_cliente}</div>
+    </div>
+    <div class="select_paso"><img src="/FO_IMGS/img/despacho_pasos.gif" width="960" height="49" /></div>
+  </div>
+</div>
+<div class="cont_main_central_flujo">
+			<div class="contenedor_carro_2012">
+						<!-- BEGIN DYNAMIC: DESPACHO_NOLOGUEADO -->
+				<div class="titulo_direccion_despacho">Datos Cliente Invitado</div>
+				<div class="cont_resumen_mc">
+					<div class="cont_campos">
+						<div class="cont_nombre_campos">RUT*</div>
+						<label for="rut"></label> <input value=""
+							name="rut1" type="text" class="campos" id="rut1" maxlength="12"
+							size="14" onclick="javascript:this.value=''"
+							onblur="javascript:buscaClientePorRut();"
+							onchange="checkRutValue(document.getElementById('rut1'));"
+							onkeypress="javascript:return bloqueaCaracteres(event,/[0-9kK\-\.\b]/);" />
+						<div class="cont_alerta_error" id="rut_error"></div>
+					</div>
+					<div class="cont_campos">
+						<div class="cont_nombre_campos">Nombre*</div>
+						<input name="nombreinv" type="text" value="" class="campo"
+							id="nombreinv" maxlength="30" size="20" />
+						<div class="cont_alerta_error" id="nombre_error"></div>
+					</div>
+					<div class="cont_campos">
+						<div class="cont_nombre_campos">Apellido*</div>
+						<input name="ape_patinv" type="text" value="" class="campo"
+							id="ape_patinv" maxlength="30" size="20"
+							 />
+						<!--          <input name="ape_mat" type="text" value="{ape_mat}" class="campo" id="ape_mat" maxlength="20"  size="10" /> -->
+						<div class="cont_alerta_error" id="apellido_error"></div>
+					</div>
+					<div class="cont_campos">
+						<div class="cont_nombre_campos" style="padding-right: 0px;">Mail*</div>
+
+						<input style="width: 160px;" name="emailinv" id="emailinv"
+							type="text" value="" onclick="this.select();" class="campo"
+							maxlength="50" onblur="javascript:copiaMail();" />
+						<div class="cont_alerta_error" id="mail_error"></div>
+					</div>
+					<div class="cont_campos">
+						<div class="cont_nombre_campos" style="padding-right: 20px;">Tel&eacute;fono*</div>
+						<div style=" margin-right: 8px;">
+							<select name="fon_cod_1inv" class="campo" id="fon_cod_1inv"
+								 onblur="javascript:copiaTelefono1()">
+								
+							</select> <input style="width: 90px;" name="fono_num_1inv" type="text"
+								value="" class="campo" id="fono_num_1inv" size="7" maxlength="7"
+								 onblur="javascript:copiaTelefono1()"/>
+							    <div class="cont_acepto_info_despacho" id="fon_num_1_info" ></div>		
+								<div class="cont_alerta_error" id="fon_num_1_error"></div>	
+						</div>
+					</div>
+			<!-- 		<div class="cont_campos">
+						<div class="cont_nombre_campos" style="padding-right: 20px;">Tel&eacute;fono
+							2</div>
+						<div style="float: left; margin-right: 8px;">
+							<select name="fon_cod_2inv" class="campo" id="fon_cod_2inv"
+								style="width: 45px">
+
+							</select> <input style="width: 90px;" name="fono_num_2inv" type="text"
+								value="" class="campo" id="fono_num_2inv" size="7" maxlength="8"
+								onkeypress="javascript:return bloqueaCaracteres(event,/[0-9\b]/);" />
+						</div>
+					</div> -->
+
+				</div>
+
+				<!-- END DYNAMIC: DESPACHO_NOLOGUEADO -->
+				<div class="titulo_direccion_despacho">D&oacute;nde quieres
+					recibir tu compra</div>
+				<div class="col_despacho" style="border-right: #CCC thin dashed;">
+					<div class="cont_fondo_color" style="height:195px">
+						<div class="cont_img_camion"></div>
+						<!-- BEGIN DYNAMIC: DESPACHO_LOGUEADO -->
+
+						<div class="cont_datos_despacho_retiro">
+							<div class="linea_datos">
+								<div class="modulo_radio_carro_2012" style="padding-top: 4px;">
+									<input name="tipodespacho" id="tipodespacho" type="radio"
+										value="D" class="radiodespacho"
+										onclick="javascript:agregadireccion = false;muestraCalendario();" />
+								</div>
+								<div class="nombre_form_2012" style="width: auto;">
+									<h3
+										style="float: left; width: auto; padding-top: 4px; color: #333; font-weight: bold; font-size: 16px;">En
+										mi domicilio:</h3>
+								</div>
+							</div>
+							<div class="linea_datos">
+								<div class="modulo_radio_carro_2012" style="padding-top: 4px;"></div>
+								
+								<select name="direccion" id="direccion"
+									class="form_direccion_2012"
+									onchange="javascript:muestraCalendario();traedireccion();" style="width: 290px;">
+									<!-- BEGIN DYNAMIC: DIR_DESPACHOS -->
+									<option value="{dir_valor}_{id_local}_{id_zona}"{selected}>{dir_calle}
+										{dir_numero}, {dir_comuna}, {dir_region}</option>
+									<!-- END DYNAMIC: DIR_DESPACHOS -->
+								</select>
+								
+
+							</div>
+							<div class="linea_datos">
+								<div class="modulo_radio_carro_2012" style="padding-top: 4px;"></div>
+								<div id="agregadireccion" class="nombre_form_2012_green"
+									style="padding-top: 5px;">
+									<a href="javascript:nuevadireccion();"
+										style="color: #1FA22E; text-decoration: underline;">Agregar
+										una nueva direcci&oacute;n</a>
+								</div>
+							</div>
+						</div>
+
+						<!-- END DYNAMIC: DESPACHO_LOGUEADO -->
+
+
+
+						<!-- BEGIN DYNAMIC: DESPACHO_NOLOGUEADO -->
+						<div class="modulo_radio_carro_2012" style="padding-top: 4px;">
+							<input name="tipodespacho" id="tipodespacho" type="radio"
+								class="radiodespacho" value="D"
+								 onclick="javascript:muestraCalendario();" />
+						</div>
+						<div class="nombre_form_2012" style="width: auto;">
+									<h3
+										style="float: left; width: auto; padding-top: 4px; color: #333; font-weight: bold; font-size: 16px;">Despacho a domicilio</h3>
+										
+								</div>
+						<!-- END DYNAMIC: DESPACHO_NOLOGUEADO -->
+
+						<div class="modulo_radio_carro_2012"
+							style="padding-top: 4px; padding-left: 4px;"></div>
+
+					</div>
+
+
+					<div class="contenedor_direccion_2012" id="nuevadireccion">
+						
+						<div class="nombre_form_2012_green" id="aa">
+						
+						</div>
+						<div class="fila_direccion_2012" style="width: 425px;" id="ingresadireccion">
+							<div class="col_form_2012">
+								<div class="nombre_form_2012">Tipo</div>
+								<div class="modulos_form_2012">
+									<select name="tipo_calle" class="form_direccion_2012"
+										id="tipo_calle" style="width: 68px;">
+										<option value="0">--</option>
+										<!-- BEGIN DYNAMIC: TIPOCALLE -->
+										<option value="{option_calle_id}"{calleselected}>{option_calle_nombre}</option>
+										<!-- END DYNAMIC: TIPOCALLE -->
+									</select>
+								</div>
+							</div>
+							<div class="col_form_2012">
+								<div class="nombre_form_2012">Calle</div>
+								<div class="modulos_form_2012">
+									<label> <input name="calle" id="calle" type="text"
+										value="{calle}" class="form_direccion_2012"
+										style="width: 155px; height: 17px;" size="25" maxlength="50"
+										onfocus="javascript:if (this.value == 'Ingresa tu calle') {this.value = '';$j('#calle').css('color', 'black');$j('#calle').css('font-style', 'normal');}" />
+									</label>
+								</div>
+							</div>
+							<div class="col_form_2012">
+								<div class="nombre_form_2012">N&deg;</div>
+								<div class="modulos_form_2012">
+									<label> <input name="numero" id="numero" type="text"
+										value="{numero}" class="form_direccion_2012"
+										style="width: 60px; height: 17px;" size="7" maxlength="20"
+										onfocus="javascript:if (this.value == '000') {this.value = '';$j('#numero').css('color', 'black');$j('#numero').css('font-style', 'normal');}" />
+									</label>
+								</div>
+							</div>
+							<div class="col_form_2012">
+								<div class="nombre_form_2012">Depto/Casa</div>
+								<div class="modulos_form_2012">
+									<label> <input name="departamento" id="departamento"
+										type="text" value="{departamento}" class="form_direccion_2012"
+										style="width: 66px; height: 17px;" size="7" maxlength="20"
+										onfocus="javascript:if (this.value == '') {$j('#departamento').css('color', 'black');$j('#departamento').css('font-style', 'normal');}" />
+									</label>
+								</div>
+							</div>
+							<div class="col_form_2012">
+								<div class="nombre_form_2012">Regi&oacute;n</div>
+								<div class="modulos_form_2012">
+									<select name="region" class="form_direccion_2012" id="region"
+										style="width: 128px;" onchange="javascript:busca_comunas();">
+										<!--option value="0">Seleccionar</option-->
+										<!-- BEGIN DYNAMIC: REGIONES -->
+										<option value="{option_reg_id}"{regselected}>{option_reg_nombre}</option>
+										<!-- END DYNAMIC: REGIONES -->
+									</select>
+								</div>
+							</div>
+							<div class="col_form_2012">
+								<div class="nombre_form_2012">Comuna</div>
+								<div class="modulos_form_2012">
+									<select name="comuna" class="form_direccion_2012" id="comuna"
+										style="width: 132px;">
+										<!-- option value="0">Seleccionar</option-->
+										<!-- BEGIN DYNAMIC: COMUNAS -->
+										<option value="{option_com_id}"{comselected}>{option_com_nombre}</option>
+										<!-- END DYNAMIC: COMUNAS -->
+									</select>
+								</div>
+							</div>
+							<div class="col_form_2012">
+								<div class="nombre_form_2012">Guardar como:</div>
+								<div class="modulos_form_2012">
+									<input value="{alias}" name="alias" id="alias" type="text" 
+										class="form_direccion_2012" style="width: 75px; height: 17px;"
+										size="12" maxlength="20"
+										onfocus="javascript:if (this.value == 'Nombre') {this.value = '';$j('#alias').css('color', 'black');$j('#alias').css('font-style', 'normal');}" />
+								</div>
+							</div>
+							
+							<!-- BEGIN DYNAMIC: DESPACHO_LOGUEADO -->
+							<div id="bt_editar_dir_despacho" style="display: none;"
+								class="bt_guardar_dir_despacho">
+								<a href="javascript:ActivaCamposDireccion();"><img
+									src="/FO_IMGS/img/bt_editar_white.gif" width="95" height="34"
+									alt="Editar Campos" /> </a>
+							</div>
+							<div id="bt_guardar_dir_despacho" style="display: none;"
+								class="bt_guardar_dir_despacho">
+								<a href="javascript:guarda_direccion();"><img
+									src="http://www.jumbo.cl/FO_IMGS/img/bt_guardar_white.gif" width="95" height="34"  />
+								</a>
+							</div>
+							<!-- END DYNAMIC: DESPACHO_LOGUEADO -->
+							<!-- BEGIN DYNAMIC: DESPACHO_NOLOGUEADO -->
+							<div id="bt_guardar_dir_despacho" style="display: none;"
+								class="bt_guardar_dir_despacho">
+								<a href="javascript:guarda_direccion();"><img
+									src="http://www.jumbo.cl/FO_IMGS/img/bt_guardar_white.gif" width="95" height="34" onclick="agregadireccion=false;" />
+								</a>
+							</div>
+							<div id="bt_editar_dir_despacho" style="display: none;"
+								class="bt_guardar_dir_despacho">
+								<a href="javascript:ActivaCamposDireccion();"><img
+									src="/FO_IMGS/img/bt_editar_white.gif" width="95" height="34"
+									alt="Editar Campos" onclick="javascript:agregadireccion = true;" /> </a>
+							</div>
+							<!-- END DYNAMIC: DESPACHO_NOLOGUEADO -->
+						</div>
+					</div>
+				</div>
+
+				<div class="col_despacho">
+					<div class="cont_fondo_color" style="height:195px">
+						<div class="cont_img_jumbo_auto"></div>
+						<div class="linea_datos">
+							<div class="modulo_radio_carro_2012"
+								style="padding-top: 6px; padding-left: 4px;">
+								
+								<input name="tipodespacho" id="tipodespacho" type="radio"
+																		value="R" class="radioretiro" onchange="$j('#inferiordespacho').hide();"/>
+									<!--  onclick="javascript:muestraCalendario();cambiaDireccion1();" -->
+							</div>
+							<div class="nombre_form_2012" style="width: 279px;">
+							<h3	style="float: left; width: auto; padding-top: 4px; color: #333; font-weight: bold; font-size: 16px;">
+								Retiro en tu auto / Retiro en Tienda: 
+							</h3>							
+							<select style="  margin-top: 4px;" name="localretiro" id="localretiro" class="form_direccion_2012" onchange="javascript:muestraCalendario();" >
+								<option>Seleccione el local Jumbo para retirar tu pedido</option>
+					          	<!-- BEGIN DYNAMIC: LOCALES_RETIRO -->
+					    	    <option value="{dir_local}_{dir_zona}" >{dir_opcion}</option>
+					            <!-- END DYNAMIC: LOCALES_RETIRO -->
+        					</select>
+
+								<!--  <h3
+									style="float: left; width: auto; padding-top: 4px; color: #333; font-weight: bold; font-size: 16px;">Auto
+									Jumbo Los Dominicos:</h3>-->
+							</div>
+						</div>
+						</br>
+						<div class="linea_datos">
+							<div class="modulo_radio_carro_2012"
+								style="padding-top: 6px; padding-left: 4px;"></div>
+								
+														<div class="nombre_form_2012" style="width: 279px;margin-top: 10px;" >
+								<h3	style="text-align:justify; float: left; width: auto; padding-top: 4px; color: #333; font-weight: bold; font-size: 16px;">
+									<font style="text-align:justify; color: #666; font-weight: normal; font-size: 12px; line-height: normal;" align="justify">
+											
+									&#8226;  <strong>Retiro en tu auto:</strong> Disponible en La Dehesa, Los Dominicos, La Reina y Vi&ntilde;a del Mar. Llevaremos tu pedido a tu auto en el <strong>estacionamiento</strong> del local Jumbo que hayas elegido.</br></br> 
+									&#8226;  <strong>Retiro en Tienda:</strong> Disponible en La Serena, Puerto Montt y Temuco. Retira tu pedido en la zona habilitada <strong>dentro del Jumbo</strong> que hayas elegido.</br><strong>*Nuevo* La Florida</strong> 
+									</font>
+									 
+								</h3>
+							</div>
+						</div>
+						<div class="linea_datos" style="margin-top: 40px">
+							<div class="modulo_radio_carro_2012"
+								style="padding-top: 4px; padding-left: 4px;"></div>
+							<div id="indicacion" class="nombre_form_2012_green"
+								style="padding-top: 64px;float:right">
+								<a style="color: #1FA22E; text-decoration: underline;"
+									href="http://www.jumbo.cl/supermercado/click-auto/index.html" target="_blank">Ver indicaciones</a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col_despacho" style="height: 220px;">
+					<div id="nuevadireccion" class="contenedor_direccion_2012"
+						style="width: 425px;">
+						<div class="col_form_linea" style="padding-left: 12px;">
+							<img width="400" height="210" src="http://www.jumbo.cl/supermercado/click-auto/img/pasos_click_auto_flujo_despacho.jpg">
+						</div>
+					</div>
+				</div>
+			
+
+						<div id="inferiordespacho">
+						<div id="titulocalendariodespacho" class="titulo_direccion_despacho">Selecciona el horario de
+							despacho</div>
+						<div id="titulocalendarioretiro" class="titulo_direccion_despacho">Selecciona el horario de
+							retiro</div>	
+						<div class="contenedor_calendario_2012">
+							<table border="0" cellpadding="0" cellspacing="0">
+								<tr>
+									<td><div id="frm_despacho"></div>
+									</td>
+								</tr>
+							</table>
+						</div>
+						
+						<div id="titulo_autorizacion_despacho" class="titulo_direccion_despacho">Ay&uacute;danos a
+							facilitar la entrega de tu pedido</div>
+							<div id="titulo_autorizacion_retiro" class="titulo_direccion_despacho">Qui&eacute;n retirar&aacute; el pedido</div>
+						<div class="contenedor_obs_despacho">
+							<div class="fila_despacho_obs_2012" id="autoriza" style="width:450px" >
+								<div class="nombre_form_2012" id="autorizadespacho">Ind&iacute;canos a quien
+									autorizas a recibir el pedido:</div>
+									<div class="nombre_form_2012" id="autorizaretiro">Ind&iacute;canos el nombre de qui&eacute;n retira el pedido:</div>
+								<div class="nombre_form_2012">
+									<label for="textfield7">Nombre</label> 
+										<input name="autorizacion_nom" type="text" class="form_direccion_2012" id="autorizacion_nom" value="{autorizacion_nom}" size="20"
+										onfocus="javascript:if (this.value == 'Ingrese Nombre') {this.value = '';$j('#autorizacion').css('color', 'black');$j('#autorizacion').css('font-style', 'normal');}" />
+									<label style="padding-left: 20px;" for="textfield7">Apellido</label> 
+										<input name="autorizacion_ape" type="text" class="form_direccion_2012" id="autorizacion_ape" value="{autorizacion_ape}" size="20"
+										onfocus="javascript:if (this.value == 'Ingrese Apellido') {this.value = '';$j('#autorizacion').css('color', 'black');$j('#autorizacion').css('font-style', 'normal');}" />
+								</div>
+							</div>
+							<div class="fila_despacho_obs_2012" id="retira">
+								<div class="nombre_form_2012">Ind&iacute;canos el RUT de
+									quien retira el pedido:</div>
+								<div class="nombre_form_2012">
+									<label for="textfield7"></label> <input name="rut" type="text"
+										class="form_direccion_2012" id="rut" value="{rut_autorizado}" size="9"
+										maxlength="8"
+										onkeypress="javascript:return bloqueaCaracteres(event,/[0-9\b]/);" />
+									-<input name="dv" type="text" class="form_direccion_2012"
+										id="dv" value="{dv_autorizado}" size="1" maxlength="1"
+										onkeypress="javascript:return bloqueaCaracteres(event,/[0-9kK\b]/);" />
+								</div>
+							</div>
+							<div class="fila_despacho_obs_2012" id="observa">
+								<div class="nombre_form_2012">Otras indicaciones para que lleguemos a tu direcci&oacute;n:</div>
+								<div class="nombre_form_2012">
+									<label for="textfield8"></label> <input name="observacion"
+										type="text" class="form_direccion_2012" id="observacion"
+										value="{observacion}" size="58" />
+								</div>
+							</div>
+						</div>
+						<!-- BEGIN DYNAMIC: DESPACHO_LOGUEADO -->
+						<div class="titulo_direccion_despacho">Conf&iacute;rmanos tus datos</div>
+						<div class="fila_direccion_2012">
+							<div class="nombre_form_2012">E-mail*:</div>
+							<div class="nombre_form_2012">
+								<label for="textfield9"></label> <input name="email" type="text"
+									class="form_direccion_2012" id="email" size="30" value="{email}">
+							</div>
+							<div style="padding-left: 20px;" class="nombre_form_2012">Tel&eacute;fono:</div>
+							<div class="nombre_form_2012">
+								<label for="textfield10"></label> <select name="codigo"
+									class="campo" id="codigo">
+								</select> 
+								<input name="telefono" type="text" class="form_direccion_2012"
+									id="telefono"  size="25" maxlength="15"/>
+								<div class="cont_acepto_info_despacho" id="fon_num_1_info" ></div>		
+								<div class="cont_alerta_error" id="fon_num_1_error"></div>	
+								<input name="codAux" type="hidden"  id="codAux"  value="{cod_telefono}"/>	
+								<input name="telefonoAux" type="hidden"  id="telefonoAux"  value="{telefono}"/>	
+							</div>
+	
+						</div>
+						<!-- END DYNAMIC: DESPACHO_LOGUEADO -->
+						<!-- BEGIN DYNAMIC: DESPACHO_NOLOGUEADO -->
+						<div class="titulo_direccion_despacho" style="display:none;">Ingresa tu e-mail
+							para recibir el estado de tu compra</div>
+						<div class="fila_direccion_2012" style="display:none;">
+							<div class="nombre_form_2012">
+								<label for="textfield3"></label> <input name="email" type="text"
+									class="form_direccion_2012" id="email" size="30"
+									value="{email}" maxlength="50" />
+							</div>
+							<!-- +20120719coh -->
+							<div class="nombre_form_2012">Tel&eacute;fono:</div>
+							<div class="nombre_form_2012">
+								<label for="textfield10"></label> <select name="codigo"
+									class="campo" id="codigo">
+									
+								</select> <input name="telefono" type="text" class="form_direccion_2012"
+									id="telefono" value="{telefono}" size="25" maxlength="15"
+									onkeypress="javascript:return bloqueaCaracteres(event,/[0-9\b]/);">
+							</div>
+							<!-- -20120719coh -->
+						</div>
+						<!-- END DYNAMIC: DESPACHO_NOLOGUEADO -->
+						<div class="contenedor_botones_carro">
+							<div class="bt_continuar_compra_carro">
+								<a href="javascript:continuar();"><img
+									src="/FO_IMGS/img/continuar_compra.gif" width="169" height="29" />
+								</a>
+							</div>
+							<div class="agregar_productos_carro">
+								<a href="/FO/MiCarro">&lt; volver</a>
+							</div>
+						</div>
+						</div>
+					</div>
+				</div>
+			</div>
+					<div id="modificardireccion">
+						<div id="dragbar5"
+							onmousedown="javascript:initializedrag(event,'modificardireccion','dragbar5');"
+							style="cursor: move;">
+							<table align="center" width="283" border="0" cellpadding="0"
+								cellspacing="0">
+								<tr>
+									<td width="8" height="7" valign="top"><img
+										src="/FO_IMGS/img/estructura/layers/esquinaSupIzq.gif"
+										width="8" height="7" alt="" />
+									</td>
+									<td width="267" height="7" valign="top"
+										style="background: url(/FO_IMGS/img/estructura/layers/arriba.gif);"><img
+										src="/FO_IMGS/img/estructura/layers/arriba.gif" width="1"
+										height="7" alt="" />
+									</td>
+									<td width="8" height="7" valign="top"><img
+										src="/FO_IMGS/img/estructura/layers/esquinaSupDer.gif"
+										width="8" height="7" alt="" />
+									</td>
+								</tr>
+								<tr>
+									<td height="5" valign="top"
+										style="background: url(/FO_IMGS/img/estructura/layers/izquierdoArriba.gif);"><img
+										src="/FO_IMGS/img/estructura/layers/izquierdoArriba.gif"
+										width="8" height="1" alt="" />
+									</td>
+									<td height="5" align="center" valign="top"
+										style="background: url(/FO_IMGS/img/estructura/layers/tramafondo.gif);"><span
+										class="titulosLayers">Advertencia</span>
+									</td>
+									<td width="8" height="0" valign="top"
+										style="background: url(/FO_IMGS/img/estructura/layers/derechoArriba.gif);"><img
+										src="/FO_IMGS/img/estructura/layers/derechoArriba.gif"
+										width="8" height="1" alt="" />
+									</td>
+								</tr>
+							</table>
+							<div id="modificar_direccion"></div>
+						</div>
+					</div>
+
+					<!-- Inicio modal window login -->
+	<div id="hiddenModalContent" style="display: none"
+		style="border:0px yellow solid">
+		<div id="contenedor_lightbox" class="contenedor_lightbox"
+			style="border: 0px red solid">
+			<div id="cont_inputs_close" class="cont_inputs_close"
+				style="display: none; border: 0px yellow solid">
+				<a href="javascript:closeLBoxWin();"><img
+					src="/FO_IMGS/images/html/btn_cerrar.gif" border="0" alt="Cerrar" />
+				</a>
+			</div>
+			<div id="logo_jumbo" class="iniciar_sesion_jumbo_2012"
+				style="display: none">
+				<img src="/FO_IMGS/img/logo_jumbo_2012.gif" width="285" height="56" />
+			</div>
+			<div id="clienteSinRegistro"
+				style="display: none; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-top-color: black; border-right-color: black; border-bottom-color: black; border-left-color: black; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; margin-left: 113px; margin-right: 113px; display: block;"
+				class="login_rut">
+				<form id="acceso3" name="acceso3" method="post" action="Logon">
+					<input type="hidden" name="url_to" id="url_to" value="" />
+					<!--div id="cont_inputs_close1" class="cont_inputs_close1">
+		  			<a href="javascript:closeLBoxWin();">
+		  				<img  src="/FO_IMGS/images/html/btn_cerrar.gif" border="0" alt="Cerrar"/>
+		  			</a>
+		  		  </div-->
+					<!--div class="iniciar_sesion_jumbo_2012"><img src="/FO_IMGS/img/logo_jumbo_2012.gif" width="285" height="56" /></div-->
+					<div class="linea_registro_2012">
+						<div class="fila_registro_2012_name" style="border: 0px red solid">Rut:</div>
+						<div class="fila_registro_2012_form">
+							<input type="text" name="cli_rut" id="cli_rut" class="intext"
+								value="" maxlength="12"
+								onchange="if(!(this.value.trim()==''))checkRutValue(document.acceso3.cli_rut);"
+								onkeypress="pulsaEnterParaLogin(event);"
+								size="14">
+						</div>
+					</div>
+					<div class="linea_registro_2012">
+						<div class="fila_registro_2012_name">Clave</div>
+						<div class="fila_registro_2012_form">
+							<input type="password" name="clave" id="clave" class="intext"
+								value=""
+								onkeypress="pulsaEnterParaLogin(event);">
+						</div>
+
+					</div>
+					<div class="linea_registro_2012">
+						<div class="fila_olvidaste_clave_2012">
+							<a href="javascript:showRecuperaClave();">Olvidaste tu clave?</a>
+						</div>
+					</div>
+					<div class="bt_ingresar_2012">
+						<a href="javascript:logonInDespacho('LBOX_S');"><img
+							onclick="mxTracker._trackEvent('Formulario','Login','BotonIngresar');"
+							src="/FO_IMGS/img/bt_ingresar_2012.gif" border="0" alt="Entrar">
+						</a>
+					</div>
+					<div class="fila_olvidaste_clave_2012"
+						style="margin-top: 20px; margin-bottom: 15px;">
+						<a href="javascript:closeLBoxWin();"
+							style="color: #1FA22E"><img
+							src="/FO_IMGS/img/btn_seguir_como_invitado.gif">
+						</a>
+					</div>
+				</form>
+			</div>
+			<form id="acceso2" name="acceso2" method="post" action="Logon">
+				<input type="hidden" name="url_to" id="url_to" value="" />
+
+				<div id="change_login_session"
+					style="display: none; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-top-color: black; border-right-color: black; border-bottom-color: black; border-left-color: black; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; margin-left: 113px; margin-right: 113px; display: block;"
+					class="login_rut">
+					<div class="linea_registro_2012">
+						<div class="fila_registro_2012_name" style="border: 0px red solid">Rut:</div>
+						<div class="fila_registro_2012_form">
+							<input type="text" name="cli_rut" id="cli_rut" class="intext"
+								value="" maxlength="12"
+								onchange="checkRutValue(document.acceso2.cli_rut);"
+								onkeypress="javascript:return bloqueaCaracteres(event,/[0-9kK\-\.\b]/);"
+								size="14">
+						</div>
+					</div>
+					<div class="linea_registro_2012">
+						<div class="fila_registro_2012_name">Clave</div>
+						<div class="fila_registro_2012_form">
+							<input type="password" name="clave" id="clave" class="intext"
+								value="" onkeydown="if(event.keyCode==13) logon2('LBOX_S');">
+						</div>
+						<div class="fila_registro_2012_form">
+							<div class="loading_lbox" style="display: none;">
+								<img src="/FO_IMGS/images/html/cargando.gif" border="0" alt="">
+							</div>
+						</div>
+					</div>
+					<div class="linea_registro_2012">
+						<div class="fila_olvidaste_clave_2012">
+							<a href="javascript:showRecuperaClave();">Olvidaste tu clave?</a>
+						</div>
+					</div>
+					<div class="bt_ingresar_2012">
+						<a href="javascript:logon2('LBOX_S');"><img
+							onclick="mxTracker._trackEvent('Formulario','Login','BotonIngresar');"
+							src="/FO_IMGS/img/bt_ingresar_2012.gif" border="0" alt="Entrar">
+						</a>
+					</div>
+					<div class="fila_sin_clave_2012"
+						style="width: 300px; margin-left: -25px;">
+						&iquest;Eres cliente nuevo? <a class="txt_green_2012"
+							href="javascript:showRegistro();">Reg&iacute;strate
+							aqu&iacute;</a>
+					</div>
+					<!--dcadiz-->
+				</div>
+				<div id="comunas_sesion" style="display: none">
+					<table width="100%" style="border: 0px yellow solid">
+						<tr>
+							<td style="text-align: center">
+								<div class="fila_registro_2012_name">
+									Selecciona tu regi&oacute;n y comuna<br />para que puedas ver
+									los productos disponibles
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+						</tr>
+						<tr>
+							<td style="text-align: center">
+								<div class="fila_registro_2012_form">
+									<select id="id_region" name="id_region"
+										onChange="javascript:getComunasByRegion(this.value);"
+										style="width: 180px;"><option value="0">Seleccione</option>
+									</select>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+						</tr>
+						<tr>
+							<td style="text-align: center">
+								<div class="fila_registro_2012_form">
+									<select id="id_comuna" name="id_comuna" disabled="disabled"
+										style="width: 180px;"><option value="0">Seleccione</option>
+									</select>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+						</tr>
+						<tr>
+							<td style="text-align: center">
+								<div class="btn_entrar">
+									<a href="javascript:changeComuna();"><img
+										src="/FO_IMGS/images/html/btn_entrar.gif" border="0"
+										alt="Entrar" /> </a>
+								</div>
+							</td>
+						</tr>
+					</table>
+				</div>
+				<div id="change_comuna_layer_msj" style="display: none"
+					class="cambiando_comuna">
+					<div class="space_comuna">&nbsp;</div>
+					<div class="titulo_comuna_msj" id="prod_disp_mjs"></div>
+					<div class="btn_entrar">
+						<a href="javascript:closeLBoxWin();"
+							onclick="mxTracker._trackEvent('MiCarro','Productos no disponibles','Aceptar');">
+							<img src="/FO_IMGS/images/html/bt_aceptar.gif" border="0"
+							alt="Aceptar" /> </a>&nbsp;&nbsp; <a
+							href="javascript:showChangeComuna();"
+							onclick="mxTracker._trackEvent('MiCarro','Productos no disponibles','Cambiar Comuna');">
+							<img src="/FO_IMGS/images/html/bt_seleccionar.gif" border="0"
+							alt="Seleccionar otra comuna" /> </a>
+					</div>
+				</div>
+				<div id="olvido_clave" class="login_rut" style="display: none;">
+					<iframe name="texto" id="texto"
+						src="/FO_WebContent/layers/nuevaclave.html" frameborder="0"
+						width="383" height="162" scrolling="no"></iframe>
+				</div>
+			</form>
+		</div>
+
+		<div id="registra_cliente" class="contenedor_lightbox_registro_2"
+			style="display: none; z-index: 999999999999 !important;">
+			<form id="RegistroSencillo" name="RegistroSencillo" method="post"
+				action="">
+				<input type="hidden" name="url_to" id="url_to" value="" />
+				<div id="cont_inputs_close2" class="cont_inputs_close2">
+					<a href="javascript:closeLBoxWin();"> <img
+						src="/FO_IMGS/images/html/btn_cerrar.gif" border="0" alt="Cerrar" />
+					</a>
+				</div>
+				<div class="col_1_registro_2_2012_RS">
+					<div class="fila_registro_2_2012_titulo_RS">Registrate en
+						Jumbo.cl</div>
+					<div class="fila_registro_2012_name_RS">Rut:</div>
+					<div class="linea_registro_2012_RS">
+						<div class="fila_registro_2012_form_RS" style="height: auto;">
+							<label for="textfield3"></label> <input id="cli_rut_reg"
+								name="cli_rut_reg" type="text" class="form_registro_2012"
+								maxlength="12" onchange="checkRutValue(this);"
+								onkeypress="javascript:return bloqueaCaracteres(event,/[0-9kK\-\.\b]/);"
+								onfocus="javascript: $j('#error_rut_existe').hide();" />
+							<div id="error_rut_existe" class="error_rut_existe"
+								style="display: none;">Este RUT ya se encuentra
+								registrado. Ingresa tu RUT nuevamente o inicia sesi&oacute;n.</div>
+						</div>
+					</div>
+					<div class="fila_registro_2012_name_RS">Nombre</div>
+					<div class="linea_registro_2012_RS">
+						<div class="fila_registro_2012_form_RS">
+							<label for="textfield2"></label> <input id="nombre" name="nombre"
+								type="text" class="form_registro_2012" maxlength="30" size="30" />
+						</div>
+					</div>
+					<div class="fila_registro_2012_name_RS">Apellido:</div>
+					<div class="linea_registro_2012_RS">
+						<div class="fila_registro_2012_form_RS">
+							<label for="textfield3"></label> <input id="ape_pat"
+								name="ape_pat" type="text" class="form_registro_2012"
+								maxlength="30" size="30" />
+						</div>
+					</div>
+					<div class="fila_registro_2012_name_RS">Regi&oacute;n:</div>
+					<div class="linea_registro_2012_RS">
+						<div class="fila_registro_2012_form_RS">
+							<label for="textfield3"></label> <select id="id_region_reg"
+								name="id_region"
+								onChange="javascript:getComunasByRegionRegistro(this.value);"
+								style="width: 180px;"><option value="">Seleccione</option>
+							</select>
+						</div>
+					</div>
+					<div class="fila_registro_2012_name_RS">Comuna:</div>
+					<div class="linea_registro_2012_RS">
+						<div class="fila_registro_2012_form_RS">
+							<label for="textfield3"></label> <select id="id_comuna_reg"
+								name="id_comuna" disabled="disabled" style="width: 180px;"><option>Seleccione</option>
+							</select>
+						</div>
+					</div>
+				</div>
+
+				<div class="fila_registro_2_2012_titulo_RS"></div>
+				<div class="col_2_registro_2_2012_RS">
+
+					<div class="fila_registro_2012_name_RS">Mail:</div>
+					<div class="linea_registro_2012_RS">
+						<div class="fila_registro_2012_form_RS">
+							<label for="textfield3"></label> <input id="email_reg"
+								name="email_reg" type="text" class="form_registro_2012"
+								size="30" />
+						</div>
+					</div>
+					<div class="linea_registro_2012_RS" style="height: auto;">
+						<div class="fila_registro_2012_form_RS" style="height: auto;">
+							<div style="float: left;">
+								<input id="envioEMail" name="envioEMail" type="checkbox"
+									value="true" />
+							</div>
+							<div class="cont_acepto_info">
+								Acepto recibir ofertas y novedades<br />de Jumbo en mi mail
+							</div>
+						</div>
+					</div>
+					<div class="fila_registro_2012_name_RS">Tel&eacute;fono:</div>
+					<div class="linea_registro_2012_RS">
+						<div class="fila_registro_2012_form_RS">
+							<div style="float: left; margin-right: 8px; margin-top: 3px;">
+								<select id="fon_cod" name="fon_cod" class="form_registro_2012"
+									style="width: 45px" onchange="javascript: ocultaEnvioSMS();">
+									<option value='6'>6</option>
+									<option value='7'>7</option>
+									<option value='8'>8</option>
+									<option value='9' selected='selected'>9</option>
+									<option value='02'>02</option>
+									<option value='32'>32</option>
+									<option value='33'>33</option>
+									<option value='34'>34</option>
+									<option value='35'>35</option>
+									<option value='41'>41</option>
+									<option value='42'>42</option>
+									<option value='43'>43</option>
+									<option value='45'>45</option>
+									<option value='51'>51</option>
+									<option value='52'>52</option>
+									<option value='53'>53</option>
+									<option value='55'>55</option>
+									<option value='57'>57</option>
+									<option value='58'>58</option>
+									<option value='61'>61</option>
+									<option value='63'>63</option>
+									<option value='64'>64</option>
+									<option value='65'>65</option>
+									<option value='67'>67</option>
+									<option value='71'>71</option>
+									<option value='72'>72</option>
+									<option value='73'>73</option>
+									<option value='75'>75</option>
+								</select>
+							</div>
+							<div style="float: left; width: 100px;">
+								<label for="textfield3"></label> <input id="fon_num"
+									name="fon_num" type="text" class="form_registro_2012" size="20"
+									maxlength="15" />
+							</div>
+						</div>
+					</div>
+					<div id="DIVenvioSMS" class="linea_registro_2012_RS"
+						style="height: auto;">
+						<div class="fila_registro_2012_form_RS" style="height: auto;">
+							<div style="float: left;">
+								<input id="envioSMS" name="envioSMS" type="checkbox"
+									value="true" />
+							</div>
+							<div class="cont_acepto_info">
+								Acepto recibir ofertas y novedades<br /> de Jumbo en mi celular
+							</div>
+						</div>
+					</div>
+					<div class="fila_registro_2012_name_RS">Clave:</div>
+					<div class="linea_registro_2012_RS">
+						<div class="fila_registro_2012_form_RS">
+							<label for="textfield3"></label> <input id="clave1" name="clave1"
+								type="password" class="form_registro_2012" maxlength="12" />
+						</div>
+					</div>
+					<div class="fila_registro_2012_name_RS">Confirmar Clave:</div>
+					<div class="linea_registro_2012_RS">
+						<div class="fila_registro_2012_form_RS">
+							<label for="textfield3"></label> <input id="clave2" name="clave2"
+								type="password" class="form_registro_2012" maxlength="12" />
+						</div>
+						<div class="fila_registro_2012_form_RS" style="height: auto;">
+							<div style="float: left;">
+								<input type="checkbox" name="terminos" id="terminos" />
+							</div>
+							<div class="cont_acepto_info">
+								Acepto <a href="http://www.jumbo.cl/supermercado/terminos/terminos.html" target="_blank">T&eacute;rminos
+									y Condiciones</a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="bt_ingresar_2012_RS">
+					<img src="/FO_IMGS/img/bt_ingresar_2012.gif" width="159"
+						height="30"
+						onclick="mxTracker._trackEvent('Formulario','Registro','BotonIngresar'); Registrar();" />
+				</div>
+			</form>
+		</div>
+
+
+		<div id="opcionesRegistro" class="contenedor_lightbox_registro_2"
+			style="display: none;">
+			<div id="cont_inputs_close2" class="cont_inputs_close2">
+				<a href="javascript:closeLBoxWin();"> <img
+					src="/FO_IMGS/images/html/btn_cerrar.gif" border="0" alt="Cerrar" />
+				</a>
+			</div>
+			<div class="fila_registro_3_2012_titulo"
+				style="width: 500px; padding-left: 50px;">Ya est&aacute;s
+				registrado en Jumbo.cl, qu&eacute; deseas hacer a
+				continuaci&oacute;n?</div>
+			<div class="col_1_registro_2_2012_RS" style="width: 290px;">
+				<div class="btns">
+					<a href="javascript: showAgregaDireccion();"><img
+						src="/FO_IMGS/img/bt_ingresar_direccion.gif" width="210"
+						height="30" /> </a>
+				</div>
+				<div class="cont_info_direccion">(Puedes ingresar tu
+					direcci&oacute;n posteriormente)</div>
+			</div>
+			<div class="col_2_registro_2_2012_RS" style="width: 280px;">
+				<div class="btns">
+					<a href="javascript: closeLBoxWin();"><img
+						src="/FO_IMGS/img/bt_continuar_compra.gif" width="210" height="30" />
+					</a>
+				</div>
+			</div>
+		</div>
+
+
+
+		<div id="agrega_direccion" class="contenedor_lightbox_registro_2"
+			style="display: none;">
+			<form id="form1" name="form1" method="post" action="">
+				<div id="cont_inputs_close2" class="cont_inputs_close2">
+					<a href="javascript:closeLBoxWin();"> <img
+						src="/FO_IMGS/images/html/btn_cerrar.gif" border="0" alt="Cerrar" />
+					</a>
+				</div>
+				<div class="col_1_registro_2_2012_RS">
+					<div class="fila_registro_2_2012_titulo_RS">Ingresa tu
+						direcci&oacute;n</div>
+					<div class="fila_registro_2012_name_RS">Tipo:</div>
+					<div class="linea_registro_2012_RS">
+						<div class="fila_registro_2012_form_RS">
+							<label for="textfield3"></label> <select id="tipo_calle"
+								name="tipo_calle" class="form_registro_2012"
+								style="width: 180px;"><option>Seleccione</option>
+							</select>
+						</div>
+					</div>
+					<div class="fila_registro_2012_name_RS">Calle:</div>
+					<div class="linea_registro_2012_RS">
+						<div class="fila_registro_2012_form_RS">
+							<label for="textfield2"></label> <input id="calle" name="calle"
+								type="text" class="form_registro_2012" size="30"
+								onfocus="javascript:if (this.value == 'Ingresa tu calle') {this.value = '';$j('#calle').css('color', 'black');$j('#calle').css('font-style', 'normal');}" />
+						</div>
+					</div>
+					<div class="fila_registro_2012_name_RS" style="width: 70px;">Nro:</div>
+					<div class="fila_registro_2012_name_RS"
+						style="padding-left: 30px; width: 80px;">Depto/Casa:</div>
+					<div class="linea_registro_2012_RS">
+						<div class="fila_registro_2012_form_RS" style="width: 70px;">
+							<label for="textfield3"></label> <input id="numero" name="numero"
+								type="text" class="form_registro_2012" size="11"
+								onfocus="javascript:if (this.value == '000') {this.value = '';$j('#numero').css('color', 'black');$j('#numero').css('font-style', 'normal');}" />
+						</div>
+						<div class="fila_registro_2012_form_RS"
+							style="padding-left: 30px; width: 70px;">
+							<label for="textfield3"></label> <input id="departamento"
+								name="departamento" type="text" class="form_registro_2012"
+								size="11" />
+						</div>
+					</div>
+					<div class="fila_registro_2012_name_RS">Regi&oacute;n:</div>
+					<div class="linea_registro_2012_RS">
+						<div class="fila_registro_2012_form_RS">
+							<label for="textfield3"></label> <select id="id_region_dir"
+								name="id_region"
+								onChange="javascript:getComunasByRegionAgregaDireccion(this.value);"
+								style="width: 180px;"><option value="">Seleccione</option>
+							</select>
+						</div>
+					</div>
+					<div class="fila_registro_2012_name_RS">Comuna:</div>
+					<div class="linea_registro_2012_RS">
+						<div class="fila_registro_2012_form_RS">
+							<label for="textfield3"></label> <select id="id_comuna_dir"
+								name="id_comuna" disabled="disabled" style="width: 180px;"><option>Seleccione</option>
+							</select>
+						</div>
+					</div>
+				</div>
+
+				<div class="fila_registro_2_2012_titulo_RS"></div>
+				<div class="col_2_registro_2_2012_RS">
+					<div class="fila_registro_2012_name_RS">Guardar como:</div>
+					<div class="fila_registro_2012_form_RS" style="height: auto;">
+						<div class="cont_acepto_info" style="padding-top: 0px;">Ejemplo:
+							&quot;Casa Mam&aacute;&quot;</div>
+					</div>
+					<div class="linea_registro_2012_RS">
+						<div class="fila_registro_2012_form_RS">
+							<label for="textfield3"></label> <input id="alias_rs"
+								name="alias_rs" type="text" class="form_registro_2012" size="30"
+								onfocus="javascript:if (this.value == 'Nombre') {this.value = '';$j('#alias_rs').css('color', 'black');$j('#alias_rs').css('font-style', 'normal');}" />
+						</div>
+					</div>
+					<div class="fila_registro_2012_name_RS">Observaciones para
+						despacho</div>
+					<div class="fila_registro_2012_form_RS" style="height: auto;">
+						<div class="cont_acepto_info" style="padding-top: 0px;">Ejemplo:
+							&quot;Timbre Malo&quot;</div>
+					</div>
+					<div class="linea_registro_2012_RS">
+						<div class="fila_registro_2012_form_RS" style="height: auto;">
+							<textarea id="comentario" name="comentario" cols="21" rows="4"
+								class="campoblanco" onfocus="vaciar_comentario()"
+								onkeydown="javascript:checklength(this)"></textarea>
+						</div>
+					</div>
+				</div>
+				<div class="bt_ingresar_2012_RS" style="margin-top: 20px;">
+					<a href="javascript:AgregaDireccion();"><img
+						src="/FO_IMGS/img/bt_ingresar_2012.gif" width="159" height="30"
+						onclick="mxTracker._trackEvent('Registro','Dirección','BotonIngresar');" />
+					</a>
+				</div>
+			</form>
+		</div>
+
+		<div id="mensaje_dir_exito" class="contenedor_lightbox_registro_2"
+			style="display: none;">
+			<!--  width:500px; -->
+			<div class="fila_registro_3_2012_titulo"
+				style="width: 500px; text-align: center; padding-left: 0px;">Tu
+				direcci&oacute;n ha sido registrada correctamente</div>
+			<div class="col_2_registro_2_2012_dir_exito"
+				style="width: 500px; float: none; text-align: center;">
+				<div class="btns" style="width: 500px; padding-left: 0px;">
+					<a
+						href="javascript:changeComunaAgregaDireccion($j('#id_region_dir').val(), $j('#id_comuna_dir').val()); closeLBoxWin();"><img
+						src="/FO_IMGS/img/bt_continuar_compra.gif" width="210" height="30" />
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="loading" style="display: none;">
+		<table cellpadding="0" cellspacing="0" border="0"
+			style="font: 10px Verdana, Geneva, Arial, Helvetica, sans-serif; z-index: 500;">
+			<tr>
+				<td><img src="/FO_IMGS/images/nuevojumbo/loading_left.gif"
+					height="50" width="6" /></td>
+				<td
+					style="background: url(/FO_IMGS/images/nuevojumbo/loading_center.gif); width: 100px; text-align: center; vertical-align: middle;"><strong>Cargando...</strong>
+				</td>
+				<td><img src="/FO_IMGS/images/nuevojumbo/loading_right.gif"
+					height="50" width="6" /></td>
+			</tr>
+		</table>
+	</div>
+	</div>
+	<form name="despacho">
+		<!-- inicio datos cliente invitado -->
+		<input type="hidden" name="rut1_inv" id="rut1_inv" value="" /> <input
+			type="hidden" name="nombre_inv" id="nombre_inv" value="" /> <input
+			type="hidden" name="ape_pat_inv" id="ape_pat_inv" value="" /> <input
+			type="hidden" name="email_inv" id="email_inv" value="" /> <input
+			type="hidden" name="fono_num_1_inv" id="fono_num_1_inv" value="" />
+		<input type="hidden" name="fono_num_2_inv" id="fono_num_2_inv"
+			value="" /> <input type="hidden" name="fono_cod_1_inv"
+			id="fono_cod_1_inv" value="" /> <input type="hidden"
+			name="fono_cod_2_inv" id="fono_cod_2_inv" value="" /> <input
+			type="hidden" name="tipo_calle_inv" id="tipo_calle_inv" value="" />
+		<input type="hidden" name="calle_inv" id="calle_inv" value="" /> <input
+			type="hidden" name="numero_inv" id="numero_inv" value="" /> <input
+			type="hidden" name="departamento_inv" id="departamento_inv" value="" />
+		<input type="hidden" name="region_inv" id="region_inv" value="" /> <input
+			type="hidden" name="comuna_inv" id="comuna_inv" value="" /> <input
+			type="hidden" name="alias_inv" id="alias_inv" value="" />
+			<input type="hidden" name="tipodesp" id="tipodesp" value="" />
+		<!-- fin datos cliente invitado -->
+
+		<input type="hidden" name="id_cliente" id="id_cliente"
+			value="{cli_id}" /> <input type="hidden" name="destino" id="destino"
+			value="" /> <input type="hidden" name="des_localretiro"
+			id="des_localretiro" value="" /> <input type="hidden"
+			name="id_direccion" id="id_direccion" value="" /> <input
+			type="hidden" name="comuna_direccion" id="comuna_direccion" value="" />
+		<input type="hidden" name="local_direccion" id="local_direccion"
+			value="" /> <input type="hidden" name="tipocalle_invitado"
+			id="tipocalle_invitado" value="" /> <input type="hidden"
+			name="calle_invitado" id="calle_invitado" value="" /> <input
+			type="hidden" name="numero_invitado" id="numero_invitado" value="" />
+		<input type="hidden" name="depto_invitado" id="depto_invitado"
+			value="" /> <input type="hidden" name="region_invitado"
+			id="region_invitado" value="" /> <input type="hidden"
+			name="comuna_invitado" id="comuna_invitado" value="" /> <input
+			type="hidden" name="alias_invitado" id="alias_invitado" value="" />
+		<input type="hidden" name="des_jpicking" id="des_jpicking" value="" />
+		<input type="hidden" name="des_jprecio" id="des_jprecio" value="" />
+		<input type="hidden" name="des_jclave" id="des_jclave" value="" />
+		<input type="hidden" name="des_jdespacho" id="des_jdespacho" value="" />
+		<input type="hidden" name="des_jfecha" id="des_jfecha" value="" /> <input
+			type="hidden" name="des_tdespacho" id="des_tdespacho" value="" /> <input
+			type="hidden" name="des_hh_economico" id="des_hh_economico" value="" />
+		<input type="hidden" name="des_zona_despacho" id="des_zona_despacho"
+			value="" /> <input type="hidden" name="rutautorizado"
+			id="rutautorizado" value="" /> <input type="hidden"
+			name="dvautorizado" id="dvautorizado" value="" /> <input
+			type="hidden" name="email_despacho" id="email_despacho" value="" />
+		<input type="hidden" name="tel_despacho" id="tel_despacho" value="" />
+		<input type="hidden" name="codtel_despacho" id="codtel_despacho"
+			value="" /> <input type="hidden" name="obs_despacho"
+			id="obs_despacho" value="" /> <input type="hidden"
+			name="aut_despacho" id="aut_despacho" value="" /> <input
+			type="hidden" name="cant_prod" id="cant_prod" value="{cant_prod}" />
+		<input type="hidden" name="redireccion" id="redireccion" value="0" />
+	</form>
+
+	<script type="text/javascript">
+    var tmp_region = 0;
+	var tmp_comuna = 0;
+
+$j('#inferiordespacho').hide();
+<!-- BEGIN DYNAMIC: DESPACHO_NOLOGUEADO -->
+
+	//$j('#ingresadireccion').hide();
+	$j('#tipo_calle').val({tipo_calle});
+	$j('#calle').val('{calle}');
+	$j('#calle').css('color', '#999');
+	$j('#calle').css('font-style', 'italic');
+	$j('#numero').val('{numero}');
+	$j('#numero').css('color', '#999');
+	$j('#numero').css('font-style', 'italic');
+	
+	$j('#departamento').val('{departamento}');
+	$j('#departamento').css('color', '#999');
+	$j('#departamento').css('font-style', 'italic');
+	
+	$j('#alias').val('{alias}');
+	$j('#alias').css('color', '#999');
+	$j('#alias').css('font-style', 'italic');
+	$j('#region').val({region});
+	tmp_region = {region};
+	tmp_comuna = {comuna};
+	$j('#rut1').focus();
+
+
+<!-- END DYNAMIC: DESPACHO_NOLOGUEADO -->
+
+
+$j('#titulo_autorizacion_despacho').hide();
+$j('#titulo_autorizacion_retiro').hide();
+
+DesactivaCamposDireccion();
+
+$j("#localretiro").attr('disabled', 'disabled');
+$j(document).ready(function(){
+		$j(".radiodespacho").click(function(){
+		$j('#localretiro').css({"border": "#CCC 1px solid"} )
+			$j('#inferiordespacho').show();
+			$j('#observa').show();
+			$j('#titulocalendariodespacho').show();
+			$j('#titulocalendarioretiro').hide();
+			$j('#retira').hide();
+			$j('#autorizadespacho').show();
+			$j('#autorizaretiro').hide();
+			$j("#localretiro").attr('disabled', 'disabled');
+			$j('#titulo_autorizacion_retiro').hide();
+			$j('#titulo_autorizacion_despacho').show();
+			$j('select#localretiro')[0].selectedIndex = 0;
+		})
+	});
+	$j(document).ready(function(){
+		$j("#bt_editar_dir_despacho").click(function(){		
+			$j("input[@name='tipodespacho'][value='D']").attr('checked',true);
+		muestraCalendario();
+		$j('#inferiordespacho').show();
+			$j('#observa').show();
+			$j('#titulocalendariodespacho').show();
+			$j('#titulocalendarioretiro').hide();
+			$j('#retira').hide();
+			$j('#autorizadespacho').show();
+			$j('#autorizaretiro').hide();
+			$j("#localretiro").attr('disabled', 'disabled');
+			$j('#titulo_autorizacion_retiro').hide();
+			$j('#titulo_autorizacion_despacho').show();
+		})
+	});
+	$j(document).ready(function(){
+		$j(".radioretiro").click(function(){
+// 			$j('#inferiordespacho').show();
+// 			$j('#observa').hide();
+// 			$j('#retira').show();
+// 			$j('#titulocalendariodespacho').hide();
+// 			$j('#titulocalendarioretiro').show();
+// 			$j('#autorizadespacho').hide();
+// 			$j('#autorizaretiro').show();
+			$j("#localretiro").removeAttr('disabled');
+			$j('#localretiro').css({"border": "#F00 2px solid"} )
+// 			$j('#titulo_autorizacion_retiro').show();
+// 			$j('#titulo_autorizacion_despacho').hide();
+		})
+	});
+		$j(document).ready(function(){
+				$j("#localretiro").change(function(){
+			zona = ($j('#localretiro').val().split("_"))[1];
+			if(zona!=null){
+				$j('#inferiordespacho').show();
+				$j('#observa').hide();
+				$j('#retira').show();
+				$j('#titulocalendariodespacho').hide();
+				$j('#titulocalendarioretiro').show();
+				$j('#autorizadespacho').hide();
+				$j('#autorizaretiro').show();
+				$j('#titulo_autorizacion_retiro').show();
+				$j('#titulo_autorizacion_despacho').hide();
+			}
+		})
+	});
+<!-- BEGIN DYNAMIC: DESPACHO_LOGUEADO -->
+	
+
+
+    tmp_region = {dir_id_region} ;
+	tmp_comuna = {dir_id_comuna} ;
+
+<!-- END DYNAMIC: DESPACHO_LOGUEADO -->
+
+
+//function llenaRegionComuna(){
+	//$j.get("/FO/RegionesConCobertura", function(datos) { //,{id_region:tmp_region}
+	//    $j("#region").html(datos);
+	    //alert(datos);
+	    
+	    //$j.get("/FO/ComunasConCoberturaByRegion", function(datos2) { //, {id_region:tmp_region, id_comuna:tmp_comuna}
+	    //	$j("#comuna").html(datos2);
+	    	//alert(datos2);
+	    	//$j("#comuna").removeAttr('disabled');
+	    	//$j('input[name=tipodespacho][value=D]').attr('checked','checked');
+	    	
+				if ($j('#calle').val() == "Ingresa tu calle" ||
+			      $j('#numero').val() == "000" ||
+			        $j('#alias').val() == "Nombre"){
+			        
+			    //ActivaCamposDireccion();
+			    
+			}else{
+			    DesactivaCamposDireccion();
+			}
+			//muestraCalendario();
+	  	//});
+	//});
+//}
+	//
+</script>
+
+<script>
+	window.document.RegistroSencillo.nombre.onkeypress  = KeyIsApellido;
+	window.document.RegistroSencillo.ape_pat.onkeypress = KeyIsApellido;
+    window.document.RegistroSencillo.clave1.onkeypress  = KeyIsClave;
+    window.document.RegistroSencillo.clave2.onkeypress  = KeyIsClave;
+    window.document.RegistroSencillo.fon_num.onkeypress = KeyIsTelefono;
+</script>
+
+<script>
+chaordicCheckOut('{ses_cli_id}','{ses_cli_nombre}','{ses_cli_email}');
+</script>
+<!-- INDRA 2012-11-13 -->
+<div id="respuestaLightBox" style="display: none;"></div>
+<!-- INDRA 2012-11-13 -->
+</body>
+</html>

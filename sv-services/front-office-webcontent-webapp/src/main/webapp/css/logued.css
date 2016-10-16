@@ -1,0 +1,89 @@
+.topmenu a:link {
+	font-family: "Arial";
+	color: #666;
+	font-size: 11px;
+	text-decoration: none;
+}
+.topmenu a:active {
+	font-family: "Arial";
+	color:#666;
+	font-size: 11px;
+	text-decoration: none;
+}
+.topmenu a:hover {
+	font-family: "Arial";
+	color: #1FA22E;
+	font-size: 11px;
+	text-decoration: none;
+}
+
+#utilitario_linea1{
+	
+}
+.topall{
+	width: auto;
+	padding-right: 5px;
+	float: right;
+}
+.topfirst{
+	padding-top: 8px;
+}
+.topsecond{
+}
+.topthird{
+}
+.topfourth{
+	width: 110px;
+	padding-right: 0px;
+}
+.topa{
+	width: auto;
+	padding: 0px 4px 0px 0px;
+}
+.topanchor{
+	padding-top: 5px;
+	padding-right: 0px;
+}
+
+.topspan{
+	color:#1FA22E;
+	font-size:14px
+}
+
+
+.nombre_cliente{
+	ont-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	height: 20px;
+	color: #666;
+	width: auto;
+	float: right;
+	padding-top: 10px;
+	padding-left: 10px;
+	font-weight: bold;
+}
+
+#utilitario_linea2 div {
+	padding-right: 21px;
+}
+
+.topfifth{
+	padding-top: 11px;
+}
+/*style="border:0px #000000 solid;padding-top:10px; font-family: Arial, Helvetica, sans-serif; font-size: 11px; color: #666 !important; float: right; width: auto; height: 18px; text-decoration: none !important; text-align: center; padding-right: 6px; padding-left: 6px;"*/
+
+/*style="border:0px red solid;float: right; width: 100px; height: 30px; text-align: right; font-family:Arial, Helvetica, sans-serif; font-size:11px; color: #666; line-height: 14px;"*/
+
+/*style="border:0px red solid;color:#1FA22E; font-size:14px; font-family:Arial, Helvetica, sans-serif;"*/
+
+/*style="border:0px green solid;float: right; width: 350px; height: 30px; text-align: right; padding-top: 10px;"*/
+
+/*style="border:0px green solid;float: right; width: 100px; height: 30px; text-align: right; font-family:Arial, Helvetica, sans-serif; font-size:11px; color: #666; line-height: 14px;"*/
+
+/*style="color:#1FA22E; font-size:14px; font-family:Arial, Helvetica, sans-serif;"*/
+
+/*siguenos en 
+ style="border:0px #000000 solid;padding-top:10px; font-family: Arial, Helvetica, sans-serif; font-size: 11px; color: #666 !important; float: right; width: auto; height: 18px; text-decoration: none !important; text-align: center; padding-left: 5px;"*/
+ 
+ /*imagenes face twitter
+ style="border:0px #000000 solid;padding-top:8px; font-family: Arial, Helvetica, sans-serif; font-size: 11px; color: #666 !important; float: right; width: 45px; height: 18px; text-decoration: none !important; text-align: right;"*/

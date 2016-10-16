@@ -1,0 +1,89 @@
+<script type="text/javascript">
+	jQuery().ready(
+		function() {
+			var display ="{display_calendario_despacho}";
+			var action  = "/FO/DespachosDisponibles";	
+			if(display == 'block'){
+				getOfficesAvailable('INIT_ML');
+			}
+		}
+	);
+</script>
+
+<!-- DESPACHOS DISPONIBLES !!! -->
+<div id="contenedor_lightbox_DP"  style="display:{display_calendario_despacho};" >
+	<div id="cont_cabecera_DP"><img src="/FO_IMGS/img/estructura/banner_contraer_despacho.jpg" border="0" alt="Cerrar" onclick="javascript:getOfficesAvailable('HIDE_ML')"/></div>
+	<div id="contenido_DP"></div>
+</div>  
+<!-- FIN DESPACHOS DISPONIBLES !!! -->	
+
+<div id="banner_subcat"></div>
+<div>
+  <div id="banner_ppal"></div>
+  <div>
+    <div id="banner_fila1">
+      <div id="banner1"></div>
+      <div id="banner2"></div>
+      <div id="banner3"></div>
+    </div>
+    <div id="banner_fila2">
+      <div id="banner4"></div>
+      <div id="banner5"></div>
+      <div id="banner6"></div>
+    </div>
+  </div>
+</div>
+
+
+<script type="text/javascript">
+var fo = new FlashObject("/FO_IMGS/img/banners/1024/banner_ppal.swf", "animationName", "530", "300", "7", "#FFFFFF");
+fo.addParam("allowScriptAccess", "sameDomain");
+fo.addParam("quality", "high");
+fo.addParam("scale", "noscale");
+fo.addParam("wmode" ,"transparent");
+fo.write("banner_ppal");
+
+
+var fo = new FlashObject("/FO_IMGS/img/banners/1024/banner1.swf", "animationName", "170", "170", "7", "#FFFFFF");
+fo.addParam("allowScriptAccess", "sameDomain");
+fo.addParam("quality", "high");
+fo.addParam("scale", "noscale");
+fo.addParam("wmode" ,"transparent");
+fo.write("banner1");
+
+var fo = new FlashObject("/FO_IMGS/img/banners/1024/banner2.swf", "animationName", "170", "170", "7", "#FFFFFF");
+fo.addParam("allowScriptAccess", "sameDomain");
+fo.addParam("quality", "high");
+fo.addParam("scale", "noscale");
+fo.addParam("wmode" ,"transparent");
+fo.write("banner2");
+
+var fo = new FlashObject("/FO_IMGS/img/banners/1024/banner3.swf", "animationName", "170", "170", "7", "#FFFFFF");
+fo.addParam("allowScriptAccess", "sameDomain");
+fo.addParam("quality", "high");
+fo.addParam("scale", "noscale");
+fo.addParam("wmode" ,"transparent");
+fo.write("banner3");
+
+var fo = new FlashObject("/FO_IMGS/img/banners/1024/banner4.swf", "animationName", "170", "170", "7", "#FFFFFF");
+fo.addParam("allowScriptAccess", "sameDomain");
+fo.addParam("quality", "high");
+fo.addParam("scale", "noscale");
+fo.addParam("wmode" ,"transparent");
+fo.write("banner4");
+
+var fo = new FlashObject("/FO_IMGS/img/banners/1024/banner5.swf", "animationName", "170", "170", "7", "#FFFFFF");
+fo.addParam("allowScriptAccess", "sameDomain");
+fo.addParam("quality", "high");
+fo.addParam("scale", "noscale");
+fo.addParam("wmode" ,"transparent");
+fo.write("banner5");
+
+var fo = new FlashObject("/FO_IMGS/img/banners/1024/banner6.swf", "animationName", "170", "170", "7", "#FFFFFF");
+fo.addParam("allowScriptAccess", "sameDomain");
+fo.addParam("quality", "high");
+fo.addParam("scale", "noscale");
+fo.addParam("wmode" ,"transparent");
+fo.write("banner6");
+</script>
+

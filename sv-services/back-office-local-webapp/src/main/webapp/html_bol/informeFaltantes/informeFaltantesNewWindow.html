@@ -1,0 +1,159 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html><!-- InstanceBegin template="/Templates/fullbody.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+	<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+	<META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+	<META HTTP-EQUIV="EXPIRES" CONTENT="Mon, 22 Jul 2002 11:12:01 GMT">
+	<!-- InstanceBeginEditable name="doctitle" -->
+	<title>Jumbo.cl Back Office Local</title>
+	<script type="text/javascript" src="js/jquery/jquery.min.js"></script>
+	<script type="text/javascript" src="js/dynDateTime/jquery.dynDateTime.min.js"></script>
+	<script type="text/javascript" src="js/dynDateTime/lang/calendar-es.pack.js"></script>
+	<script language="JavaScript" src="prototype.js"></script>
+	<script type="text/javascript" src="js/informeFaltantes.js"></script>
+
+	<link rel="stylesheet" type="text/css" media="all" href="js/dynDateTime/css/calendar-win2k-1.css"  />
+	<link rel="stylesheet" href="menu/menu.css">
+	<link type="text/css" rel="stylesheet" href="css/jquery.autocomplete.css" />
+	<link href="estilos.css" rel="stylesheet" type="text/css">
+
+</head>
+
+<body>
+	<form action="InformeFaltantesExcel" name="form1" id="form1">
+	
+	<input type="hidden" id="jornadaActual" name="jornadaActual" value="{jornadaActual}">
+	<input type="hidden" id="horarioActual" value="{horarioActual}">
+	<input type="hidden" id="horariosLocal" value="{horariosLocal}">
+
+	<table width="900" height="100%" border="0" cellpadding="0" cellspacing="0">
+		<tr>
+	    	<td height="59" valign="top">
+				<TABLE width="100%" height=59 border=0 align="center" cellpadding="0" cellspacing="0" bgcolor="#ffffff">
+					<TR>
+						<TD width=275 height="59" align=left><!-- class=user-->
+							<img src="img/header2.jpg" width="275" height="60">
+						</TD>
+						<TD width=100% align=left valign="bottom" background="img/bg-1.jpg"><!-- class=user-->
+							<table width="90%"  border="0" align="center" cellpadding="0" cellspacing="2">
+						        <tr>
+						        	<td>
+						        		<div align="right" class="infoBL">Usuario: {hdr_nombre} | Local: {hdr_local} | {hdr_fecha} </div>
+						        	</td>
+						        </tr>
+						    </table>
+						</TD>
+					</TR>
+				</TABLE>
+			</td>
+		</tr>
+		<tr height="20">
+			<td valign="top" bgcolor="#FFFFFF">
+				<table border=0 width="100%" class='ContentTitle'>
+					<tr>
+						<td width="53%" height="20" class='HeaderTitle'>Informe Faltantes</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+		<br>
+		<tr>
+			<td valign="top" bgcolor="#FFFFFF">
+			<fieldset>
+				<legend>Busqueda Por</legend>
+				<table width="100%"  border="0">
+					<tr>
+						<td style="width: 20px; font-weight: bold;">Jornada: {jornadaActual}</td>
+						<td style="width: 20px; font-weight: bold;">Fecha: {fechaActual}</td>
+						<td style="width: 20px; font-weight: bold;">Horario: {horarioActual}</td>				
+					</tr>
+				</table>
+			</fieldset>
+			<!--  table>
+				<tr align="right">
+					<td >
+						<button id="generar" type="submit">Generar Excel</button>	
+			  		</td>
+				</tr>
+			</table -->
+			
+			<fieldset>
+				<legend>
+					Resultado Consulta
+				</legend>
+				<div id="tablaProductos" style="width:100%; max-height: 350px; overflow-y:scroll;">
+					<table width="100%" border="0" cellspacing="2" cellpadding="2">
+						<thead class="tabla2Informe"> 
+							<tr style="border: 1; width: 100;">
+								<th colspan="3" style="text-align: center;">Descripci&oacute;n del producto</th>
+								<th colspan="4" style="text-align: center;">Jornada {jornada0}</th>
+								<th colspan="4" style="text-align: center;">Jornada {jornada1}</th>
+								<th colspan="4" style="text-align: center;">Jornada {jornada2}</th>
+								<th colspan="4" style="text-align: center;">Jornada {jornada3}</th>													
+							</tr>
+							<tr style="border: 1; width: 100;" >
+								<th style="text-align: center;">ID_PRODUCTO</th> 
+								<th style="text-align: center;">SECTOR</th>
+								<th style="text-align: center;">DESCRIPCION</th>
+								<th style="text-align: center;">Cantidad</th>
+								<th style="text-align: center;">Presencia</th>
+								<th style="text-align: center;">Ops</th> 
+								<th style="text-align: center;">% Presencia</th>
+								<th style="text-align: center;">Cantidad</th>
+								<th style="text-align: center;">Presencia</th>
+								<th style="text-align: center;">Ops</th> 
+								<th style="text-align: center;">% Presencia</th>
+								<th style="text-align: center;">Cantidad</th>
+								<th style="text-align: center;">Presencia</th>
+								<th style="text-align: center;">Ops</th> 
+								<th style="text-align: center;">% Presencia</th>
+								<th style="text-align: center;">Cantidad</th>
+								<th style="text-align: center;">Presencia</th>
+								<th style="text-align: center;">Ops</th> 
+								<th style="text-align: center;">% Presencia</th>
+							</tr> 
+						</thead>
+						<tbody class="tabla2Informe">
+							<!-- BEGIN DYNAMIC: LISTADO_PRODUCTOS -->
+							<tr>
+								<td align="center">{idProducto}</td>
+								<td align="center">{descripcion}</td>
+								<td align="center">{sectorPicking}</td>
+								<td align="center">{cantidadProductosJ0}</td>
+								<td align="center">{presenciaProductosEnJornadaJ0}</td>
+								<td align="center">{opsTotalesPorJornadaJ0}</td>
+								<td align="center">{porcentajePresenciaJ0}</td>
+								<td align="center">{cantidadProductosJ1}</td>
+								<td align="center">{presenciaProductosEnJornadaJ1}</td>
+								<td align="center">{opsTotalesPorJornadaJ1}</td>
+								<td align="center">{porcentajePresenciaJ1}</td>
+								<td align="center">{cantidadProductosJ2}</td>
+								<td align="center">{presenciaProductosEnJornadaJ2}</td>
+								<td align="center">{opsTotalesPorJornadaJ2}</td>
+								<td align="center">{porcentajePresenciaJ2}</td>
+								<td align="center">{cantidadProductosJ3}</td>
+								<td align="center">{presenciaProductosEnJornadaJ3}</td>
+								<td align="center">{opsTotalesPorJornadaJ3}</td>
+								<td align="center">{porcentajePresenciaJ3}</td>
+							</tr>
+							<!-- END DYNAMIC: LISTADO_PRODUCTOS -->
+						</tbody>
+					</table>
+				</fieldset>	
+	  			</div>
+		</tr>
+		<tr>
+			<td>
+			<TABLE width="100%" height=19 border=0 align="left" cellpadding="0" cellspacing="0" bgcolor="#f1f0e9" style="border-top:1px solid #ABABAB; border-bottom:1px solid #ABABAB">
+	  			<TR>
+					<TD align=center bgcolor="#67b01a" class=infoBL><div align="center">Back Office Local - Jumbo.cl</div></TD>
+				</TR>
+			</TABLE>
+			</td>
+		</tr>
+		</table>
+	</form>		
+</body>
+</html>
